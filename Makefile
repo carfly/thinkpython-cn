@@ -20,7 +20,6 @@ all:	book.tex
 	makeindex book
 	pdflatex book
 	mv book.pdf thinkpython.pdf
-	evince thinkpython.pdf
 
 hevea:	book.tex header.html footer.html
 	# replace the pdfs with eps
