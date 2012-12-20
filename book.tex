@@ -221,8 +221,7 @@ Version \theversion
 
 \chapter{Preface \\ 前言}
 
-\section*{The strange history of this book \\
-本书与众不同的历史}
+\section*{The strange history of this book 本书与众不同的历史}
 
 In January 1999 I was preparing to teach an introductory programming
 class in Java.  I had taught it three times and I was getting
@@ -301,9 +300,6 @@ which allows users to copy, modify, and distribute the book.
 
 我将此书以GNU免费文档许可的形式发布，
 该许可允许用户拷贝、修改并且发布此书。
-\index{GNU Free Documentation License}
-\index{Free Documentation License, GNU}
-
 
 What happened next is the cool part.  Jeff Elkner, a high school
 teacher in Virginia, adopted my book and translated it into
@@ -317,7 +313,6 @@ As Green Tea Press, I published the first Python version in 2001.
 他将他的翻译发给了我一份，我有了一个与众不同的学习Python的体验，
 即通过读我自己的书。
 2001年，通过绿茶出版社（Green Tea Press），我发表了本书的第一个Python版本。
-\index{Elkner, Jeff}
 
 In 2003 I started teaching at Olin College and I got to teach
 Python for the first time.  The contrast with Java was striking.
@@ -328,7 +323,6 @@ projects, and generally had a lot more fun.
 2003年，我开始在Olin College教书，并且第一次教Python。
 与教Java的对比很显著，学生需要付出的努力更少，学到的更多，
 他们致力于更有趣的项目，并且通常更快乐。
-\index{Olin College}
 
 Over the last nine years I continued to develop the book,
 correcting errors, improving some of the examples and
@@ -789,7 +783,7 @@ some broken links.
 % START THE BOOK
 \mainmatter
 
-\chapter{The way of the program}
+\chapter{The way of the program 编程的方法}
 
 The goal of this book is to teach you to think like a
 computer scientist.  This way of thinking combines some of the best features
@@ -801,6 +795,12 @@ they observe the behavior of complex systems, form hypotheses, and test
 predictions.
 \index{problem solving}
 
+本书的目标是教给你像计算机科学家一样思考。
+这一思考的方式集成了数学、工程以及自然科学的一些最好的特点。
+像数学家一样，计算机科学家使用正则语言表示思想（特别是计算）。
+像工程师一样，计算机科学家设计东西，将零件组成系统，在各种选择之间寻求平衡。
+像科学家一样，计算机科学家观察复杂系统的行为，形成假设并且对预测进行检验。
+
 The single most important skill for a computer scientist is {\bf
 problem solving}.  Problem solving means the ability to formulate
 problems, think creatively about solutions, and express a solution clearly
@@ -808,17 +808,29 @@ and accurately.  As it turns out, the process of learning to program is an
 excellent opportunity to practice problem-solving skills.  That's why
 this chapter is called, ``The way of the program.''
 
+对于计算机科学家，唯一最重要的技能是{\bf 解决问题}。
+解决问题意味着对问题进行形式化、对解决方案创新地思考以及清晰、精确地表达解决方案的能力。
+事实证明，学习编程的过程是一个极佳的实践解决问题技能的机会。
+这也是为什么本章被称为``编程的方法''。
+
 On one level, you will be learning to program, a useful
 skill by itself.  On another level, you will use programming as a means to
 an end.  As we go along, that end will become clearer.
 
-\section{The Python programming language}
+一个层面上，你将学习编程，本身就是一个有用的技能。
+另一个层面上，你将使用编程作为达到目的的手段。
+随着我们的深入，这将变得更清晰。
+
+\section{The Python programming language Python编程语言}
 \index{programming language}
 \index{language!programming}
 
 The programming language you will learn is Python. Python is
 an example of a {\bf high-level language}; other high-level languages
 you might have heard of are C, C++, Perl, and Java.
+
+你将学习的编程语言是Python。Python是{\bf 高级语言}的一个例子；
+其它你可能听说的高级语言包括C、C++、Perl以及Java。
 
 There are
 also {\bf low-level languages}, sometimes referred to as ``machine
@@ -833,6 +845,11 @@ disadvantage of high-level languages.
 \index{language!high-level}
 \index{language!low-level}
 
+另外也有{\bf 低级语言}，有时指``机器语言''或``汇编语言''。
+大概来讲，计算机只能运行低级语言写的程序。
+因此使用高级语言写的程序运行之前必须被处理。
+这一额外的处理过程将花些时间，这是高级语言的一个小缺点。
+
 The advantages are enormous.  First, it is much easier to program
 in a high-level language.  Programs written in a high-level language
 take less time to write, they are shorter and easier to read, and they
@@ -841,11 +858,21 @@ portable}, meaning that they can run on different kinds of computers
 with few or no modifications.  Low-level programs can run on only one
 kind of computer and have to be rewritten to run on another.
 
+优点是巨大的。首先，使用高级语言编程要容易的多。
+用高级语言写程序需要花更少的时间，它们更短、更易读并且更有可能正确。
+其次，高级语言是{\bf 可移植的}，也就是说只需很少的修改或者无需修改，
+它们就可以运行在不同类型的计算机上。
+低级语言只能运行于一种类型的计算机上，如果要运行于其它类型的计算机上，
+不得不进行重写。
+
 Due to these advantages, almost all programs are written in high-level
 languages.  Low-level languages are used only for a few specialized
 applications.
 \index{compile}
 \index{interpret}
+
+由于这些优点，几乎所有的程序都是用高级语言写的。
+低级语言只被用于很少的特殊应用。
 
 Two kinds of programs process high-level languages into low-level
 languages: {\bf interpreters} and {\bf compilers}.  An interpreter
@@ -857,11 +884,17 @@ Figure~\ref{fig.interpret} shows the structure of an interpreter.
 \index{object code}
 \index{executable}
 
+将高级语言处理成低级语言有两种程序：{\bf 解释器}和{\bf 编译器}。
+解释器读高级语言程序并且执行它，也就是说它按照程序说的去做。
+它一次处理一些程序，交替地读几行程序并且执行计算。
+图~\ref{fig.interpret} 展示了一个解释器的结构。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.9]{figs/interpret.pdf}}
 \caption{An interpreter processes the program a little at a time,
-alternately reading lines and performing computations.}
+alternately reading lines and performing computations. 
+解释器一次处理一些程序，交替地读几行程序并且执行计算。}
 \label{fig.interpret}
 \end{figure}
 
@@ -872,11 +905,18 @@ called the {\bf source code}, and the translated program is called the
 compiled, you can execute it repeatedly without further translation.
 Figure~\ref{fig.compile} shows the structure of a compiler.
 
+编译器在程序开始运行之前，读取整个程序并且将其全部翻译。
+在这种情况下，高级语言程序被称为{\bf 源代码}，
+翻译后的程序被称为{\bf 目标代码}或者{\bf 可执行代码}。
+一旦一个程序被编译，你可以重复的执行它无需再翻译。
+图~\ref{fig.compile} 展示了一个编译器的结构。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.9]{figs/compile.pdf}}
 \caption{A compiler translates source code into object code, which is
-run by a hardware executor.}
+run by a hardware executor.
+编译器将源代码翻译成可被硬件执行的目标代码。}
 \label{fig.compile}
 \end{figure}
 
@@ -888,6 +928,10 @@ the result:
 \index{interactive mode}
 \index{script mode}
 
+Python被认为是解释性语言，因为Python程序被解释器执行。
+有两种方法使用解释器：{\bf 交互式模式}和{\bf 脚本模式}。
+在交互式模式下，你键入Python程序，解释器显示结果：
+
 \begin{verbatim}
 >>> 1 + 1
 2
@@ -898,10 +942,16 @@ The chevron, \verb">>>", is the
 you type {\tt 1 + 1}, the interpreter replies {\tt 2}.
 \index{prompt}
 
+\verb">>>"是{\bf 提示符}，解释器用其表示它准备好了。
+如果你键入{\tt 1 + 1}，解释器回复{\tt 2}。
+
 Alternatively, you can store code in a file and use the interpreter to
 execute the contents of the file, which is called a {\bf script}.  By
 convention, Python scripts have names that end with {\tt .py}.
 \index{script}
+
+另外，你可以将代码存储在一个文件中，并且用解释器执行这个文件的内容，
+其被成为{\bf 脚本}。习惯上，Python脚本以{\tt .py}结尾命名。
 
 To execute the script, you have to tell the interpreter the name of
 the file.  If you have a script named {\tt dinsdale.py} and you are
@@ -911,13 +961,21 @@ executing scripts are different.  You can find instructions for
 your environment at the Python website \url{http://python.org}.
 \index{testing!interactive mode}
 
+为了执行脚本，你必须告诉解释器文件名。
+如果你有一个命名为{\tt dinsdale.py}的脚本并且你在UNIX命令窗口中工作，
+你键入{\tt python dinsdale.py}。在其它的开发环境中，
+执行脚本的细节不太一样。
+你可以在Python网站\url{http://python.org}中找到对于你的环境的说明。
+
 Working in interactive mode is convenient for testing small pieces of
 code because you can type and execute them immediately.  But for
 anything more than a few lines, you should save your code
 as a script so you can modify and execute it in the future.
 
+在交互模式中工作便于测试零散的代码，因为你可以立即键入并且执行它们。
+但是对于任何多于几行的代码，你应该保存你的代码为脚本以便将来修改并执行它。
 
-\section{What is a program?}
+\section{What is a program? 什么是程序？}
 
 A {\bf program} is a sequence of instructions that specifies how to
 perform a computation.  The computation might be something
@@ -927,25 +985,41 @@ as searching and replacing text in a document or (strangely enough)
 compiling a program.
 \index{program}
 
+一个{\bf 程序}是一序列指令，其具体说明如何执行一个计算。
+计算可能是一些数学的东西，例如解一个公式系统或者找到一个多项式的解，
+而它也可能是一个符号计算，例如在一个文档中搜索并替换文本或者（不可思议地）编译一个程序。
+
 The details look different in different languages, but a few basic
 instructions appear in just about every language:
+
+不同语言细节看起来不一样，但是一些基本的指令几乎出现于每个语言当中：
 
 \begin{description}
 
 \item[input:] Get data from the keyboard, a file, or some
 other device.
 
+\item[输入：] 从键盘、文件或者其它设备获得数据。
+
 \item[output:] Display data on the screen or send data to a
 file or other device.
+
+\item[输出：] 在屏幕上显示数据或者将数据发送到一个文件或其它设备。
 
 \item[math:] Perform basic mathematical operations like addition and
 multiplication.
 
+\item[数学：] 执行基本的数学操作，如加法和乘法。
+
 \item[conditional execution:] Check for certain conditions and
 execute the appropriate code.
 
+\item[有条件执行：] 检查某一条件并执行适当的代码。
+
 \item[repetition:] Perform some action repeatedly, usually with
 some variation.
+
+\item[重复：] 重复执行某些动作，通常有一些变化。
 
 \end{description}
 
@@ -957,10 +1031,17 @@ into smaller and smaller subtasks until the subtasks are
 simple enough to be performed with one of these basic instructions.
 \index{algorithm}
 
+无论你是否相信，这几乎是程序的全部了。
+每个你曾经用过的程序，无论多么复杂，几乎都是由这些指令构成的。
+因此你可以认为编程就是将大的、复杂的任务分解为越来越小的子任务，
+直到这些子任务足够简单到被其中一个基本指令执行。
+
 That may be a little vague, but we will come back to this topic
 when we talk about {\bf algorithms}.
 
-\section{What is debugging?}
+这可能有些模糊，但是当我们讨论{\bf 算法}的时候，将回到这些主题。
+
+\section{What is debugging? 什么是调试？}
 \index{debugging}
 \index{bug}
 
@@ -970,11 +1051,17 @@ are called {\bf bugs} and the process of tracking them down is called
 \index{debugging}
 \index{bug}
 
+编程是易于出错的。由于比较奇怪的原因，编程的错误被称为{\bf 虫子}，
+并且追踪它们的过程被称为{\bf 找虫子或调试}。
+
 Three kinds of errors can occur in a program: syntax errors, runtime 
 errors, and semantic errors. It is useful
 to distinguish between them in order to track them down more quickly.
 
-\subsection{Syntax errors}
+程序中有三种错误：语法错误、运行时错误和语义错误。
+为了更快的追踪它们，对其进行区分是很有帮助的。
+
+\subsection{Syntax errors 语法错误}
 \index{syntax error}
 \index{error!syntax}
 \index{error message}
@@ -989,6 +1076,12 @@ For example, parentheses have to come in matching pairs, so
 \index{syntax}
 \index{cummings, e. e.}
 
+Python只能执行语法正确的程序。
+否则，解释器显示一个错误信息。
+{\bf 语法}指的是一个程序的结构以及关于那些结构的规则。
+例如，括号必须成对出现，所以{\tt (1 + 2)}是合法的，
+而{\tt 8)}是一个{\bf 语法错误}。
+
 In English readers can tolerate most syntax errors, which is why we
 can read the poetry of e. e. cummings without spewing error messages.
 Python is not so forgiving.  If there is a single syntax error
@@ -998,7 +1091,14 @@ weeks of your programming career, you will probably spend a lot of
 time tracking down syntax errors.  As you gain experience, you will
 make fewer errors and find them faster.
 
-\subsection{Runtime errors}
+英语读者能容忍大多数语法错误，
+这也是为什么我们能读e. e. cummings的诗而不会发出错误信息。
+Python没这么宽容。如果你的程序任何地方有一个语法错误，
+Python将显示一个错误信息并且退出。你将不能运行你的程序。
+在你编程生涯的前几周，你可能将花很多时间追踪语法错误。
+当你更有经验时，你将犯更少的错误并且更快的找到它们。
+
+\subsection{Runtime errors 运行时错误}
 \label{runtime}
 
 The second type of error is a runtime error, so called because the
@@ -1011,11 +1111,16 @@ indicate that something exceptional (and bad) has happened.
 \index{safe language}
 \index{language!safe}
 
+第二类错误是运行时错误，之所以这么叫，是因为程序开始运行以后，
+这些错误才出现。这些错误也被称为{\bf 异常}，
+因为它们通常意味着一些异常的（并且是坏的）事情发生。
+
 Runtime errors are rare in the simple programs you will see in the
 first few chapters, so it might be a while before you encounter one.
 
+在前几章简单的程序中很少有运行时错误，因此在你遇到它之前可能要一段时间。
 
-\subsection{Semantic errors}
+\subsection{Semantic errors 语义错误}
 \index{semantics}
 \index{semantic error}
 \index{error!semantic}
@@ -1027,13 +1132,21 @@ that the computer will not generate any error messages, but it will
 not do the right thing.  It will do something else.  Specifically, it
 will do what you told it to do.
 
+第三类错误是{\bf 语义错误}。
+如果你的程序中有一个语义错误，在计算机不会生成错误信息的意义上，
+它将成功运行。但是，它将不会做正确的事情。它将做其它的事情。
+特别地，它将做你告诉它要做的事情。
+
 The problem is that the program you wrote is not the program you
 wanted to write.  The meaning of the program (its semantics) is wrong.
 Identifying semantic errors can be tricky because it requires you to work
 backward by looking at the output of the program and trying to figure
 out what it is doing.
 
-\subsection{Experimental debugging}
+问题是你写的程序不是你想写的程序。程序的意义（它的语义）是错误的。
+识别语义错误可能是棘手的，因为这需要你反过头来看一下程序的输出以及试图指出它在做什么。
+
+\subsection{Experimental debugging 实验性调试}
 
 One of the most important skills you will acquire is debugging.
 Although it can be frustrating, debugging is one of the most
@@ -1042,9 +1155,15 @@ programming.
 \index{experimental debugging}
 \index{debugging!experimental}
 
+你将获得的最重要的技能之一是调试。
+虽然它可能令人泄气，但是调试是编程最富含智慧、挑战以及乐趣的部分之一。
+
 In some ways, debugging is like detective work.  You are confronted
 with clues, and you have to infer the processes and events that led
 to the results you see.
+
+在某些方面，调试像是侦探工作。
+你面对一些线索并且你必须对导致你看到的结果的过程和事件进行推理。
 
 Debugging is also like an experimental science.  Once you have an idea
 about what is going wrong, you modify your program and try again.  If
@@ -1057,11 +1176,23 @@ impossible, whatever remains, however improbable, must be the truth.''
 \index{Holmes, Sherlock}
 \index{Doyle, Arthur Conan}
 
+调试也像是一种实验性科学。一旦你有一个关于什么出错了的想法，
+你修改你的程序然后重试。
+如果你的假设是正确的，那么你可以预测修改的结果，并且你向好使的程序迈近了一步。
+如果你的假设是错误地，那么你不得不再提一个新的想法。
+如Sherlock Holmes所指出的：``当你排除了所有的不可能，无论剩下的是什么，
+即使是不可能的，一定是真相。''（A. Conan Doyle, {\em The Sign of Four}）
+
 For some people, programming and debugging are the same thing.  That
 is, programming is the process of gradually debugging a program until
 it does what you want.  The idea is that you should start with a
 program that does {\em something} and make small modifications,
 debugging them as you go, so that you always have a working program.
+
+对一些人来说，编程和调试是相同的事情。
+那就是，编程是逐步调试一个程序的过程，直到它做了你想要的。
+这一想法意味着你应该从一个能做些事情的程序开始并做小的改动，
+随着你进展调试它，以至于你总是有一个可以工作的程序。
 
 For example, Linux is an operating system that contains thousands of
 lines of code, but it started out as a simple program Linus Torvalds
@@ -1071,11 +1202,17 @@ between printing AAAA and BBBB.  This later evolved to Linux.''
 ({\em The Linux Users' Guide} Beta Version 1).
 \index{Linux}
 
+例如，Linux是一个操作系统，其包括成千上万行代码，
+但是它起始于Linus Torvalds写的一个用于探索Intel 80386芯片的简单程序。
+根据Larry Greenfield所说，Linus的早期项目之一是一个交替打印AAAA和BBBB的程序。
+这后来演变为了Linux。''（{\em Linux用户手册} Beta Version 1）
+
 Later chapters will make more suggestions about debugging and other
 programming practices.
 
+后面的章节将给出更多关于调试和其它编程实践的建议。
 
-\section{Formal and natural languages}
+\section{Formal and natural languages 正则和自然语言}
 \index{formal language}
 \index{natural language}
 \index{language!formal}
@@ -1086,6 +1223,10 @@ such as English, Spanish, and French.  They were not designed
 by people (although people try to impose some order on them);
 they evolved naturally.
 
+{\bf 自然语言}是人们说的语言，例如英语、西班牙语和法语。
+它们不是人类设计的（虽然人们试图在其上强加上一些顺序），
+他们自然的演变。
+
 {\bf Formal languages} are languages that are designed by people for
 specific applications.  For example, the notation that mathematicians
 use is a formal language that is particularly good at denoting
@@ -1093,9 +1234,16 @@ relationships among numbers and symbols.  Chemists use a formal
 language to represent the chemical structure of molecules.  And
 most importantly:
 
+{\bf 正则语言}是由人为了特殊应用设计的。
+例如，数学家使用的符号就是正则语言，其特别擅长表示数字和符号直接的关系。
+化学家使用正则语言表示分子的化学结构。
+最重要的是：
+
 \begin{quote}
 {\bf Programming languages are formal languages that have been
 designed to express computations.}
+
+{\bf 编程语言是被设计用于表示计算的正则语言。}
 \end{quote}
 
 Formal languages tend to have strict rules about syntax.  For example,
@@ -1103,6 +1251,10 @@ $3 + 3 = 6$ is a syntactically correct mathematical statement, but
 $3 + = 3 \mbox{\$} 6$ is not.
 $H_2O$ is a syntactically correct
 chemical formula, but $_2Zz$ is not.
+
+正则语言倾向于具有严格的语法规则。
+例如$3 + 3 = 6$是语法正确的数学表达式，而$3 + = 3 \mbox{\$} 6$则不是。
+$H_2O$是语法正确的化学表达式，而$_2Zz$则不是。
 
 Syntax rules come in two flavors, pertaining to {\bf tokens} and
 structure.  Tokens are the basic elements of the language, such as
@@ -1113,6 +1265,11 @@ there is no element with the abbreviation $Zz$.
 \index{token}
 \index{structure}
 
+语法规则有关于{\bf 记号}和结构的两种类型。
+记号是语言的基本元素，例如单词、数字和化学元素。
+$3 + = 3 \mbox{\$} 6$的问题之一就是\( \$ \)在数学中不是一个合法的记号
+（至少据我所知）。相似的，$_2Zz$也不合法，因为没有一个元素简称$Zz$。
+
 The second type of syntax error pertains to the structure of a
 statement; that is, the way the tokens are arranged.  The statement
 $3 + = 3$ is illegal because even though $+$ and $=$ are
@@ -1120,11 +1277,19 @@ legal tokens, you can't have one right after the other.  Similarly,
 in a chemical formula the subscript comes after the element name, not
 before.
 
+第二种语法错误关于一个语句的结构。
+也就是记号被安排的方式。语句$3 + = 3$是非法的，因为即使$+$和$=$都是合法的记号，
+你也不能把其中一个放在另一个右面。
+相似的，在化学式中，下标位于元素之后，不能在前面。
+
 \begin{exercise}
 
 Write a well-structured English
 sentence with invalid tokens in it.  Then write another sentence
 with all valid tokens but with invalid structure.
+
+使用无效的标记写一个结构良好的英语句子。
+然后写另一个具有有效记号，但是结构无效的英语句子。
 
 \end{exercise}
 
@@ -1134,6 +1299,10 @@ language, you have to figure out what the structure of the sentence is
 process is called {\bf parsing}.
 \index{parse}
 
+当你读一个用英语写的句子或者用正则语言写的语句时，
+你得指出句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
+这个过程被称作{\bf 分析}。
+
 For example, when you hear the sentence, ``The penny dropped,'' you
 understand that ``the penny'' is the subject and ``dropped'' is the
 predicate.  Once you have parsed a sentence, you can figure out what it
@@ -1141,12 +1310,20 @@ means, or the semantics of the sentence.  Assuming that you know
 what a penny is and what it means to drop, you will understand the
 general implication of this sentence.
 
+例如，当你听到句子``The penny dropped''时，你理解``the penny''是主语，
+``dropped''是谓词。一旦你分析完一个句子，你可以指出它的含义是什么，
+或者句子的语义。假设你知道penny是什么以及drop是什么意义，
+你将理解这个句子的含义。
+
 Although formal and natural languages have many features in
 common---tokens, structure, syntax, and semantics---there are some
 differences:
 \index{ambiguity}
 \index{redundancy}
 \index{literalness}
+
+虽然正则语言和自然语言有很多共同的特点---标记、结构、语法以及语义---
+它们也有一些不同：
 
 \begin{description}
 
@@ -1156,16 +1333,27 @@ Formal languages are designed to be nearly or completely unambiguous,
 which means that any statement has exactly one meaning,
 regardless of context.
 
+\item[歧义性：] 自然语言充满歧义，人们使用上下文线索以及其它信息处理这些歧义。
+正则语言被设计成几乎或者完全没有歧义，这意味着不管上下位是什么，
+任何语句都只有一个意义。
+
 \item[redundancy:] In order to make up for ambiguity and reduce
 misunderstandings, natural languages employ lots of
 redundancy.  As a result, they are often verbose.  Formal languages
 are less redundant and more concise.
+
+\item[冗余性：] 为了弥补歧义性并且减少误解，自然语言使用很多冗余。
+结果，它们经常很冗长。正则语言较少的冗余，更简洁。
 
 \item[literalness:] Natural languages are full of idiom and metaphor.
 If I say, ``The penny dropped,'' there is probably no penny and
 nothing dropping (this idiom means that someone realized something
 after a period of confusion).  Formal languages
 mean exactly what they say.
+
+\item[非引申义性：] 自然语言充满成语和隐喻。如果我说``The penny dropped,''，
+可能根本没有便士也没什么东西掉下来（这个成语意思是有人经过一段时间的混乱后，
+意识到一些事情）。正则语言含义和它们说的完全一样。
 
 \end{description}
 
@@ -1176,6 +1364,10 @@ poetry and prose, but more so:
 \index{poetry}
 \index{prose}
 
+说自然语言长大的人---所有人---经常一时难于适应正则语言。
+在某些方面，正则语言和自然语言直接的不同类似诗歌和散文直接的不同，
+但是更重要的是：
+
 \begin{description}
 
 \item[Poetry:] Words are used for their sounds as well as for
@@ -1183,13 +1375,23 @@ their meaning, and the whole poem together creates an effect or
 emotional response.  Ambiguity is not only common but often
 deliberate.
 
+\item[诗歌：] 单词不但被用于表示含义，还被用于表示声音。
+整首诗一起表示一个效果或者情感上的响应。
+歧义不但常见，而且经常是故意安排的。
+
 \item[Prose:] The literal meaning of words is more important,
 and the structure contributes more meaning.  Prose is more amenable to
 analysis than poetry but still often ambiguous.
 
+\item[散文：] 单词表面的含义更重要，结构贡献的比含义更多。
+散文比诗歌更适合分析，但仍然经常有歧义。
+
 \item[Programs:] The meaning of a computer program is unambiguous
 and literal, and can be understood entirely by analysis of the
 tokens and structure.
+
+\item[程序：] 计算机程序的含义是无歧义、无引申义的，
+并且通过对标记和结构的分析被整体理解。
 
 \end{description}
 
@@ -1204,14 +1406,24 @@ spelling and punctuation, which you can get away
 with in natural languages, can make a big difference in a formal
 language.
 
+这是对读程序（以及其它正则语言）的一些建议。
+首先，记住正则语言比自然语言稠密的多，因此需要花更长的时间读它们。
+其次，结构非常重要，因此从上到下，从左到右的读通常不是一个好的主意。
+相反，要学会在你的头脑中分析一个程序，识别记号并且理解结构。
+最后，注意细节问题。拼写和标点符号的小错误，
+这些在自然语言中你可以侥幸成功，但是在正则语言中会有很大的不同。
 
-\section{The first program}
+\section{The first program 第一个程序}
 \label{hello}
 \index{Hello, World}
 
 Traditionally, the first program you write in a new language
 is called ``Hello, World!'' because all it does is display the
 words ``Hello, World!''.  In Python, it looks like this:
+
+传统上，你用一门新的语言写的第一个程序被称作``Hello, World!''，
+因为它所做的所有事情就是显示单词``Hello, World!''。
+在Python中，它看起来是这个样：
 
 \begin{verbatim}
 print 'Hello, World!'
@@ -1220,6 +1432,9 @@ print 'Hello, World!'
 This is an example of a {\bf print statement}, which
 doesn't actually print anything on paper.  It displays a value on the
 screen.  In this case, the result is the words
+
+这是{\bf print 语句}的一个实例，其并不是真的在纸上打印任何东西。
+它在屏幕上显示一个值。在此例中，结果是单词：
 
 \begin{verbatim}
 Hello, World!
@@ -1231,7 +1446,12 @@ of the text to be displayed; they don't appear in the result.
 \index{print statement}
 \index{statement!print}
 
+这个程序中的引号标记被打印文本的开始和结束。
+它们并没有出现在结果中。
+
 In Python 3, the syntax for printing is slightly different:
+
+在Python 3中，打印的语法有些不同：
 
 \begin{verbatim}
 print('Hello, World!')
@@ -1241,10 +1461,16 @@ The parentheses indicate that {\tt print} is a function.  We'll get
 to functions in Chapter~\ref{funcchap}.
 \index{function} \index{print function} \index{Python 3}
 
+括号指出{\tt print}是一个函数。
+我们将在第~\ref{funcchap}章接触函数。
+
 For the rest of this book, I'll use the print statement.  If you
 are using Python 3, you will have to translate.  But other than
 that, there are very few differences we have to worry about.
 
+对于本书剩余的部分，我将使用print语句。
+如果你正在使用Python 3，你将不得不进行翻译。
+但是除此之外，几乎没有什么我们需要担心的不同。
 
 \section{Debugging}
 \index{debugging}
