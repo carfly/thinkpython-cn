@@ -219,14 +219,19 @@ Version \theversion
 % END OF THE PART WE SKIP FOR PLASTEX
 
 
-\chapter{Preface}
+\chapter{Preface \\ 前言}
 
-\section*{The strange history of this book}
+\section*{The strange history of this book \\
+本书与众不同的历史}
 
 In January 1999 I was preparing to teach an introductory programming
 class in Java.  I had taught it three times and I was getting
 frustrated.  The failure rate in the class was too high and, even for
 students who succeeded, the overall level of achievement was too low.
+
+1999年1月，我正准备使用Java教一门编程入门课程。
+我之前已经教了三次，并且感到很沮丧。
+课程的不及格率太高，即使对于及格的学生，整体的收获也太低。
 
 One of the problems I saw was the books.  
 They were too big, with too much unnecessary detail about Java, and
@@ -236,38 +241,69 @@ proceed gradually, and then somewhere around Chapter 5 the bottom would
 fall out.  The students would get too much new material, too fast,
 and I would spend the rest of the semester picking up the pieces.
 
+我看到的问题之一是教材。
+它们都太大了，有太多不必要的关于Java的细节，
+并且缺乏关于如何编程的上层的指导。
+同时，它们也缺乏陷阱门效应（trap door effect），即从简单之处开始，并逐渐深入。
+因此，大概到第五章左右，后面的学生开始掉队了。
+学生们获得太多的材料，进展太快，并且我在剩下的学期选择一些片段。
+
 Two weeks before the first day of classes, I decided to write my
 own book.  
 My goals were:
+
+在开始上课前两周，我决定写一本自己的书。
+我的目标是：
 
 \begin{itemize}
 
 \item Keep it short.  It is better for students to read 10 pages
 than not read 50 pages.
 
+\item 尽量简短。对于学生，读10页比读50页好。
+
 \item Be careful with vocabulary.  I tried to minimize the jargon
 and define each term at first use.
+
+\item 关注词汇表。我试图使用最少的术语并且在第一次使用的时候给出定义。
 
 \item Build gradually. To avoid trap doors, I took the most difficult
 topics and split them into a series of small steps. 
 
+\item 循序渐进。为了避免陷阱门，我将最难的主题拆分成一系列小的步骤。
+
 \item Focus on programming, not the programming language.  I included
 the minimum useful subset of Java and left out the rest.
+
+\item 聚焦于编程，而不是编程语言。我只包括了Java最小的有用的子集，
+并且忽略其余的。
 
 \end{itemize}
 
 I needed a title, so on a whim I chose {\em How to Think Like
 a Computer Scientist}.
 
+我需要一个标题，所以一时兴起，我选择了《如何像计算机科学家一样思考》。
+
 My first version was rough, but it worked.  Students did the reading,
 and they understood enough that I could spend class time on the hard
 topics, the interesting topics and (most important) letting the
 students practice.
 
+第一版很粗糙，但是它有效。学生们读它，并且他们足够理解它。
+然后我可以将上课时间花在那些难的、有趣的主题上，
+并且让学生们实践（这点最重要）。
+
 I released the book under the GNU Free Documentation License,
 which allows users to copy, modify, and distribute the book.
 \index{GNU Free Documentation License}
 \index{Free Documentation License, GNU}
+
+我将此书以GNU免费文档许可的形式发布，
+该许可允许用户拷贝、修改并且发布此书。
+\index{GNU Free Documentation License}
+\index{Free Documentation License, GNU}
+
 
 What happened next is the cool part.  Jeff Elkner, a high school
 teacher in Virginia, adopted my book and translated it into
@@ -276,28 +312,53 @@ unusual experience of learning Python by reading my own book.
 As Green Tea Press, I published the first Python version in 2001.
 \index{Elkner, Jeff}
 
+接下来发生的非常棒。
+弗吉尼亚一所高中的教师，Jeff Elkne修改了我的书并且翻译成了Python。
+他将他的翻译发给了我一份，我有了一个与众不同的学习Python的体验，
+即通过读我自己的书。
+2001年，通过绿茶出版社（Green Tea Press），我发表了本书的第一个Python版本。
+\index{Elkner, Jeff}
+
 In 2003 I started teaching at Olin College and I got to teach
 Python for the first time.  The contrast with Java was striking.
 Students struggled less, learned more, worked on more interesting
 projects, and generally had a lot more fun.
 \index{Olin College}
 
+2003年，我开始在Olin College教书，并且第一次教Python。
+与教Java的对比很显著，学生需要付出的努力更少，学到的更多，
+他们致力于更有趣的项目，并且通常更快乐。
+\index{Olin College}
+
 Over the last nine years I continued to develop the book,
 correcting errors, improving some of the examples and
 adding material, especially exercises.
 
+过去9年我一直在改进这本书，纠正一些错误，改进一些实例，
+增加一些材料，特别是练习题。
+
 The result is this book, now with the less grandiose title
 {\em Think Python}.  Some of the changes are:
+
+本书的结果是，现在有了一个更具体的名字《Think Python》。
+下面是一些变化：
 
 \begin{itemize}
 
 \item I added a section about debugging at the end of each chapter.
   These sections present general techniques for finding and avoiding
   bugs, and warnings about Python pitfalls.
+  
+\item 每章最后，我都增加了一节关于调试（debugging）的内容。
+这些小节给出关于发现和避免一些错误的通常的技术，
+以及关于Python的陷阱。
 
 \item I added more exercises, ranging from short tests of
   understanding to a few substantial projects.  And I wrote
   solutions for most of them.
+
+\item 增加了更多的练习题，涵盖了从为了理解的简短的测试到真正的项目。
+并且为其中大部分写了答案。
 
 \item I added a series of case studies---longer examples with
   exercises, solutions, and discussion.  Some are based on
@@ -305,11 +366,20 @@ The result is this book, now with the less grandiose title
   Swampy, code examples, and some solutions are available from
   \url{http://thinkpython.com}.
   
+\item 我增加了一系列范例分析（case studies），
+即具有联系、答案以及讨论的更长的样例。
+其中一些基于Swampy，我写的一套用于我的课程的Pythong程序。
+Swampy、代码样例、以及一些答案可以从 \url{http://thinkpython.com} 获得。
+
 \item I expanded the discussion of program development plans
   and basic design patterns.
 
+\item 我扩展了关于程序开发规划和基本设计模式的讨论。
+
 \item I added appendices about debugging, analysis of algorithms, and
   UML diagrams with Lumpy.
+
+\item 我增加了关于调试、算法分析以及使用Lumpy画UML图的附录。
 
 \end{itemize}
 
@@ -317,6 +387,8 @@ I hope you enjoy working with this book, and that it helps
 you learn to program and think, at least a little bit, like
 a computer scientist.
 
+我希望你能使用该书愉快的工作，并且它能帮助你学习编程和思考，
+至少或多或少像一个计算机科学家。
 
 Allen B. Downey \\
 Needham MA\\
@@ -324,6 +396,7 @@ Needham MA\\
 Allen Downey is a Professor of Computer Science at 
 the Franklin W. Olin College of Engineering.
 
+Allen Downey是Franklin W. Olin工学院一名计算机科学教授。
 
 \section*{Acknowledgments}
 
