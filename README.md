@@ -1,4 +1,4 @@
 thinkpython-cn
 ==============
 
-ThinkPython's Chinese Translation
+A Chinese Translation of ThinkPython (http://www.greenteapress.com/thinkpython/)  
