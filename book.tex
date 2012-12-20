@@ -219,7 +219,7 @@ Version \theversion
 % END OF THE PART WE SKIP FOR PLASTEX
 
 
-\chapter{Preface \\ 前言}
+\chapter{Preface 前言}
 
 \section*{The strange history of this book 本书与众不同的历史}
 
@@ -1288,9 +1288,6 @@ Write a well-structured English
 sentence with invalid tokens in it.  Then write another sentence
 with all valid tokens but with invalid structure.
 
-使用无效的标记写一个结构良好的英语句子。
-然后写另一个具有有效记号，但是结构无效的英语句子。
-
 \end{exercise}
 
 When you read a sentence in English or a statement in a formal
@@ -1472,7 +1469,7 @@ that, there are very few differences we have to worry about.
 如果你正在使用Python 3，你将不得不进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
-\section{Debugging}
+\section{Debugging \\ 调试}
 \index{debugging}
 
 It is a good idea to read this book in front of a computer so you can
@@ -1480,20 +1477,35 @@ try out the examples as you go.  You can run most of the examples in
 interactive mode, but if you put the code in a script, it is easier
 to try out variations.
 
+在一台计算机前阅读本书是一个好的主意，由此你可以边读书边试例子。
+你可以在交互模式下运行大多数的例子，但是如果你将代码放入脚本中，
+可以方便的试着改动他们。
+
 Whenever you are experimenting with a new feature, you should try
 to make mistakes.  For example, in the ``Hello, world!'' program,
 what happens if you leave out one of the quotation marks?  What
 if you leave out both?  What if you spell {\tt print} wrong?
 \index{error message}
 
+每当你试验一个新特征的时候，你应该试着犯些错误。
+例如，在``Hello, world!''程序中，如果你少写一个引号会发生什么？
+如果两个引号都不写呢？如果将{\tt print}拼写错呢？
+
 This kind of experiment helps you remember what you read; it also helps
 with debugging, because you get to know what the error messages mean.
 It is better to make mistakes now and on purpose than later
 and accidentally.
 
+这种实验有助于帮你记住你所读过的内容。
+他也有助于调试，因为你会知道各种错误信息的含义。
+现在故意犯些错误总比将来发生意外的错误好。
+
 Programming, and especially debugging, sometimes brings out strong
 emotions.  If you are struggling with a difficult bug, you might 
 feel angry, despondent or embarrassed.
+
+编程，特别是调试，有时带有很强的情感。
+如果你正和一个很难的错误奋战，你可能感到生气、沮丧或尴尬。
 
 There is evidence that people naturally respond to computers as if
 they were people.  When they work well, we think
@@ -1505,11 +1517,22 @@ obstinate people (Reeves and Nass, {\it The Media
 \index{debugging!emotional response}
 \index{emotional debugging}
 
+有证据表明，人们很自然地对计算机做出响应，仿佛它们就是人。
+当它们做得很好的时候，我们认为它们就是队友。
+当它们固执或无礼的时候，我们也会对它们也像对待固执或无礼的人一样。
+（Reeves and Nass, {\it The Media Equation: 
+How People Treat Computers, Television, and New Media 
+Like Real People and Places}）
+
 Preparing for these reactions might help you deal with them.
 One approach is to think of the computer as an employee with
 certain strengths, like speed and precision, and
 particular weaknesses, like lack of empathy and inability
 to grasp the big picture.
+
+对这些反应做好准备有助于你对付它们。
+一种方法是将计算机看做是一个具有特定能力的雇员，
+例如速度和精度，并且有些特别的缺点，像缺乏沟通以及不善于把握大局。
 
 Your job is to be a good manager: find ways to take advantage
 of the strengths and mitigate the weaknesses.  And find ways
@@ -1517,118 +1540,124 @@ to use your emotions to engage with the problem,
 without letting your reactions interfere with your ability
 to work effectively.
 
+你的工作是成为一个好的管理者：找到充分利用优点，摒弃弱点的方法。
+并且找到使用你的情感进行斗争的方法，
+不让你的反应干扰你有效的工作。
+
 Learning to debug can be frustrating, but it is a valuable skill
 that is useful for many activities beyond programming.  At the
 end of each chapter there is a debugging section, like this one,
 with my thoughts about debugging.  I hope they help!
 
+学习调试可能很令人泄气，
+但是它对于许多编程之外的活动也都是一个非常有价值的技能。
 
 \section{Glossary}
 
 \begin{description}
 
-\item[problem solving:]  The process of formulating a problem, finding
+\item[problem solving（解决问题）:]  The process of formulating a problem, finding
 a solution, and expressing the solution.
 \index{problem solving}
 
-\item[high-level language:]  A programming language like Python that
+\item[high-level language（高级语言）:]  A programming language like Python that
 is designed to be easy for humans to read and write.
 \index{high-level language}
 
-\item[low-level language:]  A programming language that is designed
+\item[low-level language（低级语言）:]  A programming language that is designed
 to be easy for a computer to execute; also called ``machine language'' or
 ``assembly language.''
 \index{low-level language}
 
-\item[portability:]  A property of a program that can run on more
+\item[portability（可移植性）:]  A property of a program that can run on more
 than one kind of computer.
 \index{portability}
 
-\item[interpret:]  To execute a program in a high-level language
+\item[interpret（解释）:]  To execute a program in a high-level language
 by translating it one line at a time.
 \index{interpret}
 
-\item[compile:]  To translate a program written in a high-level language
+\item[compile（编译）:]  To translate a program written in a high-level language
 into a low-level language all at once, in preparation for later
 execution.
 \index{compile}
 
-\item[source code:]  A program in a high-level language before
+\item[source code（源代码）:]  A program in a high-level language before
 being compiled.
 \index{source code}
 
-\item[object code:]  The output of the compiler after it translates
+\item[object code（目标代码）:]  The output of the compiler after it translates
 the program.
 \index{object code}
 
-\item[executable:]  Another name for object code that is ready
+\item[executable（可执行）:]  Another name for object code that is ready
 to be executed.
 \index{executable}
 
-\item[prompt:] Characters displayed by the interpreter to indicate
+\item[prompt（提示符）:] Characters displayed by the interpreter to indicate
 that it is ready to take input from the user.
 \index{prompt}
 
-\item[script:] A program stored in a file (usually one that will be
+\item[script（脚本）:] A program stored in a file (usually one that will be
 interpreted).
 \index{script}
 
-\item[interactive mode:] A way of using the Python interpreter by
+\item[interactive mode（交互模式）:] A way of using the Python interpreter by
 typing commands and expressions at the prompt.
 \index{interactive mode}
 
-\item[script mode:] A way of using the Python interpreter to read
+\item[script mode（脚本模式）:] A way of using the Python interpreter to read
 and execute statements in a script.
 \index{script mode}
 
-\item[program:] A set of instructions that specifies a computation.
+\item[program（程序）:] A set of instructions that specifies a computation.
 \index{program}
 
-\item[algorithm:]  A general process for solving a category of
+\item[algorithm（算法）:]  A general process for solving a category of
 problems.
 \index{algorithm}
 
-\item[bug:]  An error in a program.
+\item[bug（臭虫）:]  An error in a program.
 \index{bug}
 
-\item[debugging:]  The process of finding and removing any of the
+\item[debugging（调试）:]  The process of finding and removing any of the
 three kinds of programming errors.
 \index{debugging}
 
-\item[syntax:]  The structure of a program.
+\item[syntax（语法）:]  The structure of a program.
 \index{syntax}
 
-\item[syntax error:]  An error in a program that makes it impossible
+\item[syntax error（语法错误）:]  An error in a program that makes it impossible
 to parse (and therefore impossible to interpret).
 \index{syntax error}
 
-\item[exception:]  An error that is detected while the program is running.
+\item[exception（异常）:]  An error that is detected while the program is running.
 \index{exception}
 
-\item[semantics:]  The meaning of a program.
+\item[semantics（语义）:]  The meaning of a program.
 \index{semantics}
 
-\item[semantic error:]   An error in a program that makes it do something
+\item[semantic error（语义错误）:]   An error in a program that makes it do something
 other than what the programmer intended.
 \index{semantic error}
 
-\item[natural language:]  Any one of the languages that people speak that
+\item[natural language（自然语言）:]  Any one of the languages that people speak that
 evolved naturally.
 \index{natural language}
 
-\item[formal language:]  Any one of the languages that people have designed
+\item[formal language（形式语言）:]  Any one of the languages that people have designed
 for specific purposes, such as representing mathematical ideas or
 computer programs; all programming languages are formal languages.
 \index{formal language}
 
-\item[token:]  One of the basic elements of the syntactic structure of
+\item[token（记号）:]  One of the basic elements of the syntactic structure of
 a program, analogous to a word in a natural language.
 \index{token}
 
-\item[parse:]  To examine a program and analyze the syntactic structure.
+\item[parse（分析）:]  To examine a program and analyze the syntactic structure.
 \index{parse}
 
-\item[print statement:]  An instruction that causes the Python
+\item[print statement（打印语句）:]  An instruction that causes the Python
 interpreter to display a value on the screen.
 \index{print statement}
 \index{statement!print}
