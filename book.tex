@@ -2634,13 +2634,19 @@ is called the {\bf argument} of the function.  The result, for this
 function, is the type of the argument.
 \index{parentheses!argument in}
 
+函数名是{\tt type}。括号中的表达是被称为函数的{\bf 实参（argument）}。
+此函数的结果是实参的类型。
+
 It is common to say that a function ``takes'' an argument and ``returns''
 a result.  The result is called the {\bf return value}.
 \index{argument}
 \index{return value}
 
+人们常说函数``接受''实参并且``返回''一个结果。
+该结果被称为{\bf 返回值（return value）}
 
-\section{Type conversion functions}
+
+\section{Type conversion functions 类型转换函数}
 \index{conversion!type}
 \index{type conversion}
 
@@ -2658,6 +2664,10 @@ converts it to an integer, if it can, or complains otherwise:
 \index{int function}
 \index{function!int}
 
+Python提供内建函数将值从一种类型转换为另一种类型。
+函数{\tt int}接受任意值，并在其能做到的情况下，将其转换成一个整数，
+否则会抗议：
+
 \begin{verbatim}
 >>> int('32')
 32
@@ -2667,6 +2677,8 @@ ValueError: invalid literal for int(): Hello
 %
 {\tt int} can convert floating-point values to integers, but it
 doesn't round off; it chops off the fraction part:
+
+{\tt int}能将浮点数转换为整数，但是它并不完美，截掉了小数部分：
 
 \begin{verbatim}
 >>> int(3.99999)
@@ -2680,6 +2692,8 @@ numbers:
 \index{float function}
 \index{function!float}
 
+{\tt float}将整数或者字符串转化为浮点数：
+
 \begin{verbatim}
 >>> float(32)
 32.0
@@ -2691,6 +2705,8 @@ Finally, {\tt str} converts its argument to a string:
 \index{str function}
 \index{function!str}
 
+最后，{\tt str}将实参转成字符串。
+
 \begin{verbatim}
 >>> str(32)
 '32'
@@ -2701,7 +2717,7 @@ Finally, {\tt str} converts its argument to a string:
 
 
 
-\section{Math functions}
+\section{Math functions 数学函数}
 \index{math function}
 \index{function, math}
 
@@ -2711,7 +2727,12 @@ collection of related functions.
 \index{module}
 \index{module object}
 
+Python有数学模块，其提供了大部分熟悉的数学函数。
+{\bf 模块（module）}是一个包含一批相关函数的文件。
+
 Before we can use the module, we have to import it:
+
+在我们可以使用模块之前，我们需要导入它：
 
 \begin{verbatim}
 >>> import math
@@ -2719,6 +2740,9 @@ Before we can use the module, we have to import it:
 %
 This statement creates a {\bf module object} named math.  If
 you print the module object, you get some information about it:
+
+这条语句生成一个名为math的{\bf 模块对象（module object）}。
+如果你打印这个模块对象，你将获得关于它一些信息：
 
 \begin{verbatim}
 >>> print math
@@ -2730,6 +2754,11 @@ module.  To access one of the functions, you have to specify the name
 of the module and the name of the function, separated by a dot (also
 known as a period).  This format is called {\bf dot notation}.
 \index{dot notation}
+
+该模块对象包括定义在模块内的函数和变量。
+为了访问其中一个函数，你不得不指出该模块的名字以及函数名，
+并以点（也被称作句号）分割。
+这种格式被称作{\bf 点记法（dot notation）}。
 
 \begin{verbatim}
 >>> ratio = signal_power / noise_power
@@ -2750,11 +2779,18 @@ which computes logarithms base {\tt e}.
 \index{trigonometric function}
 \index{function, trigonometric}
 
+第一个例子使用\verb"log10"计算分贝信噪比（假设\verb"signal_power"和\verb"noise_power"已经被定义了）。
+math模块也提供了{\tt log}函数，其计算以{\tt e}为底的对数。
+
 The second example finds the sine of {\tt radians}.  The name of the
 variable is a hint that {\tt sin} and the other trigonometric
 functions ({\tt cos}, {\tt tan}, etc.)  take arguments in radians. To
 convert from degrees to radians, divide by 360 and multiply by
 $2 \pi$:
+
+第二个例子计算{\tt radians}的sine值。
+变量名暗示{\tt sin}函数以及其它三角函数（{\tt cos}、{\tt tan}等）接受弧度参数。
+为了从度转为弧度，除以360并乘以$2 \pi$：
 
 \begin{verbatim}
 >>> degrees = 45
@@ -2768,11 +2804,16 @@ module.  The value of this variable is an approximation
 of $\pi$, accurate to about 15 digits.
 \index{pi}
 
+表达式{\tt math.pi}从math模块中获得变量{\tt pi}。
+该变量的值是对$\pi$的近似，精度大约15位数。
+
 If you know
 your trigonometry, you can check the previous result by comparing it to
 the square root of two divided by two:
 \index{sqrt function}
 \index{function!sqrt}
+
+如果你懂几何学，你可以通过将之前的结果和2的平方根再除以2进行比较：
 
 \begin{verbatim}
 >>> math.sqrt(2) / 2.0
@@ -2780,23 +2821,31 @@ the square root of two divided by two:
 \end{verbatim}
 %
 
-\section{Composition}
+\section{Composition 组合}
 \index{composition}
 
 So far, we have looked at the elements of a program---variables,
 expressions, and statements---in isolation, without talking about how to
 combine them.
 
+目前为止，我们已经分别看到了程序的基本元素---变量、表达式和语句---
+还没有讨论如何组合它们。
+
 One of the most useful features of programming languages is their
 ability to take small building blocks and {\bf compose} them.  For
 example, the argument of a function can be any kind of expression,
 including arithmetic operators:
+
+程序设计语言的最有用特征之一是分解成小块并将其{\bf 组合（compose）}的能力。
+例如，函数的实参能够接受任何类型的表达式，包括算数操作符：
 
 \begin{verbatim}
 x = math.sin(degrees / 360.0 * 2 * math.pi)
 \end{verbatim}
 %
 And even function calls:
+
+甚至函数调用：
 
 \begin{verbatim}
 x = math.exp(math.log(x+1))
@@ -2808,6 +2857,10 @@ statement has to be a variable name.  Any other expression on the left
 side is a syntax error (we will see exceptions to this rule
 later).
 
+你几乎可以将一个任意值、表达式，放在任何地方，除了一个例外：
+赋值语句的左侧必须是一个变量名，任何其它的表达式都是语法错误的
+（后面我们会看到这个例外的规则）。
+
 \begin{verbatim}
 >>> minutes = hours * 60                 # right
 >>> hours * 60 = minutes                 # wrong!
@@ -2818,7 +2871,7 @@ SyntaxError: can't assign to operator
 \index{exception!SyntaxError}
 
 
-\section{Adding new functions}
+\section{Adding new functions 增加新函数}
 
 So far, we have only been using the functions that come with Python,
 but it is also possible to add new functions.
@@ -2828,7 +2881,14 @@ the sequence of statements that execute when the function is called.
 \index{function definition}
 \index{definition!function}
 
+目前为止，我们只了使用Python自带的函数，
+但是增加新函数也是可能的。
+一个{\bf 函数定义（function definition）}指出新函数的名
+以及当函数被调用时执行的语句序列。
+
 Here is an example:
+
+这是一个例子：
 
 \begin{verbatim}
 def print_lyrics():
@@ -2847,6 +2907,12 @@ name.
 \index{keyword!def}
 \index{argument}
 
+{\tt def}是一个关键字，其指明这是一个函数定义。
+函数名是\verb"print_lyrics"。
+函数的命名规则和变量名相同：字母、数字以及一些标点符号是合法的，
+但是第一个字符不能是数字。不能使用关键字作为函数名，并应该避免
+一个变量和一个函数同名。
+
 The empty parentheses after the name indicate that this function
 doesn't take any arguments.
 \index{parentheses!empty}
@@ -2855,11 +2921,19 @@ doesn't take any arguments.
 \index{indentation}
 \index{colon}
 
+函数名后面的空括号表明该函数不接受任何实参。
+
 The first line of the function definition is called the {\bf header};
 the rest is called the {\bf body}.  The header has to end with a colon
 and the body has to be indented.  By convention, the indentation is
 always four spaces (see Section~\ref{editor}).  The body can contain
 any number of statements.
+
+函数定义的第一行被称作{\bf 函数头（header）}；
+其余部分被称作{\bf 函数体（body）}。
+函数体必须以冒号结尾，函数体必须是缩进的。
+按照惯例，缩进经常是4个空格（见\ref{editor}节）。
+函数体能包含任意条语句。
 
 The strings in the print statements are enclosed in double
 quotes.  Single quotes and double quotes do the same thing;
@@ -2867,9 +2941,15 @@ most people use single quotes except in cases like this where
 a single quote (which is also an apostrophe) appears in the string.
 \index{ellipses}
 
+打印语句中的字符串被括在双引号中。单引号和双引号做同样的事情。
+大多数人使用单引号，除了类似这里的情况，即单引号（也表示撇号）出现在字符串中。
+
 If you type a function definition in interactive mode, the interpreter
 prints ellipses ({\em ...}) to let you know that the definition
 isn't complete:
+
+如果你在交互模式中键入函数定义，解释器打印省略号（{\em ...}），
+以便让你知道定义并不完整。
 
 \begin{verbatim}
 >>> def print_lyrics():
@@ -2881,7 +2961,11 @@ isn't complete:
 To end the function, you have to enter an empty line (this is
 not necessary in a script).
 
+为了结束函数，你必须输入一个空行（这在脚本中不是必须的）。
+
 Defining a function creates a variable with the same name.
+
+定义一个函数生成一个同名的变量。
 
 \begin{verbatim}
 >>> print print_lyrics
@@ -2895,8 +2979,13 @@ has type \verb"'function'".
 \index{function object}
 \index{object!function}
 
+\verb"print_lyrics"的值是一个{\bf 函数对象（function object）}，
+其类型是\verb"'function'"。
+
 The syntax for calling the new function is the same as
 for built-in functions:
+
+调用新函数的语法和调用内建函数的相同：
 
 \begin{verbatim}
 >>> print_lyrics()
@@ -2908,6 +2997,9 @@ Once you have defined a function, you can use it inside another
 function.  For example, to repeat the previous refrain, we could write
 a function called \verb"repeat_lyrics":
 
+一旦你定义了一个函数，你可以在另一个函数内部使用它。
+例如，为了重复之前的叠句，我们可以写一个叫\verb"repeat_lyrics"的函数：
+
 \begin{verbatim}
 def repeat_lyrics():
     print_lyrics()
@@ -2915,6 +3007,8 @@ def repeat_lyrics():
 \end{verbatim}
 %
 And then call \verb"repeat_lyrics":
+
+然后调用\verb"repeat_lyrics"：
 
 \begin{verbatim}
 >>> repeat_lyrics()
@@ -2926,12 +3020,15 @@ I sleep all night and I work all day.
 %
 But that's not really how the song goes.
 
+但那不是这首歌本来的样子。
 
-\section{Definitions and uses}
+\section{Definitions and uses 定义和使用}
 \index{function definition}
 
 Pulling together the code fragments from the previous section, the
 whole program looks like this:
+
+汇集从上一节的代码片段，整个程序看起来像这样：
 
 \begin{verbatim}
 def print_lyrics():
