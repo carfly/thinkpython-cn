@@ -1718,9 +1718,9 @@ average time per mile?  What is your average speed in miles per hour?
 
 
 
-\chapter{Variables, expressions and statements}
+\chapter{Variables, expressions and statements 变量、表达式和语句}
 
-\section{Values and types}
+\section{Values and types 值和类型}
 \index{value}
 \index{type}
 \index{string}
@@ -1731,6 +1731,9 @@ number.  The values we have seen so far
 are {\tt 1}, {\tt 2}, and
 \verb"'Hello, World!'".
 
+{\bf 值}是基本的与程序打交道的事物之一，像字母或者数字。
+到目前，我们已经见过的值是{\tt 1}、{\tt 2}以及\verb"'Hello, World!'"。
+
 These values belong to different {\bf types}:
 {\tt 2} is an integer, and \verb"'Hello, World!'" is a {\bf string},
 so-called because it contains a ``string'' of letters.
@@ -1738,7 +1741,14 @@ You (and the interpreter) can identify
 strings because they are enclosed in quotation marks.
 \index{quotation mark}
 
+这些值属于不同的{\bf 类型}：
+{\tt 2}是一个整数，\verb"'Hello, World!'"是一个{\bf 字符串}，
+之所以这么叫，是因为它包括``一串''字母。
+你（以及解释器）能识别字符串是因为他们被括在引号中间。
+
 If you are not sure what type a value has, the interpreter can tell you.
+
+如果你不确定一个值具有什么类型，解释器可以告诉你。
 
 \begin{verbatim}
 >>> type('Hello, World!')
@@ -1760,6 +1770,10 @@ format called {\bf floating-point}.
 \index{float type}
 \index{type!float}
 
+不奇怪，字符串属于{\tt str}类型，整数属于{\tt int}类型。
+不太明显地，具有小数点的数字属于一种被称作{\tt float}的类型，
+因为这些数字使用{\bf 浮点}格式表示。
+
 \begin{verbatim}
 >>> type(3.2)
 <type 'float'>
@@ -1770,6 +1784,9 @@ They look like numbers, but they are in quotation marks like
 strings.
 \index{quotation mark}
 
+像\verb"'17'"以及\verb"'3.2'"的值是什么类型呢？
+它们看起来像数字，但是它们在引号里，像是字符串。
+
 \begin{verbatim}
 >>> type('17')
 <type 'str'>
@@ -1779,9 +1796,14 @@ strings.
 %
 They're strings.
 
+它们是字符串。
+
 When you type a large integer, you might be tempted to use commas
 between groups of three digits, as in {\tt 1,000,000}.  This is not a
 legal integer in Python, but it is legal:
+
+当你有一个比较大的整数，你可能在每三个数字之间使用逗号分割它，如 {\tt 1,000,000}。
+在Python中，这不是一个合法的整数，但是它是合法的：
 
 \begin{verbatim}
 >>> 1,000,000
@@ -1797,9 +1819,12 @@ runs without producing an error message, but it doesn't do the
 \index{error!semantic}
 \index{error message}
 
+然而，那不是你期望的！
+Python翻译{\tt 1,000,000}为逗号分割的一系列整数。
+这是我们所见过的第一个语义错误的例子：
+代码无错误信息地运行，但是它并没有做``正确的''事情。
 
-
-\section{Variables}
+\section{Variables 变量}
 \label{variables}
 \index{variable}
 \index{assignment statement}
@@ -1809,8 +1834,13 @@ One of the most powerful features of a programming language is the
 ability to manipulate {\bf variables}.  A variable is a name that
 refers to a value.
 
+编程语言最强大的特征之一是操作{\bf 变量}的能力。
+变量是指一个值的名字。
+
 An {\bf assignment statement} creates new variables and gives
 them values:
+
+一个{\bf 赋值语句}生成新的变量并且将值赋给它们。
 
 \begin{verbatim}
 >>> message = 'And now for something completely different'
@@ -1825,11 +1855,20 @@ assigns the (approximate) value of $\pi$ to {\tt pi}.
 \index{state diagram}
 \index{diagram!state}
 
+这个例子进行了三次赋值。
+第一个将一个字符串赋给一个新的变量名{\tt message}；
+第二个将整数{\tt 17}赋给{\tt n}；
+第三个将$\pi$的（近似）值赋给{\tt pi}。
+
 A common way to represent variables on paper is to write the name with
 an arrow pointing to the variable's value.  This kind of figure is
 called a {\bf state diagram} because it shows what state each of the
 variables is in (think of it as the variable's state of mind).
 Figure~\ref{fig.state2} shows the result of the previous example.
+
+在纸上表示变量的方法通常是写一个变量名跟着一个箭头指向变量的值。
+这种图被称为{\bf 状态图}，因为它展示了每个变量所处的状态（将其想为变量的心理状态）。
+图~\ref{fig.state2}展示了前面例子的的结果。
 
 \begin{figure}
 \centerline
@@ -1839,6 +1878,8 @@ Figure~\ref{fig.state2} shows the result of the previous example.
 \end{figure}
 
 The type of a variable is the type of the value it refers to.
+
+变量的类型是其所指向值的类型。
 
 \begin{verbatim}
 >>> type(message)
@@ -1876,11 +1917,13 @@ values {\tt 01}, {\tt 010}, {\tt 0100} and {\tt 01000}.
 
 
 
-\section{Variable names and keywords}
+\section{Variable names and keywords 变量名和关键字}
 \index{keyword}
 
 Programmers generally choose names for their variables that
 are meaningful---they document what the variable is used for.
+
+程序员通常为变量选择有意义的名字---它们说明了该变量的用途。
 
 Variable names can be arbitrarily long.  They can contain
 both letters and numbers, but they have to begin with a letter.
@@ -1888,12 +1931,21 @@ It is legal to use uppercase letters, but it is a good idea
 to begin variable names with a lowercase letter (you'll
 see why later).
 
+变量名可以任意长。他们可以包括字母和数字，但是必须以字母开始。
+使用大写字母是合法的，但是一个变量名以一个小写字母开始是个不错的主意
+（后面你会看到原因）。
+
 The underscore character, \verb"_", can appear in a name.
 It is often used in names with multiple words, such as
 \verb"my_name" or \verb"airspeed_of_unladen_swallow".
 \index{underscore character}
 
+下划线字符\verb"_"可以出现在变量名中。
+它经常用于有多个单词的变量名，例如\verb"my_name"或者\verb"airspeed_of_unladen_swallow"。
+
 If you give a variable an illegal name, you get a syntax error:
+
+如果你给了变量一个非法的名，将获得一个语法错误：
 
 \begin{verbatim}
 >>> 76trombones = 'big parade'
@@ -1908,12 +1960,21 @@ SyntaxError: invalid syntax
 {\tt more@} is illegal because it contains an illegal character, {\tt
 @}.  But what's wrong with {\tt class}?
 
+{\tt 76trombones}是非法的，因为它不是以字母开始的。
+{\tt more@}是非法的，因为它包含了一个非法字符{\tt @}。
+但是，{\tt class}错在哪儿了呢?
+
 It turns out that {\tt class} is one of Python's {\bf keywords}.  The
 interpreter uses keywords to recognize the structure of the program,
 and they cannot be used as variable names.
 \index{keyword}
 
+实际上，{\tt class}是Python的{\bf 关键字}之一。
+解释器使用关键字识别程序的结构，它们不能被用作变量名。
+
 Python 2 has 31 keywords:
+
+Python 2有31个关键字：
 
 \begin{verbatim}
 and       del       from      not       while    
@@ -1927,12 +1988,16 @@ def       for       lambda    try
 %
 In Python 3, {\tt exec} is no longer a keyword, but {\tt nonlocal} is.
 
+在Python 3中，{\tt exec}不在是一个关键字，但{\tt nonlocal}是。
+
 You might want to keep this list handy.  If the interpreter complains
 about one of your variable names and you don't know why, see if it
 is on this list.
 
+你可能想随手携带这个表。如果解释器抱怨你的一个变量名并且你不知道为什么，
+看一下是否它在这个列表中。
 
-\section{Operators and operands}
+\section{Operators and operands 操作符和操作数}
 \index{operator, arithmetic}
 \index{arithmetic operator}
 \index{operand}
@@ -1942,9 +2007,15 @@ is on this list.
 addition and multiplication.  The values the operator is applied to
 are called {\bf operands}.
 
+{\bf 操作符}是特殊的符号，表示类似加法和乘法的计算。
+操作符被应用的值被称作{\bf 操作数}。
+
 The operators {\tt +}, {\tt -}, {\tt *}, {\tt /} and {\tt **}
 perform addition, subtraction, multiplication, division and
 exponentiation, as in the following examples:
+
+操作符{\tt +}、{\tt -}、{\tt *}、{\tt /}和{\tt **}分别执行加、减、乘、除和指数运算，
+如下面的例子：
 
 \begin{verbatim}
 20+32   hour-1   hour*60+minute   minute/60   5**2   (5+9)*(15-7)
@@ -1957,7 +2028,14 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 \index{bitwise operator}
 \index{operator!bitwise}
 
+在一些其它语言中，\verb"^"表示指数运算，
+但是在Python中，它表示XOR（异或）位操作。
+本书不包括位操作符，
+但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容
+
 In Python 2, the division operator might not do what you expect:
+
+在Python 2中，除法操作符可能不是如你所期望的：
 
 \begin{verbatim}
 >>> minute = 59
@@ -1972,6 +2050,11 @@ When both of the operands are integers, the result is also an
 integer; floor division chops off the fraction
 part, so in this example it rounds down to zero.
 
+{\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0.
+造成这一差异的原因是Python执行{\bf 向下取整除}。
+当两个操作数都是整数时，结果也是整数；
+向下取整除砍掉小数部分，因此此例中其下舍入成为了0。
+
 In Python 3, the result of this division is a {\tt float}.  The new operator
 {\tt //} performs floor division.
 \index{Python 3}
@@ -1980,8 +2063,13 @@ In Python 3, the result of this division is a {\tt float}.  The new operator
 \index{division!floor}
 \index{division!floating-point}
 
+在Python 3中，这一除法的结果是一个{\tt 浮点数}。
+新的运算符{\tt //}执行向下取整除。
+
 If either of the operands is a floating-point number, Python performs
 floating-point division, and the result is a {\tt float}:
+
+如果其中有一个操作数是浮点数，则Python执行浮点除，结果是浮点数：
 
 \begin{verbatim}
 >>> minute/60.0
@@ -1989,7 +2077,7 @@ floating-point division, and the result is a {\tt float}:
 \end{verbatim}
 
 
-\section{Expressions and statements}
+\section{Expressions and statements 表达式和语句}
 
 An {\bf expression} is a combination of values, variables, and operators.
 A value all by itself is considered an expression, and so is
@@ -1997,6 +2085,10 @@ a variable, so the following are all legal expressions
 (assuming that the variable {\tt x} has been assigned a value):
 \index{expression}
 \index{evaluate}
+
+一个{\bf 表达式}是值、变量和运算符的组合。
+值自身被认为是一个表达式，变量也是，因此下面都是合法的表达式
+（假设变量{\tt x}已经被赋值了）：
 
 \begin{verbatim}
 17
@@ -2008,12 +2100,17 @@ A {\bf statement} is a unit of code that the Python interpreter can
 execute.  We have seen two kinds of statement: print and
 assignment.
 
+一条{\bf 语句}是一个Python解释器可以执行的代码单元。
+你已经见过两种语句了：打印和赋值。
+
 Technically an expression is also a statement, but it is probably
 simpler to think of them as different things.  The important difference
 is that an expression has a value; a statement does not.
 
+技术上讲，一个表达式也是一条语句，但是将其认为是非语句可能会更简单。
+重要的不同是表达式具有一个值；语句没有。
 
-\section{Interactive mode and script mode}
+\section{Interactive mode and script mode 交互模式和脚本模式}
 
 One of the benefits of working with an interpreted language is that
 you can test bits of code in interactive mode before you put them
@@ -2022,7 +2119,13 @@ and script mode that can be confusing.
 \index{interactive mode}
 \index{script mode}
 
+使用解释型语言的一个好处是，在你将一段代码放入脚本之前，
+你可以在交互模式下测试一下。
+但是交互模式和脚本模式之间也有不同，容易搞混。
+
 For example, if you are using Python as a calculator, you might type
+
+例如，如果你正将Python用作计算器，你可能键入：
 
 \begin{verbatim}
 >>> miles = 26.2
@@ -2035,10 +2138,18 @@ effect.  The second line is an expression, so the interpreter
 evaluates it and displays the result.  So we learn that a marathon is
 about 42 kilometers.
 
+第一行将一个值赋给{\tt miles}，但是并没有显示效果。
+第二行是一个表达式，因此解释器计算它并将结果显示出来。
+所以我们学到，一段马拉松大概是42公里。
+
 But if you type the same code into a script and run it, you get no
 output at all.  In script mode an expression, all by itself, has no
 visible effect.  Python actually evaluates the expression, but it doesn't
 display the value unless you tell it to:
+
+但是如果你将相同的代码键入一个脚本并且运行它，你将根本不能获得输出。
+在完全的脚本模式下，不会有显示效果。
+Python实际上计算了表达式，但是如果你不告诉它，它不会显示结果。
 
 \begin{verbatim}
 miles = 26.2
@@ -2047,11 +2158,18 @@ print miles * 1.61
 
 This behavior can be confusing at first.
 
+此行为开始可能有些令人茫然。
+
 A script usually contains a sequence of statements.  If there
 is more than one statement, the results appear one at a time
 as the statements execute.
 
+一个脚本通常包括一序列语句。
+如果有多余一条的语句，那么每条语句执行后都显示结果。
+
 For example, the script
+
+例如脚本
 
 \begin{verbatim}
 print 1
@@ -2061,12 +2179,16 @@ print x
 %
 produces the output
 
+产生输出
+
 \begin{verbatim}
 1
 2
 \end{verbatim}
 %
 The assignment statement produces no output.
+
+赋值语句不差生输出。
 
 \begin{exercise}
 
@@ -2085,7 +2207,7 @@ expression into a print statement and then run it again.
 \end{exercise}
 
 
-\section{Order of operations}
+\section{Order of operations 操作的顺序}
 \index{order of operations}
 \index{rules of precedence}
 \index{PEMDAS}
@@ -2097,6 +2219,10 @@ The acronym {\bf PEMDAS} is a useful way to
 remember the rules:
 \index{parentheses!overriding precedence}
 
+当一个表达式中有多于一个操作符时，计算的顺序依赖{\bf 优先级规则}。
+对于算数运算，Python遵循数学的惯例。
+缩写 {\bf PEMDAS}有助于记住这一规则：
+
 \begin{itemize}
 
 \item {\bf P}arentheses have the highest precedence and can be used 
@@ -2106,19 +2232,34 @@ and {\tt (1+1)**(5-2)} is 8. You can also use parentheses to make an
 expression easier to read, as in {\tt (minute * 100) / 60}, even
 if it doesn't change the result.
 
+\item 括号（{\bf P}arentheses）具有最高的优先级，并且可以被用于强制表达式按你需要的顺序计算。
+既然在括号中的表达式首先被计算，那么{\tt 2 * (3-1)}是4，{\tt (1+1)**(5-2)}是8。
+你也可以用括号使得一个表达式更易读，如{\tt (minute * 100) / 60}，即使它不能改变运算的结果。
+
 \item {\bf E}xponentiation has the next highest precedence, so
 {\tt 2**1+1} is 3, not 4, and {\tt 3*1**3} is 3, not 27.
+
+\item 指数运算（{\bf E}xponentiation）具有其次的优先级，因此{\tt 2**1+1}是3而非4，
+{\tt 3*1**3}是3而非27。
 
 \item {\bf M}ultiplication and {\bf D}ivision have the same precedence,
 which is higher than {\bf A}ddition and {\bf S}ubtraction, which also
 have the same precedence.  So {\tt 2*3-1} is 5, not 4, and
 {\tt 6+4/2} is 8, not 5.
 
+\item 乘法（{\bf M}ultiplication）和除法（{\bf D}ivision）有相同的优先级，
+比加法（{\bf A}ddition）和减法（{\bf S}ubtraction）高，加法和减法也具有相同的优先级。
+因此{\tt 2*3-1}是5而非4，{\tt 6+4/2}是8而非5。
+
 \item Operators with the same precedence are evaluated from left to
   right (except exponentiation).  So in the expression {\tt degrees /
     2 * pi}, the division happens first and the result is multiplied
   by {\tt pi}.  To divide by $2 \pi$, you can use parentheses or write
   {\tt degrees / 2 / pi}.
+  
+\item 具有相同优先级的运算符按照从左到右的顺序进行计算（除了指数运算）。
+因此表达式{\tt degrees / 2 * pi}中，除法先运算，然后结果被乘以{\tt pi}。
+为了被$2 \pi$除，你可以使用括号，或者写成{\tt degrees / 2 / pi}。
 
 \end{itemize}
 
@@ -2126,12 +2267,18 @@ I don't work very hard to remember rules of precedence for other
 operators.  If I can't tell by looking at the expression, I use
 parentheses to make it obvious.
 
-\section{String operations}
+我不太努力，所以记不住其它操作符的优先级规则。
+如果通过观察表达式，我不能说清楚，我使用括号使其变得更明显。
+
+\section{String operations 字符串操作}
 \index{string!operation}
 \index{operator!string}
 
 In general, you can't perform mathematical operations on strings, even
 if the strings look like numbers, so the following are illegal:
+
+一般来讲，你不能对字符串执行数学操作，即使字符串看起来很像数字，
+因此下面是非法的：
 
 \begin{verbatim}
 '2'-'1'    'eggs'/'easy'    'third'*'a charm'
@@ -2143,6 +2290,10 @@ might not do what you expect: it performs
 linking them end-to-end.  For example:
 \index{concatenation}
 
+{\tt +}操作符可用于字符串，但是它可能不会做你所期望的事情：
+它执行{\bf 级联}操作，也就是将字符串端到端的连起来。
+例如：
+
 \begin{verbatim}
 first = 'throat'
 second = 'warbler'
@@ -2151,9 +2302,15 @@ print first + second
 %
 The output of this program is {\tt throatwarbler}.
 
+程序的输出是{\tt throatwarbler}。
+
 The {\tt *} operator also works on strings; it performs repetition.
 For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the operands
 is a string, the other has to be an integer.
+
+{\tt *}操作符也可应用于字符串；它执行重复操作。
+例如，\verb"'Spam'*3"的结果是\verb"'SpamSpamSpam'"。
+如果其中一个操作数是字符串，则另外一个必须是整数。
 
 This use of {\tt +} and {\tt *} makes sense by
 analogy with addition and multiplication.  Just as {\tt 4*3} is
@@ -2165,17 +2322,28 @@ Can you think of a property that addition has
 that string concatenation does not?
 \index{commutativity}
 
+{\tt +}和{\tt *}的使用类比加法和乘法也讲得通。
+就像{\tt 4*3}与{\tt 4+4+4}等价，
+我们希望\verb"'Spam'*3"和\verb"'Spam'+'Spam'+'Spam'"一样，而且确实是这样。
+另一方面，字符串的级联和重复与整数的加法和乘法截然不同。
+你能想出来一个加法具有，而级联不具有的性质么？
 
-\section{Comments}
+\section{Comments 注释}
 \index{comment}
 
 As programs get bigger and more complicated, they get more difficult
 to read.  Formal languages are dense, and it is often difficult to
 look at a piece of code and figure out what it is doing, or why.
 
+随着程序变得越来越大，越来越复杂，它们变得越来越难读。
+正则语言是稠密的，读一段代码并输出其做什么或者为什么通常很难。
+
 For this reason, it is a good idea to add notes to your programs to explain
 in natural language what the program is doing.  These notes are called
 {\bf comments}, and they start with the \verb"#" symbol:
+
+因此，增加在你的程序中增加标注来用自然语言解释程序做什么通常是比较好的办法。
+这些标注被称为{\bf 注释}，其以\verb"#"符号开始。
 
 \begin{verbatim}
 # compute the percentage of the hour that has elapsed
@@ -2185,6 +2353,8 @@ percentage = (minute * 100) / 60
 In this case, the comment appears on a line by itself.  You can also put
 comments at the end of a line:
 
+此例中，注释独立一行。你也可以将注释放在行尾：
+
 \begin{verbatim}
 percentage = (minute * 100) / 60     # percentage of an hour
 \end{verbatim}
@@ -2192,17 +2362,27 @@ percentage = (minute * 100) / 60     # percentage of an hour
 Everything from the {\tt \#} to the end of the line is ignored---it
 has no effect on the program.
 
+从{\tt \#}开始到行尾的所有东西都被忽略了---其对程序没有影响。
+
 Comments are most useful when they document non-obvious features of
 the code.  It is reasonable to assume that the reader can figure out
 {\em what} the code does; it is much more useful to explain {\em why}.
 
+当注释写出代码不明显的特征的时候最有效。
+假设读者能够指出代码做了{\em 什么}比较适当；
+解释{\em 为什么}则更有用。
+
 This comment is redundant with the code and useless:
+
+下面这个注释是代码的重复而且没有什么用：
 
 \begin{verbatim}
 v = 5     # assign 5 to v
 \end{verbatim}
 %
 This comment contains useful information that is not in the code:
+
+下面的注释包括包含了代码中没有的有用的信息：
 
 \begin{verbatim}
 v = 5     # velocity in meters/second. 
@@ -2212,8 +2392,10 @@ Good variable names can reduce the need for comments, but
 long names can make complex expressions hard to read, so there is
 a tradeoff.
 
+好的变量名能够减少对注释的需求，但是长变量名使得表达式很难读，
+因此这有个均衡问题。
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 At this point the syntax error you are most likely to make is
@@ -2223,8 +2405,13 @@ illegal characters.
 \index{syntax error}
 \index{error!syntax}
 
+此时你经常犯的语法错误是非法变量名，如{\tt class}和{\tt yield}是关键字，
+\verb"odd~job"和\verb"US$"包含了非法字符。
+
 If you put a space in a variable name, Python thinks it is two
 operands without an operator:
+
+如果你在变量名中间放了一个空格，Python认为它是两个没有操作符的操作数。
 
 \begin{verbatim}
 >>> bad name = 5
@@ -2240,9 +2427,16 @@ The most common messages are {\tt SyntaxError: invalid syntax} and
 \index{runtime error}
 \index{error!runtime}
 
+对于语法错误，错误信息帮助不大。
+最常见的信息是{\tt SyntaxError: invalid syntax}以及
+{\tt SyntaxError: invalid token}，这两个都没什么信息量。
+
 The runtime error you are most likely to make is a ``use before
 def;'' that is, trying to use a variable before you have assigned
 a value.  This can happen if you spell a variable name wrong:
+
+你最容易犯的运行时错误是``定义前使用''，也就是说试图在对一个变量赋值前使用它。
+如果你拼写错了变量名这就可能发生。
 
 \begin{verbatim}
 >>> principal = 327.68
@@ -2256,10 +2450,15 @@ same as {\tt latex}.
 \index{semantic error}
 \index{error!semantic}
 
+变量名是大小写敏感的，因此{\tt LaTeX}和{\tt latex}不一样。
+
 At this point the most likely cause of a semantic error is
 the order of operations.  For example, to evaluate
  $\frac{1}{2 \pi}$,
 you might be tempted to write
+
+此时最容易引起的语义错误是操作的顺序。
+例如，为了计算$\frac{1}{2 \pi}$，你可能写成
 
 \begin{verbatim}
 >>> 1.0 / 2.0 * pi
@@ -2271,76 +2470,79 @@ to know what you meant to write, so in this case you don't
 get an error message; you just get the wrong answer.
 \index{order of operations}
 
+但是，首先进行出发运行，因此你获得了$\pi / 2$，这并不是一回事儿！
+对于Python，没有办法知道你的意图是写什么，因此此例中你不会获得错误信息；
+你只会获得错误的结果。
 
-\section{Glossary}
+\section{Glossary 词汇表}
 
 \begin{description}
 
-\item[value:]  One of the basic units of data, like a number or string, 
+\item[value（值）:]  One of the basic units of data, like a number or string, 
 that a program manipulates.
 \index{value}
 
-\item[type:] A category of values.  The types we have seen so far
+\item[type（类型）:] A category of values.  The types we have seen so far
 are integers (type {\tt int}), floating-point numbers (type {\tt
 float}), and strings (type {\tt str}).
 \index{type}
 
-\item[integer:] A type that represents whole numbers.
+\item[integer（整数）:] A type that represents whole numbers.
 \index{integer}
 
-\item[floating-point:] A type that represents numbers with fractional
+\item[floating-point（浮点）:] A type that represents numbers with fractional
 parts.
 \index{floating-point}
 
-\item[string:] A type that represents sequences of characters.
+\item[string（字符串）:] A type that represents sequences of characters.
 \index{string}
 
-\item[variable:]  A name that refers to a value.
+\item[variable（变量）:]  A name that refers to a value.
 \index{variable}
 
-\item[statement:]  A section of code that represents a command or action.  So
+\item[statement（语句）:]  A section of code that represents a command or action.  So
 far, the statements we have seen are assignments and print statements.
 \index{statement}
 
-\item[assignment:]  A statement that assigns a value to a variable.
+\item[assignment（赋值）:]  A statement that assigns a value to a variable.
 \index{assignment}
 
-\item[state diagram:]  A graphical representation of a set of variables and the
+\item[state diagram（状态度）:]  A graphical representation of a set of variables and the
 values they refer to.
 \index{state diagram}
 
-\item[keyword:]  A reserved word that is used by the compiler to parse a
+\item[keyword（关键字）:]  A reserved word that is used by the compiler to parse a
 program; you cannot use keywords like {\tt if}, {\tt  def}, and {\tt while} as
 variable names.
 \index{keyword}
 
-\item[operator:]  A special symbol that represents a simple computation like
+\item[operator（操作符）:]  A special symbol that represents a simple computation like
 addition, multiplication, or string concatenation.
 \index{operator}
 
-\item[operand:]  One of the values on which an operator operates.
+\item[operand（操作数）:]  One of the values on which an operator operates.
 \index{operand}
 
-\item[floor division:] The operation that divides two numbers and chops off
+\item[floor division（向下取整除）:] The operation that divides two numbers and chops off
 the fraction part.
 \index{floor division}
 
-\item[expression:]  A combination of variables, operators, and values that
+\item[expression（表达式）:]  A combination of variables, operators, and values that
 represents a single result value.
 \index{expression}
 
-\item[evaluate:]  To simplify an expression by performing the operations
+\item[evaluate（计算）:]  To simplify an expression by performing the operations
 in order to yield a single value.
 
-\item[rules of precedence:]  The set of rules governing the order in which
+\item[rules of precedence（优先级规则）:]  The set of rules governing the order in which
 expressions involving multiple operators and operands are evaluated.
 \index{rules of precedence}
 \index{precedence}
 
-\item[concatenate:]  To join two operands end-to-end.
+\item[concatenate（级联）:]  To join two operands end-to-end.
 \index{concatenation}
 
-\item[comment:]  Information in a program that is meant for other
+\item[comment（注释）:]  Information in a program that is meant for other
 programmers (or anyone reading the source code) and has no effect on the
 execution of the program.
 \index{comment}
@@ -2404,10 +2606,10 @@ Practice using the Python interpreter as a calculator:
 \end{exercise}
 
 
-\chapter{Functions}
+\chapter{Functions 函数}
 \label{funcchap}
 
-\section{Function calls}
+\section{Function calls 函数调用}
 \label{functionchap}
 \index{function call}
 
@@ -2416,6 +2618,11 @@ statements that performs a computation.  When you define a function,
 you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
 We have already seen one example of a {\bf function call}:
+
+在编程的语境下，{\bf 函数（function）}对是一序列执行计算语句的命名。
+当你定义一个函数的时候，你指定了名字和语句序列。
+随后，你可以通过名字``调用''该函数。
+我们已经见过了一个{\bf 函数调用（function call）}的例子。
 
 \begin{verbatim}
 >>> type(32)
