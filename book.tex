@@ -259,22 +259,22 @@ My goals were:
 \item Keep it short.  It is better for students to read 10 pages
 than not read 50 pages.
 
-\item 尽量简短。对于学生，读10页比读50页好。
+尽量简短。对于学生，读10页比读50页好。
 
 \item Be careful with vocabulary.  I tried to minimize the jargon
 and define each term at first use.
 
-\item 关注词汇表。我试图使用最少的术语并且在第一次使用的时候给出定义。
+关注词汇表。我试图使用最少的术语并且在第一次使用的时候给出定义。
 
 \item Build gradually. To avoid trap doors, I took the most difficult
 topics and split them into a series of small steps. 
 
-\item 循序渐进。为了避免陷阱门，我将最难的主题拆分成一系列小的步骤。
+循序渐进。为了避免陷阱门，我将最难的主题拆分成一系列小的步骤。
 
 \item Focus on programming, not the programming language.  I included
 the minimum useful subset of Java and left out the rest.
 
-\item 聚焦于编程，而不是编程语言。我只包括了Java最小的有用的子集，
+聚焦于编程，而不是编程语言。我只包括了Java最小的有用的子集，
 并且忽略其余的。
 
 \end{itemize}
@@ -343,7 +343,7 @@ The result is this book, now with the less grandiose title
   These sections present general techniques for finding and avoiding
   bugs, and warnings about Python pitfalls.
   
-\item 每章最后，我都增加了一节关于调试（debugging）的内容。
+每章最后，我都增加了一节关于调试（debugging）的内容。
 这些小节给出关于发现和避免一些错误的通常的技术，
 以及关于Python的陷阱。
 
@@ -351,7 +351,7 @@ The result is this book, now with the less grandiose title
   understanding to a few substantial projects.  And I wrote
   solutions for most of them.
 
-\item 增加了更多的练习题，涵盖了从为了理解的简短的测试到真正的项目。
+增加了更多的练习题，涵盖了从为了理解的简短的测试到真正的项目。
 并且为其中大部分写了答案。
 
 \item I added a series of case studies---longer examples with
@@ -360,7 +360,7 @@ The result is this book, now with the less grandiose title
   Swampy, code examples, and some solutions are available from
   \url{http://thinkpython.com}.
   
-\item 我增加了一系列范例分析（case studies），
+我增加了一系列范例分析（case studies），
 即具有联系、答案以及讨论的更长的样例。
 其中一些基于Swampy，我写的一套用于我的课程的Pythong程序。
 Swampy、代码样例、以及一些答案可以从 \url{http://thinkpython.com} 获得。
@@ -368,12 +368,12 @@ Swampy、代码样例、以及一些答案可以从 \url{http://thinkpython.com}
 \item I expanded the discussion of program development plans
   and basic design patterns.
 
-\item 我扩展了关于程序开发规划和基本设计模式的讨论。
+我扩展了关于程序开发规划和基本设计模式的讨论。
 
 \item I added appendices about debugging, analysis of algorithms, and
   UML diagrams with Lumpy.
 
-\item 我增加了关于调试、算法分析以及使用Lumpy画UML图的附录。
+我增加了关于调试、算法分析以及使用Lumpy画UML图的附录。
 
 \end{itemize}
 
@@ -3488,26 +3488,25 @@ a program into functions.  There are several reasons:
 \item Creating a new function gives you an opportunity to name a group
 of statements, which makes your program easier to read and debug.
 
-\item 生成一个新的函数给你一个命名一组语句的机会，
+生成一个新的函数给你一个命名一组语句的机会，
 这使得你的程序更容易读和调试。
 
 \item Functions can make a program smaller by eliminating repetitive
 code.  Later, if you make a change, you only have
 to make it in one place.
 
-\item 通过避免重复调用代码，函数使得程序更小。
+通过避免重复调用代码，函数使得程序更小。
 之后，如果你要做个变动，你只需在一处变动即可。
 
 \item Dividing a long program into functions allows you to debug the
 parts one at a time and then assemble them into a working whole.
 
-\item 讲一个长程序分解wie函数允许你一次调试一部分然后将它们集成为一个可行的整体。
+将一个长程序分解为函数允许你一次调试一部分然后将它们集成为一个可行的整体。
 
 \item Well-designed functions are often useful for many programs.
 Once you write and debug one, you can reuse it.
 
-\item 良好设计的函数经常对多个程序都有用。
-一旦你写出并调试了一个函数，你可以重用它。
+良好设计的函数经常对多个程序都有用。一旦你写出并调试了一个函数，你可以重用它。
 
 \end{itemize}
 
@@ -3857,12 +3856,13 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 
 
 
-\chapter{Case study: interface design}
+\chapter{Case study: interface design 案例学习：界面设计}
 \label{turtlechap}
 
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/polygon.py}.
 
+本章的示例代码可以从\url{http://thinkpython.com/code/polygon.py}获得。
 
 \section{TurtleWorld}
 \index{TurtleWorld}
@@ -3872,13 +3872,22 @@ To accompany this book, I have written a package called Swampy.
 You can download Swampy from \url{http://thinkpython.com/swampy};
 follow the instructions there to install Swampy on your system.
 
+作为对本书的补充，我写了一个叫Swampy的包。
+你可以从\url{http://thinkpython.com/swampy}下载Swampy，
+然后按照说明在你的系统上安装Swampy。
+
 A {\bf package} is a collection of modules; one of the modules in
 Swampy is {\tt TurtleWorld}, which provides a set of functions for
 drawing lines by steering turtles around the screen.
 \index{package}
 
+一个{\bf 包（package）}是一套模块，{\tt TurtleWorld}是Swampy中的一个模块，
+其提供了一组通过在屏幕上转向海龟的画线函数。
+ 
 If Swampy is installed as a package on your system, you can import
 {\tt TurtleWorld} like this:
+
+如果Swampy作为包被安装在了你的系统上，你可以像这样导入{\tt TurtleWorld}：
 
 \begin{verbatim}
 from swampy.TurtleWorld import *
@@ -3889,6 +3898,10 @@ package, you can either work in the directory that contains the Swampy
 files, or add that directory to Python's search path.  Then you can import
 {\tt TurtleWorld} like this:
 
+如果你下载了Swampy模块但是没有作为包安装，
+你要么可以在含有Swampy的文件夹里工作，或者将此目录增加到Python的搜索路径。
+然后你可以像这样导入{\tt TurtleWorld}：
+
 \begin{verbatim}
 from TurtleWorld import *
 \end{verbatim}
@@ -3896,10 +3909,16 @@ from TurtleWorld import *
 The details of the installation process and setting Python's search
 path depend on your system, so rather than include those details here,
 I will try to maintain current information for several systems
-at \url{http://thinkpython.com/swampy}
+at \url{http://thinkpython.com/swampy}.
+
+安装和设置Python搜索路径的细节依赖于你的系统，
+所以我不在此包括那些细节了，
+我将试着在\url{http://thinkpython.com/swampy}维护多个系统的最新的信息。
 
 Create a file named {\tt mypolygon.py} and type in the following
 code:
+
+生成一个叫{\tt mypolygon.py}的文件并键入如下代码：
 
 \begin{verbatim}
 from swampy.TurtleWorld import *
@@ -3916,9 +3935,14 @@ in the {\tt swampy} package.
 \index{import statement}
 \index{statement!import}
 
+第一行在{\tt swampy}里从{\tt TurtleWorld}模块导入内容。
+
 The next lines create a TurtleWorld assigned to {\tt world} and
 a Turtle assigned to {\tt bob}.  Printing {\tt bob} yields something
 like:
+
+接下来几行生成一个TurtleWorld赋给{\tt world}以及生成一个Turtle赋给{\tt bob}。
+打印{\tt bob}产生像下面这样的东西：
 
 \begin{verbatim}
 <TurtleWorld.Turtle instance at 0xb7bfbf4c>
@@ -3931,9 +3955,15 @@ as defined in module {\tt TurtleWorld}.  In this context,
 this Turtle is one of the set of possible Turtles.
 \index{instance}
 
+这意味着{\tt bob}指向一个如{\tt TurtleWorld}中定义的Turtle的{\bf 实例（instance）}。
+在此处，``实例''的意思是集合的一个成员，该Turtle是所有可能的Turtle构成的集合的一个元素。
+
 \verb"wait_for_user" tells TurtleWorld to wait for the user
 to do something, although in this case there's not much for
 the user to do except close the window.
+
+\verb"wait_for_user"告诉TurtleWorld等待用户做些什么，
+但是在此例中除了关闭窗口外用户也做不了其它的事情。
 
 TurtleWorld provides several
 turtle-steering functions: {\tt fd} and {\tt bk} for
@@ -3941,10 +3971,19 @@ forward and backward, and {\tt lt} and {\tt rt} for left and
 right turns.  Also, each Turtle is holding a pen, which is
 either down or up; if the pen is down, the Turtle leaves
 a trail when it moves.  The functions {\tt pu} and {\tt pd}
-stand for ``pen up'' and ``pen down.''
+stand for ``pen up'' and ``pen down''.
+
+TurtleWorld提供几个海龟转向函数：
+{\tt fd}和{\tt bk}用于向前和向后，{\tt lt}和{\tt rt}是向左和向右。
+每个海龟都握有一支笔，要么放下，要么抬起。
+如果笔被放下，该海龟留下它走过的痕迹。
+函数{\tt pu}和{\tt pd}代表``笔抬起''和``笔放下''。
 
 To draw a right angle, add these lines to the program
 (after creating {\tt bob} and before calling \verb"wait_for_user"):
+
+为了画一个向右的三角，在程序中加入这些代码
+（在生成{\tt bob}之后，调用\verb"wait_for_user"之前）：
 
 \begin{verbatim}
 fd(bob, 100)
@@ -3955,20 +3994,29 @@ fd(bob, 100)
 The first line tells {\tt bob} to take 100 steps
 forward.  The second line tells him to turn left.
 
+第一行告诉{\tt bob}向前走100步。第二行告诉它向左转。
+
 When you run this program, you should see {\tt bob} move east and then
 north, leaving two line segments behind.
+
+当运行此程序时，你应该会看见{\tt bob}现象东移动，然后向北，
+在它后面留下两条线段。
 
 Now modify the program to draw a square.  Don't go on until
 you've got it working!
 
+现在修改程序画一个正方形。如果没有成功，不要继续往下读。
+
 %\newpage
 
-\section{Simple repetition}
+\section{Simple repetition 简单的重复}
 \label{repetition}
 \index{repetition}
 
 Chances are you wrote something like this (leaving out the code
 that creates TurtleWorld and waits for the user):
+
+假设你写了如下的代码（不包括生成TurtleWorld以及等待用户的代码）：
 
 \begin{verbatim}
 fd(bob, 100)
@@ -3989,12 +4037,17 @@ Add this example to {\tt mypolygon.py} and run it again:
 \index{loop!for}
 \index{statement!for}
 
+我们可以用更简洁的{\tt for}语句做相同的事情。
+将这个示例加入{\tt mypolygon.py}并重新运行它：
+
 \begin{verbatim}
 for i in range(4):
     print 'Hello!'
 \end{verbatim}
 %
 You should see something like this:
+
+你会看到如下内容：
 
 \begin{verbatim}
 Hello!
@@ -4007,7 +4060,13 @@ This is the simplest use of the {\tt for} statement; we will see
 more later.  But that should be enough to let you rewrite your
 square-drawing program.  Don't go on until you do.
 
+这是{\tt for}语句最简单的用法，后面我们会看到更多的。
+但是这对于你重写你的画正方形程序已经足够了。
+如果没有完成不要继续。
+
 Here is a {\tt for} statement that draws a square:
+
+下面是使用{\tt for}语句画正方形：
 
 \begin{verbatim}
 for i in range(4):
@@ -4020,9 +4079,16 @@ definition.  It has a header that ends with a colon and an indented
 body.  The body can contain any number of statements.
 \index{loop}
 
+{\tt for}语句的语法和函数定义类似。
+它有一个以冒号结尾的头以及一个缩进的体。
+体可以包含任意条数的语句。
+
 A {\tt for} statement is sometimes called a {\bf loop} because
 the flow of execution runs through the body and then loops back
 to the top.  In this case, it runs the body four times.
+
+{\tt for}语句有时被成为{\bf 循环（loop）}，因为执行流程运行整个体然后循环回顶部。
+在此例中，它运行体4次。
 
 This version is actually a little different from the previous
 square-drawing code because it makes another turn after
@@ -4032,14 +4098,25 @@ every time through the loop.  This version also has the effect
 of leaving the turtle back in the starting position, facing in
 the starting direction.
 
-\section{Exercises}
+此版本和前面画正方形的代码有所不同，因为它在花完正方形最后一条边的时候，
+又多转了一下。这个额外的转动多花了些时间，
+但是如果我们通过循环做相同的事情也简化了代码。
+此版本也有一个作用，将海龟留着了出发位置，朝向开始的方向。
+
+\section{Exercises 练习}
 
 The following is a series of exercises using TurtleWorld.  They
 are meant to be fun, but they have a point, too.  While you are
 working on them, think about what the point is.
 
+下面是一系列使用TurtleWorld的练习。
+他们是很有趣，但是他们也都有一点。
+当你做这些联系的时候，想一想这个点是什么？
+
 The following sections have solutions to the exercises, so
 don't look until you have finished (or at least tried).
+
+下面几节是这些练习的答案，因此如果你没完成（或者至少试过了），不要看答案。
 
 \begin{enumerate}
 
@@ -4047,8 +4124,13 @@ don't look until you have finished (or at least tried).
 named {\tt t}, which is a turtle.  It should use the turtle to draw
 a square.
 
+写一个名为{\tt square}的函数，有一个名为{\tt t}的形参，它是一个海龟。
+用这只海龟画一个正方形。
+
 Write a function call that passes {\tt bob} as an argument to
 {\tt square}, and then run the program again.
+
+写一个函数调用，将{\tt bob}作为实参传给{\tt square}，然后再重新运行程序。
 
 \item Add another parameter, named {\tt length}, to {\tt square}.
 Modify the body so length of the sides is {\tt length}, and then
@@ -4056,10 +4138,17 @@ modify the function call to provide a second argument.  Run the
 program again.  Test your program with a range of values for {\tt
 length}.
 
+给{\tt square}加入另一个名为{\tt length}的形参。
+修改函数体，使得边的长度是{\tt square}，然后修改函数调用以提供第二个实参。
+重新运行程序。用一个范围内的{\tt length}值测试你的程序。
+
 \item The functions {\tt lt} and {\tt rt} make 90-degree turns by
 default, but you can provide a second argument that specifies the
 number of degrees.  For example, {\tt lt(bob, 45)} turns {\tt bob} 45
 degrees to the left.
+
+函数{\tt lt}和{\tt rt}默认转动90度，而你可以提供第二个实参来制定角度。
+例如{\tt lt(bob, 45)}向左转动{\tt bob} 45读。
 
 Make a copy of {\tt square} and change the name to {\tt polygon}.  Add
 another parameter named {\tt n} and modify the body so it draws an
@@ -4068,6 +4157,10 @@ polygon are $360/n$ degrees.
 \index{polygon function}
 \index{function!polygon}
 
+复制{\tt square}并改名为{\tt polygon}。
+增加另外一个名为{\tt n}的参数并改变函数体，让它画一个n边形。
+提示：n边型的外角是$360/n$度。
+
 \item Write a function called {\tt circle} that takes a turtle, {\tt t},
 and radius, {\tt r}, as parameters and that draws an approximate circle
 by invoking {\tt polygon} with an appropriate length and number of
@@ -4075,12 +4168,21 @@ sides.  Test your function with a range of values of {\tt r}.
 \index{circle function}
 \index{function!circle}
 
+写一个名为{\tt circle}的函数，它接受一个乌龟{\tt t}和半径{\tt r}作为形参，
+然后通过调用{\tt polygon}，用合适的边的数目和长度画一个近似圆形。
+用一定范围内的{\tt r}值测试你的函数。
+
 Hint: figure out the circumference of the circle and make sure that
 {\tt length * n = circumference}.
+
+提示：指出圆的周长并确定{\tt length * n = circumference}。
 
 Another hint: if {\tt bob} is too slow for you, you can speed
 him up by changing {\tt bob.delay}, which is the time between moves,
 in seconds.  {\tt bob.delay = 0.01} ought to get him moving.
+
+另外一个提示：如果{\tt bob}对你来说太慢了，你可以通过修改{\tt bob.delay}加速，
+它是两次移动之间的时间（秒）。{\tt bob.delay = 0.01}应该让它移动。
 
 % change this to world.delay
 
@@ -4092,9 +4194,13 @@ circle.
 \index{arc function}
 \index{function!arc}
 
+完成一个更一般的{\tt circle}版本{\tt arc}，其接受一个额外的参数{\tt angle}，
+确定画多大部分的圆。{\tt angle}的单位是度，因此当{\tt angle=360}时，
+{\tt arc} 应该画一个整圆。
+
 \end{enumerate}
 
-\section{Encapsulation}
+\section{Encapsulation 封装}
 
 The first exercise asks you to put your square-drawing code
 into a function definition and then call the function, passing
