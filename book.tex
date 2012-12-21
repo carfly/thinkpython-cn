@@ -4206,6 +4206,9 @@ The first exercise asks you to put your square-drawing code
 into a function definition and then call the function, passing
 the turtle as a parameter.  Here is a solution:
 
+第一个练习需要你将画正方形的代码放到函数定义中然后调用该函数，
+传递海龟作为参数。这是答案：
+
 \begin{verbatim}
 def square(t):
     for i in range(4):
@@ -4221,11 +4224,21 @@ which is inside the function definition.  The next line,
 {\tt square(bob)}, is flush with the left margin, so that is the
 end of both the {\tt for} loop and the function definition.
 
+最内部的语句，{\tt fd}和{\tt lt}缩进两次以显示它们在{\tt for}循环内，
+该循环在函数内。下一行{\tt square(bob)}和左边界对齐，
+因此它是{\tt for}循环和函数定义的结束。
+
 Inside the function, {\tt t} refers to the same turtle {\tt bob}
 refers to, so {\tt lt(t)} has the same effect as {\tt lt(bob)}.
 So why not call the parameter {\tt bob}?  The idea is that {\tt t}
 can be any turtle, not just {\tt bob}, so you could create
 a second turtle and pass it as an argument to {\tt square}:
+
+在函数内部，{\tt t}和{\tt bob}指的是同一只海龟，
+所以{\tt lt(t)}和{\tt lt(bob)}功能相同。
+那么为什么不将形参命名为{\tt bob}呢？
+想法是{\tt t}可以是任何海龟而不仅仅是{\tt bob}，
+所以你可以生成第二只海龟并且将它作为实参传递给{\tt square}：
 
 \begin{verbatim}
 ray = Turtle()
@@ -4239,11 +4252,17 @@ Another advantage is that if you re-use the code, it is more concise
 to call a function twice than to copy and paste the body!
 \index{encapsulation}
 
+将一部分代码包装在函数里被称作 {\bf encapsulation（封装）}。
+封装的好处之一是它将这些代码赋予一个名字，
+这充当了一种文档。另一个好处是你可以重用这些代码，
+调用函数两次要比拷贝粘贴函数体要简洁！
 
-\section{Generalization}
+\section{Generalization 泛化}
 
 The next step is to add a {\tt length} parameter to {\tt square}.
 Here is a solution:
+
+下一步是给{\tt square}增加一个{\tt length}形参。这是解决方案：
 
 \begin{verbatim}
 def square(t, length):
@@ -4260,9 +4279,16 @@ version, the square is always the same size; in this version
 it can be any size.
 \index{generalization}
 
+为函数增加一个形参被称作{\bf 泛化（generalization）}，
+因为其使得函数更一般：在前面的版本中，
+正方形总是相同大小的；此版本它可以是任意的大小。
+
 The next step is also a generalization.  Instead of drawing
 squares, {\tt polygon} draws regular polygons with any number of
 sides.  Here is a solution:
+
+下一步也是一个泛化。不是画一个正方形，{\tt polygon}画任意的多边形。
+这是解决方案：
 
 \begin{verbatim}
 def polygon(t, n, length):
@@ -4280,6 +4306,10 @@ are, or what order they should be in.  It is legal, and sometimes
 helpful, to include the names of the parameters in the argument
 list:
 
+这画了一个7边形，边长为70。
+如果你有更多的形参，很容易忘记它们多是什么或者它们的顺序应该是什么。
+将形参名放入实参列表是合法的，而且有时很有用：
+
 \begin{verbatim}
 polygon(bob, n=7, length=70)
 \end{verbatim}
@@ -4290,16 +4320,26 @@ Python keywords like {\tt while} and {\tt def}).
 \index{keyword argument}
 \index{argument!keyword}
 
+这些被称作{\bf 关键字实参（keyword arguments）}，
+因为它们包含了形参名作为``关键字''（不要和Python的关键字搞混了，如{\tt while}和{\tt def}）。
+
 This syntax makes the program more readable.  It is also a reminder
 about how arguments and parameters work: when you call a function, the
 arguments are assigned to the parameters.
 
+这一语法使得程序更可读。
+它也是关于实参和形参如何工作的一个提醒：
+当你调用函数时，实参被赋给形参。
 
-\section{Interface design}
+
+\section{Interface design 界面设计}
 
 The next step is to write {\tt circle}, which takes a radius,
 {\tt r}, as a parameter.  Here is a simple solution that uses
 {\tt polygon} to draw a 50-sided polygon:
+
+下一步是写{\tt circle}，它将半径{\tt r}作为形参。
+这是一个简单的解决方案，它使用{\tt polygon}画一个50边形：
 
 \begin{verbatim}
 def circle(t, r):
@@ -4314,9 +4354,16 @@ The first line computes the circumference of a circle with radius
 have to import {\tt math}.  By convention, {\tt import} statements
 are usually at the beginning of the script.
 
+第一行用半径{\tt r}计算圆的周长，公式是$2 \pi r$。
+由于我们用了{\tt math.pi}，我们需要导入{\tt math}。
+按照惯例，{\tt import}语句通常位于脚本开始。
+
 {\tt n} is the number of line segments in our approximation of a circle,
 so {\tt length} is the length of each segment.  Thus, {\tt polygon}
 draws a 50-sides polygon that approximates a circle with radius {\tt r}.
+
+{\tt n}是我们估计的圆的线段的个数，所以{\tt length}是每一段的长度。
+这样{\tt polygon}画一个50边形来估计一个半径为{\tt r}的圆。
 
 One limitation of this solution is that {\tt n} is a constant, which
 means that for very big circles, the line segments are too long, and
@@ -4326,20 +4373,35 @@ a parameter.  This would give the user (whoever calls {\tt circle})
 more control, but the interface would be less clean.
 \index{interface}
 
+这种解决方案的一个局限性是{\tt n}是常数，这意味着对于非常大的圆，
+线段会非常长，并且对于小圆，我们浪费时间画非常小的线段。
+一个解决方案是通过将{\tt n}作为形参来泛化函数。
+这将给用户（调用{\tt circle}的人）更多的控制，
+但是接口将不那么干净了。
+
 The {\bf interface} of a function is a summary of how it is used: what
 are the parameters?  What does the function do?  And what is the return
 value?  An interface is ``clean'' if it is ``as simple as
 possible, but not simpler. (Einstein)''
 \index{Einstein, Albert}
 
+函数的{\bf 接口（interface）}是一个如何使用它的摘要：
+形参是什么？函数做什么？返回值是什么？
+如果接口``尽可能简单，但不能过于简单（爱因斯坦）''的话，则说它是``干净的''。
+
 In this example, {\tt r} belongs in the interface because it
 specifies the circle to be drawn.  {\tt n} is less appropriate
 because it pertains to the details of {\em how} the circle should
 be rendered.
 
+在这个例子中，{\tt r}属于界面，因为它确定了被画的圆。
+{\tt n}就不太合适，因为他是关于如何画圆的细节。
+
 Rather than clutter up the interface, it is better
 to choose an appropriate value of {\tt n}
 depending on {\tt circumference}:
+
+不要把界面弄乱，依赖{\tt circumference}选择一个合适的{\tt n}值比较好。
 
 \begin{verbatim}
 def circle(t, r):
@@ -4354,6 +4416,10 @@ so the length of each segment is (approximately) 3, which is small
 enough that the circles look good, but big enough to be efficient,
 and appropriate for any size circle.
 
+现在线段的数量（大概）是{\tt circumference/3}，
+所以每条线段的长度（大概）是3，这足够的小了，
+使得圆看上去不错，但是对于保证效率也足够大了，
+适合任何大小的圆。
 
 \section{Refactoring}
 \label{refactoring}
