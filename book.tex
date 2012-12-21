@@ -3028,7 +3028,7 @@ But that's not really how the song goes.
 Pulling together the code fragments from the previous section, the
 whole program looks like this:
 
-汇集从上一节的代码片段，整个程序看起来像这样：
+汇集上一节的代码片段，整个程序看起来像这样：
 
 \begin{verbatim}
 def print_lyrics():
@@ -3049,9 +3049,16 @@ inside the function do not get executed until the function is called, and
 the function definition generates no output.
 \index{use before def}
 
+改程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
+函数定义就像其它语句执行一样，但是左右是生成函数对象。
+函数内部的语句直到被调用才会被执行，并且函数定义没有任何输出。
+
 As you might expect, you have to create a function before you can
 execute it.  In other words, the function definition has to be
 executed before the first time it is called.
+
+和你所期望的一样，函数执行之前，你必须生成它。
+换句话说，函数定义必须在其第一次调用之前执行。
 
 \begin{exercise}
 
@@ -3071,24 +3078,34 @@ and move the definition of \verb"print_lyrics" after the definition of
 \end{exercise}
 
 
-\section{Flow of execution}
+\section{Flow of execution 执行流程}
 \index{flow of execution}
 
 In order to ensure that a function is defined before its first use,
 you have to know the order in which statements are executed, which is
 called the {\bf flow of execution}.
 
+为了保证函数第一次使用之前被定义，你必须要知道语句被执行的顺序，
+这也被称作{\bf 执行流程（flow of execution）}。
+
 Execution always begins at the first statement of the program.
 Statements are executed one at a time, in order from top to bottom.
+
+执行总是开始于程序的第一条语句。自顶向下，每次执行一条语句。
 
 Function definitions do not alter the flow of execution of the
 program, but remember that statements inside the function are not
 executed until the function is called.
 
+函数定义不改变程序执行的流程，但是请记住函数内部的语句直到该函数被调用时才执行。
+
 A function call is like a detour in the flow of execution. Instead of
 going to the next statement, the flow jumps to the body of
 the function, executes all the statements there, and then comes back
 to pick up where it left off.
+
+函数调用像是在执行流程上饶了一个弯路。
+流程不是到下一条语句，而是跳入函数体，执行那里所有的语句，然后回到它离开的位置。
 
 That sounds simple enough, until you remember that one function can
 call another.  While in the middle of one function, the program might
@@ -3096,17 +3113,26 @@ have to execute the statements in another function. But while
 executing that new function, the program might have to execute yet
 another function!
 
+听起来足够简单，直到你记得一个函数可以调用另一个函数。
+当在一个函数中间的时候，程序可能不得不执行另一个函数里的语句。
+但是当执行那个新函数的时候，程序可能不得不又执行另外一个函数！
+
 Fortunately, Python is good at keeping track of where it is, so each
 time a function completes, the program picks up where it left off in
 the function that called it.  When it gets to the end of the program,
 it terminates.
 
+幸运的是，Python善于跟踪它在哪里，因此每次一个函数完成时，
+程序回到调用它的那个函数。当到达程序结尾时，程序终止。
+
 What's the moral of this sordid tale?  When you read a program, you
 don't always want to read from top to bottom.  Sometimes it makes
 more sense if you follow the flow of execution.
 
+什么是道德，这个肮脏的故事？当你读一个程序的时候，
+你不总是从上到下的读。有时，如果你遵从执行流程会更有道理。
 
-\section{Parameters and arguments}
+\section{Parameters and arguments 形参和实参}
 \label{parameters}
 \index{parameter}
 \index{function parameter}
@@ -3118,10 +3144,17 @@ example, when you call {\tt math.sin} you pass a number
 as an argument.  Some functions take more than one argument:
 {\tt math.pow} takes two, the base and the exponent.
 
+我们已经见过的一些内建函数需要实参。
+例如，当你调用{\tt math.sin}时，你传递一个数字作为实参。
+有些函数接受多于一个的实参：{\tt math.pow} 接受两个，底数和指数。
+
 Inside the function, the arguments are assigned to
 variables called {\bf parameters}.  Here is an example of a
 user-defined function that takes an argument:
 \index{parentheses!parameters in}
+
+在函数内部，实参被赋给被称作{\bf 形参（parameters）}的变量。
+这是一个用户自定义函数的例子，其接受一个形参：
 
 \begin{verbatim}
 def print_twice(bruce):
@@ -3133,7 +3166,12 @@ This function assigns the argument to a parameter
 named {\tt bruce}.  When the function is called, it prints the value of
 the parameter (whatever it is) twice.
 
+此函数将实参赋给名为{\tt bruce}的形参。
+当函数被调用的时候，它打印形参（无论它是什么）的值两次。
+
 This function works with any value that can be printed.
+
+该函数对任意能被打印的值都有效。
 
 \begin{verbatim}
 >>> print_twice('Spam')
@@ -3152,6 +3190,9 @@ apply to user-defined functions, so we can use any kind of expression
 as an argument for \verb"print_twice":
 \index{composition}
 
+相同的应用于内建函数的组合规则也适用于用户自定义函数，
+因此我们可以使用任意类型的表达式作为\verb"print_twice"的实参。
+
 \begin{verbatim}
 >>> print_twice('Spam '*4)
 Spam Spam Spam Spam
@@ -3166,7 +3207,12 @@ in the examples the expressions \verb"'Spam '*4" and
 {\tt math.cos(math.pi)} are only evaluated once.
 \index{argument}
 
+实参在被调用之前被计算，因此在这些例子中，
+表达式\verb"'Spam '*4"和{\tt math.cos(math.pi)}都只被计算一次。
+
 You can also use a variable as an argument:
+
+你也可以用变量作为实参：
 
 \begin{verbatim}
 >>> michael = 'Eric, the half a bee.'
@@ -3180,8 +3226,12 @@ nothing to do with the name of the parameter ({\tt bruce}).  It
 doesn't matter what the value was called back home (in the caller);
 here in \verb"print_twice", we call everybody {\tt bruce}.
 
+我们传递的实参名（{\tt michael}）对形参（{\tt bruce}）没有任何影响。
+（在调用者里）无论值是什么都不要紧；
+此处在\verb"print_twice"里面，我们将所有人都叫做{\tt bruce}。
 
-\section{Variables and parameters are local}
+
+\section{Variables and parameters are local 变量和形参都是局部的}
 \index{local variable}
 \index{variable!local}
 
@@ -3189,6 +3239,9 @@ When you create a variable inside a function, it is {\bf local},
 which means that it only
 exists inside the function.  For example:
 \index{parentheses!parameters in}
+
+当你在一个函数里面生成一个变量时，它是{\bf 局部的（local）}，
+也就是说它只在函数内部存在。例如：
 
 \begin{verbatim}
 def cat_twice(part1, part2):
@@ -3199,6 +3252,9 @@ def cat_twice(part1, part2):
 This function takes two arguments, concatenates them, and prints
 the result twice.  Here is an example that uses it:
 \index{concatenation}
+
+此函数接受两个实参，级联它们并打印结果两次。
+这是使用它的一个例子：
 
 \begin{verbatim}
 >>> line1 = 'Bing tiddle '
@@ -3213,6 +3269,9 @@ is destroyed.  If we try to print it, we get an exception:
 \index{NameError}
 \index{exception!NameError}
 
+当\verb"cat_twice"结束时，变量{\tt cat}被销毁了。
+如果我们试图打印它，我们获得一个异常：
+
 \begin{verbatim}
 >>> print cat
 NameError: name 'cat' is not defined
@@ -3223,8 +3282,11 @@ For example, outside \verb"print_twice", there is no
 such thing as {\tt bruce}.
 \index{parameter}
 
+形参也都是局部的。例如在\verb"print_twice"外面，
+没有{\tt bruce}这个东西。
 
-\section{Stack diagrams}
+
+\section{Stack diagrams 栈图}
 \label{stackdiagram}
 \index{stack diagram}
 \index{function frame}
@@ -3237,11 +3299,18 @@ function each variable belongs to.
 \index{stack diagram}
 \index{diagram!stack}
 
+为了跟踪哪个变量能在哪儿用，有时画一个{\bf 栈图（stack diagram）}比较有用。
+像状态图一样，栈图展示每个变量的值，但是它们也展示了每个变量属于的函数。
+
 Each function is represented by a {\bf frame}.  A frame is a box
 with the name of a function
 beside it and the parameters and variables of the function inside it.
 The stack diagram for the
 previous example is shown in Figure~\ref{fig.stack}.
+
+每个函数用一个{\bf 边框（frame）}表示。
+一个边框是一个有函数名的盒子，除此之外还有形参以及函数内部的变量。
+前面例子的栈图如图\ref{fig.stack}所示。
 
 \begin{figure}
 \centerline
@@ -3258,18 +3327,33 @@ was called by \verb"cat_twice", and \verb"cat_twice" was called by
 you create a variable outside of any function, it belongs to 
 \verb"__main__".
 
+栈里面的边框指出哪个函数被哪个函数调用等。
+在此例中，\verb"print_twice"被\verb"cat_twice"调用，
+\verb"cat_twice"被\verb"__main__"调用，这是一个表示最上层边框的特殊的名字。
+当你在所有函数之外生成一个变量时，它属于\verb"__main__"。
+
 Each parameter refers to the same value as its corresponding
 argument.  So, {\tt part1} has the same value as
 {\tt line1}, {\tt part2} has the same value as {\tt line2},
 and {\tt bruce} has the same value as {\tt cat}.
+
+每个形参都指向其相应的实参的值。
+因此{\tt part1}和{\tt line1}的值相同，{\tt part2}和{\tt line2}的值相同，
+{\tt bruce}和 {\tt cat}的值相同。
 
 If an error occurs during a function call, Python prints the
 name of the function, and the name of the function that called
 it, and the name of the function that called {\em that}, all the
 way back to \verb"__main__".
 
+如果函数调用时发生错误，Python打印此函数的名字以及调用它的函数的名字，
+以及那个调用的函数的名字，所有回到\verb"__main__"的路径。
+
 For example, if you try to access {\tt cat} from within 
 \verb"print_twice", you get a {\tt NameError}:
+
+例如，如果你在\verb"print_twice"里面试图访问{\tt cat}，
+你获得一个{\tt NameError}：
 
 \begin{verbatim}
 Traceback (innermost last):
@@ -3288,12 +3372,16 @@ were executing at the time.  It also shows the line of code that
 caused the error.
 \index{traceback}
 
+这个函数列表被称作一个{\bf 回溯（traceback）}。
+它告诉你发生错误的程序文件，以及此时执行到什么行，什么函数。
+它也展示引起错误的代码行。
+
 The order of the functions in the traceback is the same as the
 order of the frames in the stack diagram.  The function that is
 currently running is at the bottom.
 
 
-\section{Fruitful functions and void functions}
+\section{Fruitful functions and void functions 有返回值函数和无返回值函数}
 \index{fruitful function}
 \index{void function}
 \index{function, fruitful}
@@ -3304,10 +3392,18 @@ results; for lack of a better name, I call them {\bf fruitful
   functions}.  Other functions, like \verb"print_twice", perform an
 action but don't return a value.  They are called {\bf void
   functions}.
+  
+有一些我们正在用的函数，例如数学函数，会产生结果；
+由于没有更好的命名，我叫他们{\bf 有返回值函数（fruitful functions）}。
+其它的函数，像\verb"print_twice"，执行一个动作但是不返回一个值。
+他们被称为{\bf 无返回值函数（void functions）}。
 
 When you call a fruitful function, you almost always
 want to do something with the result; for example, you might
 assign it to a variable or use it as part of an expression:
+
+当你调用一个有返回值函数时，你几乎总是想用结果做些事情，
+例如你可能将它赋给一个变量或者把它作为一个表达式的一部分。
 
 \begin{verbatim}
 x = math.cos(radians)
@@ -3317,6 +3413,8 @@ golden = (math.sqrt(5) + 1) / 2
 When you call a function in interactive mode, Python displays
 the result:
 
+当你在交互模式下调用一个函数的时候，Python显示结果：
+
 \begin{verbatim}
 >>> math.sqrt(5)
 2.2360679774997898
@@ -3324,6 +3422,9 @@ the result:
 %
 But in a script, if you call a fruitful function all by itself,
 the return value is lost forever!
+
+但是在脚本中，如果你只调用一个有返回值函数，
+返回值永远就丢失了！
 
 \begin{verbatim}
 math.sqrt(5)
@@ -3334,12 +3435,19 @@ or display the result, it is not very useful.
 \index{interactive mode}
 \index{script mode}
 
+该脚本计算5的平方根，但是既然它没保存或者显示这个结果，
+它不是非常有用。
+
 Void functions might display something on the screen or have some
 other effect, but they don't have a return value.  If you try to
 assign the result to a variable, you get a special value called
 {\tt None}.
 \index{None special value}
 \index{special value!None}
+
+无返回值函数可能在屏幕上显示一些东西或者有些其它的影响，
+但是他们没有返回值。如果你试图将这个结果赋给一个变量，
+你获得一个特殊的被称作{\tt None}的值。
 
 \begin{verbatim}
 >>> result = print_twice('Bing')
@@ -3352,6 +3460,8 @@ None
 The value {\tt None} is not the same as the string \verb"'None'". 
 It is a special value that has its own type:
 
+值{\tt None}和字符串\verb"'None'"不同。这是一个有它自己的类型的特殊变量：
+
 \begin{verbatim}
 >>> print type(None)
 <type 'NoneType'>
@@ -3360,34 +3470,53 @@ It is a special value that has its own type:
 The functions we have written so far are all void.  We will start
 writing fruitful functions in a few chapters.
 
+目前为止我们写的函数都是无返回值函数。
+我们将在几章之后开始写有返回值函数。
 
-\section{Why functions?}
+
+\section{Why functions? 为什么用函数？}
 \index{function, reasons for}
 
 It may not be clear why it is worth the trouble to divide
 a program into functions.  There are several reasons:
+
+为什么值得麻烦得将一个程序分解成函数可能还不是很清楚。
+有几个原因：
 
 \begin{itemize}
 
 \item Creating a new function gives you an opportunity to name a group
 of statements, which makes your program easier to read and debug.
 
+\item 生成一个新的函数给你一个命名一组语句的机会，
+这使得你的程序更容易读和调试。
+
 \item Functions can make a program smaller by eliminating repetitive
 code.  Later, if you make a change, you only have
 to make it in one place.
 
+\item 通过避免重复调用代码，函数使得程序更小。
+之后，如果你要做个变动，你只需在一处变动即可。
+
 \item Dividing a long program into functions allows you to debug the
 parts one at a time and then assemble them into a working whole.
+
+\item 讲一个长程序分解wie函数允许你一次调试一部分然后将它们集成为一个可行的整体。
 
 \item Well-designed functions are often useful for many programs.
 Once you write and debug one, you can reuse it.
 
+\item 良好设计的函数经常对多个程序都有用。
+一旦你写出并调试了一个函数，你可以重用它。
+
 \end{itemize}
 
 
-\section{Importing with {\tt from}}
+\section{Importing with {\tt from} 使用{\tt from}导入}
 
 Python provides two ways to import modules; we have already seen one:
+
+Python提供两种方法导入模块。我们已经看到了一种：
 
 \begin{verbatim}
 >>> import math
@@ -3401,7 +3530,12 @@ If you import {\tt math}, you get a module object named {\tt math}.
 The module object contains constants like {\tt pi} and functions
 like {\tt sin} and {\tt exp}.
 
+如果你导入{\tt math}，你获得一个名为{\tt math}的模块对象。
+该模块对象包括类似{\tt pi}的常量以及类似{\tt sin}和{\tt exp}的函数。
+
 But if you try to access {\tt pi} directly, you get an error.
+
+但是，如果你试图直接访问{\tt pi}，会获得一个错误：
 
 \begin{verbatim}
 >>> print pi
@@ -3412,12 +3546,16 @@ NameError: name 'pi' is not defined
 %
 As an alternative, you can import an object from a module like this:
 
+另一种方法是，你可以像这样从一个模块中导入一个对象：
+
 \begin{verbatim}
 >>> from math import pi
 \end{verbatim}
 %
 Now you can access {\tt pi} directly, without dot notation.
 \index{dot notation}
+
+现在，你可以直接访问{\tt pi}，不需要点记法了。
 
 \begin{verbatim}
 >>> print pi
@@ -3426,6 +3564,8 @@ Now you can access {\tt pi} directly, without dot notation.
 %
 Or you can use the star operator to import {\it everything} from the
 module:
+
+或者你可以用星号操作符从模块中导入所有的东西：
 
 \begin{verbatim}
 >>> from math import *
@@ -3438,8 +3578,11 @@ code can be more concise.  The disadvantage is that there might be
 conflicts between names defined in different modules, or between
 a name from a module and one of your variables.
 
+从数学模块中导入所有东西的优点是你的代码变得更简洁。
+缺点是不同模块之间的名字，或者来自模块的名与你自己的变量名可能会冲突。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \label{editor}
 \index{debugging}
 
@@ -3450,113 +3593,128 @@ editors that know about Python do this by default, but some
 don't.
 \index{whitespace}
 
+如果你正在用一个文本编辑器写你的脚本，你可能会遇到空格和制表符的问题。
+避免这些问题最好的办法是只使用空格（不用制表符）。
+大多数识别Python的文本编辑器默认这么做，但有些不是。
+
 Tabs and spaces are usually invisible, which makes them
 hard to debug, so try to find an editor that manages indentation
 for you.
+
+制表符和空格通常是不可见的，这使得它们很难调试，
+因此尽量找一个自动缩进的编辑器。
 
 Also, don't forget to save your program before you run it.  Some
 development environments do this automatically, but some don't.
 In that case the program you are looking at in the text editor
 is not the same as the program you are running.
 
+同时，别忘了在运行程序之前保存它。
+一些开发环境自动做这个，但是有些不是。
+如果是这样的话，你在文本编辑器上看到的程序和你运行的不一样。
+
 Debugging can take a long time if you keep running the same,
 incorrect, program over and over!
+
+如果你一遍一遍运行一个相同的、错误的程序，调试可能要花很长时间。
 
 Make sure that the code you are looking at is the code you are running.
 If you're not sure, put something like \verb"print 'hello'" at the
 beginning of the program and run it again.  If you don't see
 \verb"hello", you're not running the right program!
 
+确定你所看到的代码是你所运行的。
+如果不确定，将一些类似\verb"print 'hello'"的代码放到程序的开始并再次运行它。
+如果你么有看到\verb"hello"，那么你没在运行一个正确的程序。
 
 
-
-\section{Glossary}
+\section{Glossary 词汇表}
 
 \begin{description}
 
-\item[function:] A named sequence of statements that performs some
+\item[function（函数）:] A named sequence of statements that performs some
 useful operation.  Functions may or may not take arguments and may or
 may not produce a result.
 \index{function}
 
-\item[function definition:]  A statement that creates a new function,
+\item[function definition（函数定义）:]  A statement that creates a new function,
 specifying its name, parameters, and the statements it executes.
 \index{function definition}
 
-\item[function object:]  A value created by a function definition.
+\item[function object（函数对象）:]  A value created by a function definition.
 The name of the function is a variable that refers to a function
 object.
 \index{function definition}
 
-\item[header:] The first line of a function definition.
+\item[header（函数头）:] The first line of a function definition.
 \index{header}
 
-\item[body:] The sequence of statements inside a function definition.
+\item[body（函数体）:] The sequence of statements inside a function definition.
 \index{body}
 
-\item[parameter:] A name used inside a function to refer to the value
+\item[parameter（形参）:] A name used inside a function to refer to the value
 passed as an argument.
 \index{parameter}
 
-\item[function call:] A statement that executes a function. It
+\item[function call（函数调用）:] A statement that executes a function. It
 consists of the function name followed by an argument list.
 \index{function call}
 
-\item[argument:]  A value provided to a function when the function is called.
+\item[argument（实参）:]  A value provided to a function when the function is called.
 This value is assigned to the corresponding parameter in the function.
 \index{argument}
 
-\item[local variable:]  A variable defined inside a function.  A local
+\item[local variable（局部变量）:]  A variable defined inside a function.  A local
 variable can only be used inside its function.
 \index{local variable}
 
-\item[return value:]  The result of a function.  If a function call
+\item[return value（返回值）:]  The result of a function.  If a function call
 is used as an expression, the return value is the value of
 the expression.
 \index{return value}
 
-\item[fruitful function:] A function that returns a value.
+\item[fruitful function（有返回值函数）:] A function that returns a value.
 \index{fruitful function}
 
-\item[void function:] A function that doesn't return a value.
+\item[void function（无返回值函数）:] A function that doesn't return a value.
 \index{void function}
 
-\item[module:] A file that contains a
+\item[module（模块）:] A file that contains a
 collection of related functions and other definitions.
 \index{module}
 
-\item[import statement:] A statement that reads a module file and creates
+\item[import statement（导入语句）:] A statement that reads a module file and creates
 a module object.
 \index{import statement}
 \index{statement!import}
 
-\item[module object:] A value created by an {\tt import} statement
+\item[module object（模块对象）:] A value created by an {\tt import} statement
 that provides access to the values defined in a module.
 \index{module}
 
-\item[dot notation:]  The syntax for calling a function in another
+\item[dot notation（点记法）:]  The syntax for calling a function in another
 module by specifying the module name followed by a dot (period) and
 the function name.
 \index{dot notation}
 
-\item[composition:] Using an expression as part of a larger expression,
+\item[composition（组合）:] Using an expression as part of a larger expression,
 or a statement as part of a larger statement.
 \index{composition}
 
-\item[flow of execution:]  The order in which statements are executed during
+\item[flow of execution（执行流程）:]  The order in which statements are executed during
 a program run.
 \index{flow of execution}
 
-\item[stack diagram:]  A graphical representation of a stack of functions,
+\item[stack diagram（栈图）:]  A graphical representation of a stack of functions,
 their variables, and the values they refer to.
 \index{stack diagram}
 
-\item[frame:]  A box in a stack diagram that represents a function call.
+\item[frame（边框）:]  A box in a stack diagram that represents a function call.
 It contains the local variables and parameters of the function.
 \index{function frame}
 \index{frame}
 
-\item[traceback:]  A list of the functions that are executing,
+\item[traceback（回溯）:]  A list of the functions that are executing,
 printed when an exception occurs.
 \index{traceback}
 
