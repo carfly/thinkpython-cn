@@ -808,7 +808,7 @@ and accurately.  As it turns out, the process of learning to program is an
 excellent opportunity to practice problem-solving skills.  That's why
 this chapter is called, ``The way of the program.''
 
-对于计算机科学家，唯一最重要的技能是{\bf 解决问题}。
+对于计算机科学家，唯一最重要的技能是{\bf 解决问题（problem solving）}。
 解决问题意味着对问题进行形式化、对解决方案创新地思考以及清晰、精确地表达解决方案的能力。
 事实证明，学习编程的过程是一个极佳的实践解决问题技能的机会。
 这也是为什么本章被称为``编程的方法''。
@@ -829,7 +829,7 @@ The programming language you will learn is Python. Python is
 an example of a {\bf high-level language}; other high-level languages
 you might have heard of are C, C++, Perl, and Java.
 
-你将学习的编程语言是Python。Python是{\bf 高级语言}的一个例子；
+你将学习的编程语言是Python。Python是{\bf 高级语言（high-level language）}的一个例子；
 其它你可能听说的高级语言包括C、C++、Perl以及Java。
 
 There are
@@ -845,7 +845,7 @@ disadvantage of high-level languages.
 \index{language!high-level}
 \index{language!low-level}
 
-另外也有{\bf 低级语言}，有时指``机器语言''或``汇编语言''。
+另外也有{\bf 低级语言（low-level languages）}，有时指``机器语言''或``汇编语言''。
 大概来讲，计算机只能运行低级语言写的程序。
 因此使用高级语言写的程序运行之前必须被处理。
 这一额外的处理过程将花些时间，这是高级语言的一个小缺点。
@@ -860,7 +860,7 @@ kind of computer and have to be rewritten to run on another.
 
 优点是巨大的。首先，使用高级语言编程要容易的多。
 用高级语言写程序需要花更少的时间，它们更短、更易读并且更有可能正确。
-其次，高级语言是{\bf 可移植的}，也就是说只需很少的修改或者无需修改，
+其次，高级语言是{\bf 可移植的（portable）}，也就是说只需很少的修改或者无需修改，
 它们就可以运行在不同类型的计算机上。
 低级语言只能运行于一种类型的计算机上，如果要运行于其它类型的计算机上，
 不得不进行重写。
@@ -884,7 +884,7 @@ Figure~\ref{fig.interpret} shows the structure of an interpreter.
 \index{object code}
 \index{executable}
 
-将高级语言处理成低级语言有两种程序：{\bf 解释器}和{\bf 编译器}。
+将高级语言处理成低级语言有两种程序：{\bf 解释器（interpreters）}和{\bf 编译器（compilers）}。
 解释器读高级语言程序并且执行它，也就是说它按照程序说的去做。
 它一次处理一些程序，交替地读几行程序并且执行计算。
 图~\ref{fig.interpret} 展示了一个解释器的结构。
@@ -906,8 +906,8 @@ compiled, you can execute it repeatedly without further translation.
 Figure~\ref{fig.compile} shows the structure of a compiler.
 
 编译器在程序开始运行之前，读取整个程序并且将其全部翻译。
-在这种情况下，高级语言程序被称为{\bf 源代码}，
-翻译后的程序被称为{\bf 目标代码}或者{\bf 可执行代码}。
+在这种情况下，高级语言程序被称为{\bf 源代码（source code）}，
+翻译后的程序被称为{\bf 目标代码（object code）}或者{\bf 可执行代码（executable）}。
 一旦一个程序被编译，你可以重复的执行它无需再翻译。
 图~\ref{fig.compile} 展示了一个编译器的结构。
 
@@ -929,7 +929,7 @@ the result:
 \index{script mode}
 
 Python被认为是解释性语言，因为Python程序被解释器执行。
-有两种方法使用解释器：{\bf 交互式模式}和{\bf 脚本模式}。
+有两种方法使用解释器：{\bf 交互式模式（interactive mode）}和{\bf 脚本模式（script mode）}。
 在交互式模式下，你键入Python程序，解释器显示结果：
 
 \begin{verbatim}
@@ -942,7 +942,7 @@ The chevron, \verb">>>", is the
 you type {\tt 1 + 1}, the interpreter replies {\tt 2}.
 \index{prompt}
 
-\verb">>>"是{\bf 提示符}，解释器用其表示它准备好了。
+\verb">>>"是{\bf 提示符（prompt）}，解释器用其表示它准备好了。
 如果你键入{\tt 1 + 1}，解释器回复{\tt 2}。
 
 Alternatively, you can store code in a file and use the interpreter to
@@ -951,7 +951,7 @@ convention, Python scripts have names that end with {\tt .py}.
 \index{script}
 
 另外，你可以将代码存储在一个文件中，并且用解释器执行这个文件的内容，
-其被成为{\bf 脚本}。习惯上，Python脚本以{\tt .py}结尾命名。
+其被成为{\bf 脚本（script）}。习惯上，Python脚本以{\tt .py}结尾命名。
 
 To execute the script, you have to tell the interpreter the name of
 the file.  If you have a script named {\tt dinsdale.py} and you are
@@ -985,7 +985,7 @@ as searching and replacing text in a document or (strangely enough)
 compiling a program.
 \index{program}
 
-一个{\bf 程序}是一序列指令，其具体说明如何执行一个计算。
+一个{\bf 程序（program）}是一序列指令，其具体说明如何执行一个计算。
 计算可能是一些数学的东西，例如解一个公式系统或者找到一个多项式的解，
 而它也可能是一个符号计算，例如在一个文档中搜索并替换文本或者（不可思议地）编译一个程序。
 
@@ -1039,7 +1039,7 @@ simple enough to be performed with one of these basic instructions.
 That may be a little vague, but we will come back to this topic
 when we talk about {\bf algorithms}.
 
-这可能有些模糊，但是当我们讨论{\bf 算法}的时候，将回到这些主题。
+这可能有些模糊，但是当我们讨论{\bf 算法（algorithms）}的时候，将回到这些主题。
 
 \section{What is debugging? 什么是调试？}
 \index{debugging}
@@ -1051,8 +1051,8 @@ are called {\bf bugs} and the process of tracking them down is called
 \index{debugging}
 \index{bug}
 
-编程是易于出错的。由于比较奇怪的原因，编程的错误被称为{\bf 虫子}，
-并且追踪它们的过程被称为{\bf 找虫子或调试}。
+编程是易于出错的。由于比较奇怪的原因，编程的错误被称为{\bf 虫子（bugs）}，
+并且追踪它们的过程被称为{\bf 找虫子或调试（debugging）}。
 
 Three kinds of errors can occur in a program: syntax errors, runtime 
 errors, and semantic errors. It is useful
@@ -1078,9 +1078,9 @@ For example, parentheses have to come in matching pairs, so
 
 Python只能执行语法正确的程序。
 否则，解释器显示一个错误信息。
-{\bf 语法}指的是一个程序的结构以及关于那些结构的规则。
+{\bf 语法（Syntax）}指的是一个程序的结构以及关于那些结构的规则。
 例如，括号必须成对出现，所以{\tt (1 + 2)}是合法的，
-而{\tt 8)}是一个{\bf 语法错误}。
+而{\tt 8)}是一个{\bf 语法错误（syntax error）}。
 
 In English readers can tolerate most syntax errors, which is why we
 can read the poetry of e. e. cummings without spewing error messages.
@@ -1112,7 +1112,7 @@ indicate that something exceptional (and bad) has happened.
 \index{language!safe}
 
 第二类错误是运行时错误，之所以这么叫，是因为程序开始运行以后，
-这些错误才出现。这些错误也被称为{\bf 异常}，
+这些错误才出现。这些错误也被称为{\bf 异常（exceptions）}，
 因为它们通常意味着一些异常的（并且是坏的）事情发生。
 
 Runtime errors are rare in the simple programs you will see in the
@@ -1132,7 +1132,7 @@ that the computer will not generate any error messages, but it will
 not do the right thing.  It will do something else.  Specifically, it
 will do what you told it to do.
 
-第三类错误是{\bf 语义错误}。
+第三类错误是{\bf 语义错误（semantic error）}。
 如果你的程序中有一个语义错误，在计算机不会生成错误信息的意义上，
 它将成功运行。但是，它将不会做正确的事情。它将做其它的事情。
 特别地，它将做你告诉它要做的事情。
@@ -1223,7 +1223,7 @@ such as English, Spanish, and French.  They were not designed
 by people (although people try to impose some order on them);
 they evolved naturally.
 
-{\bf 自然语言}是人们说的语言，例如英语、西班牙语和法语。
+{\bf 自然语言（natural languages）}是人们说的语言，例如英语、西班牙语和法语。
 它们不是人类设计的（虽然人们试图在其上强加上一些顺序），
 他们自然的演变。
 
@@ -1234,7 +1234,7 @@ relationships among numbers and symbols.  Chemists use a formal
 language to represent the chemical structure of molecules.  And
 most importantly:
 
-{\bf 正则语言}是由人为了特殊应用设计的。
+{\bf 正则语言（formal languages）}是由人为了特殊应用设计的。
 例如，数学家使用的符号就是正则语言，其特别擅长表示数字和符号直接的关系。
 化学家使用正则语言表示分子的化学结构。
 最重要的是：
@@ -1265,7 +1265,7 @@ there is no element with the abbreviation $Zz$.
 \index{token}
 \index{structure}
 
-语法规则有关于{\bf 记号}和结构的两种类型。
+语法规则有关于{\bf 记号（tokens）}和结构的两种类型。
 记号是语言的基本元素，例如单词、数字和化学元素。
 $3 + = 3 \mbox{\$} 6$的问题之一就是\( \$ \)在数学中不是一个合法的记号
 （至少据我所知）。相似的，$_2Zz$也不合法，因为没有一个元素简称$Zz$。
@@ -1298,7 +1298,7 @@ process is called {\bf parsing}.
 
 当你读一个用英语写的句子或者用正则语言写的语句时，
 你得指出句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
-这个过程被称作{\bf 分析}。
+这个过程被称作{\bf 分析（parsing）}。
 
 For example, when you hear the sentence, ``The penny dropped,'' you
 understand that ``the penny'' is the subject and ``dropped'' is the
@@ -1430,7 +1430,7 @@ This is an example of a {\bf print statement}, which
 doesn't actually print anything on paper.  It displays a value on the
 screen.  In this case, the result is the words
 
-这是{\bf print 语句}的一个实例，其并不是真的在纸上打印任何东西。
+这是{\bf 打印语句（print statement）}的一个实例，其并不是真的在纸上打印任何东西。
 它在屏幕上显示一个值。在此例中，结果是单词：
 
 \begin{verbatim}
@@ -1731,7 +1731,7 @@ number.  The values we have seen so far
 are {\tt 1}, {\tt 2}, and
 \verb"'Hello, World!'".
 
-{\bf 值}是基本的与程序打交道的事物之一，像字母或者数字。
+{\bf 值（value）}是基本的与程序打交道的事物之一，像字母或者数字。
 到目前，我们已经见过的值是{\tt 1}、{\tt 2}以及\verb"'Hello, World!'"。
 
 These values belong to different {\bf types}:
@@ -1741,8 +1741,8 @@ You (and the interpreter) can identify
 strings because they are enclosed in quotation marks.
 \index{quotation mark}
 
-这些值属于不同的{\bf 类型}：
-{\tt 2}是一个整数，\verb"'Hello, World!'"是一个{\bf 字符串}，
+这些值属于不同的{\bf 类型（types）}：
+{\tt 2}是一个整数，\verb"'Hello, World!'"是一个{\bf 字符串（string）}，
 之所以这么叫，是因为它包括``一串''字母。
 你（以及解释器）能识别字符串是因为他们被括在引号中间。
 
@@ -1772,7 +1772,7 @@ format called {\bf floating-point}.
 
 不奇怪，字符串属于{\tt str}类型，整数属于{\tt int}类型。
 不太明显地，具有小数点的数字属于一种被称作{\tt float}的类型，
-因为这些数字使用{\bf 浮点}格式表示。
+因为这些数字使用{\bf 浮点（floating-point）}格式表示。
 
 \begin{verbatim}
 >>> type(3.2)
@@ -1834,13 +1834,13 @@ One of the most powerful features of a programming language is the
 ability to manipulate {\bf variables}.  A variable is a name that
 refers to a value.
 
-编程语言最强大的特征之一是操作{\bf 变量}的能力。
+编程语言最强大的特征之一是操作{\bf 变量（variables）}的能力。
 变量是指一个值的名字。
 
 An {\bf assignment statement} creates new variables and gives
 them values:
 
-一个{\bf 赋值语句}生成新的变量并且将值赋给它们。
+一个{\bf 赋值语句（assignment statement）}生成新的变量并且将值赋给它们。
 
 \begin{verbatim}
 >>> message = 'And now for something completely different'
@@ -1867,7 +1867,7 @@ variables is in (think of it as the variable's state of mind).
 Figure~\ref{fig.state2} shows the result of the previous example.
 
 在纸上表示变量的方法通常是写一个变量名跟着一个箭头指向变量的值。
-这种图被称为{\bf 状态图}，因为它展示了每个变量所处的状态（将其想为变量的心理状态）。
+这种图被称为{\bf 状态图（state diagram）}，因为它展示了每个变量所处的状态（将其想为变量的心理状态）。
 图~\ref{fig.state2}展示了前面例子的的结果。
 
 \begin{figure}
@@ -1969,7 +1969,7 @@ interpreter uses keywords to recognize the structure of the program,
 and they cannot be used as variable names.
 \index{keyword}
 
-实际上，{\tt class}是Python的{\bf 关键字}之一。
+实际上，{\tt class}是Python的{\bf 关键字（keywords）}之一。
 解释器使用关键字识别程序的结构，它们不能被用作变量名。
 
 Python 2 has 31 keywords:
@@ -2007,8 +2007,8 @@ is on this list.
 addition and multiplication.  The values the operator is applied to
 are called {\bf operands}.
 
-{\bf 操作符}是特殊的符号，表示类似加法和乘法的计算。
-操作符被应用的值被称作{\bf 操作数}。
+{\bf 操作符（operators）}是特殊的符号，表示类似加法和乘法的计算。
+操作符被应用的值被称作{\bf 操作数（operands）}。
 
 The operators {\tt +}, {\tt -}, {\tt *}, {\tt /} and {\tt **}
 perform addition, subtraction, multiplication, division and
@@ -2051,7 +2051,7 @@ integer; floor division chops off the fraction
 part, so in this example it rounds down to zero.
 
 {\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0.
-造成这一差异的原因是Python执行{\bf 向下取整除}。
+造成这一差异的原因是Python执行{\bf 向下取整除（floor division）}。
 当两个操作数都是整数时，结果也是整数；
 向下取整除砍掉小数部分，因此此例中其下舍入成为了0。
 
@@ -2086,7 +2086,7 @@ a variable, so the following are all legal expressions
 \index{expression}
 \index{evaluate}
 
-一个{\bf 表达式}是值、变量和运算符的组合。
+一个{\bf 表达式（expression）}是值、变量和运算符的组合。
 值自身被认为是一个表达式，变量也是，因此下面都是合法的表达式
 （假设变量{\tt x}已经被赋值了）：
 
@@ -2100,7 +2100,7 @@ A {\bf statement} is a unit of code that the Python interpreter can
 execute.  We have seen two kinds of statement: print and
 assignment.
 
-一条{\bf 语句}是一个Python解释器可以执行的代码单元。
+一条{\bf 语句（statement）}是一个Python解释器可以执行的代码单元。
 你已经见过两种语句了：打印和赋值。
 
 Technically an expression is also a statement, but it is probably
@@ -2219,7 +2219,7 @@ The acronym {\bf PEMDAS} is a useful way to
 remember the rules:
 \index{parentheses!overriding precedence}
 
-当一个表达式中有多于一个操作符时，计算的顺序依赖{\bf 优先级规则}。
+当一个表达式中有多于一个操作符时，计算的顺序依赖{\bf 优先级规则（rules of precedence）}。
 对于算数运算，Python遵循数学的惯例。
 缩写 {\bf PEMDAS}有助于记住这一规则：
 
@@ -2291,7 +2291,7 @@ linking them end-to-end.  For example:
 \index{concatenation}
 
 {\tt +}操作符可用于字符串，但是它可能不会做你所期望的事情：
-它执行{\bf 级联}操作，也就是将字符串端到端的连起来。
+它执行{\bf 级联（concatenation）}操作，也就是将字符串端到端的连起来。
 例如：
 
 \begin{verbatim}
@@ -2343,7 +2343,7 @@ in natural language what the program is doing.  These notes are called
 {\bf comments}, and they start with the \verb"#" symbol:
 
 因此，增加在你的程序中增加标注来用自然语言解释程序做什么通常是比较好的办法。
-这些标注被称为{\bf 注释}，其以\verb"#"符号开始。
+这些标注被称为{\bf 注释（comments）}，其以\verb"#"符号开始。
 
 \begin{verbatim}
 # compute the percentage of the hour that has elapsed
