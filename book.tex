@@ -18021,12 +18021,16 @@ Remember, the goal is not just to make the program
 work.  The goal is to learn how to make the program work.
 
 
-\chapter{Analysis of Algorithms}
+\chapter{Analysis of Algorithms 算法分析}
 
 \begin{quote}
 This appendix is an edited excerpt from {\it Think Complexity}, by
 Allen B. Downey, also published by O'Reilly Media (2011).  When you
 are done with this book, you might want to move on to that one.
+
+本附录摘自Allen B. Downey的{\it Think Complexity}，
+也由O'Reilly Media (2011)出版。
+当你读完本书后，你可能想继续读那一本。
 \end{quote}
 
 {\bf Analysis of algorithms} is a branch of computer science that
@@ -18035,8 +18039,14 @@ space requirements.  See
 \url{http://en.wikipedia.org/wiki/Analysis_of_algorithms}.
 \index{algorithm} \index{analysis of algorithms}
 
+{\bf 算法分析（Analysis of algorithms）}是计算机科学的一个分支，
+其研究算法的性能，特别是他们运行的时间和空间需求。
+见：\url{http://en.wikipedia.org/wiki/Analysis_of_algorithms}。
+
 The practical goal of algorithm analysis is to predict the performance
 of different algorithms in order to guide design decisions.
+
+算法分析的实际目的是预测不同算法的性能，以指导设计决策。
 
 During the 2008 United States Presidential Campaign, candidate
 Barack Obama was asked to perform an impromptu analysis when
@@ -18048,6 +18058,13 @@ See \url{http://www.youtube.com/watch?v=k4RRi_ntQc8}.
 \index{Obama, Barack}
 \index{Schmidt, Eric}
 \index{bubble sort}
+
+2008年美国总统选举期间，当候选人Barack Obama访问Google时，
+他被要求进行即席的分析。首席执行官Eric Schmidt开玩笑的问他
+``对一百万个32位整数排序的最有效的方法''。
+显然有人暗中通知了Obama，因为他很快回答，
+``我认为冒泡排序是错误的方法''。
+见：\url{http://www.youtube.com/watch?v=k4RRi_ntQc8}。
 
 This is true: bubble sort is conceptually simple but slow for
 large datasets.  The answer Schmidt was probably looking for is
@@ -18063,9 +18080,23 @@ a significant effect on performance, then I would look
 around for a good implementation of radix sort.''}.
 \index{radix sort}
 
+这是对的：冒泡排序概念上很简单，但是对于大数据集非常慢。
+Schmidt可能在寻找的答案是``基数排序（radix sort）''
+（\url{http://en.wikipedia.org/wiki/Radix_sort}）\footnote{
+但是如果你面试的时候被问及类似的问题，
+我想更好的答案是，``对一百万整数排序的最快的方法是
+使用我正在用的编程语言所提供的任何排序函数。
+对于大多数的应用，其性能已经足够了，但是如果对于我的应用它太慢了，
+我将用一个分析器查看时间都花在哪儿了。
+如果看上去一个更快的排序算法对系能有显著的影响，
+那么我将找一个好的基数排序实现。''
+
 The goal of algorithm analysis is to make meaningful
 comparisons between algorithms, but there are some problems:
 \index{comparing algorithms}
+
+算法分析的目的是在算法直接进行有意义的比较，
+但是有一些问题：
 
 \begin{itemize}
 
@@ -18076,6 +18107,11 @@ The general solution to this problem is to specify a
 {\bf machine model} and analyze the number of steps, or
 operations, an algorithm requires under a given model.
 \index{machine model}
+
+算法相对的性能依赖于硬件的特性，因此一个算法可能在机器A上比较快，
+另一个算法则在机器B上比较快。
+对此问题一般的解决办法是指定一个{\bf 机器模型（machine model）}
+并且分析一个算法在一个给定模型下所需的步骤或操作的数目。
 
 \item Relative performance might depend on the details of
 the dataset.  For example, some sorting
@@ -18088,6 +18124,12 @@ and it might not be obvious what set of cases to average over.
 \index{worst case}
 \index{average case}
 
+相对性能可能依赖于数据集的细节。
+例如，如果数据已经部分排好序，一些排序算法可能更快；
+此时其它算法运行的比较慢。
+避免该问题的一般方法是分析{\bf 最坏情况（worst case）}。
+有时分析平均情况性能，但那通常更难而且可能对什么案例的集合进行平均并不明显。
+
 \item Relative performance also depends on the size of the
 problem.  A sorting algorithm that is fast for small lists
 might be slow for long lists.
@@ -18096,6 +18138,11 @@ The usual solution to this problem is to express run time
 and to compare the functions {\bf asymptotically} as the problem
 size increases.
 \index{asymptotic analysis}
+
+相对性能也依赖于问题的规模。
+一个对于小列表很快的排序算法可能对于长列表很慢。
+对此问题通常的解决方法是将运行时间（或则操作的数目）表示成问题规模的函数，
+并且随着问题规模的增长{\bf 渐近地（asymptotically）}比较函数
 
 \end{itemize}
 
@@ -18106,11 +18153,16 @@ proportional to the size of the input, $n$, and Algorithm B
 tends to be proportional to $n^2$, then I
 expect A to be faster than B for large values of $n$.
 
+关于此类比较的好处是对算法的简单分类。
+例如，如果我知道算法A的运行时间与输入的规模$n$成正比，
+算法B与$n^2$成正比，那么我期望对于很大的$n$值，A比B快。
+
 This kind of analysis comes with some caveats, but we'll get
 to that later.
 
+这类分析也有一些问题，我们后面会提到。
 
-\section{Order of growth}
+\section{Order of growth 增长的阶数}
 
 Suppose you have analyzed two algorithms and expressed
 their run times in terms of the size of the input:
@@ -18118,8 +18170,14 @@ Algorithm A takes $100n+1$ steps to solve a problem with
 size $n$; Algorithm B takes $n^2 + n + 1$ steps.
 \index{order of growth}
 
+假设你已经分析了两个算法并且用输入的规模表示它们的运行时间：
+算法A用$100n+1$步解决一个规模为$n$的问题；
+算法B用$n^2 + n + 1$步。
+
 The following table shows the run time of these algorithms
 for different problem sizes:
+
+下表显示了这些算法对于不同问题规模的运行时间：
 
 \begin{tabular}{|r|r|r|}
 \hline
@@ -18137,6 +18195,10 @@ At $n=10$, Algorithm A looks pretty bad; it takes almost 10 times
 longer than Algorithm B.  But for $n=100$ they are about the same, and
 for larger values A is much better.
 
+当$n=10$时，算法A看上去相当坏，它用了比算法B长10倍的时间。
+但是对于$n=100$，它们几乎相同，
+对于更大的值，A要好得多。
+
 The fundamental reason is that for large values of $n$, any function
 that contains an $n^2$ term will grow faster than a function whose
 leading term is $n$.  The {\bf leading term} is the term with the
@@ -18144,15 +18206,24 @@ highest exponent.
 \index{leading term}
 \index{exponent}
 
+根本原因是对于大的$n$值，任何包含$n^2$项的函数都比首项为$n$的函数增长要快。
+{\bf 首项（leading term）}是具有最高指数的项。
+
 For Algorithm A, the leading term has a large coefficient, 100, which
 is why B does better than A for small $n$.  But regardless of the
 coefficients, there will always be some value of $n$ where
 $a n^2 > b n$.
 \index{leading coefficient}
 
+对于算法A，首项有一个较大的系数100，这是为什么对于小$n$，B比A好。
+但是不考虑该系数，总有一些$n$值使得$a n^2 > b n$。
+
 The same argument applies to the non-leading terms.  Even if the run
 time of Algorithm A were $n+1000000$, it would still be better than
 Algorithm B for sufficiently large $n$.
+
+同样的理由适用于非首项。
+即使算法A的运行时间为$n+1000000$，对于足够大的$n$，它仍然比算法B好。
 
 In general, we expect an algorithm with a smaller leading term to be a
 better algorithm for large problems, but for smaller problems, there
@@ -18163,10 +18234,18 @@ purposes of algorithmic analysis.  But that doesn't mean you can forget
 about it.
 \index{crossover point}
 
+一般来讲，我们希望一个算法有一个较小的首项，使得对于大的问题其是一个好算法，
+但是对于小问题，可能有一个{\bf 交叉点（crossover point）} ，在此另一个算法更好。
+交叉点的位置依赖于算法的细节、输入以及硬件，因此对于算法分析目的，它通常被忽略。
+但是这不意味着你可以忘记它。
+
 If two algorithms have the same leading order term, it is hard to say
 which is better; again, the answer depends on the details.  So for
 algorithmic analysis, functions with the same leading term
 are considered equivalent, even if they have different coefficients.
+
+如果两个算法有相同的首项，很难说哪个更好。再次，答案依赖于细节。
+所以，对于算法分析，具有相同首项的函数被认为是相当的，即使它们具有不同的系数。
 
 An {\bf order of growth} is a set of functions whose asymptotic growth
 behavior is considered equivalent.  For example, $2n$, $100n$ and $n+1$ 
@@ -18176,15 +18255,27 @@ in the set grows linearly with $n$.
 \index{big-oh notation}
 \index{linear growth}
 
+{\bf 增长阶数（order of growth）}是一个函数集合，
+其渐近的增长行为被认为是相当的。
+例如$2n$、$100n$和$n+1$属于相同的增长阶数，
+被用{\bf 大O标记（Big-Oh notation）}写成$O(n)，
+而且通常被称作{\bf 线性的（linear）}，
+因为集合中的每个函数根据$n$线性增长。
+
 All functions with the leading term $n^2$ belong to $O(n^2)$; they are
 {\bf quadratic}, which is a fancy word for functions with the
 leading term $n^2$.
 \index{quadratic growth}
 
+首项为$n^2$的函数属于$O(n^2)$。它们是{\bf 二次的（quadratic）}，
+对于首项为$n^2$的函数，这是一个有趣的词。
+
 The following table shows some of the orders of growth that
 appear most commonly in algorithmic analysis,
 in increasing order of badness.
 \index{badness}
+
+下表以越来越坏的顺序显示了算法分析中最通常的一些增长阶数。
 
 \begin{tabular}{|r|r|r|}
 \hline
@@ -18211,6 +18302,10 @@ only useful for small problems.
 \index{logarithmic growth}
 \index{exponential growth}
 
+对于log项，log的基数没有什么关系。
+改变阶数等价于乘以一个常数，其不改变增长阶数。
+简单来讲，如果不考虑指数的基数，指数函数属于相同的增长结束。
+指数函数增长的非常快，因此指数级算法只对于小问题有用。
 
 \begin{exercise}
 
@@ -18249,6 +18344,11 @@ the characteristics of the input make a big difference.  And for small
 problems asymptotic behavior is irrelevant.
 \index{practical analysis of algorithms}
 
+关注性能的程序员经常发现这种分析很难忍受。
+他们有一个观点：有时系数和非首项会造成巨大的影响。
+有时，硬件的细节、编程语言以及输入的特性会造成很大的影响。
+对于小问题，渐近的行为没有什么影响。
+
 But if you keep those caveats in mind, algorithmic analysis is a
 useful tool.  At least for large problems, the ``better'' algorithms
 is usually better, and sometimes it is {\em much} better.  The
@@ -18257,6 +18357,10 @@ usually a constant factor, but the difference between a good algorithm
 and a bad algorithm is unbounded!
 \index{unbounded}
 
+但是，如果你记得那些警告，算法分析就是一个有用的工具。
+至少对于大问题，``更好的''算法通常更好，并且有时它要好的多。
+相同增长阶数的两个算法之间的不同通常是一个常数因子，
+但是一个好算法和一个坏算法之间的不同是无限的！
 
 \section{Analysis of basic Python operations}
 
