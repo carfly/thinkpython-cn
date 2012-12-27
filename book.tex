@@ -1997,7 +1997,7 @@ is on this list.
 你可能想随手携带这个表。如果解释器抱怨你的一个变量名并且你不知道为什么，
 看一下是否它在这个列表中。
 
-\section{Operators and operands 操作符和操作数}
+\section{Operators and operands 运算符和运算数}
 \index{operator, arithmetic}
 \index{arithmetic operator}
 \index{operand}
@@ -2007,14 +2007,14 @@ is on this list.
 addition and multiplication.  The values the operator is applied to
 are called {\bf operands}.
 
-{\bf 操作符（operators）}是特殊的符号，表示类似加法和乘法的计算。
-操作符被应用的值被称作{\bf 操作数（operands）}。
+{\bf 运算符（operators）}是特殊的符号，表示类似加法和乘法的计算。
+运算符被应用的值被称作{\bf 运算数（operands）}。
 
 The operators {\tt +}, {\tt -}, {\tt *}, {\tt /} and {\tt **}
 perform addition, subtraction, multiplication, division and
 exponentiation, as in the following examples:
 
-操作符{\tt +}、{\tt -}、{\tt *}、{\tt /}和{\tt **}分别执行加、减、乘、除和指数运算，
+运算符{\tt +}、{\tt -}、{\tt *}、{\tt /}和{\tt **}分别执行加、减、乘、除和指数运算，
 如下面的例子：
 
 \begin{verbatim}
@@ -2030,12 +2030,12 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 
 在一些其它语言中，\verb"^"表示指数运算，
 但是在Python中，它表示XOR（异或）位操作。
-本书不包括位操作符，
+本书不包括位运算符，
 但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容
 
 In Python 2, the division operator might not do what you expect:
 
-在Python 2中，除法操作符可能不是如你所期望的：
+在Python 2中，除法运算符可能不是如你所期望的：
 
 \begin{verbatim}
 >>> minute = 59
@@ -2052,7 +2052,7 @@ part, so in this example it rounds down to zero.
 
 {\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0.
 造成这一差异的原因是Python执行{\bf 向下取整除（floor division）}。
-当两个操作数都是整数时，结果也是整数；
+当两个运算数都是整数时，结果也是整数；
 向下取整除砍掉小数部分，因此此例中其下舍入成为了0。
 
 In Python 3, the result of this division is a {\tt float}.  The new operator
@@ -2069,7 +2069,7 @@ In Python 3, the result of this division is a {\tt float}.  The new operator
 If either of the operands is a floating-point number, Python performs
 floating-point division, and the result is a {\tt float}:
 
-如果其中有一个操作数是浮点数，则Python执行浮点除，结果是浮点数：
+如果其中有一个运算数是浮点数，则Python执行浮点除，结果是浮点数：
 
 \begin{verbatim}
 >>> minute/60.0
@@ -2219,7 +2219,7 @@ The acronym {\bf PEMDAS} is a useful way to
 remember the rules:
 \index{parentheses!overriding precedence}
 
-当一个表达式中有多于一个操作符时，计算的顺序依赖{\bf 优先级规则（rules of precedence）}。
+当一个表达式中有多于一个运算符时，计算的顺序依赖{\bf 优先级规则（rules of precedence）}。
 对于算数运算，Python遵循数学的惯例。
 缩写 {\bf PEMDAS}有助于记住这一规则：
 
@@ -2267,7 +2267,7 @@ I don't work very hard to remember rules of precedence for other
 operators.  If I can't tell by looking at the expression, I use
 parentheses to make it obvious.
 
-我不太努力，所以记不住其它操作符的优先级规则。
+我不太努力，所以记不住其它运算符的优先级规则。
 如果通过观察表达式，我不能说清楚，我使用括号使其变得更明显。
 
 \section{String operations 字符串操作}
@@ -2290,7 +2290,7 @@ might not do what you expect: it performs
 linking them end-to-end.  For example:
 \index{concatenation}
 
-{\tt +}操作符可用于字符串，但是它可能不会做你所期望的事情：
+{\tt +}运算符可用于字符串，但是它可能不会做你所期望的事情：
 它执行{\bf 级联（concatenation）}操作，也就是将字符串端到端的连起来。
 例如：
 
@@ -2308,9 +2308,9 @@ The {\tt *} operator also works on strings; it performs repetition.
 For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the operands
 is a string, the other has to be an integer.
 
-{\tt *}操作符也可应用于字符串；它执行重复操作。
+{\tt *}运算符也可应用于字符串；它执行重复操作。
 例如，\verb"'Spam'*3"的结果是\verb"'SpamSpamSpam'"。
-如果其中一个操作数是字符串，则另外一个必须是整数。
+如果其中一个运算数是字符串，则另外一个必须是整数。
 
 This use of {\tt +} and {\tt *} makes sense by
 analogy with addition and multiplication.  Just as {\tt 4*3} is
@@ -2411,7 +2411,7 @@ illegal characters.
 If you put a space in a variable name, Python thinks it is two
 operands without an operator:
 
-如果你在变量名中间放了一个空格，Python认为它是两个没有操作符的操作数。
+如果你在变量名中间放了一个空格，Python认为它是两个没有运算符的运算数。
 
 \begin{verbatim}
 >>> bad name = 5
@@ -2516,11 +2516,11 @@ program; you cannot use keywords like {\tt if}, {\tt  def}, and {\tt while} as
 variable names.
 \index{keyword}
 
-\item[operator（操作符）:]  A special symbol that represents a simple computation like
+\item[operator（运算符）:]  A special symbol that represents a simple computation like
 addition, multiplication, or string concatenation.
 \index{operator}
 
-\item[operand（操作数）:]  One of the values on which an operator operates.
+\item[operand（运算数）:]  One of the values on which an operator operates.
 \index{operand}
 
 \item[floor division（向下取整除）:] The operation that divides two numbers and chops off
@@ -2837,7 +2837,7 @@ example, the argument of a function can be any kind of expression,
 including arithmetic operators:
 
 程序设计语言的最有用特征之一是分解成小块并将其{\bf 组合（compose）}的能力。
-例如，函数的实参能够接受任何类型的表达式，包括算数操作符：
+例如，函数的实参能够接受任何类型的表达式，包括算数运算符：
 
 \begin{verbatim}
 x = math.sin(degrees / 360.0 * 2 * math.pi)
@@ -3564,7 +3564,7 @@ Now you can access {\tt pi} directly, without dot notation.
 Or you can use the star operator to import {\it everything} from the
 module:
 
-或者你可以用星号操作符从模块中导入所有的东西：
+或者你可以用星号运算符从模块中导入所有的东西：
 
 \begin{verbatim}
 >>> from math import *
@@ -18089,7 +18089,7 @@ Schmidt可能在寻找的答案是``基数排序（radix sort）''
 对于大多数的应用，其性能已经足够了，但是如果对于我的应用它太慢了，
 我将用一个分析器查看时间都花在哪儿了。
 如果看上去一个更快的排序算法对系能有显著的影响，
-那么我将找一个好的基数排序实现。''
+那么我将找一个好的基数排序实现。''}
 
 The goal of algorithm analysis is to make meaningful
 comparisons between algorithms, but there are some problems:
@@ -18258,7 +18258,7 @@ in the set grows linearly with $n$.
 {\bf 增长阶数（order of growth）}是一个函数集合，
 其渐近的增长行为被认为是相当的。
 例如$2n$、$100n$和$n+1$属于相同的增长阶数，
-被用{\bf 大O标记（Big-Oh notation）}写成$O(n)，
+被用{\bf 大O标记（Big-Oh notation）}写成$O(n)$，
 而且通常被称作{\bf 线性的（linear）}，
 因为集合中的每个函数根据$n$线性增长。
 
@@ -18362,7 +18362,7 @@ and a bad algorithm is unbounded!
 相同增长阶数的两个算法之间的不同通常是一个常数因子，
 但是一个好算法和一个坏算法之间的不同是无限的！
 
-\section{Analysis of basic Python operations}
+\section{Analysis of basic Python operations 基本Python运算的分析}
 
 Most arithmetic operations are constant time; multiplication
 usually takes longer than addition and subtraction, and division
@@ -18372,15 +18372,26 @@ are an exception; in that case the run time increases
 with the number of digits.
 \index{analysis of primitives}
 
+大部分算术运算是常数时间的。乘法通常比加减法用更长的时间，
+除法甚至更长，但是这些运行时间不依赖运算数的数量级。
+非常大的整数是个例外，在这种情况下，运行时间随着位数的增加而增加。
+
 Indexing operations---reading or writing elements in a sequence
 or dictionary---are also constant time, regardless of the size
 of the data structure.
 \index{indexing}
 
+索引运算---在序列或字典中读或写元素--也是常数时间，
+不考虑数据结构的大小。
+
 A {\tt for} loop that traverses a sequence or dictionary is
 usually linear, as long as all of the operations in the body
 of the loop are constant time.  For example, adding up the
 elements of a list is linear:
+
+一个遍历序列或字典的{\tt for}循环通常是线性的，
+只要循环体内的运算是常数时间。
+例如，累加一个列表的元素是线性的：
 
 \begin{verbatim}
     total = 0
@@ -18393,14 +18404,23 @@ the same thing, but it tends to be faster because it is a more
 efficient implementation; in the language of algorithmic analysis,
 it has a smaller leading coefficient.
 
+内建函数{\tt sum}也是线性的，因为它做相同的事情，
+但是它倾向于更快因为它是一个更有效的实现。
+用算法分析的语言讲，它有更小的首项系数。
+
 If you use the same loop to ``add'' a list of strings, the
 run time is quadratic
 because string concatenation is linear.
 \index{string concatenation}
 
+如果你用相同的循环``累加''一个字符串列表，
+运行时间是二次的，因为字符串叠加是线性的。
+
 The string method {\tt join} is usually faster because it is
 linear in the total length of the strings.
 \index{join@{\tt join}}
+
+字符串的{\tt join}方法通常更快，因为它与整个字符串的长度是线性关系。
 
 As a rule of thumb, if the body of a loop is in $O(n^a)$ then
 the whole loop is in $O(n^{a+1})$.  The exception is if you can
@@ -18408,9 +18428,19 @@ show that the loop exits after a constant number of iterations.
 If a loop runs $k$ times regardless of $n$, then
 the loop is in $O(n^a)$, even for large $k$.
 
+作为一个经验法则，如果循环体是$O(n^a)$，
+那么整个循环是$O(n^{a+1})$。
+例外是如果你能展示循环经过常数次迭代后退出。
+如果一个循环运行$k$次，无论$n$是什么，
+那么即使对于很大的$k$，循环也是$O(n^a)$。
+
 Multiplying by $k$ doesn't change the order of growth, but neither
 does dividing.  So if the body of a loop is in $O(n^a)$ and it runs
 $n/k$ times, the loop is in $O(n^{a+1})$, even for large $k$.
+
+乘以$k$不改变增长阶数，除以$k$也不会。
+因此，如果循环体是$O(n^a)$并且运行$n/k$次，
+那么即使对于很大的$k$，循环是$O(n^{a+1})$。
 
 Most string and tuple operations are linear, except indexing and {\tt
   len}, which are constant time.  The built-in functions {\tt min} and
@@ -18420,12 +18450,21 @@ of the input.
 \index{string methods}
 \index{tuple methods}
 
+大部分字符串和元组运算是线性的，除了索引和{\tt len}，它们是常数时间。
+内建函数{\tt min}和{\tt max}是线性的。
+划分运算与输出的长度成正比，但是和输入的大小无关。
+
 All string methods are linear, but if the lengths of
 the strings are bounded by a constant---for example, operations on single
 characters---they are considered constant time.
 
+所有字符串方法是线性的，但是如果字符串的长度受限于一个常数---例如，
+在一个字符上运算---它们被认为是常数时间。
+
 Most list methods are linear, but there are some exceptions:
 \index{list methods}
+
+大部分列表方法是线性的，但是有一些例外：
 
 \begin{itemize}
 
@@ -18435,10 +18474,19 @@ to a bigger location, but the total time for $n$ operations
 is $O(n)$, so we say that the ``amortized'' time for one
 operation is $O(1)$.
 
+平均来讲，在列表结尾增加一个元素是常数时间。
+当它超出了所占用空间时，它偶尔被拷贝到一个更大的地方，
+但是对于$n$个运算的整体时间仍为$O(n)$，
+所以我们说一个运算的``分摊''时间是$O(1)$。
+
 \item Removing an element from the end of a list is constant time.
+
+从一个列表结尾删除一个元素是常数时间。
 
 \item Sorting is $O(n \log n)$.
 \index{sorting}
+
+排序是$O(n \log n)$。
 
 \end{itemize}
 
@@ -18446,15 +18494,23 @@ Most dictionary operations and methods are constant time, but
 there are some exceptions:
 \index{dictionary methods}
 
+大部分字典运算和方法是常数时间，但有些例外：
+
 \begin{itemize}
 
 \item The run time of {\tt copy} is proportional to the number of
   elements, but not the size of the elements (it copies references,
   not the elements themselves).
+  
+{\tt copy}的运行时间正比于元素的个数，而非元素的大小
+（它）拷贝引用，而非元素自身。
 
 \item The run time of {\tt update} is
   proportional to the size of the dictionary passed as a parameter,
   not the dictionary being updated.
+
+{\tt update}的运行时间正比于作为形参被传递的字典的大小，
+而不是被更新的字典。
 
 \item {\tt keys}, {\tt values} and {\tt items} are linear because they
   return new lists; {\tt iterkeys}, {\tt itervalues} and {\tt
@@ -18464,11 +18520,19 @@ there are some exceptions:
   the order of growth unless the number of items you access is
   bounded.
 
+{\tt keys}、{\tt values}和{\tt items}是线性的，因为它们返回新的列表。
+{\tt iterkeys}、{\tt itervalues}和{\tt iteritems}是常数时间，因为它们返回迭代器。
+但是如果你对迭代器进行循环，循环将是线性的。
+使用``iter''函数省些时间，但是如果你访问的项数没有界限，它不会改变增长阶数。
+
 \end{itemize}
 
 The performance of dictionaries is one of the minor miracles of
 computer science.  We will see how they work in
 Section~\ref{hashtable}.
+
+字典的性能是计算机科学的一个小奇迹之一。
+在\ref{hashtable}节中，我们将看到它们是如何工作的。
 
 
 \begin{exercise}
@@ -18508,12 +18572,15 @@ the following questions:
 \end{exercise}
 
 
-\section{Analysis of search algorithms}
+\section{Analysis of search algorithms 搜索算法分析}
 
 A {\bf search} is an algorithm that takes a collection and a target
 item and determines whether the target is in the collection, often
 returning the index of the target.
 \index{search}
+
+{\bf 搜索（search）}是一个算法，其接受一个集合以及一个目标项，
+并决定该目标项是否在集合中，通常返回目标的索引值。
 
 The simplest search algorithm is a ``linear search,'' which traverses
 the items of the collection in order, stopping if it finds the target.
@@ -18521,9 +18588,16 @@ In the worst case it has to traverse the entire collection, so the run
 time is linear.
 \index{linear search}
 
+最简单的搜素算法是``线性搜索''，其按顺序遍历集合中的项，
+如果找到目标则停止。最坏的情况下，它不得不遍历全部集合，
+所以运行时间是线性的。
+
 The {\tt in} operator for sequences uses a linear search; so do string
 methods like {\tt find} and {\tt count}.
 \index{in@{\tt in} operator}
+
+序列的{\tt in}运算符使用线性搜索。
+字符串方法，如{\tt find}和{\tt count}也是这样。
 
 If the elements of the sequence are in order, you can use a {\bf
   bisection search}, which is $O(\log n)$.  Bisection search is
@@ -18533,12 +18607,23 @@ the beginning and checking each item in order, you start with the item
 in the middle and check whether the word you are looking for comes
 before or after.  If it comes before, then you search the first half
 of the sequence.  Otherwise you search the second half.  Either way,
-you cut the number of remaining items in half.  \index{bisection
-  search}
+you cut the number of remaining items in half.  
+\index{bisection search}
+
+如果训练是排好序的，你可以用{\bf 二分搜素（bisection search）}，
+其是$O(\log n)$。二分搜索和你在字典中查找一个单词的算法类似
+（真正的字典，不是数据结构）。
+不是从头开始并按顺序检查每个项，
+你从中间的项开始并检查你要查找的单词在前面还是后面。
+如果它出现在前面，那么你搜索序列的前半部分。
+否则你搜索后一半。如论如何，你将剩余的项数分为一半。
 
 If the sequence has 1,000,000 items, it will take about 20 steps to
 find the word or conclude that it's not there.  So that's about 50,000
 times faster than a linear search.
+
+如果序列有1,000,000项，它将花20步找到该单词或说找不到。
+因此它比线性搜索快大概50,000倍。
 
 \begin{exercise}
 
@@ -18566,13 +18651,16 @@ are implemented using hashtables, which is why most dictionary
 operations, including the {\tt in} operator, are constant time.
 
 
-\section{Hashtables}
+\section{Hashtables 哈希表}
 \label{hashtable}
 
 To explain how hashtables work and why their performance is so
 good, I start with a simple implementation of a map and
 gradually improve it until it's a hashtable.
 \index{hashtable}
+
+为了解释哈希表是如何工作的以及为什么它们的性能如此之好，
+我以一个简单的map实现开始并逐步改进它，直到它成为一个哈希表。
 
 I use Python to demonstrate these implementations, but in real
 life you wouldn't write code like this in Python; you would just use a
@@ -18581,15 +18669,27 @@ dictionaries don't exist and you want to implement a data structure
 that maps from keys to values.  The operations you have to
 implement are:
 
+我使用Python来演示这些实现，但是在真实情况下，
+你不会用Python写如此的代码。你只需用字典！
+因此对于本章剩下的内容，你需要假设字典并不存在，
+并且你想实现一个数据结构，将关键字映射为值。
+你需要实现的运算如下：
+
 \begin{description}
 
 \item[{\tt add(k, v)}:] Add a new item that maps from key {\tt k}
 to value {\tt v}.  With a Python dictionary, {\tt d}, this operation
 is written {\tt d[k] = v}.
 
+\item[{\tt add(k, v)}:] 增加一个新的项，其从关键字{\tt k}映射到值{\tt v}。
+使用Pythong的字典{\tt d}，该运算被写作{\tt d[k] = v}。
+
 \item[{\tt get(target)}:] Look up and return the value that corresponds
 to key {\tt target}.  With a Python dictionary, {\tt d}, this operation
 is written {\tt d[target]} or {\tt d.get(target)}.
+
+\item[{\tt get(target)}:] 查找并返回相应关键字为{\tt target}的值。
+使用Pythong的字典{\tt d}，该运算被写作{\tt d[target]}或{\tt d.get(target)}。
 
 \end{description}
 
@@ -18597,6 +18697,10 @@ For now, I assume that each key only appears once.
 The simplest implementation of this interface uses a list of
 tuples, where each tuple is a key-value pair.
 \index{LinearMap@{\tt LinearMap}}
+
+目前，我假设每个关键字只出现一次。
+该接口最简单的实现是使用一个元组列表，
+其中每个元组是关键字-值对。
 
 \begin{verbatim}
 class LinearMap(object):
@@ -18617,11 +18721,17 @@ class LinearMap(object):
 {\tt add} appends a key-value tuple to the list of items, which
 takes constant time.
 
+{\tt add}向项列表追加一个关键字-值元组，这是常数时间。
+
 {\tt get} uses a {\tt for} loop to search the list:
 if it finds the target key it returns the corresponding value;
 otherwise it raises a {\tt KeyError}.
 So {\tt get} is linear.
 \index{KeyError@{\tt KeyError}}
+
+{\tt get}使用{\tt for}循环搜索该列表：
+如果它找到目标关键字，返回相应的值；
+否则触发一个{\tt KeyError}。因此{\tt get}是线性的。
 
 An alternative is to keep the list sorted by key.  Then {\tt get}
 could use a bisection search, which is $O(\log n)$.  But inserting a
@@ -18632,12 +18742,25 @@ best option.  There are other data structures (see
 constant time, so let's move on.
 \index{red-black tree}
 
+另一个方案是保持列表按关键字排序。
+那么{\tt get}可以使用二分搜索，其是$O(\log n)$。
+但是在列表中间插入一个新的项是线性的，
+因此这可能不是最好的选择。
+有其它的数据结构（见：\url{http://en.wikipedia.org/wiki/Red-black_tree}）
+能在log时间内实现{\tt add} and {\tt get}，但是这仍然不如常数时间好，
+因此让我妈继续。
+
 One way to improve {\tt LinearMap} is to break the list of key-value
 pairs into smaller lists.  Here's an implementation called
 {\tt BetterMap}, which is a list of 100 LinearMaps.  As we'll see
 in a second, the order of growth for {\tt get} is still linear,
 but {\tt BetterMap} is a step on the path toward hashtables:
 \index{BetterMap@{\tt BetterMap}}
+
+一种实现{\tt LinearMap}的方法是将关键字-值对的列表分成小列表。
+这是一个被称作{\tt BetterMap}的更好的实现，其是100个LinearMaps的列表。
+正如一会我们要看到的，{\tt get}的增长阶数仍然是线性的，
+但是{\tt BetterMap}是迈向哈希表的一步。
 
 \begin{verbatim}
 class BetterMap(object):
@@ -18648,7 +18771,7 @@ class BetterMap(object):
             self.maps.append(LinearMap())
 
     def find_map(self, k):
-        index = hash(k) % len(self.maps)
+        index = hash(k) \% len(self.maps)
         return self.maps[index]
 
     def add(self, k, v):
@@ -18662,10 +18785,14 @@ class BetterMap(object):
 
 \verb"__init__" makes a list of {\tt n} {\tt LinearMap}s.
 
+\verb"__init__"产生{\tt n}个{\tt LinearMap}列表。
+
 \verb"find_map" is used by
 {\tt add} and {\tt get}
 to figure out which map to put the
 new item in, or which map to search.
+
+\verb"find_map"被{\tt add}和{\tt get}用来指出在哪个map中加入新项或则搜索哪个map。
 
 \verb"find_map" uses the built-in function {\tt hash}, which takes
 almost any Python object and returns an integer.  A limitation of this
@@ -18673,9 +18800,16 @@ implementation is that it only works with hashable keys.  Mutable
 types like lists and dictionaries are unhashable.
 \index{hash function}
 
+\verb"find_map"使用内建{\tt hash}函数，其接受几乎任何Pythong对象并返回一个整数。
+这一实现的一个限制是它仅适用于哈希表关键字。
+如列表和字典等易变的类型是不能哈希的。
+
 Hashable objects that are considered equal return the same hash value,
 but the converse is not necessarily true: two different objects
 can return the same hash value.
+
+被认为是相等的可哈希的对象返回相同的哈希值，
+但是反之不必成立：两个不同的对象能够返回相同的哈希值。
 
 \verb"find_map" uses the modulus operator to wrap the hash values
 into the range from 0 to {\tt len(self.maps)}, so the result is a legal
@@ -18684,11 +18818,22 @@ hash values will wrap onto the same index.  But if the hash function
 spreads things out pretty evenly (which is what hash functions
 are designed to do), then we expect $n/100$ items per LinearMap.
 
+\verb"find_map"使用求余运算符将哈希值包在0到{\tt len(self.maps)}之间，
+因此结果是对于该列表合法的索引值。
+当然，这意味着许多不同的哈希值将被包成相同的索引值。
+但是如果哈希函数散布相当均匀（这是哈希函数被设计的初衷），
+那么我们期望每个LinearMap有$n/100$项。
+
 Since the run time of {\tt LinearMap.get} is proportional to the
 number of items, we expect BetterMap to be about 100 times faster
 than LinearMap.  The order of growth is still linear, but the
 leading coefficient is smaller.  That's nice, but still not
 as good as a hashtable.
+
+既然{\tt LinearMap.get}的运行时间与项数成正比，
+我们期望BetterMap比LinearMap快100倍。
+增长阶数仍然是线性的，但是首系数变小了。
+这很好，但是仍然不如哈希表好。
 
 Here (finally) is the crucial idea that makes hashtables fast: if you
 can keep the maximum length of the LinearMaps bounded, {\tt
@@ -18698,8 +18843,15 @@ items per LinearMap exceeds a threshold, resize the hashtable by
 adding more LinearMaps.
 \index{bounded}
 
+在此（最终）是使哈希表变快的关键的想法：
+如果你能保证LinearMaps的最大长度是受限的，则{\tt LinearMap.get}是常数时间。
+所有你需要做的是跟踪项数并且当每个LinearMap的项数超过一个阈值时，
+通过增加更多的LinearMaps调整哈希表的大小。
+
 Here is an implementation of a hashtable:
 \index{HashMap}
+
+这是哈希表的一个实现：
 
 \begin{verbatim}
 class HashMap(object):
@@ -18732,13 +18884,24 @@ Each {\tt HashMap} contains a {\tt BetterMap}; \verb"__init__" starts
 with just 2 LinearMaps and initializes {\tt num}, which keeps track of
 the number of items.
 
+每个{\tt HashMap}包含一个{\tt BetterMap}。
+\verb"__init__"仅以两个LinearMaps开始并且初始化{\tt num}，
+其跟踪项的数目。
+
 {\tt get} just dispatches to {\tt BetterMap}.  The real work happens
 in {\tt add}, which checks the number of items and the size of the
 {\tt BetterMap}: if they are equal, the average number of items per
 LinearMap is 1, so it calls {\tt resize}.
 
+{\tt get}仅仅调度{\tt BetterMap}。
+真正的工作发生于 {\tt add}内，其检查项的数目以及{\tt BetterMap}的大小：
+如果它们相同，每个LinearMap的平均项数为1，因此它调用{\tt resize}。
+
 {\tt resize} make a new {\tt BetterMap}, twice as big as the previous
 one, and then ``rehashes'' the items from the old map to the new.
+
+{\tt resize}生成一个新的{\tt BetterMap}，是之前的两倍大，
+然后从旧的map到新的``重哈希''。
 
 Rehashing is necessary because changing the number of LinearMaps
 changes the denominator of the modulus operator in
@@ -18746,6 +18909,9 @@ changes the denominator of the modulus operator in
 to wrap into the same LinearMap will get split up (which is
 what we wanted, right?).
 \index{rehashing}
+
+重哈希是必要的，因为改变LinearMaps的数目也改变了\verb"find_map"中求余运算的分母。
+那意味着一些被包进相同的LinearMap的对象将被分离（这正是我们希望的，对吧？）
 
 Rehashing is linear, so
 {\tt resize} is linear, which might seem bad, since I promised
@@ -18755,6 +18921,13 @@ constant time and only occasionally linear.  The total amount
 of work to run {\tt add} $n$ times is proportional to $n$,
 so the average time of each {\tt add} is constant time!
 \index{constant time}
+
+重哈希是线性的，因此{\tt resize}是线性的，
+这可能看起来很糟糕，既然我保证{\tt add}会是常数时间。
+但是记住，我们不必没每次都调整，因此{\tt add}通常是常数时间
+并且只是偶然是线性的。
+运行{\tt add} $n$次的整个工作的数目是与$n$成正比，
+因此{\tt add}的平均时间是常数时间！
 
 To see how this works, think about starting with an empty
 HashTable and adding a sequence of items.  We start with 2 LinearMaps,
