@@ -18939,13 +18939,26 @@ add the third item (one more unit).  Adding the next item
 costs 1 unit, so the total so far is
 6 units of work for 4 items.
 
+为了看清这是如何工作的，考虑以一个空的哈希表开始并增加一系列项。
+我们以两个LinearMap开始，因此前两个add很快（不需要resize）。
+我们说它们每个花费一个工作单元。
+下一个add需要一次resize，因此我们必须重哈希前两项
+（我们调用两个额外的工作单元）然后增加第3项（一个额外单语）。
+增加下一项花费1个单元，所以对于4项总共需要6个单元。
+
 The next {\tt add} costs 5 units, but the next three
 are only one unit each, so the total is 14 units for the
 first 8 adds.
 
+下一个{\tt add}花费5个单元，但是之后的3个每个只需要1个单元，
+所以前8个add总共需要14个单元。
+
 The next {\tt add} costs 9 units, but then we can add 7 more
 before the next resize, so the total is 30 units for the
 first 16 adds.
+
+下一个{\tt add}花费9个单元，但是之后在下一次resize之前，可以增加额外的7个，
+所以前16个add总共是30个单元。
 
 After 32 adds, the total cost is 62 units, and I hope you are starting
 to see a pattern.  After $n$ adds, where $n$ is a power of two, the
@@ -18956,10 +18969,21 @@ higher, but that's not important.  The important thing is that it
 is $O(1)$.
 \index{average cost}
 
+在32次add后，总共花费62个单元，我希望你开始看到一个模式。
+$n$次add后，其中$n$是2的指数，总共花费是$2n-2$个单元，
+所以平均每个add要稍微少于2个单元。
+当$n$是2的指数时是最好的情况。
+对于其它的$n$值，平均花费稍高一点，但是那并不重要。
+重要的事情是增长阶数为$O(1)$。
+
 Figure~\ref{fig.hash} shows how this works graphically.  Each
 block represents a unit of work.  The columns show the total
 work for each add in order from left to right: the first two
 {\tt adds} cost 1 units, the third costs 3 units, etc.
+
+图\ref{fig.hash}展示这如何工作的。
+每个块代表一个工作单元。按从左到右的顺序，每列显示每个add所需的单元：
+前两个{\tt adds}花费1个单元，第3个花费3个单元等等。
 
 \begin{figure}
 \centerline{\includegraphics[scale=1.0]{figs/towers.pdf}}
@@ -18972,6 +18996,10 @@ over the towers, amortizing the cost of resizing over all
 adds, you can see graphically that the total cost after $n$
 adds is $2n - 2$.
 
+重哈希的额外工作显示为一序列增加的高塔并在它们之间增加空间。
+现在，如果你打翻这些塔，将resize的代价均摊到所有的add上，
+你会从图上看到$n$个add的整个花费是$2n - 2$。
+
 An important feature of this algorithm is that when we resize the
 HashTable it grows geometrically; that is, we multiply the size by a
 constant.  If you increase the size
@@ -18983,6 +19011,9 @@ You can download my implementation of HashMap from
 \url{http://thinkpython/code/Map.py}, but remember that there
 is no reason to use it; if you want a map, just use a Python dictionary.
 
+该算法一个重要的特征是当我们resize哈希表的时候，
+它几何级增长。也就是说，我们用常数乘以大小。
+如果你按算术级增加大小---每次增加固定的数目---每个{\tt add}的平均时间是线性的。
 
 
 
