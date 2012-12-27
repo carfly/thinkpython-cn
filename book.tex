@@ -264,7 +264,7 @@ than not read 50 pages.
 \item Be careful with vocabulary.  I tried to minimize the jargon
 and define each term at first use.
 
-关注词汇表。我试图使用最少的术语并且在第一次使用的时候给出定义。
+关注术语表。我试图使用最少的术语并且在第一次使用的时候给出定义。
 
 \item Build gradually. To avoid trap doors, I took the most difficult
 topics and split them into a series of small steps. 
@@ -1009,7 +1009,7 @@ file or other device.
 \item[math:] Perform basic mathematical operations like addition and
 multiplication.
 
-\item[数学：] 执行基本的数学操作，如加法和乘法。
+\item[数学：] 执行基本的数学运算，如加法和乘法。
 
 \item[conditional execution:] Check for certain conditions and
 execute the appropriate code.
@@ -1469,7 +1469,7 @@ that, there are very few differences we have to worry about.
 如果你正在使用Python 3，你将不得不进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
-\section{Debugging \\ 调试}
+\section{Debugging 调试}
 \index{debugging}
 
 It is a good idea to read this book in front of a computer so you can
@@ -1552,7 +1552,7 @@ with my thoughts about debugging.  I hope they help!
 学习调试可能很令人泄气，
 但是它对于许多编程之外的活动也都是一个非常有价值的技能。
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
@@ -2029,7 +2029,7 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 \index{operator!bitwise}
 
 在一些其它语言中，\verb"^"表示指数运算，
-但是在Python中，它表示XOR（异或）位操作。
+但是在Python中，它表示XOR（异或）位运算。
 本书不包括位运算符，
 但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容
 
@@ -2207,7 +2207,7 @@ expression into a print statement and then run it again.
 \end{exercise}
 
 
-\section{Order of operations 操作的顺序}
+\section{Order of operations 运算的顺序}
 \index{order of operations}
 \index{rules of precedence}
 \index{PEMDAS}
@@ -2270,14 +2270,14 @@ parentheses to make it obvious.
 我不太努力，所以记不住其它运算符的优先级规则。
 如果通过观察表达式，我不能说清楚，我使用括号使其变得更明显。
 
-\section{String operations 字符串操作}
+\section{String operations 字符串运算}
 \index{string!operation}
 \index{operator!string}
 
 In general, you can't perform mathematical operations on strings, even
 if the strings look like numbers, so the following are illegal:
 
-一般来讲，你不能对字符串执行数学操作，即使字符串看起来很像数字，
+一般来讲，你不能对字符串执行数学运算，即使字符串看起来很像数字，
 因此下面是非法的：
 
 \begin{verbatim}
@@ -2291,7 +2291,7 @@ linking them end-to-end.  For example:
 \index{concatenation}
 
 {\tt +}运算符可用于字符串，但是它可能不会做你所期望的事情：
-它执行{\bf 级联（concatenation）}操作，也就是将字符串端到端的连起来。
+它执行{\bf 级联（concatenation）}运算，也就是将字符串端到端的连起来。
 例如：
 
 \begin{verbatim}
@@ -2308,7 +2308,7 @@ The {\tt *} operator also works on strings; it performs repetition.
 For example, \verb"'Spam'*3" is \verb"'SpamSpamSpam'".  If one of the operands
 is a string, the other has to be an integer.
 
-{\tt *}运算符也可应用于字符串；它执行重复操作。
+{\tt *}运算符也可应用于字符串；它执行重复运算。
 例如，\verb"'Spam'*3"的结果是\verb"'SpamSpamSpam'"。
 如果其中一个运算数是字符串，则另外一个必须是整数。
 
@@ -2457,7 +2457,7 @@ the order of operations.  For example, to evaluate
  $\frac{1}{2 \pi}$,
 you might be tempted to write
 
-此时最容易引起的语义错误是操作的顺序。
+此时最容易引起的语义错误是运算的顺序。
 例如，为了计算$\frac{1}{2 \pi}$，你可能写成
 
 \begin{verbatim}
@@ -2474,7 +2474,7 @@ get an error message; you just get the wrong answer.
 对于Python，没有办法知道你的意图是写什么，因此此例中你不会获得错误信息；
 你只会获得错误的结果。
 
-\section{Glossary 词汇表}
+\section{Glossary 术语表}
 
 \begin{description}
 
@@ -3627,7 +3627,7 @@ beginning of the program and run it again.  If you don't see
 如果你么有看到\verb"hello"，那么你没在运行一个正确的程序。
 
 
-\section{Glossary 词汇表}
+\section{Glossary 术语表}
 
 \begin{description}
 
@@ -3856,7 +3856,7 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 
 
 
-\chapter{Case study: interface design 案例学习：界面设计}
+\chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
 
 Code examples from this chapter are available from
@@ -4332,7 +4332,7 @@ arguments are assigned to the parameters.
 当你调用函数时，实参被赋给形参。
 
 
-\section{Interface design 界面设计}
+\section{Interface design 接口设计}
 
 The next step is to write {\tt circle}, which takes a radius,
 {\tt r}, as a parameter.  Here is a simple solution that uses
@@ -4394,14 +4394,14 @@ specifies the circle to be drawn.  {\tt n} is less appropriate
 because it pertains to the details of {\em how} the circle should
 be rendered.
 
-在这个例子中，{\tt r}属于界面，因为它确定了被画的圆。
+在这个例子中，{\tt r}属于接口，因为它确定了被画的圆。
 {\tt n}就不太合适，因为他是关于如何画圆的细节。
 
 Rather than clutter up the interface, it is better
 to choose an appropriate value of {\tt n}
 depending on {\tt circumference}:
 
-不要把界面弄乱，依赖{\tt circumference}选择一个合适的{\tt n}值比较好。
+不要把接口弄乱，依赖{\tt circumference}选择一个合适的{\tt n}值比较好。
 
 \begin{verbatim}
 def circle(t, r):
@@ -18111,7 +18111,7 @@ operations, an algorithm requires under a given model.
 算法相对的性能依赖于硬件的特性，因此一个算法可能在机器A上比较快，
 另一个算法则在机器B上比较快。
 对此问题一般的解决办法是指定一个{\bf 机器模型（machine model）}
-并且分析一个算法在一个给定模型下所需的步骤或操作的数目。
+并且分析一个算法在一个给定模型下所需的步骤或运算的数目。
 
 \item Relative performance might depend on the details of
 the dataset.  For example, some sorting
@@ -18141,7 +18141,7 @@ size increases.
 
 相对性能也依赖于问题的规模。
 一个对于小列表很快的排序算法可能对于长列表很慢。
-对此问题通常的解决方法是将运行时间（或则操作的数目）表示成问题规模的函数，
+对此问题通常的解决方法是将运行时间（或则运算的数目）表示成问题规模的函数，
 并且随着问题规模的增长{\bf 渐近地（asymptotically）}比较函数
 
 \end{itemize}
