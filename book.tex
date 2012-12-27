@@ -3308,8 +3308,8 @@ beside it and the parameters and variables of the function inside it.
 The stack diagram for the
 previous example is shown in Figure~\ref{fig.stack}.
 
-每个函数用一个{\bf 边框（frame）}表示。
-一个边框是一个有函数名的盒子，除此之外还有形参以及函数内部的变量。
+每个函数用一个{\bf 框架（frame）}表示。
+一个框架是一个有函数名的盒子，除此之外还有形参以及函数内部的变量。
 前面例子的栈图如图\ref{fig.stack}所示。
 
 \begin{figure}
@@ -3327,9 +3327,9 @@ was called by \verb"cat_twice", and \verb"cat_twice" was called by
 you create a variable outside of any function, it belongs to 
 \verb"__main__".
 
-栈里面的边框指出哪个函数被哪个函数调用等。
+栈里面的框架指出哪个函数被哪个函数调用等。
 在此例中，\verb"print_twice"被\verb"cat_twice"调用，
-\verb"cat_twice"被\verb"__main__"调用，这是一个表示最上层边框的特殊的名字。
+\verb"cat_twice"被\verb"__main__"调用，这是一个表示最上层框架的特殊的名字。
 当你在所有函数之外生成一个变量时，它属于\verb"__main__"。
 
 Each parameter refers to the same value as its corresponding
@@ -3708,7 +3708,7 @@ a program run.
 their variables, and the values they refer to.
 \index{stack diagram}
 
-\item[frame（边框）:]  A box in a stack diagram that represents a function call.
+\item[frame（框架）:]  A box in a stack diagram that represents a function call.
 It contains the local variables and parameters of the function.
 \index{function frame}
 \index{frame}
@@ -19015,16 +19015,14 @@ is no reason to use it; if you want a map, just use a Python dictionary.
 它几何级增长。也就是说，我们用常数乘以大小。
 如果你按算术级增加大小---每次增加固定的数目---每个{\tt add}的平均时间是线性的。
 
-
-
-
-
 \chapter{Lumpy}
 \label{lumpy}
 
 Throughout the book, I have used diagrams to represent the state of
 running programs.
 \index{Lumpy}
+
+贯穿全书地，我使用图来表示运行的程序的状态。
 
 In Section~\ref{variables}, we used a state diagram to show the names
 and values of variables.  In Section~\ref{stackdiagram} I introduced a
@@ -19035,9 +19033,17 @@ Section~\ref{recursive.stack} and Section~\ref{more.recursion}.
 \index{stack diagram} \index{diagram!stack}
 \index{state diagram} \index{diagram!state}
 
+在\ref{variables}节，我们使用状态图来显示变量的名和值。
+在\ref{stackdiagram}节，我介绍了栈图，其为每个函数调用显示一个框架。
+每个框架为该函数或者方法显示了形参以及局部变量。
+对于递归函数的栈图出现在\ref{recursive.stack}和\ref{more.recursion}节。
+
 Section~\ref{mutable} shows what a list looks like in a state diagram,
 Section~\ref{invert} shows what a dictionary looks like, and
 Section~\ref{dictuple} shows two ways to represent tuples.
+
+\ref{mutable}节显示在栈图中，列表看起来的样子，
+\ref{invert}节显示字典的样子，\ref{dictuple}节显示表示元组的两个方法。
 
 Section~\ref{attributes} introduces object diagrams, which show the
 state of an object's attributes, and their attributes, and so on.
@@ -19049,11 +19055,18 @@ object and an instance, each with their own attributes.
 \index{object diagram}
 \index{diagram!object}
 
+\ref{attributes}节介绍了对象图，其展示了一个对象的属性的状态以及他们的属性等。
+\ref{rectangles}节有对于矩形以及他们嵌入的点的对象图。
+\ref{time.object} 节显示了一个Time对象的状态。
+\ref{class.attribute}有一个图，其包括一个类对象以及一个实例，每个都有他们自己的属性。
+
 Finally, Section~\ref{class.diagram} introduces class diagrams,
 which show the classes that make up a program and the relationships
 between them.
 \index{class diagram}
 \index{diagram!class}
+
+最后，\ref{class.diagram}节介绍了类图，其展示了组成程序的类以及它们之间的关系。
 
 These diagrams are based on the Unified Modeling Language (UML), which
 is a standardized graphical language used by software engineers
@@ -19062,10 +19075,17 @@ programs.
 \index{Unified Modeling Language}
 \index{UML}
 
+这些图基于统一建模语言（UML），其是一个标准的图示语言，
+软件工程师用其交流程序设计，特别是对于面向对象的程序。
+
 UML is a rich language with many kinds of diagrams that represent
 many kinds of relationship between objects and classes.  What I presented
 in this book is a small subset of the language, but it is the subset
 most commonly used in practice.
+
+UML是内容非常丰富的语言，具有多种图来表示许多种对象和类之间的关系。
+本书中我表示的只是该语言的一个小子集，
+但是它是实践中最常用的子集。
 
 The purpose of this appendix is to review the diagrams presented in
 the previous chapters, and to introduce Lumpy.  Lumpy, which stands
@@ -19076,11 +19096,19 @@ Exercise~\ref{canvas},
 \index{Lumpy}
 \index{Swampy}
 
+本附录的目的是回顾之前章节中给出的图并介绍Lumpy。
+Lumpy，表示``UML in Python''，是对一些字母的重排列，
+是Swampy的一部分，如果你完成了第\ref{turtlechap}章或第\ref{tkinter}的案例学习，
+或者做了练习\ref{canvas}，你已经安装好了Swampy。
+
 Lumpy uses Python's {\tt inspect} module to examine the state of a running
 program and generate object diagrams (including stack diagrams) and
 class diagrams.
 
-\section{State diagram}
+Lumpy使用Python的{\tt inspect}模块来检查一个正在运行的程序的状态并生成对象图
+（包括栈图）以及类图。
+
+\section{State diagram 状态图}
 
 \begin{figure}
 \centerline
@@ -19091,6 +19119,8 @@ class diagrams.
 
 Here's an example that uses Lumpy to generate a state diagram.
 \index{state diagram} \index{diagram!state}
+
+此处是一个使用Lumpy生成状态图的例子。
 
 \begin{verbatim}
 from swampy.Lumpy import Lumpy
@@ -19110,6 +19140,10 @@ If you don't have Swampy installed as a package, make sure
 the Swampy files are in Python's search path and use this
 {\tt import} statement instead:
 
+第一行从{\tt swampy.Lumpy}导入Lumpy类。
+如果你没有作为包安装Swamp，确定Swampy文件位于Python的搜索目录
+并使用此{\tt import}语句代替：
+
 \begin{verbatim}
 from Lumpy import Lumpy
 \end{verbatim}
@@ -19118,15 +19152,25 @@ The next lines create a {\tt Lumpy} object and make a ``reference''
 point, which means that Lumpy records the objects that have been
 defined so far.
 
+接下来的几行生成一个{\tt Lumpy}对象并生成一个``参考''点，
+其意味着Lumpy记录目前已经被定义的对象。
+
 Next we define new variables and invoke \verb"object_diagram",
 which draws the objects that have been defined since the reference
 point, in this case {\tt message}, {\tt n} and {\tt pi}.
+
+接着我们定义新的变量并调用\verb"object_diagram"，
+来画这些自参考点之后定义的对象。
 
 Figure~\ref{fig.lumpy1} shows the result.  The graphical style is
 different from what I showed earlier; for example, each
 reference is represented by a circle next to the variable name and a
 line to the value.  And long strings are truncated.  But the
 information conveyed by the diagram is the same.
+
+图\ref{fig.lumpy1}展示了结果。这个图的样式与我之前展示的不同。
+例如，每个引用用一个变量名以及一个连接到值的圆表示。
+长字符串被截去了。但是此图传递的信息是相同的。
 
 The variable names are in a frame labeled \verb"<module>", which
 indicates that these are module-level variables, also known as
@@ -19136,12 +19180,18 @@ global.
 \index{module-level variable}
 \index{variable!module-level}
 
+变量名位于一个标为 \verb"<module>"的线框里，
+其指明这些是模块级的变量，也被认为是全局变量。
+
 You can download this example from
 \url{http://thinkpython.com/code/lumpy_demo1.py}.  Try adding some
 additional assignments and see what the diagram looks like.
 
+你可以从\url{http://thinkpython.com/code/lumpy_demo1.py}下载这个例子。
+试着增加一些额外的赋值并看此图看起来像什么样子。
 
-\section{Stack diagram}
+
+\section{Stack diagram 栈图}
 
 \begin{figure}
 \centerline
@@ -19152,7 +19202,11 @@ additional assignments and see what the diagram looks like.
 
 Here's an example that uses Lumpy to generate a stack diagram.
 You can download it from \url{http://thinkpython.com/code/lumpy_demo2.py}.
-\index{stack diagram} \index{diagram!stack}
+\index{stack diagram} 
+\index{diagram!stack}
+
+这是一个使用Lumpy生成栈图的例子。
+你可以从\url{http://thinkpython.com/code/lumpy_demo2.py}下载它。
 
 \begin{verbatim}
 from swampy.Lumpy import Lumpy
@@ -19178,9 +19232,15 @@ level of recursion.
 \index{function frame}
 \index{frame}
 
+图\ref{fig.lumpy2}显示了结果。每个线框用一个盒子表示，它外面有函数名，
+里面有变量。既然此函数是递归的，每层递归有一个线框。
+
 Remember that a stack diagram shows the state of the program at
 a particular point in its execution.  To get the diagram you want,
 sometimes you have to think about where to invoke \verb"object_diagram".
+
+记住一个栈图显示了程序在它执行中一个特定点的状态。
+为了获得你希望的图，有时你必须考虑在哪儿调用\verb"object_diagram"。
 
 In this case I invoke \verb"object_diagram" after executing the base
 case of the recursion; that way the stack diagram shows each level of
@@ -19188,8 +19248,12 @@ the recursion.  You can call \verb"object_diagram" more than once to
 get a series of snapshots of the program's execution.
 \index{base case}
 
+在这个例子中，我在执行递归的基本条件后调用\verb"object_diagram"，
+这使得栈图显示递归的每一层。你可以不止一次调用\verb"object_diagram"
+来获得一系列程序执行的快照。
 
-\section{Object diagrams}
+
+\section{Object diagrams 对象图}
 
 \begin{figure}
 \centerline
@@ -19201,7 +19265,11 @@ get a series of snapshots of the program's execution.
 This example generates an object diagram showing the lists from
 Section~\ref{sequence}.  You can download it from
 \url{http://thinkpython.com/code/lumpy_demo3.py}.
-\index{object diagram} \index{diagram!object}
+\index{object diagram} 
+\index{diagram!object}
+
+此例生成一个显示来自~\ref{sequence}节列表的对象图。
+你可以从\url{http://thinkpython.com/code/lumpy_demo3.py}下载它。
 
 \begin{verbatim}
 from swampy.Lumpy import Lumpy
@@ -19223,6 +19291,12 @@ part of the list, but I think they make the diagram easier to
 read.  The empty list is represented by an empty box. 
 \index{list index}
 
+图\ref{fig.lumpy3}显示结果。
+列表被表示成一个盒子，展示了映射到元素的索引。
+这一表示有点儿误导，因为索引不是列表的实际部分，
+但是我想它们使得图更容易被读。
+空列表被表示为一个空盒子。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.7]{figs/lumpydemo4.pdf}}
@@ -19234,6 +19308,9 @@ And here's an example
 showing the dictionaries from Section~\ref{invert}.  You can download
 it from \url{http://thinkpython.com/code/lumpy_demo4.py}.
 \index{dictionary}
+
+这是一个显示来自\ref{invert}节的字典的例子。
+你可以从\url{http://thinkpython.com/code/lumpy_demo4.py}下载它。
 
 \begin{verbatim}
 from swampy.Lumpy import Lumpy
@@ -19251,6 +19328,10 @@ Figure~\ref{fig.lumpy4} shows the result.  {\tt hist} is a dictionary
 that maps from characters (single-letter strings) to integers;
 {\tt inverse} maps from integers to lists of strings.
 
+图\ref{fig.lumpy4}显示结果。
+{\tt hist}是一个字典，从字符（单字母字符串）映射到整数。
+{\tt inverse}从整数映射到字符串列表。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.7]{figs/lumpydemo5.pdf}}
@@ -19265,6 +19346,9 @@ objects, as in Section~\ref{copying}.  You can download it from
 \index{class!Point}
 \index{Rectangle class}
 \index{class!Rectangle}
+
+此例生成一个Point和Rectangle对象的对象图，如\ref{copying}节所示。
+你可以从\url{http://thinkpython.com/code/lumpy_demo5.py}下载它。
 
 \begin{verbatim}
 import copy
@@ -19293,7 +19377,12 @@ mutable types, it is highly error-prone.
 \index{copy}
 \index{shallow copy}
 
-\section{Function and class objects}
+图\ref{fig.lumpy5}显示结果。
+{\tt copy.copy}进行浅拷贝，所以{\tt box}和{\tt box2}有它们自己的{\tt width}和{\tt height}，
+但是它们共享相同的嵌入Point对象。
+这种共享通常对于不可变对象是好的，但是对于可变类型，它非常容易出错。
+
+\section{Function and class objects 函数和类对象}
 
 \begin{figure}
 \centerline
@@ -19310,10 +19399,16 @@ and class objects don't appear in the diagram.
 \index{class object}
 \index{object!class}
 
+当我用Lumpy生成对象图时，我通常在生成参考点之前定义函数和类。
+这样，函数和类对象不出现在图中。
+
 But if you are passing functions and classes as parameters, you might
 want them to appear.  This example shows what that looks like;
 you can download it from
 \url{http://thinkpython.com/code/lumpy_demo6.py}.
+
+但是如果你正作为形参传递函数和类，你可能希望它们出现。
+此例展示那看起来是什么样：
 
 \begin{verbatim}
 import copy
@@ -19342,11 +19437,18 @@ Figure~\ref{fig.lumpy6} shows the result.  Since we invoke
 with a frame for the module-level variables and for the invocation
 of {\tt instantiate}.
 
+图\ref{fig.lumpy6}显示这一结果。
+既然我们在一个函数中调用\verb"object_diagram"，
+我们为模块级的变量和{\tt instantiate}的调用获得一个具有框架的栈图。
+
 At the module level, {\tt Point} and {\tt Rectangle} refer to
 class objects (which have type {\tt type}); {\tt instantiate}
 refers to a function object.
 \index{instantiate}
 \index{constructor}
+
+在模块级，{\tt Point}和{\tt Rectangle}指类对象（其类型是{\tt type}）。
+{\tt instantiate}指一个函数对象。
 
 This diagram might clarify two points of common confusion: (1) the
 difference between the class object, {\tt Point}, and the instance of
@@ -19354,8 +19456,12 @@ Point, {\tt obj}, and (2) the difference between the function object
 created when {\tt instantiate} is defined, and the frame created with
 it is called.
 
+此图可能会澄清通常易混淆的两点：
+（1）类对象{\tt Point}和Point的实例{\tt obj}之间的不同；
+（2）当{\tt instantiate}被定义是生成的函数对象和其被调用时生成的框架之间的不同。
 
-\section{Class Diagrams}
+
+\section{Class Diagrams 类图}
 
 \begin{figure}
 \centerline
@@ -19377,6 +19483,9 @@ state of a running program at a point in time.
 \index{class diagram}
 \index{diagram!class}
 
+虽然我区分了状态度、栈图以及类图，但是它们基本是同一个东西：
+它们显示了一个正在运行的程序在某一时间点的状态。
+
 Class diagrams are different.  They show the classes that make up a
 program and the relationships between them.  They are timeless in the
 sense that they describe the program as a whole, not any particular
@@ -19388,8 +19497,16 @@ contains a reference to an instance of Class B, we say there is a
 \index{diagram!class}
 \index{UML}
 
+类图不一样。它们显示了组成程序的类以及它们之间的关系。
+它们作为一个整体描述程序，在这个意义上，它们是永恒的，
+不是任何特殊的时间点。例如，如果一个类A的实例通常包含类B的实例的一个引用，
+我们说在这些类之间有一个``HAS-A关系''。
+
 Here's an example that shows a HAS-A relationship.  You can download
 it from \url{http://thinkpython.com/code/lumpy_demo7.py}.
+
+这是一个展示HAS-A关系的示例。
+你可以从\url{http://thinkpython.com/code/lumpy_demo7.py}下载它。
 
 \begin{verbatim}
 from swampy.Lumpy import Lumpy
@@ -19413,16 +19530,29 @@ class, any methods the class provides, any class variables, and
 any instance variables.  In this example, {\tt Rectangle} and {\tt Point}
 have instance variables, but no methods or class variables.
 
+图\ref{fig.lumpy7}显示了结果。每个类被表示成一个盒子，
+包含类名、类提供的任何方法，类变量以及任何实例变量。
+在此例中，{\tt Rectangle}和{\tt Point}有实例变量，
+但是没有方法或类变量。
+
 The arrow from {\tt Rectangle} to {\tt Point} shows that Rectangles
 contain an embedded Point.  In addition, {\tt Rectangle} and {\tt
   Point} both inherit from {\tt object}, which is represented in
 the diagram with a triangle-headed arrow.
 \index{IS-A relationship}
 
+从{\tt Rectangle}到{\tt Point}的箭头显示Rectangles包含一个嵌入的Point。
+另外，{\tt Rectangle}和{\tt Point}都是继承自{\tt object}，
+这在图中用一个三角头的箭头表示。
+
 Here's a more complex example using my solution to Exercise~\ref{poker}.
 You can download
 the code from \url{http://thinkpython.com/code/lumpy_demo8.py};
 you will also need \url{http://thinkpython.com/code/PokerHand.py}.
+
+这是一个更复杂的例子，使用了我的习题\ref{poker}的答案。
+你从\url{http://thinkpython.com/code/lumpy_demo8.py}可以下载代码；
+你也需要\url{http://thinkpython.com/code/PokerHand.py}。
 
 \begin{verbatim}
 from swampy.Lumpy import Lumpy
@@ -19446,10 +19576,17 @@ Both {\tt Deck} and {\tt PokerHand} have Cards.
 \index{Deck class}
 \index{Hand class}
 
+图\ref{fig.lumpy8}显示了结果。
+{\tt PokerHand}继承自{\tt Hand}，它继承自{\tt Deck}。
+{\tt Deck}和{\tt PokerHand}都有Cards。
+
 This diagram does not show that {\tt Hand} also has cards, because
 in the program there are no instances of Hand.  This example
 demonstrates a limitation of Lumpy; it only knows about the
 attributes and HAS-A relationships of objects that are instantiated.
+
+此图没有显示{\tt Hand}也有cards，因为在这个程序中，没有Hand的实例。
+此例展示了Lumpy的一个局限性，它只知道被实例化的对象的属性和HAS-A关系。
 
 \printindex
 
