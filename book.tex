@@ -4421,7 +4421,7 @@ and appropriate for any size circle.
 使得圆看上去不错，但是对于保证效率也足够大了，
 适合任何大小的圆。
 
-\section{Refactoring}
+\section{Refactoring 重构}
 \label{refactoring}
 \index{refactoring}
 
@@ -4430,9 +4430,16 @@ because a many-sided polygon is a good approximation of a circle.
 But {\tt arc} is not as cooperative; we can't use {\tt polygon}
 or {\tt circle} to draw an arc.
 
+当我写{\tt circle}的时候，我能够重用{\tt polygon}，
+因为一个多边形是对圆的很好的近似。
+但是{\tt arc}不太易于合作，我们不能使用{\tt polygon}或者{\tt circle}来画一个弧。
+
 One alternative is to start with a copy
 of {\tt polygon} and transform it into {\tt arc}.  The result
 might look like this:
+
+一种替代方案是从{\tt polygon}的一个拷贝开始，
+并将它转化为{\tt arc}。结果看上去像这样：
 
 \begin{verbatim}
 def arc(t, r, angle):
@@ -4452,6 +4459,12 @@ generalize {\tt polygon} to take an angle as a third argument,
 but then {\tt polygon} would no longer be an appropriate name!
 Instead, let's call the more general function {\tt polyline}:
 
+该函数的后半部分看上去很像{\tt polygon}，
+但是在不改变接口的条件下我们不能重用{\tt polygon}。
+我们可以泛化{\tt polygon}来接受一个角度作为第三个实参，
+但是这样{\tt polygon}就不再是一个合适的名字了！
+让我们称这个更一般的函数为{\tt polyline}：
+
 \begin{verbatim}
 def polyline(t, n, length, angle):
     for i in range(n):
@@ -4460,6 +4473,7 @@ def polyline(t, n, length, angle):
 \end{verbatim}
 %
 Now we can rewrite {\tt polygon} and {\tt arc} to use {\tt polyline}:
+现在，我们可以用{\tt polyline}重写{\tt polygon}和{\tt arc}：
 
 \begin{verbatim}
 def polygon(t, n, length):
@@ -4475,6 +4489,7 @@ def arc(t, r, angle):
 \end{verbatim}
 %
 Finally, we can rewrite {\tt circle} to use {\tt arc}:
+最后，我们可以用{\tt arc}重写{\tt circle}：
 
 \begin{verbatim}
 def circle(t, r):
@@ -4487,14 +4502,24 @@ In this case, we noticed that there was similar code in {\tt arc} and
 {\tt polygon}, so we ``factored it out'' into {\tt polyline}.
 \index{refactoring}
 
+这个过程---重新整理一个程序以改进函数接口和促进代码的重用性---
+被称作{\bf 重构（refactoring）}。
+在此例中，我们注意到{\tt arc}和{\tt polygon}中有相似的代码，
+因此，我们``将它分解出来''放入{\tt polyline}。
+
 If we had planned ahead, we might have written {\tt polyline} first
 and avoided refactoring, but often you don't know enough at the
 beginning of a project to design all the interfaces.  Once you start
 coding, you understand the problem better.  Sometimes refactoring is a
 sign that you have learned something.
 
+如果我们提前已经计划好了，我们可能首先写{\tt polyline}并避免重构，
+但是在一个项目开始的时候，你经常知道的不足，不能设计全部的接口。
+一旦你开始编码，你更好的理解该问题。
+优势重构是一个信号，说明你已经学到某些东西了。
 
-\section{A development plan}
+
+\section{A development plan 开发方案}
 \index{development plan!encapsulation and generalization}
 
 A {\bf development plan} is a process for writing programs.
@@ -4502,21 +4527,37 @@ The process we used
 in this case study is ``encapsulation and
 generalization.''  The steps of this process are:
 
+{\bf 开发方案（development plan）}是写程序的一个过程。
+此例中我们使用的过程是``封装和泛化''。
+此过程的步骤是：
+
 \begin{enumerate}
 
 \item Start by writing a small program with no function definitions.
 
+从写一个没有函数定义的小程序开始。
+
 \item Once you get the program working, encapsulate it in a function
 and give it a name.
 
+一旦该程序运转起来，将它封装进一个函数并给它一个名字。
+
 \item Generalize the function by adding appropriate parameters.
+
+通过增加适当的形参泛化该函数。
 
 \item Repeat steps 1--3 until you have a set of working functions.
 Copy and paste working code to avoid retyping (and re-debugging).
 
+重复1--3步，直到你有一些可运转的函数。
+拷贝和粘贴代码以避免重新键入（和重新调试）。
+
 \item Look for opportunities to improve the program by refactoring.
 For example, if you have similar code in several places, consider
 factoring it into an appropriately general function.
+
+寻找机会通过重构改进程序。
+例如如果在多个地方有相似的代码，考虑将它分解到一个合适的函数中。
 
 \end{enumerate}
 
@@ -4525,14 +4566,22 @@ it can be useful if you don't know ahead of time how to divide the
 program into functions.  This approach lets you design as you go
 along.
 
+这个过程有一些缺点---后面我们将看到替代方案---
+但是如果你之前不知道如果将程序分解为函数，它可能很有用。
+该方法让你一边编程，一边设计。
 
-\section{docstring}
+
+\section{docstring 文档字符串}
 \label{docstring}
 \index{docstring}
 
 A {\bf docstring} is a string at the beginning of a function that
 explains the interface (``doc'' is short for ``documentation'').  Here
 is an example:
+
+一个{\bf 文档字符串（docstring）}是位于函数开始的字符串，
+其解释函数的接口（``doc''是``document''的缩写）。
+这是一个例子：
 
 \begin{verbatim}
 def polyline(t, n, length, angle):
@@ -4553,6 +4602,9 @@ to span more than one line.
 \index{multiline string}
 \index{string!multiline}
 
+此文档字符串是一个三引号字符串，也被称为多行字符串，
+因为三引号允许字符串超过一行。
+
 It is terse, but it contains the essential information
 someone would need to use this function.  It explains concisely what
 the function does (without getting into the details of how it does
@@ -4560,13 +4612,22 @@ it).  It explains what effect each parameter has on the behavior of
 the function and what type each parameter should be (if it is not
 obvious).
 
+它很简单，但是它包括了该函数的必要信息。
+它简要的说明了该函数做什么（没有介绍它如何工作的细节）。
+它说明了每个形参对函数的行为有什么作用以及每个形参应有的类型
+（如果它并不明显）。
+
 Writing this kind of documentation is an important part of interface
 design.  A well-designed interface should be simple to explain;
 if you are having a hard time explaining one of your functions,
 that might be a sign that the interface could be improved.
 
+写这种文档是接口设计很重要的部分。
+一个良好设计的接口应该解释起来很简单，
+如果你很难解释你的函数，这也许是该接口可能需要被改进的一个信号。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \index{debugging}
 \index{interface}
 
@@ -4574,10 +4635,18 @@ An interface is like a contract between a function and a caller.
 The caller agrees to provide certain parameters and the function
 agrees to do certain work.
 
+接口就像是函数和一个调用者之间的合同。
+调用者同意提供某些参数，函数统一做某些工作。
+
 For example, {\tt polyline} requires four arguments: {\tt t} has to be
 a Turtle; {\tt n} is the number of line segments, so it has to be an
 integer; {\tt length} should be a positive number; and {\tt
   angle} has to be a number, which is understood to be in degrees.
+  
+例如，{\tt polyline}需要4个实参：{\tt t}必须是一个Turtle；
+{\tt n}是线段的个数，因此它必须是一个整数；
+{\tt length}应该是一个正数；
+{\tt angle}必须是一个数，它被理解为一个度数。
 
 These requirements are called {\bf preconditions} because they
 are supposed to be true before the function starts executing.
@@ -4589,9 +4658,18 @@ in the World).
 \index{precondition}
 \index{postcondition}
 
+这些需求被称作{\bf 先决条件（preconditions）}，
+因为它们在函数开始执行之前被假设为正确的。
+相反，函数结束时的条件是{\bf 后置条件（postconditions）}。
+后置条件包括函数预期的效果（如画线段）以及任何侧面效果
+（如移动Turtle或者World中的其它改变）。
+
 Preconditions are the responsibility of the caller.  If the caller
 violates a (properly documented!) precondition and the function
 doesn't work correctly, the bug is in the caller, not the function.
+
+先决条件是调用者的职责。如果调用者违反一个（恰当的说明）
+先决条件并且函数不正确的工作，则错误在调用者中，而不是函数中。
 
 % Removing this because we haven't seen conditionals yet!
 %However, for purposes of debugging it is often a good idea for
@@ -4600,51 +4678,51 @@ doesn't work correctly, the bug is in the caller, not the function.
 %then if something goes wrong, you will know which function to blame.
 
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[instance:] A member of a set.  The TurtleWorld in this
+\item[instance （实例）:] A member of a set.  The TurtleWorld in this
 chapter is a member of the set of TurtleWorlds.
 \index{instance}
 
-\item[loop:] A part of a program that can execute repeatedly.
+\item[loop （循环）:] A part of a program that can execute repeatedly.
 \index{loop}
 
-\item[encapsulation:] The process of transforming a sequence of
+\item[encapsulation （封装）:] The process of transforming a sequence of
 statements into a function definition.
 \index{encapsulation}
 
-\item[generalization:] The process of replacing something
+\item[generalization （泛化）:] The process of replacing something
 unnecessarily specific (like a number) with something appropriately
 general (like a variable or parameter).
 \index{generalization}
 
-\item[keyword argument:] An argument that includes the name of
+\item[keyword argument （关键字实参）:] An argument that includes the name of
 the parameter as a ``keyword.''
 \index{keyword argument}
 \index{argument!keyword}
 
-\item[interface:] A description of how to use a function, including
+\item[interface （接口）:] A description of how to use a function, including
 the name and descriptions of the arguments and return value.
 \index{interface}
 
-\item[refactoring:] The process of modifying a working program to
+\item[refactoring （重构）:] The process of modifying a working program to
   improve function interfaces and other qualities of the code.
 \index{refactoring}
 
-\item[development plan:] A process for writing programs.
+\item[development plan （开发方案）:] A process for writing programs.
 \index{development plan}
 
-\item[docstring:]  A string that appears in a function definition
+\item[docstring （文档字符串）:]  A string that appears in a function definition
 to document the function's interface.
 \index{docstring}
 
-\item[precondition:] A requirement that should be satisfied by
+\item[precondition （先决条件）:] A requirement that should be satisfied by
 the caller before a function starts.
 \index{precondition}
 
-\item[postcondition:] A requirement that should be satisfied by
+\item[postcondition （后置条件）:] A requirement that should be satisfied by
 the function before it ends.
 \index{precondition}
 
