@@ -4827,9 +4827,9 @@ kinds).  Solution: \url{http://thinkpython.com/code/spiral.py}.
 \end{exercise}
 
 
-\chapter{Conditionals and recursion}
+\chapter{Conditionals and recursion 条件和递归}
 
-\section{Modulus operator}
+\section{Modulus operator 求余运算符}
 \index{modulus operator}
 \index{operator!modulus}
 
@@ -4837,6 +4837,10 @@ The {\bf modulus operator} works on integers and yields the remainder
 when the first operand is divided by the second.  In Python, the
 modulus operator is a percent sign (\verb"%").  The syntax is the same
 as for other operators:
+
+{\bf 求余运算符（modulus operator）}对整数进行运算并且产生第一个运算数和第二个的余数。
+在Python中，求余运算符是一个百分号（\verb"%"）。
+语法和其它运算符相同：
 
 \begin{verbatim}
 >>> quotient = 7 / 3
@@ -4849,18 +4853,28 @@ as for other operators:
 %
 So 7 divided by 3 is 2 with 1 left over.
 
+因此7被3除得2剩余1.
+
 The modulus operator turns out to be surprisingly useful.  For
 example, you can check whether one number is divisible by another---if
 {\tt x \% y} is zero, then {\tt x} is divisible by {\tt y}.
 \index{divisibility}
+
+求余运算符非常有用。
+例如你可以查看一个数是否能被另一个整除---如果{\tt x \% y}是0，
+那么{\tt x}能被{\tt y}整除。
 
 Also, you can extract the right-most digit
 or digits from a number.  For example, {\tt x \% 10} yields the
 right-most digit of {\tt x} (in base 10).  Similarly {\tt x \% 100}
 yields the last two digits.
 
+同时，你能获得一个数的最右一位或者各位的数字。
+例如{\tt x \% 10}产生{\tt x}的最右一位数字（以10为底）。
+相似的，{\tt x \% 100}产生最后两位数字。
 
-\section{Boolean expressions}
+
+\section{Boolean expressions 布尔表达式}
 \index{boolean expression}
 \index{expression!boolean}
 \index{logical operator}
@@ -4870,6 +4884,11 @@ A {\bf boolean expression} is an expression that is either true
 or false.  The following examples use the 
 operator {\tt ==}, which compares two operands and produces
 {\tt True} if they are equal and {\tt False} otherwise:
+
+{\bf 布尔表达式（boolean expression）}的结果为真或者假。
+下面的例子使用{\tt ==}运算符，它比较两个运算数，
+如果它们相等，则产生{\tt True}，否则产生{\tt False}。
+
 
 \begin{verbatim}
 >>> 5 == 5
@@ -4887,6 +4906,9 @@ values that belong to the type {\tt bool}; they are not strings:
 \index{bool type}
 \index{type!bool}
 
+{\tt True}和{\tt False}是属于{\tt bool}类型的特殊的值，
+它们不是字符串。
+
 \begin{verbatim}
 >>> type(True)
 <type 'bool'>
@@ -4897,12 +4919,15 @@ values that belong to the type {\tt bool}; they are not strings:
 The {\tt ==} operator is one of the {\bf relational operators}; the
 others are:
 
+{\tt ==}运算符是{\bf 关系运算符（relational operators）}之一，
+其它的是：
+
 \begin{verbatim}
-      x != y               # x is not equal to y
-      x > y                # x is greater than y
-      x < y                # x is less than y
-      x >= y               # x is greater than or equal to y
-      x <= y               # x is less than or equal to y
+      x != y               # x is not equal to y（x和y不相等）
+      x > y                # x is greater than y（x比y大）
+      x < y                # x is less than y（x比y小）
+      x >= y               # x is greater than or equal to y（x大于或等于y）
+      x <= y               # x is less than or equal to y（x小于或等于y）
 \end{verbatim}
 %
 Although these operations are probably familiar to you, the Python
@@ -4914,8 +4939,12 @@ is to use a single equal sign ({\tt =}) instead of a double equal sign
 \index{relational operator}
 \index{operator!relational}
 
+虽然这些运算符对你来说可能很熟悉，但是Python的符号与数学符号不相同。
+一个通常的错误是使用单独一个等号（{\tt =}）而不是双等号（{\tt ==}）。
+记住，{\tt =}是赋值运算符，{\tt ==}是关系运算符。
+没有类似{\tt =<}或{\tt =>}的东西。
 
-\section {Logical operators}
+\section {Logical operators 逻辑运算符}
 \index{logical operator}
 \index{operator!logical}
 
@@ -4931,16 +4960,29 @@ similar to their meaning in English.  For example,
 \index{operator!or}
 \index{operator!not}
 
+有三个{\bf 逻辑运算符（logical operators）}：{\tt and}、{\tt or}和{\tt not}。
+这些运算符的含义和它们的英语意思相似。
+例如如果{\tt x}大于0并且小于10，则{\tt x > 0 and x < 10}为真
+
 {\tt n\%2 == 0 or n\%3 == 0} is true if {\em either} of the conditions
 is true, that is, if the number is divisible by 2 {\em or} 3.
+只要有一个条件为真，也就是数字{\tt n}能被2或者3整除，
+则{\tt n\%2 == 0 or n\%3 == 0}为真。
 
 Finally, the {\tt not} operator negates a boolean
 expression, so {\tt not (x > y)} is true if {\tt x > y} is false,
 that is, if {\tt x} is less than or equal to {\tt y}.
 
+最后，{\tt not}对一个布尔表达式取反，
+因此，如果{\tt x > y}为假，也就是说{\tt x}小于或等于{\tt y}，
+则{\tt not (x > y)}为真
+
 Strictly speaking, the operands of the logical operators should be
 boolean expressions, but Python is not very strict.
 Any nonzero number is interpreted as ``true.''
+
+严格来讲，布尔运算符的运算数应该是布尔表达式，
+但是Python并不严格。任何非0的数字都被解释成``真''。
 
 \begin{verbatim}
 >>> 17 and True
@@ -4951,8 +4993,11 @@ This flexibility can be useful, but there are some subtleties to
 it that might be confusing.  You might want to avoid it (unless
 you know what you are doing).
 
+这种灵活性很有用，但有一些细节可能容易令人困惑。
+你可能需要避免它（除非你知道你正在做什么）。
 
-\section{Conditional execution}
+
+\section{Conditional execution 有条件的执行}
 \label{conditional.execution}
 
 \index{conditional statement}
@@ -4964,6 +5009,10 @@ In order to write useful programs, we almost always need the ability
 to check conditions and change the behavior of the program
 accordingly.  {\bf Conditional statements} give us this ability.  The
 simplest form is the {\tt if} statement:
+
+为了写出有用的程序，我们几乎总是需要检测条件并相应的改变程序行为的能力。
+{\bf 条件语句（Conditional statements）}给予我们这一能力。
+最简单的形式是{\tt if}语句：
 
 \begin{verbatim}
 if x > 0:
@@ -4977,9 +5026,16 @@ statement gets executed.  If not, nothing happens.
 \index{compound statement}
 \index{statement!compound}
 
+{\tt if}之后的布尔表达式被称作{\bf 条件（condition）}。
+如果它为真，则缩进的语句被执行。
+如果不是，则什么也不好发生。
+
 {\tt if} statements have the same structure as function definitions:
 a header followed by an indented body.  Statements like this are
 called {\bf compound statements}.
+
+{\tt if}和函数定义有相同的结构：一个头跟着一个缩进的体。
+类似的语句被称作{\bf 合成语句（compound statements）}。
 
 There is no limit on the number of statements that can appear in
 the body, but there has to be at least one.
@@ -4989,13 +5045,17 @@ case, you can use the {\tt pass} statement, which does nothing.
 \index{pass statement}
 \index{statement!pass}
 
+体中可出现的语句数目没有限制，但是至少有一个。
+有时候，没有任何语句的体会有用（通常对于你还没写的代码作一个占位）。
+那样，你可以使用{\tt pass}，它什么也不做。
+
 \begin{verbatim}
 if x < 0:
     pass          # need to handle negative values!
 \end{verbatim}
 %
 
-\section{Alternative execution}
+\section{Alternative execution 二选一执行}
 \label{alternative.execution}
 \index{alternative execution}
 \index{else keyword}
@@ -5004,6 +5064,10 @@ if x < 0:
 A second form of the {\tt if} statement is {\bf alternative execution},
 in which there are two possibilities and the condition determines
 which one gets executed.  The syntax looks like this:
+
+{\tt if}语句的第二种形式是{\bf 二选一之选那个（alternative execution）}，
+此时有两个可能，条件决定哪一个被执行。
+语法看起来是这样：
 
 \begin{verbatim}
 if x%2 == 0:
@@ -5020,15 +5084,22 @@ the alternatives will be executed.  The alternatives are called
 {\bf branches}, because they are branches in the flow of execution.
 \index{branch}
 
+如果{\tt x}除以2的余数是0，那么我们知道{\tt x}是偶数，
+并且程序对这一效果显示一个信息。
+如果条件为假，第2个语句集合被执行。
+既然条件只能是真或假，两个选择之一必被执行。
+此选择被称作{\bf 分支（branches）}，因为它们是执行流的分支。
 
-
-\section{Chained conditionals}
+\section{Chained conditionals 链式条件}
 \index{chained conditional}
 \index{conditional!chained}
 
 Sometimes there are more than two possibilities and we need more than
 two branches.  One way to express a computation like that is a {\bf
 chained conditional}:
+
+有时有超过两个可能的条件并且我们需要多余两个的分支。
+一种表示像这样的计算的方法是{\bf 链式条件（chained conditional）}：
 
 \begin{verbatim}
 if x < y:
@@ -5046,6 +5117,9 @@ at the end, but there doesn't have to be one.
 \index{elif keyword}
 \index{keyword!elif}
 
+{\tt elif}是``else if''的缩写。再次，必有一个分支被执行。 
+{\tt elif}语句的数目没有限制。如果有一个{\tt else}从句，
+它必须是在最后，但不是必须要只有一个。
 
 \begin{verbatim}
 if choice == 'a':
@@ -5062,13 +5136,18 @@ true, the corresponding branch executes, and the statement
 ends.  Even if more than one condition is true, only the
 first true branch executes.  
 
+每个条件被按顺序检测。如果第一个为假，检测下一个，以此类推。
+如果它们中有一个为真，相应的分支被执行，并且语句结束。
+即使不止一个条件为真，只执行第一个为真的分支。
 
-\section{Nested conditionals}
+\section{Nested conditionals 嵌套条件}
 \index{nested conditional}
 \index{conditional!nested}
 
 One conditional can also be nested within another.  We could have
 written the trichotomy example like this:
+
+一个条件可以嵌到另一个里面。我们可以像这样写三分的例子：
 
 \begin{verbatim}
 if x == y:
@@ -5086,13 +5165,23 @@ contains another {\tt if} statement, which has two branches of its
 own.  Those two branches are both simple statements,
 although they could have been conditional statements as well.
 
+外面的条件包括两个分支。第一个分支包括一条简单的语句。
+第二个分支包括另外一个{\tt if}语句，它有自己的两个分支。
+那两个分支都是简单的语句，当然它们也能有条件语句。
+
 Although the indentation of the statements makes the structure
 apparent, {\bf nested conditionals} become difficult to read very
 quickly. In general, it is a good idea to avoid them when you can.
 
+虽然语句的缩进使得结构很明显，但是{\bf 嵌套条件（nested conditionals）}
+很难快速的读它们。一般来讲，当你可以的时候，避免使用嵌套条件是个好办法。
+
 Logical operators often provide a way to simplify nested conditional
 statements.  For example, we can rewrite the following code using a
 single conditional:
+
+逻辑运算符经常提供一个化简条件语句的方法。
+例如，我们可以用一个单一条件重写下面的代码：
 
 \begin{verbatim}
 if 0 < x:
@@ -5103,13 +5192,16 @@ if 0 < x:
 The {\tt print} statement is executed only if we make it past both
 conditionals, so we can get the same effect with the {\tt and} operator:
 
+只有我们通过两个条件的时候，{\tt print}语句才被执行，
+因此我们能够获得和{\tt and}运算符相同的效果：
+
 \begin{verbatim}
 if 0 < x and x < 10:
     print 'x is a positive single-digit number.'
 \end{verbatim}
 
 
-\section{Recursion}
+\section{Recursion 递归}
 \label{recursion}
 \index{recursion}
 
@@ -5118,6 +5210,10 @@ it is also legal for a function to call itself.  It may not be obvious
 why that is a good thing, but it turns out to be one of the most
 magical things a program can do.
 For example, look at the following function:
+
+一个函数调用另一个是合法的，一个函数调用它自己也是合法的。
+为什么这一个和好事情可能不明显，但它是一个程序能做的最神奇的东西之一。
+例如，看一下下面的程序：
 
 \begin{verbatim}
 def countdown(n):
@@ -5132,7 +5228,12 @@ If {\tt n} is 0 or negative, it outputs the word, ``Blastoff!''
 Otherwise, it outputs {\tt n} and then calls a function named {\tt
 countdown}---itself---passing {\tt n-1} as an argument.
 
+如果{\tt n}是0或负数，它输出单词``Blastoff!''。
+否则，它输出{\tt n}然后调用一个名为{\tt countdown}的函数---它自己---
+传递{\tt n-1}作为实参。
+
 What happens if we call this function like this?
+如果我们像这样调用该函数会发生什么呢？
 
 \begin{verbatim}
 >>> countdown(3)
@@ -5141,30 +5242,53 @@ What happens if we call this function like this?
 The execution of {\tt countdown} begins with {\tt n=3}, and since
 {\tt n} is greater than 0, it outputs the value 3, and then calls itself...
 
+{\tt countdown}开始以{\tt n=3}执行，既然{\tt n}大于0，
+它输出值3，然后调用它自己...
+
 \begin{quote}
 The execution of {\tt countdown} begins with {\tt n=2}, and since
 {\tt n} is greater than 0, it outputs the value 2, and then calls itself...
+
+{\tt countdown}开始以{\tt n=2}执行，既然{\tt n}大于0，
+它输出值2，然后调用它自己...
 
 \begin{quote}
 The execution of {\tt countdown} begins with {\tt n=1}, and since
 {\tt n} is greater than 0, it outputs the value 1, and then calls itself...
 
+{\tt countdown}开始以{\tt n=1}执行，既然{\tt n}大于0，
+它输出值1，然后调用它自己...
+
 \begin{quote}
 The execution of {\tt countdown} begins with {\tt n=0}, and since {\tt
 n} is not greater than 0, it outputs the word, ``Blastoff!'' and then
 returns.
+
+{\tt countdown}开始以{\tt n=0}执行，既然{\tt n}不大于0，
+它输出单词``Blastoff!''，然后返回。
+
 \end{quote}
 
 The {\tt countdown} that got {\tt n=1} returns.
+
+获得{\tt n=1}的{\tt countdown}返回。
+
 \end{quote}
 
 The {\tt countdown} that got {\tt n=2} returns.
+
+获得{\tt n=2}的{\tt countdown}返回。
+
 \end{quote}
 
 The {\tt countdown} that got {\tt n=3} returns.
 
+获得{\tt n=3}的{\tt countdown}返回。
+
 And then you're back in \verb"__main__".  So, the
 total output looks like this:
+
+然后你回到\verb"__main__"中。因此整个输出类似于：
 
 \begin{verbatim}
 3
@@ -5178,8 +5302,13 @@ called {\bf recursion}.
 \index{recursion}
 \index{function!recursive}
 
+一个调用它自己的函数是{\bf 递归的（recursive）}，
+这个过程被称作{\bf 递归（recursion）}。
+
 As another example, we can write a function that prints a
 string {\tt n} times.
+
+作为另一个例子，我们可以写一个函数，其打印一个字符串{\tt n}次。
 
 \begin{verbatim}
 def print_n(s, n):
@@ -5195,20 +5324,29 @@ lines of the function are not executed.
 \index{return statement}
 \index{statement!return}
 
+如果{\tt n <= 0}，{\tt return}语句退出函数。
+执行流马上返回到调用者，函数剩余的行不被执行。
+
 The rest of the function is similar to {\tt countdown}: if {\tt n} is
 greater than 0, it displays {\tt s} and then calls itself to display
 {\tt s} $n-1$ additional times.  So the number of lines of output
-is {\tt 1 + (n - 1)}, which adds up to
-{\tt n}.
+is {\tt 1 + (n - 1)}, which adds up to {\tt n}.
+
+函数的其余部分和{\tt countdown}相似：
+如果{\tt n}比0大，它显示{\tt s}并调用它自己来额外显示{\tt s} $n-1$次。
+因此，输出的行数是{\tt 1 + (n - 1)}，加起来是{\tt n}。
 
 For simple examples like this, it is probably easier to use a {\tt
 for} loop.  But we will see examples later that are hard to write
 with a {\tt for} loop and easy to write with recursion, so it is
 good to start early.
 
+对于像这样简单的例子，使用{\tt for}循环可能更容易。
+但是我们后面将看到一些用一个{\tt for}循环很难写的例子，
+所以早点儿开始有好处。
 
 
-\section{Stack diagrams for recursive functions}
+\section{Stack diagrams for recursive functions 递归函数栈图}
 \label{recursive.stack}
 \index{stack diagram}
 \index{function frame}
@@ -5218,13 +5356,22 @@ In Section~\ref{stackdiagram}, we used a stack diagram to represent
 the state of a program during a function call.  The same kind of
 diagram can help interpret a recursive function.
 
+在\ref{stackdiagram}节中，我们用一个栈图表示函数调用期间程序的状态。
+相同类型的图能帮助理解一个递归函数。
+
 Every time a function gets called, Python creates a new function
 frame, which contains the function's local variables and parameters.
 For a recursive function, there might be more than one frame on the
 stack at the same time.
 
+一个函数每次被调用，Python生成一个新的函数框架，
+其包括函数的局部变量和形参。
+对于一个递归函数，在栈上可能同时有超过一个的框架。
+
 Figure~\ref{fig.stack2} shows a stack diagram for {\tt countdown} called with
 {\tt n = 3}.
+
+图\ref{fig.stack2}展示了一个对于用{\tt n = 3}调用{\tt countdown}的栈图。
 
 \begin{figure}
 \centerline
@@ -5240,10 +5387,18 @@ It is empty because we did not create any variables in
 \index{base case}
 \index{recursion!base case}
 
+通常，栈顶是\verb"__main__"的框架。
+因为我们在\verb"__main__"中没有生成任何变量也没有传递任何实参给它，
+所以它是空的。
+
 The four {\tt countdown} frames have different values for the
 parameter {\tt n}.  The bottom of the stack, where {\tt n=0}, is
 called the {\bf base case}.  It does not make a recursive call, so
 there are no more frames.
+
+对于形参{\tt n}，4个{\tt countdown}框架有不同的值。
+栈底，其中{\tt n=0}，被{\bf 基本情况（base case）}调用。
+它不在进行递归调用了，所以没有更多的框架了。
 
 \begin{exercise}
 Draw a stack diagram for \verb"print_n" called with
@@ -5258,7 +5413,7 @@ the given function {\tt n} times.
 
 
 
-\section{Infinite recursion}
+\section{Infinite recursion 无限递归}
 \index{infinite recursion}
 \index{recursion!infinite}
 \index{runtime error}
@@ -5270,6 +5425,10 @@ recursive calls forever, and the program never terminates.  This is
 known as {\bf infinite recursion}, and it is generally not
 a good idea.  Here is a minimal program with an infinite recursion:
 
+如果一个递归从不会到达基本情况，它永远进行递归调用，
+并且程序从来不会终止。这被称作{\bf 无限递归（infinite recursion）}，
+通常这不是一个好主意。这是一个具有无限递归的微型程序：
+
 \begin{verbatim}
 def recurse():
     recurse()
@@ -5280,6 +5439,9 @@ does not really run forever.  Python reports an error
 message when the maximum recursion depth is reached:
 \index{exception!RuntimeError}
 \index{RuntimeError}
+
+在大多数编程环境里，一个具有无限递归的程序并非永远不会终止。
+当达到最大递归深度时，Python报告一个错误信息：
 
 \begin{verbatim}
   File "<stdin>", line 2, in recurse
@@ -5296,8 +5458,10 @@ This traceback is a little bigger than the one we saw in the
 previous chapter.  When the error occurs, there are 1000
 {\tt recurse} frames on the stack!
 
+此回溯比我们在前面章节看到的大一点。
+当错误出现的时候，在栈上有1000个递归框架。
 
-\section{Keyboard input}
+\section{Keyboard input 键盘输入}
 \index{keyboard input}
 
 The programs we have written so far are a bit rude in the sense that
@@ -18849,7 +19013,7 @@ class BetterMap(object):
             self.maps.append(LinearMap())
 
     def find_map(self, k):
-        index = hash(k) \% len(self.maps)
+        index = hash(k) % len(self.maps)
         return self.maps[index]
 
     def add(self, k, v):
