@@ -5397,7 +5397,7 @@ called the {\bf base case}.  It does not make a recursive call, so
 there are no more frames.
 
 对于形参{\tt n}，4个{\tt countdown}框架有不同的值。
-栈底，其中{\tt n=0}，被{\bf 基本情况（base case）}调用。
+栈底，其中{\tt n=0}，被{\bf 基本条件（base case）}调用。
 它不在进行递归调用了，所以没有更多的框架了。
 
 \begin{exercise}
@@ -5425,7 +5425,7 @@ recursive calls forever, and the program never terminates.  This is
 known as {\bf infinite recursion}, and it is generally not
 a good idea.  Here is a minimal program with an infinite recursion:
 
-如果一个递归从不会到达基本情况，它永远进行递归调用，
+如果一个递归从不会到达基本条件，它永远进行递归调用，
 并且程序从来不会终止。这被称作{\bf 无限递归（infinite recursion）}，
 通常这不是一个好主意。这是一个具有无限递归的微型程序：
 
@@ -5468,6 +5468,9 @@ The programs we have written so far are a bit rude in the sense that
 they accept no input from the user.  They just do the same thing every
 time.
 
+到目前为止我们所写的程序都不接受来自用户的输入，从这个意义上讲有点儿粗鲁。
+每次它们都只是做相同的事情。
+
 Python 2 provides a built-in function called \verb"raw_input" that gets
 input from the keyboard.  In Python 3, it is called
   {\tt input}.  When this function is called, the program stops and
@@ -5477,6 +5480,11 @@ returns what the user typed as a string.
 \index{Python 3}
 \index{raw\_input function}
 \index{function!raw\_input}
+
+Python 2提供了一个被称为\verb"raw_input"的内建函数，从键盘获得输入。
+在Python 3中，它被称作{\tt input}。
+当此函数被调用时，程序停下来并且等待用户键入一些东西。
+当用户按回车时，程序恢复执行并且\verb"raw_input"作为字符串返回用户加入的内容。
 
 \begin{verbatim}
 >>> input = raw_input()
@@ -5489,6 +5497,9 @@ Before getting input from the user, it is a good idea to print a
 prompt telling the user what to input.  \verb"raw_input" can take a
 prompt as an argument:
 \index{prompt}
+
+在从用户哪儿获得输入之前，打印一个提示告诉用户输入什么是个好办法。
+\verb"raw_input"能接受一个提示作为实参。
 
 \begin{verbatim}
 >>> name = raw_input('What...is your name?\n')
@@ -5503,8 +5514,14 @@ which is a special character that causes a line break.
 That's why the user's input appears below the prompt.
 \index{newline}
 
+提示最后的序列\verb"\n"表示一个{\bf 新行（newline）}，
+它是一个特别的字符，引起一个断行。
+这也是为什么用户的输入出现在提示符的下面。
+
 If you expect the user to type an integer, you can try to convert
 the return value to {\tt int}:
+
+如果你期望用户键入一个整数，那么你可以试着将返回值转化为{\tt int}：
 
 \begin{verbatim}
 >>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
@@ -5518,6 +5535,8 @@ What...is the airspeed velocity of an unladen swallow?
 But if the user types something other than a string of digits,
 you get an error:
 
+但是，如果用户键入非数字字符串的其它东西，你获得一个错误：
+
 \begin{verbatim}
 >>> speed = raw_input(prompt)
 What...is the airspeed velocity of an unladen swallow?
@@ -5530,8 +5549,9 @@ We will see how to handle this kind of error later.
 \index{ValueError}
 \index{exception!ValueError}
 
+我们后面将会看到如何处理这类错误。
 
-\section{Debugging}
+\section{Debugging 调试}
 \label{whitespace}
 \index{debugging}
 \index{traceback}
@@ -5541,11 +5561,19 @@ a lot of information, but it can be overwhelming, especially
 when there are many frames on the stack.  The most
 useful parts are usually:
 
+当一个错误发生时，Python显示的回溯包含许多信息，
+但是它可能被淹没了，特别是在栈上有有许多框架时。
+最有用的部分通常是：
+
 \begin{itemize}
 
 \item What kind of error it was, and
 
+错误是哪类，以及
+
 \item Where it occurred.
+
+它发生在哪儿。
 
 \end{itemize}
 
@@ -5553,6 +5581,9 @@ Syntax errors are usually easy to find, but there are a few
 gotchas.  Whitespace errors can be tricky because spaces and
 tabs are invisible and we are used to ignoring them.
 \index{whitespace}
+
+语法错误通常很容易被找到，但也有一些难度。
+空白分隔符错误很棘手，因为空格和制表符是不可见的而且我们会忽略它们。
 
 \begin{verbatim}
 >>> x = 5
@@ -5571,12 +5602,24 @@ sometimes on a previous line.
 \index{error!runtime}
 \index{runtime error}
 
+在这个例子中，问题是第二行被一个空格缩进了。
+但是错误信息指向{\tt y}，这是个误导。
+通常，错误信息指向被发现错误的地方，
+但是真实的错误可能在代码中的更早前的地方，
+优势在前一行。
+
 The same is true of runtime errors.  
+
+运行时错误也同样。
 
 Suppose you are trying
 to compute a signal-to-noise ratio in decibels.  The formula
 is $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$.  In Python,
 you might write something like this:
+
+假设你正试图给计算机键入一个信噪比。
+公式是$SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$。
+在Python中，你可能如此写：
 
 \begin{verbatim}
 import math
@@ -5590,6 +5633,9 @@ print decibels
 But when you run it in Python 2, you get an error message.
 \index{exception!OverflowError}
 \index{OverflowError}
+
+但是，当你在Python 2中运行它的时候，
+你获得一个错误信息。
 
 \begin{verbatim}
 Traceback (most recent call last):
@@ -5607,71 +5653,81 @@ and noise power with floating-point values.
 \index{floor division}
 \index{division!floor}
 
+该错误信息指向第5行，但是那一行没什么错误。
+为了找到真实的错误，打印{\tt ratio}也许会有用，它变成了0。
+问题是在第4行，因为两个整数的除法是向下取整除。
+解决办法是用浮点值表示信号功率和噪声功率。
+
 In general, error messages tell you where the problem was discovered, 
 but that is often not where it was caused.
+
+通常，错误信息告诉你问题在哪儿发现的，但那经常并是非引起错误的地方。
 
 In Python 3, this example does not cause an error; the division operator
 performs floating-point division even with integer operands.
 
+在Python 3中，此例不会引起一个错误。
+即使是对整数运算数，除法运算符执行浮点除
 
-\section{Glossary}
+
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[modulus operator:]  An operator, denoted with a percent sign
+\item[modulus operator（求余运算符）:]  An operator, denoted with a percent sign
 ({\tt \%}), that works on integers and yields the remainder when one
 number is divided by another.
 \index{modulus operator}
 \index{operator!modulus}
 
-\item[boolean expression:]  An expression whose value is either 
+\item[boolean expression（布尔表达式）:]  An expression whose value is either 
 {\tt True} or {\tt False}.
 \index{boolean expression}
 \index{expression!boolean}
 
-\item[relational operator:] One of the operators that compares
+\item[relational operator（关系运算符）:] One of the operators that compares
 its operands: {\tt ==}, {\tt !=}, {\tt >}, {\tt <}, {\tt >=}, and {\tt <=}.
 
 \item[logical operator:] One of the operators that combines boolean
 expressions: {\tt and}, {\tt or}, and {\tt not}.
 
-\item[conditional statement:]  A statement that controls the flow of
+\item[conditional statement（条件语句）:]  A statement that controls the flow of
 execution depending on some condition.
 \index{conditional statement}
 \index{statement!conditional}
 
-\item[condition:] The boolean expression in a conditional statement
+\item[condition（条件）:] The boolean expression in a conditional statement
 that determines which branch is executed.
 \index{condition}
 
-\item[compound statement:]  A statement that consists of a header
+\item[compound statement（合成语句）:]  A statement that consists of a header
 and a body.  The header ends with a colon (:).  The body is indented
 relative to the header.
 \index{compound statement}
 
-\item[branch:] One of the alternative sequences of statements in
+\item[branch（分支）:] One of the alternative sequences of statements in
 a conditional statement.
 \index{branch}
 
-\item[chained conditional:]  A conditional statement with a series
+\item[chained conditional（链式条件）:]  A conditional statement with a series
 of alternative branches.
 \index{chained conditional}
 \index{conditional!chained}
 
-\item[nested conditional:]  A conditional statement that appears
+\item[nested conditional（嵌套条件）:]  A conditional statement that appears
 in one of the branches of another conditional statement.
 \index{nested conditional}
 \index{conditional!nested}
 
-\item[recursion:]  The process of calling the function that is
+\item[recursion（递归）:]  The process of calling the function that is
 currently executing.
 \index{recursion}
 
-\item[base case:]  A conditional branch in a
+\item[base case（基本条件）:]  A conditional branch in a
 recursive function that does not make a recursive call.
 \index{base case}
 
-\item[infinite recursion:]  A recursion that doesn't have a
+\item[infinite recursion（无限递归）:]  A recursion that doesn't have a
 base case, or never reaches it.  Eventually, an infinite recursion
 causes a runtime error.
 \index{infinite recursion}
