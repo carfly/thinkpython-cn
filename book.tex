@@ -5879,16 +5879,19 @@ implement your favorite.
 \end{exercise}
 
 
-\chapter{Fruitful functions}
+\chapter{Fruitful functions 有返回值的函数}
 \label{fruitchap}
 
-\section{Return values}
+\section{Return values 返回值}
 \index{return value}
 
 Some of the built-in functions we have used, such as the math
 functions, produce results.  Calling the function generates a
 value, which we usually assign to a variable or use as part of an
 expression.
+
+有一些我们用过的内建函数，例如数学函数，产生结果。
+调用此函数产生一个值，通常我们将其赋给一个变量或者作为一个表达式的一部分使用。
 
 \begin{verbatim}
 e = math.exp(1.0)
@@ -5899,9 +5902,15 @@ All of the functions we have written so far are void; they print
 something or move turtles around, but their return value is {\tt
 None}.
 
+目前为止所有我们写的函数都是无返回值的，
+它们打印一些东西或者移动海龟，但是它们的返回值是{\tt None}。
+
 In this chapter, we are (finally) going to write fruitful functions.
 The first example is {\tt area}, which returns the area of a circle
 with the given radius:
+
+在本章中，我们（最后）将写有返回值的函数。
+第一个例子是{\tt area}，给出半径，其返回一个圆的面积。
 
 \begin{verbatim}
 def area(radius):
@@ -5918,6 +5927,11 @@ have written this function more concisely:
 \index{return statement}
 \index{statement!return}
 
+之前我们已经见过{\tt return}语句了，但是在一个有返回值的函数中，
+{\tt return}语句包含一个表达式。
+这条语句意思是：``马上从该函数返回并使用下面的表达式作为返回值''。
+此表达式可以是任意复杂的，因此我们可以将该函数写得更简洁些：
+
 \begin{verbatim}
 def area(radius):
     return math.pi * radius**2
@@ -5928,8 +5942,12 @@ debugging easier.
 \index{temporary variable}
 \index{variable!temporary}
 
+另一方面，类似{\tt temp}的{\bf 临时变量（temporary variables）}经常会使调试更容易些。
+
 Sometimes it is useful to have multiple return statements, one in each
 branch of a conditional:
+
+有时，有多个返回语句会很有用，在每个条件的分支内有一个。
 
 \begin{verbatim}
 def absolute_value(x):
@@ -5942,15 +5960,23 @@ def absolute_value(x):
 Since these {\tt return} statements are in an alternative conditional,
 only one will be executed.
 
+既然这些{\tt return}语句在不同的条件内，只有一个会被执行。
+
 As soon as a return statement executes, the function
 terminates without executing any subsequent statements.
 Code that appears after a {\tt return} statement, or any other place
 the flow of execution can never reach, is called {\bf dead code}.
 \index{dead code}
 
+一旦一条返回语句执行，函数则终止，不再执行后续的语句。
+
 In a fruitful function, it is a good idea to ensure
 that every possible path through the program hits a
 {\tt return} statement.  For example:
+
+在一个有返回值的函数中，
+保证通过程序的每个可能的路径都遇到一个{\tt return}语句是个好注意。
+例如：
 
 \begin{verbatim}
 def absolute_value(x):
@@ -5968,6 +5994,11 @@ the absolute value of 0.
 \index{None special value}
 \index{special value!None}
 
+该函数是不正确的，因为如果{\tt x}恰好是0，
+则没有条件为真，并且函数在没遇到任何{\tt return}语句条件下终止。
+如果执行流到达函数的结尾，则返回值是{\tt None}，
+它不是0的绝对值。
+
 \begin{verbatim}
 >>> print absolute_value(0)
 None
@@ -5977,6 +6008,8 @@ By the way, Python provides a built-in function called
 {\tt abs} that computes absolute values.
 \index{abs function}
 \index{function!abs}
+
+顺便说一下，Python提供一个被称为{\tt abs}的内建函数用来计算绝对值。
 
 \begin{exercise}
 \index{compare function}
@@ -5988,12 +6021,14 @@ that returns {\tt 1} if {\tt x > y},
 \end{exercise}
 
 
-\section{Incremental development}
+\section{Incremental development 增量式开发}
 \label{incremental.development}
 \index{development plan!incremental}
 
 As you write larger functions, you might find yourself
 spending more time debugging.
+
+当你写较大的函数时，你可能发现你自己花了大量的时间用于调试。
 
 To deal with increasingly complex programs,
 you might want to try a process called
@@ -6003,9 +6038,16 @@ a small amount of code at a time.
 \index{testing!incremental development}
 \index{Pythagorean theorem}
 
+为了对付越来越负责的程序，
+你可能想试一种叫做{\bf 增量式开发（incremental development）}的过程。
+增量式开发的目标是通过每次增加和测试一小部分代码，以避免调试长代码。
+
 As an example, suppose you want to find the distance between two
 points, given by the coordinates $(x_1, y_1)$ and $(x_2, y_2)$.
 By the Pythagorean theorem, the distance is:
+
+作为一个例子，假设给定两个点的坐标$(x_1, y_1)$和$(x_2, y_2)$，
+你想找到两个点之间的距离。通过毕达哥拉斯定力，距离是：
 
 \begin{displaymath}
 \mathrm{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
@@ -6015,11 +6057,19 @@ The first step is to consider what a {\tt distance} function should
 look like in Python.  In other words, what are the inputs (parameters)
 and what is the output (return value)?
 
+第一步是考虑在Python中，一个{\tt distance}函数看起来会是什么样。
+换句话说，输入（形参）和输出（返回值）是什么？
+
 In this case, the inputs are two points, which you can represent
 using four numbers.  The return value is the distance, which is
 a floating-point value.
 
+此例中，输入是可以用4个数表示的两个点。
+返回值是距离，其是一个浮点数。
+
 Already you can write an outline of the function:
+
+因此，你可以写出此函数的轮廓：
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
@@ -6030,7 +6080,13 @@ Obviously, this version doesn't compute distances; it always returns
 zero.  But it is syntactically correct, and it runs, which means that
 you can test it before you make it more complicated.
 
+显然，此版本不能计算距离，它总是返回0。
+但它是语法上正确的，并且它能运行，
+也就是说在你将它变得更复杂之前，你能够测试它。
+
 To test the new function, call it with sample arguments:
+
+为了测试这个新函数，使用样例实参调用它：
 
 \begin{verbatim}
 >>> distance(1, 2, 4, 6)
@@ -6043,11 +6099,20 @@ vertical distance is 4; that way, the result is 5
 useful to know the right answer.
 \index{testing!knowing the answer}
 
+我选择这些值以便水平距离是3，垂直距离是4。
+这样结果是5（3-4-5三角形直角三角形的斜边）。
+当测试一个函数时，知道正确的结果很有用。
+
 At this point we have confirmed that the function is syntactically
 correct, and we can start adding code to the body.
 A reasonable next step is to find the differences
 $x_2 - x_1$ and $y_2 - y_1$.  The next version stores those values in
 temporary variables and prints them.
+
+在这一点上，我们已经确定函数是语法正确的了，
+我们可以在函数体中开始增加代码。
+一个可行的下一步是找到$x_2 - x_1$和$y_2 - y_1$之间的不同。
+下一个版本在临时变量中存储这些值并打印它们。
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
@@ -6063,7 +6128,13 @@ If the function is working, it should display \verb"'dx is 3'" and {\tt
 arguments and performing the first computation correctly.  If not,
 there are only a few lines to check.
 
+如果此函数好使，它应该显示\verb"'dx is 3'"以及{\tt 'dy is 4'}。
+如果这样，我们知道此函数获得了正确的实参并且正确的执行第一步计算。
+如果不是，只需检查很少的几行。
+
 Next we compute the sum of squares of {\tt dx} and {\tt dy}:
+
+下面我们计算{\tt dx}和{\tt dy}的平方和：
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
@@ -6080,6 +6151,9 @@ Finally, you can use {\tt math.sqrt} to compute and return the result:
 \index{sqrt}
 \index{function!sqrt}
 
+再一次，你运行此程序并检查输出（它应该是25）。
+最后，你可以使用{\tt math.sqrt}计算并返回结果：
+
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
     dx = x2 - x1
@@ -6093,6 +6167,9 @@ If that works correctly, you are done.  Otherwise, you might
 want to print the value of {\tt result} before the return
 statement.
 
+如果其正确工作，你完成了。
+否则，你可能想在返回语句之前打印返回值。
+
 The final version of the function doesn't display anything when it
 runs; it only returns a value.  The {\tt print} statements we wrote
 are useful for debugging, but once you get the function working, you
@@ -6101,12 +6178,23 @@ because it is helpful for building the program but is not part of the
 final product.
 \index{scaffolding}
 
+当该函数的最终版本运行的时候，其不显示任何东西，它值返回一个值。
+我们写的{\tt print}语句对于调试很有用，但是一旦你使得该寒素正确运行了，
+你应该删除它们。类似的代码被称作{\bf 脚手架（scaffolding）}，
+因为它对建造程序很有用，但是不是最终产品的一部分。
+
 When you start out, you should add only a line or two of code at a
 time.  As you gain more experience, you might find yourself writing
 and debugging bigger chunks.  Either way, incremental development
 can save you a lot of debugging time.
 
+当你刚开始的时候，你每次应该只增加一或两行代码。
+随着你获得越来越多的经验，你可能发现你自己能写并调试更大的块了。
+无论哪种方式，增量式开发能够节省你大量调试的时间。
+
 The key aspects of the process are:
+
+此过程的关键是：
 
 \begin{enumerate}
 
@@ -6114,8 +6202,13 @@ The key aspects of the process are:
 At any point, if there is an error, you should have a good idea
 where it is.
 
+从一个好使的程序开始并做小的增量式的修改。
+如论何时，如果有一个错误，你应该知道它在哪儿。
+
 \item Use temporary variables to hold intermediate values so you can
 display and check them.
+
+使用临时变量来存储中间值，因此你能显示并检查它们。
 
 \item Once the program is working, you might want to remove some of
 the scaffolding or consolidate multiple statements into compound
