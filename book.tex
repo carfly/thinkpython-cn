@@ -6047,7 +6047,7 @@ points, given by the coordinates $(x_1, y_1)$ and $(x_2, y_2)$.
 By the Pythagorean theorem, the distance is:
 
 作为一个例子，假设给定两个点的坐标$(x_1, y_1)$和$(x_2, y_2)$，
-你想找到两个点之间的距离。通过毕达哥拉斯定力，距离是：
+你想计算两个点之间的距离。通过毕达哥拉斯定力，距离是：
 
 \begin{displaymath}
 \mathrm{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
@@ -6215,6 +6215,9 @@ the scaffolding or consolidate multiple statements into compound
 expressions, but only if it does not make the program difficult to
 read.
 
+一旦程序正常运行，你可能想删掉一些脚手架或者将多条语句组成复合表达式，
+但是只有这不会使程序难读懂时。
+
 \end{enumerate}
 
 \begin{exercise}
@@ -6227,22 +6230,32 @@ Record each stage of the development process as you go.
 \end{exercise}
 
 
-\section{Composition}
+\section{Composition 组合}
 \index{composition}
 \index{function composition}
 
 As you should expect by now, you can call one function from
 within another.  This ability is called {\bf composition}.
 
+和你现在可能期望的一样，你可以从一个函数内部调用另一个函数。
+这种能力被称作{\bf 组合（composition）}
+
 As an example, we'll write a function that takes two points,
 the center of the circle and a point on the perimeter, and computes
 the area of the circle.
+
+作为一个例子，我们将写一个接受两个点的函数，
+圆心以及圆周上的一个点，然后计算此圆的面积。
 
 Assume that the center point is stored in the variables {\tt xc} and
 {\tt yc}, and the perimeter point is in {\tt xp} and {\tt yp}. The
 first step is to find the radius of the circle, which is the distance
 between the two points.  We just wrote a function, {\tt
 distance}, that does that:
+
+假设圆心点存储在变量{\tt xc}和{\tt yc}中，圆周点在{\tt xp}在{\tt yp}中。
+第一步是计算圆的半径，其是两个点之间的距离。
+我们刚写了一个函数{\tt distance}来做这个：
 
 \begin{verbatim}
 radius = distance(xc, yc, xp, yp)
@@ -6251,12 +6264,16 @@ radius = distance(xc, yc, xp, yp)
 The next step is to find the area of a circle with that radius;
 we just wrote that, too:
 
+下一步是用那个半径计算一个圆的面积，我们也刚写过：
+
 \begin{verbatim}
 result = area(radius)
 \end{verbatim}
 %
 Encapsulating these steps in a function, we get:
 \index{encapsulation}
+
+将这些步骤封装在一个函数中，我们获得：
 
 \begin{verbatim}
 def circle_area(xc, yc, xp, yp):
@@ -6269,18 +6286,24 @@ The temporary variables {\tt radius} and {\tt result} are useful for
 development and debugging, but once the program is working, we can
 make it more concise by composing the function calls:
 
+临时变量{\tt radius}和{\tt result}对于开发和调试很有用，但是一旦改程序工作了，
+我们可以通过组合函数调用，把它变得更简洁：
+
 \begin{verbatim}
 def circle_area(xc, yc, xp, yp):
     return area(distance(xc, yc, xp, yp))
 \end{verbatim}
 %
 
-\section{Boolean functions}
+\section{Boolean functions 布尔函数}
 \label{boolean}
 
 Functions can return booleans, which is often convenient for hiding
 complicated tests inside functions.  \index{boolean function}
 For example:
+
+函数能返回布尔值，将复杂的测试隐藏在函数中通常很方便。
+例如：
 
 \begin{verbatim}
 def is_divisible(x, y):
@@ -6294,7 +6317,12 @@ It is common to give boolean functions names that sound like yes/no
 questions; \verb"is_divisible" returns either {\tt True} or {\tt False}
 to indicate whether {\tt x} is divisible by {\tt y}.
 
+通常给布尔函数一个听起来像是/否问题的函数名，
+\verb"is_divisible"返回{\tt True}或{\tt False}来指示是否{\tt x}能被{\tt y}整除。
+
 Here is an example:
+
+这是一个例子：
 
 \begin{verbatim}
 >>>   is_divisible(6, 4)
@@ -6306,6 +6334,9 @@ True
 The result of the {\tt ==} operator is a boolean, so we can write the
 function more concisely by returning it directly:
 
+{\tt ==}运算符的结果是布尔值，
+因此我们可以通过直接返回它更简洁的写出该函数：
+
 \begin{verbatim}
 def is_divisible(x, y):
     return x % y == 0
@@ -6315,6 +6346,8 @@ Boolean functions are often used in conditional statements:
 \index{conditional statement}
 \index{statement!conditional}
 
+布尔函数通常被用于条件语句中：
+
 \begin{verbatim}
 if is_divisible(x, y):
     print 'x is divisible by y'
@@ -6322,12 +6355,16 @@ if is_divisible(x, y):
 %
 It might be tempting to write something like:
 
+写一些类似的东西可能很诱人：
+
 \begin{verbatim}
 if is_divisible(x, y) == True:
     print 'x is divisible by y'
 \end{verbatim}
 %
 But the extra comparison is unnecessary.
+
+但是额外的比较是不必要的。
 
 \begin{exercise}
 
@@ -6337,7 +6374,7 @@ returns {\tt True} if $x \le y \le z$ or {\tt False} otherwise.
 \end{exercise}
 
 
-\section{More recursion}
+\section{More recursion 更多的递归}
 \label{more.recursion}
 \index{recursion}
 \index{Turing complete language}
@@ -6353,6 +6390,12 @@ could be rewritten using only the language features you have learned
 so far (actually, you would need a few commands to control devices
 like the keyboard, mouse, disks, etc., but that's all).
 
+我们已经覆盖了Python的一个小的子集，
+但是当你知道该子集是全部的编程语言时你可能很感兴趣，
+这意味着任何能被计算的东西都能用该语言表达。
+过去写的任何程序都能用你已经学过的语言特点表示
+（事实上，你可能需要一些命令来控制如键盘、鼠标、磁盘等设备，但仅此而已）。
+
 Proving that claim is a nontrivial exercise first accomplished by Alan
 Turing, one of the first computer scientists (some would argue that he
 was a mathematician, but a lot of early computer scientists started as
@@ -6361,12 +6404,21 @@ For a more complete (and accurate) discussion of the Turing Thesis,
 I recommend Michael Sipser's book {\em Introduction to the
 Theory of Computation}.
 
+证明这种说法是一个非凡的工作，首先由阿兰图灵完成，他是首批计算机科学家之一
+（有些人认为他是一个数学家，但是很多早期的计算机科学家都开始是数学家）。
+相应地，这被称作图灵理论。关于图灵理论更完整（和准确）的讨论，
+我推荐Michael Sipser的书《Introduction to the Theory of Computation》。
+
 To give you an idea of what you can do with the tools you have learned
 so far, we'll evaluate a few recursively defined mathematical
 functions.  A recursive definition is similar to a circular
 definition, in the sense that the definition contains a reference to
 the thing being defined.  A truly circular definition is not very
 useful:
+
+为了说明用目前学过的工具能做什么，我们将计算一些递归定义的数学函数。
+递归定义类似循环定义，在这个意义上定义包含一个指向已经被定义的事物的引用。
+一个真的循环定义不是非常有用：
 
 \begin{description}
 
@@ -6375,12 +6427,18 @@ useful:
 \index{circular definition}
 \index{definition!circular}
 
+\item[漩涡：] 用一个形容词来描述漩涡状的东西。
+
 \end{description}
 
 If you saw that definition in the dictionary, you might be annoyed. On
 the other hand, if you looked up the definition of the factorial
 function, denoted with the symbol $!$, you might get something like
 this:
+
+如果你看到词典中的定义，你可能很恼火。
+另一方面：如果你查找用$!$符号表示的阶乘函数的定义，
+你可能获得如下的东西：
 %
 \begin{eqnarray*}
 &&  0! = 1 \\
@@ -6390,6 +6448,8 @@ this:
 This definition says that the factorial of 0 is 1, and the factorial
 of any other value, $n$, is $n$ multiplied by the factorial of $n-1$.
 
+此定义说0的阶乘是1，任何其它值$n$的阶乘是$n$乘以$n-1$的阶乘。
+
 So $3!$ is 3 times $2!$, which is 2 times $1!$, which is 1 times
 $0!$. Putting it all together, $3!$ equals 3 times 2 times 1 times 1,
 which is 6.
@@ -6397,16 +6457,24 @@ which is 6.
 \index{function!factorial}
 \index{recursive definition}
 
+所以$3!$是3乘以$2!$，它又是2乘以$1!$，它又是1乘以$0!$。
+将它放在一起，$3!$是3乘以2乘以1乘以1，是6。
+
 If you can write a recursive definition of something, you can usually
 write a Python program to evaluate it. The first step is to decide
 what the parameters should be.  In this case it should be clear
 that {\tt factorial} takes an integer:
+
+如果你能写一些东西的递归定义，你通常可以写一个Python程序来计算它。
+第一步是决定形参应该是什么。在此例中应该很清楚的是{\tt factorial}接受一个整数：
 
 \begin{verbatim}
 def factorial(n):
 \end{verbatim}
 %
 If the argument happens to be 0, all we have to do is return 1:
+
+如果实参恰好是0，所有我们需要做的是返回1：
 
 \begin{verbatim}
 def factorial(n):
@@ -6417,6 +6485,8 @@ def factorial(n):
 Otherwise, and this is the interesting part, we have to make a
 recursive call to find the factorial of $n-1$ and then multiply it by
 $n$:
+
+否则，这是一个很有趣的部分，我们必须进行递归调用来计算$n-1$的阶乘然后乘以$n$：
 
 \begin{verbatim}
 def factorial(n):
@@ -6432,22 +6502,31 @@ The flow of execution for this program is similar to the flow of {\tt
 countdown} in Section~\ref{recursion}.  If we call {\tt factorial}
 with the value 3:
 
+此程序的执行流程和\ref{recursion}节中的{\tt countdown}类似。
+如果我们用值3调用{\tt factorial}：
+
 Since 3 is not 0, we take the second branch and calculate the factorial
 of {\tt n-1}...
+
+既然3不是0，我们执行第二个分支并计算{\tt n-1}的阶乘…
 
 \begin{quote}
 Since 2 is not 0, we take the second branch and calculate the factorial of
 {\tt n-1}...
 
+既然2不是0，我们执行第二个分支并计算{\tt n-1}的阶乘…
 
   \begin{quote}
   Since 1 is not 0, we take the second branch and calculate the factorial
   of {\tt n-1}...
 
+既然1不是0，我们执行第二个分支并计算{\tt n-1}的阶乘…
 
     \begin{quote}
     Since 0 {\em is} 0, we take the first branch and return 1
     without making any more recursive calls.
+    
+    既然0是0，我们执行第一个分支并返回1，不进行任何递归调用。
     \end{quote}
 
 
