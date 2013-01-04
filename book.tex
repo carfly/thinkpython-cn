@@ -4724,7 +4724,7 @@ the caller before a function starts.
 
 \item[postcondition （后置条件）:] A requirement that should be satisfied by
 the function before it ends.
-\index{precondition}
+\index{postcondition}
 
 \end{description}
 
@@ -6532,21 +6532,29 @@ Since 2 is not 0, we take the second branch and calculate the factorial of
 
   The return value (1) is multiplied by $n$, which is 1, and the
   result is returned.
+  
+  返回值(1)被与$n$（其为1）相乘，并返回结果。
   \end{quote}
 
 
 The return value (1) is multiplied by $n$, which is 2, and the
 result is returned.
+
+返回值(1)被与$n$（其为2）相乘，并返回结果。
 \end{quote}
 
 
 The return value (2) is multiplied by $n$, which is 3, and the result, 6,
 becomes the return value of the function call that started the whole
 process.
+
+返回值(2)被与$n$（其为3）相乘，并返回结果6，成为整个过程开始调用的函数的返回值。
 \index{stack diagram}
 
 Figure~\ref{fig.stack3} shows what the stack diagram looks like for
 this sequence of function calls.
+
+图\ref{fig.stack3}显示了该函数调用序列的栈图看上去是什么样。
 
 \begin{figure}
 \centerline
@@ -6561,12 +6569,18 @@ product of {\tt n} and {\tt recurse}.
 \index{function frame}
 \index{frame}
 
+返回值被显示为传回到栈顶。在每个框架中，返回值是{\tt result}的值，
+其是{\tt n}和{\tt recurse}的乘积。
+
 In the last frame, the local
 variables {\tt recurse} and {\tt result} do not exist, because
 the branch that creates them does not execute.
 
+在最后一个框架中，局部变量{\tt recurse}和{\tt result}并不存在，
+因为生成它们的分支并没有被执行。
 
-\section{Leap of faith}
+
+\section{Leap of faith 信心的飞跃}
 \index{recursion}
 \index{leap of faith}
 
@@ -6577,11 +6591,20 @@ function call, instead of following the flow of execution, you {\em
 assume} that the function works correctly and returns the right
 result.
 
+顺着执行流程读程序是一种方法，但是它可能很快变得错综复杂。
+另一种是我称作``信心的飞跃''的方法。
+当你遇到一个函数调用的时候，不是顺着执行流程，
+而是假设该函数正确的工作并返回正确的结果。
+
 In fact, you are already practicing this leap of faith when you use
 built-in functions.  When you call {\tt math.cos} or {\tt math.exp},
 you don't examine the bodies of those functions.  You just
 assume that they work because the people who wrote the built-in
 functions were good programmers.
+
+事实上，当你使用内建函数的时候，你已经实践过这种方法了。
+当你调用{\tt math.cos}或{\tt math.exp}时，你并没有检查那些函数的函数体。
+你只是假设它们工作，因为写这些内建函数的人们都是好的程序员。
 
 The same is true when you call one of your own functions.  For
 example, in Section~\ref{boolean}, we wrote a function called 
@@ -6591,6 +6614,12 @@ correct---by examining the code and testing---we can use the function
 without looking at the body again.
 \index{testing!leap of faith}
 
+当你调用一个你自己的函数时也是这样。
+例如，在\ref{boolean}节中，我们写了一个称作\verb"is_divisible"的函数，
+它决定是否一个数能被另一个整除。
+一旦我们相信该函数是正确的---通过检查代码和测试---
+我们就能能使用该函数，而不用再看函数体了。
+
 The same is true of recursive programs.  When you get to the recursive
 call, instead of following the flow of execution, you should assume
 that the recursive call works (yields the correct result) and then ask
@@ -6598,12 +6627,20 @@ yourself, ``Assuming that I can find the factorial of $n-1$, can I
 compute the factorial of $n$?''  In this case, it is clear that you
 can, by multiplying by $n$.
 
+递归程序也是这样。当你遇到递归调用时，
+不用顺着执行流程，你应该假设次递归调用工作（产生正确的结果）
+然后问你自己，``假设我能够获得$n-1$的阶乘，我能计算$n$的阶乘么？''
+在此例中，很明显你能，通过乘以$n$。
+
 Of course, it's a bit strange to assume that the function works
 correctly when you haven't finished writing it, but that's why
 it's called a leap of faith!
 
+当然，当你没写完它的时候，假设函数正确工作有一点儿奇怪，
+但这也是为什么这被称作信心的飞跃了！
 
-\section{One more example}
+
+\section{One more example 一个更多的例子}
 \label{one.more.example}
 
 \index{fibonacci function}
@@ -6612,6 +6649,9 @@ After {\tt factorial}, the most common example of a recursively
 defined mathematical function is {\tt fibonacci}, which has the
 following definition (see
   \url{http://en.wikipedia.org/wiki/Fibonacci_number}):
+  
+{\tt factorial}之后，最通常的一个被递归定义的数学函数是{\tt fibonacci}，
+其定义如下（见：\url{http://en.wikipedia.org/wiki/Fibonacci_number}）：
 %
 \begin{eqnarray*}
 && \mathrm{fibonacci}(0) = 0 \\
@@ -6620,6 +6660,8 @@ following definition (see
 \end{eqnarray*}
 %
 Translated into Python, it looks like this:
+
+翻译成Python看起来是这样：
 
 \begin{verbatim}
 def fibonacci (n):
@@ -6638,8 +6680,12 @@ work correctly, then it is clear that you get
 the right result by adding them together.
 \index{flow of execution}
 
+这里，如果你试图跟随执行流程，即使对于相当小的$n$，
+你的头也会爆炸。但是根据信心的飞跃，如果你假设这两个递归调用正确的工作，
+那么很明显通过把它们加到一起，你获得了正确的结果。
 
-\section{Checking types}
+
+\section{Checking types 检查类型}
 \label{guardian}
 
 What happens if we call {\tt factorial} and give it 1.5 as an argument?
@@ -6647,6 +6693,8 @@ What happens if we call {\tt factorial} and give it 1.5 as an argument?
 \index{error checking}
 \index{factorial function}
 \index{RuntimeError}
+
+如果我们将1.5作为实参调用{\tt factorial}会发生什么呢？
 
 \begin{verbatim}
 >>> factorial(1.5)
@@ -6659,9 +6707,16 @@ we can {\em miss} the base case and recurse forever.
 \index{infinite recursion}
 \index{recursion!infinite}
 
+看上去像是一个无限循环。但那是如何发生的的？
+有一个基本条件---当{\tt n == 0}时。
+但是如果{\tt n}不是一个整数，我们会错过此基本条件并永远递归下去。
+
 In the first recursive call, the value of {\tt n} is 0.5.
 In the next, it is -0.5.  From there, it gets smaller
 (more negative), but it will never be 0.
+
+在第一个递归调用中，{\tt n}是0.5。下一次，它是-0.5。
+从此，它变得越来越小（越来越负），但不会是0。
 
 We have two choices.  We can try to generalize the {\tt factorial}
 function to work with floating-point numbers, or we can make {\tt
@@ -6670,11 +6725,19 @@ called the gamma function and it's a
 little beyond the scope of this book.  So we'll go for the second.
 \index{gamma function}
 
+我们有两个选择。我们可以试着泛化{\tt factorial}函数使其能处理浮点数，
+或者我们可以让{\tt factorial}检查它的实参的类型。
+第一个选项被称作gamma函数，它有点儿超过本书的范围了。
+所以我们将用第二种方法。
+
 We can use the built-in function {\tt isinstance} to verify the type
 of the argument.  While we're at it, we can also make sure the
 argument is positive:
 \index{isinstance function}
 \index{function!isinstance}
+
+我们可以使用内建函数{\tt isinstance}来验证实参的类型。
+此时，我们也可以确保该实参是正数：
 
 \begin{verbatim}
 def factorial (n):
@@ -6695,6 +6758,9 @@ second catches negative integers.  In both cases, the program prints
 an error message and returns {\tt None} to indicate that something
 went wrong:
 
+第一个基本条件处理非整数，第二个抓住负整数。
+在这两个条件中，程序打印一个错误信息并返回{\tt None}以指明一些东西是错误的：
+
 \begin{verbatim}
 >>> factorial('fred')
 Factorial is only defined for integers.
@@ -6709,16 +6775,25 @@ zero, so we can prove that the recursion terminates.
 \index{guardian pattern}
 \index{pattern!guardian}
 
+如果我们通过了这两个检查，那么我们知道$n$是一个正数或0，
+因此我们可以保证递归终止。
+
 This program demonstrates a pattern sometimes called a {\bf guardian}.
 The first two conditionals act as guardians, protecting the code that
 follows from values that might cause an error.  The guardians make it
 possible to prove the correctness of the code.
 
+此程序演示了一个模式，有时称作{\bf 监护人（guardian）}。
+前两个条件扮演监护人的角色，避免下面的代码使用引起错误的值。
+该监护人使得验证代码的正确性成为可能。
+
 In Section~\ref{raise} we will see a more flexible alternative to printing
 an error message: raising an exception.
 
+在\ref{raise}节中，我们将看到更灵活的方法来打印错误信息：
+抛出一个异常。
 
-\section{Debugging}
+\section{Debugging 调试}
 \label{factdebug}
 
 Breaking a large program into smaller functions creates natural
@@ -6726,16 +6801,25 @@ checkpoints for debugging.  \index{debugging}
 If a function is not working, there are
 three possibilities to consider:
 
+将一个大程序分解为较小的函数自然地为调试生成了检查点。
+如果一个函数不工作，有三个可能需要考虑：
+
 \begin{itemize}
 
 \item There is something wrong with the arguments the function
 is getting; a precondition is violated.
 
+该函数获得的实参有些错误，违反先决条件。
+
 \item There is something wrong with the function; a postcondition
 is violated.
 
+该函数有些错误，违反后置条件。
+
 \item There is something wrong with the return value or the
 way it is being used.
+
+返回值或者它的使用方法有错误。
 
 \end{itemize}
 
@@ -6746,21 +6830,34 @@ that checks the preconditions explicitly.
 \index{precondition}
 \index{postcondition}
 
+为了排除第一种可能，你可以在函数的开始增加一条{\tt print}语句
+来显示形参的值（也可能是它们的类型）。
+或者你可以写代码来显示地检查先决条件。
+
 If the parameters look good, add a {\tt print} statement before each
 {\tt return} statement that displays the return value.  If
 possible, check the result by hand.  Consider calling the
 function with values that make it easy to check the result
 (as in Section~\ref{incremental.development}).
 
+如果形参看起来很好，在每个{\tt return}语句之前增加一条{\tt print}语句，
+来显示返回值。如果可能，手工检查结果。
+考虑用一些容易检查的值来调用该函数（类似在\ref{incremental.development}节中）。
+
 If the function seems to be working, look at the function call
 to make sure the return value is being used correctly (or used
 at all!).
 \index{flow of execution}
 
+如果该函数看起来工作，则看函数调用确保返回值被正确的使用（或者被用了！）
+
 Adding print statements at the beginning and end of a function
 can help make the flow of execution more visible.
 For example, here is a version of {\tt factorial} with
 print statements:
+
+在一个函数的开始和结束增加打印语句可以帮助执行流程更明显。
+例如，这是{\tt factorial}的具有打印语句的版本：
 
 \begin{verbatim}
 def factorial(n):
@@ -6778,6 +6875,9 @@ def factorial(n):
 %
 {\tt space} is a string of space characters that controls the
 indentation of the output.  Here is the result of {\tt factorial(5)} :
+
+{\tt space}是一个空格字符的字符串，用来控制输出的缩进。
+这是{\tt factorial(5)}的结果：
 
 \begin{verbatim}
                      factorial 5
@@ -6798,35 +6898,37 @@ If you are confused about the flow of execution, this kind of
 output can be helpful.  It takes some time to develop effective
 scaffolding, but a little bit of scaffolding can save a lot of debugging.
 
+如果你对执行流程感到困惑，这种输出可能有用。
+开发有效的脚手架会花些时间，但是一点点的脚手架能够节省调试的时间。
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[temporary variable:]  A variable used to store an intermediate value in
+\item[temporary variable（临时变量）:]  A variable used to store an intermediate value in
 a complex calculation.
 \index{temporary variable}
 \index{variable!temporary}
 
-\item[dead code:]  Part of a program that can never be executed, often because
+\item[dead code（死代码）:]  Part of a program that can never be executed, often because
 it appears after a {\tt return} statement.
 \index{dead code}
 
-\item[{\tt None}:]  A special value returned by functions that
+\item[{\tt None} （空）:]  A special value returned by functions that
 have no return statement or a return statement without an argument.
 \index{None special value}
 \index{special value!None}
 
-\item[incremental development:]  A program development plan intended to
+\item[incremental development（增量式开发）:]  A program development plan intended to
 avoid debugging by adding and testing only
 a small amount of code at a time.
 \index{incremental development}
 
-\item[scaffolding:]  Code that is used during program development but is
+\item[scaffolding（脚手架）:]  Code that is used during program development but is
 not part of the final version.
 \index{scaffolding}
 
-\item[guardian:]  A programming pattern that uses a conditional
+\item[guardian（监护人）:]  A programming pattern that uses a conditional
 statement to check for and handle circumstances that
 might cause an error.
 \index{guardian pattern}
@@ -6969,9 +7071,9 @@ Sussman's {\em Structure and Interpretation of Computer Programs}.
 \end{exercise}
 
 
-\chapter{Iteration}
+\chapter{Iteration 迭代}
 
-\section{Multiple assignment}
+\section{Multiple assignment 多次赋值}
 \index{assignment}
 \index{statement!assignment}
 \index{multiple assignment}
@@ -6980,6 +7082,9 @@ As you may have discovered, it is legal to
 make more than one assignment to the same variable.  A
 new assignment makes an existing variable refer to a new
 value (and stop referring to the old value).
+
+如你可能已经发现的，对同一变量进行多次赋值是合法的。
+一个新的赋值使一个已有变量指向一个新的值（并停止指向旧的值）。
 
 \begin{verbatim}
 bruce = 5
@@ -6996,8 +7101,17 @@ the newline, which is why both outputs
 appear on the same line.
 \index{newline}
 
+程序的输出是{\tt 5 7}，因为{\tt bruce}第一次被打印时，它的值是5，
+第二次值是7。第一条{\tt print}语句结尾的逗号禁止产生新行，
+这也是为什么两个输出出现在同一行上。
+
 Figure~\ref{fig.assign2} shows what {\bf multiple assignment} looks
-like in a state diagram. \index{state diagram} \index{diagram!state}
+like in a state diagram. 
+\index{state diagram} 
+\index{diagram!state}
+
+图\ref{fig.assign2}显示在一个栈图中，{\bf 多次赋值（multiple assignment）}
+看起来是什么样子。
 
 With multiple assignment it is especially important to distinguish
 between an assignment operation and a statement of equality.  Because
@@ -7006,14 +7120,26 @@ interpret a statement like {\tt a = b} as a statement of equality. It
 is not!
 \index{equality and assignment}
 
+有了多次赋值，区分赋值运算和相等语句就特别重要。
+因为Python使用等号（{\tt =}）表示赋值，
+容易将类似{\tt a = b}的语句理解成一个相等语句，但它不是！
+
 First, equality is a symmetric relation and assignment is not.  For
 example, in mathematics, if $a=7$ then $7=a$.  But in Python, the
 statement {\tt a = 7} is legal and {\tt 7 = a} is not.
+
+首先，相等是一个对称关系但赋值不是。
+例如，在数学中，如果$a=7$，那么$7=a$。
+但是在Python中，{\tt a = 7}语句是合法的，但{\tt 7 = a}不合法。 
 
 Furthermore, in mathematics, a statement of equality is either true or
 false, for all time.  If $a=b$ now, then $a$ will always equal $b$.
 In Python, an assignment statement can make two variables equal, but
 they don't have to stay that way:
+
+更进一步，在数学中，一个相等语句总是或者为真或者为假。
+如果现在$a=b$，那么$a$总是等于$b$。
+在Python中，一条赋值语句可以使两个变量相等，但是它们不必总保持那样：
 
 \begin{verbatim}
 a = 5
@@ -7024,9 +7150,14 @@ a = 3    # a and b are no longer equal
 The third line changes the value of {\tt a} but does not change the
 value of {\tt b}, so they are no longer equal. 
 
+第三行改变了{\tt a}的值，但是不改变{\tt b}的值，因此它们不再相等。
+
 Although multiple assignment is frequently helpful, you should use it
 with caution.  If the values of variables change frequently, it can
 make the code difficult to read and debug.
+
+虽然多次赋值通常很有用，但是你应该小心使用它。
+如果变量的值经常改变，可能使代码很难读和调试。
 
 \begin{figure}
 \centerline
@@ -7037,7 +7168,7 @@ make the code difficult to read and debug.
 
 
 
-\section{Updating variables}
+\section{Updating variables 更新变量}
 \label{update}
 
 \index{update}
@@ -7046,6 +7177,9 @@ make the code difficult to read and debug.
 One of the most common forms of multiple assignment is an {\bf update},
 where the new value of the variable depends on the old.
 
+多次赋值的最常见形式之一是{\bf 更新（update）}，
+变量的新值依赖于旧值。
+
 \begin{verbatim}
 x = x+1
 \end{verbatim}
@@ -7053,9 +7187,14 @@ x = x+1
 This means ``get the current value of {\tt x}, add one, and then
 update {\tt x} with the new value.''
 
+这个意思是``获得{\tt x}的当前值，加1，然后用新值更新{\tt x}''。
+
 If you try to update a variable that doesn't exist, you get an
 error, because Python evaluates the right side before it assigns
 a value to {\tt x}:
+
+如果你试图更新一个不存在的变量，那么你会得到一个错误，
+因为Python在给{\tt x}赋值之前，先计算右边的值。
 
 \begin{verbatim}
 >>> x = x+1
@@ -7065,6 +7204,9 @@ NameError: name 'x' is not defined
 Before you can update a variable, you have to {\bf initialize}
 it, usually with a simple assignment:
 \index{initialization (before update)}
+
+在你可以更新一个变量之前，你必须{\bf 初始化（initialize）}它，
+通常使用一个简单的赋值：
 
 \begin{verbatim}
 >>> x = 0
@@ -7077,9 +7219,12 @@ subtracting 1 is called a {\bf decrement}.
 \index{decrement}
 
 
+通过加1更新一个变量被称作{\bf 递增（increment）}，
+减1被称作{\bf 递减（decrement）}。
 
 
-\section{The {\tt while} statement}
+
+\section{The {\tt while} statement {\tt while}语句}
 \index{statement!while}
 \index{while loop}
 \index{loop!while}
@@ -7089,14 +7234,25 @@ Computers are often used to automate repetitive tasks.  Repeating
 identical or similar tasks without making errors is something that
 computers do well and people do poorly.
 
+计算机经常被用于自动重复的任务。
+无误地重复相同或者相似的任务是计算能做得很好，而人做得不好的事情。
+
 We have seen two programs, {\tt countdown} and \verb"print_n", that
 use recursion to perform repetition, which is also called {\bf
 iteration}.  Because iteration is so common, Python provides several
 language features to make it easier.  One is the {\tt for} statement
 we saw in Section~\ref{repetition}.  We'll get back to that later.
 
+我们已经看过两个程序，{\tt countdown}和\verb"print_n"，它们使用递归来执行重复，
+这也被称作{\bf 迭代（iteration）}。因为迭代是如此常见，
+以至于Python提供了几个语言特性来使它变得容易。
+一个是我们在\ref{repetition}节中看到的{\tt for}语句。
+我们后面会回到它。
+
 Another is the {\tt while} statement.  Here is a version of {\tt
 countdown} that uses a {\tt while} statement:
+
+另一个是{\tt while}语句。这是使用{\tt while}语句的{\tt countdown}版本：
 
 \begin{verbatim}
 def countdown(n):
@@ -7112,17 +7268,29 @@ display the value of {\tt n} and then reduce the value of
 {\tt n} by 1.  When you get to 0, display the word {\tt Blastoff!}''
 \index{flow of execution}
 
+你几乎可以作为英语来读{\tt while}语句。
+它的意思是，``当{\tt n}大于0时，显示{\tt n}的值，然后将{\tt n}的值减1。
+当到达0的时候，显示单词{\tt Blastoff!}''。
+
 More formally, here is the flow of execution for a {\tt while} statement:
+
+更正式地，这是{\tt while}语句执行的流程：
 
 \begin{enumerate}
 
 \item Evaluate the condition, yielding {\tt True} or {\tt False}.
 
+求条件的值，产生{\tt True}或者{\tt False}。
+
 \item If the condition is false, exit the {\tt while} statement
 and continue execution at the next statement.
 
+如果条件为假，则退出{\tt while}语句并继续执行下一条语句。
+
 \item If the condition is true, execute the
 body and then go back to step 1.
+
+如条件为真，则执行循环体然后回到步骤1。
 
 \end{enumerate}
 
@@ -7131,6 +7299,8 @@ loops back around to the top.
 \index{condition}
 \index{loop}
 \index{body}
+
+这类流程被称作{\bf 循环（loop）}，因为第3步循环回顶部。
 
 The body of the loop should change the value of one or more variables
 so that eventually the condition becomes false and the loop
@@ -7141,11 +7311,22 @@ scientists is the observation that the directions on shampoo,
 \index{infinite loop}
 \index{loop!infinite}
 
+循环体应该改变一个或多个变量的值，以便最终条件变为假然后循环终止。
+否则，循环永远重复下去，这被称作{\bf 无限循环（infinite loop）}。
+对于计算机科学家一个消遣的无尽来源是观察香波的说明书，
+``打泡沫，漂洗，重复''，就是无限循环。
+
 In the case of {\tt countdown}, we can prove that the loop
 terminates because we know that the value of {\tt n} is finite, and we
 can see that the value of {\tt n} gets smaller each time through the
 loop, so eventually we have to get to 0.  In other
 cases, it is not so easy to tell:
+
+在{\tt countdown}的例子中，我们可以证明循环能终止，
+因为我们知道{\tt n}的值是有限的，
+并且我们可以看到通过循环，{\tt n}的值每次都变小，
+所以最终我们一定获得0。
+在另一个例子中，就不这么简单了：
 
 \begin{verbatim}
 def sequence(n):
@@ -7160,11 +7341,19 @@ def sequence(n):
 The condition for this loop is {\tt n != 1}, so the loop will continue
 until {\tt n} is {\tt 1}, which makes the condition false.
 
+该循环的条件是{\tt n != 1}，所以循环将继续直到{\tt n}是{\tt 1}，
+这使得条件为假。
+
 Each time through the loop, the program outputs the value of {\tt n}
 and then checks whether it is even or odd.  If it is even, {\tt n} is 
 divided by 2.  If it is odd, the value of {\tt n} is replaced with
 {\tt n*3+1}. For example, if the argument passed
 to {\tt sequence} is 3, the resulting sequence is 3, 10, 5, 16, 8, 4, 2, 1.
+
+每次通过循环，程序输出{\tt n}的值，然后检查它是偶数还是奇数。
+如果是偶数，{\tt n}被2除。如果是奇数，{\tt n}的值用{\tt n*3+1}代替。
+例如，如果船体给{\tt sequence}的实参是3，
+结果序列是3, 10, 5, 16, 8, 4, 2, 1。
 
 Since {\tt n} sometimes increases and sometimes decreases, there is no
 obvious proof that {\tt n} will ever reach 1, or that the program
@@ -7175,10 +7364,19 @@ until it reaches 1. The previous example ends with such a sequence,
 starting with 16.
 \index{Collatz conjecture}
 
+既然{\tt n}有时增大，有时减小，所以没有明显的证明{\tt n}最终会到达1，
+或者程序终止。对于一些特殊的{\tt n}值，我们能够证明终止。
+例如，如果起始值是2的幂指数，那么通过循环，{\tt n}的值每次都是偶数直到它到达1.
+前面的例子以16开始的这样的序列终止。
+
 The hard question is whether we can prove that this program terminates
 for {\em all positive values} of {\tt n}.  So far, no one has
 been able to prove it {\em or} disprove it!  (See
   \url{http://en.wikipedia.org/wiki/Collatz_conjecture}.)
+  
+难题是是否我们能够证明该程序对于所有正数{\tt n}都会终止。
+目前为止，没有人能证明它或者否定它！
+（见：\url{http://en.wikipedia.org/wiki/Collatz_conjecture}）。
 
 \begin{exercise}
 
@@ -7196,8 +7394,14 @@ Sometimes you don't know it's time to end a loop until you get half
 way through the body.  In that case you can use the {\tt break}
 statement to jump out of the loop.
 
+有时你到循环的一半才知道该结束循环了。
+在此情况下，你可以使用{\tt break}语句跳出循环。
+
 For example, suppose you want to take input from the user until they
 type {\tt done}.  You could write:
+
+例如，假设你想接受来自用户的输入直到他们键入{\tt done}。
+你可以写成：
 
 \begin{verbatim}
 while True:
@@ -7212,10 +7416,18 @@ print 'Done!'
 The loop condition is {\tt True}, which is always true, so the
 loop runs until it hits the break statement.
 
+该循环条件是{\tt True}，它总是真的，所以直到遇到{\tt break}语句，
+循环将一直运行下去。
+
 Each time through, it prompts the user with an angle bracket.
 If the user types {\tt done}, the {\tt break} statement exits
 the loop.  Otherwise the program echoes whatever the user types
 and goes back to the top of the loop.  Here's a sample run:
+
+每次循环，它用一个三角括号提示用户。
+如果用户键入{\tt done}，{\tt break}语句退出循环。
+否则程序回应用户键入的任何东西并且回到循环的顶部。
+这是一个运行样例：
 
 \begin{verbatim}
 > not done
@@ -7230,8 +7442,12 @@ top) and you can express the stop condition affirmatively
 (``stop when this happens'') rather than negatively (``keep going
 until that happens.'').
 
+这种写{\tt while}循环的方法很常见，因为你可以在循环中任何位置检查条件
+（不是仅在顶部）并且你可以积极地表达停止条件（``当此发生时停止''），
+而不是消极地（``继续运行直到其发生''）。
 
-\section{Square roots}
+
+\section{Square roots 平方根}
 \label{squareroot}
 \index{square root}
 
@@ -7240,14 +7456,21 @@ numerical results by starting with an approximate answer and
 iteratively improving it.
 \index{Newton's method}
 
+循环经常被用于计算数值结果的程序中，其开始于一个估计答案并迭代地改进它。
+
 For example, one way of computing square roots is Newton's method.
 Suppose that you want to know the square root of $a$.  If you start
 with almost any estimate, $x$, you can compute a better
 estimate with the following formula:
 
+例如，一种计算平方根的方法是牛顿法。假设你想知道$a$的平方根。
+如果你用任意一个估计值$x$开始，你可以用下面的公式计算一个更好的估计值：
+
 \[ y = \frac{x + a/x}{2} \]
 %
 For example, if $a$ is 4 and $x$ is 3:
+
+例如，如果$a$是4，$x$是3：
 
 \begin{verbatim}
 >>> a = 4.0
@@ -7260,6 +7483,9 @@ For example, if $a$ is 4 and $x$ is 3:
 Which is closer to the correct answer ($\sqrt{4} = 2$).  If we
 repeat the process with the new estimate, it gets even closer:
 
+这和正确答案（$\sqrt{4} = 2$）更接近了。
+如果我们用这个新的估计重复这个过程，它甚至更进了：
+
 \begin{verbatim}
 >>> x = y
 >>> y = (x + a/x) / 2
@@ -7269,6 +7495,8 @@ repeat the process with the new estimate, it gets even closer:
 %
 After a few more updates, the estimate is almost exact:
 \index{update}
+
+更多次的更新后，估计几乎是精确的：
 
 \begin{verbatim}
 >>> x = y
@@ -7286,6 +7514,9 @@ to get to the right answer, but we know when we get there
 because the estimate
 stops changing:
 
+一般来讲，我们事先不知道获得正确的答案需要多少步，
+但是我们知道什么时候获得正确答案，因为估计值不再变化了：
+
 \begin{verbatim}
 >>> x = y
 >>> y = (x + a/x) / 2
@@ -7300,6 +7531,9 @@ stops changing:
 When {\tt y == x}, we can stop.  Here is a loop that starts
 with an initial estimate, {\tt x}, and improves it until it
 stops changing:
+
+当{\tt y == x}时，我们可以停止。
+下面是以一个初始估计{\tt x}开始的循环，然后改进它直到它停止改变
 
 \begin{verbatim}
 while True:
@@ -7318,9 +7552,16 @@ $\sqrt{2}$, can't be represented exactly with a {\tt float}.
 \index{floating-point}
 \index{epsilon}
 
+对于大多数{\tt a}其工作的很好，但是一般来讲测试{\tt float}相等很危险。
+浮点数值只是估计正确的：大多数有理数，像$1/3$，以及无理数，
+像$\sqrt{2}$不能用{\tt float}精确地表示。
+
 Rather than checking whether {\tt x} and {\tt y} are exactly equal, it
 is safer to use the built-in function {\tt abs} to compute the
 absolute value, or magnitude, of the difference between them:
+
+与其检查{\tt x}和{\tt y}是否精确地相等，
+不如使用内建函数{\tt abs}来计算它们之间不同的绝对或者数量级更安全。
 
 \begin{verbatim}
     if abs(y-x) < epsilon:
@@ -7329,6 +7570,8 @@ absolute value, or magnitude, of the difference between them:
 %
 Where \verb"epsilon" has a value like {\tt 0.0000001} that
 determines how close is close enough.
+
+其中\verb"epsilon"的值类似{\tt 0.0000001}，其决定多近是足够近了。
 
 \begin{exercise}
 
@@ -7341,18 +7584,25 @@ of {\tt a}.
 \end{exercise}
 
 
-\section{Algorithms}
+\section{Algorithms 算法}
 \index{algorithm}
 
 Newton's method is an example of an {\bf algorithm}: it is a
 mechanical process for solving a category of problems (in this
 case, computing square roots).
 
+牛顿法是一个{\bf 算法（algorithm）}的例子：
+它是解决一类问题的机械化的过程（此例中是计算平方根）。
+
 It is not easy to define an algorithm.  It might help to start
 with something that is not an algorithm.  When you learned
 to multiply single-digit numbers, you probably memorized the
 multiplication table.  In effect, you memorized 100 specific solutions.
 That kind of knowledge is not algorithmic.
+
+定义算法并不容易。从一些不是算法的东西开始可能有帮助。
+当你学习一位数相乘的时候，你可能记住乘法表。
+实际上，你记下100个特定的答案。这类知识不是算法。
 
 But if you were ``lazy,'' you probably cheated by learning a few
 tricks.  For example, to find the product of $n$ and 9, you can
@@ -7364,19 +7614,34 @@ single-digit number by 9.  That's an algorithm!
 \index{subtraction!with borrowing}
 \index{borrowing, subtraction with}
 
+但是如果你``很懒''，你可能通过学习一些技巧来欺骗。
+例如，为了计算$n$和9的乘积，你可以写下$n-1$作为第一位，
+$10-n$作为第二位。这种技巧是任意位数字和9相乘的一般解决方案。
+这是一个算法！
+
 Similarly, the techniques you learned for addition with carrying,
 subtraction with borrowing, and long division are all algorithms.  One
 of the characteristics of algorithms is that they do not require any
 intelligence to carry out.  They are mechanical processes in which
 each step follows from the last according to a simple set of rules.
 
+类似的，你学过的进位加法、借位减法以及长除技术都是算法。
+算法的特点之一是它们不需要任何智慧来执行。
+它们是机械的过程，每一步根据简单的规则集，跟着上一步执行。
+
 In my opinion, it is embarrassing that humans spend so much time in
 school learning to execute algorithms that, quite literally, require
 no intelligence.
 
+在我看来，人们在学校里花费如此大量的时间学习执行直白的，
+不需要智力的算法真是很尴尬
+
 On the other hand, the process of designing algorithms is interesting,
 intellectually challenging, and a central part of what we call
 programming.
+
+另一方面，设计算法的过程是很有趣的，
+充满智力的挑战并且是编程的核心部分。
 
 Some of the things that people do naturally, without difficulty or
 conscious thought, are the hardest to express algorithmically.
@@ -7384,8 +7649,13 @@ Understanding natural language is a good example.  We all do it, but
 so far no one has been able to explain {\em how} we do it, at least
 not in the form of an algorithm.
 
+一些人们做得很自然、没什么难度或者有意识的思考的事情是最难用算法表示的。
+理解自然语言是一个很好的例子。
+我们都能做它，但是目前为止，没有人能解释我们是如何做的，
+至少不能以算法的形式解释。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 
 As you start writing bigger programs, you might find yourself
 spending more time debugging.  More code means more chances to
@@ -7393,22 +7663,37 @@ make an error and more place for bugs to hide.
 \index{debugging!by bisection}
 \index{bisection, debugging by}
 
+当你开始写较大的程序的时候，你可能发现你自己花了太多的时间在调试上。
+更多的代码意味着更多的犯错机会以及更多隐藏错误的地方。
+
 One way to cut your debugging time is ``debugging by bisection.''
 For example, if there are 100 lines in your program and you
 check them one at a time, it would take 100 steps.
+
+一种减少调试时间的方法是``对分调试''。
+例如，如果你的程序有100行，你每次检查一行，这将花费100步。
 
 Instead, try to break the problem in half.  Look at the middle
 of the program, or near it, for an intermediate value you
 can check.  Add a {\tt print} statement (or something else
 that has a verifiable effect) and run the program.
 
+相反，试着将问题对半分。在程序的中间部分或则附近看一下你可以检查的中间值。
+增加一条{\tt print}语句（或则其它有验证功能的东西）并运行程序。
+
 If the mid-point check is incorrect, there must be a problem in the
 first half of the program.  If it is correct, the problem is
 in the second half.
 
+如果中间检查点不正确，则前半部分必然有一个问题。
+如果正确，则问题在后半部分。
+
 Every time you perform a check like this, you halve the number of
 lines you have to search.  After six steps (which is fewer than 100),
 you would be down to one or two lines of code, at least in theory.
+
+每次你执行类似的检查，你将你需要搜索的行数分了一半。
+经过6步（少于100），至少在理论上你将下到一两行代码。
 
 In practice it is not always clear what
 the ``middle of the program'' is and not always possible to
@@ -7419,38 +7704,40 @@ is easy to put a check.  Then choose a spot where you
 think the chances are about the same that the bug is before
 or after the check.
 
+在实践中，``程序的中间部分''是什么通常不是很清楚，
+并且检查它也不总是可能的。数行数并找到精确的中间点也没什么意义。
+相反，要考虑程序中可能犯错的地方以及容易设置检查点的地方。
+然后选择一个你认为错误会在其之前或之后的检查点。
 
-
-
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[multiple assignment:] Making more than one assignment to the same
+\item[multiple assignment（多次赋值）:] Making more than one assignment to the same
 variable during the execution of a program.
 \index{multiple assignment}
 \index{assignment!multiple}
 
-\item[update:] An assignment where the new value of the variable
+\item[update（更新）:] An assignment where the new value of the variable
 depends on the old.
 \index{update}
 
-\item[initialization:] An assignment that gives an initial value to
+\item[initialization（初始化）:] An assignment that gives an initial value to
 a variable that will be updated.
 \index{initialization!variable}
 
-\item[increment:] An update that increases the value of a variable
+\item[increment（递增）:] An update that increases the value of a variable
 (often by one).
 \index{increment}
 
-\item[decrement:] An update that decreases the value of a variable.
+\item[decrement（递减）:] An update that decreases the value of a variable.
 \index{decrement}
 
-\item[iteration:] Repeated execution of a set of statements using
+\item[iteration（迭代）:] Repeated execution of a set of statements using
 either a recursive function call or a loop.
 \index{iteration}
 
-\item[infinite loop:] A loop in which the terminating condition is
+\item[infinite loop（无限循环）:] A loop in which the terminating condition is
 never satisfied.
 \index{infinite loop}
 
