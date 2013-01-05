@@ -7824,11 +7824,11 @@ Solution: \url{http://thinkpython.com/code/pi.py}.
 \end{exercise}
 
 
-\chapter{Strings}
+\chapter{Strings 字符串}
 \label{strings}
 
 
-\section{A string is a sequence}
+\section{A string is a sequence 字符串是一个序列}
 
 \index{sequence}
 \index{character}
@@ -7837,6 +7837,9 @@ Solution: \url{http://thinkpython.com/code/pi.py}.
 A string is a {\bf sequence} of characters.  
 You can access the characters one at a time with the
 bracket operator:
+
+一个字符串是一个字符的{\bf 序列（sequence）}。
+你可以用括号运算符一次访问一个字符：
 
 \begin{verbatim}
 >>> fruit = 'banana'
@@ -7847,11 +7850,18 @@ The second statement selects character number 1 from {\tt
 fruit} and assigns it to {\tt letter}.  
 \index{index}
 
+第2条语句从{\tt fruit}中选择编号为1的字符并将它赋给{\tt letter}。
+
 The expression in brackets is called an {\bf index}.  
 The index indicates which character in the sequence you
 want (hence the name).
 
+括号中的表达式被称作{\bf 索引（index）}。
+索引指出在序列中你想要哪个字符（因此而得名）。
+
 But you might not get what you expect:
+
+但是你可能不会获得你期望的东西：
 
 \begin{verbatim}
 >>> print letter
@@ -7861,6 +7871,10 @@ a
 For most people, the first letter of \verb"'banana'" is {\tt b}, not
 {\tt a}.  But for computer scientists, the index is an offset from the
 beginning of the string, and the offset of the first letter is zero.
+
+对于大多数人，\verb"'banana'"的第一个字母是{\tt b}而不是{\tt a}。
+但是对于计算机科学家，索引是从字符串开始的偏移量，
+并且第一个字母的偏移量是0。
 
 \begin{verbatim}
 >>> letter = fruit[0]
@@ -7874,12 +7888,18 @@ letter.
 \index{index!starting at zero}
 \index{zero, index starting at}
 
+所以{\tt b}是\verb"'banana'"的第0个字母（``zero-eth''），
+{\tt a}是第1个字母（``one-eth''），{\tt n}是第2个字母（``two-eth''）。
+
 You can use any expression, including variables and operators, as an
 index, but the value of the index has to be an integer.  Otherwise you
 get:
 \index{index}
 \index{exception!TypeError}
 \index{TypeError}
+
+你可以使用任何表达式，包括变量名和运算符，都可以做为索引，
+但是索引的值必须是整数。否则你获得：
 
 \begin{verbatim}
 >>> letter = fruit[1.5]
@@ -7894,6 +7914,8 @@ TypeError: string indices must be integers
 {\tt len} is a built-in function that returns the number of characters
 in a string:
 
+{\tt len}是一个内建函数，其返回字符串中的字符数：
+
 \begin{verbatim}
 >>> fruit = 'banana'
 >>> len(fruit)
@@ -7905,6 +7927,8 @@ like this:
 \index{exception!IndexError}
 \index{IndexError}
 
+为了获得一个字符串的最后一个字符，你可能想尝试像这样：
+
 \begin{verbatim}
 >>> length = len(fruit)
 >>> last = fruit[length]
@@ -7915,6 +7939,10 @@ The reason for the {\tt IndexError} is that there is no letter in {\tt
 'banana'} with the index 6.  Since we started counting at zero, the
 six letters are numbered 0 to 5.  To get the last character, you have
 to subtract 1 from {\tt length}:
+
+{\tt IndexError}的理由是在{\tt 'banana'}中没有索引为6的字母。
+既然我们从0开始数数，6个字母的编号是0到5。
+为了获得最后一个字符，你必须从{\tt length}中减1。
 
 \begin{verbatim}
 >>> last = fruit[length-1]
@@ -7928,8 +7956,11 @@ letter, {\tt fruit[-2]} yields the second to last, and so on.
 \index{index!negative}
 \index{negative index}
 
+另一种作法是你可以使用负索引，其从字符串的结尾往后数。
+表达式{\tt fruit[-1]}产生最后一个字母，{\tt fruit[-2]}产生倒数第二个字母，等等。
 
-\section{Traversal with a {\tt for} loop}
+
+\section{Traversal with a {\tt for} loop 使用{\tt for}循环遍历}
 \label{for}
 \index{traversal}
 \index{loop!traversal}
@@ -7943,6 +7974,11 @@ time.  Often they start at the beginning, select each character in
 turn, do something to it, and continue until the end.  This pattern of
 processing is called a {\bf traversal}.  One way to write a traversal
 is with a {\tt while} loop:
+
+许多计算每次处理一个字符串的字符。
+它们经常从头开始，依次选择每个字符，对其做一些工作，然后继续直到结束。
+词处理模式被称作{\bf 遍历）traversal）}。
+一种写遍历的方法是用{\tt while}循环：
 
 \begin{verbatim}
 index = 0
@@ -7959,6 +7995,12 @@ condition is false, and the body of the loop is not executed.  The
 last character accessed is the one with the index {\tt len(fruit)-1},
 which is the last character in the string.
 
+该循环遍历字符串并显示在每行显示一个字符串。
+该循环的条件是{\tt index < len(fruit)}，所以当{\tt index}和字符串的长度相等时，
+条件为假，并且循环体不被执行。
+被访问的最后一个字符的索引为{\tt len(fruit)-1}，
+这是字符串的最后一个字符。
+
 \begin{exercise}
 
 Write a function that takes a string as an argument
@@ -7967,6 +8009,8 @@ and displays the letters backward, one per line.
 \end{exercise}
 
 Another way to write a traversal is with a {\tt for} loop:
+
+另一种写遍历的方法是用{\tt for}循环：
 
 \begin{verbatim}
 for char in fruit:
@@ -7980,12 +8024,20 @@ left.
 \index{abecedarian}
 \index{McCloskey, Robert}
 
+每次通过循环，字符串中的下一个字符被赋给变量{\tt char}。
+循环继续，直到没有剩余的字符串了。
+
 The following example shows how to use concatenation (string addition)
 and a {\tt for} loop to generate an abecedarian series (that is, in
 alphabetical order).  In Robert McCloskey's book {\em Make
 Way for Ducklings}, the names of the ducklings are Jack, Kack, Lack,
 Mack, Nack, Ouack, Pack, and Quack.  This loop outputs these names in
 order:
+
+下面的例子显示如何使用叠加（字符串加）和{\tt for}循环生成一个字母系列（以字母序）。
+在Robert McCloskey的书《Make Way for Ducklings》中，
+小鸭子的名字是Jack, Kack, Lack, Mack, Nack, Ouack, Pack, and Quack。
+此循环按顺序输出这些名字：
 
 \begin{verbatim}
 prefixes = 'JKLMNOPQ'
@@ -7996,6 +8048,8 @@ for letter in prefixes:
 \end{verbatim}
 %
 The output is:
+
+输出是：
 
 \begin{verbatim}
 Jack
@@ -8011,6 +8065,8 @@ Qack
 Of course, that's not quite right because ``Ouack'' and
 ``Quack'' are misspelled.
 
+当然，这不是非常正确，因为``Ouack''和``Quack''被错误拼写了。
+
 \begin{exercise}
 
 Modify the program to fix this error.
@@ -8019,7 +8075,7 @@ Modify the program to fix this error.
 
 
 
-\section{String slices}
+\section{String slices 字符串片段}
 \label{slice}
 \index{slice operator}
 \index{operator!slice}
@@ -8029,6 +8085,9 @@ Modify the program to fix this error.
 
 A segment of a string is called a {\bf slice}.  Selecting a slice is
 similar to selecting a character:
+
+一段字符串被称作{\bf 片段（slice）}。
+选择一个片段类似于选择一个字符：
 
 \begin{verbatim}
 >>> s = 'Monty Python'
