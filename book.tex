@@ -8103,6 +8103,11 @@ excluding the last.  This behavior is counterintuitive, but it might
 help to imagine the indices pointing {\em between} the
 characters, as in Figure~\ref{fig.banana}.
 
+{\tt [n:m]}操作符返回从第n个字符到第m个字符的部分字符串，
+包括第一个，但是不包括最后一个。
+这个行为违反直觉，但是它可能会帮助想象指向这两个字符之间的索引，
+如图\ref{fig.banana}。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/banana.pdf}}
@@ -8114,6 +8119,9 @@ characters, as in Figure~\ref{fig.banana}.
 If you omit the first index (before the colon), the slice starts at
 the beginning of the string.  If you omit the second index, the slice
 goes to the end of the string:
+
+如果你省略第一个索引（冒号前面的），片段起始于字符串开始。
+如果你省略第二个索引，片段一直到字符串结尾：
 
 \begin{verbatim}
 >>> fruit = 'banana'
@@ -8127,6 +8135,9 @@ If the first index is greater than or equal to the second the result
 is an {\bf empty string}, represented by two quotation marks:
 \index{quotation mark}
 
+如果第一个索引大于或等于第二个，结果是{\bf 空字符串（empty string）}，
+表示为两个引号：
+
 \begin{verbatim}
 >>> fruit = 'banana'
 >>> fruit[3:3]
@@ -8135,6 +8146,9 @@ is an {\bf empty string}, represented by two quotation marks:
 %
 An empty string contains no characters and has length 0, but other
 than that, it is the same as any other string.
+
+一个空字符串不包括字符而且长度为0，但除此之外，
+它和其它任何字符串一样。
 
 \begin{exercise}
 
@@ -8146,7 +8160,7 @@ Given that {\tt fruit} is a string, what does
 \end{exercise}
 
 
-\section{Strings are immutable}
+\section{Strings are immutable 字符串是不可变的}
 \index{mutability}
 \index{immutability}
 \index{string!immutable}
@@ -8156,6 +8170,9 @@ assignment, with the intention of changing a character in a string.
 For example:
 \index{TypeError}
 \index{exception!TypeError}
+
+在一个赋值的左边使用{\tt []}很有诱惑力，意图是改变字符串的一个字符。
+例如：
 
 \begin{verbatim}
 >>> greeting = 'Hello, world!'
@@ -8172,10 +8189,18 @@ later.  An {\bf item} is one of the values in a sequence.
 \index{assignment!item}
 \index{immutability}
 
+此例中的``object（对象）''是该字符串，``item（项）''是你要赋值的字符。
+到目前，一个{\bf 对象（object）}和值是同一样的东西，
+但是我们后面将改善此定义。一个{\bf 项（item）}是序列中的一个值。
+
 The reason for the error is that
 strings are {\bf immutable}, which means you can't change an
 existing string.  The best you can do is create a new string
 that is a variation on the original:
+
+此错误的原因是字符串是{\bf 不可变的（immutable）}，
+这意味着你不能改变一个已存在的字符串。
+最好是生成一个新的字符串，它是原字符串的一个变种：
 
 \begin{verbatim}
 >>> greeting = 'Hello, world!'
@@ -8189,13 +8214,17 @@ a slice of {\tt greeting}.  It has no effect on
 the original string.
 \index{concatenation}
 
+此例连接一个新的第一个字母到{\tt greeting}的一个片段上。
+它不影响原字符串。
 
-\section{Searching}
+\section{Searching 搜索}
 \label{find}
 
 What does the following function do?
 \index{find function}
 \index{function!find}
+
+下面的函数做什么？
 
 \begin{verbatim}
 def find(word, letter):
@@ -8213,18 +8242,31 @@ it takes a character and finds the index where that character
 appears.  If the character is not found, the function returns {\tt
 -1}.
 
+在某种意义上，{\tt find}和{\tt []}运算符相反。
+不是接受一个索引并抽取相应的字符，
+它接受一个字符并找到该字符出现的位置的索引。
+如果没有找到该字符，函数返回{\tt -1}。
+
 This is the first example we have seen of a {\tt return} statement
 inside a loop.  If {\tt word[index] == letter}, the function breaks
 out of the loop and returns immediately.
 
+这是我们已经见过的第一个{\tt return}语句在循环内部的例子。
+如果{\tt word[index] == letter}，函数停止循环并马上返回。
+
 If the character doesn't appear in the string, the program
 exits the loop normally and  returns {\tt -1}.
+
+如果字符没出现在字符串中，那么程序正常退出循环并返回{\tt -1}。
 
 This pattern of computation---traversing a sequence and returning
 when we find what we are looking for---is called a {\bf search}.
 \index{traversal}
 \index{search pattern}
 \index{pattern!search}
+
+这种计算的模式---遍历一个序列并在我们找到我们正在找的东西时返回---
+被称作{\bf 搜索（search）}。
 
 \begin{exercise}
 
@@ -8235,7 +8277,7 @@ looking.
 \end{exercise}
 
 
-\section{Looping and counting}
+\section{Looping and counting 循环和计数}
 \label{counter}
 \index{counter}
 \index{counting and looping}
@@ -8244,6 +8286,8 @@ looking.
 
 The following program counts the number of times the letter {\tt a}
 appears in a string:
+
+下面的程序计算字母{\tt a}在字符串中出现的次数：
 
 \begin{verbatim}
 word = 'banana'
@@ -8259,6 +8303,10 @@ counter}.  The variable {\tt count} is initialized to 0 and then
 incremented each time an {\tt a} is found.
 When the loop exits, {\tt count}
 contains the result---the total number of {\tt a}'s.
+
+此程序演示另一种被称作{\bf 计数器（counter）}的计算模式。
+变量{\tt count}初始化为0然后每次出现{\tt a}时递增。
+当循环结束时，{\tt count}包含结果---{\tt a}的总数。
 
 \begin{exercise}
 \index{encapsulation}
@@ -8277,7 +8325,7 @@ find} from the previous section.
 \end{exercise}
 
 
-\section{String methods}
+\section{String methods 字符串方法}
 
 A {\bf method} is similar to a function---it takes arguments and
 returns a value---but the syntax is different.  For example, the
@@ -8286,9 +8334,14 @@ all uppercase letters:
 \index{method}
 \index{string!method}
 
+{\bf 方法（method）}和函数类似---接受实参并返回一个值---但是语法不同。
+例如，{\bf upper}方法接受一个字符串并返回一个新的都是大写字母的字符串：
+
 Instead of the function syntax {\tt upper(word)}, it uses
 the method syntax {\tt word.upper()}.
 \index{dot notation}
+
+不是用函数的语法{\tt upper(word)}，而是用方法的语法{\tt word.upper()}。
 
 \begin{verbatim}
 >>> word = 'banana'
@@ -8303,12 +8356,21 @@ word}.  The empty parentheses indicate that this method takes no
 argument.
 \index{parentheses!empty}
 
+点号的形式指出方法的名字，{\tt upper}，以及应用该方法的字符串的名字，{\tt word}。
+空括号指出该方法不接受实参。
+
 A method call is called an {\bf invocation}; in this case, we would
 say that we are invoking {\tt upper} on the {\tt word}.
 \index{invocation}
 
+方法的调用被称作{\bf 调用（invocation）}，在此例中，
+我们说我们整在{\tt word}上调用{\tt upper}。
+
 As it turns out, there is a string method named {\tt find} that
 is remarkably similar to the function we wrote:
+
+事实上，有一个被称为{\tt find}的字符串方法，
+其和我们写的函数异常相似：
 
 \begin{verbatim}
 >>> word = 'banana'
@@ -8320,8 +8382,12 @@ is remarkably similar to the function we wrote:
 In this example, we invoke {\tt find} on {\tt word} and pass
 the letter we are looking for as a parameter.
 
+此例中，我们在{\tt word}上调用{\tt find}并将我们要找的字母作为实参。
+
 Actually, the {\tt find} method is more general than our function;
 it can find substrings, not just characters:
+
+事实上，{\tt find}方法比我们的函数更通用，它可以找到子串而不仅仅是字符：
 
 \begin{verbatim}
 >>> word.find('na')
@@ -8332,12 +8398,16 @@ It can take as a second argument the index where it should start:
 \index{optional argument}
 \index{argument!optional}
 
+它可以接受从何处开始的索引作为第二个实参：
+
 \begin{verbatim}
 >>> word.find('na', 3)
 4
 \end{verbatim}
 %
 And as a third argument the index where it should stop:
+
+在哪个索引结束作为第三个实参。
 
 \begin{verbatim}
 >>> name = 'bob'
@@ -8348,6 +8418,9 @@ And as a third argument the index where it should stop:
 This search fails because {\tt b} does not
 appear in the index range from {\tt 1} to {\tt 2} (not including {\tt
 2}).
+
+此搜索失败是因为{\tt b}没有出现在从{\tt 1}到{\tt 2}的索引之间
+（不包括{\tt 2}）。
 
 
 \begin{exercise}
@@ -8380,7 +8453,7 @@ then {\tt end} is optional.
 \end{exercise}
 
 
-\section{The {\tt in} operator}
+\section{The {\tt in} operator {\tt in}运算符}
 \label{inboth}
 \index{in operator}
 \index{operator!in}
@@ -8389,6 +8462,9 @@ then {\tt end} is optional.
 
 The word {\tt in} is a boolean operator that takes two strings and
 returns {\tt True} if the first appears as a substring in the second:
+
+单词{\tt in}是一个布尔运算符，其接受两个字符串，
+如果第一个作为子串出现在第二个中则返回{\tt True}：
 
 \begin{verbatim}
 >>> 'a' in 'banana'
@@ -8399,6 +8475,8 @@ False
 %
 For example, the following function prints all the
 letters from {\tt word1} that also appear in {\tt word2}:
+
+例如，下面的函数打印即出现在{\tt word1}中也出现在{\tt word2}中的字母：
 
 \begin{verbatim}
 def in_both(word1, word2):
@@ -8412,7 +8490,13 @@ Python sometimes reads like English.  You could read
 this loop, ``for (each) letter in (the first) word, if (the) letter 
 (appears) in (the second) word, print (the) letter.''
 
+使用精心挑选的变量名，Python有时候读起来像是英语。
+你可以读此循环，``对于（每个）在（第一个）单词中的字母，
+如果（该）字母 （出现）在（第二个）单词中，打印（该）字母''。
+
 Here's what you get if you compare apples and oranges:
+
+如果你比较apples和oranges，这是你获得的东西：
 
 \begin{verbatim}
 >>> in_both('apples', 'oranges')
@@ -8422,11 +8506,13 @@ s
 \end{verbatim}
 %
 
-\section{String comparison}
+\section{String comparison 字符串比较}
 \index{string!comparison}
 \index{comparison!string}
 
 The relational operators work on strings.  To see if two strings are equal:
+
+关系运算符在字符串上也工作。为了看两个字符串是否相等：
 
 \begin{verbatim}
 if word == 'banana':
@@ -8435,6 +8521,8 @@ if word == 'banana':
 %
 Other relational operations are useful for putting words in alphabetical
 order:
+
+其它的关系运算符对于按字母序放置单词也很有用：
 
 \begin{verbatim}
 if word < 'banana':
@@ -8449,6 +8537,9 @@ Python does not handle uppercase and lowercase letters the same way
 that people do.  All the uppercase letters come before all the
 lowercase letters, so:
 
+Python用和人不同的方式处理大写和小写字母。
+所有的大写字母出现在所有小写字母之前，所以：
+
 \begin{verbatim}
 Your word, Pineapple, comes before banana.
 \end{verbatim}
@@ -8458,8 +8549,11 @@ standard format, such as all lowercase, before performing the
 comparison.  Keep that in mind in case you have to defend yourself
 against a man armed with a Pineapple.
 
+解决此问题的通常的方式是在执行比较之前，
+将字符串转化为标准格式，例如都是小写字母。
+一旦你必须保卫自己免受一名手持菠萝的男子的袭击，记住这一点。
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 \index{traversal}
 
@@ -8468,6 +8562,12 @@ it is tricky to get the beginning and end of the traversal
 right.  Here is a function that is supposed to compare two
 words and return {\tt True} if one of the words is the reverse
 of the other, but it contains two errors:
+
+当你使用索引在一个序列中遍历值的时候，
+正确的获得遍历的开始和结束是一个技巧。
+这是一个函数，其被假设用来比较两个单词，
+如果一个单词是另一个的倒序，则返回真，
+但是它包含两个错误：
 
 \begin{verbatim}
 def is_reverse(word1, word2):
@@ -8495,16 +8595,28 @@ in Section~\ref{guardian}.
 \index{pattern!guardian}
 \index{index}
 
+第一条{\tt if}语句检查两个单词是否等长。
+如果不是，我们可以马上返回假，然后对于函数其余的部分，
+我们可以假设单词是等长的。
+这是\ref{guardian}节中的监护人模式的一个例子。
+
 {\tt i} and {\tt j} are indices: {\tt i} traverses {\tt word1}
 forward while {\tt j} traverses {\tt word2} backward.  If we find
 two letters that don't match, we can return {\tt False} immediately.
 If we get through the whole loop and all the letters match, we
 return {\tt True}.
 
+{\tt i}和{\tt j}是索引：{\tt i}向前遍历{\tt word1}，{\tt j}向后遍历{\tt word2}。
+如果我们找到两个不匹配的字母，我们可以立即返回假。
+如果我们通过整个循环并且所有字母都匹配，我们返回真。
+
 If we test this function with the words ``pots'' and ``stop'', we
 expect the return value {\tt True}, but we get an IndexError:
 \index{IndexError}
 \index{exception!IndexError}
+
+如果我们用单词``pots''和``stop''测试该函数，我们期望返回真，
+但是我们得到一个IndexError。
 
 \begin{verbatim}
 >>> is_reverse('pots', 'stop')
@@ -8518,6 +8630,8 @@ For debugging this kind of error, my first move is to
 print the values of the indices immediately before the line
 where the error appears.
 
+为了调试该类错误，我的第一步是在错误出现的行之前，马上打印索引的值。
+
 \begin{verbatim}
     while j > 0:
         print i, j        # print here
@@ -8529,6 +8643,8 @@ where the error appears.
 \end{verbatim}
 %
 Now when I run the program again, I get more information:
+
+现在，当我再次运行该程序时，我获得更多的信息：
 
 \begin{verbatim}
 >>> is_reverse('pots', 'stop')
@@ -8544,7 +8660,12 @@ initial value for {\tt j} should be {\tt len(word2)-1}.
 \index{semantic error}
 \index{error!semantic}
 
+第一次通过循环，{\tt j}的值是4，其超出字符串\verb"'pots'"的范围了。
+最后一个字符的索引是3，所以{\tt j}的初始值应该是{\tt len(word2)-1}。
+
 If I fix that error and run the program again, I get:
+
+如果我修正了这个错误并重新运行程序，我获得：
 
 \begin{verbatim}
 >>> is_reverse('pots', 'stop')
@@ -8561,6 +8682,10 @@ iteration, the frame for \verb"is_reverse" is shows in Figure~\ref{fig.state4}.
 \index{state diagram}
 \index{diagram!state}
 
+这次，我获得正确的答案，但是看起来循环只运行了三次，这很奇怪。
+为了更好的理解发生了什么，画出栈图会很有用。
+在第一次循环期间，\verb"is_reverse"的框架显示在图\ref{fig.state4}中。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/state4.pdf}}
@@ -8573,6 +8698,9 @@ I took a little license by arranging the variables in the frame
 and adding dotted lines to show that the values of {\tt i} and
 {\tt j} indicate characters in {\tt word1} and {\tt word2}.
 
+我安排了框图中变量的位置并且增加了虚线展示{\tt i}和{\tt j}的值来指明
+{\tt word1}和{\tt word2}中的字符。
+
 \begin{exercise}
 \label{isreverse}
 
@@ -8584,54 +8712,54 @@ second error in this function.
 
 
 
-\section{Glossary}
+\section{Glossary 术语}
 
 \begin{description}
 
-\item[object:] Something a variable can refer to.  For now,
+\item[object（对象）:] Something a variable can refer to.  For now,
 you can use ``object'' and ``value'' interchangeably.
 \index{object}
 
-\item[sequence:] An ordered set; that is, a set of
+\item[sequence（序列）:] An ordered set; that is, a set of
 values where each value is identified by an integer index.
 \index{sequence}
 
-\item[item:] One of the values in a sequence.
+\item[item（项）:] One of the values in a sequence.
 \index{item}
 
-\item[index:] An integer value used to select an item in
+\item[index（索引）:] An integer value used to select an item in
 a sequence, such as a character in a string.
 \index{index}
 
-\item[slice:] A part of a string specified by a range of indices.
+\item[slice（片段）:] A part of a string specified by a range of indices.
 \index{slice}
 
-\item[empty string:] A string with no characters and length 0, represented
+\item[empty string（空字符串）:] A string with no characters and length 0, represented
 by two quotation marks.
 \index{empty string}
 
-\item[immutable:] The property of a sequence whose items cannot
+\item[immutable（不可变的）:] The property of a sequence whose items cannot
 be assigned.
 \index{immutability}
 
-\item[traverse:] To iterate through the items in a sequence,
+\item[traverse（遍历）:] To iterate through the items in a sequence,
 performing a similar operation on each.
 \index{traversal}
 
-\item[search:] A pattern of traversal that stops
+\item[search（搜索）:] A pattern of traversal that stops
 when it finds what it is looking for.
 \index{search pattern}
 \index{pattern!search}
 
-\item[counter:] A variable used to count something, usually initialized
+\item[counter（计数器）:] A variable used to count something, usually initialized
 to zero and then incremented.
 \index{counter}
 
-\item[method:] A function that is associated with an object and called
+\item[method（方法）:] A function that is associated with an object and called
 using dot notation.
 \index{method}
 
-\item[invocation:] A statement that calls a method.
+\item[invocation（调用）:] A statement that calls a method.
 \index{invocation}
 
 \end{description}
