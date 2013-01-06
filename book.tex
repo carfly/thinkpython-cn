@@ -8867,9 +8867,9 @@ of them.  Solution: \url{http://thinkpython.com/code/rotate.py}.
 \end{exercise}
 
 
-\chapter{Case study: word play}
+\chapter{Case study: word play 案例分析：word play}
 
-\section{Reading word lists}
+\section{Reading word lists 读取单词列表}
 \label{wordlist}
 
 For the exercises in this chapter we need a list of English words.
@@ -8885,6 +8885,16 @@ a copy, with the simpler name {\tt words.txt}, from
 \index{Moby Project}
 \index{crosswords}
 
+对于本章的习题，我们需要一个英语单词的列表。
+互联网上有许多单词列表，但是最适合我们目的之一的列表是由
+Grady Ward收集并贡献给公众的，并成为Moby词典项目的一部分
+（见：\url{http://wikipedia.org/wiki/Moby_Project}）。
+它是一个由113,809个填字游戏单词组成的列表，
+也就是在填字游戏以及其它文字有戏中被认为合理的单词。
+在Moby集合中，文件名是{\tt 113809of.fic}，
+你可以从\url{http://thinkpython.com/code/words.txt}下载一个拷贝，
+其使用了一个简化的名字{\tt words.txt}。
+
 This file is in plain text, so you can open it with a text
 editor, but you can also read it from Python.  The built-in
 function {\tt open} takes the name of the file as a parameter
@@ -8895,6 +8905,11 @@ and returns a {\bf file object} you can use to read the file.
 \index{text!plain}
 \index{object!file}
 \index{file object}
+
+该文件是纯文本，所以你可以用一个文本编辑器打开它，
+但是你也可以从Python中读它。
+内建函数{\tt open}接受文件名作为形参，并返回一个
+{\bf 文件对象）file object）}，你可以使用它读取该文件。
 
 \begin{verbatim}
 >>> fin = open('words.txt')
@@ -8908,10 +8923,17 @@ reading (as opposed to \verb"'w'" for writing).
 \index{readline method}
 \index{method!readline}
 
+{\tt fin}是输入文件对象的一个常用名。
+模式\verb"'r'"表明该文件为了读取而打开
+（相反，\verb"'w'"是为了写）。
+
 The file object provides several methods for reading, including
 {\tt readline}, which reads characters from the file
 until it gets to a newline and returns the result as a
 string:
+
+该文件对象为读取提供了几个方法，包括{\tt readline}，
+其从文件中读取字符直到到达新行并将结果作为字符串返回：
 
 \begin{verbatim}
 >>> fin.readline()
@@ -8923,8 +8945,15 @@ lava.  The sequence \verb"\r\n" represents two whitespace characters,
 a carriage return and a newline, that separate this word from the
 next.
 
+在此列表中，第一个单词是``aa''，它是一种岩浆。
+序列\verb"\r\n"代表两个空白字符，回车和换行，
+其将此单词和下一个分开。
+
 The file object keeps track of where it is in the file, so
 if you call {\tt readline} again, you get the next word:
+
+此文件对象跟踪它在文件中的位置，
+所以如果你再次调用{\tt readline}，你获得下一个单词：
 
 \begin{verbatim}
 >>> fin.readline()
@@ -8938,6 +8967,10 @@ we can get rid of it with the string method {\tt strip}:
 \index{strip method}
 \index{method!strip}
 
+下一个单词是``aah''，它是一个完全合法的单词，
+所以不要那样看我。
+或者，如果空格困扰了你，我们可以用字符串方法{\tt strip}删掉它：
+
 \begin{verbatim}
 >>> line = fin.readline()
 >>> word = line.strip()
@@ -8950,6 +8983,9 @@ This program reads {\tt words.txt} and prints each word, one
 per line:
 \index{open function}
 \index{function!open}
+
+你也可以将文件对象用做{\tt for}循环的一部分。
+此程序读取{\tt words.txt}并打印每个单词，每行一个：
 
 \begin{verbatim}
 fin = open('words.txt')
@@ -8968,10 +9004,13 @@ words with more than 20 characters (not counting whitespace).
 \end{exercise}
 
 
-\section{Exercises}
+\section{Exercises 习题}
 
 There are solutions to these exercises in the next section.
 You should at least attempt each one before you read the solutions.
+
+下一节有这些习题的答案。
+在你看这些答案之前，应该至少试这解决一下每个题目。
 
 \begin{exercise}
 
@@ -9060,13 +9099,16 @@ How many abecedarian words are there?
 
 
 
-\section{Search}
+\section{Search 搜索}
 \index{search pattern}
 \index{pattern!search}
 
 All of the exercises in the previous section have something
 in common; they can be solved with the search pattern we saw
 in Section~\ref{find}.  The simplest example is:
+
+前一节的所有习题有一个共性，它们可以用我们在\ref{find}节中看到的搜索模式解决。
+最简单的例子是：
 
 \begin{verbatim}
 def has_no_e(word):
@@ -9082,6 +9124,12 @@ have to go to the next letter.  If we exit the loop normally, that
 means we didn't find an ``e'', so we return {\tt True}.
 \index{traversal}
 
+{\tt for}循环遍历{\tt word}中的字符。
+如果我们找到字母``e''，那么我们可以马上返回{\tt False}；
+否则我们不得不到下一个字母。
+如果我们正常停止循环，这意味着我们没有找到一个``e''，
+所以我们返回{\tt True}。 
+
 % Removing this because we haven't seen the in operator yet.
 %\index{in operator}
 %\index{operator!in}
@@ -9094,6 +9142,8 @@ means we didn't find an ``e'', so we return {\tt True}.
 {\tt avoids} is a more general version of \verb"has_no_e" but it
 has the same structure:
 
+{\tt avoids}是\verb"has_no_e"的更一般的版本，但是它有相同的结构：
+
 \begin{verbatim}
 def avoids(word, forbidden):
     for letter in word:
@@ -9105,8 +9155,13 @@ def avoids(word, forbidden):
 We can return {\tt False} as soon as we find a forbidden letter;
 if we get to the end of the loop, we return {\tt True}.
 
+一旦我们找到一个禁止字母，我们返回{\tt False}；
+如果我们到达循环结尾，我们返回{\tt True}。
+
 \verb"uses_only" is similar except that the sense of the condition
 is reversed:
+
+除了条件的意思相反外，\verb"uses_only"也是相似的：
 
 \begin{verbatim}
 def uses_only(word, available):
@@ -9120,8 +9175,14 @@ Instead of a list of forbidden letters, we have a list of available
 letters.  If we find a letter in {\tt word} that is not in
 {\tt available}, we can return {\tt False}.
 
+不是有一个禁止字母的列表，而是我们有一个允许字母的列表。
+如果我们在{\tt word}中找到一个不在{\tt available}中的字母，
+我们可以返回{\tt False}
+
 \verb"uses_all" is similar except that we reverse the role
 of the word and the string of letters:
+
+除了我们翻转了单词和字母字符串的角色外，\verb"uses_all"也类似：
 
 \begin{verbatim}
 def uses_all(word, required):
@@ -9136,9 +9197,17 @@ traverses the required letters.  If any of the required letters
 do not appear in the word, we can return {\tt False}.
 \index{traversal}
 
+不是在{\tt word}中遍历字母，该循环遍历需要的字母。
+如果任何需要的字母没出现在单词中，
+则我们返回{\tt False}。
+
 If you were really thinking like a computer scientist, you would
 have recognized that \verb"uses_all" was an instance of a
 previously-solved problem, and you would have written:
+
+如果你真的像计算机科学家一样思考，
+你可能已经意识到\verb"uses_all"是前面已经解决的问题的一个实例，
+你可能会写成：
 
 \begin{verbatim}
 def uses_all(word, required):
@@ -9152,8 +9221,11 @@ previously-developed solution.
 \index{problem recognition}
 \index{development plan!problem recognition}
 
+这是一个被称作{\bf 问题识别（problem recognition）}的程序开发方法的实例，
+意思是你将正在解决的问题看做是之前已经解决的问题的一个实例，
+并用用之前开发的解决方案。
 
-\section{Looping with indices}
+\section{Looping with indices 使用索引的循环}
 \index{looping!with indices}
 \index{index!looping with}
 
@@ -9161,8 +9233,14 @@ I wrote the functions in the previous section with {\tt for}
 loops because I only needed the characters in the strings; I didn't
 have to do anything with the indices.
 
+前一节我用{\tt for}循环写函数，因为我只需要字符串中的字符，
+我不必用索引做任何事情。
+
 For \verb"is_abecedarian" we have to compare adjacent letters,
 which is a little tricky with a {\tt for} loop:
+
+对于\verb"is_abecedarian"，我们必须比较邻接的字母，
+这是一个用{\tt for}循环的小技巧。
 
 \begin{verbatim}
 def is_abecedarian(word):
@@ -9175,8 +9253,9 @@ def is_abecedarian(word):
 \end{verbatim}
 
 
-An alternative is to
-use recursion:
+An alternative is to use recursion:
+
+另外的替代方法是使用递归：
 
 \begin{verbatim}
 def is_abecedarian(word):
@@ -9188,6 +9267,8 @@ def is_abecedarian(word):
 \end{verbatim}
 
 Another option is to use a {\tt while} loop:
+
+另一个选择是使用{\tt while}循环：
 
 \begin{verbatim}
 def is_abecedarian(word):
@@ -9204,9 +9285,16 @@ time through the loop, it compares the $i$th character (which you can
 think of as the current character) to the $i+1$th character (which you
 can think of as the next).
 
+循环起始于{\tt i=0}，终止于{\tt i=len(word)-1}。
+每次循环比较第$i$个字符（我们可以将其认为是当前字符）
+和第$i+1$个字符（我们可以将其认为是下一个字符）。
+
 If the next character is less than (alphabetically before) the current
 one, then we have discovered a break in the abecedarian trend, and
 we return {\tt False}.
+
+如果下一个字符比当前的小（字母序靠前），
+那么我们在递增趋势中找到了停止点并返回{\tt False}。
 
 If we get to the end of the loop without finding a fault, then the
 word passes the test.  To convince yourself that the loop ends
