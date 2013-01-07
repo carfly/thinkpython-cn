@@ -9535,9 +9535,9 @@ Solution: \url{http://thinkpython.com/code/cartalk3.py}.
 
 
 
-\chapter{Lists}
+\chapter{Lists 列表}
 
-\section{A list is a sequence}
+\section{A list is a sequence 列表是一个序列}
 \label{sequence}
 
 Like a string, a {\bf list} is a sequence of values.  In a string, the
@@ -9549,8 +9549,15 @@ a list are called {\bf elements} or sometimes {\bf items}.
 \index{sequence}
 \index{item}
 
+像字符串一样，一个{\bf 列表（list）}是值的序列。
+在字符串中，值是字符；在列表中，它们可以是任意值。
+列表中的值被称作{\bf 元素（elements）}或者{\bf 项（items）}。
+
 There are several ways to create a new list; the simplest is to
 enclose the elements in square brackets (\verb"[" and \verb"]"):
+
+有几种方法生成一个新的列表；
+最简单的是把这些元素括在方括号中（\verb"[" and \verb"]"）：
 
 \begin{verbatim}
 [10, 20, 30, 40]
@@ -9562,6 +9569,10 @@ three strings.  The elements of a list don't have to be the same type.
 The following list contains a string, a float, an integer, and
 (lo!) another list:
 
+第一个例子是一个四个整数的列表。第二个是三个字符串。
+列表的元素不必是相同的类型。
+下面的列表包括一个字符串、一个浮点数、一个整数和（什么！）另一个列表：
+
 \begin{verbatim}
 ['spam', 2.0, 5, [10, 20]]
 \end{verbatim}
@@ -9570,13 +9581,20 @@ A list within another list is {\bf nested}.
 \index{nested list}
 \index{list!nested}
 
+在另一个列表中的列表是{\bf 嵌套（nested）}。
+
 A list that contains no elements is
 called an empty list; you can create one with empty
 brackets, \verb"[]".
 \index{empty list}
 \index{list!empty}
 
+不包括任何元素的列表被称作空列表。
+你可以用空括号，\verb"[]"，生成一个空列表。
+
 As you might expect, you can assign list values to variables:
+
+如你所期望的，你可以将列表的值赋给变量：
 
 \begin{verbatim}
 >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
@@ -9589,7 +9607,7 @@ As you might expect, you can assign list values to variables:
 \index{assignment}
 
 
-\section{Lists are mutable}
+\section{Lists are mutable 列表是可变的}
 \label{mutable}
 \index{list!element}
 \index{access}
@@ -9602,6 +9620,9 @@ accessing the characters of a string---the bracket operator.  The
 expression inside the brackets specifies the index.  Remember that the
 indices start at 0:
 
+访问列表元素的语法和访问字符串的字符的语法相同---括号运算符。
+括号内的表达式制定索引。记住索引以0开始：
+
 \begin{verbatim}
 >>> print cheeses[0]
 Cheddar
@@ -9611,6 +9632,9 @@ Unlike strings, lists are mutable.  When the bracket operator appears
 on the left side of an assignment, it identifies the element of the
 list that will be assigned.
 \index{mutability}
+
+和字符串不同，列表是可变的。
+当括号运算符出现在赋值的左侧时，它识别出将被赋值的列表的元素。
 
 \begin{verbatim}
 >>> numbers = [17, 123]
@@ -9624,6 +9648,8 @@ used to be 123, is now 5.
 \index{index!starting at zero}
 \index{zero, index starting at}
 
+{\tt numbers}的第一个元素，过去是123，现在是5.
+
 You can think of a list as a relationship between indices and
 elements.  This relationship is called a {\bf mapping}; each index
 ``maps to'' one of the elements.  Figure~\ref{fig.liststate} shows 
@@ -9632,6 +9658,10 @@ cheeses}, {\tt numbers} and {\tt empty}:
 \index{state diagram}
 \index{diagram!state}
 \index{mapping}
+
+你可以将列表看成索引和元素之间的关系。
+此关系被称作{\bf 映射（mapping）}，每个索引``映射''到一个元素。
+图\ref{fig.liststate}展示了{\tt cheeses}、{\tt numbers}和{\tt empty}的栈图：
 
 \begin{figure}
 \centerline
@@ -9649,19 +9679,32 @@ value of the second element has been reassigned from 123 to 5.
 \index{item assignment}
 \index{assignment!item}
 
+列表用盒子表示，外面写着``list''里面是元素。
+{\tt cheeses}指向一个有三个元素的列表，索引是0、1和2.
+{\tt numbers}包括两个元素，此图显示第二个元素的值已经被从123重新赋成了5.
+{\tt empty}指向一个没有任何元素的列表。
+
 List indices work the same way as string indices:
+
+列表索引和字符串索引作用相同：
 
 \begin{itemize}
 
 \item Any integer expression can be used as an index.
+
+任何整数表达式可以被用作索引。
 
 \item If you try to read or write an element that does not exist, you
 get an {\tt IndexError}.
 \index{exception!IndexError}
 \index{IndexError}
 
+如果你试图读或写一个不存在的元素，你获得一个{\tt IndexError}。
+
 \item If an index has a negative value, it counts backward from the
 end of the list.
+
+如果一个索引是一个负值，它从列表的结尾往回数。
 
 \end{itemize}
 \index{list!index}
@@ -9672,6 +9715,8 @@ end of the list.
 \index{operator!in}
 
 The {\tt in} operator also works on lists.
+
+{\tt in}运算符也可以用于列表。
 
 \begin{verbatim}
 >>> cheeses = ['Cheddar', 'Edam', 'Gouda']
