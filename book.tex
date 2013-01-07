@@ -9306,9 +9306,18 @@ it compares the second-to-last character to the last, which is
 what we want.
 \index{palindrome}
 
+如果到达循环结束，我们也没有找到一点错误，那么该单词通过测试。
+为了说服你自己循环正确的结束了，考虑一个类似\verb"'flossy'"的例子。
+其长度为6，因此最后一次循环运行时，{\tt i}是4，这是倒数第2个字符。
+最后一次迭代，它比较倒数第二个和最后一个字符，这正是我们希望的。
+
 Here is a version of \verb"is_palindrome" (see
 Exercise~\ref{palindrome}) that uses two indices; one starts at the
 beginning and goes up; the other starts at the end and goes down.
+
+这是\verb"is_palindrome"的一个版本（见练习\ref{palindrome}），
+其使用两个索引，一个从最前面开始并往前上，
+另一个从最后面开始并往下走。
 
 \begin{verbatim}
 def is_palindrome(word):
@@ -9327,6 +9336,9 @@ def is_palindrome(word):
 Or, if you noticed that this is an instance of a previously-solved
 problem, you might have written:
 
+或者，如果你注意到这是一个之前已经解决问题的一个实例，
+你可能已经写成：
+
 \begin{verbatim}
 def is_palindrome(word):
     return is_reverse(word, word)
@@ -9336,8 +9348,10 @@ def is_palindrome(word):
 
 Assuming you did Exercise~\ref{isreverse}.
 
+假设你做了练习\ref{isreverse}。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \index{debugging}
 \index{testing!is hard}
 \index{program testing}
@@ -9347,10 +9361,18 @@ relatively easy to test because you can check the results by hand.
 Even so, it is somewhere between difficult and impossible to choose a
 set of words that test for all possible errors.
 
+测试程序很难。本章的函数相对容易测试，因为你可以手工检查结果。
+即使这样，选择一个单词的集合来测试所有可能的错误，
+在某些方面也是介于困难和不可能的。
+
 Taking \verb"has_no_e" as an example, there are two obvious
 cases to check: words that have an 'e' should return {\tt False};
 words that don't should return {\tt True}.  You should have no
 trouble coming up with one of each.
+
+例如\verb"has_no_e"，有两个明显的用例需要检查：
+含有`e'的单词应该返回{\tt False}，不含的单词应该返回{\tt True}。
+对任何一个你应该都不会有麻烦。
 
 Within each case, there are some less obvious subcases.  Among the
 words that have an ``e,'' you should test words with an ``e'' at the
@@ -9360,6 +9382,12 @@ empty string is an example of a {\bf special case}, which is one of
 the non-obvious cases where errors often lurk.
 \index{special case}
 
+在每个用例中，还有一些不明显的子用例。
+在含有``e''的单词中，你应该测试``e''在开始、结尾以及在中间的单词。
+你应该测试长单词、短单词以及非常短的单词，如空字符串。
+空字符串是{\bf 特殊用例（special case）}的一个例子，
+其是一个经常隐藏错误的不明显的用例。
+
 In addition to the test cases you generate, you can also test
 your program with a word list like {\tt words.txt}.  By scanning
 the output, you might be able to catch errors, but be careful:
@@ -9367,35 +9395,48 @@ you might catch one kind of error (words that should not be
 included, but are) and not another (words that should be included,
 but aren't).
 
+除了你生成的测试用例，你也可以用一个类似{\tt words.txt}的单词列表测试你的程序。
+通过扫描输出，你可能会捕获错误，但是请小心：
+你可能捕获一类错误（包括了不应该包括的单词）
+但不会捕获另一类错误（没有包括应该包括的单词）。
+
 In general, testing can help you find bugs, but it is not easy to
 generate a good set of test cases, and even if you do, you can't
 be sure your program is correct.
 \index{testing!and absence of bugs}
 
+一般来讲，测试能帮助你找到错误，
+但是生成好的测试用例的集合并不容易，
+并且即便你做到了，你仍然不能保证你的程序是正确的。
+
 According to a legendary computer scientist:
+
+据一个传奇计算机科学家所说：
 
 \begin{quote}
 Program testing can be used to show the presence of bugs, but never to
 show their absence!
+
+程序测试能被用于展现错误的存在，但是从不会显示其不存在！
 
 --- Edsger W. Dijkstra
 \end{quote}
 \index{Dijkstra, Edsger}
 
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[file object:] A value that represents an open file.
+\item[file object（文件对象）:] A value that represents an open file.
 \index{file object}
 \index{object!file}
 
-\item[problem recognition:] A way of solving a problem by
+\item[problem recognition（问题识别）:] A way of solving a problem by
 expressing it as an instance of a previously-solved problem.
 \index{problem recognition}
 
-\item[special case:] A test case that is atypical or non-obvious
+\item[special case（特殊用例）:] A test case that is atypical or non-obvious
 (and less likely to be handled correctly).
 \index{special case}
 
