@@ -9727,7 +9727,7 @@ False
 \end{verbatim}
 
 
-\section{Traversing a list}
+\section{Traversing a list 遍历一个列表}
 \index{list!traversal}
 \index{traversal!list}
 \index{for loop}
@@ -9736,6 +9736,9 @@ False
 
 The most common way to traverse the elements of a list is
 with a {\tt for} loop.  The syntax is the same as for strings:
+
+遍历一个列表元素的最常用方法是用{\tt for}循环。
+语法和遍历字符串相同：
 
 \begin{verbatim}
 for cheese in cheeses:
@@ -9748,6 +9751,10 @@ need the indices.  A common way to do that is to combine
 the functions {\tt range} and {\tt len}:
 \index{looping!with indices}
 \index{index!looping with}
+
+如果你只想读列表的元素，这工作的很好。
+但是如果你想写或者更新元素，那么你需要索引。
+一个常用的方法是组合{\tt range}和{\tt len}函数：
 
 \begin{verbatim}
 for i in range(len(numbers)):
@@ -9764,7 +9771,15 @@ new value.
 \index{item update}
 \index{update!item}
 
+该循环遍历列表并更新每个元素。
+{\tt len}返回列表中元素的数目。
+{\tt range}返回一个从0到$n-1$的索引的列表，
+其中$n$是列表的长度。
+循环{\tt i}每次获得下一个元素的索引。
+循环体内的赋值语句使用{\tt i}来读旧的元素的值并赋予新值。
+
 A {\tt for} loop over an empty list never executes the body:
+空列表上的{\tt for}循环从不执行循环体：
 
 \begin{verbatim}
 for x in []:
@@ -9777,18 +9792,24 @@ four:
 \index{nested list}
 \index{list!nested}
 
+虽然一个列表可以包括另一个列表，
+但是嵌套的列表仍然像一个单一元素一样计数。
+该列表的长度是4：
+
 \begin{verbatim}
 ['spam', 1, ['Brie', 'Roquefort', 'Pol le Veq'], [1, 2, 3]]
 \end{verbatim}
 
 
 
-\section{List operations}
+\section{List operations 列表运算}
 \index{list!operation}
 
 The {\tt +} operator concatenates lists:
 \index{concatenation!list}
 \index{list!concatenation}
+
+{\tt +}运算符叠加列表：
 
 \begin{verbatim}
 >>> a = [1, 2, 3]
@@ -9802,6 +9823,8 @@ Similarly, the {\tt *} operator repeats a list a given number of times:
 \index{repetition!list}
 \index{list!repetition}
 
+类似地，{\tt *}运算符重复列表给定次数：
+
 \begin{verbatim}
 >>> [0] * 4
 [0, 0, 0, 0]
@@ -9812,8 +9835,11 @@ Similarly, the {\tt *} operator repeats a list a given number of times:
 The first example repeats {\tt [0]} four times.  The second example
 repeats the list {\tt [1, 2, 3]} three times.
 
+第一个例子重复{\tt [0]} 4次。
+第二个例子重复列表{\tt [1, 2, 3]} 3次。
 
-\section{List slices}
+
+\section{List slices 列表片段}
 \index{slice operator}
 \index{operator!slice}
 \index{index!slice}
@@ -9821,6 +9847,8 @@ repeats the list {\tt [1, 2, 3]} three times.
 \index{slice!list}
 
 The slice operator also works on lists:
+
+片段运算符也能用于列表：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -9839,6 +9867,10 @@ omit both, the slice is a copy of the whole list.
 \index{slice!copy}
 \index{copy!slice}
 
+如果你不写第一个索引，片段起始于开始。
+如果不写第二个，片段直到结束。
+所以，如果你两个都不写，片段拷贝整个列表。
+
 \begin{verbatim}
 >>> t[:]
 ['a', 'b', 'c', 'd', 'e', 'f']
@@ -9849,10 +9881,14 @@ before performing operations that fold, spindle or mutilate
 lists.
 \index{mutability}
 
+既然列表是可变的，那么在对列表进行操作之前拷贝它通常很有用。
+
 A slice operator on the left side of an assignment
 can update multiple elements:
 \index{slice!update}
 \index{update!slice}
+
+赋值语句左侧的片段运算符可以更新多个元素：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -9888,7 +9924,7 @@ can update multiple elements:
 % with list methods.
 
 
-\section{List methods}
+\section{List methods 列表方法}
 \index{list!method}
 \index{method, list}
 
@@ -9896,6 +9932,9 @@ Python provides methods that operate on lists.  For example,
 {\tt append} adds a new element to the end of a list:
 \index{append method}
 \index{method!append}
+
+Python提供在列表上运算的方法。
+例如{\tt append}在列表结尾增加一个新元素：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
@@ -9909,6 +9948,8 @@ the elements:
 \index{extend method}
 \index{method!extend}
 
+{\tt extend}将一个列表作为实参并追加所有的元素：
+
 \begin{verbatim}
 >>> t1 = ['a', 'b', 'c']
 >>> t2 = ['d', 'e']
@@ -9919,9 +9960,13 @@ the elements:
 %
 This example leaves {\tt t2} unmodified.
 
+此例不改变{\tt t2}。
+
 {\tt sort} arranges the elements of the list from low to high:
 \index{sort method}
 \index{method!sort}
+
+{\tt sort}从低到高排列列表的元素：
 
 \begin{verbatim}
 >>> t = ['d', 'c', 'e', 'b', 'a']
@@ -9938,10 +9983,15 @@ with the result.
 \index{None special value}
 \index{special value!None}
 
+列表方法都是无返回值的，它们修改列表并返回{\tt None}。
+如果你偶然写了{\tt t = t.sort()}，你将对结果很失望。
 
-\section{Map, filter and reduce}
+
+\section{Map, filter and reduce 映射、过滤和削减}
 
 To add up all the numbers in a list, you can use a loop like this:
+
+为了累加列表中的所有的数，你可以使用如下的循环：
 
 % see add.py
 
@@ -9962,11 +10012,17 @@ provides a short way to update a variable.  This
 \index{assignment!augmented}
 \index{augmented assignment}
 
+{\tt total}初始化为0。每次循环，{\tt x}从列表中获得一个元素。
+{\tt +=}运算符提供了一个简化的方法来更新一个变量。
+此{\bf 增量赋值语句（augmented assignment statement）}：
+
 \begin{verbatim}
     total += x
 \end{verbatim}
 %
 is equivalent to:
+
+等价于：
 
 \begin{verbatim}
     total = total + x
@@ -9977,8 +10033,14 @@ elements; a variable used this way is sometimes called an
 {\bf accumulator}.
 \index{accumulator!sum}
 
+当循环执行时，{\tt total}累计元素的和，
+这样使用的变量有时被称作一个{\bf 累加器（accumulator）}。
+
 Adding up the elements of a list is such a common operation
 that Python provides it as a built-in function, {\tt sum}:
+
+累加一个列表的元素是如此通常的运算，
+以至于Python为其提供了一个内建函数，{\tt sum}：
 
 \begin{verbatim}
 >>> t = [1, 2, 3]
@@ -9992,6 +10054,8 @@ a single value is sometimes called {\bf reduce}.
 \index{pattern!reduce}
 \index{traversal}
 
+像这样将一序列元素组合成一个单一值的运算有时被称作{\bf 消减（reduce）}。
+
 \begin{exercise}
 
 Write a function called \verb"nested_sum" that takes a nested list
@@ -10002,6 +10066,9 @@ of integers and add up the elements from all of the nested lists.
 Sometimes you want to traverse one list while building
 another.  For example, the following function takes a list of strings
 and returns a new list that contains capitalized strings:
+
+有时，你想一边遍历一个列表，一边创建另一个。
+例如，下面的函数接受一个字符串列表并返回一个新的包含大写字母字符串的列表：
 
 \begin{verbatim}
 def capitalize_all(t):
@@ -10016,6 +10083,9 @@ the loop, we append the next element.  So {\tt res} is another
 kind of accumulator.
 \index{accumulator!list}
 
+{\tt res}用一个空列表初始化，循环每次追加下一个元素。
+所以{\tt res}是另一类累加器。
+
 An operation like \verb"capitalize_all" is sometimes called a {\bf
 map} because it ``maps'' a function (in this case the method {\tt
 capitalize}) onto each of the elements in a sequence.
@@ -10023,6 +10093,9 @@ capitalize}) onto each of the elements in a sequence.
 \index{pattern!map}
 \index{filter pattern}
 \index{pattern!filter}
+
+类似\verb"capitalize_all"的运算有时被称作a {\bf 映射（map）}，
+因为它``映射''一个函数（此例中是{\tt capitalize}方法）到一个序列的每个元素上。
 
 \begin{exercise}
 
@@ -10037,6 +10110,9 @@ a list and return a sublist.  For example, the following
 function takes a list of strings and returns a list that contains
 only the uppercase strings:
 
+另一个常见运算是从列表中选择一些元素并返回子列表。
+例如，下面的函数接受一个字符串列表并返回只包含大写字母的字符串：
+
 \begin{verbatim}
 def only_upper(t):
     res = []
@@ -10049,8 +10125,14 @@ def only_upper(t):
 {\tt isupper} is a string method that returns {\tt True} if
 the string contains only upper case letters.
 
+{\tt isupper}是一个字符串方法，
+如果字符串只包含大写字母，其返回{\tt True}。
+
 An operation like \verb"only_upper" is called a {\bf filter} because
 it selects some of the elements and filters out the others.
+
+类似\verb"only_upper"的运算被称作{\bf 过滤（filter）}，
+因为它选择一些元素并过滤掉其它的。
 
 Most common list operations can be expressed as a combination
 of map, filter and reduce.  Because these operations are
@@ -10058,6 +10140,10 @@ so common, Python provides language features to support them,
 including the built-in function {\tt map} and an operator
 called a ``list comprehension.''
 \index{list!comprehension}
+
+最通常的列表运算能被表示成映射、过滤和消减的组合。
+因为这些运算如此通常，以至于Python提供了支持它们的语言特征，
+包括内建函数{\tt map}以及一个被称作``列表理解''的操作符。
 
 \begin{exercise}
 \label{cumulative}
@@ -10071,7 +10157,7 @@ For example, the cumulative sum of {\tt [1, 2, 3]} is
 \end{exercise}
 
 
-\section{Deleting elements}
+\section{Deleting elements 删除元素}
 \index{element deletion}
 \index{deletion, element of list}
 
@@ -10080,6 +10166,9 @@ know the index of the element you want, you can use
 {\tt pop}:
 \index{pop method}
 \index{method!pop}
+
+有几种从列表中删除元素的方法。
+如果你知道你想删除的元素的索引，你可以使用{\tt pop}：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
@@ -10094,10 +10183,15 @@ b
 If you don't provide an index, it deletes and returns the
 last element.
 
+{\tt pop}改变列表并返回被删除的元素。
+如果不提供索引，它删除并返回最后一个元素。
+
 If you don't need the removed value, you can use the {\tt del}
 operator:
 \index{del operator}
 \index{operator!del}
+
+如果你不需要被删除的值，你可以使用{\tt del}运算符：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
@@ -10112,6 +10206,9 @@ can use {\tt remove}:
 \index{remove method}
 \index{method!remove}
 
+如果你知道你想删除的元素（但是不知道索引），
+你可以使用{\tt remove}：
+
 \begin{verbatim}
 >>> t = ['a', 'b', 'c']
 >>> t.remove('b')
@@ -10123,8 +10220,12 @@ The return value from {\tt remove} is {\tt None}.
 \index{None special value}
 \index{special value!None}
 
+{\tt remove}的返回值是{\tt None}。
+
 To remove more than one element, you can use {\tt del} with
 a slice index:
+
+为了删除多余一个的元素，你可以使用{\tt del}和一个片段索引：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -10135,6 +10236,8 @@ a slice index:
 %
 As usual, the slice selects all the elements up to, but not
 including, the second index.
+
+和通常一样，该片段选择所有高于，但是不包含第二个索引的元素。
 
 \begin{exercise}
 
@@ -10152,7 +10255,7 @@ by removing the first and last elements, and returns {\tt None}.
 \end{exercise}
 
 
-\section{Lists and strings}
+\section{Lists and strings 列表和字符串}
 \index{list}
 \index{string}
 \index{sequence}
@@ -10163,6 +10266,10 @@ string.  To convert from a string to a list of characters,
 you can use {\tt list}:
 \index{list!function}
 \index{function!list}
+
+一个字符串是字符的序列，列表是值的序列，
+但是字符列表和字符串不一样。
+为了将一个字符串转化为字符列表，你可以使用{\tt list}：
 
 \begin{verbatim}
 >>> s = 'spam'
@@ -10175,11 +10282,18 @@ Because {\tt list} is the name of a built-in function, you should
 avoid using it as a variable name.  I also avoid {\tt l} because
 it looks too much like {\tt 1}.  So that's why I use {\tt t}.
 
+因为{\tt list}是一个内建函数的名字，你应该避免将其用作变量名。
+我也避免用{\tt l}，因为它看上去太像{\tt 1}。
+所有这是为什么我用{\tt t}。
+
 The {\tt list} function breaks a string into individual letters.  If
 you want to break a string into words, you can use the {\tt split}
 method:
 \index{split method}
 \index{method!split}
+
+{\tt list}函数把一个字符串分成独立的字母。
+如果你想将字符串分成单词，你可以使用{\tt split}方法：
 
 \begin{verbatim}
 >>> s = 'pining for the fjords'
@@ -10195,6 +10309,9 @@ uses a hyphen as a delimiter:
 \index{optional argument}
 \index{argument!optional}
 \index{delimiter}
+
+一个被称作{\bf 分隔符（delimiter）}的可选实参指明那个字符被用于单词的边界。
+下面的例子使用连字符号作为分隔符：
 
 \begin{verbatim}
 >>> s = 'spam-spam-spam'
@@ -10212,6 +10329,9 @@ list as a parameter:
 \index{method!join}
 \index{concatenation}
 
+{\tt join}和{\tt split}相反。它接受一个字符串的列表并将元素串联起来。
+{\tt join}是一个字符串方法，所以你必须在分隔符上调用它并传递列表作为一个形参：
+
 \begin{verbatim}
 >>> t = ['pining', 'for', 'the', 'fjords']
 >>> delimiter = ' '
@@ -10226,12 +10346,17 @@ strings without spaces, you can use the empty string,
 \index{empty string}
 \index{string!empty}
 
+此例中，分隔符是空格，所以{\tt join}在两个单词中间放入一个空格。
+为了不用空格串联字符串，你可以使用空字符串，\verb"''"，作为分隔符：
 
-\section{Objects and values}
+
+\section{Objects and values 对象和值}
 \index{object}
 \index{value}
 
 If we execute these assignment statements:
+
+如果我们执行这些赋值语句：
 
 \begin{verbatim}
 a = 'banana'
@@ -10243,6 +10368,10 @@ string, but we don't
 know whether they refer to the {\em same} string.
 There are two possible states, shown in Figure~\ref{fig.list1}.
 \index{aliasing}
+
+我们知道{\tt a}和{\tt b}都引用一个字符串，但是我们不知道
+它们是否引用相同的字符串。
+有两个可能的状态，如图\ref{fig.list1}所示。
 
 \begin{figure}
 \centerline
@@ -10258,8 +10387,13 @@ object.
 \index{is operator}
 \index{operator!is}
 
+一种情况下，{\tt a}和{\tt b}引用两个不同的对象，它们有相同的值。
+另一种情况是它们引用相同的对象。
+
 To check whether two variables refer to the same object, you can
 use the {\tt is} operator.
+
+为了查看两个变量是否引用同一个对象，你可以使用{\tt is}运算符。
 
 \begin{verbatim}
 >>> a = 'banana'
@@ -10271,7 +10405,11 @@ True
 In this example, Python only created one string object,
 and both {\tt a} and {\tt b} refer to it.
 
+此例中，Python生成一个字符串对象，{\tt a}和{\tt b}都引用它。
+
 But when you create two lists, you get two objects:
+
+但是，当你生成两个列表时，你获得两个对象：
 
 \begin{verbatim}
 >>> a = [1, 2, 3]
@@ -10283,6 +10421,8 @@ False
 So the state diagram looks like Figure~\ref{fig.list2}.
 \index{state diagram}
 \index{diagram!state}
+
+所以状态图看起来类似图\ref{fig.list2}。
 
 \begin{figure}
 \centerline
@@ -10300,6 +10440,12 @@ identical.
 \index{equivalence}
 \index{identity}
 
+此例中，我们应该说两个列表{\bf 相等（equivalent）}，
+因为它们具有相同的元素，但不是{\bf 相同（identical）}，
+因为它们不是相同的对象。
+如果两个对象相同，那么它们也是相等的，
+但是如果它们相等，它们不一定相同。
+
 Until now, we have been using ``object'' and ``value''
 interchangeably, but it is more precise to say that an object has a
 value.  If you execute {\tt [1,2,3]}, you get a list
@@ -10309,13 +10455,23 @@ it is not the same object.
 \index{object}
 \index{value}
 
+迄今为止，我们一直可互换的使用``对象''和``值''，
+但是更精确地说，一个对象有一个值。
+如果你执行{\tt [1,2,3]}，那么你获得一个列表对象，
+其值是一个整数序列。
+如果另一个列表有相同的元素，我们说它有相同的值，
+但是它不是相同的对象。
 
-\section{Aliasing}
+
+\section{Aliasing 别名}
 \index{aliasing}
 \index{reference!aliasing}
 
 If {\tt a} refers to an object and you assign {\tt b = a},
 then both variables refer to the same object:
+
+如果{\tt a}引用一个对象并且你赋值{\tt b=a}，
+那么两个变量引用相同的对象：
 
 \begin{verbatim}
 >>> a = [1, 2, 3]
@@ -10327,6 +10483,8 @@ True
 The state diagram looks like Figure~\ref{fig.list3}.
 \index{state diagram}
 \index{diagram!state}
+
+状态图类似图~\ref{fig.list3}。
 
 \begin{figure}
 \centerline
@@ -10340,12 +10498,20 @@ reference}.  In this example, there are two references to the same
 object.
 \index{reference}
 
+变量和对象之间的关联被称作{\bf 引用（reference）}。
+此例中，有两个指向相同对象的引用。
+
 An object with more than one reference has more
 than one name, so we say that the object is {\bf aliased}.
 \index{mutability}
 
+具有超过一个引用的对象有超过一个的名字，
+所以我们说对象被{\bf 别名化（aliased）}了。
+
 If the aliased object is mutable, changes made with one alias affect
 the other:
+
+如果别名化的对象是可变的，用一个别名引起的变化影响另一个别名：
 
 \begin{verbatim}
 >>> b[0] = 17
@@ -10358,8 +10524,14 @@ it is safer to avoid aliasing when you are working with mutable
 objects.
 \index{immutability}
 
+虽然此行为会是有用的，但是它易于出错。
+一般来讲，当你和可变对象一起工作时，避免别名会更安全。
+
 For immutable objects like strings, aliasing is not as much of a
 problem.  In this example:
+
+对于想字符串这样的不可变对象，别名不是一个问题。
+在此例中：
 
 \begin{verbatim}
 a = 'banana'
@@ -10369,8 +10541,10 @@ b = 'banana'
 It almost never makes a difference whether {\tt a} and {\tt b} refer
 to the same string or not.
 
+{\tt a}和{\tt b}是否引用相同的字符串不会引起什么不同。
 
-\section{List arguments}
+
+\section{List arguments 列表实参}
 \label{list.arguments}
 \index{list!as argument}
 \index{argument}
@@ -10383,12 +10557,18 @@ to the list.
 If the function modifies a list parameter, the caller sees the change.
 For example, \verb"delete_head" removes the first element from a list:
 
+当你向一个函数传递列表时，函数获得指向该列表的引用。
+如果函数改变列表形参，那么调用者会看到改变。
+例如，\verb"delete_head"从列表中删除第一个元素：
+
 \begin{verbatim}
 def delete_head(t):
     del t[0]
 \end{verbatim}
 %
 Here's how it is used:
+
+这是它如何被使用的：
 
 \begin{verbatim}
 >>> letters = ['a', 'b', 'c']
@@ -10403,6 +10583,9 @@ Figure~\ref{fig.stack5}.
 \index{stack diagram}
 \index{diagram!stack}
 
+形参{\tt t}和变量{\tt letters}是同一个对象的别名。
+栈图如图\ref{fig.stack5}。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/stack5.pdf}}
@@ -10414,6 +10597,8 @@ Figure~\ref{fig.stack5}.
 Since the list is shared by two frames, I drew
 it between them.
 
+既然列表被两个框架共享，我把它画在他们之间。
+
 It is important to distinguish between operations that
 modify lists and operations that create new lists.  For
 example, the {\tt append} method modifies a list, but the
@@ -10422,6 +10607,9 @@ example, the {\tt append} method modifies a list, but the
 \index{method!append}
 \index{list!concatenation}
 \index{concatenation!list}
+
+区分修改列表和生成新列表的操作非常重要。
+例如，{\tt append}方法修改列表，但是{\tt +}运算符生成一个新列表：
 
 \begin{verbatim}
 >>> t1 = [1, 2]
@@ -10440,6 +10628,9 @@ This difference is important when you write functions that
 are supposed to modify lists.  For example, this function
 {\em does not} delete the head of a list:
 
+当你写一些想要修改列表的函数的时候，此不同非常重要。
+例如，此函数并没有删除列表的头：
+
 \begin{verbatim}
 def bad_delete_head(t):
     t = t[1:]              # WRONG!
@@ -10451,10 +10642,16 @@ on the list that was passed as an argument.
 \index{slice operator}
 \index{operator!slice}
 
+片段运算符生成一个新的列表，赋值使得{\tt t}引用它，
+但是这些对被作为实参传递过来的列表毫无影响。
+
 An alternative is to write a function that creates and
 returns a new list.  For
 example, {\tt tail} returns all but the first
 element of a list:
+
+替代的方法是写一个函数，生成并返回一个新列表。
+例如，{\tt tail}返回列表除第一个外的所有元素。
 
 \begin{verbatim}
 def tail(t):
@@ -10463,6 +10660,9 @@ def tail(t):
 %
 This function leaves the original list unmodified.
 Here's how it is used:
+
+此函数不修改原来的列表。
+这是如何使用它：
 
 \begin{verbatim}
 >>> letters = ['a', 'b', 'c']
@@ -10473,26 +10673,36 @@ Here's how it is used:
 
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 Careless use of lists (and other mutable objects)
 can lead to long hours of debugging.  Here are some common
 pitfalls and ways to avoid them:
 
+不仔细的列表使用（以及其它可变对象）可能导致长时间的调试。
+这是一些通常的陷阱以及避免他们的方法：
+
 \begin{enumerate}
 
 \item Don't forget that most list methods modify the argument and
   return {\tt None}.  This is the opposite of the string methods,
   which return a new string and leave the original alone.
+  
+  不要忘记大多数列表方法修改实参并返回{\tt None}。
+  这和字符串方法相反，其返回一个新的字符串并将原始的字符串放在一边。
 
 If you are used to writing string code like this:
+
+如果你想这样写过字符串代码：
 
 \begin{verbatim}
 word = word.strip()
 \end{verbatim}
 
 It is tempting to write list code like this:
+
+像这样写列表代码也很有诱惑力：
 
 \begin{verbatim}
 t = t.sort()           # WRONG!
@@ -10503,6 +10713,8 @@ t = t.sort()           # WRONG!
 Because {\tt sort} returns {\tt None}, the
 next operation you perform with {\tt t} is likely to fail.
 
+因为{\tt sort}返回{\tt None}，所以对{\tt t}的进一步运算很可能会失败。
+
 Before using list methods and operators, you should read the
 documentation carefully and then test them in interactive mode.  The
 methods and operators that lists share with other sequences (like
@@ -10511,17 +10723,34 @@ strings) are documented at
 methods and operators that only apply to mutable sequences
 are documented at \url{docs.python.org/lib/typesseq-mutable.html}.
 
+在使用列表方法之前，你应该仔细的阅读文档，
+然后在交互模式下测试它们。
+列表和其它序列（如字符串）共享的方法和运算符的文档位于：
+\url{docs.python.org/lib/typesseq.html}。
+只能被用于可变序列的方法和运算符的文档在
+\url{docs.python.org/lib/typesseq-mutable.html}。
+
 
 \item Pick an idiom and stick with it.
+
+选择一个习惯并检查下去。
 
 Part of the problem with lists is that there are too many
 ways to do things.  For example, to remove an element from
 a list, you can use {\tt pop}, {\tt remove}, {\tt del},
 or even a slice assignment.
 
+列表的一部分问题是有太多的方法做事情。
+例如，为了从列表中删除一个元素，
+你可以使用{\tt pop}、{\tt remove}、{\tt del}，
+甚至一个片段赋值。
+
 To add an element, you can use the {\tt append} method or
 the {\tt +} operator.  Assuming that {\tt t} is a list and
 {\tt x} is a list element, these are right: 
+
+为了增加一个元素，你可以用{\tt append}方法或者{\tt +}运算符。
+假设{\tt t}是一个列表，{\tt x}是一个列表元素，这些都是正确的：
 
 \begin{verbatim}
 t.append(x)
@@ -10529,6 +10758,8 @@ t = t + [x]
 \end{verbatim}
 
 And these are wrong:
+
+这些是错误的：
 
 \begin{verbatim}
 t.append([x])          # WRONG!
@@ -10542,14 +10773,23 @@ you understand what they do.  Notice that only the last
 one causes a runtime error; the other three are legal, but they
 do the wrong thing.
 
+在交互模式下测试每个例子，确保你理解他们做了什么。
+主意，只有最后一个引起运行时错误，其它三个是合法的，
+但是它们做了错误的事情。
+
 
 \item Make copies to avoid aliasing.
 \index{aliasing!copying to avoid}
 \index{copy!to avoid aliasing}
 
+用复制，避免别名。
+
 If you want to use a method like {\tt sort} that modifies
 the argument, but you need to keep the original list as
 well, you can make a copy.
+
+如果你想使用类似{\tt sort}的方法来修改实参，
+但是也你需要保留原始列表，那么你可以复制它。
 
 \begin{verbatim}
 orig = t[:]
@@ -10561,78 +10801,82 @@ which returns a new, sorted list and leaves the original alone.
 But in that case you should avoid using {\tt sorted} as a variable
 name!
 
+此例中你也可以使用内建函数{\tt sorted}，
+其返回一个新的、排好序的列表并将原始列表放在一边。
+但是在那个例子中，你应该避免将{\tt sorted}作为变量名使用！
+
 \end{enumerate}
 
 
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[list:] A sequence of values.
+\item[list（列表）:] A sequence of values.
 \index{list}
 
-\item[element:] One of the values in a list (or other sequence),
+\item[element（元素）:] One of the values in a list (or other sequence),
 also called items.
 \index{element}
 
-\item[index:] An integer value that indicates an element in a list.
+\item[index（索引）:] An integer value that indicates an element in a list.
 \index{index}
 
-\item[nested list:] A list that is an element of another list.
+\item[nested list（嵌套的列表）:] A list that is an element of another list.
 \index{nested list}
 
-\item[list traversal:] The sequential accessing of each element in a list.
+\item[list traversal（列表遍历）:] The sequential accessing of each element in a list.
 \index{list!traversal}
 
-\item[mapping:] A relationship in which each element of one set
+\item[mapping（映射）:] A relationship in which each element of one set
 corresponds to an element of another set.  For example, a list is
 a mapping from indices to elements.
 \index{mapping}
 
-\item[accumulator:] A variable used in a loop to add up or
+\item[accumulator（累加器）:] A variable used in a loop to add up or
 accumulate a result.
 \index{accumulator}
 
-\item[augmented assignment:] A statement that updates the value
+\item[augmented assignment（增量赋值）:] A statement that updates the value
 of a variable using an operator like \verb"+=".
 \index{assignment!augmented}
 \index{augmented assignment}
 \index{traversal}
 
-\item[reduce:] A processing pattern that traverses a sequence 
+\item[reduce（消减）:] A processing pattern that traverses a sequence 
 and accumulates the elements into a single result.
 \index{reduce pattern}
 \index{pattern!reduce}
 
-\item[map:] A processing pattern that traverses a sequence and
+\item[map（映射）:] A processing pattern that traverses a sequence and
 performs an operation on each element.
 \index{map pattern}
 \index{pattern!map}
 
-\item[filter:] A processing pattern that traverses a list and
+\item[filter（过滤）:] A processing pattern that traverses a list and
 selects the elements that satisfy some criterion.
 \index{filter pattern}
 \index{pattern!filter}
 
-\item[object:] Something a variable can refer to.  An object
+\item[object（对象）:] Something a variable can refer to.  An object
 has a type and a value.
 \index{object}
 
-\item[equivalent:] Having the same value.
+\item[equivalent（相等的）:] Having the same value.
 \index{equivalent}
 
-\item[identical:] Being the same object (which implies equivalence).
+\item[identical（相同的）:] Being the same object (which implies equivalence).
 \index{identical}
 
-\item[reference:] The association between a variable and its value.
+\item[reference（引用）:] The association between a variable and its value.
 \index{reference}
 
-\item[aliasing:] A circumstance where two or more variables refer to the same
+\item[aliasing（别名）:] A circumstance where two or more variables refer to the same
 object.
 \index{aliasing}
 
-\item[delimiter:] A character or string used to indicate where a
+\item[delimiter（分隔符）:] A character or string used to indicate where a
 string should be split.
 \index{delimiter}
 
