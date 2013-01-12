@@ -11039,7 +11039,7 @@ Credit: This exercise is inspired by an example at \url{http://puzzlers.org}.
 \end{exercise}
 
 
-\chapter{Dictionaries}
+\chapter{Dictionaries 字典}
 
 \index{dictionary}
 \index{dictionary}
@@ -11051,19 +11051,32 @@ A {\bf dictionary} is like a list, but more general.  In a list,
 the indices have to be integers; in a dictionary they can
 be (almost) any type.
 
+{\bf 字典（dictionary）}和列表类似，但是更一般。
+在列表中，索引必须是整数，在字典中，它们可以是（几乎）任意类型。
+
 You can think of a dictionary as a mapping between a set of indices
 (which are called {\bf keys}) and a set of values.  Each key maps to a
 value.  The association of a key and a value is called a {\bf
   key-value pair} or sometimes an {\bf item}.
+  
+你可以将字典看成是索引集合（其被称作{\bf 键（keys）}）和值集合直接的映射。
+每个键映射到一个值。键和值的关联被称作{\bf 键值对（key-value pair）}
+或者 {\bf （item）}。
 
 As an example, we'll build a dictionary that maps from English
 to Spanish words, so the keys and the values are all strings.
+
+作为一个例子，我们将创建一个字典，从英语单词映射到西班牙语单词，
+因此键和值都是字符串。
 
 The function {\tt dict} creates a new dictionary with no items.
 Because {\tt dict} is the name of a built-in function, you
 should avoid using it as a variable name.
 \index{dict function}
 \index{function!dict}
+
+{\tt dict}函数生成一个新的没有任何项的字典。
+因为{\tt dict}是内建函数名，你应该避免将其用于变量名。
 
 \begin{verbatim}
 >>> eng2sp = dict()
@@ -11076,6 +11089,9 @@ To add items to the dictionary, you can use square brackets:
 \index{squiggly bracket}
 \index{bracket!squiggly}
 
+花括号\verb"{}"表示一个空字典。为了向字典内增加项，
+你可以使用方括号：
+
 \begin{verbatim}
 >>> eng2sp['one'] = 'uno'
 \end{verbatim}
@@ -11085,6 +11101,10 @@ This line creates an item that maps from the key
 dictionary again, we see a key-value pair with a colon
 between the key and value:
 
+该行生成一个项，从键{\tt 'one'}映射到值\verb"'uno'"。
+如果我们再次打印该字典，我们看到一个键值对，
+键和值之间有一个冒号。
+
 \begin{verbatim}
 >>> print eng2sp
 {'one': 'uno'}
@@ -11093,11 +11113,16 @@ between the key and value:
 This output format is also an input format.  For example,
 you can create a new dictionary with three items:
 
+此输出格式也是一个输入格式。
+例如，你可以用三个项生成一个新的字典：
+
 \begin{verbatim}
 >>> eng2sp = {'one': 'uno', 'two': 'dos', 'three': 'tres'}
 \end{verbatim}
 %
 But if you print {\tt eng2sp}, you might be surprised:
+
+但是，如果你打印{\tt eng2sp}，你可能很奇怪：
 
 \begin{verbatim}
 >>> print eng2sp
@@ -11109,9 +11134,15 @@ you type the same example on your computer, you might get a
 different result.  In general, the order of items in
 a dictionary is unpredictable.
 
+键值对的顺序和原来不同。事实上，如果你在你的计算机上键入相同的例子，
+你可能获得不同的结果。通常，字典中项的顺序是不可预知的。
+
 But that's not a problem because
 the elements of a dictionary are never indexed with integer indices.
 Instead, you use the keys to look up the corresponding values:
+
+但这不是个问题，因为字典的元素从不会被用整数索引来索引。
+相反，你使用键来查找相应的值：
 
 \begin{verbatim}
 >>> print eng2sp['two']
@@ -11121,9 +11152,13 @@ Instead, you use the keys to look up the corresponding values:
 The key {\tt 'two'} always maps to the value \verb"'dos'" so the order
 of the items doesn't matter.
 
+键{\tt 'two'}总是映射到值\verb"'dos'"，因此项的顺序没有关系。
+
 If the key isn't in the dictionary, you get an exception:
 \index{exception!KeyError}
 \index{KeyError}
+
+如果键不在字典中，那么你得到一个异常：
 
 \begin{verbatim}
 >>> print eng2sp['four']
@@ -11134,6 +11169,8 @@ The {\tt len} function works on dictionaries; it returns the
 number of key-value pairs:
 \index{len function}
 \index{function!len}
+
+{\tt len}函数对字典起作用，它返回键值对的数量：
 
 \begin{verbatim}
 >>> len(eng2sp)
@@ -11147,6 +11184,9 @@ as a value is not good enough).
 \index{in operator}
 \index{operator!in}
 
+{\tt in}运算符对字典起作用，他告诉你是否一些东西在字典中作为键出现
+（作为值出现不够好）。
+
 \begin{verbatim}
 >>> 'one' in eng2sp
 True
@@ -11159,6 +11199,9 @@ can use the method {\tt values}, which returns the values as
 a list, and then use the {\tt in} operator:
 \index{values method}
 \index{method!values}
+
+为了看是否一些东西作为值出现，你可以使用{\tt values}方法，
+其作为一个列表返回值，然后使用{\tt in}运算符：
 
 \begin{verbatim}
 >>> vals = eng2sp.values()
@@ -11176,6 +11219,14 @@ many items there are in a dictionary.  I won't explain how that's
 possible, but you can read more about it at
 \url{http://en.wikipedia.org/wiki/Hash_table}.
 \index{hashtable}
+
+对于列表和字典，{\tt in}运算符使用不同的算法。
+对于列表，它使用如\ref{find}节中的搜索算法。
+随着列表的增长，搜索时间成正比增长。
+对于字典，Python使用一种叫做{\bf 哈希表（hashtable）}的算法，
+其具有非凡的性质：无论字典中有多少项，{\tt in}运算符几乎花费相同的时间。
+我不会介绍这怎么可能，但是你可以在\url{http://en.wikipedia.org/wiki/Hash_table}
+读到更多关于它的内容。\footnote{译者注：附录\ref{hashtable}介绍了关于哈希表的更多内容。}
 
 \begin{exercise}
 \label{wordlist2}
@@ -11195,12 +11246,15 @@ bisection search.
 \end{exercise}
 
 
-\section{Dictionary as a set of counters}
+\section{Dictionary as a set of counters 字典作为计数器集合}
 \label{histogram}
 \index{counter}
 
 Suppose you are given a string and you want to count how many
 times each letter appears.  There are several ways you could do it:
+
+假设给你一个字符串，你想计算每个字母出现的次数。
+有多种方法可以可以使用：
 
 \begin{enumerate}
 
@@ -11209,15 +11263,27 @@ alphabet.  Then you could traverse the string and, for each
 character, increment the corresponding counter, probably using
 a chained conditional.
 
+你可以生成26个变量，每个对应一个字母表中的字母。
+然后你可以遍历字符串，对于每个字符，递增相应的计数器，
+可能使用链式条件。
+
 \item You could create a list with 26 elements.  Then you could
 convert each character to a number (using the built-in function
 {\tt ord}), use the number as an index into the list, and increment
 the appropriate counter.
 
+你可以生成具有26个元素的列表。
+然后你可以将每个字符传化为一个数字（使用内建函数{\tt ord}），
+使用这些数字作为列表的索引，并递增适当的计数器。
+
 \item You could create a dictionary with characters as keys
 and counters as the corresponding values.  The first time you
 see a character, you would add an item to the dictionary.  After
 that you would increment the value of an existing item.
+
+你可以生成一个字典，将字符作为键，计数器作为相应的值。
+第一次看到一个字母，你应该向字典中增加一项。
+这之后，你应该递增一个已有项的值。
 
 \end{enumerate}
 
@@ -11225,13 +11291,22 @@ Each of these options performs the same computation, but each
 of them implements that computation in a different way.
 \index{implementation}
 
+每个选择执行相同的计算，但是它们用不同的方法。
+
 An {\bf implementation} is a way of performing a computation;
 some implementations are better than others.  For example,
 an advantage of the dictionary implementation is that we don't
 have to know ahead of time which letters appear in the string
 and we only have to make room for the letters that do appear.
 
+一个{\bf 实现（implementation）}是执行一个计算的方法；
+一些实现比另一些好。
+例如，字典实现的好处是我们不必事先知道字符串中出现了哪些字母，
+我们只需要当这些字母出现时在给它们分配空间。
+
 Here is what the code might look like:
+
+代码可能是这样：
 
 \begin{verbatim}
 def histogram(s):
@@ -11250,6 +11325,9 @@ term for a set of counters (or frequencies).
 \index{frequency}
 \index{traversal}
 
+函数名是{\bf 直方图（histogram）}，
+其是一个统计术语，用于计数器的集合（或者频率）。
+
 The first line of the
 function creates an empty dictionary.  The {\tt for} loop traverses
 the string.  Each time through the loop, if the character {\tt c} is
@@ -11258,7 +11336,15 @@ initial value 1 (since we have seen this letter once).  If {\tt c} is
 already in the dictionary we increment {\tt d[c]}.
 \index{histogram}
 
+函数的第一行生成一个字典。{\tt for}循环遍历该字符串。
+每次循环，如果字符{\tt c}不在字典中，
+我们用键{\tt c}和初始值1生成一个新项
+（既然我们已经见过一次该字母了）。
+如果{\tt c}已经在字典中了，那么我们递增{\tt d[c]}。
+
 Here's how it works:
+
+这是它如何工作的：
 
 \begin{verbatim}
 >>> h = histogram('brontosaurus')
@@ -11268,6 +11354,9 @@ Here's how it works:
 %
 The histogram indicates that the letters {\tt 'a'} and \verb"'b'"
 appear once; \verb"'o'" appears twice, and so on.
+
+此直方图表明，字母{\tt 'a'}和\verb"'b'"出现一次；
+\verb"'o'"出现两次等等。
 
 \begin{exercise}
 \index{get method}
@@ -11293,7 +11382,7 @@ should be able to eliminate the {\tt if} statement.
 \end{exercise}
 
 
-\section{Looping and dictionaries}
+\section{Looping and dictionaries 循环和字典}
 \index{dictionary!looping with}
 \index{looping!with dictionaries}
 \index{traversal}
@@ -11302,6 +11391,9 @@ If you use a dictionary in a {\tt for} statement, it traverses
 the keys of the dictionary.  For example, \verb"print_hist"
 prints each key and the corresponding value:
 
+如果你在{\tt for}中使用字典，那么它遍历该字典的键。
+例如\verb"print_hist"打印每个键以及相应的值：
+
 \begin{verbatim}
 def print_hist(h):
     for c in h:
@@ -11309,6 +11401,8 @@ def print_hist(h):
 \end{verbatim}
 %
 Here's what the output looks like:
+
+输出类似：
 
 \begin{verbatim}
 >>> h = histogram('parrot')
@@ -11321,6 +11415,8 @@ o 1
 \end{verbatim}
 %
 Again, the keys are in no particular order.
+
+再一次，键没有什么顺序：
 
 \begin{exercise}
 \index{keys method}
@@ -11335,7 +11431,7 @@ in alphabetical order.
 
 
 
-\section{Reverse lookup}
+\section{Reverse lookup 逆向查找}
 \label{raise}
 \index{dictionary!lookup}
 \index{dictionary!reverse lookup}
@@ -11346,6 +11442,9 @@ Given a dictionary {\tt d} and a key {\tt k}, it is easy to
 find the corresponding value {\tt v = d[k]}.  This operation
 is called a {\bf lookup}.
 
+给出一个字典{\tt d}以及一个键{\tt t}，很容易找到相应的值{\tt v = d[k]}。
+该运算被称作{\bf 查找（lookup）}
+
 But what if you have {\tt v} and you want to find {\tt k}?
 You have two problems: first, there might be more than one
 key that maps to the value {\tt v}.  Depending on the application,
@@ -11353,8 +11452,16 @@ you might be able to pick one, or you might have to make
 a list that contains all of them.  Second, there is no
 simple syntax to do a {\bf reverse lookup}; you have to search.
 
+但是，如果你有{\tt v}并且想找到{\tt k}该怎么办呢？
+你有两个问题：第一，可能有不止一个的键其映射到值{\tt v}。
+依赖于应用，你可能选择一个或者不得不生成一个包含所有键的列表。
+第二，没有简单的语法完成{\bf 逆向查找（reverse lookup）}；
+你必须搜索。
+
 Here is a function that takes a value and returns the first
 key that maps to that value:
+
+这是一个函数，接受一个值并返回其映射到该值的第一个键：
 
 \begin{verbatim}
 def reverse_lookup(d, v):
@@ -11376,11 +11483,20 @@ with the value of a parameter.
 \index{exception!ValueError}
 \index{ValueError}
 
+该函数是搜索模式的另一个例子，但是它使用了一个我们之前没有见过的特征，{\tt raise}。
+{\tt raise}语句引起一个异常；此例中它引起一个{\tt ValueError}，
+通常其表示形参的值有一些错误。
+
 If we get to the end of the loop, that means {\tt v}
 doesn't appear in the dictionary as a value, so we raise an
 exception.
 
+我们我们到达循环结尾，这意味着 {\tt v}在字典中不作为值存在，
+所以我们触发一个异常。
+
 Here is an example of a successful reverse lookup:
+
+这是一个成功逆向查找的例子：
 
 \begin{verbatim}
 >>> h = histogram('parrot')
@@ -11390,6 +11506,8 @@ r
 \end{verbatim}
 %
 And an unsuccessful one:
+
+和一个不成功的例子：
 
 \begin{verbatim}
 >>> k = reverse_lookup(h, 3)
@@ -11405,8 +11523,14 @@ Python raises one: it prints a traceback and an error message.
 \index{optional argument}
 \index{argument!optional}
 
+当你触发一个异常时，结果和Python触发一个一样：
+它打印一个回溯和一个错误信息。
+
 The {\tt raise} statement takes a detailed error message as an
 optional argument.  For example:
+
+{\tt raise}语句接受一个详细的错误信息作为可选的实参。
+例如：
 
 \begin{verbatim}
 >>> raise ValueError, 'value does not appear in the dictionary'
@@ -11418,6 +11542,9 @@ ValueError: value does not appear in the dictionary
 A reverse lookup is much slower than a forward lookup; if you
 have to do it often, or if the dictionary gets big, the performance
 of your program will suffer.
+
+逆向查找比正向查找慢得多；如果你必须经常做它或者字典很大，
+你的程序的性能将变得很差。
 
 \begin{exercise}
 
