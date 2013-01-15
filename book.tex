@@ -11060,7 +11060,7 @@ value.  The association of a key and a value is called a {\bf
   key-value pair} or sometimes an {\bf item}.
   
 你可以将字典看成是索引集合（其被称作{\bf 键（keys）}）和值集合直接的映射。
-每个键映射到一个值。键和值的关联被称作{\bf 键值对（key-value pair）}
+每个键映射到一个值。键和值的关联被称作{\bf 键-值对（key-value pair）}
 或者 {\bf （item）}。
 
 As an example, we'll build a dictionary that maps from English
@@ -11102,7 +11102,7 @@ dictionary again, we see a key-value pair with a colon
 between the key and value:
 
 该行生成一个项，从键{\tt 'one'}映射到值\verb"'uno'"。
-如果我们再次打印该字典，我们看到一个键值对，
+如果我们再次打印该字典，我们看到一个键-值对，
 键和值之间有一个冒号。
 
 \begin{verbatim}
@@ -11134,7 +11134,7 @@ you type the same example on your computer, you might get a
 different result.  In general, the order of items in
 a dictionary is unpredictable.
 
-键值对的顺序和原来不同。事实上，如果你在你的计算机上键入相同的例子，
+键-值对的顺序和原来不同。事实上，如果你在你的计算机上键入相同的例子，
 你可能获得不同的结果。通常，字典中项的顺序是不可预知的。
 
 But that's not a problem because
@@ -11170,7 +11170,7 @@ number of key-value pairs:
 \index{len function}
 \index{function!len}
 
-{\tt len}函数对字典起作用，它返回键值对的数量：
+{\tt len}函数对字典起作用，它返回键-值对的数量：
 
 \begin{verbatim}
 >>> len(eng2sp)
@@ -11555,7 +11555,7 @@ are none.
 \end{exercise}
 
 
-\section{Dictionaries and lists}
+\section{Dictionaries and lists 字典和列表}
 \label{invert}
 
 Lists can appear as values in a dictionary.  For example, if you
@@ -11567,7 +11567,13 @@ should be a list of letters.
 \index{invert dictionary}
 \index{dictionary!invert}
 
+在字典中，列表可以作为值出现。例如，如果你给你一个从字母映射到频率的字典，
+你可能想倒转它；也就是生成一个从频率映射到字母的字典。
+既然可能有些字母具有相同的频率，那么在倒转字典中的每个值应该是一个字母的列表。
+
 Here is a function that inverts a dictionary:
+
+这是一个倒转字典的函数：
 
 \begin{verbatim}
 def invert_dict(d):
@@ -11589,7 +11595,14 @@ single element).  Otherwise we have seen this value before, so we
 append the corresponding key to the list.
 \index{singleton}
 
+每次循环，{\tt key}从{\tt d}获得一个键和相应的值{\tt val}。
+如果{\tt val}不在{\tt inverse}中，这意味着我们之前没有见过它，
+因此我们生成一个新项并用一个{\bf 单元素集合（singleton）}（包括唯一元素的列表）
+初始化它。
+
 Here is an example:
+
+这是一个例子：
 
 \begin{verbatim}
 >>> hist = histogram('parrot')
@@ -11615,11 +11628,18 @@ outside the box, just to keep the diagram simple.
 \index{state diagram}
 \index{diagram!state}
 
+图\ref{fig.dict1}是一个状态图，显示{\tt hist}和{\tt inverse}。
+一个字典被表示为一个盒子，类型类型{\tt dict}在上面，键-值对在里面。
+如果值是整数、浮点数或者字符串，那么我通常把他们画在盒子里，
+但是我通常将列表画在盒子外，仅仅是为了使图简洁。
+
 Lists can be values in a dictionary, as this example shows, but they
 cannot be keys.  Here's what happens if you try:
 \index{TypeError}
 \index{exception!TypeError}
 
+字典中，列表可以是值，如此例所示，但是它们不能是键。
+如果你试图这样做，这是会发生什么：
 
 \begin{verbatim}
 >>> t = [1, 2, 3]
@@ -11635,10 +11655,15 @@ a hashtable and that means that the keys have to be {\bf hashable}.
 \index{hash function}
 \index{hashable}
 
+我之前提过，字典使用哈希表实现，这意味着键必须是{\bf 可哈希的（hashable）}。
+
 A {\bf hash} is a function that takes a value (of any kind)
 and returns an integer.  Dictionaries use these integers,
 called hash values, to store and look up key-value pairs.
 \index{immutability}
+
+{\bf 哈希（hash）}是一个函数，接受一个值（任何类型）并返回一个整数。
+字典使用这些整数，被称作哈希值，来存储和查找键-值对。
 
 This system works fine if the keys are immutable.  But if the
 keys are mutable, like lists, bad things happen.  For example,
@@ -11649,12 +11674,27 @@ In that case you might have two entries for the same key,
 or you might not be able to find a key.  Either way, the
 dictionary wouldn't work correctly.
 
+如果键是不可变的，此系统工作的很好。
+但是如果键是可变的，如列表，那么坏事情发生了。
+例如，当你生成一个键-值对的时候，Python哈希键并将其存储在相应的位置。
+如果你改变键然后再次哈希它，它将到另一个位置。
+在那种情况下，对于相同的键，你可能有两个入口，
+或者你可能不能找到一个键。
+无论如何，字典都不会正确的工作。
+
 That's why the keys have to be hashable, and why mutable types like
 lists aren't.  The simplest way to get around this limitation is to
 use tuples, which we will see in the next chapter.
 
+这是为什么键必须是可哈希的，以及为什么可变类型，如列表就不是。
+绕过这种限制最简单的方法是使用元组，
+我们将在下一章中介绍。
+
 Since dictionaries are mutable, they can't be used as keys,
 but they {\em can} be used as values.
+
+既然字典是可变的，它们不能被用作键，
+但是它们可以被用作值。
 
 \begin{exercise}
 Read the documentation of the dictionary method {\tt setdefault}
@@ -11666,7 +11706,7 @@ Solution: \url{http://thinkpython.com/code/invert_dict.py}.
 \end{exercise}
 
 
-\section{Memos}
+\section{Memos 备忘录}
 
 If you played with the {\tt fibonacci} function from
 Section~\ref{one.more.example}, you might have noticed that the bigger
@@ -11675,8 +11715,15 @@ Furthermore, the run time increases very quickly.
 \index{fibonacci function}
 \index{function!fibonacci}
 
+如果你调用过\ref{one.more.example}节的{\tt fibonacci}函数，
+你可能注意到你提供越大的实参，函数运行的时间越长。
+更进一步地，运行时间增长的非常快。
+
 To understand why, consider Figure~\ref{fig.fibonacci}, which shows
 the {\bf call graph} for {\tt fibonacci} with {\tt n=4}:
+
+为了理解原因，考虑图\ref{fig.fibonacci}，其展示了{\tt n=4}时，
+{\tt fibonacci} 的{\bf 调用图（call graph）}。
 
 \begin{figure}
 \centerline
@@ -11694,15 +11741,26 @@ n=3} and {\tt n=2}.  In turn, {\tt fibonacci} with {\tt n=3} calls
 \index{frame}
 \index{call graph}
 
+调用图显示了函数框架的集合，每个框架到其调用函数的框架用线相连。
+在图的顶端，{\tt n=4}的{\tt fibonacci}调用{\tt n=3}和{\tt n=2}的{\tt fibonacci}。
+接着，{\tt n=3}的{\tt fibonacci}调用{\tt n=2}和{\tt n=1}的{\tt fibonacci}，等等。
+
 Count how many times {\tt fibonacci(0)} and {\tt fibonacci(1)} are
 called.  This is an inefficient solution to the problem, and it gets
 worse as the argument gets bigger.
 \index{memo}
 
+计算{\tt fibonacci(0)}和{\tt fibonacci(1)}被调用多少次。
+对该问题，这不是一个有效的解，并且随着实参的变大会变得更糟。
+
 One solution is to keep track of values that have already been
 computed by storing them in a dictionary.  A previously computed value
 that is stored for later use is called a {\bf memo}.  Here is an
 implementation of {\tt fibonacci} using memos:
+
+一个解决办法是保存已经计算过的值，将它们存在一个字典中。
+之前计算过的值，其被存储以便今后使用，被称作{\bf 备忘录（memo）}。
+这是使用备忘录的{\tt fibonacci}的实现：
 
 \begin{verbatim}
 known = {0:0, 1:1}
@@ -11720,10 +11778,17 @@ def fibonacci(n):
 numbers we already know.  It starts with
 two items: 0 maps to 0 and 1 maps to 1.
 
+{\tt known}是一个字典，其记录我们已经知道的斐波那契数。
+它从两项开始：0映射到0，1映射到1。
+
 Whenever {\tt fibonacci} is called, it checks {\tt known}.
 If the result is already there, it can return
 immediately.  Otherwise it has to 
 compute the new value, add it to the dictionary, and return it.
+
+当{\tt fibonacci}被调用时，它检查{\tt known}。
+如果结果已经在那儿了，则立即返回。
+否则，它不得不计算新的值，将其加入字典，并返回它。
 
 \begin{exercise}
 
@@ -11744,7 +11809,7 @@ Solution: \url{http://thinkpython.com/code/ackermann_memo.py}.
 \end{exercise}
 
 
-\section{Global variables}
+\section{Global variables 全局变量}
 \index{global variable}
 \index{variable!global}
 
@@ -11756,11 +11821,23 @@ variables, which disappear when their function ends, global variables
 persist from one function call to the next.
 \index{flag}
 
+在前面的例子中，{\tt known}在函数的外面被生成，
+因此它属于特殊的被称作\verb"__main__"的框架。
+在\verb"__main__"中的变量有时被称作{\bf 全局的（global）}，
+因为它们可以从任意函数访问。
+和局部变量不同，当它们的函数结束时它们消失，
+从一个函数调用到另一个调用，全局变量都存在。
+
 It is common to use global variables for {\bf flags}; that is, 
 boolean variables that indicate (``flag'') whether a condition
 is true.  For example, some programs use
 a flag named {\tt verbose} to control the level of detail in the
 output:
+
+经常使用全局变量作为{\bf 标记（flags）}；
+也就是指示（标记）是否一个条件为真的布尔变量。
+例如，一些程序使用一个被称作{\tt verbose}的标记来控制
+输出中细节的等级：
 
 \begin{verbatim}
 verbose = True
@@ -11775,6 +11852,9 @@ The following example is supposed to keep track of whether the
 function has been called:
 \index{multiple assignment}
 \index{assignment!multiple}
+
+如果你试图重新对全局变量赋值，你可能很奇怪。
+下面的例子被假定用于记录是否该函数已经被调用过了：
 
 \begin{verbatim}
 been_called = False
@@ -11791,8 +11871,15 @@ the function ends, and has no effect on the global variable.
 \index{statement!global}
 \index{declaration}
 
+但是如果你运行它，你将发现\verb"been_called"的值没有改变。
+问题是{\tt example2}生成一个新的被称作\verb"been_called"的局部变量。
+当函数结束的时候，该局部变量也消失了，并且对全局变量没有影响。
+
 To reassign a global variable inside a function you have to
 {\bf declare} the global variable before you use it:
+
+为了在一个函数内部重新对全局变量赋值，
+你必须在使用它之前，{\bf 声明（declare）}该全局变量：
 
 \begin{verbatim}
 been_called = False
@@ -11808,7 +11895,13 @@ mean the global variable; don't create a local one.''
 \index{update!global variable}
 \index{global variable!update}
 
+{\tt global}语句告诉解释器诸如此类的事情，
+``在此函数中，当我说\verb"been_called"时，我的意思是全局变量；
+不要生成局部变量''。
+
 Here's an example that tries to update a global variable:
+
+这是一个试图更新全局变量的例子：
 
 \begin{verbatim}
 count = 0
@@ -11821,6 +11914,8 @@ If you run it you get:
 \index{UnboundLocalError}
 \index{exception!UnboundLocalError}
 
+如果你运行它，你得到：
+
 \begin{verbatim}
 UnboundLocalError: local variable 'count' referenced before assignment
 \end{verbatim}
@@ -11829,6 +11924,9 @@ Python assumes that {\tt count} is local, which means
 that you are reading it before writing it.  The solution, again,
 is to declare {\tt count} global.
 \index{counter}
+
+Python假设{\tt count}是局部的，这意味着你在写它之前，正在读它。
+再次，解决方案是声明{\tt count}是全局的。
 
 \begin{verbatim}
 def example3():
@@ -11839,6 +11937,8 @@ def example3():
 If the global value is mutable, you can modify it without
 declaring it:
 \index{mutability}
+
+如果全局值是可变的，你可以修改它，而不用声明：
 
 \begin{verbatim}
 known = {0:0, 1:1}
@@ -11851,6 +11951,9 @@ So you can add, remove and replace elements of a global list or
 dictionary, but if you want to reassign the variable, you
 have to declare it:
 
+因此你可以增加、删除和替代全局列表或者字典的元素，
+但是如果你想对变量重新赋值，你必须声明它：
+
 \begin{verbatim}
 def example5():
     global known
@@ -11858,12 +11961,14 @@ def example5():
 \end{verbatim}
 %
 
-\section{Long integers}
+\section{Long integers 长整数}
 \index{long integer}
 \index{integer!long}
 \index{type!long}
 
 If you compute {\tt fibonacci(50)}, you get:
+
+如果你计算{\tt fibonacci(50)}，你会得到：
 
 \begin{verbatim}
 >>> fibonacci(50)
@@ -11875,16 +11980,30 @@ integer, or type {\tt long}.  In Python 3, {\tt long} is gone; all integers,
 even really big ones, are type {\tt int}.
 \index{Python 3}
 
+结尾的{\tt L}表明结果是一个长整数，或者{\tt long}类型。
+在Python3中， {\tt long}不存在了；所有的整数，
+即使非常大的，也是 {\tt int}类型。
+
 Values with type {\tt int} have a limited range;
 long integers can be arbitrarily big, but as they get bigger
 they consume more space and time.
+
+ {\tt int}类型的值有一个有限的取值范围；
+ 长整数可以任意任意大，但是随着它们变大，
+ 它们消耗更多的空间和时间。
 
 The mathematical operators work on long integers, and the functions
 in the {\tt math} module, too, so in general any code that
 works with {\tt int} will also work with {\tt long}.
 
+数学运算可用于长整数并且{\tt math}模块中的函数也可以，
+因此一般来讲，任何{\tt int}好使的代码通用能用于 {\tt long}。
+
 Any time the result of a computation is too big to be represented with
 an integer, Python converts the result as a long integer:
+
+任何时候，一个太大以至于不能用一个整数表示的计算的结果，
+Python会转化该结果为一个长整数：
 
 \begin{verbatim}
 >>> 1000 * 1000
@@ -11895,6 +12014,9 @@ an integer, Python converts the result as a long integer:
 %
 In the first case the result has type {\tt int}; in the
 second case it is {\tt long}.
+
+第一个例子中，结果类型是{\tt int}；
+第二个例子中，它是{\tt long}。
 
 \begin{exercise}
 \index{encryption}
@@ -11911,12 +12033,15 @@ and write functions to encode and decode messages.
 \end{exercise}
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 As you work with bigger datasets it can become unwieldy to
 debug by printing and checking data by hand.  Here are some
 suggestions for debugging large datasets:
+
+当你操作较大的数据集时，通过打印并手工检查数据来调试很不方便。
+这是对于调试大数据集合的一些建议：
 
 \begin{description}
 
@@ -11926,17 +12051,31 @@ just the first 10 lines, or with the smallest example you can find.
 You can either edit the files themselves, or (better) modify the
 program so it reads only the first {\tt n} lines.
 
+[缩小输入：]如果可能，减小数据集合的大小。
+例如，如果程序读取一个文本文件，只以前10行开始，
+或者用一个你能找到的小的例子开始。
+你或者可以编辑文件，或者（更好）修改程序让它只读取前{\tt n}行。
+
 If there is an error, you can reduce {\tt n} to the smallest
 value that manifests the error, and then increase it gradually
 as you find and correct errors.
+
+如果有错误，你可以减小{\tt n}到出现错误的最小的值，
+然后逐渐增加它，随着你发现错误并改正错误。
 
 \item[Check summaries and types:] Instead of printing and checking the
 entire dataset, consider printing summaries of the data: for example,
 the number of items in a dictionary or the total of a list of numbers.
 
+[检查摘要和类型：]不用打印并检查全部数据集合，而是考虑打印数据的摘要：
+例如字典中项的数目或者数字列表的总和。
+
 A common cause of runtime errors is a value that is not the right
 type.  For debugging this kind of error, it is often enough to print
 the type of a value.
+
+通常的运行时错误原因是一个值的类型不正确。
+为了调试此类错误，打印值的类型通常就足够了。
 
 \item[Write self-checks:]  Sometimes you can write code to check
 for errors automatically.  For example, if you are computing the
@@ -11947,9 +12086,17 @@ results that are ``insane.''
 \index{sanity check}
 \index{consistency check}
 
+[写自检：]有时你可以写代码来自动检查错误。
+例如，如果你正在计算数字列表的平均数，
+你可以检查其结果不用大于列表中最大的元素或者不小于最小的。
+这被称作``合理性检查''，因为它探测出``不合理的''结果。
+
 Another kind of check compares the results of two different
 computations to see if they are consistent.  This is called a
 ``consistency check.''
+
+另一类检查比较两个不同计算的结果来看一下它们是否一致。
+这被称作``一致性检查''。
 
 \item[Pretty print the output:] Formatting debugging output
 can make it easier to spot an error.  We saw an example in
@@ -11960,86 +12107,93 @@ a more human-readable format.
 \index{pprint module}
 \index{module!pprint}
 
+[美化打印输出：]格式化调试输出能够更容易定位一个错误。
+\ref{factdebug}节中我们看到一个例子。
+{\tt pprint}模块提供了一个{\tt pprint}函数，
+其以更可读的格式显示内建类型。
+
 \end{description}
 
 Again, time you spend building scaffolding can reduce
 the time you spend debugging.
 \index{scaffolding}
 
+再一次，你花在建立脚手架上的时间能减少你花在调试上的时间。
+
 \section{Glossary}
 
 \begin{description}
 
-\item[dictionary:] A mapping from a set of keys to their
+\item[dictionary（字典）:] A mapping from a set of keys to their
 corresponding values.
 \index{dictionary}
 
-\item[key-value pair:] The representation of the mapping from
+\item[key-value pair（键-值对）:] The representation of the mapping from
 a key to a value.
 \index{key-value pair}
 
-\item[item:] Another name for a key-value pair.
+\item[item（项）:] Another name for a key-value pair.
 \index{item!dictionary}
 
-\item[key:] An object that appears in a dictionary as the
+\item[key（键）:] An object that appears in a dictionary as the
 first part of a key-value pair.
 \index{key}
 
-\item[value:] An object that appears in a dictionary as the
+\item[value（值）:] An object that appears in a dictionary as the
 second part of a key-value pair.  This is more specific than
 our previous use of the word ``value.''
 \index{value}
 
-\item[implementation:] A way of performing a computation.
+\item[implementation（实现）:] A way of performing a computation.
 \index{implementation}
 
-\item[hashtable:] The algorithm used to implement Python
+\item[hashtable（哈希表）:] The algorithm used to implement Python
 dictionaries.
 \index{hashtable}
 
-\item[hash function:] A function used by a hashtable to compute the
+\item[hash function（哈希函数）:] A function used by a hashtable to compute the
 location for a key.
 \index{hash function}
 
-\item[hashable:] A type that has a hash function.  Immutable
+\item[hashable（可哈希的）:] A type that has a hash function.  Immutable
 types like integers,
 floats and strings are hashable; mutable types like lists and
 dictionaries are not.
 \index{hashable}
 
-\item[lookup:] A dictionary operation that takes a key and finds
+\item[lookup（查找）:] A dictionary operation that takes a key and finds
 the corresponding value.
 \index{lookup}
 
-\item[reverse lookup:] A dictionary operation that takes a value and finds
+\item[reverse lookup（逆向查找）:] A dictionary operation that takes a value and finds
 one or more keys that map to it.
 \index{reverse lookup, dictionary}
 
-\item[singleton:] A list (or other sequence) with a single element.
+\item[singleton（单元素集合）:] A list (or other sequence) with a single element.
 \index{singleton}
 
-\item[call graph:] A diagram that shows every frame created during
+\item[call graph（调用图）:] A diagram that shows every frame created during
 the execution of a program, with an arrow from each caller to
 each callee. 
 \index{call graph}
 \index{diagram!call graph}
 
-\item[histogram:] A set of counters.
+\item[histogram（直方图）:] A set of counters.
 \index{histogram}
 
-\item[memo:] A computed value stored to avoid unnecessary future 
+\item[memo（备忘录）:] A computed value stored to avoid unnecessary future 
 computation.
 \index{memo}
 
-\item[global variable:]  A variable defined outside a function.  Global
+\item[global variable（全局变量）:]  A variable defined outside a function.  Global
 variables can be accessed from any function.
 \index{global variable}
 
-\item[flag:] A boolean variable used to indicate whether a condition
+\item[flag（标记）:] A boolean variable used to indicate whether a condition
 is true.
 \index{flag}
 
-\item[declaration:] A statement like {\tt global} that tells the
+\item[declaration（声明）:] A statement like {\tt global} that tells the
 interpreter something about a variable.
 \index{declaration}
 
