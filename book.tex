@@ -12120,7 +12120,7 @@ the time you spend debugging.
 
 再一次，你花在建立脚手架上的时间能减少你花在调试上的时间。
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
@@ -12283,10 +12283,10 @@ Solution: \url{http://thinkpython.com/code/homophone.py}.
 
 
 
-\chapter{Tuples}
+\chapter{Tuples 元组}
 \label{tuplechap}
 
-\section{Tuples are immutable}
+\section{Tuples are immutable 元组是不可变的}
 \index{tuple}
 \index{type!tuple}
 \index{sequence}
@@ -12297,7 +12297,13 @@ like lists.  The important difference is that tuples are immutable.
 \index{mutability}
 \index{immutability}
 
+元组是一个值的序列。值可以是任意类型，它们以整数索引，
+所以从这方面讲元组更像列表。
+重要的不同是元组是不可变的。
+
 Syntactically, a tuple is a comma-separated list of values:
+
+语法上，元组是以逗号分割的值的列表：
 
 \begin{verbatim}
 >>> t = 'a', 'b', 'c', 'd', 'e'
@@ -12306,6 +12312,8 @@ Syntactically, a tuple is a comma-separated list of values:
 Although it is not necessary, it is common to enclose tuples in
 parentheses:
 \index{parentheses!tuples in}
+
+虽然并非必须，元组通常用括号括起来：
 
 \begin{verbatim}
 >>> t = ('a', 'b', 'c', 'd', 'e')
@@ -12316,6 +12324,9 @@ comma:
 \index{singleton}
 \index{tuple!singleton}
 
+为了用一个单独的元素生成一个元组，
+你必须包括最后的逗号：
+
 \begin{verbatim}
 >>> t1 = 'a',
 >>> type(t1)
@@ -12323,6 +12334,8 @@ comma:
 \end{verbatim}
 %
 A value in parentheses is not a tuple:
+
+括号中的一个值不是元组：
 
 \begin{verbatim}
 >>> t2 = ('a')
@@ -12335,6 +12348,9 @@ With no argument, it creates an empty tuple:
 \index{tuple function}
 \index{function!tuple}
 
+生成元组的另一种方法是内建函数{\tt tuple}。
+没有实参的话，它生成一个空元组：
+
 \begin{verbatim}
 >>> t = tuple()
 >>> print t
@@ -12343,6 +12359,9 @@ With no argument, it creates an empty tuple:
 %
 If the argument is a sequence (string, list or tuple), the result
 is a tuple with the elements of the sequence:
+
+如果实参是一个序列（字符串、列表或元组），
+返回值是一个以该序列元组组成的元组。
 
 \begin{verbatim}
 >>> t = tuple('lupins')
@@ -12353,10 +12372,14 @@ is a tuple with the elements of the sequence:
 Because {\tt tuple} is the name of a built-in function, you should
 avoid using it as a variable name.
 
+因为{\tt tuple}是内建函数名，所以你应该避免使用它作为变量名。
+
 Most list operators also work on tuples.  The bracket operator
 indexes an element:
 \index{bracket operator}
 \index{operator!bracket}
+
+大多数列表运算同样适用于元组。括号操作索引一个元素：
 
 \begin{verbatim}
 >>> t = ('a', 'b', 'c', 'd', 'e')
@@ -12370,6 +12393,8 @@ And the slice operator selects a range of elements.
 \index{tuple!slice}
 \index{slice!tuple}
 
+片段运算符选择一个范围的元素。
+
 \begin{verbatim}
 >>> print t[1:3]
 ('b', 'c')
@@ -12382,6 +12407,8 @@ an error:
 \index{item assignment}
 \index{assignment!item}
 
+但是，如果你试图修改一个元组的元素，你会获得一个错误：
+
 \begin{verbatim}
 >>> t[0] = 'A'
 TypeError: object doesn't support item assignment
@@ -12390,6 +12417,8 @@ TypeError: object doesn't support item assignment
 You can't modify the elements of a tuple, but you can replace
 one tuple with another:
 
+你不能改变元组的元素，但是你可以用一个元组替换另一个：
+
 \begin{verbatim}
 >>> t = ('A',) + t[1:]
 >>> print t
@@ -12397,7 +12426,7 @@ one tuple with another:
 \end{verbatim}
 %
 
-\section{Tuple assignment}
+\section{Tuple assignment 元组赋值}
 \label{tuple.assignment}
 \index{tuple!assignment}
 \index{assignment!tuple}
@@ -12408,6 +12437,10 @@ It is often useful to swap the values of two variables.
 With conventional assignments, you have to use a temporary
 variable.  For example, to swap {\tt a} and {\tt b}:
 
+交换两个变量的值通常很有用。
+用传统的赋值方法，你必须使用一个临时变量。
+例如，为了交换{\tt a}和{\tt b}：
+
 \begin{verbatim}
 >>> temp = a
 >>> a = b
@@ -12415,6 +12448,8 @@ variable.  For example, to swap {\tt a} and {\tt b}:
 \end{verbatim}
 %
 This solution is cumbersome; {\bf tuple assignment} is more elegant:
+
+这个解决方案很麻烦；{\bf 元组赋值（tuple assignment）}更优雅：
 
 \begin{verbatim}
 >>> a, b = b, a
@@ -12425,10 +12460,16 @@ expressions.  Each value is assigned to its respective variable.
 All the expressions on the right side are evaluated before any
 of the assignments.
 
+左侧是一个变量的元组；右侧是表达式的元组。
+每个值被赋给它的各自的变量。
+右侧的所有表达式在赋值之前被计算。
+
 The number of variables on the left and the number of
 values on the right have to be the same:
 \index{exception!ValueError}
 \index{ValueError}
+
+左侧变量的数目和右侧变量的数目必须相同：
 
 \begin{verbatim}
 >>> a, b = 1, 2, 3
@@ -12442,6 +12483,10 @@ into a user name and a domain, you could write:
 \index{method!split}
 \index{email address}
 
+更一般地，右侧可以是任意类型的序列（字符串、列表或者元组）。
+例如，为了将一个电子邮件地址分割成用户名和域名，
+你可以写：
+
 \begin{verbatim}
 >>> addr = 'monty@python.org'
 >>> uname, domain = addr.split('@')
@@ -12451,6 +12496,9 @@ The return value from {\tt split} is a list with two elements;
 the first element is assigned to {\tt uname}, the second to
 {\tt domain}.
 
+{\tt split}的返回值是一个具有两个元素的列表；
+第一个元素被赋给{\tt uname}，第二个赋给{\tt domain}。
+
 \begin{verbatim}
 >>> print uname
 monty
@@ -12459,7 +12507,7 @@ python.org
 \end{verbatim}
 %
 
-\section{Tuples as return values}
+\section{Tuples as return values 元组作为返回值}
 \index{tuple}
 \index{value!tuple}
 \index{return value!tuple}
@@ -12473,9 +12521,18 @@ compute {\tt x/y} and then {\tt x\%y}.  It is better to compute
 them both at the same time.
 \index{divmod}
 
+严格来讲，一个函数只能返回一个值，但是如果值是一个元组，
+则会起到返回多个值的效果。
+例如，如果你想除两个整数并计算商和余数，
+则先计算{\tt x/y}然后在计算{\tt x\%y}是低效的。
+最好同时计算它们俩。
+
 The built-in function {\tt divmod} takes two arguments and
 returns a tuple of two values, the quotient and remainder.
 You can store the result as a tuple:
+
+内建函数{\tt divmod}接受两个实参并返回两个值的元组，商和余数。
+你可以将返回值存为元组：
 
 \begin{verbatim}
 >>> t = divmod(7, 3)
@@ -12487,6 +12544,8 @@ Or use tuple assignment to store the elements separately:
 \index{tuple assignment}
 \index{assignment!tuple}
 
+或者使用元组赋值分别存储元素：
+
 \begin{verbatim}
 >>> quot, rem = divmod(7, 3)
 >>> print quot
@@ -12496,6 +12555,8 @@ Or use tuple assignment to store the elements separately:
 \end{verbatim}
 %
 Here is an example of a function that returns a tuple:
+
+这是一个返回元组的函数的例子：
 
 \begin{verbatim}
 def min_max(t):
@@ -12510,8 +12571,11 @@ computes both and returns a tuple of two values.
 \index{min function}
 \index{function!min}
 
+{\tt max}和{\tt min}是内建函数，其发现一个序列的最大和最小的元素。
+\verb"min_max"计算这两个值，并返回一个两个值的元组。
 
-\section{Variable-length argument tuples}
+
+\section{Variable-length argument tuples 变长实参元组}
 \index{variable-length argument tuple}
 \index{argument!variable-length tuple}
 \index{gather}
@@ -12523,6 +12587,10 @@ name that begins with {\tt *} {\bf gathers} arguments into
 a tuple.  For example, {\tt printall}
 takes any number of arguments and prints them:
 
+函数可以接受一个可变数量的实参。
+一个以{\tt *}开始的形参名{\bf 汇集（gathers）}实参到一个元组中。
+例如，{\tt printall}接受任意数量的实参并打印它们：
+
 \begin{verbatim}
 def printall(*args):
     print args
@@ -12530,6 +12598,9 @@ def printall(*args):
 %
 The gather parameter can have any name you like, but {\tt args} is
 conventional.  Here's how the function works:
+
+汇集的形参可以是任何你喜欢的名字，但是习惯上用{\tt args}。
+这是函数如何工作的：
 
 \begin{verbatim}
 >>> printall(1, 2.0, '3')
@@ -12541,6 +12612,10 @@ sequence of values and you want to pass it to a function
 as multiple arguments, you can use the {\tt *} operator.
 For example, {\tt divmod} takes exactly two arguments; it
 doesn't work with a tuple:
+
+汇集的补是{\bf 分散（scatter）}。如果你有一序列值，
+你想将其作为多个实参传递给一个函数，你可以使用{\tt *}运算符。
+例如，{\tt divmod}只接受两个实参；不可以用元组：
 
 % removing this because we haven't seen optional parameters yet
 %You can combine the gather operator with required and positional
@@ -12566,6 +12641,8 @@ TypeError: divmod expected 2 arguments, got 1
 \end{verbatim}
 %
 But if you scatter the tuple, it works:
+
+但是如果你分散该元组，是可以的：
 
 \begin{verbatim}
 >>> divmod(*t)
@@ -12602,7 +12679,7 @@ of arguments and returns their sum.
 \end{exercise}
 
 
-\section{Lists and tuples}
+\section{Lists and tuples 列表和元组}
 \index{zip function}
 \index{function!zip}
 
@@ -12612,7 +12689,14 @@ element from each sequence.  In Python 3, {\tt zip} returns an iterator
 of tuples, but for most purposes, an iterator behaves like a list.
 \index{Python 3}
 
+{\tt zip}是一个内建函数，其接受两个或者更多的序列并把它们``zip''到一个元组列表中，
+其中每个元组包括来自每个序列的一个元素。
+在Python 3中，{\tt zip}返回一个元组的迭代器，
+但是对于大多数目的，迭代器行为类似列表。
+
 This example zips a string and a list:
+
+此例zip一个字符串和一个列表：
 
 \begin{verbatim}
 >>> s = 'abc'
@@ -12626,8 +12710,13 @@ a character from the string and the corresponding element from
 the list.
 \index{list!of tuples}
 
+结果是一个元组的列表，其中每个元组包括一个来自字符串的字符和
+相应的来自列表的元素。
+
 If the sequences are not the same length, the result has the
 length of the shorter one.
+
+如果序列长度不同，结果是较短的序列的长度。
 
 \begin{verbatim}
 >>> zip('Anne', 'Elk')
@@ -12640,6 +12729,8 @@ tuples:
 \index{tuple assignment}
 \index{assignment!tuple}
 
+你可以在{\tt for}循环中使用元组赋值来遍历元组的列表：
+
 \begin{verbatim}
 t = [('a', 0), ('b', 1), ('c', 2)]
 for letter, number in t:
@@ -12650,6 +12741,9 @@ Each time through the loop, Python selects the next tuple in
 the list and assigns the elements to {\tt letter} and 
 {\tt number}.  The output of this loop is:
 \index{loop}
+
+每次循环，Python选择列表的下一个元组并将元素赋给{\tt letter}和{\tt number}。
+循环的输出是：
 
 \begin{verbatim}
 0 a
@@ -12663,6 +12757,11 @@ time.  For example, \verb"has_match" takes two sequences, {\tt t1} and
 {\tt t2}, and returns {\tt True} if there is an index {\tt i}
 such that {\tt t1[i] == t2[i]}:
 \index{for loop}
+
+如果你组合{\tt zip}、{\tt for}和元组赋值，你获得一个有用的惯用语法来
+同时遍历两个（或者更多）序列。
+例如，\verb"has_match"接受两个序列，{\tt t1}和{\tt t2}，
+并返回{\tt True}如果有一个索引{\tt i}使得{\tt t1[i] == t2[i]}：
 
 \begin{verbatim}
 def has_match(t1, t2):
@@ -12678,12 +12777,17 @@ indices, you can use the built-in function {\tt enumerate}:
 \index{enumerate function}
 \index{function!enumerate}
 
+如果你需要遍历一个序列的元素以及它们的索引值，
+你可以使用内建函数{\tt enumerate}：
+
 \begin{verbatim}
 for index, element in enumerate('abc'):
     print index, element
 \end{verbatim}
 %
 The output of this loop is:
+
+此循环的输出是：
 
 \begin{verbatim}
 0 a
@@ -12694,7 +12798,7 @@ The output of this loop is:
 Again.
 
 
-\section{Dictionaries and tuples}
+\section{Dictionaries and tuples 字典和元组}
 \label{dictuple}
 \index{dictionary}
 \index{items method}
@@ -12703,6 +12807,9 @@ Again.
 
 Dictionaries have a method called {\tt items} that returns a list of
 tuples, where each tuple is a key-value pair.
+
+字典有一个被称作{\tt items}的方法，其返回一个元组的列表，
+其中每个元组是一个键-值对。
 
 \begin{verbatim}
 >>> d = {'a':0, 'b':1, 'c':2}
@@ -12715,8 +12822,15 @@ As you should expect from a dictionary, the items are in no
 particular order.  In Python 3, {\tt items} returns an iterator,
 but for many purposes, iterators behave like lists.
 
+和你期望的字典一样，项是无序的。
+在Python 3中，{\tt items}返回一个迭代器，
+但是对于许多目的而言，迭代器的行为类似列表。
+
 Going in the other direction, you can use a list of tuples to
-initialize a new dictionary: \index{dictionary!initialize}
+initialize a new dictionary: 
+\index{dictionary!initialize}
+
+另一方面，你可以使用元组的列表初始化一个新的字典：
 
 \begin{verbatim}
 >>> t = [('a', 0), ('c', 2), ('b', 1)]
@@ -12728,6 +12842,8 @@ initialize a new dictionary: \index{dictionary!initialize}
 Combining {\tt dict} with {\tt zip} yields a concise way
 to create a dictionary:
 \index{zip function!use with dict}
+
+{\tt dict}和{\tt zip}的组合产生一个简介的生成字典的方法：
 
 \begin{verbatim}
 >>> d = dict(zip('abc', range(3)))
@@ -12742,8 +12858,13 @@ and adds them, as key-value pairs, to an existing dictionary.
 \index{traverse!dictionary}
 \index{dictionary!traversal}
 
+字典方法{\tt update}也接受一个元组的列表，
+并作为键-值对把它们加入一个已有的字典。
+
 Combining {\tt items}, tuple assignment and {\tt for}, you
 get the idiom for traversing the keys and values of a dictionary:
+
+组合{\tt items}、元组赋值和 {\tt for}，你获得遍历字典中键和值的惯用语法：
 
 \begin{verbatim}
 for key, val in d.items():
@@ -12751,6 +12872,8 @@ for key, val in d.items():
 \end{verbatim}
 %
 The output of this loop is:
+
+此循环的输出是：
 
 \begin{verbatim}
 0 a
@@ -12768,6 +12891,11 @@ could write:
 \index{tuple!as key in dictionary}
 \index{hashable}
 
+使用元组作为字典的键很常见（主要是因为你不能使用列表）。
+例如，一个电话簿可能从姓-名对映射到一个电话号码。
+假设我们已经定义{\tt last}、{\tt first}和{\tt number}，
+我们可以写：
+
 \begin{verbatim}
 directory[last,first] = number
 \end{verbatim}
@@ -12775,6 +12903,9 @@ directory[last,first] = number
 The expression in brackets is a tuple.  We could use tuple
 assignment to traverse this dictionary.
 \index{tuple!in brackets}
+
+括号中的表达式是一个元组。
+你可以使用元组赋值来遍历该字典。
 
 \begin{verbatim}
 for last, first in directory:
@@ -12785,12 +12916,20 @@ This loop traverses the keys in {\tt directory}, which are tuples.  It
 assigns the elements of each tuple to {\tt last} and {\tt first}, then
 prints the name and corresponding telephone number.
 
+该循环遍历{\tt directory}中的键，其是一个元组。
+它将元组的元素赋给{\tt last}和{\tt first}，
+然后打印名字和相应的电话号码。
+
 There are two ways to represent tuples in a state diagram.  The more
 detailed version shows the indices and elements just as they appear in
 a list.  For example, the tuple \verb"('Cleese', 'John')" would appear
 as in Figure~\ref{fig.tuple1}.
 \index{state diagram}
 \index{diagram!state}
+
+有两种方法在状态图中表示元组。
+更细致的版本和它们出现在列表中一样展示索引和元素。
+例如，元组\verb"('Cleese', 'John')"应该像图\ref{fig.tuple1}一样出现。
 
 \begin{figure}
 \centerline
@@ -12803,6 +12942,9 @@ But in a larger diagram you might want to leave out the
 details.  For example, a diagram of the telephone directory might
 appear as in Figure~\ref{fig.dict2}.
 
+但是在一个更大的图中，你可能想省去细节。
+例如，电话簿的图可能像图\ref{fig.dict2}一样。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/dict2.pdf}}
@@ -12813,8 +12955,12 @@ appear as in Figure~\ref{fig.dict2}.
 Here the tuples are shown using Python syntax as a graphical
 shorthand.
 
+这里，类似速记的方式，使用Python语法显示元组。
+
 The telephone number in the diagram is the complaints line for the
 BBC, so please don't call it.
+
+此图中的电话号码是BBC的投诉热线，所以请不要拨打它。
 
 
 
