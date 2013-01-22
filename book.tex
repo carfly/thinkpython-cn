@@ -12964,7 +12964,7 @@ BBC, so please don't call it.
 
 
 
-\section{Comparing tuples}
+\section{Comparing tuples 元组比较}
 \index{comparison!tuple}
 \index{tuple!comparison}
 \index{sort method}
@@ -12975,6 +12975,10 @@ Python starts by comparing the first element from each
 sequence.  If they are equal, it goes on to the next elements,
 and so on, until it finds elements that differ.  Subsequent
 elements are not considered (even if they are really big).
+
+关系运算符可用于元组和其它的序列；Python开始比较每个序列的第一个元素。
+如果它们相等，它继续到下一个元素，以此类推，指导发现不同的元素。
+后续的元素不被考虑了（即使它们相当的大）。
 
 \begin{verbatim}
 >>> (0, 1, 2) < (0, 3, 4)
@@ -12987,16 +12991,28 @@ The {\tt sort} function works the same way.  It sorts
 primarily by first element, but in the case of a tie, it sorts
 by second element, and so on.  
 
+{\tt sort}函数以相同的方式工作。
+它主要以第一个元素排序，但是在其相同的情况下，
+以第二个元素排序，以此类推。
+
 This feature lends itself to a pattern called {\bf DSU} for 
+
+此特征导致被称作{\bf DSU}的模式，其
 
 \begin{description}
 
 \item[Decorate] a sequence by building a list of tuples
 with one or more sort keys preceding the elements from the sequence,
 
+[装饰]一个序列，通过用一个或者更多排序键跟着来自序列的元素来构建一个元组列表，
+
 \item[Sort] the list of tuples, and
 
+[排序]该元组列表，并且
+
 \item[Undecorate] by extracting the sorted elements of the sequence.
+
+[反装饰]通过抽取排好序的序列的元素。
 
 \end{description}
 
@@ -13008,6 +13024,8 @@ with one or more sort keys preceding the elements from the sequence,
 
 For example, suppose you have a list of words and you want to
 sort them from longest to shortest:
+
+例如，假设你有一个词列表并且你想按照从长到短排序它们：
 
 \begin{verbatim}
 def sort_by_length(words):
@@ -13026,6 +13044,8 @@ def sort_by_length(words):
 The first loop builds a list of tuples, where each
 tuple is a word preceded by its length.
 
+第一个循环构建一个元组列表，其中每个元组是一个单词的长度和该单词。
+
 {\tt sort} compares the first element, length, first, and
 only considers the second element to break ties.  The keyword argument
 {\tt reverse=True} tells {\tt sort} to go in decreasing order.
@@ -13033,8 +13053,13 @@ only considers the second element to break ties.  The keyword argument
 \index{argument!keyword}
 \index{traversal}
 
+{\tt sort}首先比较第一个元素，长度，并且只考虑到第二个元素。
+实参{\tt reverse=True}告诉{\tt sort}按照降序排序。
+
 The second loop traverses the list of tuples and builds a list of
 words in descending order of length.
+
+第二个循环遍历元组列表并且构建一个以长度降序排列的单词列表。
 
 \begin{exercise}
 
@@ -13054,13 +13079,17 @@ Solution: \url{http://thinkpython.com/code/unstable_sort.py}.
 \end{exercise}
 
 
-\section{Sequences of sequences}
+\section{Sequences of sequences 序列的序列}
 \index{sequence}
 
 I have focused on lists of tuples, but almost all of the examples in
 this chapter also work with lists of lists, tuples of tuples, and
 tuples of lists.  To avoid enumerating the possible combinations, it
 is sometimes easier to talk about sequences of sequences.
+
+到现在我一直专注于元组的列表，但是本章中几乎所有的例子也适用于列表的列表，
+元组的元组以及列表的元组。为了避免列举所有可能的组合，
+讨论序列的序列有时候比较容易。
 
 In many contexts, the different kinds of sequences (strings, lists and
 tuples) can be used interchangeably.  So how and why do you choose one
@@ -13071,14 +13100,24 @@ over the others?
 \index{mutability}
 \index{immutability}
 
+在许多情况下，不同类型的序列（字符串、列表和元组）可以被互换使用。
+所以如何以及为什么你选择一个而不是其它的呢？
+
 To start with the obvious, strings are more limited than other
 sequences because the elements have to be characters.  They are
 also immutable.  If you need the ability to change the characters
 in a string (as opposed to creating a new string), you might
 want to use a list of characters instead.
 
+从明显的开始，字符串比其它的序列更受限，因为元素必须是字符。
+它们也是不可变的。如果你需要改变字符串中字符的能力（相对生成一个新的字符串），
+你可能想使用字符列表代替。
+
 Lists are more common than tuples, mostly because they are mutable.
 But there are a few cases where you might prefer tuples:
+
+列表比元组更一般，主要是因为它们是可变的。
+但是也有一些情况你可能更喜欢用元组：
 
 \begin{enumerate}
 
@@ -13086,12 +13125,19 @@ But there are a few cases where you might prefer tuples:
 syntactically simpler to create a tuple than a list.  In other
 contexts, you might prefer a list.
 
+在一些情况下，如{\tt return}语句，生成一个元组比生成一个列表语法更简单。
+在其它情况下，你可能倾向于列表。
+
 \item If you want to use a sequence as a dictionary key, you
 have to use an immutable type like a tuple or string.
+
+如果你想使用一个序列作为字典的键，那么你必须使用一个类似元组和字符串的不可变类型。
 
 \item If you are passing a sequence as an argument to a function,
 using tuples reduces the potential for unexpected behavior
 due to aliasing.
+
+如果你正向函数传递一个序列作为实参，那么使用元组以降低由于别名而产生的意外行为的可能性。
 
 \end{enumerate}
 
@@ -13106,8 +13152,12 @@ order.
 \index{reversed function}
 \index{function!reversed}
 
+因为元组是不可变的，所以它们不提供类似{\tt sort}和{\tt reverse}的方法，
+其改变已有的列表。但是Python提供内建函数{\tt sorted}和{\tt reversed}，
+其接受任意序列作为形参并返回一个新的相同元素，不同顺序的列表。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \index{debugging}
 \index{data structure}
 \index{shape error}
@@ -13124,6 +13174,14 @@ give you a plain old integer (not in a list), it won't work.
 \index{structshape module}
 \index{module!structshape}
 
+列表、字典和元组通常被看做{\bf 数据结构（data structures）}；
+本章中我们正开始看到合成数据结构，如元组的列表，
+元组作为键、列表作为值的字典。
+合成数据结构很有用，但是它们倾向产生我称作的{\bf 形状错误（shape errors）}；
+也就是，当一个数据结构有错误的类型、大小或组合时引起的错误。
+例如，如果你期望一个具有一个整数的列表并且我给你一个整数（非列表），
+它将不会工作。
+
 % TODO: structshape is now part of Swampy
 
 To help debug these kinds of errors, I have written a module
@@ -13132,7 +13190,14 @@ called {\tt structshape} that provides a function, also called
 an argument and returns a string that summarizes its shape.
 You can download it from \url{http://thinkpython.com/code/structshape.py}
 
+为了帮助调试这些类型的错误，我写了一个被称作{\tt structshape}的模块，
+其提供一个函数，也称作{\tt structshape}，其接受任意类型的数据结构作为实参
+并返回一个字符串，其简要说明它的形状。
+你可以从\url{http://thinkpython.com/code/structshape.py}下载它。
+
 Here's the result for a simple list:
+
+这是一个简单列表的结果：
 
 \begin{verbatim}
 >>> from structshape import structshape
@@ -13144,6 +13209,9 @@ list of 3 int
 A fancier program might write ``list of 3 int{\em s},'' but it
 was easier not to deal with plurals.  Here's a list of lists:
 
+一个更有想象力的程序可能写出``list of 3 int{\em s}''，
+但是不处理复数更简单。这是一个列表的列表：
+
 \begin{verbatim}
 >>> t2 = [[1,2], [3,4], [5,6]]
 >>> print structshape(t2)
@@ -13153,6 +13221,8 @@ list of 3 list of 2 int
 If the elements of the list are not the same type,
 {\tt structshape} groups them, in order, by type:
 
+如果列表的元素类型不同，{\tt structshape}将它们按顺序按类型分组：
+
 \begin{verbatim}
 >>> t3 = [1, 2, 3, 4.0, '5', '6', [7], [8], 9]
 >>> print structshape(t3)
@@ -13160,6 +13230,8 @@ list of (3 int, float, 2 str, 2 list of int, int)
 \end{verbatim}
 %
 Here's a list of tuples:
+
+这是一个元组的列表：
 
 \begin{verbatim}
 >>> s = 'abc'
@@ -13170,6 +13242,8 @@ list of 3 tuple of (int, str)
 %
 And here's a dictionary with 3 items that map integers to strings.
 
+这是一个具有3个项的字典，其从整数映射到字符串。
+
 \begin{verbatim}
 >>> d = dict(lt) 
 >>> print structshape(d)
@@ -13179,26 +13253,28 @@ dict of 3 int->str
 If you are having trouble keeping track of your data structures,
 {\tt structshape} can help.
 
+如果你跟踪你的数据结构有困难，{\tt structshape}能帮你。
 
-\section{Glossary}
+
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[tuple:] An immutable sequence of elements.
+\item[tuple（元组）:] An immutable sequence of elements.
 \index{tuple}
 
-\item[tuple assignment:] An assignment with a sequence on the
+\item[tuple assignment（元组赋值）:] An assignment with a sequence on the
 right side and a tuple of variables on the left.  The right
 side is evaluated and then its elements are assigned to the
 variables on the left.
 \index{tuple assignment}
 \index{assignment!tuple}
 
-\item[gather:] The operation of assembling a variable-length
+\item[gather（汇集）:] The operation of assembling a variable-length
 argument tuple.
 \index{gather}
 
-\item[scatter:] The operation of treating a sequence as a list of
+\item[scatter（分散）:] The operation of treating a sequence as a list of
 arguments.
 \index{scatter}
 
@@ -13207,11 +13283,11 @@ pattern that involves building a list of tuples, sorting, and
 extracting part of the result.
 \index{DSU pattern}
 
-\item[data structure:] A collection of related values, often
+\item[data structure（数据结构）:] A collection of related values, often
 organized in lists, dictionaries, tuples, etc.
 \index{data structure}
 
-\item[shape (of a data structure):] A summary of the type,
+\item[shape (of a data structure)（数据结构的形状）:] A summary of the type,
 size and composition of a data structure.
 \index{shape}
 
