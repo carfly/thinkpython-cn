@@ -13437,13 +13437,15 @@ Solution: \url{http://thinkpython.com/code/reducible.py}.
 
 
 
-\chapter{Case study: data structure selection}
+\chapter{Case study: data structure selection 案例学习：数据结构选择}
 
-\section{Word frequency analysis}
+\section{Word frequency analysis 词频分析}
 \label{analysis}
 
 As usual, you should at least attempt the following exercises
 before you read my solutions.
+
+和往常一样，在你阅读我的答案之前，你至少应该尝试解决一下下面的习题。
 
 \begin{exercise}
 
@@ -13453,10 +13455,17 @@ converts them to lowercase.
 \index{string module}
 \index{module!string}
 
+写一个程序，读取一个文件，每一行是一个单词，
+删掉单词中的空格和标点，并且将它们转化为小写字母。
+
 Hint: The {\tt string} module provides strings named {\tt whitespace},
 which contains space, tab, newline, etc., and {\tt
   punctuation} which contains the punctuation characters.  Let's see
 if we can make Python swear:
+
+提示：{\tt string}模块提供了名为{\tt whitespace}的字符串，
+其包括空格、制表符、新行等等，以及{\tt punctuation}，
+其包括标点字符。让我们看一下是否我们能让Python说脏话：
 
 \begin{verbatim}
 >>> import string
@@ -13473,29 +13482,44 @@ Also, you might consider using the string methods {\tt strip},
 \index{translate method}
 \index{method!translate}
 
+同时，你可能需要考虑使用字符串方法{\tt strip}、{\tt replace}和{\tt translate}。
+
 \end{exercise}
 
 
 \begin{exercise}
-\index{Project Gutenberg}
+\index{Project Gutenberg 古腾堡项目}
 
 Go to Project Gutenberg (\url{gutenberg.org}) and download 
 your favorite out-of-copyright book in plain text format.
 \index{plain text}
 \index{text!plain}
 
+前往古腾堡项目（\url{gutenberg.org}）以纯文本格式下载你喜欢的版权已过期的图书。
+
 Modify your program from the previous exercise to read the book
 you downloaded, skip over the header information at the beginning
 of the file, and process the rest of the words as before.
+
+修改你前面习题的程序来读取你下载的书，
+跳过文件开始的头部信息，并如前面一样处理其余的单词。
 
 Then modify the program to count the total number of words in
 the book, and the number of times each word is used.
 \index{word frequency}
 \index{frequency!word}
 
+然后修改程序来计算书中单词的总数，
+以及每个单词被使用的次数。
+
 Print the number of different words used in the book.  Compare
 different books by different authors, written in different eras.
 Which author uses the most extensive vocabulary?
+
+打印该书使用的不同单词的数目。
+比较不同年代，不同作者写的不同的书。
+哪个作者使用的词汇最大？
+
 \end{exercise}
 
 
@@ -13503,6 +13527,8 @@ Which author uses the most extensive vocabulary?
 
 Modify the program from the previous exercise to print the
 20 most frequently-used words in the book.
+
+修改前面习题的程序来打印该书中最常使用的20个单词。
 
 \end{exercise}
 
@@ -13515,10 +13541,16 @@ are not in the word list.  How many of them are typos?  How many of
 them are common words that {\em should} be in the word list, and how
 many of them are really obscure?
 
+修改前面的程序来读取一个词表（见\ref{wordlist}节），
+然后打印书中所有没有出现在该词表中的单词。
+它们中有多少是拼写错误的？
+有多少是词表中应该包括的常用词？
+有多少是生僻词？
+
 \end{exercise}
 
 
-\section{Random numbers}
+\section{Random numbers 随机数}
 \index{random number}
 \index{number, random}
 \index{deterministic}
@@ -13531,6 +13563,12 @@ calculation to yield the same result.  For some applications, though,
 we want the computer to be unpredictable.  Games are an obvious
 example, but there are more.
 
+给定相同的输入，大多数计算机程序每次生成相同的输出，
+所以它们被称作{\bf 确定性的（deterministic）}。
+确定性通常是个好东西，因为我们期望相同的计算产生相同的结果。
+然而，对于有些应用，我们期望计算机不可预知。
+有戏是一个明显的例子，但是有更多的例子。
+
 Making a program truly nondeterministic turns out to be not so easy,
 but there are ways to make it at least seem nondeterministic.  One of
 them is to use algorithms that generate {\bf pseudorandom} numbers.
@@ -13540,16 +13578,27 @@ is all but impossible to distinguish them from random.
 \index{random module}
 \index{module!random}
 
+让一个程序真的非确定性并不容易，但是有办法使它看起来是非确定的。
+其中之一是使用生成{\bf 伪随机（pseudorandom）}数算法。
+伪随机数不是真正的随机，因为它们由一个确定性的计算生成，
+但是仅看其生成的数字，不可能将它们和随机生成的相区分开。
+
 The {\tt random} module provides functions that generate
 pseudorandom numbers (which I will simply call ``random'' from
 here on).
 \index{random function}
 \index{function!random}
 
+{\tt random}模块提供生成伪随机数的函数（从此之后，我将简单的称其为``随机''）。
+
 The function {\tt random} returns a random float
 between 0.0 and 1.0 (including 0.0 but not 1.0).  Each time you
 call {\tt random}, you get the next number in a long series.  To see a
 sample, run this loop:
+
+函数{\tt random}返回一个0.0到1.0之间的随机浮点数（包括0.0，但是不包括1.0）。
+每次你调用{\tt random}，你获得一个长序列中的下一个树。
+为了看一个例子，运行此循环：
 
 \begin{verbatim}
 import random
@@ -13565,6 +13614,9 @@ The function {\tt randint} takes parameters {\tt low} and
 \index{randint function}
 \index{function!randint}
 
+函数{\tt randint}接受参数{\tt low}和{\tt high}，
+并返回一个{\tt low}和{\tt high}之间的整数（两个都包括）。
+
 \begin{verbatim}
 >>> random.randint(5, 10)
 5
@@ -13576,6 +13628,8 @@ To choose an element from a sequence at random, you can use
 {\tt choice}:
 \index{choice function}
 \index{function!choice}
+
+为了从一个序列中随机的选择一个元素，你可以使用{\tt choice}：
 
 \begin{verbatim}
 >>> t = [1, 2, 3]
@@ -13589,6 +13643,9 @@ The {\tt random} module also provides functions to generate
 random values from continuous distributions including
 Gaussian, exponential, gamma, and a few more.
 
+
+{\tt random}模块也提供从包括高斯、指数、伽马以及更多连续分布中生成随机值的函数。
+
 \begin{exercise}
 \index{histogram!random choice}
 
@@ -13596,6 +13653,11 @@ Write a function named \verb"choose_from_hist" that takes
 a histogram as defined in Section~\ref{histogram} and returns a 
 random value from the histogram, chosen with probability
 in proportion to frequency.  For example, for this histogram:
+
+写一个名为\verb"choose_from_hist"的函数，
+其接受一个如\ref{histogram}节定义的直方图，
+并从该直方图中返回一个随机值，其选择概率和频率成正比。
+例如，对于此直方图：
 
 \begin{verbatim}
 >>> t = ['a', 'a', 'b']
@@ -13606,19 +13668,28 @@ in proportion to frequency.  For example, for this histogram:
 %
 your function should return {\tt 'a'} with probability $2/3$ and {\tt 'b'}
 with probability $1/3$.
+
+你的函数应该返回{\tt 'a'}和概率$2/3$以及{\tt 'b'}和概率$1/3$。
+
 \end{exercise}
 
 
-\section{Word histogram}
+\section{Word histogram 单词直方图}
 
 You should attempt the previous exercises before you go on.
 You can download my solution from
  \url{http://thinkpython.com/code/analyze_book.py}.  You will
 also need \url{http://thinkpython.com/code/emma.txt}.
 
+在你继续之前，你应该尝试前面的习题。
+你可以从\url{http://thinkpython.com/code/analyze_book.py}下载我的答案。
+你也需要\url{http://thinkpython.com/code/emma.txt}。
+
 Here is a program that reads a file and builds a histogram of the
 words in the file:
 \index{histogram!word frequencies}
+
+这是一个读取一个文件并建立文件中单词直方图的程序。
 
 \begin{verbatim}
 import string
@@ -13646,11 +13717,16 @@ This program reads {\tt emma.txt}, which contains the text of {\em
   Emma} by Jane Austen.
 \index{Austin, Jane}
 
+改程序读取{\tt emma.txt}，其包括Jane Austen写的{\em Emma}的文本。
+
 \verb"process_file" loops through the lines of the file,
 passing them one at a time to \verb"process_line".  The histogram
 {\tt hist} is being used as an accumulator.
 \index{accumulator!histogram}
 \index{traversal}
+
+\verb"process_file"循环读取每行文件，每次把它们传递给\verb"process_line"。
+直方图{\tt hist}被用作一个累加器。
 
 \verb"process_line" uses the string method {\tt replace} to replace
 hyphens with spaces before using {\tt split} to break the line into a
@@ -13660,12 +13736,22 @@ is a shorthand to say that strings are ``converted;'' remember that
 string are immutable, so methods like {\tt strip} and {\tt lower}
 return new strings.)
 
+在使用{\tt split}将一行文件分成一个字符串列表之前，
+\verb"process_line"使用字符串{\tt replace}方法来用空格替换连字符。
+它遍历单词的列表，并使用{\tt strip}和{\tt lower}来删除标点以及转化为小写。
+（简称字符串被``转化''；记住字符串是不可变的，
+所以类似{\tt strip}和{\tt lower}的方法返回新的字符串。）
+
 Finally, \verb"process_line" updates the histogram by creating a new
 item or incrementing an existing one.
 \index{update!histogram}
 
+最后，\verb"process_line"通过生成一个新的项或者递增一个已有的项来更新直方图。
+
 To count the total number of words in the file, we can add up
 the frequencies in the histogram:
+
+为了计算文件中单词的总数，我们可以累加直方图中的频率：
 
 \begin{verbatim}
 def total_words(hist):
@@ -13675,12 +13761,16 @@ def total_words(hist):
 The number of different words is just the number of items in
 the dictionary:
 
+不同单词的数量恰好是词典中项的数目：
+
 \begin{verbatim}
 def different_words(hist):
     return len(hist)
 \end{verbatim}
 %
 Here is some code to print the results:
+
+这是打印结果的代码：
 
 \begin{verbatim}
 print 'Total number of words:', total_words(hist)
@@ -13689,19 +13779,25 @@ print 'Number of different words:', different_words(hist)
 %
 And the results:
 
+结果是：
+
 \begin{verbatim}
 Total number of words: 161080
 Number of different words: 7214
 \end{verbatim}
 %
 
-\section{Most common words}
+\section{Most common words 最常用单词}
 \index{DSU pattern}
 \index{pattern!DSU}
 
 To find the most common words, we can apply the DSU pattern;
 \verb"most_common" takes a histogram and returns a list of
 word-frequency tuples, sorted in reverse order by frequency:
+
+为了找到最常用的单词，我们可以应用DSU模式；
+\verb"most_common"接受一个直方图并且返回一个
+以频率倒序排列的单词-频率元组列表：
 
 \begin{verbatim}
 def most_common(hist):
@@ -13715,6 +13811,8 @@ def most_common(hist):
 %
 Here is a loop that prints the ten most common words:
 
+这是一个打印10个最常用单词的循环：
+
 \begin{verbatim}
 t = most_common(hist)
 print 'The most common words are:'
@@ -13723,6 +13821,8 @@ for freq, word in t[0:10]:
 \end{verbatim}
 %
 And here are the results from {\em Emma}:
+
+这是来自{\em Emma}的结果：
 
 \begin{verbatim}
 The most common words are:
