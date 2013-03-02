@@ -13839,7 +13839,7 @@ she 	2364
 \end{verbatim}
 %
 
-\section{Optional parameters}
+\section{Optional parameters 可选形参}
 \index{optional parameter}
 \index{parameter!optional}
 
@@ -13847,6 +13847,10 @@ We have seen built-in functions and methods that take a variable
 number of arguments.  It is possible to write user-defined functions
 with optional arguments, too.  For example, here is a function that
 prints the most common words in a histogram
+
+我们已经见过接受可变数目实参的函数和方法了。
+写出具有可选实参的用户自定义函数也是有可能的。
+例如，这是一个打印直方图中最常见单词的函数。
 
 \begin{verbatim}
 def print_most_common(hist, num=10):
@@ -13861,6 +13865,9 @@ The {\bf default value} of {\tt num} is 10.
 \index{default value}
 \index{value!default}
 
+第一个形参是必须的；第二个是可选的。
+{\tt num}的{\bf 默认值（default value）}是10.
+
 If you only provide one argument:
 
 \begin{verbatim}
@@ -13868,6 +13875,8 @@ print_most_common(hist)
 \end{verbatim}
 
 {\tt num} gets the default value.  If you provide two arguments:
+
+{\tt num}获得默认值。如果你提供两个实参：
 
 \begin{verbatim}
 print_most_common(hist, 20)
@@ -13877,12 +13886,16 @@ print_most_common(hist, 20)
 words, the optional argument {\bf overrides} the default value.
 \index{override}
 
+{\tt num}获得实参的值。换句话说，可选实参{\bf 覆写（overrides）}了默认值。
+
 If a function has both required and optional parameters, all
 the required parameters have to come first, followed by the
 optional ones.
 
+如果一个函数必选和可选两类形参，则所有的必选形参必须首先出现，
+后面跟着可选的。
 
-\section{Dictionary subtraction}
+\section{Dictionary subtraction 字典差集}
 \index{dictionary!subtraction}
 \index{subtraction!dictionary}
 
@@ -13892,10 +13905,18 @@ subtraction; that is, we want to find all the words from one
 set (the words in the book) that are not in another set (the
 words in the list).
 
+从书中找到所有没出现在词表{\tt words.txt}中的单词是一个差集问题。
+也就是，我们想从一个集合中（书中的单词）找到所有没出现在另一个集合中
+（列表中的单词）的单词。
+
 {\tt subtract} takes dictionaries {\tt d1} and {\tt d2} and returns a
 new dictionary that contains all the keys from {\tt d1} that are not
 in {\tt d2}.  Since we don't really care about the values, we
 set them all to None.
+
+{\tt subtract}接受词典{\tt d1}和{\tt d2}，并返回一个新的词典，
+其包括{\tt d1}中的所有没出现在{\tt d2}中的键。
+既然我们并不真正关心值，我们将它们都设为None。
 
 \begin{verbatim}
 def subtract(d1, d2):
@@ -13910,6 +13931,10 @@ To find the words in the book that are not in {\tt words.txt},
 we can use \verb"process_file" to build a histogram for
 {\tt words.txt}, and then subtract:
 
+为了找到书中的没有出现在{\tt words.txt}中的单词，
+我们可以使用\verb"process_file"来为{\tt words.txt}构建一个直方图，
+然后subtract：
+
 \begin{verbatim}
 words = process_file('words.txt')
 diff = subtract(hist, words)
@@ -13921,6 +13946,8 @@ for word in diff.keys():
 %
 Here are some of the results from {\em Emma}:
 
+这是来自{\em Emma}的一些结果：
+
 \begin{verbatim}
 The words in the book that aren't in the word list are:
  rencontre jane's blanche woodhouses disingenuousness 
@@ -13930,6 +13957,9 @@ friend's venice apartment ...
 Some of these words are names and possessives.  Others, like
 ``rencontre,'' are no longer in common use.  But a few are common
 words that should really be in the list!
+
+这些单词一些是名字和所有歌。另外的，如``rencontre''不是常用单词。
+但是有一些确实是真的应该包括在列表中的常用单词。
 
 \begin{exercise}
 \index{set}
@@ -13944,7 +13974,7 @@ the word list.  Solution: \url{http://thinkpython.com/code/analyze_book2.py}.
 \end{exercise}
 
 
-\section{Random words}
+\section{Random words 随机单词}
 \label{randomwords}
 \index{histogram!random choice}
 
