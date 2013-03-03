@@ -13982,6 +13982,10 @@ To choose a random word from the histogram, the simplest algorithm
 is to build a list with multiple copies of each word, according
 to the observed frequency, and then choose from the list:
 
+为了从直方图中随机选择一个单词，最简单的算法是创建一个列表，
+其中根据其出现的频率，每个单词都有多个拷贝，
+然后从该列表中选择：
+
 \begin{verbatim}
 def random_word(h):
     t = []
@@ -13996,6 +14000,9 @@ copies of the string {\tt word}.  The {\tt extend}
 method is similar to {\tt append} except that the argument is
 a sequence.
 
+表达式{\tt [word] * freq}生成一个具有{\tt freq}个字符串{\tt word}拷贝的列表。
+{\tt extend}方法和{\tt append}类似，除了其实参为一个序列外。
+
 \begin{exercise}
 \label{randhist}
 \index{algorithm}
@@ -14005,37 +14012,60 @@ choose a random word, it rebuilds the list, which is as big as
 the original book.  An obvious improvement is to build the list
 once and then make multiple selections, but the list is still big.
 
+该算法好使，但是不是很有效；每次你选择一个随机单词，
+它都重建列表，其和原来的书一样大。
+一个明显的改进是创建列表一次，然后进行多次选择，
+但是该列表仍然很大。
+
 An alternative is:
+
+一个替代是：
 
 \begin{enumerate}
 
 \item Use {\tt keys} to get a list of the words in the book.
 
+使用{\tt keys}来获得该书中单词的列表。
+
 \item Build a list that contains the cumulative sum of the word
   frequencies (see Exercise~\ref{cumulative}).  The last item
   in this list is the total number of words in the book, $n$.
   
+创建一个包含单词频率累积和的列表（见习题\ref{cumulative}）。
+此列表的最后一项是书中单词的数目$n$。
+  
 \item Choose a random number from 1 to $n$.  Use a bisection search
   (See Exercise~\ref{bisection}) to find the index where the random
   number would be inserted in the cumulative sum.
+  
+选择一个从1到$n$的随机数。使用二分搜索（见习题\ref{bisection}）
+找到该随机数应该被在累积和中插入的索引。
 
 \item Use the index to find the corresponding word in the word list.
+
+使用该索引从单词列表中找到相应的单词。
 
 \end{enumerate}
 
 Write a program that uses this algorithm to choose a random
 word from the book.  Solution: \url{http://thinkpython.com/code/analyze_book3.py}.
 
+写一个使用该算法从书中选择一个随机单词的程序。
+答案：\url{http://thinkpython.com/code/analyze_book3.py}。
+
 \end{exercise}
 
 
 
-\section{Markov analysis}
+\section{Markov analysis 马尔科夫分析}
 \label{markov}
 \index{Markov analysis}
 
 If you choose words from the book at random, you can get a
 sense of the vocabulary, you probably won't get a sentence:
+
+如果你从书中随机选择单词，那么你会感受到词表的概念，
+你可能不会获得一个句子：
 
 \begin{verbatim}
 this the small regard harriet which knightley's it most things
@@ -14047,11 +14077,19 @@ a real sentence you would expect an article like ``the'' to
 be followed by an adjective or a noun, and probably not a verb
 or adverb.
 
+一系列随机单词没有意义，因为相邻的单词没有关系。
+例如，在一个真实的句子中，你可能期望``the''后面跟着一个形容词或者名称，
+不可能是一个动词或者副词。
+
 One way to measure these kinds of relationships is Markov
 analysis, which
 characterizes, for a given sequence of words, the probability of the
 word that comes next.  For example, the song {\em Eric, the Half a
   Bee} begins:
+  
+一种衡量这种关系的方法是马尔科夫分析，对于一个给定的单词序列，
+其描述了接下来的单词的概率。
+例如，歌曲{\em Eric, the Half a Bee}开始是：
 
 \begin{quote}
 Half a bee, philosophically, \\
@@ -14073,25 +14111,41 @@ but the phrase ``the bee'' might be followed by either
 \index{suffix}
 \index{mapping}
 
+在此文本中，短语``half the''后面总是跟着单词``bee''，
+但是短语``the bee''则可能跟着``has''或者``is''。
+
 The result of Markov analysis is a mapping from each prefix
 (like ``half the'' and ``the bee'') to all possible suffixes
 (like ``has'' and ``is'').
 \index{random text}
 \index{text!random}
 
+马尔科夫分析的结果是从每个前缀（如``half the''和``the bee''）
+映射到所有可能的后缀（如``has''和``is''）。
+
 Given this mapping, you can generate a random text by
 starting with any prefix and choosing at random from the
 possible suffixes.  Next, you can combine the end of the
 prefix and the new suffix to form the next prefix, and repeat.
+
+给定此映射，你可以以任意前缀开始并从可能的后缀中随机选择一个来生成一个随机文本。
+接下来，你可以组合前缀的结尾和新的后缀形参下一个前缀，并重复下去。
 
 For example, if you start with the prefix ``Half a,'' then the
 next word has to be ``bee,'' because the prefix only appears
 once in the text.  The next prefix is ``a bee,'' so the
 next suffix might be ``philosophically,'' ``be'' or ``due.''
 
+例如，如果你以前缀``Half a''开始，然后下一个但是必须是``bee''，
+因为此前缀在文本中仅出现一次。下一个前缀是``a bee''，
+所以下一个后缀可能是``philosophically''，``be''或``due''。
+
 In this example the length of the prefix is always two, but
 you can do Markov analysis with any prefix length.  The length
 of the prefix is called the ``order'' of the analysis.
+
+此例中，前缀的长度总是2，但是你可以以任意前缀长度进行马尔科夫分析。
+前缀的长度被称作此分析的``阶''。
 
 \begin{exercise}
 
