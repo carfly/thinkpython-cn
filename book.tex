@@ -13886,7 +13886,7 @@ print_most_common(hist, 20)
 words, the optional argument {\bf overrides} the default value.
 \index{override}
 
-{\tt num}获得实参的值。换句话说，可选实参{\bf 覆写（overrides）}了默认值。
+{\tt num}获得实参的值。换句话说，可选实参{\bf 重载（overrides）}了默认值。
 
 If a function has both required and optional parameters, all
 the required parameters have to come first, followed by the
@@ -14151,6 +14151,8 @@ of the prefix is called the ``order'' of the analysis.
 
 Markov analysis:
 
+马尔科夫分析：
+
 \begin{enumerate}
 
 \item Write a program to read a text from a file and perform Markov
@@ -14161,9 +14163,17 @@ an appropriate choice.  You can test your program with prefix
 length two, but you should write the program in a way that makes
 it easy to try other lengths.
 
+写一个程序，从一个文件中读取文本并执行马尔科夫分析。
+结果应该是一个字典，其从前缀映射到一个可能的后缀集合。
+此集合可以是一个列表、元组或字典；一切取决于你以做出合适的选择。
+你可以用长度为2的前缀进行测试，但是你应该让此程序很容易的支持其它长度。
+
 \item Add a function to the previous program to generate random text
 based on the Markov analysis.  Here is an example from {\em Emma}
 with prefix length 2:
+
+在前面的程序中加一个函数，基于马尔科夫分析生成随机文本。
+这是来自{\em Emma}的前缀为2的一个例子：
 
 \begin{quote}
 He was very clever, be it sweetness or be angry, ashamed or only
@@ -14176,52 +14186,85 @@ For this example, I left the punctuation attached to the words.
 The result is almost syntactically correct, but not quite.
 Semantically, it almost makes sense, but not quite.
 
+对于这个例子，我保留了附在词后面的标点符号。
+结果几乎是语法正确的，但不完全。
+语义上讲，它几乎有意义，但也不完全。
+
 What happens if you increase the prefix length?  Does the random
 text make more sense?
 \index{mash-up}
+
+如果你增加前缀的长度，会发生什么？
+随机文本更有意义是么？
 
 \item Once your program is working, you might want to try a mash-up:
 if you analyze text from two or more books, the random
 text you generate will blend the vocabulary and phrases from
 the sources in interesting ways.
 
+一旦你的程序工作，你可能想尝试一下混搭：
+如果你来自两本或更多书的文本，
+你生成的随机文本将以有趣的方式混合来自不同源的词表和短语。
+
 \end{enumerate}
 
 Credit: This case study is based on an example from Kernighan and
 Pike, {\em The Practice of Programming}, Addison-Wesley, 1999.
 
+声明：此案例学习基于来自Kernighan and Pike, {\em The Practice of Programming}, Addison-Wesley, 1999.
+的一个示例。
+
 \end{exercise}
 
-You should attempt this exercise before you go on; then you can can
+You should attempt this exercise before you go on; then you can
 download my solution from \url{http://thinkpython.com/code/markov.py}.  You
 will also need \url{http://thinkpython.com/code/emma.txt}.
 
+在你继续之前，你应该尝试此习题；
+你可以从\url{http://thinkpython.com/code/markov.py}下载我的答案。
+你也需要\url{http://thinkpython.com/code/emma.txt}。
 
-\section{Data structures}
+\section{Data structures 数据结构}
 \index{data structure}
 
 Using Markov analysis to generate random text is fun, but there is
 also a point to this exercise: data structure selection.  In your
 solution to the previous exercises, you had to choose:
 
+使用马尔科夫分析生成随机文本很有趣，
+但是对此习题还有一点需要注意：数据结构选择。
+在你的解决方案中，你不得不选择：
+
 \begin{itemize}
 
 \item How to represent the prefixes.
 
+如何表示前缀。
+
 \item How to represent the collection of possible suffixes.
+
+如何表示可能后缀的集合。
 
 \item How to represent the mapping from each prefix to
 the collection of possible suffixes.
+
+如何表示从前缀到可能后缀集合的映射。
 
 \end{itemize}
 
 Ok, the last one is the easy; the only mapping type we have
 seen is a dictionary, so it is the natural choice.
 
+好的，最后一个很简单；我们曾见过的唯一的映射是字典，
+所以它是很自然的选择。
+
 For the prefixes, the most obvious options are string,
 list of strings, or tuple of strings.  For the suffixes,
 one option is a list; another is a histogram (dictionary).
 \index{implementation}
+
+对于前缀，最明显的选项是字符串、字符串列表或者字符串元组。
+对于后缀，一个选择是列表；另一个是直方图（字典）。
 
 How should you choose?  The first step is to think about
 the operations you will need to implement for each data structure.
@@ -14231,11 +14274,22 @@ prefix is ``Half a,'' and the next word is ``bee,'' you need
 to be able to form the next prefix, ``a bee.''
 \index{tuple!as key in dictionary}
 
+你如何选择呢？
+第一步是考虑对每个数据结构你需要实现的操作。
+对于前缀，我们需要能从从开始删除单词并在最后加入单词。
+例如，如果当前的前缀是``Half a''，下一个词是``bee''，
+你需要能构成下一个前缀``a bee''。
+
 Your first choice might be a list, since it is easy to add
 and remove elements, but we also need to be able to use the
 prefixes as keys in a dictionary, so that rules out lists.
 With tuples, you can't append or remove, but you can use
 the addition operator to form a new tuple:
+
+你的第一个选择可能是列表，因为它能很容易的增加和删除元素，
+但是我们也需要让前缀作为字典的键，因此淘汰了列表。
+使用元组，你不能追加或删除，
+但是你能使用额外的运算符来形成一个新的元组：
 
 \begin{verbatim}
 def shift(prefix, word):
@@ -14247,14 +14301,25 @@ def shift(prefix, word):
 in {\tt prefix} except the first, and {\tt word} added to
 the end.
 
+{\tt shift}接受一个单词元组{\tt prefix}和一个字符串{\tt word}，
+并形成一个新的元组，其具有{\tt prefix}中除第一个单词外的全部单词，
+然后在结尾增加{\tt word}。
+
 For the collection of suffixes, the operations we need to
 perform include adding a new suffix (or increasing the frequency
 of an existing one), and choosing a random suffix.
+
+对于后缀的集合，我们需要执行的运算包括增加一个新的后缀
+（或者增加一个已有后缀的频度），并选择一个随机后缀。
 
 Adding a new suffix is equally easy for the list implementation
 or the histogram.  Choosing a random element from a list
 is easy; choosing from a histogram is harder to do
 efficiently (see Exercise~\ref{randhist}).
+
+对于列表或者直方图，增加一个新的后缀一样容易。
+从列表中选择一个随机元素很容易；
+从一个直方图中有效的选择有一些难（见习题\ref{randhist}）。
 
 So far we have been talking mostly about ease of implementation,
 but there are other factors to consider in choosing data structures.
@@ -14262,6 +14327,12 @@ One is run time.  Sometimes there is a theoretical reason to expect
 one data structure to be faster than other; for example, I mentioned
 that the {\tt in} operator is faster for dictionaries than for lists,
 at least when the number of elements is large.
+
+目前为止，我们主要讨论实现的难易，
+但是选择数据结构还有其它的因素。一个是运行时间。
+有时，一个数据结构比另一个快有理论原因；
+例如，我提到过{\tt in}运算符对于字典比对列表要快，
+至少当元素的数目很大的时候。
 
 But often you don't know ahead of time which implementation will
 be faster.  One option is to implement both of them and see which
@@ -14275,6 +14346,15 @@ the places in a program that take the most time.
 \index{profile module}
 \index{module!profile}
 
+但是通常你事先不知道哪个实现更快。
+一个选择是两个都实现，然后再看哪个更快。
+此方法被称作{\bf 基准测试（benchmarking）}。
+一个实用的选择是选择最容易实现的数据结构，
+然后看它对于拟定的应用是否足够快。
+如果是的话，就不需要继续了。
+如果不是，有一些工具，如{\tt profile}模块，
+其能识别一个程序中哪处最耗时。
+
 The other factor to consider is storage space.  For example, using a
 histogram for the collection of suffixes might take less space because
 you only have to store each word once, no matter how many times it
@@ -14283,6 +14363,12 @@ program run faster, and in the extreme, your program might not run at
 all if you run out of memory.  But for many applications, space is a
 secondary consideration after run time.
 
+另外考虑的因素是存储空间。例如，对后缀集合使用直方图可能用更少的空间，
+因为无论一个单词在文本中出现多少次，你只需要存储它一次。
+在一些情况下，节省空间也能让你的程序更快，极端情况下，
+如果内存溢出，你的程序可能根本不能运行。
+但是对于许多应用，空间是运行时间之后的第二位考虑。
+
 One final thought: in this discussion, I have implied that
 we should use one data structure for both analysis and generation.  But
 since these are separate phases, it would also be possible to use one
@@ -14290,22 +14376,35 @@ structure for analysis and then convert to another structure for
 generation.  This would be a net win if the time saved during
 generation exceeded the time spent in conversion.
 
+最后一个思考：在此讨论中，我暗示对于分析和生成，
+我们应该使用一种数据结构。但是既然这些事分离的步骤，
+对于分析使用一种数据结构，然后对生成转到另一种结构也是可能的。
+如果生成节省的时间超过了转化花费的时间，这将是一个极大的优势。
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 When you are debugging a program, and especially if you are
 working on a hard bug, there are four things to try:
+
+当你正在调试一个程序的时候，特别是如果你正在调试一个很难的错误，
+有四件事需要试一下：
 
 \begin{description}
 
 \item[reading:] Examine your code, read it back to yourself, and
 check that it says what you meant to say.
 
+读：检查你的代码，你自己回头读它，并且检查它说的是否是你想说的。
+
 \item[running:] Experiment by making changes and running different
 versions.  Often if you display the right thing at the right place
 in the program, the problem becomes obvious, but sometimes you have to
 spend some time to build scaffolding.
+
+运行：通过修改和运行不同的版本来实验。
+通常，如果在程序中，你在正确的地方显示正确的东西，
+问题变得很明显，但是有时你不得不花些时间创建脚手架。
 
 \item[ruminating:] Take some time to think!  What kind of error
 is it: syntax, runtime, semantic?  What information can you get from
@@ -14313,9 +14412,18 @@ the error messages, or from the output of the program?  What kind of
 error could cause the problem you're seeing?  What did you change
 last, before the problem appeared?
 
+沉思：花些时间思考！错误的类型是什么：语法、运行时、语义？
+你从错误信息或者程序的输出中能获得什么信息？
+什么类型的错误能引起你看到的问题？
+问题出现前，你最后的修改是什么？
+
 \item[retreating:] At some point, the best thing to do is back
 off, undoing recent changes, until you get back to a program that
 works and that you understand.  Then you can start rebuilding.
+
+回退：在某种情况下，最好的事情是回退，撤销最近的修改，
+直到你回到一个能工作并且你能理解的程序。
+然后你可以开始重建。
 
 \end{description}
 
@@ -14324,12 +14432,21 @@ and forget the others.  Each activity comes with its own failure
 mode.
 \index{typographical error}
 
+初级程序员有时陷入这些活动之一，并且忘记了其它的。
+每个活动伴随着它自己的故障模式。
+
 For example, reading your code might help if the problem is a
 typographical error, but not if the problem is a conceptual
 misunderstanding.  If you don't understand what your program does, you
 can read it 100 times and never see the error, because the error is in
 your head.
 \index{experimental debugging}
+
+例如，如果程序是一个拍板错误，读代码可能有帮助，
+但是如果问题是概念理解错误，则未必是这样。
+如果你不理解你的程序做什么，
+你可能读你的程序100遍，并从不会发现错误，
+因为错误在你的头脑中。
 
 Running experiments can help, especially if you run small, simple
 tests.  But if you run experiments without thinking or reading your
@@ -14340,14 +14457,28 @@ can take a long time.
 \index{random walk programming}
 \index{development plan!random walk programming}
 
+运行实验可能会有帮助，特别是如果你运行小的、简单的测试。
+但是，如果你不思考或者阅读你的代码而运行实验，
+你可能陷入一种被我称作``随机游走编程''的模式中，
+这是一个随机修改的过程，直到程序做了正确的事儿。
+不用说，随机游走编程会花费很长的时间。
+
 You have to take time to think.  Debugging is like an
 experimental science.  You should have at least one hypothesis about
 what the problem is.  If there are two or more possibilities, try to
 think of a test that would eliminate one of them.
 
+你必须花时间思考。调试类似实验科学。
+你应该至少有一个关于问题是什么的假设。
+如果有两个或者更多的可能，试着考虑一个能消除其中一个的测试。
+
 Taking a break helps with the thinking.  So does talking.
 If you explain the problem to someone else (or even yourself), you
 will sometimes find the answer before you finish asking the question.
+
+休息一下有助于帮助思考。讨论也是。
+如果你向他人（或者即使你自己）解释问题，
+有时你将在说完问题之前找到答案。
 
 But even the best debugging techniques will fail if there are too many
 errors, or if the code you are trying to fix is too big and
@@ -14355,37 +14486,47 @@ complicated.  Sometimes the best option is to retreat, simplifying the
 program until you get to something that works and that you
 understand.
 
+但是，如果有太多的错误或则你正试图修复的代码太大、太复杂，
+即使最好的调试技术也会失败。
+有时，最好的选择是回退，简化程序，直到你获得一个好使的并且能理解的程序。
+
 Beginning programmers are often reluctant to retreat because
 they can't stand to delete a line of code (even if it's wrong).
 If it makes you feel better, copy your program into another file
 before you start stripping it down.  Then you can paste the pieces
 back in a little bit at a time.
 
+初级程序员经常不愿意回退，因为他们不愿意删除一行代码（即使它是错误的）。
+如果这让你感觉好些，在你开始删除之前，将你的代码拷贝到另一个文件中。
+然后你能一次性把它们粘贴回来。
+
 Finding a hard bug requires reading, running, ruminating, and
 sometimes retreating.  If you get stuck on one of these activities,
 try the others.
 
+找到一个很难的错误需要阅读、运行、沉思、和时而的回退。
+如果你陷入其中的一个活动中，试一下其它的。
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[deterministic:] Pertaining to a program that does the same
+\item[deterministic（确定性的）:] Pertaining to a program that does the same
 thing each time it runs, given the same inputs.
 \index{deterministic}
 
-\item[pseudorandom:] Pertaining to a sequence of numbers that appear
+\item[pseudorandom（伪随机）:] Pertaining to a sequence of numbers that appear
 to be random, but are generated by a deterministic program.
 \index{pseudorandom}
 
-\item[default value:] The value given to an optional parameter if no
+\item[default value（默认值）:] The value given to an optional parameter if no
 argument is provided.
 \index{default value}
 
-\item[override:] To replace a default value with an argument.
+\item[override（重载）:] To replace a default value with an argument.
 \index{override}
 
-\item[benchmarking:] The process of choosing between data structures
+\item[benchmarking（基准测试）:] The process of choosing between data structures
 by implementing alternatives and testing them on a sample of the
 possible inputs.  
 \index{benchmarking}
