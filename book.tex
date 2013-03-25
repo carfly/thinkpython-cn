@@ -3028,7 +3028,7 @@ But that's not really how the song goes.
 Pulling together the code fragments from the previous section, the
 whole program looks like this:
 
-汇集上一节的代码片段，整个程序看起来像这样：
+汇集上一节的代码切片，整个程序看起来像这样：
 
 \begin{verbatim}
 def print_lyrics():
@@ -8075,7 +8075,7 @@ Modify the program to fix this error.
 
 
 
-\section{String slices 字符串片段}
+\section{String slices 字符串切片}
 \label{slice}
 \index{slice operator}
 \index{operator!slice}
@@ -8086,8 +8086,8 @@ Modify the program to fix this error.
 A segment of a string is called a {\bf slice}.  Selecting a slice is
 similar to selecting a character:
 
-一段字符串被称作{\bf 片段（slice）}。
-选择一个片段类似于选择一个字符：
+一段字符串被称作{\bf 切片（slice）}。
+选择一个切片类似于选择一个字符：
 
 \begin{verbatim}
 >>> s = 'Monty Python'
@@ -8120,8 +8120,8 @@ If you omit the first index (before the colon), the slice starts at
 the beginning of the string.  If you omit the second index, the slice
 goes to the end of the string:
 
-如果你省略第一个索引（冒号前面的），片段起始于字符串开始。
-如果你省略第二个索引，片段一直到字符串结尾：
+如果你省略第一个索引（冒号前面的），切片起始于字符串开始。
+如果你省略第二个索引，切片一直到字符串结尾：
 
 \begin{verbatim}
 >>> fruit = 'banana'
@@ -8214,7 +8214,7 @@ a slice of {\tt greeting}.  It has no effect on
 the original string.
 \index{concatenation}
 
-此例连接一个新的第一个字母到{\tt greeting}的一个片段上。
+此例连接一个新的第一个字母到{\tt greeting}的一个切片上。
 它不影响原字符串。
 
 \section{Searching 搜索}
@@ -8731,7 +8731,7 @@ values where each value is identified by an integer index.
 a sequence, such as a character in a string.
 \index{index}
 
-\item[slice（片段）:] A part of a string specified by a range of indices.
+\item[slice（切片）:] A part of a string specified by a range of indices.
 \index{slice}
 
 \item[empty string（空字符串）:] A string with no characters and length 0, represented
@@ -9018,19 +9018,32 @@ In 1939 Ernest Vincent Wright published a 50,000 word novel called
 {\em Gadsby} that does not contain the letter ``e.''  Since ``e'' is
 the most common letter in English, that's not easy to do.
 
+1939年，Ernest Vincent Wright发表了一本名为{\em Gadsby}的小说，
+该小说不包括字母``e''。由于``e''是最常用的英文字母，因此这并容易做到。
+
 In fact, it is difficult to construct a solitary thought without using
 that most common symbol.  It is slow going at first, but with caution
 and hours of training you can gradually gain facility.
 
+事实上，不使用这个最常用的符号是很难的。
+开始进展缓慢，但是经过认真的长时间的训练，你可以逐渐地熟练。
+
 All right, I'll stop now.
+
+好的，现在我将停下。
 
 Write a function called \verb"has_no_e" that returns {\tt True} if
 the given word doesn't have the letter ``e'' in it.
+
+写一个称作\verb"has_no_e"的函数，如果给定的单词中不包含字母``e''，其返回{\tt True}
 
 Modify your program from the previous section to print only the words
 that have no ``e'' and compute the percentage of the words in the list
 have no ``e.''
 \index{lipogram}
+
+修改你前面小节中的程序以只打印不包含``e''的单词，
+并且计算列表中不含``e''的单词的百分百。
 
 \end{exercise}
 
@@ -9042,11 +9055,17 @@ that takes a word and a string of forbidden letters, and
 that returns {\tt True} if the word doesn't use any of the forbidden
 letters.
 
+写一个名为{\tt avoids}的函数，接受一个单词和一个禁止字母字符串，
+如果单词中不包含任意禁止字母，则返回{\tt True} 。
+
 Modify your program to prompt the user to enter a string
 of forbidden letters and then print the number of words that
 don't contain any of them.
 Can you find a combination of 5 forbidden letters that
 excludes the smallest number of words?
+
+修改你的程序，提示用户输入一个禁止字母字符串然后打印不包含它们的单词的数量。
+你能找到一个5个禁止字母的组合，使得其不包含最小单词数目么？
 
 \end{exercise}
 
@@ -9058,6 +9077,11 @@ Write a function named \verb"uses_only" that takes a word and a
 string of letters, and that returns {\tt True} if the word contains
 only letters in the list.  Can you make a sentence using only the
 letters {\tt acefhlo}?  Other than ``Hoe alfalfa?''
+
+写一个名为\verb"uses_only"的函数，其接受一个单词和一个字符串，
+如果该单词只包括此字符串中的字母，则返回{\tt True}。
+你能只是用字母{\tt acefhlo}造一个句子么？
+除了``Hoe alfalfa''外。
 
 \end{exercise}
 
@@ -9078,6 +9102,10 @@ Write a function called \verb"is_abecedarian" that returns
 {\tt True} if the letters in a word appear in alphabetical order
 (double letters are ok).  
 How many abecedarian words are there?
+
+写一个名为\verb"is_abecedarian"的函数，
+如果单词中的字母以字母表的顺序出现（允许重复字母），则返回{\tt True} 。
+有多少个abecedarian单词？
 
 \index{abecedarian}
 
@@ -9839,7 +9867,7 @@ repeats the list {\tt [1, 2, 3]} three times.
 第二个例子重复列表{\tt [1, 2, 3]} 3次。
 
 
-\section{List slices 列表片段}
+\section{List slices 列表切片}
 \index{slice operator}
 \index{operator!slice}
 \index{index!slice}
@@ -9848,7 +9876,7 @@ repeats the list {\tt [1, 2, 3]} three times.
 
 The slice operator also works on lists:
 
-片段运算符也能用于列表：
+切片运算符也能用于列表：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -9867,9 +9895,9 @@ omit both, the slice is a copy of the whole list.
 \index{slice!copy}
 \index{copy!slice}
 
-如果你不写第一个索引，片段起始于开始。
-如果不写第二个，片段直到结束。
-所以，如果你两个都不写，片段拷贝整个列表。
+如果你不写第一个索引，切片起始于开始。
+如果不写第二个，切片直到结束。
+所以，如果你两个都不写，切片拷贝整个列表。
 
 \begin{verbatim}
 >>> t[:]
@@ -9888,7 +9916,7 @@ can update multiple elements:
 \index{slice!update}
 \index{update!slice}
 
-赋值语句左侧的片段运算符可以更新多个元素：
+赋值语句左侧的切片运算符可以更新多个元素：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -10225,7 +10253,7 @@ The return value from {\tt remove} is {\tt None}.
 To remove more than one element, you can use {\tt del} with
 a slice index:
 
-为了删除多余一个的元素，你可以使用{\tt del}和一个片段索引：
+为了删除多余一个的元素，你可以使用{\tt del}和一个切片索引：
 
 \begin{verbatim}
 >>> t = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -10237,7 +10265,7 @@ a slice index:
 As usual, the slice selects all the elements up to, but not
 including, the second index.
 
-和通常一样，该片段选择所有高于，但是不包含第二个索引的元素。
+和通常一样，该切片选择所有高于，但是不包含第二个索引的元素。
 
 \begin{exercise}
 
@@ -10642,7 +10670,7 @@ on the list that was passed as an argument.
 \index{slice operator}
 \index{operator!slice}
 
-片段运算符生成一个新的列表，赋值使得{\tt t}引用它，
+切片运算符生成一个新的列表，赋值使得{\tt t}引用它，
 但是这些对被作为实参传递过来的列表毫无影响。
 
 An alternative is to write a function that creates and
@@ -10743,7 +10771,7 @@ or even a slice assignment.
 列表的一部分问题是有太多的方法做事情。
 例如，为了从列表中删除一个元素，
 你可以使用{\tt pop}、{\tt remove}、{\tt del}，
-甚至一个片段赋值。
+甚至一个切片赋值。
 
 To add an element, you can use the {\tt append} method or
 the {\tt +} operator.  Assuming that {\tt t} is a list and
@@ -12393,7 +12421,7 @@ And the slice operator selects a range of elements.
 \index{tuple!slice}
 \index{slice!tuple}
 
-片段运算符选择一个范围的元素。
+切片运算符选择一个范围的元素。
 
 \begin{verbatim}
 >>> print t[1:3]
