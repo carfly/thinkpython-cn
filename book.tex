@@ -31,13 +31,15 @@
 \usepackage[bookmarks]{hyperref}
 %\usepackage{CJKutf8}
 
-% XeTex Part
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%        XeTex Part           %%
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \XeTeXlinebreaklocale "zh"
 \setCJKmainfont{AR PL UMing CN}
+%脚注每页单独编号
 \usepackage[perpage]{footmisc}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Think Python}
 \author{Allen B. Downey}
@@ -19833,6 +19835,11 @@ that you have to restart the interpreter or use {\tt reload}
 to read a modified file.  If you import the module again, it
 doesn't do anything.
 
+如果你使用{\tt import}来载入一个模块，记住你必须重启翻译器才能重新载入一个修改
+了的内存模块。如果你导入一个模块两次，第二次是无效的。\footnote{译者注：因为载
+入的模块在内存中，如果不退出翻译器，是不会释放在内存中的模块的。通常是在交互式
+的换进中才会有该问题}
+
 \end{itemize}
 
 If you get stuck and you can't figure out what is going on, one
@@ -19840,28 +19847,37 @@ approach is to start again with a new program like ``Hello, World!,''
 and make sure you can get a known program to run.  Then gradually add
 the pieces of the original program to the new one.
 
+如果你依然卡住了，不知道怎么办，一种途径是重新开始一个新的``Hello, World!''程序
+，确保你能运行一个已知的程序。然后逐渐地把原来程序的代码粘贴到新的里面。
 
-\section{Runtime errors}
+\section{Runtime errors 运行时错误}
 
 Once your program is syntactically correct,
 Python can compile it and at least start running it.  What could
 possibly go wrong?
 
+一旦你的程序语法正确，Python就至少能够编译它，并且运行它。然后可能会出现哪些错
+误？
 
-\subsection{My program does absolutely nothing.}
+\subsection{My program does absolutely nothing.\\我的程序什么也没有做}
 
 This problem is most common when your file consists of functions and
 classes but does not actually invoke anything to start execution.
 This may be intentional if you only plan to import this module to
 supply classes and functions.
 
+这个问题最可能是当你的文件由函数和类组成，但是并没有调用任何东西来执行。可能是
+因为你只是打算导入这个模块来提供类和函数。
+
 If it is not intentional, make sure that you
 are invoking a function to start execution, or execute one from
 the interactive prompt.  Also see the ``Flow of Execution'' section
 below.
 
+如果你不是想这样的，确保你调用了一个函数来开始执行。或从交互式终端执行一个函数
+。参见下面 ``Flow of Execution'' 一节
 
-\subsection{My program hangs.}
+\subsection{My program hangs. \\ 我的程序挂了}
 \index{infinite loop}
 \index{infinite recursion}
 \index{hanging}
@@ -19870,6 +19886,9 @@ If a program stops and seems to be doing nothing, it is ``hanging.''
 Often that means that it is caught in an infinite loop or infinite
 recursion.
 
+如果一个程序停止了，看起来什么都没有做，这就是 ``挂''了。通常意味着它陷入了一个
+无限循环或者是无限递归。
+
 \begin{itemize}
 
 \item If there is a particular loop that you suspect is the
@@ -19877,30 +19896,46 @@ problem, add a {\tt print} statement immediately before the loop that says
 ``entering the loop'' and another immediately after that says
 ``exiting the loop.''
 
+如果正好有一个你怀疑可能出问题的循环，在进入循环之前加入一个 {\tt print} 语句，
+打印 ``entering the loop''，然后在循环结束之后同样的打印``exit the loop''。
+
 Run the program.  If you get the first message and not the second,
 you've got an infinite loop.  Go to the ``Infinite Loop'' section
 below.
+
+运行程序。 如果你只得到了第一条信息但是没有第二条，那就是进入无限循环了。转到``
+无限循环''一节
 
 \item Most of the time, an infinite recursion will cause the program
 to run for a while and then produce a ``RuntimeError: Maximum
 recursion depth exceeded'' error.  If that happens, go to the
 ``Infinite Recursion'' section below.
 
+大多数情况，一个无限递归会造成程序运行一会儿之后输出``RuntimeError: Maximum
+recursion depth exceeded''错误。如果发生了，转到``无限递归''一节。
+
 If you are not getting this error but you suspect there is a problem
 with a recursive method or function, you can still use the techniques
 in the ``Infinite Recursion'' section.
 
+如果你没有得到这个错误，但是你坚持怀疑可能是一个递归调用出问题了，你也可以使用
+``无限递归''一节的技巧。
+
 \item If neither of those steps works, start testing other
 loops and other recursive functions and methods.
+
+如果两种都不行，测试一下其它循环或者递归调用。
 
 \item If that doesn't work, then it is possible that
 you don't understand the flow of execution in your program.
 Go to the ``Flow of Execution'' section below.
 
+如果还是不行，可能是你没有正确的理解你的程序的执行流程。转到``Flow of Execution''一节。
+
 \end{itemize}
 
 
-\subsubsection{Infinite Loop}
+\subsubsection{Infinite Loop 无限循环}
 \index{infinite loop}
 \index{loop!infinite}
 \index{condition}
@@ -19912,6 +19947,11 @@ the end of the loop that prints the values of the variables in
 the condition and the value of the condition.
 
 For example:
+
+如果你认为你有一个无限循环并且你知道是这个循环造成的问题，在每个循环的末尾加入
+{\tt print}语句，打印出循环条件中变量的值和运算的结果。
+
+例如：
 
 \begin{verbatim}
 while x > 0 and y < 0 :
@@ -19929,14 +19969,20 @@ loop, the condition should be {\tt false}.  If the loop keeps
 going, you will be able to see the values of {\tt x} and {\tt y},
 and you might figure out why they are not being updated correctly.
 
+现在，当你运行程序，你可以看到每次循环都有3行输出。最后一次输出时，循环条件应该
+是{\tt false}。如果循环继续走下去，你能够看到{\tt x} 和{\tt y}的至，因此你可以
+了解到为什么它们没有被正确的更新。
 
-\subsubsection{Infinite Recursion}
+\subsubsection{Infinite Recursion 无限递归}
 \index{infinite recursion}
 \index{recursion!infinite}
 
 Most of the time, an infinite recursion will cause the program to run
 for a while and then produce a {\tt Maximum recursion depth exceeded}
 error.
+
+大多数情况，一个无限递归会造成程序运行一会儿之后输出``RuntimeError: Maximum
+recursion depth exceeded''错误。如果发生了，转到``无限递归''一节。
 
 If you suspect that a function or method is causing an infinite
 recursion, start by checking to make sure that there is a base case.
@@ -19945,6 +19991,10 @@ function or method to return without making a recursive invocation.
 If not, then you need to rethink the algorithm and identify a base
 case.
 
+如果你怀疑一个函数或者方法造成了无限递归，确保函数体有一个初始条件。也就是有一
+些条件能够直接返回值而不会再递归调用下去。如果没有，你需要重新思考算法找到一个
+初始条件。
+
 If there is a base case but the program doesn't seem to be reaching
 it, add a {\tt print} statement at the beginning of the function or method
 that prints the parameters.  Now when you run the program, you will see
@@ -19952,8 +20002,11 @@ a few lines of output every time the function or method is invoked,
 and you will see the parameters.  If the parameters are not moving
 toward the base case, you will get some ideas about why not.
 
+如果有了初始条件了但是程序还是没有到达它，在函数或方法的开始加入一个{\tt print}
+语句来打印参数。现在当你运行程序，每次递归调用你都能看到几行输出，你可以看到参
+数。如果参数没有趋于初始条件，你需要想想为什么。
 
-\subsubsection{Flow of Execution}
+\subsubsection{Flow of Execution 执行流}
 \index{flow of execution}
 
 If you are not sure how the flow of execution is moving through
@@ -19961,11 +20014,15 @@ your program, add {\tt print} statements to the beginning of each
 function with a message like ``entering function {\tt foo},'' where
 {\tt foo} is the name of the function.
 
+如果你不确定程序执行的过程，在每个函数的开始打印``entering function {\tt
+foo}'',{\tt foo}是你的函数名。
+
 Now when you run the program, it will print a trace of each
 function as it is invoked.
 
+现在当你运行程序，你可以打印出每个函数调用的轨迹。
 
-\subsection{When I run the program I get an exception.}
+\subsection{When I run the program I get an exception.\\当我运行程序时产生了异常}
 \index{exception}
 \index{runtime error}
 
@@ -19975,6 +20032,9 @@ exception, the line of the program where the problem occurred,
 and a traceback.
 \index{traceback}
 
+如果在运行时出现了问题，Python会打印出一些信息，包括异常的名称，产生一场的行号
+，和一个调用栈。
+
 The traceback identifies the function that is currently running,
 and then the function that invoked it, and then the function that
 invoked {\em that}, and so on.  In other words, it traces the
@@ -19982,9 +20042,15 @@ sequence of function invocations that got you to where you are.  It
 also includes the line number in your file where each of these
 calls occurs.
 
+调用栈（backtrace,traceback,callstack）能够表明正在运行的函数，以及调用它的上层
+函数，上上层函数等等。总之，它表明了函数调用的顺序以及运行到哪里了。它也包含源
+代码中产生调用的地方的行号
+
 The first step is to examine the place in the program where
 the error occurred and see if you can figure out what happened.
 These are some of the most common runtime errors:
+
+第一步是检查发生错误的位置，看你能不能找出怎么就错了。下面是一些常见错误
 
 \begin{description}
 
@@ -19997,7 +20063,12 @@ cannot refer to them from outside the function where they are defined.
 \index{exception!NameError}
 \index{exception!TypeError}
 
+命名错误：你正在使用当前上下文中不存在的变量名。记住局部变量是有作用域的。你不
+能在函数的外面引用它们。
+
 \item[TypeError:] There are several possible causes:
+
+    类型错误：有几种可能的原因：
 
 \begin{itemize}
 
@@ -20005,11 +20076,15 @@ cannot refer to them from outside the function where they are defined.
 a string, list, or tuple with something other than an integer.
 \index{index}
 
+你正在不正确的使用一个值。例如：使用除整数以外的某些东西作为字符串，列表或元组
+的索引下标。
+
 \item There is a mismatch between the items in a format string and
 the items passed for conversion.  This can happen if either the number
 of items does not match or an invalid conversion is called for.
 \index{format operator}
 \index{operator!format}
+
 
 \item You are passing the wrong number of arguments to a function or method.
 For methods, look at the method definition and
@@ -20017,6 +20092,10 @@ check that the first parameter is {\tt self}.  Then look at the
 method invocation; make sure you are invoking the method on an
 object with the right type and providing the other arguments
 correctly.
+
+你传递错误数量的参数给函数或方法。对于方法，看看方法定义是不是以{\tt self}作为
+地一个参数。然后看看方法调用；确保你在一个正确的类型的对象上调用方法并且正确得
+提供了其它参数。
 
 \end{itemize}
 
@@ -20026,9 +20105,14 @@ using a key that the dictionary does not contain.
 \index{exception!KeyError}
 \index{dictionary}
 
+键错误：你尝试用字典没有的键来访问字典的元素。
+
 \item[AttributeError:] You are trying to access an attribute or method
 that does not exist.  Check the spelling!  You can use
 {\tt dir} to list the attributes that do exist.
+
+属性错误：你尝试访问一个不存在的属性或方法。检查一下拼写！你可以使用{\tt dir}来
+列出存在的属性。
 
 If an AttributeError indicates that an object has {\tt NoneType},
 that means that it is {\tt None}.  One common cause is forgetting
@@ -20039,6 +20123,11 @@ a list method, like {\tt sort}, that returns {\tt None}.
 \index{AttributeError}
 \index{exception!AttributeError}
 
+如果一个属性错误表明一个对象是{\tt NoneType}，那意味着它就是{\tt None}。一个常
+见的原因是忘记从函数返回一个值；如果你在函数的末尾没有写{\tt return}语句，它就
+会返回{\tt None}。另外一个原因是使用一个list的方法调用的结果，比如{\tt sort}就
+会返回{\tt None}。
+
 \item[IndexError:] The index you are using
 to access a list, string, or tuple is greater than
 its length minus one.  Immediately before the site of the error,
@@ -20047,6 +20136,10 @@ the value of the index and the length of the array.
 Is the array the right size?  Is the index the right value?
 \index{IndexError}
 \index{exception!IndexError}
+
+索引错误：你访问一个列表，字符串或元组的索引超过了它的长度-1。在这类错误的前面
+，用一个{\tt print}语句来打印索引的值和数组的长度。数组是有着正确的长度吗？索引
+是正确的吗？
 
 \end{description}
 \index{debugger (pdb)}
@@ -20058,9 +20151,12 @@ Exceptions because it allows you to examine the state of the
 program immediately before the error.  You can read
 about {\tt pdb} at \url{docs.python.org/lib/module-pdb.html}.
 
+Python debugger ({\tt pdf})是用来追踪异常的非常有用的工具，因为它让你可以检查程
+序在出现错误时的状态。而不是直接的退出。你可以阅读
+\url{docs.python.org/lib/module-pdb.html}关于{\tt pdb}一节。
 
 \subsection{I added so many {\tt print} statements I get inundated with
-output.}
+output.\\我加入了太多的{\tt print}语句以至于输出刷屏}
 \index{print statement}
 \index{statement!print}
 
@@ -20068,9 +20164,18 @@ One of the problems with using {\tt print} statements for debugging
 is that you can end up buried in output.  There are two ways
 to proceed: simplify the output or simplify the program.
 
+使用{\tt print}语句来调试的一个问题是你可能会被泛滥的输出所埋没。有两种途径来处
+理：简化输出或者是简化程序。
+
 To simplify the output, you can remove or comment out {\tt print}
 statements that aren't helping, or combine them, or format
 the output so it is easier to understand.
+
+为了简化输出，你可以移除或注释掉不再需要的{\tt print}语句，或者合并它们，或者格
+式化输出便于理解。\footnote{也可以采用c的宏定义的思想，使用一个ENABLE\_DEBUG的
+全局变量，然后使用{\tt if(ENABLE\_DEBUG) print(...)}这种，通过将ENABLE\_DEBUG赋
+值为false来关闭所有输出。}\footnote{再层次化的输出就被称为Log了。也是一种必要的
+调试方法}
 
 To simplify the program, there are several things you can do.  First,
 scale down the problem the program is working on.  For example, if you
@@ -20078,6 +20183,10 @@ are searching a list, search a {\em small} list.  If the program takes
 input from the user, give it the simplest input that causes the
 problem.
 \index{dead code}
+
+为了简化程序，有几件事情可以做的。首先，缩减当前求解问题的规模。例如，如果你查
+找一个列表，使用一个小的列表来查找。如果程序从用户获得输入。给一个足够简单的输
+入。
 
 Second, clean up the program.  Remove dead code and reorganize the
 program to make it as easy to read as possible.  For example, if you
@@ -20088,14 +20197,24 @@ separately.
 \index{testing!minimal test case}
 \index{test case, minimal}
 
+其次，清理程序。移除死代码\footnote{计算出来的结果没有用于其它运算中，所以根本
+没必要计算}(dead code)并且重新组织程序易于理解（也称为代码重构）。例如，如果你
+怀疑问题来自程序深度嵌套的部分，尝试使用简单的结构重写它。如果你怀疑一个大的函
+数，尝试分解它为小函数分别测试（也称为单元测试）。
+
 Often the process of finding the minimal test case leads you to the
 bug.  If you find that a program works in one situation but not in
 another, that gives you a clue about what is going on.
+
+通常寻找最小化的测试用例的过程能够引出bug。如果你发现一个程序在一种条件下运行正
+确，在另外的条件下运行不正确，这能够给你找出发生了什么的一些线索。
 
 Similarly, rewriting a piece of code can help you find subtle
 bugs.  If you make a change that you think shouldn't affect the
 program, and it does, that can tip you off.
 
+类似的，重构代码能够让你找出细微的bug。如果你认为你重构的代码并不会影响到程序，
+那就做吧。
 
 \section{Semantic errors}
 \index{semantic error}
