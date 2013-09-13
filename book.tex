@@ -36,6 +36,7 @@
 \usepackage{xeCJK}
 \XeTeXlinebreaklocale "zh"
 \setCJKmainfont{AR PL UMing CN}
+\usepackage[perpage]{footmisc}
 %
 
 \title{Think Python}
@@ -19604,12 +19605,17 @@ formatting tags and images.
 
 \appendix
 
-\chapter{Debugging}
+\chapter{Debugging 调试}
+
+% translate by xiehuc (xiehuc@gmail.com)
 
 \index{debugging}
 Different kinds of errors can occur
 in a program, and it is useful to distinguish among them
 in order to track them down more quickly:
+
+在一个程序中可能会发生各种各样的错误，为了能够快速的追踪到这些错误，能够从代码
+中辨识出错误是非常有用的：
 
 \begin{itemize}
 
@@ -19619,16 +19625,28 @@ in order to track them down more quickly:
   the colon at the end of a {\tt def} statement yields the somewhat
   redundant message {\tt SyntaxError: invalid syntax}.
 
+  语法错误是Python将源代码翻译成字节代码的时候产生的。他们通常预示着程序的语法
+  有一些错误。例如：省略了{\tt def}语句后面的冒号会产生一些冗余的信息 {\tt
+  SyntaxError: invalid syntax}.
+
 \item Runtime errors are produced by the interpreter if something goes
   wrong while the program is running.  Most runtime error messages
   include information about where the error occurred and what
   functions were executing.  Example: An infinite recursion eventually
   causes the runtime error ``maximum recursion depth exceeded.''
 
+  运行时错误是当程序运行时发生了一些错误，解释器产生的错误。大多数运行时错误会
+  包含诸如在哪里产生的错误和正在执行哪个函数等信息。例如：一个无限递归最终会造
+  成``超过递归最大深度''的错误。
+
 \item Semantic errors are problems with a program that runs without
   producing error messages but doesn't do the right thing.  Example:
   An expression may not be evaluated in the order you expect, yielding
   an incorrect result.
+
+  语义错误是指一个程序并没有抛出错误信息，但是没有做正确的事情\footnote{译者注
+  ：一般是由于代码编写错误}。例如：一个表达式可能因为没有按照你预期的执行顺序而
+  被略过了没有执行，因此产生了错误的结果。
 
 \end{itemize}
 \index{syntax error}
@@ -19645,14 +19663,20 @@ error you are dealing with.  Although the following sections are
 organized by error type, some techniques are
 applicable in more than one situation.
 
+调试的第一步是指出你正在处理那种错误。虽然下面的小节按照错误类型来组织的，一些
+方法能应用在更多的情况下。
 
-\section{Syntax errors}
+\section{Syntax errors 语法错误}
 \index{error message}
 
 Syntax errors are usually easy to fix once you figure out what they
 are.  Unfortunately, the error messages are often not helpful.
 The most common messages are {\tt SyntaxError: invalid syntax} and
 {\tt SyntaxError: invalid token}, neither of which is very informative.
+
+语法错误通常一旦找出它们，就容易修正。不幸的是，这些错误消息可能没什么帮助。最
+常见的错误消息是{\tt SyntaxError: invalid syntax}和{\tt SyntaxError: invalid
+token}，都不是很有用。
 
 On the other hand, the message does tell you where in the program the
 problem occurred.  Actually, it tells you where Python
@@ -19662,16 +19686,28 @@ message, often on the preceding line.
 \index{incremental development}
 \index{development plan!incremental}
 
+另一方面，这些错误消息并不告诉你程序的哪里出现的错误。实际上，它告诉你Python是
+在哪里发现的问题，和错误具体在哪里无关。有时，错误在消息提示的代码的前面，通常
+则是在后面。
+
 If you are building the program incrementally, you should have
 a good idea about where the error is.  It will be in the last
 line you added.
+
+如果你是一点一点地增量式地写的代码，你应该能够知道错误在哪里。它会在你最后写的
+几行代码中。
 
 If you are copying code from a book, start by comparing
 your code to the book's code very carefully.  Check every character.
 At the same time, remember that the book might be wrong, so
 if you see something that looks like a syntax error, it might be.
 
+如果你是从书上复制的代码，那请仔细地从头和书对照代码。一个一个字母地比照。不过
+，另外，也可能是书上就错了，所以如果你发现哪里就像是语法错误，那可能就是了。
+
 Here are some ways to avoid the most common syntax errors:
+
+下面是一些方法用于避免大部分常见的语法错误：
 \index{syntax}
 
 \begin{enumerate}
@@ -19679,15 +19715,22 @@ Here are some ways to avoid the most common syntax errors:
 \item Make sure you are not using a Python keyword for a variable name.
 \index{keyword}
 
+确保你没有使用Python的关键字作为变量名称。
+
 \item Check that you have a colon at the end of the header of every
 compound statement, including {\tt for}, {\tt while},
 {\tt if}, and {\tt def} statements.
 \index{header}
 \index{colon}
 
+检查你每个复合语句的首行的末尾都有冒号，包括{\tt for}, {\tt while},
+{\tt if}, 和 {\tt def} 语句。
+
 \item Make sure that any strings in the code have matching
 quotation marks.
 \index{quotation mark}
+
+确保你的字符串都有匹配地引号。
 
 \item If you have multiline strings with triple quotes (single or double), make
 sure you have terminated the string properly.  An unterminated string
@@ -19698,14 +19741,24 @@ message at all!
 \index{multiline string}
 \index{string!multiline}
 
+如果你有三引号地多行字符串，确保你合适的结束了字符串。一个没有结束的字符串会在
+程序的末尾产生{\tt invalid token}错误，或者它会吧剩下的程序部分的代码看作字符串
+的一部分，直到遇到下一个三引号字符串。第二种情况可能直接不会产生错误！
+\footnote{有语法着色功能的编辑器则能够方便的看出}
+
 \item An unclosed opening operator---\verb+(+, \verb+{+, or
   \verb+[+---makes Python continue with the next line as part of the
   current statement.  Generally, an error occurs almost immediately in
   the next line.
 
+  一个没有关闭的括号（\verb+(+, \verb+{+, 以及 \verb+[+）使得Python把下一行继续
+          看作当前语句的一部分。通常下一行会马上提示错误消息。
+
 \item Check for the classic {\tt =} instead of {\tt ==} inside
 a conditional.
 \index{conditional}
+
+检查条件语句里面的{\tt ==}是不是写成了{\tt =}。
 
 \item Check the indentation to make sure it lines up the way it
 is supposed to.  Python can handle space and tabs, but if you mix
@@ -19715,22 +19768,34 @@ consistent indentation.
 \index{indentation}
 \index{whitespace}
 
+确保每行地缩进是符合语法地。Python能够处理空格和Tab，但是如果你混用它们可能出错
+。最好的方法是使用一个了解Python语法的纯文本编辑器\footnote{如llinux下面的vim，
+跨平台的sublime text等等}来产生一致的缩进。
+
 \end{enumerate}
 
 If nothing works, move on to the next section...
 
+如果还是不行，请看下一节。。。
 
-\subsection{I keep making changes and it makes no difference.}
+
+\subsection{I keep making changes and it makes no difference. \\ 我不断的改代码似乎一点用都没有。}
 
 If the interpreter says there is an error and you don't see it, that
 might be because you and the interpreter are not looking at the same
 code.  Check your programming environment to make sure that the
 program you are editing is the one Python is trying to run.
 
+如果翻译器说这里有一个错误但是你怎么也看不出来，可能是因为你和翻译器没有看同一
+份代码。检查你的编码环境确保你正在编辑的就是Python尝试运行的。
+
 If you are not sure, try putting an obvious and deliberate syntax
 error at the beginning of the program.  Now run it again.  If the
 interpreter doesn't find the new error, you are not running the
 new code.
+
+如果你不确定，尝试在代码的开始制造一些明显的故意的语法错误。再运行一次。如果翻
+译器不能找出新的错误，说明你没有运行正确的文件。
 
 There are a few likely culprits:
 
@@ -19740,11 +19805,18 @@ There are a few likely culprits:
 running it again.  Some programming environments do this
 for you, but some don't.
 
+你编辑了文件忘记了在运行之前保存一下。有一些编程环境会在运行前自动保存，有些则
+不会。
+
 \item You changed the name of the file, but you are still running
 the old name.
 
+你更改了文件的名字，但是你任然运行旧名字的文件。
+
 \item Something in your development environment is configured
 incorrectly.
+
+你开发环境的一些配置不正确。
 
 \item If you are writing a module and using {\tt import},
 make sure you don't give your module the same name as one
@@ -19752,6 +19824,9 @@ of the standard Python modules.
 \index{module!reload}
 \index{reload function}
 \index{function!reload}
+
+如果你在用{\tt import}写一个模块,确保你没有使用标准的Python模块名作为你的模块的
+名字。
 
 \item If you are using {\tt import} to read a module, remember
 that you have to restart the interpreter or use {\tt reload}
