@@ -1,4 +1,4 @@
-LATEX = latex
+LATEX = xelatex
 
 DVIPS = dvips
 
@@ -17,14 +17,15 @@ PDFFLAGS = -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
 	ps2pdf $(PDFFLAGS) $<
 
 all:	book.tex
-	makeindex book
-	pdflatex book
+	# makeindex book.tex
+	# pdflatex book
+	$(LATEX) book.tex
 	mv book.pdf thinkpython.pdf
 
 hevea:	book.tex header.html footer.html
 	# replace the pdfs with eps
 	sed s/.pdf/.eps/g book.tex > thinkpython.tex
-	latex thinkpython
+	$(LATEX) thinkpython
 	rm -rf html
 	mkdir html
 	hevea -O -e latexonly htmlonly thinkpython
