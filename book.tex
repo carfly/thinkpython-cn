@@ -20216,7 +20216,7 @@ program, and it does, that can tip you off.
 类似的，重构代码能够让你找出细微的bug。如果你认为你重构的代码并不会影响到程序，
 那就做吧。
 
-\section{Semantic errors}
+\section{Semantic errors 语义错误}
 \index{semantic error}
 \index{error!semantic}
 
@@ -20225,10 +20225,17 @@ because the interpreter provides no information
 about what is wrong.  Only you know what the program is supposed to
 do.
 
+在某些方面，语义错误是最难调试的，因为解释器不能提供错误的信息。只有你知道程序
+本来应该是怎么样做的。
+
 The first step is to make a connection between the program
 text and the behavior you are seeing.  You need a hypothesis
 about what the program is actually doing.  One of the things
 that makes that hard is that computers run so fast.
+
+第一步是在程序代码和你看到的表现之间建立连接。你需要首先假设程序实际上干了什么
+事情。比较麻烦的是电脑运行的太快了，以至于根本没有看清楚发生了什么就跑完了程序
+了。
 
 You will often wish that you could slow the program down to human
 speed, and with some debuggers you can.  But the time it takes to
@@ -20236,9 +20243,15 @@ insert a few well-placed {\tt print} statements is often short compared to
 setting up the debugger, inserting and removing breakpoints, and
 ``stepping'' the program to where the error is occurring.
 
-\subsection{My program doesn't work.}
+你需要使得程序能够慢下来使得你能跟上它的速度，通过一些调试器(debugger)就能做到
+。但是有时候插入一些安排好位置的{\tt print}语句要比你设置好调试器，插入或者移除
+断点，然后``步进''程序到发生错误的地方要更简洁。
+
+\subsection{My program doesn't work.\\我的程序不能工作}
 
 You should ask yourself these questions:
+
+你应该问你自己以下的一些问题：
 
 \begin{itemize}
 
@@ -20247,15 +20260,25 @@ which doesn't seem to be happening?  Find the section of the code
 that performs that function and make sure it is executing when
 you think it should.
 
+是不是有些你希望程序完成的但是并没有看到实际地运行的的语句？找到执行这些功能的
+代码然后确保它是按照你认为的方式来工作的。
+
 \item Is something happening that shouldn't?  Find code in
 your program that performs that function and see if it is
 executing when it shouldn't.
+
+是不是有些本不该执行的代码却运行了？找到程序中执行这些功能的代码然后看看它是不
+是本不应该执行的却执行了。
 
 \item Is a section of code producing an effect that is not
 what you expected?  Make sure that you understand the code in
 question, especially if it involves invocations to functions or methods in
 other Python modules.  Read the documentation for the functions you invoke.
 Try them out by writing simple test cases and checking the results.
+
+是不是有一些代码的效果和你预期的不一样？确保你理解了有问题的代码，特别是当它涉
+及调用其它模块的函数或者方法。阅读你调用的函数的文档。尝试写一些简单的测试案例
+来测试他们是不是得到了正确的结果。
 
 \end{itemize}
 
@@ -20266,19 +20289,28 @@ model.
 \index{model, mental}
 \index{mental model}
 
+为了写代码，你需要先想想程序是怎样的工作的。如果你写出来的代码并非按照你预期的
+工作，问题经常不是在程序本身，而是你压根就理解错了。
+
 The best way to correct your mental model is to break the program
 into its components (usually the functions and methods) and test
 each component independently.  Once you find the discrepancy
 between your model and reality, you can solve the problem.
+
+最好的方式来修正你的理论模型是把程序切分成组件（就是通常的函数和方法）然后单独
+的测试每个组件。一旦你找到了你的模型和现实的不符之处，你就解决了问题了。
 
 Of course, you should be building and testing components as you
 develop the program.  If you encounter a problem,
 there should be only a small amount of new code
 that is not known to be correct.
 
+当然，你应该在你写代码的过程中编译测试组件。如果你遇到了一个问题，那只能是刚写
+的一小段代码才有可能出问题。
 
 \subsection{I've got a big hairy expression and it doesn't
-do what I expect.}
+do what I expect.
+\\我写了一个超大的密密麻麻的表达式，结果它运行得不正确}
 \index{expression!big and hairy}
 \index{big, hairy expression}
 
@@ -20289,11 +20321,18 @@ temporary variables.
 
 For example:
 
+写复杂的表达式是没有问题的，前提是在它们依然保持可读性的长度内，但是他们可能很
+难调试。通常把复杂的表达是打散成一系列的临时变量的赋值语句是很好的。
+
+例如：
+
 \begin{verbatim}
 self.hands[i].addCard(self.hands[self.findNeighbor(i)].popCard())
 \end{verbatim}
 %
 This can be rewritten as:
+
+就可以写成：
 
 \begin{verbatim}
 neighbor = self.findNeighbor(i)
@@ -20310,10 +20349,16 @@ and display their values.
 \index{order of operations}
 \index{precedence}
 
+显式地方式更容易读因为变量名提供了额外的信息，它们也更容易调试因为你可以检查中
+间变量的类型和值。
+
 Another problem that can occur with big expressions is
 that the order of evaluation may not be what you expect.
 For example, if you are translating the expression
 $\frac{x}{2 \pi}$ into Python, you might write:
+
+另外一个问题是超长表达式的计算顺序可能和你想得不一样。例如如果你翻译$\frac{x}{2
+\pi}$成Python代码，你可能会写成：
 
 \begin{verbatim}
 y = x / 2 * math.pi
@@ -20323,8 +20368,13 @@ That is not correct because multiplication and division have
 the same precedence and are evaluated from left to right.
 So this expression computes $x \pi / 2$.
 
+这就不正确了，因为乘法和除法具有相同的优先级，所以它们从左计算到右边。所以表达
+式计算的是$x \pi / 2$。
+
 A good way to debug expressions is to add parentheses to make
 the order of evaluation explicit:
+
+一种好的方式来调试表达式是添加括号来显式地指定计算顺序。
 
 \begin{verbatim}
  y = x / (2 * math.pi)
@@ -20335,9 +20385,12 @@ parentheses.  Not only will the program be correct (in the sense
 of doing what you intended), it will also be more readable for
 other people who haven't memorized the rules of precedence.
 
+一旦你不太确定计算的顺序，就用括号。不仅仅增强程序的正确性（按照你认为的方式工
+作），而且对于那些记不住优先级的人更易读。
+
 
 \subsection{I've got a function or method that doesn't return what I
-expect.}
+expect.\\我有一个方法或函数没有返回我期望的结果}
 \index{return statement}
 \index{statement!return}
 
@@ -20346,11 +20399,16 @@ you don't have a chance to print the {\tt return} value before
 returning.  Again, you can use a temporary variable.  For
 example, instead of:
 
+如果你的{\tt return}语句是一个复杂的表达式，你没有机会来在{\tt return}之前打印
+出计算的结果。因此，你可以用一个临时变量。例如，下面的代码：
+
 \begin{verbatim}
 return self.hands[i].removeMatches()
 \end{verbatim}
 %
 you could write:
+
+可以写成：
 
 \begin{verbatim}
 count = self.hands[i].removeMatches()
@@ -20360,12 +20418,16 @@ return count
 Now you have the opportunity to display the value of
 {\tt count} before returning.
 
+现在，你就有机会在返回之前显示{\tt count}的值了。
 
-\subsection{I'm really, really stuck and I need help.}
+
+\subsection{I'm really, really stuck and I need help.\\我卡出翔了，我需要帮助。}
 
 First, try getting away from the computer for a few minutes.
 Computers emit waves that affect the brain, causing these
 symptoms:
+
+首先，你就离开电脑几分钟吧。电脑发出的辐射影响了大脑，容易造成以下症状：
 
 \begin{itemize}
 
@@ -20375,11 +20437,16 @@ symptoms:
 \index{debugging!emotional response}
 \index{emotional debugging}
 
+焦躁易怒
+
 \item Superstitious beliefs (``the computer hates me'') and
 magical thinking (``the program only works when I wear my
 hat backward'').
 \index{debugging!superstition}
 \index{superstitious debugging}
+
+迷幻的认知(``电脑就是和我作对'')和魔幻的想法(``我去带上帽子程序就正常工作了'')
+。
 
 \item Random walk programming (the attempt to program by writing
 every possible program and choosing the one that does the right
