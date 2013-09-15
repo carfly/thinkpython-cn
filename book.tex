@@ -29,14 +29,18 @@
 \usepackage{upquote}
 \usepackage{appendix}
 \usepackage[bookmarks]{hyperref}
-\usepackage{CJKutf8}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%        XeTex Part           %%
-%\usepackage{fontspec}
-%\usepackage{xeCJK}
-%\XeTeXlinebreaklocale "zh"
-%\setCJKmainfont{AR PL UMing CN}
+\usepackage{ifxetex}
+\ifxetex
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\XeTeXlinebreaklocale "zh"
+\setCJKmainfont{AR PL UMing CN}
+\else
+\usepackage{CJKutf8}
+\fi
 %脚注每页单独编号
 \usepackage[perpage]{footmisc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,8 +67,13 @@
 \newif\ifplastex
 \plastexfalse
 
+
 \begin{document}
+\ifxetex
+\else
 \begin{CJK}{UTF8}{gbsn}
+\fi
+
 
 \frontmatter
 
@@ -18551,7 +18560,7 @@ Solution: \url{http://thinkpython.com/code/Tagger.py}.
 
 
 
-\chapter{Case study: Tkinter}
+\chapter{Case study: Tkinter  案例学习：Tkinter}
 \label{tkinter}
 
 \section{GUI}
@@ -18563,13 +18572,22 @@ known as {\bf GUIs}.
 \index{graphical user interface}
 \index{Tkinter}
 
+大多数我们目前见到的程序都是纯命令行的，但是也有许多程序使用用户图形接口，也称
+GUI。
+
 Python provides several choices for writing GUI-based programs,
 including wxPython, Tkinter, and Qt.  Each has pros and cons, which
 is why Python has not converged on a standard.
 
+Python提供了写图形界面程序的几种选择，包括wxPython，Tkinter，和Qt。每一个都有优
+缺点，所以Python没有选择一个作为标准。
+
 The one I will present in this chapter is Tkinter because I think
 it is the easiest to get started with.  Most of the concepts
 in this chapter apply to the other GUI modules, too.
+
+在这个章节我会展示给大家的是Tkinter，因为我认为这个是最容易开始的。这个章节的大
+部分概念也适用于其他GUI模块。
 
 There are several books and web pages about Tkinter.  One of
 the best online resources is {\em An Introduction to Tkinter}
@@ -18578,15 +18596,25 @@ by Fredrik Lundh.
 \index{module!Gui}
 \index{Swampy}
 
+这有好几本书和网页是来介绍Tkinter的。其中一个最好的在线资源是Fredrik Lundh写的
+{\em An Introduction to Tkinter}
+
 I have written a module called {\tt Gui.py} that comes with
 Swampy.  It provides a simplified interface to the functions
 and classes in Tkinter.  The examples in this chapter are
 based on this module.
 
+我已经写了一个叫{\tt Gui.py}的模块（从Swampy取出来的）。他提供了一个简单的使用
+Tkinter的函数和类的封装。本章的例子都是基于这个模块的。
+
 Here is a simple example that creates and displays a Gui:
+
+下面是一个简单的创建和显示一个界面的小程序：
 
 To create a GUI, you have to import {\tt Gui} and instantiate
 a Gui object:
+
+为了创建GUI，你必须导入{\tt Gui}和实例化一个Gui对象：
 
 \begin{verbatim}
 from Gui import *
@@ -18607,39 +18635,57 @@ program to quit.
 \index{infinite loop}
 \index{loop!infinite}
 
+当你运行这串代码时，应该会出现一个标题是{\sf Gui}的空白的灰色方框。{\tt
+mainloop}启动了一个事件循环（{\bf event loop}）。这个就是一个无限循环;它一直运
+行到用户关闭了窗口，或者用了Ctrl+C，或者做了其它什么让程序退出的事情。
+
 This Gui doesn't do much because it doesn't have any
 {\bf widgets}.  Widgets are the elements that make up a
 GUI; they include:
 \index{widget}
+
+Gui什么都不会做，因为他没有任何组件({\bf widgets})。组件是组成GUI的基本元素；他们包括：
 
 \begin{description}
 
 \item[Button:] A widget, containing text or an image, that
 performs an action when pressed.
 
+按钮：一个包含标签或者图像的组件，当点击后执行相应的动作。
+
 \item[Canvas:] A region that can display lines, rectangles,
 circles and other shapes.
 
+画布(Canvas)：一个可以显示直线，矩形，圆圈和其它图形的区域。
+
 \item[Entry:] A region where users can type text.
+
+    输入框：一个用户可以输入文字的区域。
 
 \item[Scrollbar:] A widget that controls the visible part of another
 widget.
 
+滚动条：一个控制另外的组件显示区域的组件。
+
 \item[Frame:] A container, often invisible, that contains other
 widgets.
+
+框架(Frame)：一个容纳其它组件的容器，通常不可见。
 
 \end{description}
 
 The empty gray square you see when you create a Gui is
 a Frame.  When you create a new widget, it is added to this Frame.
 
+你看到你创建的Gui的空白灰色方框就是一个框架。当你创建了一个新的组件，他就会被加入这个框架。
 
-
-\section{Buttons and callbacks}
+\section{Buttons and callbacks  按钮和回调函数}
 \index{Button widget}
 \index{widget!Button}
 
 The method {\tt bu} creates a Button widget:
+
+{\tt bu}方法创建一个按钮组件：
 
 \begin{verbatim}
 button = g.bu(text='Press me.')
@@ -18650,6 +18696,9 @@ that appears in the Frame is a graphical representation of this
 object; you can control the button by invoking methods on it.
 \index{option}
 
+{\tt bu}的返回值是一个Button对象。在框架中显示的按钮是这个对象的图形表示；你可
+以通过调用button变量的方法来控制按钮。
+
 {\tt bu} takes up to 32 parameters that control the appearance
 and function of the button.  These parameters are called
 {\bf options}.  Instead of providing values for all 32 options,
@@ -18659,13 +18708,23 @@ values for the rest.
 \index{keyword argument}
 \index{argument!keyword}
 
+{\tt bu}用至多32个参数来控制按钮的外观和功能。这些参数叫做选项/属性({\bf
+option})。你可以使用关键字参数，而不是提供全部32个属性，例如：\verb"text='Press
+me.'"就只会指定text属性，其它属性都用默认值替代。
+
 When you add a widget to the Frame, it gets ``shrink-wrapped;''
 that is, the Frame shrinks to the size of the Button.  If you
 add more widgets, the Frame grows to accommodate them.
 \index{Label widget}
 \index{widget!Label}
 
+当你添加一个组件到框架，他会``自动调节大小''，就是说框架会收缩到按钮的尺寸。如
+果你添加更多组建，框架会自适应它们。\footnote{如果用鼠标调整窗口大小，其中的按
+钮又会自动放大。所以原文中的收缩含义不完整。}
+
 The method {\tt la} creates a Label widget:
+
+{\tt la}方法创建一个标签组件：
 
 \begin{verbatim}
 label = g.la(text='Press the button.')
@@ -18674,14 +18733,23 @@ label = g.la(text='Press the button.')
 By default, Tkinter stacks the widgets top-to-bottom and centers
 them.  We'll see how to override that behavior soon.
 
+默认的，Tkinter把组件从顶至底的堆放并居中它们。我们可以很快看到如何更改布局方案
+。
+
 If you press the button, you will see that it doesn't do much.
 That's because you haven't ``wired it up;'' that is, you haven't
 told it what to do!
+
+如果你点击按钮，你可以看到它什么也没有做。因为你没有``绑定事件''。就是说你没有
+告诉它做什么！
 
 The option that controls the behavior of a button is {\tt command}.
 The value of {\tt command} is a function that gets executed when
 the button is pressed.  For example, here is a function that creates
 a new Label:
+
+{\tt command}属性用来控制按钮的行为。{\tt command}的值是一个函数，当点击按钮后
+会执行它。例如下面是一个创建了新标签的函数：
 
 \begin{verbatim}
 def make_label():
@@ -18689,6 +18757,8 @@ def make_label():
 \end{verbatim}
 %
 Now we can create a button with this function as its command:
+
+现在我们可以创建带函数作为command的按钮了：
 
 \begin{verbatim}
 button2 = g.bu(text='No, press me!', command=make_label)
@@ -18698,20 +18768,32 @@ When you press this button, it should execute \verb"make_label"
 and a new label should appear.
 \index{callback}
 
+当你点击了按钮，它会执行\verb"make_label"，并且会显示新的标签。
+
 The value of the {\tt command} option
 is a function object, which is known as a {\bf callback} because
 after you call {\tt bu} to create the button, the flow of execution
 ``calls back'' when the user presses the button.
 \index{event-driven programming}
 
+{\tt command}属性的值是一个函数，被人们称之为回调函数（{\bf callback}）。因为你
+调用{\tt bu}创建按钮之后，并没有立即执行回调函数。而是当你点击了按钮之后才``回
+过来调用函数''。
+
 This kind of flow is characteristic of {\bf event-driven programming}.
 User actions, like button presses and key strokes, are called {\bf
 events}.  In event-driven programming, the flow of execution is
 determined by user actions rather than by the programmer.  
 
+这种典型的执行流程被称为事件驱动编程模型。用户的动作，比如点击按钮和敲击按键都
+被称为事件。在事件驱动编程中，执行流程是有用户行为决定而不是编程者。
+
 The challenge of event-driven programming is to construct a set of
 widgets and callbacks that work correctly (or at least generate
 appropriate error messages) for any sequence of user actions.
+
+事件驱动编程带来的挑战是构造一组在任何用户行为顺序下都正确工作的组建和回调（或
+至少输出合适的错误提示）。
 
 \begin{exercise}
 
@@ -18720,8 +18802,13 @@ button is pressed it should create a second button.  When
 {\em that} button is pressed, it should create a label that
 says, ``Nice job!''.
 
+写一个有一个按钮的GUI程序，当点击按钮之后应该创建第二个按钮。当点击第二个按钮，
+应该创建一个写着``Nice job!''的标签。
+
 What happens if you press the buttons more than once?
 Solution: \url{http://thinkpython.com/code/button_demo.py}
+
+要是你多次点击按钮呢？参见：\url{http://thinkpython.com/code/button_demo.py}
 
 \end{exercise}
 
@@ -22105,5 +22192,8 @@ attributes and HAS-A relationships of objects that are instantiated.
 %\blankpage
 %\blankpage
 
+\ifxetex
+\else
 \end{CJK}
+\fi
 \end{document}
