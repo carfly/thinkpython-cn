@@ -1,4 +1,4 @@
-LATEX = xelatex
+LATEX = pdflatex
 
 DVIPS = dvips
 
@@ -17,8 +17,7 @@ PDFFLAGS = -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress \
 	ps2pdf $(PDFFLAGS) $<
 
 all:	book.tex
-	# makeindex book.tex
-	# pdflatex book
+	makeindex book.tex
 	$(LATEX) book.tex
 	mv book.pdf thinkpython.pdf
 
