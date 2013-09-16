@@ -18813,7 +18813,7 @@ Solution: \url{http://thinkpython.com/code/button_demo.py}
 \end{exercise}
 
 
-\section{Canvas widgets}
+\section{Canvas widgets 画布组件}
 \index{Canvas widget}
 \index{widget!Canvas}
 
@@ -18821,7 +18821,12 @@ One of the most versatile widgets is the Canvas, which creates
 a region for drawing lines, circles and other shapes.  If you
 did Exercise~\ref{canvas} you are already familiar with canvases.
 
+最有用的组件之一就是Canvas了，它创建了一个可以绘制线条，圆圈和其它形状的区域。
+如果你做了~\ref{canvas}的练习作业的话，你就已经熟悉canvas了。
+
 The method {\tt ca} creates a new Canvas:
+
+{\tt ca}方法创建一个新的画布：
 
 \begin{verbatim}
 canvas = g.ca(width=500, height=500)
@@ -18832,10 +18837,15 @@ in pixels.
 \index{config method}
 \index{method!config}
 
+{\tt width}和{\tt height}是画布的长宽像素值。
+
 After you create a widget, you can still change the values of
 the options with the
 {\tt config} method.  For example, the {\tt bg} option changes
 the background color:
+
+当你创建了组件之后，你仍然可以通过{\tt config}方法来改变属性的值。例如：{\tt
+bg}属性用来改变背景颜色：
 
 \begin{verbatim}
 canvas.config(bg='white')
@@ -18845,6 +18855,9 @@ The value of {\tt bg} is a string
 that names a color.  The set of legal color names is different
 for different implementations of Python, but all implementations
 provide at least:
+
+{\tt bg}的值是颜色名字的字符串。不同实现的Python的合法颜色名称可能不一样，但至
+少所有都有以下的颜色：
 
 \begin{verbatim}
 white   black
@@ -18857,6 +18870,8 @@ the Canvas method {\tt circle} draws (you guessed it) a circle:
 \index{Canvas item}
 \index{item!Canvas}
 
+画布上面的形状被称为项（{\bf item}）。例如，{\tt circle}方法在画布上创建一个圆：
+
 \begin{verbatim}
 item = canvas.circle([0,0], 100, fill='red')
 \end{verbatim}
@@ -18866,19 +18881,29 @@ center of the circle; the second is the radius.
 \index{Canvas coordinate}
 \index{coordinate!Canvas}
 
+第一个参数是圆中心点的坐标；第二个是半径。
+
 {\tt Gui.py} provides a standard Cartesian coordinate system with
 the origin at the center of the Canvas and the positive $y$ axis
 pointing up.  This is different from some other graphics systems
 where the origin is in the upper left corner, with the $y$ axis
 pointing down.
 
+{\tt Gui.py}提供了一个原点在画布中央的标准笛卡尔坐标系。$y$轴指向上方。这个可能
+和一些其他的图形系统不一样。其它的可能是原点在左上角，$y$轴指向下方。
+
 The {\tt fill} option specifies that the circle should be filled
 in with red.
+
+{\tt fill}属性指示了圆被填充为红色。
 
 The return value from {\tt circle} is an Item object that
 provides methods for modifying the item on the canvas.  For
 example, you can use {\tt config} to change any of the circle's
 options:
+
+{\tt circle}的返回值是一个提供修改画布上的项的方法的对象。例如，你可以使用{\tt
+config}来改变任何圆的属性：
 
 \begin{verbatim}
 item.config(fill='yellow', outline='orange', width=10)
@@ -18887,11 +18912,15 @@ item.config(fill='yellow', outline='orange', width=10)
 {\tt width} is the thickness of the outline in pixels;
 {\tt outline} is the color.
 
+{\tt width}是轮廓的粗细的像素值；{\tt outline}是轮廓的颜色。
+
 \begin{exercise}
 \label{circle}
 
 Write a program that creates a Canvas and a Button.  When the
 user presses the Button, it should draw a circle on the canvas.
+
+写一个程序，创建一个画布和按钮。当用户点击按钮，就会在画布上绘制一个圆。
 
 \end{exercise}
 
