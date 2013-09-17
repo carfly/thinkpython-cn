@@ -18709,8 +18709,8 @@ values for the rest.
 \index{argument!keyword}
 
 {\tt bu}用至多32个参数来控制按钮的外观和功能。这些参数叫做选项/属性({\bf
-option})。你可以使用关键字参数，而不是提供全部32个属性，例如：\verb"text='Press
-me.'"就只会指定text属性，其它属性都用默认值替代。
+option})。你可以使用关键字参数，而不是提供全部32个属性，例如：
+\verb"text='Press me.'"就只会指定text属性，其它属性都用默认值替代。
 
 When you add a widget to the Frame, it gets ``shrink-wrapped;''
 that is, the Frame shrinks to the size of the Button.  If you
@@ -18925,7 +18925,7 @@ user presses the Button, it should draw a circle on the canvas.
 \end{exercise}
 
 
-\section{Coordinate sequences}
+\section{Coordinate sequences 坐标序列}
 \index{coordinate sequence}
 \index{sequence!coordinate}
 
@@ -18933,6 +18933,9 @@ The {\tt rectangle} method takes a sequence of coordinates that
 specify opposite corners of the rectangle.  This example
 draws a green rectangle with the lower left corner at the origin
 and the upper right corner at $(200,100)$:
+
+{\tt rectangle}方法使用两个坐标的列表来制定一个矩形的两个对角。下面的方法绘制一
+个左下角在原点，右上角在$(200,100)$的绿色矩形。
 
 \begin{verbatim}
 canvas.rectangle([[0, 0], [200, 100]], 
@@ -18944,8 +18947,12 @@ a {\bf bounding box} because the two points
 bound the rectangle.
 \index{bounding box}
 
+这种指定对角的方法被称为{\bf bounding box}，因为两点固定了矩形的边界。
+
 {\tt oval} takes a bounding box and draws an oval
 within the specified rectangle:
+
+{\tt oval} 使用一个bounding box 来绘制一个在指定的矩形范围内的椭圆。
 
 \begin{verbatim}
 canvas.oval([[0, 0], [200, 100]], outline='orange', width=10)
@@ -18955,12 +18962,18 @@ canvas.oval([[0, 0], [200, 100]], outline='orange', width=10)
 a line that connects the points.  This example draws two legs
 of a triangle:
 
+{\tt line} 使用一组坐标序列来绘制一系列的线条。通过将点连成折线。
+下面的例子绘制一个三角形的两边。
+
 \begin{verbatim}
 canvas.line([[0, 100], [100, 200], [200, 100]], width=10)
 \end{verbatim}
 %
 {\tt polygon} takes the same arguments, but it draws the last
 leg of the polygon (if necessary) and fills it in:
+
+{\tt polygon} 使用相同的参数，但是它会把最后的点和起始点连起来形成一个封闭的多
+边形。并且填充颜色。
 
 \begin{verbatim}
 canvas.polygon([[0, 100], [100, 200], [200, 100]],
@@ -18969,7 +18982,7 @@ canvas.polygon([[0, 100], [100, 200], [200, 100]],
 %
 
 
-\section{More widgets}
+\section{More widgets 更多组件}
 \index{Text widget}
 \index{widget!Text}
 
@@ -18978,6 +18991,9 @@ Entry, which is a single line, and a Text widget, which has
 multiple lines.
 \index{Entry widget}
 \index{widget!Entry}
+
+Tkinter提供两个组件可供用户输入文字：一个是Entry，只能有一行，另外一个是Text组
+件，可以输入多行。
 
 {\tt en} creates a new Entry:
 
@@ -18989,12 +19005,17 @@ The {\tt text} option allows you to put text into the entry
 when it is created.  The {\tt get} method returns the contents
 of the Entry (which may have been changed by the user):
 
+{\tt text}属性允许你在创建Entry时输入文字。{\tt get}方法返回Entry的内容（可能会
+被用户改变）：
+
 \begin{verbatim}
 >>> entry.get()
 'Default text.'
 \end{verbatim}
 %
 {\tt te} creates a Text widget:
+
+{\tt te} 创建一个Text组件：
 
 \begin{verbatim}
 text = g.te(width=100, height=5)
@@ -19003,7 +19024,11 @@ text = g.te(width=100, height=5)
 {\tt width} and {\tt height} are the dimensions of the
 widget in characters and lines.
 
+{\tt width} 和 {\tt height}用一行的字符数和行数来指定绘制的大小。
+
 {\tt insert} puts text into the Text widget:
+
+{\tt insert} 可以将文字输入进入Text组件：
 
 \begin{verbatim}
 text.insert(END, 'A line of text.')
@@ -19012,10 +19037,15 @@ text.insert(END, 'A line of text.')
 {\tt END} is a special index that indicates the last character in the
 Text widget.
 
+{\tt END} 是表示Text组件里最后一个字符的位置的索引。
+
 You can also specify a character using a dotted index, like {\tt 1.1},
 which has the line number before the dot and the column number after.
 The following example adds the letters \verb"'nother'" after the first
 character of the first line.
+
+你也可以用一个带点的索引来指定插入的位置。例如{\tt 1.1}指定了在点之前的行号和在
+点之后的列数。下面的例子在第一行的第一个字符后面插入 \verb" 'nother' "
 
 \begin{verbatim}
 >>> text.insert(1.1, 'nother')
@@ -19025,6 +19055,9 @@ The {\tt get} method reads the text in the widget; it takes a start
 and end index as arguments.  The following example returns all the
 text in the widget, including the newline character:
 
+{\tt get}方法获取组件的内容。它使用一个开始索引和结束索引来作为参数。下面的例子
+返回组件内的所有文字，包括换行符：
+
 \begin{verbatim}
 >>> text.get(0.0, END)
 'Another line of text.\n'
@@ -19032,6 +19065,8 @@ text in the widget, including the newline character:
 %
 The {\tt delete} method removes text from the widget;
 the following example deletes all but the first two characters:
+
+{\tt delete}方法用于从组件内删除文字；下面的例子删除前两个字符以后的所有文字：
 
 \begin{verbatim}
 >>> text.delete(1.2, END)
@@ -19049,11 +19084,21 @@ second button, it should read a color name from the Entry and
 use it to change the fill color of the circle.  Use {\tt config}
 to modify the existing circle; don't create a new one.
 
+修改~\ref{circle}练习中的例子，再加入一个Entry组件和第二个按钮。当用户点击第二
+个按钮，它应该从Entry中读取一个颜色名称并且用来填充circle的颜色。使用{\tt
+config}来修改已经存在的circle；不要新创建一个。
+
 Your program should handle the case where the user tries to
 change the color of a circle that hasn't been created, and
 the case where the color name is invalid.
 
+你的程序应该处理当还没有创建circle时，用户就试图改变其颜色，以及当用户输入了一
+个非法的颜色名称时候的特殊情况。
+
 You can see my solution at \url{http://thinkpython.com/code/circle_demo.py}.
+
+你可以在\url{http://thinkpython.com/code/circle_demo.py}看看我写的代码。
+
 
 \end{exercise}
 
