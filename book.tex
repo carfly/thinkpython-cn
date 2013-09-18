@@ -19094,7 +19094,7 @@ You can see my solution at \url{http://thinkpython.com/code/circle_demo.py}.
 \end{exercise}
 
 
-\section{Packing widgets}
+\section{Packing widgets 打包组件}
 
 So far we have been stacking widgets in a single column, but in most
 GUIs the layout is more complicated.  For example,
@@ -19144,14 +19144,19 @@ Arranging widgets in a GUI is called {\bf packing}.
 \index{Frame widget}
 \index{widget!Frame}
 
-
+{\tt setup}方法用来创建和安排组件。对于GUI程序，排放组件称为{\bf packing}
 
 {\tt row} creates a row Frame and makes it the ``current Frame.''
 Until this Frame is closed or another Frame is created, all
 subsequent widgets are packed in a row.
 
+{\tt row}方法创建了一个横向排列的框架并且把它标记为``当前框架''。直到这个框架关
+闭了或者创建了另外一个框架，所有接下来的组件都被打包进了一行。
+
 Here is the code that creates the Canvas and the column Frame
 that hold the other widgets:
+
+下面是创建了一个画布和一个容纳其他组件的纵向框架的代码：
 
 \begin{verbatim}
         self.canvas = self.ca(width=400, height=400, bg='white')
@@ -19160,6 +19165,8 @@ that hold the other widgets:
 %
 The first widget in the column is a grid Frame, which contains
 four buttons arranged two-by-two:
+
+在纵向框架里面的第一个组建是一个格子框架，又包含了2x2的按钮矩阵：
 
 \begin{verbatim}
         self.gr(cols=2)
@@ -19178,13 +19185,22 @@ laid out left-to-right, top-to-bottom.
 \index{method, bound}
 \index{subject}
 
+{\tt gr}方法创建一个格子；参数是列数。在格子框架里面的组件从左到右，从上到下的
+排放。
+
 The first button uses {\tt self.canvas.dump} as a callback; the second
 uses {\tt self.quit}.  These are {\bf bound methods}, which means they
 are associated with a particular object.  When they are invoked, they
 are invoked on the object.
 
+第一个按钮使用{\tt self.canvas.dump}作为回调；第二个使用{\tt self.quit}。这些都
+是{\bf 绑定方法}，也就是它们和特定的对象绑定到一起的。当它们被调用时，他们是在
+对象上被调用的。\footnote{可以简单的理解为对象的方法，self指针会指向对象}
+
 The next widget in the column is a row Frame that contains
 a Button and an Entry:
+
+下一个组件是一个包含一个按钮和输入框的横向框架。
 
 \begin{verbatim}
         self.row([0,1], pady=30)
@@ -19200,20 +19216,35 @@ to the second widget, which is the Entry.  If you run this code
 and resize the window, you will see that the Entry grows and
 the Button doesn't.
 
+{\tt row}的第一个参数是一个权重列表，决定了组件分配多少的额外空间。
+{\tt [0,1]}列表表示所有额外的空间都分给第二个组件，也就是输入狂。如果你运行这段
+代码并且重新调整窗口大小，你可以看到输入框变大了而按钮没有变化。
+
 The option {\tt pady} ``pads'' this row in the $y$ direction,
 adding 30 pixels of space above and below.
 
+{\tt pady}属性在y轴上下增加了30像素的空白。
+
 {\tt endrow} ends this row of widgets, so subsequent widgets are
 packed in the column Frame.  {\tt Gui.py} keeps a stack of Frames:
+
+{\tt endrow}关闭了这个横向框架，所以接下来的组件被打包进入纵向框架。{\tt
+Gui.py}维护一个框架的栈：
 
 \begin{itemize}
 
 \item When you use {\tt row}, {\tt col} or {\tt gr} to create a Frame,
 it goes on top of the stack and becomes the current Frame.
 
+当你使用{\tt row}，{\tt col}或{\tt gr}来创建框架，它进入栈的顶层并且成为当前框
+架。
+
 \item When you use {\tt endrow}, {\tt endcol} or {\tt endgr} to close
 a Frame, it gets popped off the stack and the previous Frame on the
 stack becomes the current Frame.
+
+当你使用{\tt endrow},{\tt endcol}或{\tt endgf}来结束一个框架，它就弹出栈并且上
+一个框架成为当前框架。
 
 \end{itemize} 
 
@@ -19222,6 +19253,10 @@ uses it as a filename, reads the contents
 and passes it to \verb"run_code".  {\tt self.inter} is an
 Interpreter object that knows how to take a string and
 execute it as Python code.
+
+\verb"run_file" 方法读取输入框的内容，作为文件名，并且读入这个文件，将内容传给
+\verb "run_code"。{\tt self.inter}是一个解释器对象，知道如何将这个字符串作为
+Python代码来执行。
 
 \begin{verbatim}
     def run_file(self):
@@ -19233,6 +19268,8 @@ execute it as Python code.
 %
 The last two widgets are a Text widget and a Button:
 
+最后两个组件是一个Text组件和一个按钮：
+
 \begin{verbatim}
         self.te_code = self.te(width=25, height=10)
         self.te_code.insert(END, 'world.clear()\n')
@@ -19243,6 +19280,9 @@ The last two widgets are a Text widget and a Button:
 %
 \verb"run_text" is similar to \verb"run_file" except that it takes
 the code from the Text widget instead of from a file:
+
+\verb"run_text" 和 \verb"run_file" 比较相似，除了它从一个Text组件而不是文件读入
+代码：
 
 \begin{verbatim}
     def run_text(self):
@@ -19258,9 +19298,15 @@ The one I demonstrated in this section is the ``grid'' geometry
 manager; the others are called ``pack'' and ``place''.
 \index{geometry manager}
 
+不幸的是，组件布局的细节在不同的语言中不同，在不同的Python模块中也不同。Tkinter
+自己提供了3种不同的机制来安排组件。这些机制被成为几何管理器（{\bf geometry
+managers}）。我在这一节讲述的是``grid''几何管理器；其它的叫``pack''和``place''
+。
+
 Fortunately, most of the concepts in this section apply to
 other GUI modules and other languages.
 
+幸运的是，本节中的大部分概念都可以用于其它GUI模块和其它语言。
 
 \section{Menus and Callables}
 \index{Menubutton widget}
