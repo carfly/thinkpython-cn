@@ -3867,21 +3867,12 @@ with four rows and four columns.
 Solution: \url{http://thinkpython.com/code/grid.py}.
 Credit: This exercise is based on an exercise in Oualline, {\em
     Practical C Programming, Third Edition}, O'Reilly Media, 1997.
-
 \end{exercise}
-
-
-
-
-
 \chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
-
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/polygon.py}.
-
 本章的示例代码可以从\url{http://thinkpython.com/code/polygon.py}获得。
-
 \section{TurtleWorld}
 \index{TurtleWorld}
 \index{Swampy}
@@ -19110,6 +19101,10 @@ GUIs the layout is more complicated.  For example,
 Figure~\ref{fig.turtleworld} shows a simplified version of
 TurtleWorld (see Chapter~\ref{turtlechap}).
 
+到目前为止,我们都是把组件堆放在了一列上。但在大多数 GUI 程序而言,布局都是非常复
+杂的。例如图~\ref{fig.turtleworld}显示了一个简化版本的TurtleWorld(见
+~\ref{turtlechap}一章)。
+
 \begin{figure}
 \centerline{\includegraphics[scale=0.5]{figs/TurtleWorld.pdf}}
 \caption{Class diagram.}
@@ -19121,10 +19116,16 @@ This section presents the code that creates this GUI, broken into a
 series of steps.  You can download the complete example
 from \url{http://thinkpython.com/code/SimpleTurtleWorld.py}.
 
+本节展示了创建这个界面的代码,将它拆解为一系列的步骤。你可以在
+\url{http://thinkpython.com/code/SimpleTurtleWorld.py}下载完整的代码。
+
 At the top level, this GUI contains two widgets---a Canvas and a
 Frame---arranged in a row.  So the first step is to create the row.
 \index{SimpleTurtleWorld class}
 \index{class!SimpleTurtleWorld}
+
+在最顶层，界面包含了2个组件---一个画布和一个框架---并排放置。所以第一步是指定行
+布局。
 
 \begin{verbatim}
 class SimpleTurtleWorld(TurtleWorld):
@@ -19142,6 +19143,8 @@ Arranging widgets in a GUI is called {\bf packing}.
 \index{widget, packing}
 \index{Frame widget}
 \index{widget!Frame}
+
+
 
 {\tt row} creates a row Frame and makes it the ``current Frame.''
 Until this Frame is closed or another Frame is created, all
