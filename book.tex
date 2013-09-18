@@ -19255,7 +19255,7 @@ Interpreter object that knows how to take a string and
 execute it as Python code.
 
 \verb"run_file" 方法读取输入框的内容，作为文件名，并且读入这个文件，将内容传给
-\verb "run_code"。{\tt self.inter}是一个解释器对象，知道如何将这个字符串作为
+\verb"run_code"。{\tt self.inter}是一个解释器对象，知道如何将这个字符串作为
 Python代码来执行。
 
 \begin{verbatim}
@@ -19308,7 +19308,7 @@ other GUI modules and other languages.
 
 幸运的是，本节中的大部分概念都可以用于其它GUI模块和其它语言。
 
-\section{Menus and Callables}
+\section{Menus and Callables 菜单和可调用对象}
 \index{Menubutton widget}
 \index{widget!Menubutton}
 
@@ -19316,8 +19316,14 @@ A Menubutton is a widget that looks like a button, but when pressed
 it pops up a menu.  After the user selects an item, the menu
 disappears.
 
+一个菜单按钮是一个看起来像按钮的组件，但是当点击它后会弹出来一个菜单。在用户选
+择一个条目后，菜单就消失了。
+
 Here is code that creates a color selection Menubutton
 (you can download it from \url{http://thinkpython.com/code/menubutton_demo.py}):
+
+下面是创建一个颜色选择菜单的代码（可以从
+\url{http://thinkpython.com/code/menubutton_demo.py}下载）。
 
 \begin{verbatim}
 g = Gui()
@@ -19330,6 +19336,9 @@ mb = g.mb(text=colors[0])
 the name of the default color.  The following loop creates one menu
 item for each color:
 
+{\tt mb}创建一个菜单按钮。一开始，按钮上的文字是color[0]。接下来的循环用来为每
+个颜色创建菜单项。
+
 \begin{verbatim}
 for color in colors:
     g.mi(mb, text=color, command=Callable(set_color, color))
@@ -19341,6 +19350,8 @@ associated with.
 \index{Callable object}
 \index{object!Callable}
 
+{\tt mi}的第一个参数是这些菜单项关联的菜单按钮。
+
 The {\tt command} option is a Callable object, which is something new.
 So far we have seen functions and bound methods used as callbacks,
 which works fine if you don't have to pass any arguments to
@@ -19348,12 +19359,21 @@ the function.  Otherwise you have to construct a Callable object
 that contains a function, like \verb"set_color", and its arguments,
 like {\tt color}.
 
+{\tt command}按钮是一个可调用对象（函数对象)，是一些新东西。我们目前看到的函数和绑定方法用
+作回调，你不用传递任何参数给函数就能够正常工作。你也可以创建一个包含函数的可调
+用对象，就像\verb"set_color"，和它的参数，就像{\tt color}。
+
 The Callable object stores a reference to the function and the
 arguments as attributes.  Later, when the user clicks on a menu
 item, the callback calls the function and passes the stored
 arguments.
 
+可调用对象保存了函数的引用和将要用作属性的参数。之后，当用户点击了一个按钮项，
+回调引用的函数，并且把储存的参数传递给它。
+
 Here is what \verb"set_color" might look like:
+
+下面是 \verb"set_color" 长得什么样子的：
 
 \begin{verbatim}
 def set_color(color):
@@ -19366,6 +19386,10 @@ it configures the Menubutton to display the newly-selected color.
 It also print the color; if you try this example, you can confirm that
 \verb"set_color" is called when you select an item (and {\em not}
 called when you create the Callable object).
+
+当用户选择了菜单项，\verb"set_color"就被调用了，它使菜单按钮显示新选择的颜色。
+它也打印出来颜色值;如果你尝试运行这个例子，你可以确定\verb"set_color"只有当你在
+选择了菜单项之后调用(而{\em 不}是在你创建可调用对象时候调用的）。
 
 
 \section{Binding}
