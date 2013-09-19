@@ -19604,7 +19604,7 @@ behavior defined in a module you did not write.
 改变一个不是你写的模块里面的类的行为时就非常有用。
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 One of the challenges of GUI programming is keeping track of
@@ -19612,8 +19612,13 @@ which things happen while the GUI is being built and which
 things happen later in response to user events.
 \index{callback}
 
+一个GUI编程的挑战是跟踪GUI创建时发生了什么事以及什么是在延迟到用户事件时发生的
+事情。
+
 For example, when you are setting up a callback, it is a common error
 to call the function rather than passing a reference to it:
+
+例如，当你设置了一个回调，常见的错误是直接调用了这个函数而不是传递它的一个引用：
 
 \begin{verbatim}
 def the_callback():
@@ -19632,11 +19637,18 @@ a user event.
 \index{flow of execution}
 \index{event-driven programming}
 
+如果你运行这个代码，你会立刻看到它调用了\verb"the_callback"，然后创建按钮。当你
+点击按钮时，什么都没有发生。因为\verb"the_callback"的返回值是{\tt None}。
+通常你不想在你设置GUI的时候调用回调函数；它应该在之后的响应用户事件时调用。
+
 Another challenge of GUI programming is that you don't have control
 of the flow of execution.  Which parts of the program execute
 and their order are determined by user actions.
 That means that you have to design your program to work correctly
 for any possible sequence of events.
+
+GUI编程的另外一个挑战是你并不能控制执行流程。哪部分的程序执行以及执行的顺序是由
+用户动作决定的。也就是说你必须为任何可能的时间序列设计正确运行的程序。
 
 For example, the GUI in Exercise~\ref{circle2} has two widgets:
 one creates a Circle item and the other changes the color of the
@@ -19644,10 +19656,17 @@ Circle.  If the user creates the circle and then changes its color,
 there's no problem.  But what if the user changes the color of
 a circle that doesn't exist yet?  Or creates more than one circle?
 
+例如，在~\ref{circle2}练习中的GUI有两个组件：一个创建圆另外一个更改圆的颜色。如
+果用户先创建一个圆再改变颜色就没有问题。但是如果用户先改变颜色后创建圆？或者创
+建了多个圆呢？
+
 As the number of widgets grows, it is increasingly difficult to
 imagine all possible sequences of events.  One way to manage this 
 complexity is to encapsulate the state of the system in an object
 and then consider:
+
+当组件的数量增加时，想象所有可能的事件序列就变得非常困难。一种管理这种麻烦事的
+方法是把它们封装进状态系统，然后再考虑：
 
 \begin{itemize}
 
@@ -19655,16 +19674,27 @@ and then consider:
 might consider two states: before and after the user creates the
 first circle.
 
+可能的状态有哪些？在圆例子中，我们可以考虑两个状态：用户创建了第一个圆之前和之
+后两个状态。
+
 \item In each state, what events can occur?  In the example,
 the user can press either of the buttons, or quit.
+
+在每个状态，会发生什么事件？在本例中，用户可以点击按钮或者退出。
 
 \item For each state-event pair, what is the desired outcome?
 Since there are two states and two buttons, there are four
 state-event pairs to consider.
 
+在每一个状态-事件对，设计好的结果是什么？因为这里有2个状态和2个按钮。所以需要考
+虑4个状态-事件对。
+
 \item What can cause a transition from one state to another?
 In this case, there is a transition when the user creates
 the first circle.
+
+什么能够造成一种状态迁移到另外一种状态？在本例中，当用户创建了第一个圆之后有一
+个迁移。
 
 \end{itemize}
 
@@ -19672,9 +19702,13 @@ You might also find it useful to define, and check, invariants that
 should hold regardless of the sequence of events.
 \index{invariant}
 
+% ??? %
+
 This approach to GUI programming can help you write correct
 code without taking the time to test every possible sequence
 of user events!
+
+这些GUI编程的途径能够帮助你写正确的代码而不用花时间测试每个可能的用户事件顺序！
 
 
 \section{Glossary}
