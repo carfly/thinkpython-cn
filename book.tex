@@ -19392,7 +19392,7 @@ called when you create the Callable object).
 选择了菜单项之后调用(而{\em 不}是在你创建可调用对象时候调用的）。
 
 
-\section{Binding}
+\section{Binding 绑定}
 \index{binding}
 \index{callback}
 
@@ -19400,16 +19400,27 @@ A {\bf binding} is an association between a widget, an event and a
 callback: when an event (like a button press) happens on a widget, the
 callback is invoked.
 
+一个绑定是在一个组件上和一个事件，回调做关联：当组件上的一个事件（比如点击按钮
+）发生了，就会调用回调函数。
+
 Many widgets have default bindings.  For example, when you press
 a button, the default binding changes the relief of the button
 to make it look depressed.  When you release the button, the
 binding restores the appearance of the button and invokes the
 callback specified with the {\tt command} option.
 
+许多组件有默认的绑定。例如，当你点击一个按钮，默认的绑定改变按钮的外观让它看起
+来像是降低了。当你释放按钮，绑定恢复按钮的外观然后调用使用{\tt command}指定的回
+调函数。
+
 You can use the {\tt bind} method to override these default
 bindings or to add new ones.  For example, this code creates a
 binding for a canvas (you can download the code in this
 section from \url{http://thinkpython.com/code/draggable_demo.py}):
+
+你可以使用{\tt bind}方法来覆盖这些默认的绑定或者添加新的。例如，下面的代码为画
+布创建了一个绑定（你可以从\url{http://thinkpython.com/code/draggable_demo.py}下
+载源代码）：
 
 \begin{verbatim}
 ca.bind('<ButtonPress-1>', make_circle)
@@ -19422,10 +19433,16 @@ events include {\tt ButtonMotion}, {\tt ButtonRelease} and
 \index{event string}
 \index{event handler}
 
+第一个参数是一个事件的名称：当用户点击了鼠标的左键时触发这个时间。其他的鼠标事
+件包括{\tt ButtonMotion}, {\tt ButtonRelease}和 {\tt Double-Button}。
+
 The second argument is an event handler.  An event handler
 is a function or bound method, like a callback, but an important
 difference is that an event handler takes an Event object as a
 parameter.  Here is an example:
+
+第二个参数是一个事件句柄。一个事件句柄是一个函数或者绑定方法。比如回调函数，但
+是明显不同的是一个事件句柄使用一个Event对象作为参数。下面是一个例子：
 
 \begin{verbatim}
 def make_circle(event):
@@ -19444,10 +19461,18 @@ Canvas methods like {\tt circle}.
 \index{Event object}
 \index{object!Event}
 
+Event对象包含了诸如事件类型和一些类似鼠标指针的坐标等的详细信息。在这个例子中，
+我们需要的信息是鼠标点击时的位置。这些值是``像素坐标''\footnote{以左上角为原点
+的标准笛卡尔坐标系}。\verb"canvas_coords"方法将这些翻译成和如{\tt circle}等画布
+方法兼容的``画布坐标''\footnote{以画布中心为原点的坐标系}。
+
 For Entry widgets, it is common to bind the \verb"<Return>" event,
 which is triggered when the user presses the {\sf Return} or
 {\sf Enter} key.  For example, the following code creates a Button
 and an Entry.
+
+对于输入框组件，常常绑定\verb"<Return>"事件，当用户点击{\sf Return}或者{\sf
+Enter}键时触发。例如：下面的代码创建一个按钮和一个输入框。
 
 \begin{verbatim}
 bu = g.bu('Make text item:', make_text)
@@ -19461,6 +19486,10 @@ this work, we need a function that can be called as a command
 (with no arguments) or as an event handler (with an Event
 as an argument):
 
+当点击按钮或者当用户在输入框输入时按{\sf Return}时候触发\verb"make_text" 。为了
+使这个工作，我们需要一个可以被作为命令调用(没有参数)或者作为事件句柄（用Event作
+为参数）的函数：
+
 \begin{verbatim}
 def make_text(event=None):
     text = en.get()
@@ -19470,11 +19499,16 @@ def make_text(event=None):
 \verb"make_text" gets the contents of the Entry and displays
 it as a Text item in the Canvas.
 
+\verb"make_text" 获取输入框的内容然后在画布中把它作为一个Text对象显示出来。
+
 It is also possible to create bindings for Canvas items.
 The following is a class definition for {\tt Draggable},
 which is a child class of {\tt Item} that provides bindings
 that implement drag-and-drop capability.
 \index{drag-and-drop}
+
+也可以为画布成员创建绑定。下面是一个为{\tt Item}的{\tt Draggable}子类定义的类，
+能够提供drag-and-drop能力的绑定。
 
 \begin{verbatim}
 class Draggable(Item):
@@ -19507,10 +19541,14 @@ changes the color to yellow:
 {\tt cget} stands for ``get configuration;'' it takes the name of an
 option as a string and returns the current value of that option.
 
+{\tt cget} 用来``获取属性''；它用一个属性的名字字符串作为参数然后返回这个属性的当前的值。
+
 {\tt drag} computes how far the object has moved relative to the
 starting place, updates the stored coordinates, and then moves the
 item.
 \index{update!coordinate}
+
+{\tt drag}计算相对起始点，对象被移动了多远，更新储存的坐标，然后移动对象。
 
 \begin{verbatim}
     def drag(self, event):
@@ -19530,7 +19568,11 @@ convert to Canvas coordinates.
 \index{pixel coordinate}
 \index{coordinate!pixel}
 
+这个是用像素坐标计算的；这里没有必要转换成画布坐标。
+
 Finally, {\tt drop} restores the original color of the item:
+
+最后，{\tt drop}恢复对象的原来的颜色：
 
 \begin{verbatim}
     def drop(self, event):
@@ -19541,6 +19583,10 @@ You can use the {\tt Draggable} class to add drag-and-drop
 capability to an existing item.  For example, here is a modified
 version of \verb"make_circle" that uses {\tt circle} to create
 an Item and {\tt Draggable} to make it draggable:
+
+你可以使用{\tt Draggable}类来为一个已经存在的对象增加drag-and-drop功能。例如，
+下面是一个修改版的\verb"make_circle"，使用{\tt circle}来创建一个对象然后使用
+{\tt Draggable}来使它可拖动：
 
 \begin{verbatim}
 def make_circle(event):
@@ -19553,6 +19599,9 @@ This example demonstrates one of the benefits of inheritance: you can
 modify the capabilities of a parent class without modifying its
 definition.  This is particularly useful if you want to change
 behavior defined in a module you did not write.
+
+这个例子解释了继承的一个好处：你可以增减一个父类的功能而不用修改其定义。当你想
+改变一个不是你写的模块里面的类的行为时就非常有用。
 
 
 \section{Debugging}
