@@ -29,14 +29,18 @@
 \usepackage{upquote}
 \usepackage{appendix}
 \usepackage[bookmarks]{hyperref}
-\usepackage{CJKutf8}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%        XeTex Part           %%
-%\usepackage{fontspec}
-%\usepackage{xeCJK}
-%\XeTeXlinebreaklocale "zh"
-%\setCJKmainfont{AR PL UMing CN}
+\usepackage{ifxetex}
+\ifxetex
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\XeTeXlinebreaklocale "zh"
+\setCJKmainfont{AR PL UMing CN}
+\else
+\usepackage{CJKutf8}
+\fi
 %脚注每页单独编号
 \usepackage[perpage]{footmisc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,8 +67,13 @@
 \newif\ifplastex
 \plastexfalse
 
+
 \begin{document}
+\ifxetex
+\else
 \begin{CJK}{UTF8}{gbsn}
+\fi
+
 
 \frontmatter
 
@@ -3858,21 +3867,12 @@ with four rows and four columns.
 Solution: \url{http://thinkpython.com/code/grid.py}.
 Credit: This exercise is based on an exercise in Oualline, {\em
     Practical C Programming, Third Edition}, O'Reilly Media, 1997.
-
 \end{exercise}
-
-
-
-
-
 \chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
-
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/polygon.py}.
-
 本章的示例代码可以从\url{http://thinkpython.com/code/polygon.py}获得。
-
 \section{TurtleWorld}
 \index{TurtleWorld}
 \index{Swampy}
@@ -18551,7 +18551,7 @@ Solution: \url{http://thinkpython.com/code/Tagger.py}.
 
 
 
-\chapter{Case study: Tkinter}
+\chapter{Case study: Tkinter  案例学习：Tkinter}
 \label{tkinter}
 
 \section{GUI}
@@ -18563,13 +18563,22 @@ known as {\bf GUIs}.
 \index{graphical user interface}
 \index{Tkinter}
 
+大多数我们目前见到的程序都是纯命令行的，但是也有许多程序使用用户图形接口，也称
+GUI。
+
 Python provides several choices for writing GUI-based programs,
 including wxPython, Tkinter, and Qt.  Each has pros and cons, which
 is why Python has not converged on a standard.
 
+Python提供了写图形界面程序的几种选择，包括wxPython，Tkinter，和Qt。每一个都有优
+缺点，所以Python没有选择一个作为标准。
+
 The one I will present in this chapter is Tkinter because I think
 it is the easiest to get started with.  Most of the concepts
 in this chapter apply to the other GUI modules, too.
+
+在这个章节我会展示给大家的是Tkinter，因为我认为这个是最容易开始的。这个章节的大
+部分概念也适用于其他GUI模块。
 
 There are several books and web pages about Tkinter.  One of
 the best online resources is {\em An Introduction to Tkinter}
@@ -18578,15 +18587,25 @@ by Fredrik Lundh.
 \index{module!Gui}
 \index{Swampy}
 
+这有好几本书和网页是来介绍Tkinter的。其中一个最好的在线资源是Fredrik Lundh写的
+{\em An Introduction to Tkinter}
+
 I have written a module called {\tt Gui.py} that comes with
 Swampy.  It provides a simplified interface to the functions
 and classes in Tkinter.  The examples in this chapter are
 based on this module.
 
+我已经写了一个叫{\tt Gui.py}的模块（从Swampy取出来的）。他提供了一个简单的使用
+Tkinter的函数和类的封装。本章的例子都是基于这个模块的。
+
 Here is a simple example that creates and displays a Gui:
+
+下面是一个简单的创建和显示一个界面的小程序：
 
 To create a GUI, you have to import {\tt Gui} and instantiate
 a Gui object:
+
+为了创建GUI，你必须导入{\tt Gui}和实例化一个Gui对象：
 
 \begin{verbatim}
 from Gui import *
@@ -18607,39 +18626,57 @@ program to quit.
 \index{infinite loop}
 \index{loop!infinite}
 
+当你运行这串代码时，应该会出现一个标题是{\sf Gui}的空白的灰色方框。{\tt
+mainloop}启动了一个事件循环（{\bf event loop}）。这个就是一个无限循环;它一直运
+行到用户关闭了窗口，或者用了Ctrl+C，或者做了其它什么让程序退出的事情。
+
 This Gui doesn't do much because it doesn't have any
 {\bf widgets}.  Widgets are the elements that make up a
 GUI; they include:
 \index{widget}
+
+Gui什么都不会做，因为他没有任何组件({\bf widgets})。组件是组成GUI的基本元素；他们包括：
 
 \begin{description}
 
 \item[Button:] A widget, containing text or an image, that
 performs an action when pressed.
 
+按钮：一个包含标签或者图像的组件，当点击后执行相应的动作。
+
 \item[Canvas:] A region that can display lines, rectangles,
 circles and other shapes.
 
+画布(Canvas)：一个可以显示直线，矩形，圆圈和其它图形的区域。
+
 \item[Entry:] A region where users can type text.
+
+    输入框：一个用户可以输入文字的区域。
 
 \item[Scrollbar:] A widget that controls the visible part of another
 widget.
 
+滚动条：一个控制另外的组件显示区域的组件。
+
 \item[Frame:] A container, often invisible, that contains other
 widgets.
+
+框架(Frame)：一个容纳其它组件的容器，通常不可见。
 
 \end{description}
 
 The empty gray square you see when you create a Gui is
 a Frame.  When you create a new widget, it is added to this Frame.
 
+你看到你创建的Gui的空白灰色方框就是一个框架。当你创建了一个新的组件，他就会被加入这个框架。
 
-
-\section{Buttons and callbacks}
+\section{Buttons and callbacks  按钮和回调函数}
 \index{Button widget}
 \index{widget!Button}
 
 The method {\tt bu} creates a Button widget:
+
+{\tt bu}方法创建一个按钮组件：
 
 \begin{verbatim}
 button = g.bu(text='Press me.')
@@ -18650,6 +18687,9 @@ that appears in the Frame is a graphical representation of this
 object; you can control the button by invoking methods on it.
 \index{option}
 
+{\tt bu}的返回值是一个Button对象。在框架中显示的按钮是这个对象的图形表示；你可
+以通过调用button变量的方法来控制按钮。
+
 {\tt bu} takes up to 32 parameters that control the appearance
 and function of the button.  These parameters are called
 {\bf options}.  Instead of providing values for all 32 options,
@@ -18659,13 +18699,23 @@ values for the rest.
 \index{keyword argument}
 \index{argument!keyword}
 
+{\tt bu}用至多32个参数来控制按钮的外观和功能。这些参数叫做选项/属性({\bf
+option})。你可以使用关键字参数，而不是提供全部32个属性，例如：
+\verb"text='Press me.'"就只会指定text属性，其它属性都用默认值替代。
+
 When you add a widget to the Frame, it gets ``shrink-wrapped;''
 that is, the Frame shrinks to the size of the Button.  If you
 add more widgets, the Frame grows to accommodate them.
 \index{Label widget}
 \index{widget!Label}
 
+当你添加一个组件到框架，他会``自动调节大小''，就是说框架会收缩到按钮的尺寸。如
+果你添加更多组建，框架会自适应它们。\footnote{如果用鼠标调整窗口大小，其中的按
+钮又会自动放大。所以原文中的收缩含义不完整。}
+
 The method {\tt la} creates a Label widget:
+
+{\tt la}方法创建一个标签组件：
 
 \begin{verbatim}
 label = g.la(text='Press the button.')
@@ -18674,14 +18724,23 @@ label = g.la(text='Press the button.')
 By default, Tkinter stacks the widgets top-to-bottom and centers
 them.  We'll see how to override that behavior soon.
 
+默认的，Tkinter把组件从顶至底的堆放并居中它们。我们可以很快看到如何更改布局方案
+。
+
 If you press the button, you will see that it doesn't do much.
 That's because you haven't ``wired it up;'' that is, you haven't
 told it what to do!
+
+如果你点击按钮，你可以看到它什么也没有做。因为你没有``绑定事件''。就是说你没有
+告诉它做什么！
 
 The option that controls the behavior of a button is {\tt command}.
 The value of {\tt command} is a function that gets executed when
 the button is pressed.  For example, here is a function that creates
 a new Label:
+
+{\tt command}属性用来控制按钮的行为。{\tt command}的值是一个函数，当点击按钮后
+会执行它。例如下面是一个创建了新标签的函数：
 
 \begin{verbatim}
 def make_label():
@@ -18689,6 +18748,8 @@ def make_label():
 \end{verbatim}
 %
 Now we can create a button with this function as its command:
+
+现在我们可以创建带函数作为command的按钮了：
 
 \begin{verbatim}
 button2 = g.bu(text='No, press me!', command=make_label)
@@ -18698,20 +18759,32 @@ When you press this button, it should execute \verb"make_label"
 and a new label should appear.
 \index{callback}
 
+当你点击了按钮，它会执行\verb"make_label"，并且会显示新的标签。
+
 The value of the {\tt command} option
 is a function object, which is known as a {\bf callback} because
 after you call {\tt bu} to create the button, the flow of execution
 ``calls back'' when the user presses the button.
 \index{event-driven programming}
 
+{\tt command}属性的值是一个函数，被人们称之为回调函数（{\bf callback}）。因为你
+调用{\tt bu}创建按钮之后，并没有立即执行回调函数。而是当你点击了按钮之后才``回
+过来调用函数''。
+
 This kind of flow is characteristic of {\bf event-driven programming}.
 User actions, like button presses and key strokes, are called {\bf
 events}.  In event-driven programming, the flow of execution is
 determined by user actions rather than by the programmer.  
 
+这种典型的执行流程被称为事件驱动编程模型。用户的动作，比如点击按钮和敲击按键都
+被称为事件。在事件驱动编程中，执行流程是有用户行为决定而不是编程者。
+
 The challenge of event-driven programming is to construct a set of
 widgets and callbacks that work correctly (or at least generate
 appropriate error messages) for any sequence of user actions.
+
+事件驱动编程带来的挑战是构造一组在任何用户行为顺序下都正确工作的组建和回调（或
+至少输出合适的错误提示）。
 
 \begin{exercise}
 
@@ -18720,13 +18793,18 @@ button is pressed it should create a second button.  When
 {\em that} button is pressed, it should create a label that
 says, ``Nice job!''.
 
+写一个有一个按钮的GUI程序，当点击按钮之后应该创建第二个按钮。当点击第二个按钮，
+应该创建一个写着``Nice job!''的标签。
+
 What happens if you press the buttons more than once?
 Solution: \url{http://thinkpython.com/code/button_demo.py}
+
+要是你多次点击按钮呢？参见：\url{http://thinkpython.com/code/button_demo.py}
 
 \end{exercise}
 
 
-\section{Canvas widgets}
+\section{Canvas widgets 画布组件}
 \index{Canvas widget}
 \index{widget!Canvas}
 
@@ -18734,7 +18812,12 @@ One of the most versatile widgets is the Canvas, which creates
 a region for drawing lines, circles and other shapes.  If you
 did Exercise~\ref{canvas} you are already familiar with canvases.
 
+最有用的组件之一就是Canvas了，它创建了一个可以绘制线条，圆圈和其它形状的区域。
+如果你做了~\ref{canvas}的练习作业的话，你就已经熟悉canvas了。
+
 The method {\tt ca} creates a new Canvas:
+
+{\tt ca}方法创建一个新的画布：
 
 \begin{verbatim}
 canvas = g.ca(width=500, height=500)
@@ -18745,10 +18828,15 @@ in pixels.
 \index{config method}
 \index{method!config}
 
+{\tt width}和{\tt height}是画布的长宽像素值。
+
 After you create a widget, you can still change the values of
 the options with the
 {\tt config} method.  For example, the {\tt bg} option changes
 the background color:
+
+当你创建了组件之后，你仍然可以通过{\tt config}方法来改变属性的值。例如：{\tt
+bg}属性用来改变背景颜色：
 
 \begin{verbatim}
 canvas.config(bg='white')
@@ -18758,6 +18846,9 @@ The value of {\tt bg} is a string
 that names a color.  The set of legal color names is different
 for different implementations of Python, but all implementations
 provide at least:
+
+{\tt bg}的值是颜色名字的字符串。不同实现的Python的合法颜色名称可能不一样，但至
+少所有都有以下的颜色：
 
 \begin{verbatim}
 white   black
@@ -18770,6 +18861,8 @@ the Canvas method {\tt circle} draws (you guessed it) a circle:
 \index{Canvas item}
 \index{item!Canvas}
 
+画布上面的形状被称为项（{\bf item}）。例如，{\tt circle}方法在画布上创建一个圆：
+
 \begin{verbatim}
 item = canvas.circle([0,0], 100, fill='red')
 \end{verbatim}
@@ -18779,19 +18872,29 @@ center of the circle; the second is the radius.
 \index{Canvas coordinate}
 \index{coordinate!Canvas}
 
+第一个参数是圆中心点的坐标；第二个是半径。
+
 {\tt Gui.py} provides a standard Cartesian coordinate system with
 the origin at the center of the Canvas and the positive $y$ axis
 pointing up.  This is different from some other graphics systems
 where the origin is in the upper left corner, with the $y$ axis
 pointing down.
 
+{\tt Gui.py}提供了一个原点在画布中央的标准笛卡尔坐标系。$y$轴指向上方。这个可能
+和一些其他的图形系统不一样。其它的可能是原点在左上角，$y$轴指向下方。
+
 The {\tt fill} option specifies that the circle should be filled
 in with red.
+
+{\tt fill}属性指示了圆被填充为红色。
 
 The return value from {\tt circle} is an Item object that
 provides methods for modifying the item on the canvas.  For
 example, you can use {\tt config} to change any of the circle's
 options:
+
+{\tt circle}的返回值是一个提供修改画布上的项的方法的对象。例如，你可以使用{\tt
+config}来改变任何圆的属性：
 
 \begin{verbatim}
 item.config(fill='yellow', outline='orange', width=10)
@@ -18800,16 +18903,20 @@ item.config(fill='yellow', outline='orange', width=10)
 {\tt width} is the thickness of the outline in pixels;
 {\tt outline} is the color.
 
+{\tt width}是轮廓的粗细的像素值；{\tt outline}是轮廓的颜色。
+
 \begin{exercise}
 \label{circle}
 
 Write a program that creates a Canvas and a Button.  When the
 user presses the Button, it should draw a circle on the canvas.
 
+写一个程序，创建一个画布和按钮。当用户点击按钮，就会在画布上绘制一个圆。
+
 \end{exercise}
 
 
-\section{Coordinate sequences}
+\section{Coordinate sequences 坐标序列}
 \index{coordinate sequence}
 \index{sequence!coordinate}
 
@@ -18817,6 +18924,9 @@ The {\tt rectangle} method takes a sequence of coordinates that
 specify opposite corners of the rectangle.  This example
 draws a green rectangle with the lower left corner at the origin
 and the upper right corner at $(200,100)$:
+
+{\tt rectangle}方法使用两个坐标的列表来制定一个矩形的两个对角。下面的方法绘制一
+个左下角在原点，右上角在$(200,100)$的绿色矩形。
 
 \begin{verbatim}
 canvas.rectangle([[0, 0], [200, 100]], 
@@ -18828,8 +18938,12 @@ a {\bf bounding box} because the two points
 bound the rectangle.
 \index{bounding box}
 
+这种指定对角的方法被称为{\bf bounding box}，因为两点固定了矩形的边界。
+
 {\tt oval} takes a bounding box and draws an oval
 within the specified rectangle:
+
+{\tt oval} 使用一个bounding box 来绘制一个在指定的矩形范围内的椭圆。
 
 \begin{verbatim}
 canvas.oval([[0, 0], [200, 100]], outline='orange', width=10)
@@ -18839,12 +18953,18 @@ canvas.oval([[0, 0], [200, 100]], outline='orange', width=10)
 a line that connects the points.  This example draws two legs
 of a triangle:
 
+{\tt line} 使用一组坐标序列来绘制一系列的线条。通过将点连成折线。
+下面的例子绘制一个三角形的两边。
+
 \begin{verbatim}
 canvas.line([[0, 100], [100, 200], [200, 100]], width=10)
 \end{verbatim}
 %
 {\tt polygon} takes the same arguments, but it draws the last
 leg of the polygon (if necessary) and fills it in:
+
+{\tt polygon} 使用相同的参数，但是它会把最后的点和起始点连起来形成一个封闭的多
+边形。并且填充颜色。
 
 \begin{verbatim}
 canvas.polygon([[0, 100], [100, 200], [200, 100]],
@@ -18853,7 +18973,7 @@ canvas.polygon([[0, 100], [100, 200], [200, 100]],
 %
 
 
-\section{More widgets}
+\section{More widgets 更多组件}
 \index{Text widget}
 \index{widget!Text}
 
@@ -18862,6 +18982,9 @@ Entry, which is a single line, and a Text widget, which has
 multiple lines.
 \index{Entry widget}
 \index{widget!Entry}
+
+Tkinter提供两个组件可供用户输入文字：一个是Entry，只能有一行，另外一个是Text组
+件，可以输入多行。
 
 {\tt en} creates a new Entry:
 
@@ -18873,12 +18996,17 @@ The {\tt text} option allows you to put text into the entry
 when it is created.  The {\tt get} method returns the contents
 of the Entry (which may have been changed by the user):
 
+{\tt text}属性允许你在创建Entry时输入文字。{\tt get}方法返回Entry的内容（可能会
+被用户改变）：
+
 \begin{verbatim}
 >>> entry.get()
 'Default text.'
 \end{verbatim}
 %
 {\tt te} creates a Text widget:
+
+{\tt te} 创建一个Text组件：
 
 \begin{verbatim}
 text = g.te(width=100, height=5)
@@ -18887,7 +19015,11 @@ text = g.te(width=100, height=5)
 {\tt width} and {\tt height} are the dimensions of the
 widget in characters and lines.
 
+{\tt width} 和 {\tt height}用一行的字符数和行数来指定绘制的大小。
+
 {\tt insert} puts text into the Text widget:
+
+{\tt insert} 可以将文字输入进入Text组件：
 
 \begin{verbatim}
 text.insert(END, 'A line of text.')
@@ -18896,10 +19028,15 @@ text.insert(END, 'A line of text.')
 {\tt END} is a special index that indicates the last character in the
 Text widget.
 
+{\tt END} 是表示Text组件里最后一个字符的位置的索引。
+
 You can also specify a character using a dotted index, like {\tt 1.1},
 which has the line number before the dot and the column number after.
 The following example adds the letters \verb"'nother'" after the first
 character of the first line.
+
+你也可以用一个带点的索引来指定插入的位置。例如{\tt 1.1}指定了在点之前的行号和在
+点之后的列数。下面的例子在第一行的第一个字符后面插入 \verb" 'nother' "
 
 \begin{verbatim}
 >>> text.insert(1.1, 'nother')
@@ -18909,6 +19046,9 @@ The {\tt get} method reads the text in the widget; it takes a start
 and end index as arguments.  The following example returns all the
 text in the widget, including the newline character:
 
+{\tt get}方法获取组件的内容。它使用一个开始索引和结束索引来作为参数。下面的例子
+返回组件内的所有文字，包括换行符：
+
 \begin{verbatim}
 >>> text.get(0.0, END)
 'Another line of text.\n'
@@ -18916,6 +19056,8 @@ text in the widget, including the newline character:
 %
 The {\tt delete} method removes text from the widget;
 the following example deletes all but the first two characters:
+
+{\tt delete}方法用于从组件内删除文字；下面的例子删除前两个字符以后的所有文字：
 
 \begin{verbatim}
 >>> text.delete(1.2, END)
@@ -18933,21 +19075,35 @@ second button, it should read a color name from the Entry and
 use it to change the fill color of the circle.  Use {\tt config}
 to modify the existing circle; don't create a new one.
 
+修改~\ref{circle}练习中的例子，再加入一个Entry组件和第二个按钮。当用户点击第二
+个按钮，它应该从Entry中读取一个颜色名称并且用来填充circle的颜色。使用{\tt
+config}来修改已经存在的circle；不要新创建一个。
+
 Your program should handle the case where the user tries to
 change the color of a circle that hasn't been created, and
 the case where the color name is invalid.
 
+你的程序应该处理当还没有创建circle时，用户就试图改变其颜色，以及当用户输入了一
+个非法的颜色名称时候的特殊情况。
+
 You can see my solution at \url{http://thinkpython.com/code/circle_demo.py}.
+
+你可以在\url{http://thinkpython.com/code/circle_demo.py}看看我写的代码。
+
 
 \end{exercise}
 
 
-\section{Packing widgets}
+\section{Packing widgets 打包组件}
 
 So far we have been stacking widgets in a single column, but in most
 GUIs the layout is more complicated.  For example,
 Figure~\ref{fig.turtleworld} shows a simplified version of
 TurtleWorld (see Chapter~\ref{turtlechap}).
+
+到目前为止,我们都是把组件堆放在了一列上。但在大多数 GUI 程序而言,布局都是非常复
+杂的。例如图~\ref{fig.turtleworld}显示了一个简化版本的TurtleWorld(见
+~\ref{turtlechap}一章)。
 
 \begin{figure}
 \centerline{\includegraphics[scale=0.5]{figs/TurtleWorld.pdf}}
@@ -18960,10 +19116,16 @@ This section presents the code that creates this GUI, broken into a
 series of steps.  You can download the complete example
 from \url{http://thinkpython.com/code/SimpleTurtleWorld.py}.
 
+本节展示了创建这个界面的代码,将它拆解为一系列的步骤。你可以在
+\url{http://thinkpython.com/code/SimpleTurtleWorld.py}下载完整的代码。
+
 At the top level, this GUI contains two widgets---a Canvas and a
 Frame---arranged in a row.  So the first step is to create the row.
 \index{SimpleTurtleWorld class}
 \index{class!SimpleTurtleWorld}
+
+在最顶层，界面包含了2个组件---一个画布和一个框架---并排放置。所以第一步是指定行
+布局。
 
 \begin{verbatim}
 class SimpleTurtleWorld(TurtleWorld):
@@ -18982,12 +19144,19 @@ Arranging widgets in a GUI is called {\bf packing}.
 \index{Frame widget}
 \index{widget!Frame}
 
+{\tt setup}方法用来创建和安排组件。对于GUI程序，排放组件称为{\bf packing}
+
 {\tt row} creates a row Frame and makes it the ``current Frame.''
 Until this Frame is closed or another Frame is created, all
 subsequent widgets are packed in a row.
 
+{\tt row}方法创建了一个横向排列的框架并且把它标记为``当前框架''。直到这个框架关
+闭了或者创建了另外一个框架，所有接下来的组件都被打包进了一行。
+
 Here is the code that creates the Canvas and the column Frame
 that hold the other widgets:
+
+下面是创建了一个画布和一个容纳其他组件的纵向框架的代码：
 
 \begin{verbatim}
         self.canvas = self.ca(width=400, height=400, bg='white')
@@ -18996,6 +19165,8 @@ that hold the other widgets:
 %
 The first widget in the column is a grid Frame, which contains
 four buttons arranged two-by-two:
+
+在纵向框架里面的第一个组建是一个格子框架，又包含了2x2的按钮矩阵：
 
 \begin{verbatim}
         self.gr(cols=2)
@@ -19014,13 +19185,22 @@ laid out left-to-right, top-to-bottom.
 \index{method, bound}
 \index{subject}
 
+{\tt gr}方法创建一个格子；参数是列数。在格子框架里面的组件从左到右，从上到下的
+排放。
+
 The first button uses {\tt self.canvas.dump} as a callback; the second
 uses {\tt self.quit}.  These are {\bf bound methods}, which means they
 are associated with a particular object.  When they are invoked, they
 are invoked on the object.
 
+第一个按钮使用{\tt self.canvas.dump}作为回调；第二个使用{\tt self.quit}。这些都
+是{\bf 绑定方法}，也就是它们和特定的对象绑定到一起的。当它们被调用时，他们是在
+对象上被调用的。\footnote{可以简单的理解为对象的方法，self指针会指向对象}
+
 The next widget in the column is a row Frame that contains
 a Button and an Entry:
+
+下一个组件是一个包含一个按钮和输入框的横向框架。
 
 \begin{verbatim}
         self.row([0,1], pady=30)
@@ -19036,20 +19216,35 @@ to the second widget, which is the Entry.  If you run this code
 and resize the window, you will see that the Entry grows and
 the Button doesn't.
 
+{\tt row}的第一个参数是一个权重列表，决定了组件分配多少的额外空间。
+{\tt [0,1]}列表表示所有额外的空间都分给第二个组件，也就是输入狂。如果你运行这段
+代码并且重新调整窗口大小，你可以看到输入框变大了而按钮没有变化。
+
 The option {\tt pady} ``pads'' this row in the $y$ direction,
 adding 30 pixels of space above and below.
 
+{\tt pady}属性在y轴上下增加了30像素的空白。
+
 {\tt endrow} ends this row of widgets, so subsequent widgets are
 packed in the column Frame.  {\tt Gui.py} keeps a stack of Frames:
+
+{\tt endrow}关闭了这个横向框架，所以接下来的组件被打包进入纵向框架。{\tt
+Gui.py}维护一个框架的栈：
 
 \begin{itemize}
 
 \item When you use {\tt row}, {\tt col} or {\tt gr} to create a Frame,
 it goes on top of the stack and becomes the current Frame.
 
+当你使用{\tt row}，{\tt col}或{\tt gr}来创建框架，它进入栈的顶层并且成为当前框
+架。
+
 \item When you use {\tt endrow}, {\tt endcol} or {\tt endgr} to close
 a Frame, it gets popped off the stack and the previous Frame on the
 stack becomes the current Frame.
+
+当你使用{\tt endrow},{\tt endcol}或{\tt endgf}来结束一个框架，它就弹出栈并且上
+一个框架成为当前框架。
 
 \end{itemize} 
 
@@ -19058,6 +19253,10 @@ uses it as a filename, reads the contents
 and passes it to \verb"run_code".  {\tt self.inter} is an
 Interpreter object that knows how to take a string and
 execute it as Python code.
+
+\verb"run_file" 方法读取输入框的内容，作为文件名，并且读入这个文件，将内容传给
+\verb"run_code"。{\tt self.inter}是一个解释器对象，知道如何将这个字符串作为
+Python代码来执行。
 
 \begin{verbatim}
     def run_file(self):
@@ -19069,6 +19268,8 @@ execute it as Python code.
 %
 The last two widgets are a Text widget and a Button:
 
+最后两个组件是一个Text组件和一个按钮：
+
 \begin{verbatim}
         self.te_code = self.te(width=25, height=10)
         self.te_code.insert(END, 'world.clear()\n')
@@ -19079,6 +19280,9 @@ The last two widgets are a Text widget and a Button:
 %
 \verb"run_text" is similar to \verb"run_file" except that it takes
 the code from the Text widget instead of from a file:
+
+\verb"run_text" 和 \verb"run_file" 比较相似，除了它从一个Text组件而不是文件读入
+代码：
 
 \begin{verbatim}
     def run_text(self):
@@ -19094,11 +19298,17 @@ The one I demonstrated in this section is the ``grid'' geometry
 manager; the others are called ``pack'' and ``place''.
 \index{geometry manager}
 
+不幸的是，组件布局的细节在不同的语言中不同，在不同的Python模块中也不同。Tkinter
+自己提供了3种不同的机制来安排组件。这些机制被成为几何管理器（{\bf geometry
+managers}）。我在这一节讲述的是``grid''几何管理器；其它的叫``pack''和``place''
+。
+
 Fortunately, most of the concepts in this section apply to
 other GUI modules and other languages.
 
+幸运的是，本节中的大部分概念都可以用于其它GUI模块和其它语言。
 
-\section{Menus and Callables}
+\section{Menus and Callables 菜单和可调用对象}
 \index{Menubutton widget}
 \index{widget!Menubutton}
 
@@ -19106,8 +19316,14 @@ A Menubutton is a widget that looks like a button, but when pressed
 it pops up a menu.  After the user selects an item, the menu
 disappears.
 
+一个菜单按钮是一个看起来像按钮的组件，但是当点击它后会弹出来一个菜单。在用户选
+择一个条目后，菜单就消失了。
+
 Here is code that creates a color selection Menubutton
 (you can download it from \url{http://thinkpython.com/code/menubutton_demo.py}):
+
+下面是创建一个颜色选择菜单的代码（可以从
+\url{http://thinkpython.com/code/menubutton_demo.py}下载）。
 
 \begin{verbatim}
 g = Gui()
@@ -19120,6 +19336,9 @@ mb = g.mb(text=colors[0])
 the name of the default color.  The following loop creates one menu
 item for each color:
 
+{\tt mb}创建一个菜单按钮。一开始，按钮上的文字是color[0]。接下来的循环用来为每
+个颜色创建菜单项。
+
 \begin{verbatim}
 for color in colors:
     g.mi(mb, text=color, command=Callable(set_color, color))
@@ -19131,6 +19350,8 @@ associated with.
 \index{Callable object}
 \index{object!Callable}
 
+{\tt mi}的第一个参数是这些菜单项关联的菜单按钮。
+
 The {\tt command} option is a Callable object, which is something new.
 So far we have seen functions and bound methods used as callbacks,
 which works fine if you don't have to pass any arguments to
@@ -19138,12 +19359,21 @@ the function.  Otherwise you have to construct a Callable object
 that contains a function, like \verb"set_color", and its arguments,
 like {\tt color}.
 
+{\tt command}按钮是一个可调用对象（函数对象)，是一些新东西。我们目前看到的函数和绑定方法用
+作回调，你不用传递任何参数给函数就能够正常工作。你也可以创建一个包含函数的可调
+用对象，就像\verb"set_color"，和它的参数，就像{\tt color}。
+
 The Callable object stores a reference to the function and the
 arguments as attributes.  Later, when the user clicks on a menu
 item, the callback calls the function and passes the stored
 arguments.
 
+可调用对象保存了函数的引用和将要用作属性的参数。之后，当用户点击了一个按钮项，
+回调引用的函数，并且把储存的参数传递给它。
+
 Here is what \verb"set_color" might look like:
+
+下面是 \verb"set_color" 长得什么样子的：
 
 \begin{verbatim}
 def set_color(color):
@@ -19157,8 +19387,12 @@ It also print the color; if you try this example, you can confirm that
 \verb"set_color" is called when you select an item (and {\em not}
 called when you create the Callable object).
 
+当用户选择了菜单项，\verb"set_color"就被调用了，它使菜单按钮显示新选择的颜色。
+它也打印出来颜色值;如果你尝试运行这个例子，你可以确定\verb"set_color"只有当你在
+选择了菜单项之后调用(而{\em 不}是在你创建可调用对象时候调用的）。
 
-\section{Binding}
+
+\section{Binding 绑定}
 \index{binding}
 \index{callback}
 
@@ -19166,16 +19400,27 @@ A {\bf binding} is an association between a widget, an event and a
 callback: when an event (like a button press) happens on a widget, the
 callback is invoked.
 
+一个绑定是在一个组件上和一个事件，回调做关联：当组件上的一个事件（比如点击按钮
+）发生了，就会调用回调函数。
+
 Many widgets have default bindings.  For example, when you press
 a button, the default binding changes the relief of the button
 to make it look depressed.  When you release the button, the
 binding restores the appearance of the button and invokes the
 callback specified with the {\tt command} option.
 
+许多组件有默认的绑定。例如，当你点击一个按钮，默认的绑定改变按钮的外观让它看起
+来像是降低了。当你释放按钮，绑定恢复按钮的外观然后调用使用{\tt command}指定的回
+调函数。
+
 You can use the {\tt bind} method to override these default
 bindings or to add new ones.  For example, this code creates a
 binding for a canvas (you can download the code in this
 section from \url{http://thinkpython.com/code/draggable_demo.py}):
+
+你可以使用{\tt bind}方法来覆盖这些默认的绑定或者添加新的。例如，下面的代码为画
+布创建了一个绑定（你可以从\url{http://thinkpython.com/code/draggable_demo.py}下
+载源代码）：
 
 \begin{verbatim}
 ca.bind('<ButtonPress-1>', make_circle)
@@ -19188,10 +19433,16 @@ events include {\tt ButtonMotion}, {\tt ButtonRelease} and
 \index{event string}
 \index{event handler}
 
+第一个参数是一个事件的名称：当用户点击了鼠标的左键时触发这个时间。其他的鼠标事
+件包括{\tt ButtonMotion}, {\tt ButtonRelease}和 {\tt Double-Button}。
+
 The second argument is an event handler.  An event handler
 is a function or bound method, like a callback, but an important
 difference is that an event handler takes an Event object as a
 parameter.  Here is an example:
+
+第二个参数是一个事件句柄。一个事件句柄是一个函数或者绑定方法。比如回调函数，但
+是明显不同的是一个事件句柄使用一个Event对象作为参数。下面是一个例子：
 
 \begin{verbatim}
 def make_circle(event):
@@ -19210,10 +19461,18 @@ Canvas methods like {\tt circle}.
 \index{Event object}
 \index{object!Event}
 
+Event对象包含了诸如事件类型和一些类似鼠标指针的坐标等的详细信息。在这个例子中，
+我们需要的信息是鼠标点击时的位置。这些值是``像素坐标''\footnote{以左上角为原点
+的标准笛卡尔坐标系}。\verb"canvas_coords"方法将这些翻译成和如{\tt circle}等画布
+方法兼容的``画布坐标''\footnote{以画布中心为原点的坐标系}。
+
 For Entry widgets, it is common to bind the \verb"<Return>" event,
 which is triggered when the user presses the {\sf Return} or
 {\sf Enter} key.  For example, the following code creates a Button
 and an Entry.
+
+对于输入框组件，常常绑定\verb"<Return>"事件，当用户点击{\sf Return}或者{\sf
+Enter}键时触发。例如：下面的代码创建一个按钮和一个输入框。
 
 \begin{verbatim}
 bu = g.bu('Make text item:', make_text)
@@ -19227,6 +19486,10 @@ this work, we need a function that can be called as a command
 (with no arguments) or as an event handler (with an Event
 as an argument):
 
+当点击按钮或者当用户在输入框输入时按{\sf Return}时候触发\verb"make_text" 。为了
+使这个工作，我们需要一个可以被作为命令调用(没有参数)或者作为事件句柄（用Event作
+为参数）的函数：
+
 \begin{verbatim}
 def make_text(event=None):
     text = en.get()
@@ -19236,11 +19499,16 @@ def make_text(event=None):
 \verb"make_text" gets the contents of the Entry and displays
 it as a Text item in the Canvas.
 
+\verb"make_text" 获取输入框的内容然后在画布中把它作为一个Text对象显示出来。
+
 It is also possible to create bindings for Canvas items.
 The following is a class definition for {\tt Draggable},
 which is a child class of {\tt Item} that provides bindings
 that implement drag-and-drop capability.
 \index{drag-and-drop}
+
+也可以为画布成员创建绑定。下面是一个为{\tt Item}的{\tt Draggable}子类定义的类，
+能够提供drag-and-drop能力的绑定。
 
 \begin{verbatim}
 class Draggable(Item):
@@ -19273,10 +19541,14 @@ changes the color to yellow:
 {\tt cget} stands for ``get configuration;'' it takes the name of an
 option as a string and returns the current value of that option.
 
+{\tt cget} 用来``获取属性''；它用一个属性的名字字符串作为参数然后返回这个属性的当前的值。
+
 {\tt drag} computes how far the object has moved relative to the
 starting place, updates the stored coordinates, and then moves the
 item.
 \index{update!coordinate}
+
+{\tt drag}计算相对起始点，对象被移动了多远，更新储存的坐标，然后移动对象。
 
 \begin{verbatim}
     def drag(self, event):
@@ -19296,7 +19568,11 @@ convert to Canvas coordinates.
 \index{pixel coordinate}
 \index{coordinate!pixel}
 
+这个是用像素坐标计算的；这里没有必要转换成画布坐标。
+
 Finally, {\tt drop} restores the original color of the item:
+
+最后，{\tt drop}恢复对象的原来的颜色：
 
 \begin{verbatim}
     def drop(self, event):
@@ -19307,6 +19583,10 @@ You can use the {\tt Draggable} class to add drag-and-drop
 capability to an existing item.  For example, here is a modified
 version of \verb"make_circle" that uses {\tt circle} to create
 an Item and {\tt Draggable} to make it draggable:
+
+你可以使用{\tt Draggable}类来为一个已经存在的对象增加drag-and-drop功能。例如，
+下面是一个修改版的\verb"make_circle"，使用{\tt circle}来创建一个对象然后使用
+{\tt Draggable}来使它可拖动：
 
 \begin{verbatim}
 def make_circle(event):
@@ -19320,8 +19600,11 @@ modify the capabilities of a parent class without modifying its
 definition.  This is particularly useful if you want to change
 behavior defined in a module you did not write.
 
+这个例子解释了继承的一个好处：你可以增减一个父类的功能而不用修改其定义。当你想
+改变一个不是你写的模块里面的类的行为时就非常有用。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \index{debugging}
 
 One of the challenges of GUI programming is keeping track of
@@ -19329,8 +19612,13 @@ which things happen while the GUI is being built and which
 things happen later in response to user events.
 \index{callback}
 
+一个GUI编程的挑战是跟踪GUI创建时发生了什么事以及什么是在延迟到用户事件时发生的
+事情。
+
 For example, when you are setting up a callback, it is a common error
 to call the function rather than passing a reference to it:
+
+例如，当你设置了一个回调，常见的错误是直接调用了这个函数而不是传递它的一个引用：
 
 \begin{verbatim}
 def the_callback():
@@ -19349,11 +19637,18 @@ a user event.
 \index{flow of execution}
 \index{event-driven programming}
 
+如果你运行这个代码，你会立刻看到它调用了\verb"the_callback"，然后创建按钮。当你
+点击按钮时，什么都没有发生。因为\verb"the_callback"的返回值是{\tt None}。
+通常你不想在你设置GUI的时候调用回调函数；它应该在之后的响应用户事件时调用。
+
 Another challenge of GUI programming is that you don't have control
 of the flow of execution.  Which parts of the program execute
 and their order are determined by user actions.
 That means that you have to design your program to work correctly
 for any possible sequence of events.
+
+GUI编程的另外一个挑战是你并不能控制执行流程。哪部分的程序执行以及执行的顺序是由
+用户动作决定的。也就是说你必须为任何可能的时间序列设计正确运行的程序。
 
 For example, the GUI in Exercise~\ref{circle2} has two widgets:
 one creates a Circle item and the other changes the color of the
@@ -19361,10 +19656,17 @@ Circle.  If the user creates the circle and then changes its color,
 there's no problem.  But what if the user changes the color of
 a circle that doesn't exist yet?  Or creates more than one circle?
 
+例如，在~\ref{circle2}练习中的GUI有两个组件：一个创建圆另外一个更改圆的颜色。如
+果用户先创建一个圆再改变颜色就没有问题。但是如果用户先改变颜色后创建圆？或者创
+建了多个圆呢？
+
 As the number of widgets grows, it is increasingly difficult to
 imagine all possible sequences of events.  One way to manage this 
 complexity is to encapsulate the state of the system in an object
 and then consider:
+
+当组件的数量增加时，想象所有可能的事件序列就变得非常困难。一种管理这种麻烦事的
+方法是把它们封装进状态系统，然后再考虑：
 
 \begin{itemize}
 
@@ -19372,16 +19674,27 @@ and then consider:
 might consider two states: before and after the user creates the
 first circle.
 
+可能的状态有哪些？在圆例子中，我们可以考虑两个状态：用户创建了第一个圆之前和之
+后两个状态。
+
 \item In each state, what events can occur?  In the example,
 the user can press either of the buttons, or quit.
+
+在每个状态，会发生什么事件？在本例中，用户可以点击按钮或者退出。
 
 \item For each state-event pair, what is the desired outcome?
 Since there are two states and two buttons, there are four
 state-event pairs to consider.
 
+在每一个状态-事件对，设计好的结果是什么？因为这里有2个状态和2个按钮。所以需要考
+虑4个状态-事件对。
+
 \item What can cause a transition from one state to another?
 In this case, there is a transition when the user creates
 the first circle.
+
+什么能够造成一种状态迁移到另外一种状态？在本例中，当用户创建了第一个圆之后有一
+个迁移。
 
 \end{itemize}
 
@@ -19389,46 +19702,50 @@ You might also find it useful to define, and check, invariants that
 should hold regardless of the sequence of events.
 \index{invariant}
 
+% ??? %
+
 This approach to GUI programming can help you write correct
 code without taking the time to test every possible sequence
 of user events!
 
+这些GUI编程的途径能够帮助你写正确的代码而不用花时间测试每个可能的用户事件顺序！
 
-\section{Glossary}
+
+\section{Glossary 术语表}
 
 \begin{description}
 
 \item[GUI:] A graphical user interface.
 \index{GUI}
 
-\item[widget:] One of the elements that makes up a GUI, including
+\item[widget（组件）:] One of the elements that makes up a GUI, including
 buttons, menus, text entry fields, etc. 
 \index{widget}
 
-\item[option:] A value that controls the appearance or function of
+\item[option（属性）:] A value that controls the appearance or function of
 a widget.
 \index{option}
 
-\item[keyword argument:] An argument that indicates the parameter
+\item[keyword argument（关键字参数）:] An argument that indicates the parameter
 name as part of the function call.
 \index{keyword argument}
 
-\item[callback:] A function associated with a widget that is
+\item[callback（回调）:] A function associated with a widget that is
 called when the user performs an action.
 \index{callback}
 
-\item[bound method:] A method associated with a particular instance.
+\item[bound method（对象方法）:] A method associated with a particular instance.
 \index{bound method}
 
-\item[event-driven programming:] A style of programming in which
+\item[event-driven programming（事件驱动编程）:] A style of programming in which
 the flow of execution is determined by user actions.
 \index{event-driven programming}
 
-\item[event:] A user action, like a mouse click or key press, that
+\item[event（事件）:] A user action, like a mouse click or key press, that
 causes a GUI to respond.
 \index{event}
 
-\item[event loop:] An infinite loop that waits for user actions
+\item[event loop（事件循环）:] An infinite loop that waits for user actions
 and responds.
 \index{event loop}
 
@@ -19439,13 +19756,13 @@ and responds.
 usually specified by two opposing corners.
 \index{bounding box}
 
-\item[pack:] To arrange and display the elements of a GUI.
+\item[pack（打包）:] To arrange and display the elements of a GUI.
 \index{packing widgets}
 
-\item[geometry manager:] A system for packing widgets.
+\item[geometry manager（几何管理器）:] A system for packing widgets.
 \index{geometry manager}
 
-\item[binding:] An association between a widget, an event, and
+\item[binding（绑定）:] An association between a widget, an event, and
 an event handler.  The event handler is called when the event
 occurs in the widget.
 \index{binding}
@@ -19453,13 +19770,15 @@ occurs in the widget.
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习}
 
 \begin{exercise}
 \index{image viewer}
 
 For this exercise, you will write an image viewer.  Here is
 a simple example:
+
+在这个练习中，你需要写一个图像浏览器。下面是一个简单的例子：
 
 \begin{verbatim}
 g = Gui()
@@ -19474,6 +19793,10 @@ that Tkinter can display.  {\tt Canvas.image} puts the image on the
 canvas, centered on the given coordinates.  You can also put images on
 labels, buttons, and some other widgets:
 
+{\tt PhotoImage} 读取一个文件然后返回一个Tkinter可以显示的{\tt PhotoImage}对象
+。{\tt Canvas.Image}把这些图像放到canvas中，根据给定的坐标居中。你也可以其在图
+像上放一个标签，按钮，和其它的组件。
+
 \begin{verbatim}
 g.la(image=photo)
 g.bu(image=photo)
@@ -19487,9 +19810,15 @@ files.
 \index{Image module}
 \index{module!Image}
 
+PhotoImage可以只处理几个图像格式，比如GIF和PPM，我们也可以使用Python Imageing
+Library （PIL）来读取其它格式。
+
 The name of the PIL module is {\tt Image}, but Tkinter defines an
 object with the same name.  To avoid the conflict, you can use {\tt
   import...as} like this:
+
+PIL模块的名称是{\tt Image}。但是Tkinter定义了一个相同名称的对象。为了避免冲突，
+你可以使用{\tt import...as}来解决。
 
 \begin{verbatim}
 import Image as PIL
@@ -19500,6 +19829,9 @@ The first line imports {\tt Image} and
 gives it the local name {\tt PIL}.  The second
 line imports {\tt ImageTk}, which can translate a PIL
 image into a Tkinter PhotoImage.  Here's an example:
+
+第一行导入{\tt Image}然后给予一个本地名称{\tt PIL}。第二行导入{\tt ImageTk}，可
+以将PIL图像转换成一个Tkinter PhotoImage。下面是一个例子：
 
 \begin{verbatim}
 image = PIL.open('allen.png')
@@ -19516,36 +19848,62 @@ might have to install {\tt PIL} and {\tt ImageTk}.
 They are probably in your software repository,  but if not
 you can get them from \url{pythonware.com/products/pil/}.
 
+
+从 \url{http://thinkpython.com/code}下载\verb"image_demo.py", \verb"danger.gif"
+和 \verb"allen.png" .  运行 \verb"image_demo.py".  你可能需要先去安装 {\tt PIL}
+和 {\tt ImageTk}。它们可能在你的软件源中,  如果不是的话，你可以从
+\url{pythonware.com/products/pil/}下载。
+
 \item In \verb"image_demo.py" change the name of the second
 PhotoImage from {\tt photo2} to {\tt photo} and run the program
 again.  You should see the second PhotoImage but not the first.
+
+在\verb"image_demo.py"将第二个PhotoImage的名字从 {\tt photo2} 改为{\tt photo}
+然后再次运行程序。你可以看到第二个PhotoImage而不是第一个。
 
 The problem is that when you reassign {\tt photo} it overwrites
 the reference to the first PhotoImage, which then disappears.  The
 same thing happens if you assign a PhotoImage to a local
 variable; it disappears when the function ends.
 
+问题是你重新赋值的{\tt photo}覆盖了第一个PhotoImage的引用，所以消失了。同样地如
+果你把一个PhotoImage赋值为一个局部变量；在函数结束时它也会消失。
+
 To avoid this problem, you have to store a reference to each
 PhotoImage you want to keep.  You can use a global variable, or
 store PhotoImages in a data structure or as an attribute of
 an object.
+
+为了避免这个问题，你可以储存每一个你想保留的PhotoImage的引用。你可以使用一个全
+局变量，或者把PhotoImage储存在一个作为对象的属性的数据结构中。
 
 This behavior can be frustrating, which is why I am warning
 you (and why the example image says ``Danger!'').
 \index{bug!worst ever}
 \index{worst bug!ever}
 
+这样做可能会让人迷惑，所以我要警告你（也是为什么这个例子用的图片是``Danger!''）。
+
 \item Starting with this example, write a program that takes
 the name of a directory and loops through all the files, displaying
 any files that PIL recognizes as images.  You can use a {\tt try}
 statement to catch the files PIL doesn't recognize.
 
+由这个例子开始，写一个程序，用一个文件夹名字作为输入然后遍历所有文件，显示那些
+PIL可以识别的任何图像文件。你可以使用一个{\tt try}语句来捕获PIL不能识别的文件。
+
 When the user clicks on the image, the program should display the next one.
+
+当用户点击图片，程序应该显示下一个。
 
 \item PIL provides a variety of methods for manipulating images.
 You can read about them at \url{http://pythonware.com/library/pil/handbook}.
 As a challenge, choose a few of these methods and provide a
 GUI for applying them to images.
+
+PIL提供了众多的方法来处理图像。你可以在
+\url{http://pythonware.com/library/pil/handbook}阅读。作为一个挑战，从这些方法
+中选择几个然后提供一个GUI来应用它们到图像上。
 
 \end{enumerate}
 
@@ -19562,14 +19920,22 @@ A vector graphics editor is a program that allows users to draw and
 edit shapes on the screen and generate output files in vector graphics
 formats like Postscript and SVG.
 
+一个矢量图编辑器是一个可以允许用户在屏幕上绘制和编辑图形并且用如Postscript和SVG
+的矢量图格式生成输出文件的软件。
+
 Write a simple vector graphics editor using Tkinter.  At a
 minimum, it should allow users to draw lines, circles and
 rectangles, and it should use {\tt Canvas.dump} to
 generate a Postscript description of the contents of the
 Canvas.
 
+用Tkinter写一个简单的矢量图编辑器。至少，它应该允许用户绘制直线，圆和矩形，它应
+该使用{\tt Canvas.dump}来把画布的内容生成为Postscript。
+
 As a challenge, you could allow users to select and resize
 items on the Canvas.
+
+作为一个挑战，你可以允许用户选择和缩放画布上的元素。
 
 % TODO: write a solution!
 
@@ -19587,6 +19953,9 @@ and a Canvas to display the contents of the page.
 \index{HTMLParser module}
 \index{module!HTMLParser}
 
+使用Tkinter写一个简单的网页浏览器。它应该有一个Text组件来让用户输入一个URL和一
+个画布来显示网页的内容。
+
 You can use the {\tt urllib} module to download files
 (see Exercise~\ref{urllib}) and
 the {\tt HTMLParser} module to parse the HTML
@@ -19595,9 +19964,16 @@ tags (see \url{docs.python.org/lib/module-HTMLParser.html}).
 \index{text!plain}
 \index{hyperlink}
 
+你可以使用{\tt urllib}模块来下载文件（参见 ~\ref{urllib}练习）和{\tt
+HTMLParser}模块来处理HTML标签（参见
+\url{docs.python.org/lib/module-HTMLParser.html}）。
+
 At a minimum your browser should handle plain text and hyperlinks.  As
 a challenge you could handle background colors, text
 formatting tags and images.
+
+至少，你的浏览器应该处理纯文本和超链接。作为一个挑战你可以处理背景颜色，文字格
+式化标签和图像。
 
 % TODO: write a solution!
 
@@ -22105,5 +22481,8 @@ attributes and HAS-A relationships of objects that are instantiated.
 %\blankpage
 %\blankpage
 
+\ifxetex
+\else
 \end{CJK}
+\fi
 \end{document}
