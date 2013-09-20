@@ -19711,41 +19711,41 @@ of user events!
 这些GUI编程的途径能够帮助你写正确的代码而不用花时间测试每个可能的用户事件顺序！
 
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
 \item[GUI:] A graphical user interface.
 \index{GUI}
 
-\item[widget:] One of the elements that makes up a GUI, including
+\item[widget（组件）:] One of the elements that makes up a GUI, including
 buttons, menus, text entry fields, etc. 
 \index{widget}
 
-\item[option:] A value that controls the appearance or function of
+\item[option（属性）:] A value that controls the appearance or function of
 a widget.
 \index{option}
 
-\item[keyword argument:] An argument that indicates the parameter
+\item[keyword argument（关键字参数）:] An argument that indicates the parameter
 name as part of the function call.
 \index{keyword argument}
 
-\item[callback:] A function associated with a widget that is
+\item[callback（回调）:] A function associated with a widget that is
 called when the user performs an action.
 \index{callback}
 
-\item[bound method:] A method associated with a particular instance.
+\item[bound method（对象方法）:] A method associated with a particular instance.
 \index{bound method}
 
-\item[event-driven programming:] A style of programming in which
+\item[event-driven programming（事件驱动编程）:] A style of programming in which
 the flow of execution is determined by user actions.
 \index{event-driven programming}
 
-\item[event:] A user action, like a mouse click or key press, that
+\item[event（事件）:] A user action, like a mouse click or key press, that
 causes a GUI to respond.
 \index{event}
 
-\item[event loop:] An infinite loop that waits for user actions
+\item[event loop（事件循环）:] An infinite loop that waits for user actions
 and responds.
 \index{event loop}
 
@@ -19756,13 +19756,13 @@ and responds.
 usually specified by two opposing corners.
 \index{bounding box}
 
-\item[pack:] To arrange and display the elements of a GUI.
+\item[pack（打包）:] To arrange and display the elements of a GUI.
 \index{packing widgets}
 
-\item[geometry manager:] A system for packing widgets.
+\item[geometry manager（几何管理器）:] A system for packing widgets.
 \index{geometry manager}
 
-\item[binding:] An association between a widget, an event, and
+\item[binding（绑定）:] An association between a widget, an event, and
 an event handler.  The event handler is called when the event
 occurs in the widget.
 \index{binding}
@@ -19770,13 +19770,15 @@ occurs in the widget.
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习}
 
 \begin{exercise}
 \index{image viewer}
 
 For this exercise, you will write an image viewer.  Here is
 a simple example:
+
+在这个练习中，你需要写一个图像浏览器。下面是一个简单的例子：
 
 \begin{verbatim}
 g = Gui()
@@ -19791,6 +19793,10 @@ that Tkinter can display.  {\tt Canvas.image} puts the image on the
 canvas, centered on the given coordinates.  You can also put images on
 labels, buttons, and some other widgets:
 
+{\tt PhotoImage} 读取一个文件然后返回一个Tkinter可以显示的{\tt PhotoImage}对象
+。{\tt Canvas.Image}把这些图像放到canvas中，根据给定的坐标居中。你也可以其在图
+像上放一个标签，按钮，和其它的组件。
+
 \begin{verbatim}
 g.la(image=photo)
 g.bu(image=photo)
@@ -19804,9 +19810,15 @@ files.
 \index{Image module}
 \index{module!Image}
 
+PhotoImage可以只处理几个图像格式，比如GIF和PPM，我们也可以使用Python Imageing
+Library （PIL）来读取其它格式。
+
 The name of the PIL module is {\tt Image}, but Tkinter defines an
 object with the same name.  To avoid the conflict, you can use {\tt
   import...as} like this:
+
+PIL模块的名称是{\tt Image}。但是Tkinter定义了一个相同名称的对象。为了避免冲突，
+你可以使用{\tt import...as}来解决。
 
 \begin{verbatim}
 import Image as PIL
@@ -19817,6 +19829,9 @@ The first line imports {\tt Image} and
 gives it the local name {\tt PIL}.  The second
 line imports {\tt ImageTk}, which can translate a PIL
 image into a Tkinter PhotoImage.  Here's an example:
+
+第一行导入{\tt Image}然后给予一个本地名称{\tt PIL}。第二行导入{\tt ImageTk}，可
+以将PIL图像转换成一个Tkinter PhotoImage。下面是一个例子：
 
 \begin{verbatim}
 image = PIL.open('allen.png')
@@ -19833,36 +19848,62 @@ might have to install {\tt PIL} and {\tt ImageTk}.
 They are probably in your software repository,  but if not
 you can get them from \url{pythonware.com/products/pil/}.
 
+
+从 \url{http://thinkpython.com/code}下载\verb"image_demo.py", \verb"danger.gif"
+和 \verb"allen.png" .  运行 \verb"image_demo.py".  你可能需要先去安装 {\tt PIL}
+和 {\tt ImageTk}。它们可能在你的软件源中,  如果不是的话，你可以从
+\url{pythonware.com/products/pil/}下载。
+
 \item In \verb"image_demo.py" change the name of the second
 PhotoImage from {\tt photo2} to {\tt photo} and run the program
 again.  You should see the second PhotoImage but not the first.
+
+在\verb"image_demo.py"将第二个PhotoImage的名字从 {\tt photo2} 改为{\tt photo}
+然后再次运行程序。你可以看到第二个PhotoImage而不是第一个。
 
 The problem is that when you reassign {\tt photo} it overwrites
 the reference to the first PhotoImage, which then disappears.  The
 same thing happens if you assign a PhotoImage to a local
 variable; it disappears when the function ends.
 
+问题是你重新赋值的{\tt photo}覆盖了第一个PhotoImage的引用，所以消失了。同样地如
+果你把一个PhotoImage赋值为一个局部变量；在函数结束时它也会消失。
+
 To avoid this problem, you have to store a reference to each
 PhotoImage you want to keep.  You can use a global variable, or
 store PhotoImages in a data structure or as an attribute of
 an object.
+
+为了避免这个问题，你可以储存每一个你想保留的PhotoImage的引用。你可以使用一个全
+局变量，或者把PhotoImage储存在一个作为对象的属性的数据结构中。
 
 This behavior can be frustrating, which is why I am warning
 you (and why the example image says ``Danger!'').
 \index{bug!worst ever}
 \index{worst bug!ever}
 
+这样做可能会让人迷惑，所以我要警告你（也是为什么这个例子用的图片是``Danger!''）。
+
 \item Starting with this example, write a program that takes
 the name of a directory and loops through all the files, displaying
 any files that PIL recognizes as images.  You can use a {\tt try}
 statement to catch the files PIL doesn't recognize.
 
+由这个例子开始，写一个程序，用一个文件夹名字作为输入然后遍历所有文件，显示那些
+PIL可以识别的任何图像文件。你可以使用一个{\tt try}语句来捕获PIL不能识别的文件。
+
 When the user clicks on the image, the program should display the next one.
+
+当用户点击图片，程序应该显示下一个。
 
 \item PIL provides a variety of methods for manipulating images.
 You can read about them at \url{http://pythonware.com/library/pil/handbook}.
 As a challenge, choose a few of these methods and provide a
 GUI for applying them to images.
+
+PIL提供了众多的方法来处理图像。你可以在
+\url{http://pythonware.com/library/pil/handbook}阅读。作为一个挑战，从这些方法
+中选择几个然后提供一个GUI来应用它们到图像上。
 
 \end{enumerate}
 
@@ -19879,14 +19920,22 @@ A vector graphics editor is a program that allows users to draw and
 edit shapes on the screen and generate output files in vector graphics
 formats like Postscript and SVG.
 
+一个矢量图编辑器是一个可以允许用户在屏幕上绘制和编辑图形并且用如Postscript和SVG
+的矢量图格式生成输出文件的软件。
+
 Write a simple vector graphics editor using Tkinter.  At a
 minimum, it should allow users to draw lines, circles and
 rectangles, and it should use {\tt Canvas.dump} to
 generate a Postscript description of the contents of the
 Canvas.
 
+用Tkinter写一个简单的矢量图编辑器。至少，它应该允许用户绘制直线，圆和矩形，它应
+该使用{\tt Canvas.dump}来把画布的内容生成为Postscript。
+
 As a challenge, you could allow users to select and resize
 items on the Canvas.
+
+作为一个挑战，你可以允许用户选择和缩放画布上的元素。
 
 % TODO: write a solution!
 
@@ -19904,6 +19953,9 @@ and a Canvas to display the contents of the page.
 \index{HTMLParser module}
 \index{module!HTMLParser}
 
+使用Tkinter写一个简单的网页浏览器。它应该有一个Text组件来让用户输入一个URL和一
+个画布来显示网页的内容。
+
 You can use the {\tt urllib} module to download files
 (see Exercise~\ref{urllib}) and
 the {\tt HTMLParser} module to parse the HTML
@@ -19912,9 +19964,16 @@ tags (see \url{docs.python.org/lib/module-HTMLParser.html}).
 \index{text!plain}
 \index{hyperlink}
 
+你可以使用{\tt urllib}模块来下载文件（参见 ~\ref{urllib}练习）和{\tt
+HTMLParser}模块来处理HTML标签（参见
+\url{docs.python.org/lib/module-HTMLParser.html}）。
+
 At a minimum your browser should handle plain text and hyperlinks.  As
 a challenge you could handle background colors, text
 formatting tags and images.
+
+至少，你的浏览器应该处理纯文本和超链接。作为一个挑战你可以处理背景颜色，文字格
+式化标签和图像。
 
 % TODO: write a solution!
 
