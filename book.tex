@@ -17538,7 +17538,7 @@ You can see my solution at \url{http://thinkpython.com/code/color_space.py}.
 \end{exercise}
 
 
-\chapter{Inheritance}
+\chapter{Inheritance 继承}
 
 In this chapter I present classes to represent playing cards,
 decks of cards, and poker hands.  If you don't play poker, you can
@@ -17550,11 +17550,19 @@ Code examples from this chapter are available from
 \index{card, playing}
 \index{poker}
 
+在本章中，我会用类来表示玩纸牌，？decks of cards？，一手牌。如果你不会玩一手牌
+，你可以在\url{http://en.wikipedia.org/wiki/Poker}阅读相关规则，但你可以不用，
+反正我会告诉你做练习时你需要知道的。这章的代码可以从
+\url{http://thinkpython.com/code/Card.py}获取。
+
 If you are not familiar with Anglo-American playing cards,
 you can read about them at \url{http://en.wikipedia.org/wiki/Playing_cards}.
 
+如果你不熟悉英美玩法，你可以在\url{http://en.wikipedia.org/wiki/Playing_cards}
+了解规则。
 
-\section{Card objects}
+
+\section{Card objects 卡牌对象}
 
 There are fifty-two cards in a deck, each of which belongs to one of
 four suits and one of thirteen ranks.  The suits are Spades, Hearts,
@@ -17564,6 +17572,10 @@ the game that you are playing, an Ace may be higher than King
 or lower than 2.
 \index{rank}
 \index{suit}
+
+一副牌有52张牌，每一张属于4种花色的一个和13个等级的一个。4种花色是黑桃，红心，
+方块，梅花（以桥牌中的下降顺序排列）。13个等级是帽，2,3,4,5,6,7,8,9,10,J,Q,K。
+根据你玩的游戏的不同，帽可能比K大或者比2小。
 
 If we want to define a new object to represent a playing card, it is
 obvious what the attributes should be: {\tt rank} and
@@ -17577,16 +17589,26 @@ see which had a higher rank or suit.
 \index{map to}
 \index{representation}
 
+如果我们定义一个新的对象来表示玩牌，明显它应该有{\tt rank}和花色（{\tt suit}）
+两个属性。两个属性的类型不太明显。一个可能是使用字符串类型，如包含
+\verb"'Spade'"来用于花色或\verb"'Queen'"用于等级。一个问题是这个实现起来不容易
+用等级或者花色来比较牌的大小。
+
 An alternative is to use integers to {\bf encode} the ranks and suits.
 In this context, ``encode'' means that we are going to define a mapping
 between numbers and suits, or between numbers and ranks.  This
 kind of encoding is not meant to be a secret (that
 would be ``encryption'').
 
+另外一种是使用一个整型来编码等级和花色。在这里，``编码''表示我们要定义一个数字
+到花色或数字到等级的字典。这里不是指的``加密''里面的编码。
+
 \newcommand{\mymapsto}{$\mapsto$}
 
 For example, this table shows the suits and the corresponding integer
 codes:
+
+例如，下面的表格显示了花色和对应的整数代码：
 
 \begin{tabular}{l c l}
 Spades & \mymapsto & 3 \\
@@ -17598,8 +17620,13 @@ Clubs & \mymapsto & 0
 This code makes it easy to compare cards; because higher suits map to
 higher numbers, we can compare suits by comparing their codes.
 
+这个代码使得比较牌的大小非常容易；因为更高的花色对应更高的数字，我们可以比较数
+字来比较花色的的大小。
+
 The mapping for ranks is fairly obvious; each of the numerical ranks
 maps to the corresponding integer, and for face cards:
+
+映射等级的大小更加明显；每个数字等级对应这相应的数字，然后对于J，K，Q：
 
 \begin{tabular}{l c l}
 Jack & \mymapsto & 11 \\
@@ -17613,7 +17640,12 @@ design, but they don't appear explicitly in the code.
 \index{Card class}
 \index{class!Card}
 
+我使用\mymapsto~符号来清楚的表示这些不是Python程序的一部分。它们是程序设计的部分
+，但是它们不会出现在代码中。
+
 The class definition for {\tt Card} looks like this:
+
+{\tt Card}类的定义就像下面：
 
 \begin{verbatim}
 class Card(object):
@@ -17630,8 +17662,12 @@ the 2 of Clubs.
 \index{init method}
 \index{method!init}
 
+通常，init 方法为每一个属性选择一个默认值。默认的卡牌是梅花2。
+
 To create a Card, you call {\tt Card} with the
 suit and rank of the card you want.
+
+为了创建一张牌，你可以用你需要的花色和等级来调用{\tt Card}。
 
 \begin{verbatim}
 queen_of_diamonds = Card(1, 12)
@@ -17639,7 +17675,7 @@ queen_of_diamonds = Card(1, 12)
 %
 
 
-\section{Class attributes}
+\section{Class attributes 类属性}
 \label{class.attribute}
 \index{class attribute}
 \index{attribute!class}
@@ -17649,6 +17685,9 @@ read, we need a mapping from the integer codes to the corresponding
 ranks and suits.  A natural way to
 do that is with lists of strings.  We assign these lists to {\bf class
 attributes}:
+
+为了能够以人能够理解的方式来打印卡牌对象，我们需要一个从整数映射到对应的等级和
+花色的字符串。一种自然的方法是用字符串列表。我们把这些列表赋值到{\bf 类属性}：
 
 \begin{verbatim}
 # inside class Card:
@@ -17669,10 +17708,16 @@ class attributes because they are associated with the class object
 \index{instance attribute}
 \index{attribute!instance}
 
+\verb"suit_names" 和 \verb"rank_names" 变量定义在一个类的内部但是在方法之外，被
+称为类属性。因为他们被关联到{\tt Card}类对象上的。
+
 This term distinguishes them from variables like {\tt suit} and {\tt
   rank}, which are called {\bf instance attributes} because they are
 associated with a particular instance.
 \index{dot notation}
+
+这个术语将它们同{\tt suit}和{\tt rank}变量区分开来，后者被称为{\bf 实例属性}因
+为他们被关联到了特定的实例。
 
 Both kinds of attribute are accessed using dot notation.  For
 example, in \verb"__str__", {\tt self} is a Card object,
@@ -17680,13 +17725,25 @@ and {\tt self.rank} is its rank.  Similarly, {\tt Card}
 is a class object, and \verb"Card.rank_names" is a
 list of strings associated with the class.
 
+这两种属性都使用点符号来访问。例如，在\verb"__str__"中，{\tt self}是一个卡牌对
+象，{\tt self.rank}是它的等级。同样的，{\tt Card}是一个类对象，
+\verb"Card.rank_names"是一个和类关联的字符串列表。
+
 Every card has its own {\tt suit} and {\tt rank}, but there
 is only one copy of \verb"suit_names" and \verb"rank_names".
+
+每一个卡牌都有自己的{\tt suit}和{\tt rank}，但是这里只有一份\verb"suit_names"
+和\verb"rank_names"拷贝。
+
 
 Putting it all together, the expression
 \verb"Card.rank_names[self.rank]" means ``use the attribute {\tt rank}
 from the object {\tt self} as an index into the list \verb"rank_names"
 from the class {\tt Card}, and select the appropriate string.''
+
+把这些综合考虑，表达式\verb"Card.rank_names[self.rank]"表示``使用{\tt self}对象
+中的{\tt rank}属性作为{\tt Card}类的\verb"rank_names"列表的索引下标，然后获取合
+适的字符串。''
 
 The first element of \verb"rank_names" is {\tt None} because there
 is no card with rank zero.  By including {\tt None} as a place-keeper,
@@ -17694,7 +17751,13 @@ we get a mapping with the nice property that the index 2 maps to the
 string \verb"'2'", and so on.  To avoid this tweak, we could have
 used a dictionary instead of a list.
 
+\verb"rank_names"的地一个元素是{\tt None}，因为没有卡牌是等级0.通过使用{\tt
+None}作为一个占位符，我们可以很好的将索引2映射到字符串\verb"'2'"，等等。为了避
+免这种技巧，我们也可以使用一个字典来代替列表。
+
 With the methods we have so far, we can create and print cards:
+
+到目前为止我们有的方法，我们可以创建和打印卡牌：
 
 \begin{verbatim}
 >>> card1 = Card(2, 11)
@@ -17718,6 +17781,10 @@ and one Card instance.
 {\tt Card} is a class object, so it has type {\tt type}.  {\tt
 card1} has type {\tt Card}.  (To save space, I didn't draw the
 contents of \verb"suit_names" and \verb"rank_names").
+
+图~\ref{fig.card1} 是一个{\tt Card}类对象的图解和一个Card实例。
+{\tt Card}是一个类对象，所以它有{\tt type}类型。{\tt card1}有{\tt Card}类型。（
+为了节约空间，我没有画出\verb"suit_names" 和 \verb"rank_names"）。
 
 
 \section{Comparing cards}
