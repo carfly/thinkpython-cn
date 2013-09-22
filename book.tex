@@ -17787,7 +17787,7 @@ contents of \verb"suit_names" and \verb"rank_names").
 为了节约空间，我没有画出\verb"suit_names" 和 \verb"rank_names"）。
 
 
-\section{Comparing cards}
+\section{Comparing cards 比较大小}
 \label{comparecard}
 \index{operator!relational}
 \index{relational operator}
@@ -17800,6 +17800,10 @@ another.  For user-defined types, we can override the behavior of
 the built-in operators by providing a method named
 \verb"__cmp__".  
 
+对于内建的类型，有关系运算符({\tt <}, {\tt >}, {\tt ==}, 等等)可以比较值和决定
+哪一个是大于，小于或等于另外一个。对于用户定义的类型，我们可以通过提供一个叫
+\verb"__cmp__"的方法来覆盖内建的运算符的行为。
+
 \verb"__cmp__" takes two parameters, {\tt self} and {\tt other},
 and returns a positive number if the first object is greater, a
 negative number if the second object is greater, and 0 if they are
@@ -17807,11 +17811,17 @@ equal to each other.
 \index{override}
 \index{operator overloading}
 
+\verb"__cmp__" 使用2个参数, {\tt self} 和 {\tt other},如果第一个对象更大，返回
+一个正数，第二个元素更大返回一个负数，如果相等返回0.
+
 The correct ordering for cards is not obvious.
 For example, which
 is better, the 3 of Clubs or the 2 of Diamonds?  One has a higher
 rank, but the other has a higher suit.  In order to compare
 cards, you have to decide whether rank or suit is more important.
+
+对于卡牌来说正确的顺序不明显。例如，梅花3和方块2哪个更好？一个等级更高，另一个
+花色更高。为了比较卡牌，你必须决定等级还是花色更重要。
 
 The answer might depend on what game you are playing, but to keep
 things simple, we'll make the arbitrary choice that suit is more
