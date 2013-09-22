@@ -17830,7 +17830,12 @@ and so on.
 \index{cmp method@\_\_cmp\_\_ method}
 \index{method!\_\_cmp\_\_}
 
+答案可能根据你玩的是什么游戏而不同，但是简洁起见，我们规定花色更重要，所以所有
+的黑桃大于方块，等等。
+
 With that decided, we can write \verb"__cmp__":
+
+然后，我们可以写\verb"__cmp__"了：
 
 \begin{verbatim}
 # inside class Card:
@@ -17852,6 +17857,8 @@ You can write this more concisely using tuple comparison:
 \index{tuple!comparison}
 \index{comparison!tuple}
 
+你可以使用元组比较来使得代码更加简洁：
+
 \begin{verbatim}
 # inside class Card:
 
@@ -17868,12 +17875,17 @@ if the second is larger, and 0 if they are equal.
 \index{cmp function}
 \index{function!cmp}
 
+内建的{\tt cmp}函数的接口和\verb"__cmp__"是一致的：传入2个参数，如果第一个更大
+就返回正数，等等。
 
 \begin{exercise}
 
 Write a \verb"__cmp__" method for Time objects.  Hint: you
 can use tuple comparison, but you also might consider using
 integer subtraction.
+
+为Time对象写一个\verb"__cmp__"方法。要点：你可以使用元组比较，但是你也可以考虑
+用整数减法。
 
 %    def __cmp__(self, other):
 %        return time_to_int(self) - time_to_int(other)
@@ -17887,7 +17899,7 @@ integer subtraction.
 \end{exercise}
 
 
-\section{Decks}
+\section{Decks 一副牌}
 \index{list!of objects}
 \index{deck, playing cards}
 
@@ -17897,6 +17909,9 @@ list of cards as an attribute.
 \index{init method}
 \index{method!init}
 
+现在我们有Card类了，下一步是定义完整的一副牌了。因为一副牌由许多牌组成，自然地
+每一个Deck都有一个卡牌列表作为属性。
+
 The following is a class definition for {\tt Deck}.  The
 init method creates the attribute {\tt cards} and generates
 the standard set of fifty-two cards:
@@ -17904,6 +17919,9 @@ the standard set of fifty-two cards:
 \index{loop!nested}
 \index{Deck class}
 \index{class!Deck}
+
+下面是一个{\tt Deck}的类定义。初始化方法创建了{\tt cards}属性然后生成了一套标准
+的52张牌。
 
 \begin{verbatim}
 class Deck(object):
@@ -17924,13 +17942,19 @@ and appends it to {\tt self.cards}.
 \index{append method}
 \index{method!append}
 
+生成一副牌的最简单方法是使用嵌套循环。外层循环枚举0到3的花色。内层循环枚举1到13
+的等级。每一个迭代都用当前的花色和等级创建一张新的牌。然后放入{\tt self.cards}
+中。
 
-\section{Printing the deck}
+
+\section{Printing the deck 打印一副牌}
 \label{printdeck}
 \index{str method@\_\_str\_\_ method}
 \index{method!\_\_str\_\_}
 
 Here is a \verb"__str__" method for {\tt Deck}:
+
+{\tt Deck}有一个 \verb"__str__" 方法：
 
 \begin{verbatim}
 #inside class Deck:
@@ -17952,8 +17976,14 @@ method on each card and returns the string representation.
 \index{method!join}
 \index{newline}
 
+这个方法展示了积累大字符串的高效方法：建立一个字符串列表然后使用{\tt join}。
+内建的{\tt str}函数调用\verb"__str__"方法。在每个卡牌上调用就会返回它们的字符串
+表示。
+
 Since we invoke {\tt join} on a newline character, the cards
 are separated by newlines.  Here's what the result looks like:
+
+因为我们在新的一行调用的{\tt join}，所以卡牌用回车分隔，下面是一个结果示例：
 
 \begin{verbatim}
 >>> deck = Deck()
@@ -17971,14 +18001,19 @@ King of Spades
 Even though the result appears on 52 lines, it is
 one long string that contains newlines.
 
+虽然这个结果有52行，但他实际上是包含回车符的一个大字符串。
 
-\section{Add, remove, shuffle and sort}
+
+\section{Add, remove, shuffle and sort 添加，移除，洗牌和排序}
 
 To deal cards, we would like a method that
 removes a card from the deck and returns it.
 The list method {\tt pop} provides a convenient way to do that:
 \index{pop method}
 \index{method!pop}
+
+为了发牌，我们需要一个可以把卡牌从一副牌中移除并返回的方法。
+列表的{\tt pop}方法提供了一个方便的方式来完成：
 
 \begin{verbatim}
 #inside class Deck:
@@ -17993,8 +18028,12 @@ frowned upon,
 but in this context it's ok.
 \index{append method}
 \index{method!append}
+因为{\tt pop} 移除列表的最后一张卡牌，所以我们我们从底下发牌。在真实环境中``底
+部发牌''不太好，但是这里没有关系。
 
 To add a card, we can use the list method {\tt append}:
+
+为了添加一张卡牌，我们使用列表的{\tt append}方法：
 
 \begin{verbatim}
 #inside class Deck:
@@ -18010,8 +18049,13 @@ layer of good quality wood to the surface of a cheaper piece of
 wood.
 \index{veneer}
 
+像这样使用另外一个函数因此不用做太多工作的方法有时被称为{\bf veneer}。这个隐喻
+来源于木工活，通常用一片高质量的木质薄层粘贴在一块便宜木材的表面。
+
 In this case we are defining a ``thin'' method that expresses
 a list operation in terms that are appropriate for decks.
+
+在这里，我们定义了一个表示在玩牌的术语中合适的列表操作的``瘦''方法。
 
 As another example, we can write a Deck method named {\tt shuffle}
 using the function {\tt shuffle} from the {\tt random} module:
@@ -18019,6 +18063,9 @@ using the function {\tt shuffle} from the {\tt random} module:
 \index{module!random}
 \index{shuffle function}
 \index{function!shuffle}
+
+另外一个例子，我们可以给Deck写一个叫{\tt shuffle}的方法，用{\tt random}模块中的
+{\tt shuffle}函数。
 
 \begin{verbatim}
 # inside class Deck:
@@ -18029,6 +18076,8 @@ using the function {\tt shuffle} from the {\tt random} module:
 %
 Don't forget to import {\tt random}.
 
+最后不要忘记了导入{\tt random}。
+
 \begin{exercise}
 \index{sort method}
 \index{method!sort}
@@ -18037,6 +18086,9 @@ Write a Deck method named {\tt sort} that uses the list method
 {\tt sort} to sort the cards in a {\tt Deck}.  {\tt sort} uses
 the \verb"__cmp__" method we defined to determine sort order.
 \end{exercise}
+
+用列表的{\tt sort}方法来写一个Deck的{\tt sort}方法。用于在{\tt Deck}中排序。
+{\tt sort}使用我们定义的\verb"__cmp__"来决定排序顺序。
 
 
 
