@@ -18092,7 +18092,7 @@ the \verb"__cmp__" method we defined to determine sort order.
 
 
 
-\section{Inheritance}
+\section{Inheritance 继承}
 \index{inheritance}
 \index{object-oriented programming}
 
@@ -18106,23 +18106,38 @@ class.
 \index{subclass}
 \index{superclass}
 
+和面向对象编程联系最紧密的语言特性就是继承了。基层是在一个已经存在的类的基础上
+定义出来的经过一些修改的新的类的能力。
+
 It is called ``inheritance'' because the new class inherits the
 methods of the existing class.  Extending this metaphor, the existing
 class is called the {\bf parent} and the new class is
 called the {\bf child}.
+
+它之所以被称为``继承''是因为新的类从旧的类中继承了方法。由此，已经存在的类被称
+为父类，新的类被称为子类。
 
 As an example, let's say we want a class to represent a ``hand,''
 that is, the set of cards held by one player.  A hand is similar to a
 deck: both are made up of a set of cards, and both require operations
 like adding and removing cards.
 
+例如，我们想用一个类来表示一只``手''。也就是，被一个玩家持有的卡牌的集合。手上
+的牌(hand)和整副牌(deck)类似：都是由一个卡牌的集合组成，都要求添加和移除卡牌的
+动作。
+
 A hand is also different from a deck; there are operations we want for
 hands that don't make sense for a deck.  For example, in poker we
 might compare two hands to see which one wins.  In bridge, we might
 compute a score for a hand in order to make a bid.
 
+hand也和deck不同；有些方法我们希望hand有而deck没有。例如，在扑克牌中我们也许可
+以比较两手牌来看哪边赢了。在桥牌中，我们可以计算一手牌的得分来完成一个赌约。
+
 This relationship between classes---similar, but different---lends
 itself to inheritance.  
+
+这两个类的关系---有些相似，但又不同---就可以尝试使用继承了。
 
 The definition of a child class is like other class definitions,
 but the name of the parent class appears in parentheses:
@@ -18131,6 +18146,8 @@ but the name of the parent class appears in parentheses:
 \index{class!parent}
 \index{Hand class}
 \index{class!Hand}
+
+定义一个子类的方式和定义一个普通类比较相似，但是需要在括号写是父类的名称：
 
 \begin{verbatim}
 class Hand(Deck):
@@ -18141,6 +18158,9 @@ This definition indicates that {\tt Hand} inherits from {\tt Deck};
 that means we can use methods like \verb"pop_card" and \verb"add_card"
 for Hands as well as Decks.
 
+这个定义表示了{\tt Hand}继承自{\tt Deck}；也就是我们也可以对Hands使用Deck的
+\verb"pop_card" 和 \verb"add_card"方法。
+
 {\tt Hand} also inherits \verb"__init__" from {\tt Deck}, but
 it doesn't really do what we want: instead of populating the hand
 with 52 new cards, the init method for Hands should initialize
@@ -18149,8 +18169,13 @@ with 52 new cards, the init method for Hands should initialize
 \index{init method}
 \index{method!init}
 
+{\tt Hand}也继承{\tt Deck}的\verb"__init__"方法，但是它并不做我们想做的：不要给
+hand生成52张牌，而是为Hands初始化一个空的{\tt cards}列表。
+
 If we provide an init method in the {\tt Hand} class, it overrides the
 one in the {\tt Deck} class:
+
+如果我们提供一个{\tt Hand}的init方法，它会覆盖{\tt Deck}类继承来的。
 
 \begin{verbatim}
 # inside class Hand:
@@ -18162,6 +18187,8 @@ one in the {\tt Deck} class:
 %
 So when you create a Hand, Python invokes this init method:
 
+所以当你创建了一个Hand，Python会调用这个init方法：
+
 \begin{verbatim}
 >>> hand = Hand('new hand')
 >>> print hand.cards
@@ -18172,6 +18199,9 @@ new hand
 %
 But the other methods are inherited from {\tt Deck}, so we can use
 \verb"pop_card" and \verb"add_card" to deal a card:
+
+但是其它方法可以从{\tt Deck}继承，所以我们可以使用\verb"pop_card" 和
+\verb"add_card"来处理卡牌：
 
 \begin{verbatim}
 >>> deck = Deck()
@@ -18185,6 +18215,8 @@ A natural next step is to encapsulate this code in a method
 called \verb"move_cards":
 \index{encapsulation}
 
+很自然的，可以把这些代码封装成一个\verb"move_cards"的方法：
+
 \begin{verbatim}
 #inside class Deck:
 
@@ -18197,10 +18229,17 @@ called \verb"move_cards":
 cards to deal.  It modifies both {\tt self} and {\tt hand}, and
 returns {\tt None}.
 
+\verb"move_cards" 有两个参数，一个是Hand对象，另外一个是处理的卡牌的数量。它会
+同时修改{\tt self}和{\tt hand}，然后返回{\tt None}。
+
 In some games, cards are moved from one hand to another,
 or from a hand back to the deck.  You can use \verb"move_cards"
 for any of these operations: {\tt self} can be either a Deck
 or a Hand, and {\tt hand}, despite the name, can also be a {\tt Deck}.
+
+在有些游戏里面，卡牌从一只手移动到另外一只手，或者从手退还到牌堆里面。你可以在
+这几个动作中都使用 \verb"move_cards"：{\tt self}可以是一个Deck或者一个Hand，并
+且不要管{\tt hand}这个名字的话，它也可以是一个{\tt Deck}。
 
 \begin{exercise}
 
@@ -18208,6 +18247,10 @@ Write a Deck method called \verb"deal_hands" that takes two
 parameters, the number of hands and the number of cards per
 hand, and that creates new Hand objects, deals the appropriate
 number of cards per hand, and returns a list of Hand objects.
+
+为Deck写一个叫\verb"deal_hands"的方法，使用两个参数，hand的数量的每个hand中card
+的数量，然后创建许多新的Hand对象，分给每个hand合适数量的卡牌，然后返回这些Hand
+对象的列表。
 
 \end{exercise}
 
@@ -18219,11 +18262,20 @@ them.  In some cases, the inheritance structure reflects the natural
 structure of the problem, which makes the program easier to
 understand.
 
+继承是一个非常有用的特性。有了继承，一些重复性的代码可以写得非常的优雅。继承能
+够帮助代码重用，因为你可以自定义父类而不用修改它们\footnote{通过自定义父类成为
+子类，使用子类的同时不必修改父类的代码}。在一些案例中，继承的结构反映了真实问题
+的结构，使得程序更易于理解。
+
 On the other hand, inheritance can make programs difficult to read.
 When a method is invoked, it is sometimes not clear where to find its
 definition.  The relevant code may be scattered among several modules.
 Also, many of the things that can be done using inheritance can be
 done as well or better without it.  
+
+另一方面，继承又可能会使得程序更加难读。当调用了一个方法，有时候搞不清楚调用的
+是父类的还是子类的。相关的代码肯能被分散在几个模块之中。并且用继承完成的许多事
+情也可以不用继承来完成，而且完成得更好。
 
 
 \section{Class diagrams}
