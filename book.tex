@@ -815,7 +815,7 @@ predictions.
 
 本书的目标是教给你像计算机科学家一样思考。
 这一思考的方式集成了数学、工程以及自然科学的一些最好的特点。
-像数学家一样，计算机科学家使用正则语言表示思想（特别是计算）。
+像数学家一样，计算机科学家使用形式语言表示思想（特别是计算）。
 像工程师一样，计算机科学家设计东西，将零件组成系统，在各种选择之间寻求平衡。
 像科学家一样，计算机科学家观察复杂系统的行为，形成假设并且对预测进行检验。
 
@@ -1230,7 +1230,7 @@ programming practices.
 
 后面的章节将给出更多关于调试和其它编程实践的建议。
 
-\section{Formal and natural languages 正则和自然语言}
+\section{Formal and natural languages 形式语言和自然语言}
 \index{formal language}
 \index{natural language}
 \index{language!formal}
@@ -1252,16 +1252,16 @@ relationships among numbers and symbols.  Chemists use a formal
 language to represent the chemical structure of molecules.  And
 most importantly:
 
-{\bf 正则语言（formal languages）}是由人为了特殊应用设计的。
-例如，数学家使用的符号就是正则语言，其特别擅长表示数字和符号直接的关系。
-化学家使用正则语言表示分子的化学结构。
+{\bf 形式语言（formal languages）}是由人为了特殊应用设计的。
+例如，数学家使用的符号就是形式语言，其特别擅长表示数字和符号直接的关系。
+化学家使用形式语言表示分子的化学结构。
 最重要的是：
 
 \begin{quote}
 {\bf Programming languages are formal languages that have been
 designed to express computations.}
 
-{\bf 编程语言是被设计用于表示计算的正则语言。}
+{\bf 编程语言是被设计用于表示计算的形式语言。}
 \end{quote}
 
 Formal languages tend to have strict rules about syntax.  For example,
@@ -1270,7 +1270,7 @@ $3 + = 3 \mbox{\$} 6$ is not.
 $H_2O$ is a syntactically correct
 chemical formula, but $_2Zz$ is not.
 
-正则语言倾向于具有严格的语法规则。
+形式语言倾向于具有严格的语法规则。
 例如$3 + 3 = 6$是语法正确的数学表达式，而$3 + = 3 \mbox{\$} 6$则不是。
 $H_2O$是语法正确的化学表达式，而$_2Zz$则不是。
 
@@ -1314,7 +1314,7 @@ language, you have to figure out what the structure of the sentence is
 process is called {\bf parsing}.
 \index{parse}
 
-当你读一个用英语写的句子或者用正则语言写的语句时，
+当你读一个用英语写的句子或者用形式语言写的语句时，
 你得指出句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
 这个过程被称作{\bf 分析（parsing）}。
 
@@ -1337,7 +1337,7 @@ differences:
 \index{redundancy}
 \index{literalness}
 
-虽然正则语言和自然语言有很多共同的特点---标记、结构、语法以及语义---
+虽然形式语言和自然语言有很多共同的特点---标记、结构、语法以及语义---
 它们也有一些不同：
 
 \begin{description}
@@ -1349,7 +1349,7 @@ which means that any statement has exactly one meaning,
 regardless of context.
 
 \item[歧义性：] 自然语言充满歧义，人们使用上下文线索以及其它信息处理这些歧义。
-正则语言被设计成几乎或者完全没有歧义，这意味着不管上下位是什么，
+形式语言被设计成几乎或者完全没有歧义，这意味着不管上下位是什么，
 任何语句都只有一个意义。
 
 \item[redundancy:] In order to make up for ambiguity and reduce
@@ -1358,7 +1358,7 @@ redundancy.  As a result, they are often verbose.  Formal languages
 are less redundant and more concise.
 
 \item[冗余性：] 为了弥补歧义性并且减少误解，自然语言使用很多冗余。
-结果，它们经常很冗长。正则语言较少的冗余，更简洁。
+结果，它们经常很冗长。形式语言较少的冗余，更简洁。
 
 \item[literalness:] Natural languages are full of idiom and metaphor.
 If I say, ``The penny dropped,'' there is probably no penny and
@@ -1368,7 +1368,7 @@ mean exactly what they say.
 
 \item[非引申义性：] 自然语言充满成语和隐喻。如果我说``The penny dropped,''，
 可能根本没有便士也没什么东西掉下来（这个成语意思是有人经过一段时间的混乱后，
-意识到一些事情）。正则语言含义和它们说的完全一样。
+意识到一些事情）。形式语言含义和它们说的完全一样。
 
 \end{description}
 
@@ -1379,8 +1379,8 @@ poetry and prose, but more so:
 \index{poetry}
 \index{prose}
 
-说自然语言长大的人---所有人---经常一时难于适应正则语言。
-在某些方面，正则语言和自然语言直接的不同类似诗歌和散文直接的不同，
+说自然语言长大的人---所有人---经常一时难于适应形式语言。
+在某些方面，形式语言和自然语言直接的不同类似诗歌和散文直接的不同，
 但是更重要的是：
 
 \begin{description}
@@ -1421,12 +1421,12 @@ spelling and punctuation, which you can get away
 with in natural languages, can make a big difference in a formal
 language.
 
-这是对读程序（以及其它正则语言）的一些建议。
-首先，记住正则语言比自然语言稠密的多，因此需要花更长的时间读它们。
+这是对读程序（以及其它形式语言）的一些建议。
+首先，记住形式语言比自然语言稠密的多，因此需要花更长的时间读它们。
 其次，结构非常重要，因此从上到下，从左到右的读通常不是一个好的主意。
 相反，要学会在你的头脑中分析一个程序，识别记号并且理解结构。
 最后，注意细节问题。拼写和标点符号的小错误，
-这些在自然语言中你可以侥幸成功，但是在正则语言中会有很大的不同。
+这些在自然语言中你可以侥幸成功，但是在形式语言中会有很大的不同。
 
 \section{The first program 第一个程序}
 \label{hello}
@@ -2354,7 +2354,7 @@ to read.  Formal languages are dense, and it is often difficult to
 look at a piece of code and figure out what it is doing, or why.
 
 随着程序变得越来越大，越来越复杂，它们变得越来越难读。
-正则语言是稠密的，读一段代码并输出其做什么或者为什么通常很难。
+形式语言是稠密的，读一段代码并输出其做什么或者为什么通常很难。
 
 For this reason, it is a good idea to add notes to your programs to explain
 in natural language what the program is doing.  These notes are called
