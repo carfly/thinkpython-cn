@@ -18278,7 +18278,7 @@ done as well or better without it.
 情也可以不用继承来完成，而且完成得更好。
 
 
-\section{Class diagrams}
+\section{Class diagrams 类图}
 \label{class.diagram}
 
 So far we have seen stack diagrams, which show the state of
@@ -18287,12 +18287,21 @@ of an object and their values.  These diagrams represent a snapshot
 in the execution of a program, so they change as the program
 runs.
 
+到目前为止我们已经看过了栈图了，显示了一个程序和一个对象的状态的图，或者显示一
+个对象的属性和它们的值的图。这些图表达了程序执行的一个快照，所以它们随着程序的
+运行而改变。
+
 They are also highly detailed; for some purposes, too
 detailed.  A class diagram is a more abstract representation
 of the structure of a program.  Instead of showing individual
 objects, it shows classes and the relationships between them.
 
+它们也十分的详细；但有一些时候显得过于详细了。一个类图是一个程序的结构的抽象表
+达。它显示类和类之间的关系而不是每个独立的对象。
+
 There are several kinds of relationship between classes:
+
+类之间有如下几种关系：
 
 \begin{itemize}
 
@@ -18302,11 +18311,20 @@ to a Point, and each Deck contains references to many Cards.
 This kind of relationship is called {\bf HAS-A}, as in, ``a Rectangle
 has a Point.''
 
+一个类中的对象可以包含另外一个类的对象的引用。例如，每一个矩形包含点的引用，每
+一个Deck包含许多的Card。这种关系被称为组合({\bf HAS-A})，例如:``一个矩形有一个
+点''
+
 \item One class might inherit from another.  This relationship
 is called {\bf IS-A}, as in, ``a Hand is a kind of a Deck.''
 
+一个类可能继承于另外一个类。这种关系被称为继承({\bf IS-A}),例如:``一个Hand继承
+自Deck''。
+
 \item One class might depend on another in the sense that changes
 in one class would require changes in the other.
+
+一个类可能强烈依赖于另一个类，改变一个类就必须改变另一个。
 
 \end{itemize}
 \index{IS-A relationship}
@@ -18317,6 +18335,9 @@ in one class would require changes in the other.
 A {\bf class diagram} is a graphical representation of these
 relationships.  For example, Figure~\ref{fig.class1} shows the
 relationships between {\tt Card}, {\tt Deck} and {\tt Hand}.
+
+一个类图是这些关系的图形化表示。例如,图~\ref{fig.class}显示了{\tt Card}, {\tt
+Deck} 和 {\tt Hand}的关系。
 
 \begin{figure}
 \centerline
@@ -18330,10 +18351,14 @@ The arrow with a hollow triangle head represents an IS-A
 relationship; in this case it indicates that Hand inherits
 from Deck.
 
+带空心三角的箭头表示一个IS-A的关系；在这种条件下它表示Hand继承自Deck。
+
 The standard arrow head represents a HAS-A
 relationship; in this case a Deck has references to Card
 objects.
 \index{multiplicity (in class diagram)}
+
+标准箭头表示一个HAS-A关系；这里表示一个Deck有Card对象的引用。
 
 The star ({\tt *}) near the arrow head is a 
 {\bf multiplicity}; it indicates how many Cards a Deck has.
@@ -18341,9 +18366,16 @@ A multiplicity can be a simple number, like {\tt 52}, a range,
 like {\tt 5..7} or a star, which indicates that a Deck can
 have any number of Cards.
 
+在箭头旁边的星（{\tt *}）是一个复数表达；它表示一个Deck有许多Card。一个复数表达
+也可以是一个简单的数字(如{\tt 52})，一个范围（如{\tt 5..7}）或者是*,表示有任意
+数量的Card。
+
 A more detailed diagram might show that a Deck actually
 contains a {\em list} of Cards, but built-in types
 like list and dict are usually not included in class diagrams.
+
+更详细的图可以显示一个Deck实际上包含一个Card的列表，但是在类图中不包含如list和
+dict等的内建内型。
 
 \begin{exercise}
 
@@ -18351,16 +18383,21 @@ Read {\tt TurtleWorld.py}, {\tt World.py} and {\tt Gui.py}
 and draw a class diagram that shows the relationships among
 the classes defined there.
 
+阅读 {\tt TurtleWorld.py}, {\tt World.py} 和 {\tt Gui.py}然后画出在文件中定义的
+类的类图，包含类之间的关系。
+
 \end{exercise}
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 Inheritance can make debugging a challenge because when you
 invoke a method on an object, you might not know which method
 will be invoked.
 \index{polymorphism}
+
+继承会使得调试变得更加复杂，因为你可能不知道实际调用的是哪个类的方法。
 
 Suppose you are writing a function that works with Hand objects.
 You would like it to work with all kinds of Hands, like
@@ -18370,15 +18407,27 @@ but if any of the subclasses override this method, you'll
 get that version instead.  
 \index{flow of execution}
 
+假设你写了一个处理Hand对象的函数。你可能会想让它可以处理所有种类的Hand，如
+PockerHand，BridgeHand等等。如果你调用如{\tt shuffle}的方法，你可能会得到在{\tt
+Deck}中的那个，但是如果有任何一个子类覆盖了这个方法。你实际上得到的是子类的那个
+。
+
 Any time you are unsure about the flow of execution through your
 program, the simplest solution is to add print statements at the
 beginning of the relevant methods.  If {\tt Deck.shuffle} prints a
 message that says something like {\tt Running Deck.shuffle}, then as
 the program runs it traces the flow of execution.
 
+任何时候你只要不确定程序的执行流程，最简单的方法是在相关方法的开始处添加print语
+句。如果{\tt Deck.shuffle}打印一条如像{\tt Running Deck.shuffle}的消息，通过这
+样就可以追踪程序的执行流程。
+
 As an alternative, you could use this function, which takes an
 object and a method name (as a string) and returns the class that
 provides the definition of the method:
+
+另外一种方法，你可以使用下面的函数，以一个对象和一个方法的名字（字符串格式）作
+为参数，然后返回提供这个方法定义的类：
 
 \begin{verbatim}
 def find_defining_class(obj, meth_name):
@@ -18388,6 +18437,8 @@ def find_defining_class(obj, meth_name):
 \end{verbatim}
 %
 Here's an example:
+
+下面是一个例子：
 
 \begin{verbatim}
 >>> hand = Hand()
@@ -18400,6 +18451,8 @@ So the {\tt shuffle} method for this Hand is the one in {\tt Deck}.
 \index{method!mro}
 \index{method resolution order}
 
+所以Hand的 {\tt shuffle} 方法是来自于 {\tt Deck}的。
+
 \verb"find_defining_class" uses the {\tt mro} method to get the list
 of class objects (types) that will be searched for methods.  ``MRO''
 stands for ``method resolution order.''
@@ -18407,6 +18460,9 @@ stands for ``method resolution order.''
 \index{interface}
 \index{precondition}
 \index{postcondition}
+
+\verb"find_defining_class"用{\tt mor}方法来获得将类对象的列表，系统将会从这里依
+次搜索哪个类提供了这个方法。``MOR''表示``method resolution order''。
 
 Here's a program design suggestion: whenever you override a method,
 the interface of the new method should be the same as the old.  It
@@ -18416,8 +18472,15 @@ will find that any function designed to work with an instance of a
 superclass, like a Deck, will also work with instances of subclasses
 like a Hand or PokerHand.
 
+对于程序设计的一个建议：无论什么时候你打算覆盖一个方法，新方法的声明必须和旧的
+保持一致。它们应该使用相同的参数，返回相同的类型，遵守相同的先决条件和后置条件
+。如果你遵守这个规定，你可以发现你设计的任何函数，只要能工作于一个父类的对象（
+如Deck），就能够工作于任何子类的对象（如Hand和PockerHand）。
+
 If you violate this rule, your code will collapse like (sorry)
 a house of cards.
+
+如果你违背这条规则，你的代码逻辑就会被搞的乱七八糟的。
 
 
 \section{Data encapsulation}
