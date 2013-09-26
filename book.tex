@@ -18483,7 +18483,7 @@ a house of cards.
 如果你违背这条规则，你的代码逻辑就会被搞的乱七八糟的。
 
 
-\section{Data encapsulation}
+\section{Data encapsulation 数据封装}
 
 Chapter~\ref{time} demonstrates a development plan we might call
 ``object-oriented design.''  We identified objects we needed---{\tt
@@ -18493,6 +18493,10 @@ between the object and some entity in the real world (or at least a
 mathematical world).
 \index{development plan}
 
+第~\ref{time}章描述了我们称之为``面向对象设计''的开发计划。我们选择我们需要的对
+象---{\tt Time},{\tt Point}和{\tt Rectangle}---然后定义代表它们的类。每种情况都
+有一个在对象和真实世界（或至少是在数学世界中）的实例的明显的对应关系。
+
 But sometimes it is less obvious what objects you need
 and how they should interact.  In that case you need a different
 development plan.  In the same way that we discovered function
@@ -18501,10 +18505,19 @@ class interfaces by {\bf data encapsulation}.
 \index{data encapsulation}
 \index{encapsulation!data}
 
+但是有时有很难界定你需要的对象和设计它们的交互。在这个时候，你需要一个不同的开
+发计划。同样的，我们通过封装和组织来探索函数的接口，我们也可以通过数据封装来探
+索类的接口。
+
 Markov analysis, from Section~\ref{markov}, provides a good example.
 If you download my code from \url{http://thinkpython.com/code/markov.py},
 you'll see that it uses two global variables---\verb"suffix_map" and
 \verb"prefix"---that are read and written from several functions.
+
+第~\ref{markov}节的马尔科夫设计提供了一个很好的例子。如果你从
+\url{http://thinkpython.com/code/markov.py}下载我的代码，你可以看到它使用两个全
+局变量---\verb"suffix_map"和\verb"prefix"。用一些函数读写它们的设计思想。
+
 
 \begin{verbatim}
 suffix_map = {}        
@@ -18517,9 +18530,15 @@ at a time.  If we read two texts, their prefixes and suffixes would
 be added to the same data structures (which makes for some interesting
 generated text).
 
+因为这些变量是全局的，我们一次只能运行一个分析。如果我们读取了两个文本，它们的
+前缀和后缀会被加入相同的数据结构（会使得输出文本混乱）。
+
 To run multiple analyses, and keep them separate, we can encapsulate
 the state of each analysis in an object.
 Here's what that looks like:
+
+为了同时运行多个分析，并且保持它们的相互独立，我们可以把每个分析的状态封装到一
+个对象中。下面是一个例子：
 
 \begin{verbatim}
 class Markov(object):
@@ -18531,6 +18550,8 @@ class Markov(object):
 
 Next, we transform the functions into methods.  For example,
 here's \verb"process_word":
+
+下一步，我们把这些函数转换为方法。例如：下面是\verb"process_word"：
 
 \begin{verbatim}
     def process_word(self, word, order=2):
@@ -18552,21 +18573,34 @@ changing the function---is another example of refactoring
 (see Section~\ref{refactoring}).
 \index{refactoring}
 
+像这样转换一个程序---改变设计而保持功能不变---是另外一种重构的例子（参见第
+~\ref{refactoring}节）。
+
 This example suggests a development plan for designing objects and
 methods:
+
+下面的例子给出了一些设计对象和方法的建议。
 
 \begin{enumerate}
 
 \item Start by writing functions that read and write global
 variables (when necessary).
 
+首先从读写全局变量的函数开始（如有必要）。
+
 \item Once you get the program working, look for associations
 between global variables and the functions that use them.
 
+一旦你让程序跑起来了，看和全局变量和使用它们的函数的联系。
+
 \item Encapsulate related variables as attributes of an object.
+
+封装相关的变量作为一个对象的属性。
 
 \item Transform the associated functions into methods of the new
 class.
+
+转换相关联的函数为新类的方法。
 
 \end{enumerate}
 
@@ -18578,6 +18612,10 @@ Download my code from Section~\ref{markov}
 above to encapsulate the global variables as attributes of a new class
 called {\tt Markov}.  Solution: \url{http://thinkpython.com/code/Markov.py}
 (note the capital M).
+
+从~\ref{markov}(\url{http://thinkpython.com/code/markov.py})下载我的代码，然后
+根据上面描述的步骤来封装全局变量作为新类{\tt Markov}的属性。最后的结果：
+\url{http://thinkpython.com/code/Markov.py}
 
 \end{exercise}
 
