@@ -18718,34 +18718,48 @@ be high or low, so {\tt Ace-2-3-4-5} is a straight and so is {\tt
 \item[flush:] five cards with the same suit
 \vspace{-0.05in}
 
-Flush：五张花色一样的牌
+同花：五张花色一样的牌
 
 \item[full house:] three cards with one rank, two cards with another
 \vspace{-0.05in}
 
+三代二：三张牌面一样的牌另外两张牌面一样的牌
+
 \item[four of a kind:] four cards with the same rank
 \vspace{-0.05in}
+
+四条：四张牌面一样的牌
 
 \item[straight flush:] five cards in sequence (as defined above) and
 with the same suit
 \vspace{-0.05in}
+
+同花顺：五张花色相同的连续的牌
 
 \end{description}
 %
 The goal of these exercises is to estimate
 the probability of drawing these various hands.
 
+本练习的目标是估算这些不同的出牌的组合的概率。
+
 \begin{enumerate}
 
 \item Download the following files from \url{http://thinkpython.com/code}:
+
+    在\url{http://thinkpython.com/code}下载下面的文件：
 
 \begin{description}
 
 \item[{\tt Card.py}]: A complete version of the {\tt Card},
 {\tt Deck} and {\tt Hand} classes in this chapter.
 
+Card.py:本章中完整版本的{\tt Card} , {\tt Deck}和{\tt Hand}类。
+
 \item[{\tt PokerHand.py}]: An incomplete implementation of a class
 that represents a poker hand, and some code that tests it.
+
+PokerHand.py:表示poker hand的不完整的实现，和一些测试代码。
 
 \end{description}
 %
@@ -18753,16 +18767,27 @@ that represents a poker hand, and some code that tests it.
 and checks to see if any of them contains a flush.  Read this
 code carefully before you go on.
 
+如果你运行{\tt PokerHand.py},它会处理7张牌的poker hand。检查是否含有顺子，仔细
+阅读代码再继续下面的内容。
+
 \item Add methods to {\tt PokerHand.py} named \verb"has_pair",
 \verb"has_twopair", etc. that return True or False according to
 whether or not the hand meets the relevant criteria.  Your code should
 work correctly for ``hands'' that contain any number of cards
 (although 5 and 7 are the most common sizes).
 
+为{\tt PokerHand.py}添加\verb"has_pair",\verb"has_twopair"等等的方法。根据出牌
+是否满足对应的条件来返回是或否。你的代码需要在任何数量的牌上测试通过（5和7是常
+见的牌数）。
+
 \item Write a method named {\tt classify} that figures out
 the highest-value classification for a hand and sets the
 {\tt label} attribute accordingly.  For example, a 7-card hand
 might contain a flush and a pair; it should be labeled ``flush''.
+
+写一个叫{\tt classify}的方法指出牌中最高等级的出牌组合，然后正确的设置{\tt
+label}属性。例如，一个7张牌可能包含一个顺子和一个对子，那么它应该标注为``顺子''
+。
 
 \item When you are convinced that your classification methods are
 working, the next step is to estimate the probabilities of the various
@@ -18770,14 +18795,22 @@ hands.  Write a function in {\tt PokerHand.py} that shuffles a deck of
 cards, divides it into hands, classifies the hands, and counts the
 number of times various classifications appear.
 
+当你确信你的鉴定方法是正确的，下一步是估计这些不同出牌的可能。写一个{\tt
+PokerHand.py}的函数完成洗牌，分牌，鉴定牌大小，然后记录每种牌组合出现的次数。
+
 \item Print a table of the classifications and their probabilities.
 Run your program with larger and larger numbers of hands until the
 output values converge to a reasonable degree of accuracy.  Compare
 your results to the values at \url{http://en.wikipedia.org/wiki/Hand_rankings}.
 
+打印每种组合和对应频率的表格。运行你的程序，不断保持游戏次数的递增，直到输出的
+值保持在足够准确的范围。比较你的结果和
+\url{http://en.wikipedia.org/wiki/Hand_rankings}的标准值。
+
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/PokerHandSoln.py}.
+答案：\url{http://thinkpython.com/code/PokerHandSoln.py}.
 \end{exercise}
 
 
@@ -18790,16 +18823,26 @@ You will write code that makes Turtles play tag.  If you
 are not familiar with the rules of tag, see
 \url{http://en.wikipedia.org/wiki/Tag_(game)}.
 
+下面这个练习使用第~\ref{turtlechap}章中的``小海龟的世界''。你将要写代码让海归玩
+Tag。如果你不熟悉tag游戏的规则，参考
+\url{http://en.wikipedia.org/wiki/Tag_(game)}.
+
 \begin{enumerate}
 
 \item Download \url{http://thinkpython.com/code/Wobbler.py} and run it.  You
 should see a TurtleWorld with three Turtles.  If you press the
 {\sf Run} button, the Turtles wander at random.
 
+在\url{http://thinkpython.com/code/Wobbler.py}下载代码然后运行。你可以看到3只海
+龟的游戏地图。如果你点击{\sf Run}按钮，海龟就会随机漫步。
+
 \item Read the code and make sure you understand how it works.
 The {\tt Wobbler} class inherits from {\tt Turtle}, which means
 that the {\tt Turtle} methods {\tt lt}, {\tt rt}, {\tt fd}
 and {\tt bk} work on Wobblers.
+
+阅读代码确保你理解了它是如何运作的。{\tt Wobbler}类继承子{\tt Turtle}，表示{\tt
+Turtle}的{\tt lt},{\tt rt},{\tt fd}和{\tt bk}是摇摇晃晃的运动的。
 
 The {\tt step} method gets invoked by TurtleWorld.  It invokes 
 {\tt steer}, which turns the Turtle in the desired direction,
@@ -18808,10 +18851,18 @@ clumsiness, and {\tt move}, which moves forward a few pixels,
 depending on the Turtle's speed.
 \index{Tagger}
 
+{\tt step}方法被TurtleWorld调用。它再调用{\tt steer}，改变海龟的方向到合适的位
+置，{\tt wobble}使得以随机的转向表示海龟笨拙的样子。然后{\tt move}根据海龟的速
+度移动几个像素。
+
 \item Create a file named {\tt Tagger.py}.  Import everything from
   {\tt Wobbler}, then define a class named {\tt Tagger} that inherits
   from {\tt Wobbler}.  Call \verb"make_world" passing the {\tt
     Tagger} class object as an argument.
+
+    创建一个叫{\tt Tagger.py}的文件。从{\tt Wobbler}导入所有东西，然后定义一个
+    从{\tt Wobbler}继承的{\tt Tagger}类。用{\tt Tagger}类对象作为一个参数调用
+    \verb"make_world"。
 
 \item Add a {\tt steer} method to {\tt Tagger} to override the one in
   {\tt Wobbler}.  As a starting place, write a version that always
@@ -18819,9 +18870,16 @@ depending on the Turtle's speed.
   {\tt atan2} and the Turtle attributes {\tt x}, {\tt y} and
   {\tt heading}.
 
+  添加一个{\tt steer}方法到{\tt Tagger}来覆盖{\tt Wobbler}中的那个。作为一开始
+  的位置，写一个函数使得海龟总是指向原点。提示：使用{\tt atan2}数学函数和海龟的
+  x,y,{\tt heading}属性。
+
 \item Modify {\tt steer} so that the Turtles stay in bounds.
   For debugging, you might want to use the {\sf Step} button,
   which invokes {\tt step} once on each Turtle.
+
+  修改{\tt steer}使得海龟呆在一个区域内。为了调试，你也许需要一个{\st Step}按钮
+  ，在每个海龟上调用一次{\tt step}。
 
 \item Modify {\tt steer} so that each Turtle points toward its nearest
   neighbor.  Hint: Turtles have an attribute, {\tt world}, that is a
@@ -18829,19 +18887,33 @@ depending on the Turtle's speed.
   an attribute, {\tt animals}, that is a list of all Turtles in the
   world.
 
+  修改{\tt steer}使得每只海龟指向它的临近的海龟。提示：海龟有一个{\tt world}属
+  性，是一个它们所在的TurtleWorld的引用，然后TurtleWorld有一个{\tt animal}属性
+  ，是在这个地方的所有海龟的列表。
+
 \item Modify {\tt steer} so the Turtles play tag.  You can add methods
   to {\tt Tagger} and you can override {\tt steer} and
   \verb"__init__", but you may not modify or override {\tt step}, {\tt
     wobble} or {\tt move}.  Also, {\tt steer} is allowed to change the
   heading of the Turtle but not the position.
 
+  修改{\tt steer}使得海龟玩Tag游戏。你可以向{\tt Tagger}添加方法，你也可以覆盖
+  {\tt steer}和\verb"__init__"，但是不要修改或覆盖{\tt step},{\tt wobble}和{\tt
+  move}。同样的，{\tt steer}可以改变海龟的朝向但不能改变位置。
+
 Adjust the rules and your {\tt steer} method for good quality play;
 for example, it should be possible for the slow Turtle to tag the
 faster Turtles eventually.
 
+调节你的{\tt steer}方法里面的规则来得到一个好质量的游戏；例如跑得慢的海龟最终应
+该有可能赶上跑得快的海龟。
+
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/Tagger.py}.
+
+答案：\url{http://thinkpython.com/code/Tagger.py}.
+
 \end{exercise}
 
 
