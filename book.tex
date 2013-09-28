@@ -18841,8 +18841,8 @@ The {\tt Wobbler} class inherits from {\tt Turtle}, which means
 that the {\tt Turtle} methods {\tt lt}, {\tt rt}, {\tt fd}
 and {\tt bk} work on Wobblers.
 
-阅读代码确保你理解了它是如何运作的。{\tt Wobbler}类继承子{\tt Turtle}，表示{\tt
-Turtle}的{\tt lt},{\tt rt},{\tt fd}和{\tt bk}是摇摇晃晃的运动的。
+阅读代码确保你理解了它是如何运作的。{\tt Wobbler}类继承子{\tt Turtle}，表示{\tt Turtle}
+的{\tt lt},{\tt rt},{\tt fd}和{\tt bk}是摇摇晃晃的运动的。
 
 The {\tt step} method gets invoked by TurtleWorld.  It invokes 
 {\tt steer}, which turns the Turtle in the desired direction,
@@ -18857,8 +18857,8 @@ depending on the Turtle's speed.
 
 \item Create a file named {\tt Tagger.py}.  Import everything from
   {\tt Wobbler}, then define a class named {\tt Tagger} that inherits
-  from {\tt Wobbler}.  Call \verb"make_world" passing the {\tt
-    Tagger} class object as an argument.
+  from {\tt Wobbler}.  Call \verb"make_world" passing the {\tt Tagger} 
+  class object as an argument.
 
     创建一个叫{\tt Tagger.py}的文件。从{\tt Wobbler}导入所有东西，然后定义一个
     从{\tt Wobbler}继承的{\tt Tagger}类。用{\tt Tagger}类对象作为一个参数调用
@@ -18878,7 +18878,7 @@ depending on the Turtle's speed.
   For debugging, you might want to use the {\sf Step} button,
   which invokes {\tt step} once on each Turtle.
 
-  修改{\tt steer}使得海龟呆在一个区域内。为了调试，你也许需要一个{\st Step}按钮
+  修改{\tt steer}使得海龟呆在一个区域内。为了调试，你也许需要一个{\sf Step}按钮
   ，在每个海龟上调用一次{\tt step}。
 
 \item Modify {\tt steer} so that each Turtle points toward its nearest
@@ -18898,8 +18898,8 @@ depending on the Turtle's speed.
   heading of the Turtle but not the position.
 
   修改{\tt steer}使得海龟玩Tag游戏。你可以向{\tt Tagger}添加方法，你也可以覆盖
-  {\tt steer}和\verb"__init__"，但是不要修改或覆盖{\tt step},{\tt wobble}和{\tt
-  move}。同样的，{\tt steer}可以改变海龟的朝向但不能改变位置。
+  {\tt steer}和\verb"__init__"，但是不要修改或覆盖{\tt step},{\tt wobble}和{\tt move}。
+  同样的，{\tt steer}可以改变海龟的朝向但不能改变位置。
 
 Adjust the rules and your {\tt steer} method for good quality play;
 for example, it should be possible for the slow Turtle to tag the
