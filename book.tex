@@ -16672,20 +16672,26 @@ documentation at \url{docs.python.org/lib/datetime-date.html}.
 \end{exercise}
 
 
-\chapter{Classes and methods}
+\chapter{Classes and methods 类和方法}
 
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/Time2.py}.
 
-\section{Object-oriented features}
+本章代码可以从\url{http://thinkpython.com/code/Time2.py}获取.
+
+\section{Object-oriented features 面向对象的特性}
 \index{object-oriented programming}
 
 Python is an {\bf object-oriented programming language}, which means
 that it provides features that support object-oriented
 programming.
 
+Python 是一门面向对象语言，意味着它能够支持面向对象编程。
+
 It is not easy to define object-oriented programming, but we have
 already seen some of its characteristics:
+
+定义面向对象编程并不容易，但是我们已经见过了它的一些特点：
 
 \begin{itemize}
 
@@ -16693,9 +16699,14 @@ already seen some of its characteristics:
 definitions, and most of the computation is expressed in terms
 of operations on objects.
 
+程序有对象定义和函数定义组成，大多数计算都是在对象上操作的。
+
 \item Each object definition corresponds to some object or concept
 in the real world, and the functions that operate on that object
 correspond to the ways real-world objects interact.
+
+每个对象定义都是根据一些真实世界的对象或者概念来的，操作对象的函数是根据真实世
+界中对象的交互来的。
 
 \end{itemize}
 
@@ -16705,12 +16716,20 @@ functions we defined correspond to the kinds of things people do with
 times.  Similarly, the {\tt Point} and {\tt Rectangle} classes
 correspond to the mathematical concepts of a point and a rectangle.
 
+例如，在第~\ref{time}章定义的{\tt Time}类是根据人们记录一天的时间来的，我们定义
+的函数是根据人们对时间做的一些活动来的。类似的，{\tt Point}和{\tt Rectangle}类
+是根据数学概念中的点和矩形来的。
+
 So far, we have not taken advantage of the features Python provides to
 support object-oriented programming.  These
 features are not strictly necessary; most of them provide
 alternative syntax for things we have already done.  But in many cases,
 the alternative is more concise and more accurately conveys the
 structure of the program.
+
+到现在，我们还没有使用Python提供的面向对象编程特性的优势。这些特性并不是必须的
+；它们中大部分是我们已经完成的事情的另外一种语法表达。但是在大多数情况，这些代
+替更加简介，更加准确的表达了程序的结构。
 
 For example, in the {\tt Time} program, there is no obvious
 connection between the class definition and the function definitions
@@ -16719,6 +16738,9 @@ takes at least one {\tt Time} object as an argument.
 \index{method}
 \index{function}
 
+例如，在{\tt Time}程序中，在类定义和接下来的函数定义上并没有明显的联系。仔细观
+察的话，每个函数都至少使用一个{\tt Time}对象作为参数。
+
 This observation is the motivation for {\bf methods}; a method is
 a function that is associated with a particular class.
 We have seen methods for strings, lists, dictionaries and tuples.
@@ -16726,16 +16748,24 @@ In this chapter, we will define methods for user-defined types.
 \index{syntax}
 \index{semantics}
 
+{\bf 方法}的动机是观测；一个方法是一个和特定的类关联的函数。我们已经看过了字符串，列表，字典和元组的方法。在这章中，我们将会定义用户自定义类型的方法。
+
 Methods are semantically the same as functions, but there are
 two syntactic differences:
+
+方法和函数的语义相同，但是有两处句法的不同：
 
 \begin{itemize}
 
 \item Methods are defined inside a class definition in order
 to make the relationship between the class and the method explicit.
 
+方法在一个类定义内部声明，为了显示地同类进行关联。
+
 \item The syntax for invoking a method is different from the
 syntax for calling a function.
+
+调用方法的语法和调用函数的语法不同。
 
 \end{itemize}
 
@@ -16744,6 +16774,10 @@ two chapters and transform them into methods.  This transformation is
 purely mechanical; you can do it simply by following a sequence of
 steps.  If you are comfortable converting from one form to another,
 you will be able to choose the best form for whatever you are doing.
+
+在下几节中，我们会把前面两章中的函数转化为方法。这个转化是纯机械式的；你可以通
+过以下步骤简单的完成。如果你要想更好的从一种形式转化到另一种形式，你至少需要清
+楚的认识到你自己在做什么。
 
 
 \section{Printing objects}
