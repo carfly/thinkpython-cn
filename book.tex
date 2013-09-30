@@ -16780,12 +16780,15 @@ you will be able to choose the best form for whatever you are doing.
 楚的认识到你自己在做什么。
 
 
-\section{Printing objects}
+\section{Printing objects 打印对象}
 \index{object!printing}
 
 In Chapter~\ref{time}, we defined a class named
 {\tt Time} and in Exercise~\ref{ex.printtime}, you 
 wrote a function named \verb"print_time":
+
+在第~\ref{time}一章中，我们定义了一个叫{\tt Time}的类，然后在实验
+~\ref{ex.printtime}中，你写了一个叫\verb"print_time"的函数：
 
 \begin{verbatim}
 class Time(object):
@@ -16797,6 +16800,8 @@ def print_time(time):
 %
 To call this function, you have to pass a {\tt Time} object as an
 argument:
+
+为了调用这个函数，你必须把一个{\tt Time}对象作为一个参数传递给函数。
 
 \begin{verbatim}
 >>> start = Time()
@@ -16812,6 +16817,9 @@ move the function definition inside the class definition.  Notice
 the change in indentation.
 \index{indentation}
 
+为了写一个\verb"print_time"方法，我们需要做的就是在类定义里面定义函数。注意缩进
+的变化。
+
 \begin{verbatim}
 class Time(object):
     def print_time(time):
@@ -16823,6 +16831,8 @@ Now there are two ways to call \verb"print_time".  The first
 \index{function syntax}
 \index{dot notation}
 
+现在有两种方法来调用\verb"print_time"。第一种（也是不常用的）是使用函数的语法：
+
 
 \begin{verbatim}
 >>> Time.print_time(start)
@@ -16833,8 +16843,13 @@ In this use of dot notation, {\tt Time} is the name of the class,
 and \verb"print_time" is the name of the method.  {\tt start} is
 passed as a parameter.
 
+在这个点语法中，{\tt Time}是类的名字，然后\verb"print_time"是方法的名字。{\tt
+start}是传递的参数。
+
 The second (and more concise) way is to use method syntax:
 \index{method syntax}
+
+第二种语法（也更简洁）是使用方法语法：
 
 \begin{verbatim}
 >>> start.print_time()
@@ -16848,15 +16863,23 @@ subject of a sentence is what the sentence is about, the subject
 of a method invocation is what the method is about.
 \index{subject}
 
+在这个点语法中，\verb"print_time"是方法的名称，然后{\tt start}是调用方法的对象
+，被称为主语（{\bf subject}）。就像一个句子的主语是句子的核心，方法的主语也是方
+法作用的主要对象。
+
 Inside the method, the subject is assigned to the first
 parameter, so in this case {\tt start} is assigned
 to {\tt time}.
 \index{self (parameter name)}
 \index{parameter!self}
 
+在方法中，主语被赋值为第一个参数，所以在这里{\tt start}被赋值到{\tt time}上了。
+
 By convention, the first parameter of a method is
 called {\tt self}, so it would be more common to write
 \verb"print_time" like this:
+
+约定方法的第一个参数写作{\tt self}，所以可以把\verb"print_time"重新写成：
 
 \begin{verbatim}
 class Time(object):
@@ -16867,15 +16890,23 @@ class Time(object):
 The reason for this convention is an implicit metaphor:
 \index{metaphor, method invocation}
 
+这个约定的原因是一种暗喻。
+
 \begin{itemize}
 
 \item The syntax for a function call, \verb"print_time(start)",
   suggests that the function is the active agent.  It says something
   like, ``Hey \verb"print_time"!  Here's an object for you to print.''
 
+在函数调用的语法中，\verb"print_time(start)"表示函数是一个活跃的代理。就像是在
+说``Hi, \verb"print_time"! 这有一个对象要给你去打印''。
+
 \item In object-oriented programming, the objects are the active
   agents.  A method invocation like \verb"start.print_time()" says
   ``Hey {\tt start}!  Please print yourself.''
+
+在面向对象编程中，对象是一个活跃的代理。一个如同\verb"start.print_time()"的方法
+调用就像是在说``Hi {\tt start}! 请打印你自己''。
 
 \end{itemize}
 
@@ -16885,12 +16916,19 @@ be.  But sometimes shifting responsibility from the functions onto the
 objects makes it possible to write more versatile functions, and makes
 it easier to maintain and reuse code.
 
+视角的转换似乎语气更文雅些了，但没有什么明显的实质的改变。在我们已经看过的例子
+中的确如此。但优势从函数上面转移任务到对象上使得更加容易写出万能的函数，并且使
+得维护和重用代码更容易。
+
 \begin{exercise}
 \label{convert}
 
 Rewrite \verb"time_to_int" (from Section~\ref{prototype}) as a method.
 It is probably not appropriate to rewrite \verb"int_to_time" as a
 method; what object you would invoke it on?
+
+重写\verb"time_to_int"(第~\ref{prototype}节)作为一个方法。可能把
+\verb"int_to_time"重写为一个方法不合适；思考下你应该在哪个对象上调用它？
 
 \end{exercise}
 
@@ -18912,7 +18950,7 @@ depending on the Turtle's speed.
   For debugging, you might want to use the {\sf Step} button,
   which invokes {\tt step} once on each Turtle.
 
-  修改{\tt steer}使得海龟呆在一个区域内。为了调试，你也许需要一个{\st Step}按钮
+  修改{\tt steer}使得海龟呆在一个区域内。为了调试，你也许需要一个{\sf Step}按钮
   ，在每个海龟上调用一次{\tt step}。
 
 \item Modify {\tt steer} so that each Turtle points toward its nearest
