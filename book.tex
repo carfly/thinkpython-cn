@@ -16933,11 +16933,13 @@ method; what object you would invoke it on?
 \end{exercise}
 
 
-\section{Another example}
+\section{Another example 一个范例}
 \index{increment}
 
 Here's a version of {\tt increment} (from Section~\ref{increment})
 rewritten as a method:
+
+下面是一个重写为方法的{\tt increment}（来自第~\ref{increment}节）的例子：
 
 \begin{verbatim}
 # inside class Time:
@@ -16951,7 +16953,13 @@ This version assumes that \verb"time_to_int" is written
 as a method, as in Exercise~\ref{convert}.  Also, note that
 it is a pure function, not a modifier.
 
+这个版本假设\verb"time_to_int"已经改成了方法了，见练习~\ref{convert}。另外，注
+意到这个是一个纯函数。不是一个过程。\footnote{指没有修改自身数据而是返回一个新
+的对象}
+
 Here's how you would invoke {\tt increment}:
+
+下面是如何调用{\tt increment}的例子：
 
 \begin{verbatim}
 >>> start.print_time()
@@ -16965,11 +16973,17 @@ The subject, {\tt start}, gets assigned to the first parameter,
 {\tt self}.  The argument, {\tt 1337}, gets assigned to the
 second parameter, {\tt seconds}.
 
+{\tt start}主语赋值为第一个参数{\tt self}。{\tt 1337}赋值为第二个参数{\tt
+seconds}。
+
 This mechanism can be confusing, especially if you make an error.
 For example, if you invoke {\tt increment} with two arguments, you
 get:
 \index{exception!TypeError}
 \index{TypeError}
+
+这个机制可能比较迷惑，特别是当出现了错误。例如，如果你给{\tt increment}两个参数
+，你会得到：
 
 \begin{verbatim}
 >>> end = start.increment(1337, 460)
@@ -16980,8 +16994,10 @@ The error message is initially confusing, because there are
 only two arguments in parentheses.  But the subject is also
 considered an argument, so all together that's three.
 
+错误信息则比较迷惑人，因为这里只有2个参数。但是其实主语也算一个参数。所以加起来
+一共是三个。
 
-\section{A more complicated example}
+\section{A more complicated example 一个更复杂的例子}
 
 \verb"is_after" (from Exercise~\ref{isafter}) is slightly more complicated
 because it takes two Time objects as parameters.  In this case it is
@@ -16989,6 +17005,9 @@ conventional to name the first parameter {\tt self} and the second
 parameter {\tt other}:
 \index{other (parameter name)}
 \index{parameter!other}
+
+\verb"is_after"（来自练习~\ref{isafter}）更加复杂一些因为它使用两个Time对象作为
+参数。在这里为了方便起见将第一个参数叫做{\tt self}第二个参数叫做{\tt other}：
 
 \begin{verbatim}
 # inside class Time:
@@ -17000,6 +17019,8 @@ parameter {\tt other}:
 To use this method, you have to invoke it on one object and pass
 the other as an argument:
 
+为了使用这个方法，你必须在一个对象上调用它然后作为参数传递另外一个。
+
 \begin{verbatim}
 >>> end.is_after(start)
 True
@@ -17008,8 +17029,10 @@ True
 One nice thing about this syntax is that it almost reads
 like English: ``end is after start?''
 
+一个比较好的事情是这个语法读起来和英语差不多:``end是在start之后吗？''
 
-\section{The init method}
+
+\section{The init method init方法}
 \index{init method}
 \index{method!init}
 
@@ -17018,6 +17041,10 @@ a special method that gets invoked when an object is instantiated.
 Its full name is \verb"__init__" (two underscore characters,
 followed by {\tt init}, and then two more underscores).  An
 init method for the {\tt Time} class might look like this:
+
+init方法（``initialization''的简称）是一个特殊的方法，当一个对象初始化的时候调
+用。它的全名是\verb"__init__"（两个下划线后加{\tt init}再加两个下划线）。一个
+{\tt Time}类的init方法看起来像是：
 
 \begin{verbatim}
 # inside class Time:
@@ -17031,6 +17058,8 @@ init method for the {\tt Time} class might look like this:
 It is common for the parameters of \verb"__init__"
 to have the same names as the attributes.  The statement
 
+通常\verb"__init__"方法的参数和属性的名称一样。
+
 \begin{verbatim}
         self.hour = hour
 \end{verbatim}
@@ -17042,8 +17071,12 @@ of {\tt self}.
 \index{default value}
 \index{override}
 
+上面的语句把{\tt hour}参数的值储存为{\tt self}的一个属性。
+
 The parameters are optional, so if you call {\tt Time} with
 no arguments, you get the default values.
+
+参数是可选的，所以如果你不带参数的调用{\tt Time}，你会得到默认值。
 
 \begin{verbatim}
 >>> time = Time()
@@ -17052,6 +17085,8 @@ no arguments, you get the default values.
 \end{verbatim}
 %
 If you provide one argument, it overrides {\tt hour}:
+
+如果你提供一个参数，它会覆盖{\tt hour}：
 
 \begin{verbatim}
 >>> time = Time (9)
@@ -17062,6 +17097,8 @@ If you provide one argument, it overrides {\tt hour}:
 If you provide two arguments, they override {\tt hour} and
 {\tt minute}.
 
+如果你提供两个参数，他们会覆盖{\tt hour}和{\tt minute}。
+
 \begin{verbatim}
 >>> time = Time(9, 45)
 >>> time.print_time()
@@ -17071,6 +17108,8 @@ If you provide two arguments, they override {\tt hour} and
 And if you provide three arguments, they override all three
 default values.
 
+如果你提供三个参数，它们会覆盖三个默认值。
+
 
 \begin{exercise}
 \index{Point class}
@@ -17079,6 +17118,10 @@ default values.
 Write an init method for the {\tt Point} class that takes
 {\tt x} and {\tt y} as optional parameters and assigns
 them to the corresponding attributes.
+
+为{\tt Point}类写一个init方法，使用{\tt x} 和 {\tt y}作为可选参数然后赋值给对应
+的属性。
+
 \end{exercise}
 
 
