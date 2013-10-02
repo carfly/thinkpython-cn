@@ -17125,7 +17125,7 @@ them to the corresponding attributes.
 \end{exercise}
 
 
-\section{The {\tt \_\_str\_\_} method}
+\section{The {\tt \_\_str\_\_} method {\tt \_\_str\_\_}方法}
 \index{str method@\_\_str\_\_ method}
 \index{method!\_\_str\_\_}
 
@@ -17133,7 +17133,12 @@ them to the corresponding attributes.
 that is supposed to return a string representation of an object.
 \index{string representation}
 
+\verb"__str__"是一个和\verb"__init__"方法类似的特殊方法，用来返回一个对象的字符
+串表达。
+
 For example, here is a {\tt str} method for Time objects:
+
+例如，下面是一个Time对象的{\tt str}方法：
 
 \begin{verbatim}
 # inside class Time:
@@ -17146,6 +17151,8 @@ When you {\tt print} an object, Python invokes the {\tt str} method:
 \index{print statement}
 \index{statement!print}
 
+当你{\tt print}一个对象，Python调用{\tt str}方法：
+
 \begin{verbatim}
 >>> time = Time(9, 45)
 >>> print time
@@ -17156,16 +17163,21 @@ When I write a new class, I almost always start by writing
 \verb"__init__", which makes it easier to instantiate objects, and 
 \verb"__str__", which is useful for debugging.
 
+当我写了一个新的类，我总是从\verb"__init__"开始，使得更容易实例化一个对象，然后
+就是\verb"__str__"方法，用于调试。
+
 
 \begin{exercise}
 
 Write a {\tt str} method for the {\tt Point} class.  Create
 a Point object and print it.
 
+写一个{\tt point}类的{\tt str}方法。创建一个Point对象然后打印它。
+
 \end{exercise}
 
 
-\section{Operator overloading}
+\section{Operator overloading 运算符重载}
 \label{operator.overloading}
 
 By defining other special methods, you can specify the behavior
@@ -17173,9 +17185,15 @@ of operators on user-defined types.  For example, if you define
 a method named \verb"__add__" for the {\tt Time} class, you can use the
 {\tt +} operator on Time objects.
 
+通过定义其它的一些特殊方法，你可以在用户定义的类上指定运算符的行为。例如，如果
+你为{\tt Time}类定义了一个叫\verb"__add__"的方法，你可以在Time对象上使用{\tt +}
+运算。
+
 Here is what the definition might look like:
 \index{add method}
 \index{method!add}
+
+下面是定义的例子：
 
 \begin{verbatim}
 # inside class Time:
@@ -17186,6 +17204,8 @@ Here is what the definition might look like:
 \end{verbatim}
 %
 And here is how you could use it:
+
+然后下面是你应该怎么使用它：
 
 \begin{verbatim}
 >>> start = Time(9, 45)
@@ -17199,15 +17219,24 @@ When you apply the {\tt +} operator to Time objects, Python invokes
 \verb"__str__".  So there is quite a lot happening behind the scenes!
 \index{operator overloading}
 
+当你在Time对象上应用{\tt +}运算符，Python调用\verb"__add__"。当你打印结果，
+Python调用\verb"__str__"。所以实际上后台有很多有趣的事情不断的发生！
+
 Changing the behavior of an operator so that it works with
 user-defined types is called {\bf operator overloading}.  For every
 operator in Python there is a corresponding special method, like 
 \verb"__add__".  For more details, see
 \url{docs.python.org/ref/specialnames.html}.
 
+改变一个用户自定义类型的运算符的行为被称为{\bf 运算符重载}。对于每一个运算符
+Python对应一个特殊的方法，就像\verb"__add__"。更多的对应请参考
+\url{docs.python.org/ref/specialnames.html}。
+
 \begin{exercise}
 
 Write an {\tt add} method for the Point class.  
+
+为一个Point类写一个{\tt add}方法。
 
 \end{exercise}
 
