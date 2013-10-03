@@ -17241,13 +17241,15 @@ Write an {\tt add} method for the Point class.
 \end{exercise}
 
 
-\section{Type-based dispatch}
+\section{Type-based dispatch 类型分发}
 
 In the previous section we added two Time objects, but you
 also might want to add an integer to a Time object.  The
 following is a version of \verb"__add__"
 that checks the type of {\tt other} and invokes either
 \verb"add_time" or {\tt increment}:
+
+在上以节中我们添加了两个Time对象的加法，但是你可能还希望给一个Time对象加一个整数。下面的\verb"__add__"版本检查{\tt other}的类型然后调用\verb"add_time"或者{\tt increment}：
 
 \begin{verbatim}
 # inside class Time:
@@ -17273,6 +17275,9 @@ of the class.
 \index{isinstance function}
 \index{function!isinstance}
 
+内建的{\tt isinstance}函数使用一个值和一个类对象，如果值是这个类的实例则返回
+{\tt True}。
+
 If {\tt other} is a Time object, \verb"__add__" invokes
 \verb"add_time".  Otherwise it assumes that the parameter
 is a number and invokes {\tt increment}.  This operation is
@@ -17282,8 +17287,14 @@ arguments.
 \index{type-based dispatch}
 \index{dispatch, type-based}
 
+如果{\tt other}是一个Time对象，\verb"__add__"调用\verb"add_time"。否则它假设参
+数是一个数字然后调用{\tt increment}。这个操作被称为{\bf 类型分发}。因为它根据参数的
+类型来分发不同的计算方法。
+
 Here are examples that use the {\tt +} operator with different
 types:
+
+下面是一个在不同类型上使用{\tt +}运算符的例子：
 
 \begin{verbatim}
 >>> start = Time(9, 45)
@@ -17297,6 +17308,8 @@ types:
 Unfortunately, this implementation of addition is not commutative.
 If the integer is the first operand, you get
 \index{commutativity}
+
+不幸的是，这个加法的实现没有交换性。如果int是左运算数，你会得到：
 
 \begin{verbatim}
 >>> print 1337 + start
@@ -17312,6 +17325,11 @@ the {\tt +} operator.  Here's the definition:
 \index{radd method}
 \index{method!radd}
 
+问题在于，Python没有问一个Time对象去加上一个整数，而是问一个int去加上一个Time对
+象，然后它不直到该怎么做了。但是这个问题有一个优雅的解决方案：一个特殊的
+\verb"__radd__"方法，表示``右手加法''。当一个Time对象在{\tt +}运算符的右手边出
+现时调用这个方法。下面是定义：
+
 \begin{verbatim}
 # inside class Time:
 
@@ -17320,6 +17338,8 @@ the {\tt +} operator.  Here's the definition:
 \end{verbatim}
 %
 And here's how it's used:
+
+然后下面是如何使用：
 
 \begin{verbatim}
 >>> print 1337 + start
@@ -17332,21 +17352,29 @@ And here's how it's used:
 Write an {\tt add} method for Points that works with either a
 Point object or a tuple:  
 
+为Point写一个{\tt add}方法，可以对一个Point或是一个元组工作。
+
 \begin{itemize}
 
 \item If the second operand is a Point, the method should return a new
 Point whose $x$ coordinate is the sum of the $x$ coordinates of the
 operands, and likewise for the $y$ coordinates.
 
+如果右手边是一个Point，方法应该返回一个新的Point，$x$坐标是两个点的$x$的和，$y$
+也是一样的。
+
 \item If the second operand is a tuple, the method should add the
 first element of the tuple to the $x$ coordinate and the second
 element to the $y$ coordinate, and return a new Point with the result. 
+
+如果右手边是一个元组，方法应该让$x$加上元组的第一个元素，$y$加上第二个元素，然
+后返回一个新的Point对象。
 
 \end{itemize}
 
 \end{exercise}
 
-\section{Polymorphism}
+\section{Polymorphism 多态}
 
 Type-based dispatch is useful when it is necessary, but (fortunately)
 it is not always necessary.  Often you can avoid it by writing functions
@@ -17354,11 +17382,17 @@ that work correctly for arguments with different types.
 \index{type-based dispatch}
 \index{dispatch!type-based}
 
+类型分发在必要的时候非常有用，但是（比较好的）它不是必须的。通常你可以通过写对
+不同的参数类型都适用的函数来避免它。
+
 Many of the functions we wrote for strings will actually
 work for any kind of sequence.
 For example, in Section~\ref{histogram}
 we used {\tt histogram} to count the number of times each letter
 appears in a word.
+
+许多我们为字符串写的函数实际上都适用于任何种类的序列。例如在~\ref{histogram}节
+中我们适用{\tt histogram}来为每个字母计数：
 
 \begin{verbatim}
 def histogram(s):
@@ -17375,6 +17409,9 @@ This function also works for lists, tuples, and even dictionaries,
 as long as the elements of {\tt s} are hashable, so they can be used
 as keys in {\tt d}.
 
+这个函数也工作于列表，元组，甚至是字典，只要{\tt s}的元素是可哈希的，你就可以把
+它用于{\tt d}的键。
+
 \begin{verbatim}
 >>> t = ['spam', 'egg', 'spam', 'spam', 'bacon', 'spam']
 >>> histogram(t)
@@ -17387,8 +17424,13 @@ function {\tt sum}, which adds the elements of a sequence, works
 as long as the elements of the sequence support addition.
 \index{polymorphism}
 
+可以在几个类型上工作的函数叫{\bf 多态}。多态帮助代码复用。例如，内建的{\tt sum}
+函数，对一个序列的元素求和，只要元素支持加法就能够工作。
+
 Since Time objects provide an {\tt add} method, they work
 with {\tt sum}:
+
+因为Time对象提供了一个{\tt add}方法，它就可以用于{\tt sum}：
 
 \begin{verbatim}
 >>> t1 = Time(7, 43)
@@ -17402,12 +17444,17 @@ with {\tt sum}:
 In general, if all of the operations inside a function 
 work with a given type, then the function works with that type.
 
+通常，如果一个函数内所有的操作都适用于一个类型，那这个函数就能用于该类型。
+
 The best kind of polymorphism is the unintentional kind, where
 you discover that a function you already wrote can be
 applied to a type you never planned for.
 
+最好的多态是无心成柳柳成荫的，就是你发现你已经写的一个函数在你没有预计的类型上
+也能工作的。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \index{debugging}
 
 It is legal to add attributes to objects at any point in the execution
@@ -17418,6 +17465,10 @@ initialize all of an objects attributes in the init method.
 \index{init method}
 \index{attribute!initializing}
 
+在程序执行的任何地方为一个对象添加属性是合法的，但是如果你是类型理论的拥护者，
+那一个相同类型的对象拥有不同的属性集合就会造成混乱。通常是在init方法中初始化好
+一个对象的所有属性。
+
 If you are not sure whether an object has a particular attribute, you
 can use the built-in function {\tt hasattr} (see Section~\ref{hasattr}).
 \index{hasattr function}
@@ -17425,9 +17476,15 @@ can use the built-in function {\tt hasattr} (see Section~\ref{hasattr}).
 \index{dict attribute@\_\_dict\_\_ attribute}
 \index{attribute!\_\_dict\_\_}
 
+如果你不确定一个对象是否应该有某个属性，你可以适用内建的{\tt hasattr}函数(参见
+~\ref{hasattr}节)。
+
 Another way to access the attributes of an object is through the
 special attribute \verb"__dict__", which is a dictionary that maps
 attribute names (as strings) and values:
+
+另一种访问一个对象的属性的方法是通过特殊的\verb"__dict__"属性，是一个属性名称（
+字符串）和值的映射的字典。
 
 \begin{verbatim}
 >>> p = Point(3, 4)
@@ -17437,6 +17494,8 @@ attribute names (as strings) and values:
 %
 For purposes of debugging, you might find it useful to keep this
 function handy:
+
+为了调试目的，你可能发现下面这段代码非常有用：
 
 \begin{verbatim}
 def print_attributes(obj):
@@ -17449,10 +17508,15 @@ and prints each attribute name and its corresponding value.
 \index{traversal!dictionary}
 \index{dictionary!traversal}
 
+\verb"print_attributes"遍历一个对象的字典然后打印每个属性的名称和对应的值。
+
 The built-in function {\tt getattr} takes an object and an attribute
 name (as a string) and returns the attribute's value.
 \index{getattr function}
 \index{function!getattr}
+
+内建的{\tt getattr}方法适用一个对象和一个属性名称（字符串）作为参数然后返回属性
+的值。
 
 
 \section{Interface and implementation}
