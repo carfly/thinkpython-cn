@@ -15836,23 +15836,38 @@ called {\tt Point} that represents a point in two-dimensional
 space.
 \index{point, mathematical}
 
+我们已经使用过了许多Python的内置类型；
+现在我们要定义一个新类型。
+作为例子，我们来创建一个叫做{\tt Point}的类型，代表二维空间的一个点。
+
 In mathematical notation, points are often written in
 parentheses with a comma separating the coordinates. For example,
 $(0,0)$ represents the origin, and $(x,y)$ represents the
 point $x$ units to the right and $y$ units up from the origin.
 
+在数学记法中，点通常被写成在两个小括号中用一个逗号分隔坐标的形式。
+例如$(0,0)$代表原点，$(x,y)$代表原点向右x个单位，向上y个单位的点。
+
 There are several ways we might represent points in Python:
+
+在Python中，有几种表示点的方法：
 
 \begin{itemize}
 
 \item We could store the coordinates separately in two
 variables, {\tt x} and {\tt y}.
 
+我们可以将坐标存储在两个独立的变量，{\tt x}和{\tt y}中。
+
 \item We could store the coordinates as elements in a list
 or tuple.
 
+我们可以将坐标作为一个列表或者元组的元素存储。
+
 \item We could create a new type to represent points as
 objects.
+
+我们可以创建一个新类型将点表示为对象。
 
 \end{itemize}
 \index{representation}
@@ -15861,12 +15876,18 @@ Creating a new type
 is (a little) more complicated than the other options, but
 it has advantages that will be apparent soon.
 
+创建一个新类型比另外的方法（有一点）更复杂，
+但是它的优势一会儿会显现出来。
+
 A user-defined type is also called a {\bf class}.
 A class definition looks like this:
 \index{class}
 \index{object}
 \index{class definition}
 \index{definition!class}
+
+用户自定义类型也被称作{\bf 对象（class）}。
+像这样定义一个对象：
 
 \begin{verbatim}
 class Point(object):
@@ -15879,12 +15900,19 @@ type.
 \index{Point class}
 \index{class!Point}
 
+第一行表明新的类代表一个{\tt 点}，也是一个对象、一个内置类型。
+
 The body is a docstring that explains what the class is for.
 You can define variables and functions inside a class definition,
 but we will get back to that later.
 \index{docstring}
 
+主题部分是文档字符串，用来解释这个类的作用。
+你可以在类定义中定义变量和函数，稍后会讨论这个。
+
 Defining a class named {\tt Point} creates a class object.
+
+定义一个叫做{\tt Point}的类便创建了一个类对象。
 
 \begin{verbatim}
 >>> print Point
@@ -15896,8 +15924,13 @@ name'' is \verb"__main__.Point".
 \index{object!class}
 \index{class object}
 
+由于{\tt Point}是定义在全局的，所以它的``全名''是\verb"__main__.Point"。
+
 The class object is like a factory for creating objects.  To create a
 Point, you call {\tt Point} as if it were a function.
+
+类对象就像一个用来创造对象的工厂。
+要创建一个点，你可以像调用函数那样调用{\tt Point}。
 
 \begin{verbatim}
 >>> blank = Point()
@@ -15913,11 +15946,16 @@ the class.
 \index{instance}
 \index{instantiation}
 
+返回值是一个Point对象的引用，我们称其为{\tt blank}。
+创建一个新对象的过程叫做{\bf 实例化（instantiation）}，这个对象叫做这个类的{\bf 实例（instance）}。
+
 When you print an instance, Python tells you what class it
 belongs to and where it is stored in memory (the prefix
 {\tt 0x} means that the following number is in hexadecimal).
 \index{hexadecimal}
 
+当你试图打印一个实例，Python会告诉你它属于哪个类，
+以及它在内存中的存储地址（前缀{\tt 0x}代表接下来的数以十六进制表示）。
 
 \section{Attributes}
 \label{attributes}
