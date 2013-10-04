@@ -17519,7 +17519,7 @@ name (as a string) and returns the attribute's value.
 的值。
 
 
-\section{Interface and implementation}
+\section{Interface and implementation 接口和实现}
 
 One of the goals of object-oriented design is to make software more
 maintainable, which means that you can keep the program working when
@@ -17530,20 +17530,32 @@ requirements.
 \index{maintainable}
 \index{object-oriented design}
 
+面向对象设计的一个目标是使得软件更容易维护，意味着当系统的其它部分改变的时候或
+者是修改程序适应新的需求是，也可以保持程序可运行。
+
 A design principle that helps achieve that goal is to keep
 interfaces separate from implementations.  For objects, that means
 that the methods a class provides should not depend on how the
 attributes are represented.
 \index{attribute}
 
+一个使得达到这个目标的设计原则是接口和实现分离。对于对象，就意味着一个类提供的
+方法不应该依赖属性的形式。
+
 For example, in this chapter we developed a class that represents
 a time of day.  Methods provided by this class include
 and \verb"time_to_int", \verb"is_after", and \verb"add_time".
+
+例如，在我们设计的用于表示一天中的时间的类的那一章中。这个类提供的方法包括
+\verb"time_to_int"，\verb"is_after"和\verb"add_time"。
 
 We could implement those methods in several ways.  The details of the
 implementation depend on how we represent time.  In this chapter, the
 attributes of a {\tt Time} object are {\tt hour}, {\tt minute}, and
 {\tt second}.
+
+我们可以用几种方法来实现这些方法。实现的细节依赖于我们如何表示时间。在这一章中
+，{\tt Time}对象的属性是{\tt hour},{\tt minute}和{\tt second}。
 
 As an alternative, we could replace these attributes with
 a single integer representing the number of seconds
@@ -17551,14 +17563,23 @@ since midnight.  This implementation would make some methods,
 like \verb"is_after", easier to write, but it makes some methods
 harder.
 
+另外一种实现，我们可以用单个表示从零点开始的秒数的整型来替代这些属性。这个实现
+会使得一些方法，如\verb"is_after"更容易写成，但也使得一些方法更困难。
+
 After you deploy a new class, you might discover a better
 implementation.  If other parts of the program are using your
 class, it might be time-consuming and error-prone to change the
 interface.  
 
+在你完成一个新类是，你可能会发现一个更好的实现。如果其它部分使用了你的类，再来
+改变接口则是耗时且易错的。
+
 But if you designed the interface carefully, you can
 change the implementation without changing the interface, which
 means that other parts of the program don't have to change.
+
+但是如果你小心的设计好接口，你可以改变实现而保持接口不变，这样使得程序的其它部
+分不用改变。
 
 Keeping the interface separate from the implementation means that
 you have to hide the attributes.  Code in other parts of the program
@@ -17567,6 +17588,11 @@ and modify the state of the object.  They should not access the
 attributes directly.  This principle is called {\bf information hiding};
 see \url{http://en.wikipedia.org/wiki/Information_hiding}.
 \index{information hiding}
+
+保持接口于实现分离意味着你必须隐藏属性。程序其它部分的代码（在类外定义的）应该
+使用方法来读取和修改对象的状态。他们不应该直接访问属性。这个原则叫做{\bf 信息隐
+藏}；参见\url{http://en.wikipedia.org/wiki/Information_hiding}。
+
 
 \begin{exercise}
 
@@ -17579,44 +17605,50 @@ not have to modify the test code in {\tt main}.  When you are done,
 the output should be the same as before.  Solution:
 \url{http://thinkpython.com/code/Time2_soln.py}
 
+下载本章的代码\url{http://thinkpython.com/code/Time2.py}。将{\tt Time}的属性改
+成整型，表示零点开始的秒数。然后修改方法（和\verb"int_to_time"函数）适用于新的
+实现。你不应该修改在{\tt main}中的测试代码。当你完成了，输出应该是和以前一样的
+。答案：\url{http://thinkpython.com/code/Time2_soln.py}。
+
+
 \end{exercise}
 
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[object-oriented language:] A language that provides features,
+\item[object-oriented language（面向对象语言）:] A language that provides features,
   such as user-defined classes and method syntax, that facilitate
   object-oriented programming.
 \index{object-oriented language}
 
-\item[object-oriented programming:] A style of programming in which
+\item[object-oriented programming（面向对象编程）:] A style of programming in which
 data and the operations that manipulate it are organized into classes
 and methods.
 \index{object-oriented programming}
 
-\item[method:] A function that is defined inside a class definition and
+\item[method（方法）:] A function that is defined inside a class definition and
 is invoked on instances of that class.
 \index{method}
 
 \item[subject:] The object a method is invoked on.
 \index{subject}
 
-\item[operator overloading:] Changing the behavior of an operator like
+\item[operator overloading（运算符重载）:] Changing the behavior of an operator like
 {\tt +} so it works with a user-defined type.
 \index{overloading}
 \index{operator!overloading}
 
-\item[type-based dispatch:] A programming pattern that checks the type
+\item[type-based dispatch（类型重载）:] A programming pattern that checks the type
 of an operand and invokes different functions for different types.
 \index{type-based dispatch}
 
-\item[polymorphic:] Pertaining to a function that can work with more
+\item[polymorphic（多态）:] Pertaining to a function that can work with more
   than one type.  
 \index{polymorphism}
 
-\item[information hiding:] The principle that the interface provided 
+\item[information hiding（信息隐藏）:] The principle that the interface provided 
 by an object should not depend on its implementation, in particular
 the representation of its attributes.
 \index{information hiding}
