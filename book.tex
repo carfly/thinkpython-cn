@@ -14614,10 +14614,10 @@ might have to install matplotlib (see
 \end{exercise}
 
 
-\chapter{Files}
+\chapter{Files 文件}
 
 
-\section{Persistence}
+\section{Persistence 持久化}
 \index{file}
 \index{type!file}
 \index{persistence}
@@ -14627,20 +14627,35 @@ sense that they run for a short time and produce some output,
 but when they end, their data disappears.  If you run the program
 again, it starts with a clean slate.
 
+目前我们见到的大部分程序都是瞬态的，它们运行一小段时间便输出一些结果。
+然而当程序运行结束后，它们的数据就会消失。
+如果你重新运行这个程序，它们又会从零开始。
+
 Other programs are {\bf persistent}: they run for a long time
 (or all the time); they keep at least some of their data
 in permanent storage (a hard drive, for example); and
 if they shut down and restart, they pick up where they left off.
+
+另一种程序是 {\bf 持久化（persistent）}的：
+它们会运行很长一段时间（或者从不停止）；
+它们至少会保留一部分数据在永久存储器（例如硬盘）上；
+当它们被关闭或者重启，它们会从被中止的地方继续执行。
 
 Examples of persistent programs are operating systems, which
 run pretty much whenever a computer is on, and web servers,
 which run all the time, waiting for requests to come in on
 the network.
 
+持久化程序的一个例子便是操作系统，它们在计算机开机时就一直运行着；
+另一个例子是网络服务器，它们不停运行着等待来自网络的请求。
+
 One of the simplest ways for programs to maintain their data
 is by reading and writing text files.  We have already seen
 programs that read text files; in this chapter we will see programs
 that write them.
+
+使程序能够维护它们数据的最简单的方法之一是读写文本文件。
+我们之前已经遇到了读文件的程序；在本章，我们会看到写文件的程序。
 
 An alternative is to store the state of the program in a database.
 In this chapter I will present a simple database and a module,
@@ -14648,8 +14663,11 @@ In this chapter I will present a simple database and a module,
 \index{pickle module}
 \index{module!pickle}
 
+另一个可供选择的方法是将程序的状态存储在一个数据库中。
+在本章，我会展示一个简单的数据库和一个模块，{\tt pickle}，
+它使存储程序数据变得相当容易。
 
-\section{Reading and writing}
+\section{Reading and writing 读与写}
 \index{file!reading and writing}
 
 A text file is a sequence of characters stored on a permanent
@@ -14658,8 +14676,13 @@ to open and read a file in Section~\ref{wordlist}.
 \index{open function}
 \index{function!open}
 
+一个文本文件是存储在永久介质（例如硬盘，闪存，只读光盘）上的字符的序列。
+我们已经在第\ref{wordlist}章见到了如何打开和读取一个文件。
+
 To write a file, you have to open it with mode \verb"'w'" as a second
 parameter:
+
+要写一个文件，你需要将open函数的第二个参数设置为模式\verb"'w'"。
 
 \begin{verbatim}
 >>> fout = open('output.txt', 'w')
@@ -14671,7 +14694,13 @@ If the file already exists, opening it in write mode clears out
 the old data and starts fresh, so be careful!
 If the file doesn't exist, a new one is created.
 
+如果这个文件已经存在，使用写模式打开，会将其之前的内容全部抹去从零开始。
+所以一定要小心！
+如果这个文件不存在，它会被创建。
+
 The {\tt write} method puts data into the file.
+
+{\tt write}方法将数据写入文件。
 
 \begin{verbatim}
 >>> line1 = "This here's the wattle,\n"
@@ -14681,12 +14710,16 @@ The {\tt write} method puts data into the file.
 Again, the file object keeps track of where it is, so if
 you call {\tt write} again, it adds the new data to the end.
 
+文件对象会记录写入的位置，所以再次使用{\tt write}方法，会在文件的最后写入新数据。
+
 \begin{verbatim}
 >>> line2 = "the emblem of our land.\n"
 >>> fout.write(line2)
 \end{verbatim}
 %
 When you are done writing, you have to close the file.
+
+当写完以后，你需要关闭文件。
 
 \begin{verbatim}
 >>> fout.close()
@@ -14696,13 +14729,17 @@ When you are done writing, you have to close the file.
 \index{method!close}
 
 
-\section{Format operator}
+\section{Format operator 格式化操作符}
 \index{format operator}
 \index{operator!format}
 
 The argument of {\tt write} has to be a string, so if we want
 to put other values in a file, we have to convert them to
 strings.  The easiest way to do that is with {\tt str}:
+
+{\tt write}方法的参数必须是一个字符串，
+所以当我们要向文件写入其它类型的值，我们需要将其转换成字符串。
+最简单的方法是使用{\tt str}。
 
 \begin{verbatim}
 >>> x = 52
@@ -14714,15 +14751,25 @@ applied to integers, {\tt \%} is the modulus operator.  But
 when the first operand is a string, {\tt \%} is the format operator.
 \index{format string}
 
+另一种方法是使用{\bf 格式化操作符（format operator）}，{\tt \%}。
+当应用在整数上时，{\tt \%}是模运算操作符。
+但若第一个运算对象是字符串时，{\tt \%}就成为格式化操作符了。
+
 The first operand is the {\bf format string}, which contains
 one or more {\bf format sequences}, which
 specify how
 the second operand is formatted.  The result is a string.
 \index{format sequence}
 
+第一个运算对象称作{\bf 格式化字符串（format string）}，
+包含了一个或多个{\bf 格式化序列（format sequences）}来说明第二个运算对象应该如何被格式化
+运算结果是一个字符串。
+
 For example, the format sequence \verb"'%d'" means that
 the second operand should be formatted as an
 integer ({\tt d} stands for ``decimal''):
+
+例如，格式化序列\verb"'%d'"意思是第二个运算对象应该按照整数来格式化（{\tt d}代表``十进制数（decimal）''）：
 
 \begin{verbatim}
 >>> camels = 42
@@ -14733,8 +14780,13 @@ integer ({\tt d} stands for ``decimal''):
 The result is the string \verb"'42'", which is not to be confused
 with the integer value {\tt 42}.
 
+结果是字符串\verb"'42'"，区别于整数{\tt 42}。
+
 A format sequence can appear anywhere in the string,
 so you can embed a value in a sentence:
+
+格式化序列可以在字符串中的任何位置出现，
+所以将值嵌入到一句话中：
 
 \begin{verbatim}
 >>> camels = 42
@@ -14746,10 +14798,16 @@ If there is more than one format sequence in the string,
 the second argument has to be a tuple.  Each format sequence is
 matched with an element of the tuple, in order.
 
+如果在字符串中出现大于1个格式化序列，那么第二个参数必须是元组。
+每一个格式化序列按顺序对应元组中的每一个元素。
+
 The following example uses \verb"'%d'" to format an integer,
 \verb"'%g'" to format
 a floating-point number (don't ask why), and \verb"'%s'" to format
 a string:
+
+下面这个例子使用\verb"'%d'"格式化一个整数，\verb"'%g'"格式化一个浮点数（不要问为什么），
+\verb"'%s'"格式化一个字符串：
 
 \begin{verbatim}
 >>> 'In %d years I have spotted %g %s.' % (3, 0.1, 'camels')
@@ -14762,6 +14820,9 @@ elements have to match the format sequences:
 \index{exception!TypeError}
 \index{TypeError}
 
+元组元素的个数必须和字符串中格式化序列的个数一致。
+当然，元组元素的类型也必须和格式化序列相匹配。
+
 \begin{verbatim}
 >>> '%d %d %d' % (1, 2)
 TypeError: not enough arguments for format string
@@ -14772,9 +14833,15 @@ TypeError: illegal argument type for built-in operation
 In the first example, there aren't enough elements; in the
 second, the element is the wrong type.
 
+第一个例子中，元素的数量不足；
+第二个例子中，元素的类型不匹配。
+
 The format operator is powerful, but it can be difficult to use.  You
 can read more about it at
 \url{docs.python.org/lib/typesseq-strings.html}.
+
+格式化操作符很强大，但也很难使用。
+你可以在\url{docs.python.org/lib/typesseq-strings.html}获取更多的帮助。
 
 % You can specify the number of digits as part of the format sequence.
 % For example, the sequence \verb"'%8.2f'"
@@ -14791,7 +14858,7 @@ can read more about it at
 % digits after the decimal point.  
 
 
-\section{Filenames and paths}
+\section{Filenames and paths 文件名与路径}
 \label{paths}
 \index{filename}
 \index{path}
@@ -14806,11 +14873,18 @@ current directory.
 \index{os module}
 \index{module!os}
 
+文件被组织在{\bf 目录（directories）}（亦称作``文件夹（folders）''）中。
+每一个运行中的程序拥有一个``当前目录（current directory）''，作为大部分操作的默认目录。
+例如，当你需要打开一个文件读取时，Python会在当前目录中寻找这个文件。
+
 The {\tt os} module provides functions for working with files and
 directories (``os'' stands for ``operating system'').  {\tt os.getcwd}
 returns the name of the current directory:
 \index{getcwd function}
 \index{function!getcwd}
+
+{\tt os}模块提供了操作文件和目录的函数（``os''代表``操作系统 operating system''）。
+{\tt os.getcwd}返回当前目录名：
 
 \begin{verbatim}
 >>> import os
@@ -14825,6 +14899,9 @@ user named {\tt dinsdale}.
 \index{working directory}
 \index{directory!working}
 
+{\tt cwd}代表``当前工作目录（current working directory）''。
+这个例子的结果是{\tt /home/dinsdale}，这是用户{\tt dinsdale}的用户目录。
+
 A string like {\tt cwd} that identifies a file is called a {\bf path}.
 A {\bf relative path} starts from the current directory;
 an {\bf absolute path} starts from the topmost directory in the
@@ -14834,9 +14911,16 @@ file system.
 \index{absolute path}
 \index{path!absolute}
 
+像{\tt cwd}这样用来定位一个文件的字符串称作{\bf 路径（path）}。
+{\bf 相对路径（relative path）}从当前目录开始；
+{\bf 绝对路径（absolute path）}从文件系统的最顶端的目录开始。
+
 The paths we have seen so far are simple filenames, so they are
 relative to the current directory.  To find the absolute path to
 a file, you can use {\tt os.path.abspath}:
+
+目前位置我们见到的路径都仅仅是文件名，所以它们是相对于当前目录的。
+为了获取文件的绝对路径，你可以使用{\tt os.path.abspath}：
 
 \begin{verbatim}
 >>> os.path.abspath('memo.txt')
@@ -14848,12 +14932,16 @@ whether a file or directory exists:
 \index{exists function}
 \index{function!exists}
 
+{\tt os.path.exists}检测某个文件或者目录是否存在。
+
 \begin{verbatim}
 >>> os.path.exists('memo.txt')
 True
 \end{verbatim}
 %
 If it exists, {\tt os.path.isdir} checks whether it's a directory:
+
+如果存在，{\tt os.path.isdir}检测其是否是目录。
 
 \begin{verbatim}
 >>> os.path.isdir('memo.txt')
@@ -14864,8 +14952,12 @@ True
 %
 Similarly, {\tt os.path.isfile} checks whether it's a file.
 
+类似地，{\tt os.path.isfile}检测其是否是文件。
+
 {\tt os.listdir} returns a list of the files (and other directories)
 in the given directory:
+
+{\tt os.listdir}返回文件（以及目录）的列表。
 
 \begin{verbatim}
 >>> os.listdir(cwd)
@@ -14878,6 +14970,9 @@ the names of all the files, and calls itself recursively on
 all the directories.
 \index{walk, directory}
 \index{directory!walk}
+
+为了展示这些函数，下面这个例子``走''过一个目录，打印出所有的文件名，
+并且遇到目录时递归地调用自己。
 
 \begin{verbatim}
 def walk(dirname):
@@ -14893,6 +14988,8 @@ def walk(dirname):
 {\tt os.path.join} takes a directory and a file name and joins
 them into a complete path.  
 
+{\tt os.path.join} 接受了一个目录和一个文件名并将它们组合成一个完整的路径。
+
 \begin{exercise}
 
 The {\tt os} module provides a function called {\tt walk}
@@ -14900,12 +14997,17 @@ that is similar to this one but more versatile.  Read
 the documentation and use it to print the names of the
 files in a given directory and its subdirectories.
 
+{\tt os}模块提供了一个叫{\tt walk}的函数，与上面这个例子很相似但更通用。
+阅读文档，使用它来打印一个给定的目录以及其子目录中的所有的文件名。
+
 Solution: \url{http://thinkpython.com/code/walk.py}.
+
+答案： \url{http://thinkpython.com/code/walk.py}。
 
 \end{exercise}
 
 
-\section{Catching exceptions}
+\section{Catching exceptions 捕捉异常}
 \label{catch}
 
 A lot of things can go wrong when you try to read and write
@@ -14916,6 +15018,9 @@ files.  If you try to open a file that doesn't exist, you get an
 \index{exception!IOError}
 \index{IOError}
 
+当你尝试读写文件时，很容易发生错误。
+如果你尝试打开一个不存在的文件，就会产生{\tt IOError}。
+
 \begin{verbatim}
 >>> fin = open('bad_file')
 IOError: [Errno 2] No such file or directory: 'bad_file'
@@ -14925,12 +15030,16 @@ If you don't have permission to access a file:
 \index{file!permission}
 \index{permission, file}
 
+如果你没有权限操作一个文件：
+
 \begin{verbatim}
 >>> fout = open('/etc/passwd', 'w')
 IOError: [Errno 13] Permission denied: '/etc/passwd'
 \end{verbatim}
 %
 And if you try to open a directory for reading, you get
+
+如果你尝试写一个目录，结果是：
 
 \begin{verbatim}
 >>> fin = open('/home')
@@ -14945,9 +15054,15 @@ indication, there are at least 21 things that can go wrong).
 \index{try statement}
 \index{statement!try}
 
+为了避免这些错误，你应该使用{\tt os.path.exists}和{\tt os.path.isfile}这类函数，
+但是这会占用你很多时间检查所有的可能性（从``{\tt Errono 21}''迹象看出，至少有21种可能产生的错误）。
+
 It is better to go ahead and try---and deal with problems if they
 happen---which is exactly what the {\tt try} statement does.  The
 syntax is similar to an {\tt if} statement:
+
+更好的办法是就这样尝试着执行下去---如果有错误再处理---这就是{\tt try}语句做的事。
+它的语法与{\tt if}语句很相似：
 
 \begin{verbatim}
 try:    
@@ -14964,11 +15079,19 @@ well, it skips the {\tt except} clause and proceeds.  If an
 exception occurs, it jumps out of the {\tt try} clause and
 executes the {\tt except} clause.
 
+Python首先执行{\tt try}子句。
+如果一切正确，{\tt except}子句就会被跳过，接着执行下面的语句。
+如果有异常发生，它会跳出{\tt try}子句，执行{\tt except}子句。
+
 Handling an exception with a {\tt try} statement is called {\bf
 catching} an exception.  In this example, the {\tt except} clause
 prints an error message that is not very helpful.  In general,
 catching an exception gives you a chance to fix the problem, or try
 again, or at least end the program gracefully.
+
+使用{\tt try}语句处理异常被称作{\bf 捕捉（catching）}异常。
+在这个例子中，{\tt except}子句打印出一条不是那么有用的错误信息。
+一般来说，捕捉异常使你能够方便地修复问题，或者重新运行一次，或者至少能够让您的程序优雅地结束。
 
 \begin{exercise}
 
@@ -14978,14 +15101,21 @@ and write the contents into the second file (creating it if
 necessary).  If the pattern string appears anywhere in the file, it
 should be replaced with the replacement string.
 
+编写一个名叫{\tt sed}的函数，它的参数为一个模式串，一个替换串和两个文件名；
+它读取第一个文件的内容并写到第二个文件中（必要时创建它）。一旦模式串在文件中出现，就要把它替换成替换串。
+
 If an error occurs while opening, reading, writing or closing files,
 your program should catch the exception, print an error message, and
 exit.  Solution: \url{http://thinkpython.com/code/sed.py}.
 
+如果在打开、读取、写入或者关闭文件时发生错误，你的程序要能够捕捉异常，打印错误信息，并且退出。
+答案：\url{http://thinkpython.com/code/sed.py}。
+
+
 \end{exercise}
 
 
-\section{Databases}
+\section{Databases 数据库}
 \index{database}
 
 A {\bf database} is a file that is organized for storing data.
@@ -14996,13 +15126,22 @@ so it persists after the program ends.
 \index{anydbm module}
 \index{module!anydbm}
 
+{\bf 数据库（database）}是系统化的存储数据的文件。
+大部分数据库类似字典那样组织数据，能够将键映射到值上。
+最大的不同是数据库存储在磁盘上（或是其它永久存储介质），所以当程序结束时它仍然存留。
+
 The module {\tt anydbm} provides an interface for creating
 and updating database files.  As an example, I'll create a database
 that contains captions for image files.
 \index{open function}
 \index{function!open}
 
+{\tt anydbm}模块提供了创建、更新数据库文件的接口。
+举例说明，我要创建一个存储图片文件标题的数据库。
+
 Opening a database is similar to opening other files:
+
+打开一个数据库类似于打开一个文件：
 
 \begin{verbatim}
 >>> import anydbm
@@ -15015,12 +15154,17 @@ that can be used (for most operations) like a dictionary.
 If you create a new item, {\tt anydbm} updates the database file.
 \index{update!database}
 
+模式\verb"'c'"意思是如果数据库不存在就创建它。
+返回的结果是一个数据库对象，你可以像使用一个字典那样使用它（对于大部分操作来说）。
+当你创建一个新项时，{\tt anydbm}会更新数据库文件。
 
 \begin{verbatim}
 >>> db['cleese.png'] = 'Photo of John Cleese.'
 \end{verbatim}
 %
 When you access one of the items, {\tt anydbm} reads the file:
+
+当你要使用一个项，{\tt anydbm}会读这个文件。
 
 \begin{verbatim}
 >>> print db['cleese.png']
@@ -15029,6 +15173,8 @@ Photo of John Cleese.
 %
 If you make another assignment to an existing key, {\tt anydbm} replaces
 the old value:
+
+如果你给一个已存在的键赋予另一个值，{\tt anydbm}会替换旧值。
 
 \begin{verbatim}
 >>> db['cleese.png'] = 'Photo of John Cleese doing a silly walk.'
@@ -15041,6 +15187,9 @@ work with database objects.  So does iteration with a {\tt for}
 statement.
 \index{dictionary methods!anydbm module}
 
+很多字典的方法，比如{\tt keys}和{\tt items}，在数据库对象中同样适用。
+所以可以使用{\tt for}语句来迭代。
+
 \begin{verbatim}
 for key in db:
     print key
@@ -15048,6 +15197,8 @@ for key in db:
 %
 As with other files, you should close the database when you are
 done:
+
+和其它文件一样，当工作完成时必须关闭数据库。
 
 \begin{verbatim}
 >>> db.close()
@@ -15066,12 +15217,20 @@ error.
 \index{pickle module}
 \index{module!pickle}
 
+{\tt anydbm}的一个限制是键和值必须是字符串。
+如果你使用其它类型，就会出错。
+
 The {\tt pickle} module can help.  It translates
 almost any type of object into a string suitable for storage in a
 database, and then translates strings back into objects.
 
+{\tt pickle}模块可以解决这个问题。
+它可以将几乎所有对象类型转化成字符串，来存储在数据库中，然后可以将字符串重新转化成原来的对象。
+
 {\tt pickle.dumps} takes an object as a parameter and returns
 a string representation ({\tt dumps} is short for ``dump string''):
+
+{\tt pickle.dumps}接受一个对象作为参数，返回其字符串的表示（{\tt dumps}是的``dump string''缩写）：
 
 \begin{verbatim}
 >>> import pickle
@@ -15084,6 +15243,9 @@ The format isn't obvious to human readers; it is meant to be
 easy for {\tt pickle} to interpret.  {\tt pickle.loads}
 (``load string'') reconstitutes the object:
 
+这个格式不是给人类阅读的；{\tt pickle}可以轻松翻译它。
+使用{\tt pickle.loads}（``load string''）来还原这个对象。
+
 \begin{verbatim}
 >>> t1 = [1, 2, 3]
 >>> s = pickle.dumps(t1)
@@ -15095,6 +15257,8 @@ easy for {\tt pickle} to interpret.  {\tt pickle.loads}
 Although the new object has the same value as the old, it is
 not (in general) the same object:
 
+虽然新的对象和旧的对象值相同，但是（通常）它们并不是同一个对象：
+
 \begin{verbatim}
 >>> t1 == t2
 True
@@ -15105,12 +15269,16 @@ False
 In other words, pickling and then unpickling has the same effect
 as copying the object.
 
+换种方式说，使用pickle打包然后解包一个对象，相当于复制了这个对象。
+
 You can use {\tt pickle} to store non-strings in a database.
 In fact, this combination is so common that it has been
 encapsulated in a module called {\tt shelve}.  
 \index{shelve module}
 \index{module!shelve}
 
+你可以使用{\tt pickle}在数据库中存储非字符串。
+实际上，这种常见的组合方式已经被封装在一个叫{\tt shelve}的模块中了。
 
 \begin{exercise}
 \index{anagram set}
@@ -15123,16 +15291,26 @@ words that can be spelled with those letters.  For example, {\tt
   'opst'} maps to the list {\tt ['opts', 'post', 'pots', 'spot',
     'stop', 'tops']}.
 
+如果你在\url{http://thinkpython.com/code/anagram_sets.py}中下载了我的练习\ref{anagrams}的答案，
+你会发现我创建了一个字典，将一串排序好的字母映射到一个包含了能够用这些字母拼写的单词的列表。
+例如{\tt 'opst'}映射到列表{\tt ['opts', 'post', 'pots', 'spot', 'stop', 'tops']}。
+
+
 Write a module that imports \verb"anagram_sets" and provides
 two new functions: \verb"store_anagrams" should store the
 anagram dictionary in a ``shelf;'' \verb"read_anagrams" should
 look up a word and return a list of its anagrams.
 Solution: \url{http://thinkpython.com/code/anagram_db.py}
 
+编写一个模块，导入\verb"anagram_sets"并且提供两个新的函数：
+\verb"store_anagrams"将异构词字典存储为数据库的一项；
+\verb"read_anagrams"能够查找一个词，并返回它的异构词的列表。
+答案： \url{http://thinkpython.com/code/anagram_db.py}
+
 \end{exercise}
 
 
-\section{Pipes}
+\section{Pipes 管道}
 \index{shell}
 \index{pipe}
 
@@ -15145,9 +15323,17 @@ a web browser by typing (for example) {\tt firefox}.
 \index{ls (Unix command)}
 \index{Unix command!ls}
 
+大多数操作系统提供了命令行接口，也被称作{\bf shell}。
+Shell通常提供了操作文件系统和启动应用的命令。
+例如，在Unix中你可以使用{\tt cd}来切换目录，使用{\tt ls}来显示目录中的内容，
+敲下（例如）{\tt firefox}来启动一个网页浏览器。
+
 Any program that you can launch from the shell can also be
 launched from Python using a {\bf pipe}.  A pipe is an object
 that represents a running program.
+
+任何可以在shell中启动的程序也可以在Python中使用{\bf 管道（pipe）}启动。
+管道是代表了运行中的程序的对象。
 
 For example, the Unix command {\tt ls -l} normally displays the
 contents of the current directory (in long format).  You can
@@ -15155,9 +15341,18 @@ launch {\tt ls} with {\tt os.popen}\footnote{{\tt popen} is deprecated
 now, which means we are supposed to stop using it and start using
 the {\tt subprocess} module.  But for simple cases, I find
 {\tt subprocess} more complicated than necessary.  So I am going
-to keep using {\tt popen} until they take it away.}:
+to keep using {\tt popen} until they take it away.
+
+{\tt popen}已经被弃用，现在应该使用{\tt subprocess}模块。
+但是在简单的例子中，{\tt subprocess}有点杀鸡用牛刀。
+所以我打算继续使用{\tt popen}直到其被彻底移除。
+
+}:
 \index{popen function}
 \index{function!popen}
+
+例如，Unix命令{\tt ls -l}通常（详细地）显示当前目录中的内容。
+你可以使用{\tt os.popen}来启动{\tt ls}：
 
 \begin{verbatim}
 >>> cmd = 'ls -l'
@@ -15174,6 +15369,11 @@ once with {\tt read}:
 \index{read method}
 \index{method!read}
 
+参数是一个包含了shell命令的字符串。
+返回值相当于一个被打开的文件的对象。
+你可以使用{\tt readline}按行读取{\tt ls}进程的输出，
+也可以使用{\tt read}一次性获取全部的结果。
+
 \begin{verbatim}
 >>> res = fp.read()
 \end{verbatim}
@@ -15181,6 +15381,8 @@ once with {\tt read}:
 When you are done, you close the pipe like a file:
 \index{close method}
 \index{method!close}
+
+当操作结束之后，你需要像文件那样关闭管道：
 
 \begin{verbatim}
 >>> stat = fp.close()
@@ -15190,6 +15392,9 @@ None
 %
 The return value is the final status of the {\tt ls} process;
 {\tt None} means that it ended normally (with no errors).
+
+返回值是{\tt ls}进程的最终状态；
+{\tt None}的意思是它正常地结束了（没有发生错误）。
 
 For example, most Unix systems provide a command called {\tt md5sum}
 that reads the contents of a file and computes a ``checksum.''
@@ -15201,7 +15406,15 @@ before the universe collapses).
 \index{md5}
 \index{checksum}
 
+例如，大部分Unix系统提供了一个叫做{\tt md5sum}的命令，
+它读取一个文件的内容并计算出``校验和（checksum）''。
+你可以在\url{http://en.wikipedia.org/wiki/Md5}阅读关于MD5的信息。
+这个命令提供了高效的方式来检查两个文件是否拥有相同的内容。
+两段不同内容产生出相同的checksum的可能性非常小（甚至直到宇宙坍塌都不会发生）。
+
 You can use a pipe to run {\tt md5sum} from Python and get the result:
+
+你可以在Python中使用管道来运行{\tt md5sum}来得到结果：
 
 \begin{verbatim}
 >>> filename = 'book.tex'
@@ -15225,6 +15438,10 @@ copy of the same song, stored in different directories or with
 different file names.  The goal of this exercise is to search for
 duplicates.
 
+在一堆MP3文件中，一首歌可能会重复存在，
+存储在不同的目录中或是文件名不同。
+这个练习的目的是找到相同的歌曲。
+
 \begin{enumerate}
 
 \item Write a program that searches a directory and all of its
@@ -15237,22 +15454,34 @@ manipulating file and path names.
 \index{algorithm!MD5}
 \index{checksum}
 
+编写一段程序，递归地搜索一个目录以及其所有的子目录，
+返回一个满足给定后缀名（例如{\tt .mp3}）的所有文件的完整路径的列表。
+提示：{\tt os.path}提供了一些实用的函数来操作文件和路径名。
+
 \item To recognize duplicates, you can use {\tt md5sum}
 to compute a ``checksum'' for each files.  If two files have
 the same checksum, they probably have the same contents.
 \index{md5sum}
 
+对于重复项的识别，你可以使用{\tt md5sum}计算出每个文件的``checksum''。
+如果两个文件拥有相同的checksum，它们很有可能拥有相同的内容。
+
 \item To double-check, you can use the Unix command {\tt diff}.
 \index{diff}
+
+你可以使用Unix命令{\tt diff}进行复核。
 
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/find_duplicates.py}.
 
+答案：\url{http://thinkpython.com/code/find_duplicates.py}。
+
+
 \end{exercise}
 
 
-\section{Writing modules}
+\section{Writing modules 编写模块}
 \label{modules}
 \index{module, writing}
 \index{word count}
@@ -15260,6 +15489,9 @@ Solution: \url{http://thinkpython.com/code/find_duplicates.py}.
 Any file that contains Python code can be imported as a module.
 For example, suppose you have a file named {\tt wc.py} with the following
 code:
+
+任何包含Python代码的文件都能够作为一个模块被导入。
+例如，假设你有一个叫做{\tt wc.py}的文件，内容如下：
 
 \begin{verbatim}
 def linecount(filename):
@@ -15275,6 +15507,9 @@ If you run this program, it reads itself and prints the number
 of lines in the file, which is 7.
 You can also import it like this:
 
+如果你运行这段程序，它读取自己，并打印出自己的行数，结果是7。
+你也可以像这样导入它：
+
 \begin{verbatim}
 >>> import wc
 7
@@ -15284,12 +15519,16 @@ Now you have a module object {\tt wc}:
 \index{module object}
 \index{object!module}
 
+现在你拥有了一个模块对象{\tt wc}：
+
 \begin{verbatim}
 >>> print wc
 <module 'wc' from 'wc.py'>
 \end{verbatim}
 %
 That provides a function called \verb"linecount":
+
+它提供了一个叫做\verb"linecount"的函数：
 
 \begin{verbatim}
 >>> wc.linecount('wc.py')
@@ -15298,6 +15537,8 @@ That provides a function called \verb"linecount":
 %
 So that's how you write modules in Python.
 
+这就是如何在Python中编写模块。
+
 The only problem with this example is that when you import
 the module it executes the test code at the bottom.  Normally
 when you import a module, it defines new functions but it
@@ -15305,8 +15546,13 @@ doesn't execute them.
 \index{import statement}
 \index{statement!import}
 
+唯一的问题是，在这个例子中，当你导入这个模块，它会在最后执行用来测试的代码。
+通常情况下，当你导入一个模块，它仅仅定义了新的函数，但并不执行它们。
+
 Programs that will be imported as modules often
 use the following idiom:
+
+被当做模块导入的程序通常会使用这样的写法：
 
 \begin{verbatim}
 if __name__ == '__main__':
@@ -15319,12 +15565,21 @@ program starts.  If the program is running as a script,
 case, the test code is executed.  Otherwise,
 if the module is being imported, the test code is skipped.
 
+\verb"__name__"是一个内置变量，当程序启动时被赋值。
+如果程序作为脚本执行，\verb"__name__"的值是\verb"__main__"；
+在这种情况下，测试代码会被执行。
+否则，如果模块是被导入的，测试代码就会被跳过。
+
 \begin{exercise}
 
 Type this example into a file named {\tt wc.py} and run
 it as a script.  Then run the Python interpreter and
 {\tt import wc}.  What is the value of \verb"__name__"
 when the module is being imported?
+
+将这个例子打到文件{\tt wc.py}中，并以脚本执行。
+然后运行Python解释器并{\tt import wc}。
+当模块被导入时，\verb"__name__"的值是什么？
 
 Warning: If you import a module that has already been imported,
 Python does nothing.  It does not re-read the file, even if it has
@@ -15333,21 +15588,30 @@ changed.
 \index{reload function}
 \index{function!reload}
 
+警告：如果你将一个已经导入的模块再次导入，Python什么也不会做。
+Python并不重新读入这个文件，甚至这个文件已经被修改过。
+
 If you want to reload a module, you can use the built-in function 
 {\tt reload}, but it can be tricky, so the safest thing to do is
 restart the interpreter and then import the module again.
+
+如果你想重新载入一个模块，你可以使用内置函数{\tt reload}。
+但是这是个花招，更安全的方式是重新启动解释器，再次导入这个模块。
 
 \end{exercise}
 
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 \index{whitespace}
 
 When you are reading and writing files, you might run into problems
 with whitespace.  These errors can be hard to debug because spaces,
 tabs and newlines are normally invisible:
+
+当你读写文件时，你可能会碰上空白符导致的问题。
+这些错误是很难调试的，因为空格，制表符，换行符通常是看不见的：
 
 \begin{verbatim}
 >>> s = '1 2\t 3\n 4'
@@ -15364,12 +15628,17 @@ argument and returns a string representation of the object.  For
 strings, it represents whitespace
 characters with backslash sequences:
 
+内置函数{\tt repr}可以起到帮助。它接受任何对象作为参数，返回其转化成字符串的显示。
+对于字符串来说，它将空白符转化成反斜杠序列。
+
 \begin{verbatim}
 >>> print repr(s)
 '1 2\t 3\n 4'
 \end{verbatim}
 
 This can be helpful for debugging.
+
+这样就便于调试了。
 
 One other problem you might run into is that different systems
 use different characters to indicate the end of a line.  Some
@@ -15379,57 +15648,66 @@ If you move files between different systems, these inconsistencies
 might cause problems.
 \index{end of line character}
 
+另外一个你可能碰到的问题是，不同的系统使用不同的字符来表示一行的结束。
+一些系统使用一个换行符，用\verb"\n"表示。
+另一些系统使用一个回车符，用\verb"\r"表示。
+一些系统两者都用。
+如果你要在不同系统之间迁移文件，这种不一致的地方可能会带来问题。
+
 For most systems, there are applications to convert from one
 format to another.  You can find them (and read more about this
 issue) at \url{http://en.wikipedia.org/wiki/Newline}.  Or, of course, you
 could write one yourself.
 
+大于大多数系统，有用来转换格式的应用。
+你可以在\url{http://en.wikipedia.org/wiki/Newline}找到它们（也可获取到更多相关的信息）。
+当然，你也可以自己实现一个。
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[persistent:] Pertaining to a program that runs indefinitely
+\item[persistent（永久性）:] Pertaining to a program that runs indefinitely
 and keeps at least some of its data in permanent storage.
 \index{persistence}
 
-\item[format operator:] An operator, {\tt \%}, that takes a format
+\item[format operator（格式运算符）:] An operator, {\tt \%}, that takes a format
 string and a tuple and generates a string that includes
 the elements of the tuple formatted as specified by the format string.
 \index{format operator}
 \index{operator!format}
 
-\item[format string:] A string, used with the format operator, that
+\item[format string（格式串）:] A string, used with the format operator, that
 contains format sequences.  
 \index{format string}
 
-\item[format sequence:] A sequence of characters in a format string,
+\item[format sequence（格式序列）:] A sequence of characters in a format string,
 like {\tt \%d}, that specifies how a value should be formatted.
 \index{format sequence}
 
-\item[text file:] A sequence of characters stored in permanent
+\item[text file（文本文件）:] A sequence of characters stored in permanent
 storage like a hard drive.
 \index{text file}
 
-\item[directory:] A named collection of files, also called a folder.
+\item[directory（目录）:] A named collection of files, also called a folder.
 \index{directory}
 
-\item[path:] A string that identifies a file.
+\item[path（路径）:] A string that identifies a file.
 \index{path}
 
-\item[relative path:] A path that starts from the current directory.
+\item[relative path（相对路径）:] A path that starts from the current directory.
 \index{relative path}
 
-\item[absolute path:] A path that starts from the topmost directory
+\item[absolute path（绝对路径）:] A path that starts from the topmost directory
 in the file system.
 \index{absolute path}
 
-\item[catch:] To prevent an exception from terminating
+\item[catch（捕捉）:] To prevent an exception from terminating
 a program using the {\tt try}
 and {\tt except} statements.
 \index{catch}
 
-\item[database:] A file whose contents are organized like a dictionary
+\item[database（数据库）:] A file whose contents are organized like a dictionary
 with keys that correspond to values.
 \index{database}
 
@@ -15448,6 +15726,9 @@ The {\tt urllib} module provides methods for manipulating URLs
 and downloading information from the web.  The following example
 downloads and prints a secret message from {\tt thinkpython.com}:
 
+{\tt urllib}模块提供了操作URL和从网站上下载信息的方法。
+下面这个例子下载并打印了来自{\tt thinkpython.com}网站的一条秘密消息：
+
 \begin{verbatim}
 import urllib
 
@@ -15460,6 +15741,9 @@ Run this code and follow the instructions you see there.
 Solution: \url{http://thinkpython.com/code/zip_code.py}.
 \index{secret exercise}
 \index{exercise, secret}
+
+运行这段代码，并按照结果的指示完成练习。
+答案：\url{http://thinkpython.com/code/zip_code.py}。
 
 \end{exercise}
 
