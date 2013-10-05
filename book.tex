@@ -16956,20 +16956,26 @@ documentation at \url{docs.python.org/lib/datetime-date.html}.
 \end{exercise}
 
 
-\chapter{Classes and methods}
+\chapter{Classes and methods 类和方法}
 
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/Time2.py}.
 
-\section{Object-oriented features}
+本章代码可以从\url{http://thinkpython.com/code/Time2.py}获取.
+
+\section{Object-oriented features 面向对象的特性}
 \index{object-oriented programming}
 
 Python is an {\bf object-oriented programming language}, which means
 that it provides features that support object-oriented
 programming.
 
+Python 是一门面向对象语言，意味着它能够支持面向对象编程。
+
 It is not easy to define object-oriented programming, but we have
 already seen some of its characteristics:
+
+定义面向对象编程并不容易，但是我们已经见过了它的一些特点：
 
 \begin{itemize}
 
@@ -16977,9 +16983,14 @@ already seen some of its characteristics:
 definitions, and most of the computation is expressed in terms
 of operations on objects.
 
+程序有对象定义和函数定义组成，大多数计算都是在对象上操作的。
+
 \item Each object definition corresponds to some object or concept
 in the real world, and the functions that operate on that object
 correspond to the ways real-world objects interact.
+
+每个对象定义都是根据一些真实世界的对象或者概念来的，操作对象的函数是根据真实世
+界中对象的交互来的。
 
 \end{itemize}
 
@@ -16989,12 +17000,20 @@ functions we defined correspond to the kinds of things people do with
 times.  Similarly, the {\tt Point} and {\tt Rectangle} classes
 correspond to the mathematical concepts of a point and a rectangle.
 
+例如，在第~\ref{time}章定义的{\tt Time}类是根据人们记录一天的时间来的，我们定义
+的函数是根据人们对时间做的一些活动来的。类似的，{\tt Point}和{\tt Rectangle}类
+是根据数学概念中的点和矩形来的。
+
 So far, we have not taken advantage of the features Python provides to
 support object-oriented programming.  These
 features are not strictly necessary; most of them provide
 alternative syntax for things we have already done.  But in many cases,
 the alternative is more concise and more accurately conveys the
 structure of the program.
+
+到现在，我们还没有使用Python提供的面向对象编程特性的优势。这些特性并不是必须的
+；它们中大部分是我们已经完成的事情的另外一种语法表达。但是在大多数情况，这些代
+替更加简介，更加准确的表达了程序的结构。
 
 For example, in the {\tt Time} program, there is no obvious
 connection between the class definition and the function definitions
@@ -17003,6 +17022,9 @@ takes at least one {\tt Time} object as an argument.
 \index{method}
 \index{function}
 
+例如，在{\tt Time}程序中，在类定义和接下来的函数定义上并没有明显的联系。仔细观
+察的话，每个函数都至少使用一个{\tt Time}对象作为参数。
+
 This observation is the motivation for {\bf methods}; a method is
 a function that is associated with a particular class.
 We have seen methods for strings, lists, dictionaries and tuples.
@@ -17010,16 +17032,24 @@ In this chapter, we will define methods for user-defined types.
 \index{syntax}
 \index{semantics}
 
+{\bf 方法}的动机是观测；一个方法是一个和特定的类关联的函数。我们已经看过了字符串，列表，字典和元组的方法。在这章中，我们将会定义用户自定义类型的方法。
+
 Methods are semantically the same as functions, but there are
 two syntactic differences:
+
+方法和函数的语义相同，但是有两处句法的不同：
 
 \begin{itemize}
 
 \item Methods are defined inside a class definition in order
 to make the relationship between the class and the method explicit.
 
+方法在一个类定义内部声明，为了显示地同类进行关联。
+
 \item The syntax for invoking a method is different from the
 syntax for calling a function.
+
+调用方法的语法和调用函数的语法不同。
 
 \end{itemize}
 
@@ -17029,13 +17059,20 @@ purely mechanical; you can do it simply by following a sequence of
 steps.  If you are comfortable converting from one form to another,
 you will be able to choose the best form for whatever you are doing.
 
+在下几节中，我们会把前面两章中的函数转化为方法。这个转化是纯机械式的；你可以通
+过以下步骤简单的完成。如果你要想更好的从一种形式转化到另一种形式，你至少需要清
+楚的认识到你自己在做什么。
 
-\section{Printing objects}
+
+\section{Printing objects 打印对象}
 \index{object!printing}
 
 In Chapter~\ref{time}, we defined a class named
 {\tt Time} and in Exercise~\ref{ex.printtime}, you 
 wrote a function named \verb"print_time":
+
+在第~\ref{time}一章中，我们定义了一个叫{\tt Time}的类，然后在实验
+~\ref{ex.printtime}中，你写了一个叫\verb"print_time"的函数：
 
 \begin{verbatim}
 class Time(object):
@@ -17047,6 +17084,8 @@ def print_time(time):
 %
 To call this function, you have to pass a {\tt Time} object as an
 argument:
+
+为了调用这个函数，你必须把一个{\tt Time}对象作为一个参数传递给函数。
 
 \begin{verbatim}
 >>> start = Time()
@@ -17062,6 +17101,9 @@ move the function definition inside the class definition.  Notice
 the change in indentation.
 \index{indentation}
 
+为了写一个\verb"print_time"方法，我们需要做的就是在类定义里面定义函数。注意缩进
+的变化。
+
 \begin{verbatim}
 class Time(object):
     def print_time(time):
@@ -17073,6 +17115,8 @@ Now there are two ways to call \verb"print_time".  The first
 \index{function syntax}
 \index{dot notation}
 
+现在有两种方法来调用\verb"print_time"。第一种（也是不常用的）是使用函数的语法：
+
 
 \begin{verbatim}
 >>> Time.print_time(start)
@@ -17083,8 +17127,13 @@ In this use of dot notation, {\tt Time} is the name of the class,
 and \verb"print_time" is the name of the method.  {\tt start} is
 passed as a parameter.
 
+在这个点语法中，{\tt Time}是类的名字，然后\verb"print_time"是方法的名字。{\tt
+start}是传递的参数。
+
 The second (and more concise) way is to use method syntax:
 \index{method syntax}
+
+第二种语法（也更简洁）是使用方法语法：
 
 \begin{verbatim}
 >>> start.print_time()
@@ -17098,15 +17147,23 @@ subject of a sentence is what the sentence is about, the subject
 of a method invocation is what the method is about.
 \index{subject}
 
+在这个点语法中，\verb"print_time"是方法的名称，然后{\tt start}是调用方法的对象
+，被称为主语（{\bf subject}）。就像一个句子的主语是句子的核心，方法的主语也是方
+法作用的主要对象。
+
 Inside the method, the subject is assigned to the first
 parameter, so in this case {\tt start} is assigned
 to {\tt time}.
 \index{self (parameter name)}
 \index{parameter!self}
 
+在方法中，主语被赋值为第一个参数，所以在这里{\tt start}被赋值到{\tt time}上了。
+
 By convention, the first parameter of a method is
 called {\tt self}, so it would be more common to write
 \verb"print_time" like this:
+
+约定方法的第一个参数写作{\tt self}，所以可以把\verb"print_time"重新写成：
 
 \begin{verbatim}
 class Time(object):
@@ -17117,15 +17174,23 @@ class Time(object):
 The reason for this convention is an implicit metaphor:
 \index{metaphor, method invocation}
 
+这个约定的原因是一种暗喻。
+
 \begin{itemize}
 
 \item The syntax for a function call, \verb"print_time(start)",
   suggests that the function is the active agent.  It says something
   like, ``Hey \verb"print_time"!  Here's an object for you to print.''
 
+在函数调用的语法中，\verb"print_time(start)"表示函数是一个活跃的代理。就像是在
+说``Hi, \verb"print_time"! 这有一个对象要给你去打印''。
+
 \item In object-oriented programming, the objects are the active
   agents.  A method invocation like \verb"start.print_time()" says
   ``Hey {\tt start}!  Please print yourself.''
+
+在面向对象编程中，对象是一个活跃的代理。一个如同\verb"start.print_time()"的方法
+调用就像是在说``Hi {\tt start}! 请打印你自己''。
 
 \end{itemize}
 
@@ -17135,6 +17200,10 @@ be.  But sometimes shifting responsibility from the functions onto the
 objects makes it possible to write more versatile functions, and makes
 it easier to maintain and reuse code.
 
+视角的转换似乎语气更文雅些了，但没有什么明显的实质的改变。在我们已经看过的例子
+中的确如此。但优势从函数上面转移任务到对象上使得更加容易写出万能的函数，并且使
+得维护和重用代码更容易。
+
 \begin{exercise}
 \label{convert}
 
@@ -17142,14 +17211,19 @@ Rewrite \verb"time_to_int" (from Section~\ref{prototype}) as a method.
 It is probably not appropriate to rewrite \verb"int_to_time" as a
 method; what object you would invoke it on?
 
+重写\verb"time_to_int"(第~\ref{prototype}节)作为一个方法。可能把
+\verb"int_to_time"重写为一个方法不合适；思考下你应该在哪个对象上调用它？
+
 \end{exercise}
 
 
-\section{Another example}
+\section{Another example 一个范例}
 \index{increment}
 
 Here's a version of {\tt increment} (from Section~\ref{increment})
 rewritten as a method:
+
+下面是一个重写为方法的{\tt increment}（来自第~\ref{increment}节）的例子：
 
 \begin{verbatim}
 # inside class Time:
@@ -17163,7 +17237,13 @@ This version assumes that \verb"time_to_int" is written
 as a method, as in Exercise~\ref{convert}.  Also, note that
 it is a pure function, not a modifier.
 
+这个版本假设\verb"time_to_int"已经改成了方法了，见练习~\ref{convert}。另外，注
+意到这个是一个纯函数。不是一个过程。\footnote{指没有修改自身数据而是返回一个新
+的对象}
+
 Here's how you would invoke {\tt increment}:
+
+下面是如何调用{\tt increment}的例子：
 
 \begin{verbatim}
 >>> start.print_time()
@@ -17177,11 +17257,17 @@ The subject, {\tt start}, gets assigned to the first parameter,
 {\tt self}.  The argument, {\tt 1337}, gets assigned to the
 second parameter, {\tt seconds}.
 
+{\tt start}主语赋值为第一个参数{\tt self}。{\tt 1337}赋值为第二个参数{\tt
+seconds}。
+
 This mechanism can be confusing, especially if you make an error.
 For example, if you invoke {\tt increment} with two arguments, you
 get:
 \index{exception!TypeError}
 \index{TypeError}
+
+这个机制可能比较迷惑，特别是当出现了错误。例如，如果你给{\tt increment}两个参数
+，你会得到：
 
 \begin{verbatim}
 >>> end = start.increment(1337, 460)
@@ -17192,8 +17278,10 @@ The error message is initially confusing, because there are
 only two arguments in parentheses.  But the subject is also
 considered an argument, so all together that's three.
 
+错误信息则比较迷惑人，因为这里只有2个参数。但是其实主语也算一个参数。所以加起来
+一共是三个。
 
-\section{A more complicated example}
+\section{A more complicated example 一个更复杂的例子}
 
 \verb"is_after" (from Exercise~\ref{isafter}) is slightly more complicated
 because it takes two Time objects as parameters.  In this case it is
@@ -17201,6 +17289,9 @@ conventional to name the first parameter {\tt self} and the second
 parameter {\tt other}:
 \index{other (parameter name)}
 \index{parameter!other}
+
+\verb"is_after"（来自练习~\ref{isafter}）更加复杂一些因为它使用两个Time对象作为
+参数。在这里为了方便起见将第一个参数叫做{\tt self}第二个参数叫做{\tt other}：
 
 \begin{verbatim}
 # inside class Time:
@@ -17212,6 +17303,8 @@ parameter {\tt other}:
 To use this method, you have to invoke it on one object and pass
 the other as an argument:
 
+为了使用这个方法，你必须在一个对象上调用它然后作为参数传递另外一个。
+
 \begin{verbatim}
 >>> end.is_after(start)
 True
@@ -17220,8 +17313,10 @@ True
 One nice thing about this syntax is that it almost reads
 like English: ``end is after start?''
 
+一个比较好的事情是这个语法读起来和英语差不多:``end是在start之后吗？''
 
-\section{The init method}
+
+\section{The init method init方法}
 \index{init method}
 \index{method!init}
 
@@ -17230,6 +17325,10 @@ a special method that gets invoked when an object is instantiated.
 Its full name is \verb"__init__" (two underscore characters,
 followed by {\tt init}, and then two more underscores).  An
 init method for the {\tt Time} class might look like this:
+
+init方法（``initialization''的简称）是一个特殊的方法，当一个对象初始化的时候调
+用。它的全名是\verb"__init__"（两个下划线后加{\tt init}再加两个下划线）。一个
+{\tt Time}类的init方法看起来像是：
 
 \begin{verbatim}
 # inside class Time:
@@ -17243,6 +17342,8 @@ init method for the {\tt Time} class might look like this:
 It is common for the parameters of \verb"__init__"
 to have the same names as the attributes.  The statement
 
+通常\verb"__init__"方法的参数和属性的名称一样。
+
 \begin{verbatim}
         self.hour = hour
 \end{verbatim}
@@ -17254,8 +17355,12 @@ of {\tt self}.
 \index{default value}
 \index{override}
 
+上面的语句把{\tt hour}参数的值储存为{\tt self}的一个属性。
+
 The parameters are optional, so if you call {\tt Time} with
 no arguments, you get the default values.
+
+参数是可选的，所以如果你不带参数的调用{\tt Time}，你会得到默认值。
 
 \begin{verbatim}
 >>> time = Time()
@@ -17264,6 +17369,8 @@ no arguments, you get the default values.
 \end{verbatim}
 %
 If you provide one argument, it overrides {\tt hour}:
+
+如果你提供一个参数，它会覆盖{\tt hour}：
 
 \begin{verbatim}
 >>> time = Time (9)
@@ -17274,6 +17381,8 @@ If you provide one argument, it overrides {\tt hour}:
 If you provide two arguments, they override {\tt hour} and
 {\tt minute}.
 
+如果你提供两个参数，他们会覆盖{\tt hour}和{\tt minute}。
+
 \begin{verbatim}
 >>> time = Time(9, 45)
 >>> time.print_time()
@@ -17283,6 +17392,8 @@ If you provide two arguments, they override {\tt hour} and
 And if you provide three arguments, they override all three
 default values.
 
+如果你提供三个参数，它们会覆盖三个默认值。
+
 
 \begin{exercise}
 \index{Point class}
@@ -17291,10 +17402,14 @@ default values.
 Write an init method for the {\tt Point} class that takes
 {\tt x} and {\tt y} as optional parameters and assigns
 them to the corresponding attributes.
+
+为{\tt Point}类写一个init方法，使用{\tt x} 和 {\tt y}作为可选参数然后赋值给对应
+的属性。
+
 \end{exercise}
 
 
-\section{The {\tt \_\_str\_\_} method}
+\section{The {\tt \_\_str\_\_} method {\tt \_\_str\_\_}方法}
 \index{str method@\_\_str\_\_ method}
 \index{method!\_\_str\_\_}
 
@@ -17302,7 +17417,12 @@ them to the corresponding attributes.
 that is supposed to return a string representation of an object.
 \index{string representation}
 
+\verb"__str__"是一个和\verb"__init__"方法类似的特殊方法，用来返回一个对象的字符
+串表达。
+
 For example, here is a {\tt str} method for Time objects:
+
+例如，下面是一个Time对象的{\tt str}方法：
 
 \begin{verbatim}
 # inside class Time:
@@ -17315,6 +17435,8 @@ When you {\tt print} an object, Python invokes the {\tt str} method:
 \index{print statement}
 \index{statement!print}
 
+当你{\tt print}一个对象，Python调用{\tt str}方法：
+
 \begin{verbatim}
 >>> time = Time(9, 45)
 >>> print time
@@ -17325,16 +17447,21 @@ When I write a new class, I almost always start by writing
 \verb"__init__", which makes it easier to instantiate objects, and 
 \verb"__str__", which is useful for debugging.
 
+当我写了一个新的类，我总是从\verb"__init__"开始，使得更容易实例化一个对象，然后
+就是\verb"__str__"方法，用于调试。
+
 
 \begin{exercise}
 
 Write a {\tt str} method for the {\tt Point} class.  Create
 a Point object and print it.
 
+写一个{\tt point}类的{\tt str}方法。创建一个Point对象然后打印它。
+
 \end{exercise}
 
 
-\section{Operator overloading}
+\section{Operator overloading 运算符重载}
 \label{operator.overloading}
 
 By defining other special methods, you can specify the behavior
@@ -17342,9 +17469,15 @@ of operators on user-defined types.  For example, if you define
 a method named \verb"__add__" for the {\tt Time} class, you can use the
 {\tt +} operator on Time objects.
 
+通过定义其它的一些特殊方法，你可以在用户定义的类上指定运算符的行为。例如，如果
+你为{\tt Time}类定义了一个叫\verb"__add__"的方法，你可以在Time对象上使用{\tt +}
+运算。
+
 Here is what the definition might look like:
 \index{add method}
 \index{method!add}
+
+下面是定义的例子：
 
 \begin{verbatim}
 # inside class Time:
@@ -17355,6 +17488,8 @@ Here is what the definition might look like:
 \end{verbatim}
 %
 And here is how you could use it:
+
+然后下面是你应该怎么使用它：
 
 \begin{verbatim}
 >>> start = Time(9, 45)
@@ -17368,26 +17503,37 @@ When you apply the {\tt +} operator to Time objects, Python invokes
 \verb"__str__".  So there is quite a lot happening behind the scenes!
 \index{operator overloading}
 
+当你在Time对象上应用{\tt +}运算符，Python调用\verb"__add__"。当你打印结果，
+Python调用\verb"__str__"。所以实际上后台有很多有趣的事情不断的发生！
+
 Changing the behavior of an operator so that it works with
 user-defined types is called {\bf operator overloading}.  For every
 operator in Python there is a corresponding special method, like 
 \verb"__add__".  For more details, see
 \url{docs.python.org/ref/specialnames.html}.
 
+改变一个用户自定义类型的运算符的行为被称为{\bf 运算符重载}。对于每一个运算符
+Python对应一个特殊的方法，就像\verb"__add__"。更多的对应请参考
+\url{docs.python.org/ref/specialnames.html}。
+
 \begin{exercise}
 
 Write an {\tt add} method for the Point class.  
 
+为一个Point类写一个{\tt add}方法。
+
 \end{exercise}
 
 
-\section{Type-based dispatch}
+\section{Type-based dispatch 类型分发}
 
 In the previous section we added two Time objects, but you
 also might want to add an integer to a Time object.  The
 following is a version of \verb"__add__"
 that checks the type of {\tt other} and invokes either
 \verb"add_time" or {\tt increment}:
+
+在上以节中我们添加了两个Time对象的加法，但是你可能还希望给一个Time对象加一个整数。下面的\verb"__add__"版本检查{\tt other}的类型然后调用\verb"add_time"或者{\tt increment}：
 
 \begin{verbatim}
 # inside class Time:
@@ -17413,6 +17559,9 @@ of the class.
 \index{isinstance function}
 \index{function!isinstance}
 
+内建的{\tt isinstance}函数使用一个值和一个类对象，如果值是这个类的实例则返回
+{\tt True}。
+
 If {\tt other} is a Time object, \verb"__add__" invokes
 \verb"add_time".  Otherwise it assumes that the parameter
 is a number and invokes {\tt increment}.  This operation is
@@ -17422,8 +17571,14 @@ arguments.
 \index{type-based dispatch}
 \index{dispatch, type-based}
 
+如果{\tt other}是一个Time对象，\verb"__add__"调用\verb"add_time"。否则它假设参
+数是一个数字然后调用{\tt increment}。这个操作被称为{\bf 类型分发}。因为它根据参数的
+类型来分发不同的计算方法。
+
 Here are examples that use the {\tt +} operator with different
 types:
+
+下面是一个在不同类型上使用{\tt +}运算符的例子：
 
 \begin{verbatim}
 >>> start = Time(9, 45)
@@ -17437,6 +17592,8 @@ types:
 Unfortunately, this implementation of addition is not commutative.
 If the integer is the first operand, you get
 \index{commutativity}
+
+不幸的是，这个加法的实现没有交换性。如果int是左运算数，你会得到：
 
 \begin{verbatim}
 >>> print 1337 + start
@@ -17452,6 +17609,11 @@ the {\tt +} operator.  Here's the definition:
 \index{radd method}
 \index{method!radd}
 
+问题在于，Python没有问一个Time对象去加上一个整数，而是问一个int去加上一个Time对
+象，然后它不直到该怎么做了。但是这个问题有一个优雅的解决方案：一个特殊的
+\verb"__radd__"方法，表示``右手加法''。当一个Time对象在{\tt +}运算符的右手边出
+现时调用这个方法。下面是定义：
+
 \begin{verbatim}
 # inside class Time:
 
@@ -17460,6 +17622,8 @@ the {\tt +} operator.  Here's the definition:
 \end{verbatim}
 %
 And here's how it's used:
+
+然后下面是如何使用：
 
 \begin{verbatim}
 >>> print 1337 + start
@@ -17472,21 +17636,29 @@ And here's how it's used:
 Write an {\tt add} method for Points that works with either a
 Point object or a tuple:  
 
+为Point写一个{\tt add}方法，可以对一个Point或是一个元组工作。
+
 \begin{itemize}
 
 \item If the second operand is a Point, the method should return a new
 Point whose $x$ coordinate is the sum of the $x$ coordinates of the
 operands, and likewise for the $y$ coordinates.
 
+如果右手边是一个Point，方法应该返回一个新的Point，$x$坐标是两个点的$x$的和，$y$
+也是一样的。
+
 \item If the second operand is a tuple, the method should add the
 first element of the tuple to the $x$ coordinate and the second
 element to the $y$ coordinate, and return a new Point with the result. 
+
+如果右手边是一个元组，方法应该让$x$加上元组的第一个元素，$y$加上第二个元素，然
+后返回一个新的Point对象。
 
 \end{itemize}
 
 \end{exercise}
 
-\section{Polymorphism}
+\section{Polymorphism 多态}
 
 Type-based dispatch is useful when it is necessary, but (fortunately)
 it is not always necessary.  Often you can avoid it by writing functions
@@ -17494,11 +17666,17 @@ that work correctly for arguments with different types.
 \index{type-based dispatch}
 \index{dispatch!type-based}
 
+类型分发在必要的时候非常有用，但是（比较好的）它不是必须的。通常你可以通过写对
+不同的参数类型都适用的函数来避免它。
+
 Many of the functions we wrote for strings will actually
 work for any kind of sequence.
 For example, in Section~\ref{histogram}
 we used {\tt histogram} to count the number of times each letter
 appears in a word.
+
+许多我们为字符串写的函数实际上都适用于任何种类的序列。例如在~\ref{histogram}节
+中我们适用{\tt histogram}来为每个字母计数：
 
 \begin{verbatim}
 def histogram(s):
@@ -17515,6 +17693,9 @@ This function also works for lists, tuples, and even dictionaries,
 as long as the elements of {\tt s} are hashable, so they can be used
 as keys in {\tt d}.
 
+这个函数也工作于列表，元组，甚至是字典，只要{\tt s}的元素是可哈希的，你就可以把
+它用于{\tt d}的键。
+
 \begin{verbatim}
 >>> t = ['spam', 'egg', 'spam', 'spam', 'bacon', 'spam']
 >>> histogram(t)
@@ -17527,8 +17708,13 @@ function {\tt sum}, which adds the elements of a sequence, works
 as long as the elements of the sequence support addition.
 \index{polymorphism}
 
+可以在几个类型上工作的函数叫{\bf 多态}。多态帮助代码复用。例如，内建的{\tt sum}
+函数，对一个序列的元素求和，只要元素支持加法就能够工作。
+
 Since Time objects provide an {\tt add} method, they work
 with {\tt sum}:
+
+因为Time对象提供了一个{\tt add}方法，它就可以用于{\tt sum}：
 
 \begin{verbatim}
 >>> t1 = Time(7, 43)
@@ -17542,12 +17728,17 @@ with {\tt sum}:
 In general, if all of the operations inside a function 
 work with a given type, then the function works with that type.
 
+通常，如果一个函数内所有的操作都适用于一个类型，那这个函数就能用于该类型。
+
 The best kind of polymorphism is the unintentional kind, where
 you discover that a function you already wrote can be
 applied to a type you never planned for.
 
+最好的多态是无心成柳柳成荫的，就是你发现你已经写的一个函数在你没有预计的类型上
+也能工作的。
 
-\section{Debugging}
+
+\section{Debugging 调试}
 \index{debugging}
 
 It is legal to add attributes to objects at any point in the execution
@@ -17558,6 +17749,10 @@ initialize all of an objects attributes in the init method.
 \index{init method}
 \index{attribute!initializing}
 
+在程序执行的任何地方为一个对象添加属性是合法的，但是如果你是类型理论的拥护者，
+那一个相同类型的对象拥有不同的属性集合就会造成混乱。通常是在init方法中初始化好
+一个对象的所有属性。
+
 If you are not sure whether an object has a particular attribute, you
 can use the built-in function {\tt hasattr} (see Section~\ref{hasattr}).
 \index{hasattr function}
@@ -17565,9 +17760,15 @@ can use the built-in function {\tt hasattr} (see Section~\ref{hasattr}).
 \index{dict attribute@\_\_dict\_\_ attribute}
 \index{attribute!\_\_dict\_\_}
 
+如果你不确定一个对象是否应该有某个属性，你可以适用内建的{\tt hasattr}函数(参见
+~\ref{hasattr}节)。
+
 Another way to access the attributes of an object is through the
 special attribute \verb"__dict__", which is a dictionary that maps
 attribute names (as strings) and values:
+
+另一种访问一个对象的属性的方法是通过特殊的\verb"__dict__"属性，是一个属性名称（
+字符串）和值的映射的字典。
 
 \begin{verbatim}
 >>> p = Point(3, 4)
@@ -17577,6 +17778,8 @@ attribute names (as strings) and values:
 %
 For purposes of debugging, you might find it useful to keep this
 function handy:
+
+为了调试目的，你可能发现下面这段代码非常有用：
 
 \begin{verbatim}
 def print_attributes(obj):
@@ -17589,13 +17792,18 @@ and prints each attribute name and its corresponding value.
 \index{traversal!dictionary}
 \index{dictionary!traversal}
 
+\verb"print_attributes"遍历一个对象的字典然后打印每个属性的名称和对应的值。
+
 The built-in function {\tt getattr} takes an object and an attribute
 name (as a string) and returns the attribute's value.
 \index{getattr function}
 \index{function!getattr}
 
+内建的{\tt getattr}方法适用一个对象和一个属性名称（字符串）作为参数然后返回属性
+的值。
 
-\section{Interface and implementation}
+
+\section{Interface and implementation 接口和实现}
 
 One of the goals of object-oriented design is to make software more
 maintainable, which means that you can keep the program working when
@@ -17606,20 +17814,32 @@ requirements.
 \index{maintainable}
 \index{object-oriented design}
 
+面向对象设计的一个目标是使得软件更容易维护，意味着当系统的其它部分改变的时候或
+者是修改程序适应新的需求是，也可以保持程序可运行。
+
 A design principle that helps achieve that goal is to keep
 interfaces separate from implementations.  For objects, that means
 that the methods a class provides should not depend on how the
 attributes are represented.
 \index{attribute}
 
+一个使得达到这个目标的设计原则是接口和实现分离。对于对象，就意味着一个类提供的
+方法不应该依赖属性的形式。
+
 For example, in this chapter we developed a class that represents
 a time of day.  Methods provided by this class include
 and \verb"time_to_int", \verb"is_after", and \verb"add_time".
+
+例如，在我们设计的用于表示一天中的时间的类的那一章中。这个类提供的方法包括
+\verb"time_to_int"，\verb"is_after"和\verb"add_time"。
 
 We could implement those methods in several ways.  The details of the
 implementation depend on how we represent time.  In this chapter, the
 attributes of a {\tt Time} object are {\tt hour}, {\tt minute}, and
 {\tt second}.
+
+我们可以用几种方法来实现这些方法。实现的细节依赖于我们如何表示时间。在这一章中
+，{\tt Time}对象的属性是{\tt hour},{\tt minute}和{\tt second}。
 
 As an alternative, we could replace these attributes with
 a single integer representing the number of seconds
@@ -17627,14 +17847,23 @@ since midnight.  This implementation would make some methods,
 like \verb"is_after", easier to write, but it makes some methods
 harder.
 
+另外一种实现，我们可以用单个表示从零点开始的秒数的整型来替代这些属性。这个实现
+会使得一些方法，如\verb"is_after"更容易写成，但也使得一些方法更困难。
+
 After you deploy a new class, you might discover a better
 implementation.  If other parts of the program are using your
 class, it might be time-consuming and error-prone to change the
 interface.  
 
+在你完成一个新类是，你可能会发现一个更好的实现。如果其它部分使用了你的类，再来
+改变接口则是耗时且易错的。
+
 But if you designed the interface carefully, you can
 change the implementation without changing the interface, which
 means that other parts of the program don't have to change.
+
+但是如果你小心的设计好接口，你可以改变实现而保持接口不变，这样使得程序的其它部
+分不用改变。
 
 Keeping the interface separate from the implementation means that
 you have to hide the attributes.  Code in other parts of the program
@@ -17643,6 +17872,11 @@ and modify the state of the object.  They should not access the
 attributes directly.  This principle is called {\bf information hiding};
 see \url{http://en.wikipedia.org/wiki/Information_hiding}.
 \index{information hiding}
+
+保持接口于实现分离意味着你必须隐藏属性。程序其它部分的代码（在类外定义的）应该
+使用方法来读取和修改对象的状态。他们不应该直接访问属性。这个原则叫做{\bf 信息隐
+藏}；参见\url{http://en.wikipedia.org/wiki/Information_hiding}。
+
 
 \begin{exercise}
 
@@ -17655,44 +17889,50 @@ not have to modify the test code in {\tt main}.  When you are done,
 the output should be the same as before.  Solution:
 \url{http://thinkpython.com/code/Time2_soln.py}
 
+下载本章的代码\url{http://thinkpython.com/code/Time2.py}。将{\tt Time}的属性改
+成整型，表示零点开始的秒数。然后修改方法（和\verb"int_to_time"函数）适用于新的
+实现。你不应该修改在{\tt main}中的测试代码。当你完成了，输出应该是和以前一样的
+。答案：\url{http://thinkpython.com/code/Time2_soln.py}。
+
+
 \end{exercise}
 
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[object-oriented language:] A language that provides features,
+\item[object-oriented language（面向对象语言）:] A language that provides features,
   such as user-defined classes and method syntax, that facilitate
   object-oriented programming.
 \index{object-oriented language}
 
-\item[object-oriented programming:] A style of programming in which
+\item[object-oriented programming（面向对象编程）:] A style of programming in which
 data and the operations that manipulate it are organized into classes
 and methods.
 \index{object-oriented programming}
 
-\item[method:] A function that is defined inside a class definition and
+\item[method（方法）:] A function that is defined inside a class definition and
 is invoked on instances of that class.
 \index{method}
 
 \item[subject:] The object a method is invoked on.
 \index{subject}
 
-\item[operator overloading:] Changing the behavior of an operator like
+\item[operator overloading（运算符重载）:] Changing the behavior of an operator like
 {\tt +} so it works with a user-defined type.
 \index{overloading}
 \index{operator!overloading}
 
-\item[type-based dispatch:] A programming pattern that checks the type
+\item[type-based dispatch（类型重载）:] A programming pattern that checks the type
 of an operand and invokes different functions for different types.
 \index{type-based dispatch}
 
-\item[polymorphic:] Pertaining to a function that can work with more
+\item[polymorphic（多态）:] Pertaining to a function that can work with more
   than one type.  
 \index{polymorphism}
 
-\item[information hiding:] The principle that the interface provided 
+\item[information hiding（信息隐藏）:] The principle that the interface provided 
 by an object should not depend on its implementation, in particular
 the representation of its attributes.
 \index{information hiding}
@@ -17700,7 +17940,7 @@ the representation of its attributes.
 
 \end{description}
 
-\section{Exercises}
+\section{Exercises 练习}
 
 \begin{exercise}
 \index{default value!avoiding mutable}
@@ -17715,16 +17955,26 @@ common, and difficult to find, errors in Python.
 Write a definition for a class named {\tt Kangaroo} with the following
 methods:
 
+这个练习是关于Python里面最常见，最难找出来的错误。写一个叫{\tt Kangaroo}的类，
+包含以下方法：
+
 \begin{enumerate}
 
 \item An \verb"__init__" method that initializes an attribute named 
 \verb"pouch_contents" to an empty list.
 
+一个\verb"__init__"方法初始化一个叫\verb"pounch_contents"的列表为空。
+
 \item A method named \verb"put_in_pouch" that takes an object
 of any type and adds it to \verb"pouch_contents".
 
+一个叫\verb"put_in_pounch"的方法将一个任何类型的对象加入\verb"pounch_contents"
+。
+
 \item A \verb"__str__" method that returns a string representation
 of the Kangaroo object and the contents of the pouch.
+
+一个\verb"__str__"方法返回Kangaroo对象的字符串表达和pounch的内容。
 
 \end{enumerate}
 %
@@ -17733,9 +17983,15 @@ by creating two {\tt Kangaroo} objects, assigning them to variables
 named {\tt kanga} and {\tt roo}, and then adding {\tt roo} to the
 contents of {\tt kanga}'s pouch.
 
+通过创建两个{\tt Kangaroo}对象来测试你的代码，将它们命名为{\tt kanga}和{\tt
+roo}。然后将{\tt roo}加入{\tt kanga}的pounch列表。
+
 Download \url{http://thinkpython.com/code/BadKangaroo.py}.  It contains
 a solution to the previous problem with one big, nasty bug.
 Find and fix the bug.
+
+下载\url{http://thinkpython.com/code/BadKangaroo.py}的代码，它包含上面问题的解
+决方案。但是有一个大而丑陋的bug。找出并修正这个bug。
 
 If you get stuck, you can download
 \url{http://thinkpython.com/code/GoodKangaroo.py}, which explains the
@@ -17743,6 +17999,9 @@ problem and demonstrates a solution.
 \index{aliasing}
 \index{embedded object}
 \index{object!embedded}
+
+如果你卡住了，你可以下载\url{http://thinkpython.com/code/GoodKangaroo.py}。解释
+了这个问题并给出了另一个解答。
 
 \end{exercise}
 
@@ -17760,9 +18019,15 @@ not always included in a Python installation, so you might have
 to install it from your software repository or, if it's not there,
 from \url{vpython.org}.
 
+Visual是Python提供的3-D图形模块。它可能没有包含在Python的标准安装里面。所以你需
+要从你的软件源或者从\url{vpython.org}下载。
+
 The following example creates a 3-D space that is 256 units
 wide, long and high, and sets the ``center'' to be the
 point $(128,128,128)$.  Then it draws a blue sphere.
+
+下面的例子创建了一个256个单位长度的长宽高的3-D空间。然后设置中心在
+${128,128,128}$点上。然后它画出一个蓝色球体。
 
 \begin{verbatim}
 from visual import *
@@ -17778,13 +18043,22 @@ sphere(pos=scene.center, radius=128, color=color)
 levels between 0.0 and 1.0 (see
 \url{http://en.wikipedia.org/wiki/RGB_color_model}).
 
+{\tt color}是一个RGB元组，也就是其中的元素是0.0到1.0的红-绿-蓝等级。（参见
+\url{http://en.wikipedia.org/wiki/RGB_color_model}）。
+
 If you run this code, you should see a window with a black
 background and a blue sphere.  If you drag the middle button
 up and down, you can zoom in and out.  You can also rotate
 the scene by dragging the right button, but with only one
 sphere in the world, it is hard to tell the difference.
 
+如果你运行这个代码，你应该看到一个黑色背景的蓝色球体的窗口。如果你按住中建拖动
+，你可以放大缩小它。你也可以通过拖动右键来旋转场景。但是因为只有一个球体，你很
+难识别场景的变化。
+
 The following loop creates a cube of spheres:
+
+下面的循环创建一个球体的立方：
 
 \begin{verbatim}
 t = range(0, 256, 51)
@@ -17800,6 +18074,8 @@ for x in t:
 \item Put this code in a script and make sure it works for
 you.
 
+将这个代码粘贴到脚本文件中确保它可以运行。
+
 \item Modify the program so that each sphere in the cube
 has the color that corresponds to its position in RGB space.
 Notice that the coordinates are in the range 0--255, but
@@ -17807,17 +18083,25 @@ the RGB tuples are in the range 0.0--1.0.
 \index{color list}
 \index{available colors}
 
+修改程序使得每个立方中的球体都有着它的位置所对应的RGB空间。注意坐标的范围是
+0---255，而RGB元组的范围是0.0---1.0。
+
 \item Download \url{http://thinkpython.com/code/color_list.py}
 and use the function \verb"read_colors" to generate a list
 of the available colors on your system, their names and
 RGB values.  For each named color draw a sphere in the
 position that corresponds to its RGB values.
 
+下载\url{http://thinkpython.com/code/color_list.py}然后使用其中的
+\verb"read_colors"函数来生成一个你系统上可用的颜色的列表，包括它们的名字和RGB值
+。在每个颜色的RGB值对应的位置画一个球体。
 
 
 \end{enumerate}
 
 You can see my solution at \url{http://thinkpython.com/code/color_space.py}.
+
+你可以从\url{http://thinkpython.com/code/color_space.py}看下我的答案。
 
 \end{exercise}
 
