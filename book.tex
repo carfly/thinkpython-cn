@@ -17656,7 +17656,7 @@ the representation of its attributes.
 
 \end{description}
 
-\section{Exercises}
+\section{Exercises 练习}
 
 \begin{exercise}
 \index{default value!avoiding mutable}
@@ -17671,16 +17671,26 @@ common, and difficult to find, errors in Python.
 Write a definition for a class named {\tt Kangaroo} with the following
 methods:
 
+这个练习是关于Python里面最常见，最难找出来的错误。写一个叫{\tt Kangaroo}的类，
+包含以下方法：
+
 \begin{enumerate}
 
 \item An \verb"__init__" method that initializes an attribute named 
 \verb"pouch_contents" to an empty list.
 
+一个\verb"__init__"方法初始化一个叫\verb"pounch_contents"的列表为空。
+
 \item A method named \verb"put_in_pouch" that takes an object
 of any type and adds it to \verb"pouch_contents".
 
+一个叫\verb"put_in_pounch"的方法将一个任何类型的对象加入\verb"pounch_contents"
+。
+
 \item A \verb"__str__" method that returns a string representation
 of the Kangaroo object and the contents of the pouch.
+
+一个\verb"__str__"方法返回Kangaroo对象的字符串表达和pounch的内容。
 
 \end{enumerate}
 %
@@ -17689,9 +17699,15 @@ by creating two {\tt Kangaroo} objects, assigning them to variables
 named {\tt kanga} and {\tt roo}, and then adding {\tt roo} to the
 contents of {\tt kanga}'s pouch.
 
+通过创建两个{\tt Kangaroo}对象来测试你的代码，将它们命名为{\tt kanga}和{\tt
+roo}。然后将{\tt roo}加入{\tt kanga}的pounch列表。
+
 Download \url{http://thinkpython.com/code/BadKangaroo.py}.  It contains
 a solution to the previous problem with one big, nasty bug.
 Find and fix the bug.
+
+下载\url{http://thinkpython.com/code/BadKangaroo.py}的代码，它包含上面问题的解
+决方案。但是有一个大而丑陋的bug。找出并修正这个bug。
 
 If you get stuck, you can download
 \url{http://thinkpython.com/code/GoodKangaroo.py}, which explains the
@@ -17699,6 +17715,9 @@ problem and demonstrates a solution.
 \index{aliasing}
 \index{embedded object}
 \index{object!embedded}
+
+如果你卡住了，你可以下载\url{http://thinkpython.com/code/GoodKangaroo.py}。解释
+了这个问题并给出了另一个解答。
 
 \end{exercise}
 
@@ -17716,9 +17735,15 @@ not always included in a Python installation, so you might have
 to install it from your software repository or, if it's not there,
 from \url{vpython.org}.
 
+Visual是Python提供的3-D图形模块。它可能没有包含在Python的标准安装里面。所以你需
+要从你的软件源或者从\url{vpython.org}下载。
+
 The following example creates a 3-D space that is 256 units
 wide, long and high, and sets the ``center'' to be the
 point $(128,128,128)$.  Then it draws a blue sphere.
+
+下面的例子创建了一个256个单位长度的长宽高的3-D空间。然后设置中心在
+${128,128,128}$点上。然后它画出一个蓝色球体。
 
 \begin{verbatim}
 from visual import *
@@ -17734,13 +17759,22 @@ sphere(pos=scene.center, radius=128, color=color)
 levels between 0.0 and 1.0 (see
 \url{http://en.wikipedia.org/wiki/RGB_color_model}).
 
+{\tt color}是一个RGB元组，也就是其中的元素是0.0到1.0的红-绿-蓝等级。（参见
+\url{http://en.wikipedia.org/wiki/RGB_color_model}）。
+
 If you run this code, you should see a window with a black
 background and a blue sphere.  If you drag the middle button
 up and down, you can zoom in and out.  You can also rotate
 the scene by dragging the right button, but with only one
 sphere in the world, it is hard to tell the difference.
 
+如果你运行这个代码，你应该看到一个黑色背景的蓝色球体的窗口。如果你按住中建拖动
+，你可以放大缩小它。你也可以通过拖动右键来旋转场景。但是因为只有一个球体，你很
+难识别场景的变化。
+
 The following loop creates a cube of spheres:
+
+下面的循环创建一个球体的立方：
 
 \begin{verbatim}
 t = range(0, 256, 51)
@@ -17756,6 +17790,8 @@ for x in t:
 \item Put this code in a script and make sure it works for
 you.
 
+将这个代码粘贴到脚本文件中确保它可以运行。
+
 \item Modify the program so that each sphere in the cube
 has the color that corresponds to its position in RGB space.
 Notice that the coordinates are in the range 0--255, but
@@ -17763,17 +17799,25 @@ the RGB tuples are in the range 0.0--1.0.
 \index{color list}
 \index{available colors}
 
+修改程序使得每个立方中的球体都有着它的位置所对应的RGB空间。注意坐标的范围是
+0---255，而RGB元组的范围是0.0---1.0。
+
 \item Download \url{http://thinkpython.com/code/color_list.py}
 and use the function \verb"read_colors" to generate a list
 of the available colors on your system, their names and
 RGB values.  For each named color draw a sphere in the
 position that corresponds to its RGB values.
 
+下载\url{http://thinkpython.com/code/color_list.py}然后使用其中的
+\verb"read_colors"函数来生成一个你系统上可用的颜色的列表，包括它们的名字和RGB值
+。在每个颜色的RGB值对应的位置画一个球体。
 
 
 \end{enumerate}
 
 You can see my solution at \url{http://thinkpython.com/code/color_space.py}.
+
+你可以从\url{http://thinkpython.com/code/color_space.py}看下我的答案。
 
 \end{exercise}
 
