@@ -35,3 +35,6 @@ thinkpython.pdf
 
 
 .DS_Store
+
+# Vim swap file
+*.swp
