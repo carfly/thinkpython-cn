@@ -16470,11 +16470,13 @@ you can download it from \url{http://thinkpython.com/code/color_list.py}.
 \end{exercise}
 
 
-\chapter{Classes and functions}
+\chapter{Classes and functions 类和函数}
 \label{time}
 
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/Time1.py}.
+
+本章代码可从\url{http://thinkpython.com/code/Time1.py}获取。
 
 \section{Time}
 \label{time.object}
@@ -16487,6 +16489,9 @@ like this:
 \index{Time class}
 \index{class!Time}
 
+作为另外一个用户自定义类型的例子，我们将定义一个叫{\tt Time}的类用来记录一天的
+时间。类定义如下：
+
 \begin{verbatim}
 class Time(object):
     """Represents the time of day.
@@ -16497,6 +16502,8 @@ class Time(object):
 %
 We can create a new {\tt Time} object and assign
 attributes for hours, minutes, and seconds:
+
+我们可以创建一个新的{\tt Time}对象然后给hours,minutes,seconds属性赋值：
 
 \begin{verbatim}
 time = Time()
@@ -16511,6 +16518,8 @@ The state diagram for the {\tt Time} object looks like Figure~\ref{fig.time}.
 \index{object diagram}
 \index{diagram!object}
 
+{\tt Time}对象的状态图如图~\ref{fig.time}所示。
+
 \begin{exercise}
 \label{ex.printtime}
 
@@ -16518,6 +16527,10 @@ Write a function called \verb"print_time" that takes a
 Time object and prints it in the form {\tt hour:minute:second}.
 Hint: the format sequence \verb"'%.2d'" prints an integer using
 at least two digits, including a leading zero if necessary.
+
+写一个叫\verb"print_time"的函数，以Time对象作为参数打印出{\tt
+hour:minute:second}格式的时间。提示：\verb"'%.2d'"格式化字符串打印出2位有效数字
+的整型，如果不足两位用前导0填充。
 
 \end{exercise}
 
@@ -16529,6 +16542,10 @@ Write a boolean function called \verb"is_after" that
 takes two Time objects, {\tt t1} and {\tt t2}, and
 returns {\tt True} if {\tt t1} follows {\tt t2} chronologically and
 {\tt False} otherwise.  Challenge: don't use an {\tt if} statement.
+
+写一个叫\verb"is_after"的布尔函数用两个Time对象作为参数。{\tt t1}和{\tt t2}，然
+后如果{\tt t1}以时间顺序地在{\tt t2}之后则返回{\tt True}否则返回{\tt False}。挑
+战：不要使用{\tt if}语句。
 \end{exercise}
 
 \begin{figure}
@@ -16539,7 +16556,7 @@ returns {\tt True} if {\tt t1} follows {\tt t2} chronologically and
 \end{figure}
 
 
-\section{Pure functions}
+\section{Pure functions 纯函数}
 \index{prototype and patch}
 \index{development plan!prototype and patch}
 
@@ -16550,7 +16567,13 @@ modifiers.  They also demonstrate a development plan I'll call {\bf
 by starting with a simple prototype and incrementally dealing with the
 complications.
 
+在下面几节中，我们会写两个函数用于增加时间。它们代表了两类函数：纯函数和过程(?)
+。它们也是两种开发方式我暂且叫做{\bf 原型}和{\bf patch}。是一种以简单原型开始然
+后增量式的处理复杂度的方法来解决复杂问题。
+
 Here is a simple prototype of \verb"add_time":
+
+下面是\verb"add_time"的一个简单原型：
 
 \begin{verbatim}
 def add_time(t1, t2):
@@ -16570,13 +16593,23 @@ other than returning a value.
 \index{pure function}
 \index{function type!pure}
 
+该函数创建一个新的{\tt Time}对象，初始化它的属性，然后返回这个新对象的引用。这
+个被叫做{\bf 纯函数}因为它没有修改任何以参数传入的对象并且没有副作用（即打印值
+和获得用户输入）。最后返回了一个值\footnote{译注：并且要求不能读写全局变量}。
+
 To test this function, I'll create two Time objects: {\tt start}
 contains the start time of a movie, like {\em Monty Python and the
 Holy Grail}, and {\tt duration} contains the run time of the movie,
 which is one hour 35 minutes.
 \index{Monty Python and the Holy Grail}
 
+为了测试这个函数，我会创建两个Time对象：{\tt start}包含一个电影的开始时间，比如
+{\em Monty Python and the Holy Grail}，然后{\tt duration}包含电影播放的时间，即
+1小时35分钟。
+
 \verb"add_time" figures out when the movie will be done.
+
+\verb"add_time"指出了电影什么时候结束。
 
 \begin{verbatim}
 >>> start = Time()
@@ -16601,7 +16634,12 @@ happens, we have to ``carry'' the extra seconds into the minute column
 or the extra minutes into the hour column.
 \index{carrying, addition with}
 
+结果{\tt 10:80:00}可能不是你期待的。问题是这个函数没有处理秒数或分钟数加和超过
+60。当它发生了，我们必须``把''额外的秒数进位到分钟或者把额外的分钟进位到小时。
+
 Here's an improved version:
+
+下面是一个增强版：
 
 \begin{verbatim}
 def add_time(t1, t2):
@@ -16624,8 +16662,10 @@ def add_time(t1, t2):
 Although this function is correct, it is starting to get big.
 We will see a shorter alternative later.
 
+虽然这个函数是正确的，但是太繁琐了。我们待会儿重构一个。
 
-\section{Modifiers}
+
+\section{Modifiers 过程}
 \label{increment}
 \index{modifier}
 \index{function type!modifier}
@@ -16635,9 +16675,15 @@ parameters.  In that case, the changes are visible to the caller.
 Functions that work this way are called {\bf modifiers}.
 \index{increment}
 
+有时一个函数直接修改传入的参数是非常方便的。在这个时候，改变对于调用者是可见的
+。这样的函数叫{\bf 过程}。
+
 {\tt increment}, which adds a given number of seconds to a {\tt Time}
 object, can be written naturally as a
 modifier.  Here is a rough draft:
+
+{\tt increment}，直接对一个{\tt Time}对象增加秒数，可以非常自然地写为过程。下面
+是一个粗略的草稿：
 
 \begin{verbatim}
 def increment(time, seconds):
@@ -16656,8 +16702,12 @@ The first line performs the basic operation; the remainder deals
 with the special cases we saw before.
 \index{special case}
 
+第一行执行基本的操作；剩下的处理进位问题。
+
 Is this function correct?  What happens if the parameter {\tt seconds}
 is much greater than sixty?  
+
+这个函数是正确的吗？如果{\tt seconds}超过60会发生什么？
 
 In that case, it is not enough to carry
 once; we have to keep doing it until {\tt time.second} is less than sixty.
@@ -16665,10 +16715,15 @@ One solution is to replace the {\tt if} statements with {\tt while}
 statements.  That would make the function correct, but not
 very efficient.
 
+这时，进位1次还不够；我们必须循环直到{\tt time.second}小于60。一个解决方案是用
+{\tt while}代替{\tt if}语句。那样是正确的，但是不高效。
+
 \begin{exercise}
 
 Write a correct version of {\tt increment} that
 doesn't contain any loops.
+
+写一个不包含任何循环的{\tt increment}函数。
 
 \end{exercise}
 
@@ -16679,17 +16734,27 @@ functions are faster to develop and less error-prone than programs
 that use modifiers.  But modifiers are convenient at times,
 and functional programs tend to be less efficient.
 
+过程能够做的任何事情纯函数也可以完成。事实上，一些编程语言只支持纯函数
+\footnote{译注：一些函数式语言如Haskell，通常认为对高度并发友好}。有一些证据可
+以证明使用纯函数的程序比过程式程序开发更快，错误更少。但是有时过程很方便，纯函
+数程序开发效率低(?)。
+
 In general, I recommend that you write pure functions whenever it is
 reasonable and resort to modifiers only if there is a compelling
 advantage.  This approach might be called a {\bf functional
 programming style}.
 \index{functional programming style}
 
+一般的，我推荐你写纯函数无论是否合理，只有当有巨大的优势时才用过程。这个途径被
+成为{\bf 函数式编程}。
+
 
 \begin{exercise}
 
 Write a ``pure'' version of {\tt increment} that creates and returns
 a new Time object rather than modifying the parameter.
+
+写一个``纯''函数版本的{\tt increment}创建返回一个新的Time对象而不是修改它的参数。
 
 \end{exercise}
 
