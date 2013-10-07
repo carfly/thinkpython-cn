@@ -16568,7 +16568,10 @@ by starting with a simple prototype and incrementally dealing with the
 complications.
 
 在下面几节中，我们会写两个函数用于增加时间。它们代表了两类函数：纯函数和过程(?)
-。它们也是两种开发方式我暂且叫做{\bf 原型}和{\bf patch}。是一种以简单原型开始然
+。它们也是两种开发方式我暂且叫做{\bf 
+    %fuzzy%
+    原型增量开发
+}。是一种以简单原型开始然
 后增量式的处理复杂度的方法来解决复杂问题。
 
 Here is a simple prototype of \verb"add_time":
@@ -16759,7 +16762,7 @@ a new Time object rather than modifying the parameter.
 \end{exercise}
 
 
-\section{Prototyping versus planning}
+\section{Prototyping versus planning 原型vs 计划}
 \label{prototype}
 \index{prototype and patch}
 \index{development plan!prototype and patch}
@@ -16771,11 +16774,18 @@ patch.''  For each function, I wrote a prototype that performed the
 basic calculation and then tested it, patching errors along the
 way.
 
+我描述的被称为``原型增量开发''的开发方法。对于每个函数，我写一个原型执行基本的
+计算然后测试它，然后不断的打补丁修正错误。
+
 This approach can be effective, especially if you don't yet have a
 deep understanding of the problem.  But incremental corrections can
 generate code that is unnecessarily complicated---since it deals with
 many special cases---and unreliable---since it is hard to know if you
 have found all the errors.
+
+这个方法可以非常高效，特别是当你对问题没有一个深入理解的时候。但是增量式的修正
+可能使得代码过度复杂---因为它处理许多特殊的情况---并且不全面---因为它不知道你是
+不是找到了所有的错误。
 
 An alternative is {\bf planned development}, in which high-level
 insight into the problem can make the programming much easier.  In
@@ -16786,16 +16796,30 @@ attribute is the ``sixties column,'' and the {\tt hour} attribute is
 the ``thirty-six hundreds column.''
 \index{sexagesimal}
 
+一个替代是{\bf 计划开发}，就是在一个高层面的对问题的简洁能够使得编程更加容易。
+在这里，见解是一个Time对象是一个进位为60的三个数字（参见
+\url{http://en.wikipedia.org/wiki/Sexagesimal}）！{\tt 秒}属性是
+``$\mathbf{1}$''，{\tt 分}属性是``$\mathbf{60}$''，{\tt 时}属性是
+``$\mathbf{360}$''。
+
 When we wrote \verb"add_time" and {\tt increment}, we were effectively
 doing addition in base 60, which is why we had to carry from one
 column to the next.
 \index{carrying, addition with}
 
+当我们写\verb"add_time"和{\tt increment}，我们实际上用60进制来完成加法，也就是
+为什么我们必须从下面进位上来。
+
 This observation suggests another approach to the whole problem---we
 can convert Time objects to integers and take advantage of the fact
 that the computer knows how to do integer arithmetic.  
 
+观察后了解到另一种解决问题的途径---我们可以可以把Time对象转成一个整型然后利用计
+算机知道整型计算这个事实的优势。
+
 Here is a function that converts Times to integers:
+
+下面是把Time转成int的一个函数：
 
 \begin{verbatim}
 def time_to_int(time):
@@ -16808,6 +16832,9 @@ And here is the function that converts integers to Times
 (recall that {\tt divmod} divides the first argument by the second
 and returns the quotient and remainder as a tuple).
 \index{divmod}
+
+然后下面是一个把int转换为Time的函数（回忆{\tt divmod}用第一个参数除第二个参数然
+后返回一个商和余数的元组）。
 
 \begin{verbatim}
 def int_to_time(seconds):
@@ -16823,8 +16850,14 @@ check that \verb"time_to_int(int_to_time(x)) == x" for many values of
 {\tt x}.  This is an example of a consistency check.
 \index{consistency check}
 
+你可以再想想，然后运行测试，使自己确信这个函数是正确的。一个测试它们的方法是检
+查\verb"time_to_int(int_to_time(x))==x"，{\tt x}取许多值。这个是非常方便的方法
+。
+
 Once you are convinced they are correct, you can use them to 
 rewrite \verb"add_time":
+
+一旦你确信它们是正确的之后，你可以使用它们来重写\verb"add_time":
 
 \begin{verbatim}
 def add_time(t1, t2):
@@ -16834,9 +16867,13 @@ def add_time(t1, t2):
 %
 This version is shorter than the original, and easier to verify.
 
+这个版本比原版更短，而且易于验证。
+
 \begin{exercise}
 
 Rewrite {\tt increment} using \verb"time_to_int" and \verb"int_to_time".
+
+使用\verb"time_to_imt"和\verb"int_to_time"来重写{\tt increment}。
 
 \end{exercise}
 
@@ -16844,10 +16881,17 @@ In some ways, converting from base 60 to base 10 and back is harder
 than just dealing with times.  Base conversion is more abstract; our
 intuition for dealing with time values is better.
 
+有时，把60进制转化为10进制或反转比直接处理时间更难。进制转化更加抽象；我们处理
+时间的直觉更容易想到。
+
 But if we have the insight to treat times as base 60 numbers and make
 the investment of writing the conversion functions (\verb"time_to_int"
 and \verb"int_to_time"), we get a program that is shorter, easier to
 read and debug, and more reliable.
+
+但是要是我们了解了把时间看作60进制的数然后投入精力完成转化函数
+(\verb"time_to_int"和\verb"int_to_time"),我们得到一个更短，更容易读，容易调试，
+更可靠的程序。
 
 It is also easier to add features later.  For example, imagine
 subtracting two Times to find the duration between them.  The
@@ -16858,9 +16902,15 @@ correct.
 \index{borrowing, subtraction with}
 \index{generalization}
 
+后期加入新特性也非常容易。例如想想用两个时间相减来找到中间的持续时间。朴素的方
+式需要实现带借位的减法。使用转换函数会更加容易更加可能正确。
+
 Ironically, sometimes making a problem harder (or more general) makes it
 easier (because there are fewer special cases and fewer opportunities
 for error).
+
+相反的，有时是一个问题更加困难（或更加一般化）使得它更加简单（因为有更少的特殊
+情况就减少错误的可能）。
 
 
 \section{Debugging}
