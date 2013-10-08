@@ -16913,7 +16913,7 @@ for error).
 情况就减少错误的可能）。
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \index{debugging}
 
 A Time object is well-formed if the values of {\tt minute} and {\tt
@@ -16923,14 +16923,25 @@ integral values, but we might allow {\tt second} to have a
 fraction part.
 \index{invariant}
 
+如果Time的{\tt 分钟}和{\tt 秒}是在0到60之间（包括0不包括60）然后{\tt 小时}是正
+数。{\tt 小时}和{\tt 分钟}应该是整数，我们让{\tt 秒}可以含有小数部分。满足以上
+条件称一个Time对象是合法的。
+
 Requirements like these are called {\bf invariants} because
 they should always be true.  To put it a different way, if they
 are not true, then something has gone wrong.
+
+像这些需求被称为{\bf 不变条件}因为它们应该总是成立的。如果不是这样的，如果它们
+不成立，就会有一些潜在错误。
 
 Writing code to check your invariants can help you detect errors
 and find their causes.  For example, you might have a function
 like \verb"valid_time" that takes a Time object and returns
 {\tt False} if it violates an invariant:
+
+写一个检查你的不变条件的代码能够帮助你检查错误然后发现它们的原因。例如，你可以
+写一个叫\verb"valid_time"的函数，以一个Time对象作为参数然后当它不满足不变条件时
+返回{\tt False}。
 
 \begin{verbatim}
 def valid_time(time):
@@ -16946,6 +16957,8 @@ arguments to make sure they are valid:
 \index{raise statement}
 \index{statement!raise}
 
+然后在每个函数的开始你应该检查参数保证它们是有效的：
+
 \begin{verbatim}
 def add_time(t1, t2):
     if not valid_time(t1) or not valid_time(t2):
@@ -16959,6 +16972,8 @@ and raises an exception if it fails:
 \index{assert statement}
 \index{statement!assert}
 
+或者你可以使用{\tt assert}语句，检查一个不变条件，当失败是产生一个异常：
+
 \begin{verbatim}
 def add_time(t1, t2):
     assert valid_time(t1) and valid_time(t2)
@@ -16970,45 +16985,50 @@ def add_time(t1, t2):
 code that deals with normal conditions from code
 that checks for errors.
 
+{\tt assert}语句是非常有用的因为它们把错误检查代码和处理正确条件的代码区分开来。
 
-\section{Glossary}
+
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[prototype and patch:] A development plan that involves
+\item[prototype and patch（原型和增量）:] A development plan that involves
 writing a rough draft of a program, testing, and correcting errors as
 they are found.
 \index{prototype and patch}
 
-\item[planned development:] A development plan that involves
+\item[planned development（计划开发）:] A development plan that involves
 high-level insight into the problem and more planning than incremental
 development or prototype development.
 \index{planned development}
 
-\item[pure function:] A function that does not modify any of the objects it
+\item[pure function（纯函数）:] A function that does not modify any of the objects it
 receives as arguments.  Most pure functions are fruitful.
 \index{pure function}
 
-\item[modifier:] A function that changes one or more of the objects it
+\item[modifier（过程）:] A function that changes one or more of the objects it
 receives as arguments.  Most modifiers are fruitless.
 \index{modifier}
 
-\item[functional programming style:] A style of program design in which the
+\item[functional programming style（函数式编程）:] A style of program design in which the
 majority of functions are pure.
 \index{functional programming style}
 
-\item[invariant:] A condition that should always be true during the
+\item[invariant（不变条件）:] A condition that should always be true during the
 execution of a program.
 \index{invariant}
 
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习}
 
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/Time1.py}; solutions to these
 exercises are available from \url{http://thinkpython.com/code/Time1_soln.py}.
+
+本章代码可以从\url{http://thinkpython.com/code/Time1.py}获取；这些练习的答案可
+以从\url{http://thinkpython.com/code/Time1_soln.py}获取。
 
 \begin{exercise}
 
@@ -17016,11 +17036,17 @@ Write a function called \verb"mul_time" that takes a Time object
 and a number and returns a new Time object that contains
 the product of the original Time and the number.
 
+写一个叫\verb"mul_time"的函数用一个Time对象和一个数字作为参数然后返回一个新的
+Time对象，包含原来时间和数字的乘积。
+
 Then use \verb"mul_time" to write a function that takes a Time
 object that represents the finishing time in a race, and a number
 that represents the distance, and returns a Time object that represents
 the average pace (time per mile).
 \index{running pace}
+
+然后使用\verb"mul_time"来写一个函数以一个表示一场比赛的结束的时间作为和一个表示
+距离的数字作为参数，返回一个表示平均步伐（每英里时间）的时间。
 
 \end{exercise}
 
@@ -17048,23 +17074,37 @@ that are similar to the Date and Time objects in this chapter, but
 they provide a rich set of methods and operators.  Read the
 documentation at \url{docs.python.org/lib/datetime-date.html}.
 
+{\tt datetime}模块提供了{\tt date}和{\tt time}对象，类似于本章的Date和Time对象
+。但是它们提供了一套丰富的方法和运算。阅读
+\url{docs.python.org/lib/datetime-date.html}的文档。
+
 \begin{enumerate}
 
 \item Use the {\tt datetime} module to write a program that gets the
   current date and prints the day of the week.
 \index{birthday}
 
+使用{\tt datetime}模块来写一个程序，获取当前的日期然后打印星期几。
+
 \item Write a program that takes a birthday as input and prints the
   user's age and the number of days, hours, minutes and seconds until
   their next birthday.
+
+  写一个程序以一个生日作为输入然后打印现在用户的年龄和到下一个生日的天数，小时
+  数，分钟数和秒数。
 
 \item For two people born on different days, there is a day when one
   is twice as old as the other. That's their Double Day.  Write a
   program that takes two birthdays and computes their Double Day.
 
+  对于两个生日不同的人，有一天会是一个人是另外一个人年龄的两倍。这叫它们的二重
+  日。写一个程序以两个生日作为输入然后计算它们的二重日。
+
 \item For a little more challenge, write the more general version that
   computes the day when one person is $n$ times older than the other.
 \index{Double Day}
+
+一个小小的挑战，写一个一般化的程序计算一个人是另外一个人年龄的$n$倍的程序。
 
 \end{enumerate}
 
