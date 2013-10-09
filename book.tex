@@ -2637,7 +2637,7 @@ you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
 We have already seen one example of a {\bf function call}:
 
-在编程的语境下，{\bf 函数（function）}对是一序列执行计算语句的命名。
+在编程的语境下，{\bf 函数（function）}是对一序列执行计算的语句的命名。
 当你定义一个函数的时候，你指定了名字和语句序列。
 随后，你可以通过名字``调用''该函数。
 我们已经见过了一个{\bf 函数调用（function call）}的例子。
@@ -2683,7 +2683,7 @@ converts it to an integer, if it can, or complains otherwise:
 \index{function!int}
 
 Python提供内建函数将值从一种类型转换为另一种类型。
-函数{\tt int}接受任意值，并在其能做到的情况下，将其转换成一个整数，
+函数{\tt int}接受任意值，并在其能做到的情况下，将该任意值转换成一个整数，
 否则会抗议：
 
 \begin{verbatim}
@@ -2750,7 +2750,7 @@ Python有数学模块，其提供了大部分熟悉的数学函数。
 
 Before we can use the module, we have to import it:
 
-在我们可以使用模块之前，我们需要导入它：
+在我们使用模块之前，需要导入它：
 
 \begin{verbatim}
 >>> import math
@@ -2760,7 +2760,7 @@ This statement creates a {\bf module object} named math.  If
 you print the module object, you get some information about it:
 
 这条语句生成一个名为math的{\bf 模块对象（module object）}。
-如果你打印这个模块对象，你将获得关于它一些信息：
+如果你打印这个模块对象，你将获得关于它的一些信息：
 
 \begin{verbatim}
 >>> print math
@@ -2774,7 +2774,7 @@ known as a period).  This format is called {\bf dot notation}.
 \index{dot notation}
 
 该模块对象包括定义在模块内的函数和变量。
-为了访问其中一个函数，你不得不指出该模块的名字以及函数名，
+为了访问其中一个函数，你必须指出该模块的名字以及函数名，
 并以点（也被称作句号）分割。
 这种格式被称作{\bf 点记法（dot notation）}。
 
@@ -3067,7 +3067,7 @@ inside the function do not get executed until the function is called, and
 the function definition generates no output.
 \index{use before def}
 
-改程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
+该程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
 函数定义就像其它语句执行一样，但是左右是生成函数对象。
 函数内部的语句直到被调用才会被执行，并且函数定义没有任何输出。
 
