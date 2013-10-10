@@ -2637,7 +2637,7 @@ you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
 We have already seen one example of a {\bf function call}:
 
-在编程的语境下，{\bf 函数（function）}对是一序列执行计算语句的命名。
+在编程的语境下，{\bf 函数（function）}是对一序列执行计算的语句的命名。
 当你定义一个函数的时候，你指定了名字和语句序列。
 随后，你可以通过名字``调用''该函数。
 我们已经见过了一个{\bf 函数调用（function call）}的例子。
@@ -2683,7 +2683,7 @@ converts it to an integer, if it can, or complains otherwise:
 \index{function!int}
 
 Python提供内建函数将值从一种类型转换为另一种类型。
-函数{\tt int}接受任意值，并在其能做到的情况下，将其转换成一个整数，
+函数{\tt int}接受任意值，并在其能做到的情况下，将该任意值转换成一个整数，
 否则会抗议：
 
 \begin{verbatim}
@@ -2750,7 +2750,7 @@ Python有数学模块，其提供了大部分熟悉的数学函数。
 
 Before we can use the module, we have to import it:
 
-在我们可以使用模块之前，我们需要导入它：
+在我们使用模块之前，需要导入它：
 
 \begin{verbatim}
 >>> import math
@@ -2760,7 +2760,7 @@ This statement creates a {\bf module object} named math.  If
 you print the module object, you get some information about it:
 
 这条语句生成一个名为math的{\bf 模块对象（module object）}。
-如果你打印这个模块对象，你将获得关于它一些信息：
+如果你打印这个模块对象，你将获得关于它的一些信息：
 
 \begin{verbatim}
 >>> print math
@@ -2774,7 +2774,7 @@ known as a period).  This format is called {\bf dot notation}.
 \index{dot notation}
 
 该模块对象包括定义在模块内的函数和变量。
-为了访问其中一个函数，你不得不指出该模块的名字以及函数名，
+为了访问其中一个函数，你必须指出该模块的名字以及函数名，
 并以点（也被称作句号）分割。
 这种格式被称作{\bf 点记法（dot notation）}。
 
@@ -3067,7 +3067,7 @@ inside the function do not get executed until the function is called, and
 the function definition generates no output.
 \index{use before def}
 
-改程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
+该程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
 函数定义就像其它语句执行一样，但是左右是生成函数对象。
 函数内部的语句直到被调用才会被执行，并且函数定义没有任何输出。
 
@@ -3391,7 +3391,7 @@ caused the error.
 \index{traceback}
 
 这个函数列表被称作一个{\bf 回溯（traceback）}。
-它告诉你发生错误的程序文件，以及此时执行到什么行，什么函数。
+它告诉你发生错误的程序文件，以及此时执行到哪一行，哪个函数。
 它也展示引起错误的代码行。
 
 The order of the functions in the traceback is the same as the
@@ -3412,9 +3412,9 @@ action but don't return a value.  They are called {\bf void
   functions}.
   
 有一些我们正在用的函数，例如数学函数，会产生结果；
-由于没有更好的命名，我叫他们{\bf 有返回值函数（fruitful functions）}。
+由于没有更好地命名，我叫它们{\bf 有返回值函数（fruitful functions）}。
 其它的函数，像\verb"print_twice"，执行一个动作但是不返回一个值。
-他们被称为{\bf 无返回值函数（void functions）}。
+它们被称为{\bf 无返回值函数（void functions）}。
 
 When you call a fruitful function, you almost always
 want to do something with the result; for example, you might
@@ -3464,7 +3464,7 @@ assign the result to a variable, you get a special value called
 \index{special value!None}
 
 无返回值函数可能在屏幕上显示一些东西或者有些其它的影响，
-但是他们没有返回值。如果你试图将这个结果赋给一个变量，
+但是它们没有返回值。如果你试图将这个结果赋给一个变量，
 你获得一个特殊的被称作{\tt None}的值。
 
 \begin{verbatim}
@@ -3498,7 +3498,7 @@ writing fruitful functions in a few chapters.
 It may not be clear why it is worth the trouble to divide
 a program into functions.  There are several reasons:
 
-为什么值得麻烦得将一个程序分解成函数可能还不是很清楚。
+为什么值得麻烦地将一个程序分解成函数可能还不是很清楚。
 有几个原因：
 
 \begin{itemize}
