@@ -16295,7 +16295,7 @@ to the {\tt y} coordinate of {\tt corner}.
 \end{exercise}
 
 
-\section{Copying}
+\section{Copying 复制}
 \label{copying}
 \index{aliasing}
 
@@ -16308,9 +16308,15 @@ to a given object.
 \index{copy module}
 \index{module!copy}
 
+别名会造成程序的可读性降低，因为一个地方的变动可能会意外影响另一个地方。
+跟踪所有引用同一个对象的变量是非常困难的。
+
 Copying an object is often an alternative to aliasing.
 The {\tt copy} module contains a function called {\tt copy} that
 can duplicate any object:
+
+通常用复制对象的方法代替为对象起别名。
+{\tt copy}模块拥有一个叫做{\tt copy}的函数，可以复制任何对象：
 
 \begin{verbatim}
 >>> p1 = Point()
@@ -16323,6 +16329,8 @@ can duplicate any object:
 %
 {\tt p1} and {\tt p2} contain the same data, but they are
 not the same Point.
+
+{\tt p1}和{\tt p2}拥有相同的数据，但是它们并不是同一个Point对象。
 
 \begin{verbatim}
 >>> print_point(p1)
@@ -16345,9 +16353,18 @@ equivalence.  This behavior can be changed---we'll see how later.
 \index{is operator}
 \index{operator!is}
 
+正如我们预期的，{\tt is}运算符显示了{\tt p1}和{\tt p2}并非同一个对象。
+不过你可能会认为{\tt ==}运算的结果应该是{\tt True}，因为这两个点的数据是相同的。
+然而结果并不如你想象的那样，{\tt ==}运算符的默认行为和{\tt is}运算符相同；
+它检查对象的身份的相同，而非对象的值的相同。
+我们可以改变这个默认的行为---稍后会看到。
+
 If you use {\tt copy.copy} to duplicate a Rectangle, you will find
 that it copies the Rectangle object but not the embedded Point.
 \index{embedded object!copying}
+
+如果你使用{\tt copy.copy}来复制一个矩形，
+你会发现它仅仅复制了Rectangle对象，但没有复制嵌套的Point对象。
 
 \begin{verbatim}
 >>> box2 = copy.copy(box)
@@ -16360,7 +16377,7 @@ True
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/rectangle2.pdf}}
-\caption{Object diagram.}
+\caption{对象图（Object diagram）}
 \label{fig.rectangle2}
 \end{figure}
 
@@ -16374,12 +16391,21 @@ object and any references it contains, but not the embedded objects.
 \index{shallow copy}
 \index{copy!shallow}
 
+图\ref{fig.rectangle2}展示了这个对象图。
+这个操作叫做{\bf 浅复制（shallow copy）}，因为仅复制了对象以及其包含的引用，
+但未复制嵌套的对象。
+
 For most applications, this is not what you want.  In this example,
 invoking \verb"grow_rectangle" on one of the Rectangles would not
 affect the other, but invoking \verb"move_rectangle" on either would
 affect both!  This behavior is confusing and error-prone.
 \index{deep copy}
 \index{copy!deep}
+
+对大多数应用来说，这并非是你想要的。
+在这个例子中，对其中一个Rectangle对象调用\verb"grow_rectangle"并不会影响到另外一个，
+然而当对任何一个调用\verb"move_rectangle"的时候，两者都会被影响！
+这个行为很容易带来疑惑和错误。
 
 Fortunately, the {\tt copy} module contains a method named {\tt
 deepcopy} that copies not only the object but also 
@@ -16389,6 +16415,11 @@ You will not be surprised to learn that this operation is
 called a {\bf deep copy}.
 \index{deepcopy function}
 \index{function!deepcopy}
+
+幸运的是，{\tt copy}模块拥有一个叫做{\tt deepcopy}的方法，
+它不仅可以复制一个对象，还可以复制这个对象所引用的对象，
+甚至可以复制{\em 这个对象所引用的对象}所引用的对象，等等。
+你应该能明白为什么这个操作叫做{\bf 深复制（deep copy）}了吧。
 
 \begin{verbatim}
 >>> box3 = copy.deepcopy(box)
@@ -16400,11 +16431,15 @@ False
 %
 {\tt box3} and {\tt box} are completely separate objects.
 
+{\tt box3}和{\tt box}是完全互不相干的对象。
 
 \begin{exercise}
 
 Write a version of \verb"move_rectangle" that creates and
 returns a new Rectangle instead of modifying the old one.
+
+编写另一个版本的\verb"move_rectangle"，
+它创建并返回了一个新的Rectangle对象而非修改原先的那个。
 
 \end{exercise}
 
