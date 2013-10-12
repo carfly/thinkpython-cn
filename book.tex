@@ -16539,7 +16539,7 @@ attributes, and the values of the attributes.
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习}
 
 \begin{exercise}
 \label{canvas}
@@ -16551,6 +16551,10 @@ Swampy (see Chapter~\ref{turtlechap}) provides a module named {\tt
   World}, which defines a user-defined type also called {\tt World}.
 You can import it like this:
 
+Swampy（见第\ref{turtlechap}章）提供了一个叫做{\tt World}的模块，
+它定义了一个同样叫做{\tt World}的用户自定义类型。
+你可以像这样导入它：
+
 \begin{verbatim}
 from swampy.World import World
 \end{verbatim}
@@ -16558,6 +16562,9 @@ from swampy.World import World
 The following code creates a World object and calls
 the {\tt mainloop} method, which
 waits for the user.
+
+下面的代码创建了一个World对象，
+并调用了{\tt mainloop}方法，等待用户的操作。
 
 \begin{verbatim}
 world = World()
@@ -16572,6 +16579,10 @@ Add the following lines before calling
 \index{Canvas object}
 \index{object!Canvas}
 
+应该会出现一个带有标题栏和空白方块的窗口。
+我们会在这个窗口中绘制点、矩形以及其它形状。
+在调用\verb"mainloop"之前加入下面这几行，并重新运行程序。
+
 \begin{verbatim}
 canvas = world.ca(width=500, height=500, background='white')
 bbox = [[-150,-100], [150, 100]]
@@ -16584,11 +16595,20 @@ as a white square.  The Canvas object provides methods like
 {\tt rectangle} for drawing various shapes.
 \index{bounding box}
 
+你会看到一个黑色边框的绿色矩形。
+第一行代码创建了一个画布（Canvas），在窗口中以白色方块显示。
+画布（Canvas）对象提供了类似{\tt rectangle}的方法来绘制各种形状。
+
 {\tt bbox} is a list of lists that represents the ``bounding box''
 of the rectangle.  The first pair of coordinates is the lower-left
 corner of the rectangle; the second pair is the upper-right corner.
 
+{\tt bbox}是列表的列表，代表了矩形的``边界框''。
+第一对坐标是矩形的左下角；第二对坐标是矩形的右上角。
+
 You can draw a circle like this:
+
+你可以像这样绘制一个圆：
 
 \begin{verbatim}
 canvas.circle([-25,0], 70, outline=None, fill='red')
@@ -16597,10 +16617,15 @@ canvas.circle([-25,0], 70, outline=None, fill='red')
 The first parameter is the coordinate pair for the center of the
 circle; the second parameter is the radius.
 
+第一个参数是圆心的的坐标点；第二个参数是半径。
+
 If you add this line to the program, 
 the result should resemble the national flag of Bangladesh
 (see \url{http://en.wikipedia.org/wiki/Gallery_of_sovereign-state_flags}).
 \index{Bangladesh, national flag}
+
+如果将这行代码加入程序，结果看起来就像是孟加拉国的国旗
+（见 \url{http://en.wikipedia.org/wiki/Gallery_of_sovereign-state_flags})）。
 
 \begin{enumerate}
 
@@ -16608,21 +16633,38 @@ the result should resemble the national flag of Bangladesh
   Canvas and a Rectangle as arguments and draws a
   representation of the Rectangle on the Canvas.
 
+  编写一个叫做\verb"draw_rectangle"的函数，
+  接受一个Canvas对象和一个Rectangle对象作为参数，
+  并在画布上绘制出这个矩形。
+
 \item Add an attribute named {\tt color} to your Rectangle objects and
   modify \verb"draw_rectangle" so that it uses the color attribute as
   the fill color.
 
+  为你的Rectangle对象添加一个叫做{\tt color}的属性，
+  并修改\verb"draw_rectangle"使得可以用color属性作为矩形的填充色。
+
 \item Write a function called \verb"draw_point" that takes a
   Canvas and a Point as arguments and draws a
   representation of the Point on the Canvas.
+
+  编写一个叫做\verb"draw_point"的函数，
+  接受一个Canvas对象和一个Point对象作为参数，
+  并在画布上绘制出这个点。
 
 \item Define a new class called Circle with appropriate attributes and
   instantiate a few Circle objects.  Write a function called
   \verb"draw_circle" that draws circles on the canvas.
 \index{Czech Republic, national flag}
 
+定义一个叫做Circle的新的类，为其添加恰当的属性，并实例化一些Circle对象。
+编写一个叫做\verb"draw_circle"的函数在画布上绘制圆。
+
 \item Write a program that draws the national flag of the Czech Republic.
 Hint: you can draw a polygon like this:
+
+编写一个程序，绘制出捷克共和国的国旗。
+提示：你可以像这样绘制一个多边形：
 
 \begin{verbatim}
 points = [[-150,-100], [150, 100], [150, -100]]
@@ -16635,6 +16677,9 @@ canvas.polygon(points, fill='blue')
 
 I have written a small program that lists the available colors;
 you can download it from \url{http://thinkpython.com/code/color_list.py}.
+
+我写了一个小程序，可以列出常见颜色；
+你可以在\url{http://thinkpython.com/code/color_list.py}下载到。
 
 \end{exercise}
 
