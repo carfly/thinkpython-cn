@@ -16030,7 +16030,7 @@ refers to and get the value of {\tt x}.'' In this case, we assign that
 value to a variable named {\tt x}.  There is no conflict between
 the variable {\tt x} and the attribute {\tt x}.
 
-表达式{\tt blank.x}的意思是，``找到{\tt blank}所引用的对象并且将{\tt x}的值拿出来''。
+表达式{\tt blank.x}的意思是，``前往{\tt blank}所引用的对象并且将{\tt x}的值拿出来''。
 在这个例子中，我们将获取到的值赋值给了一个叫做{\tt x}的变量。
 变量{\tt x}和属性{\tt x}并不会冲突。
 
@@ -16090,7 +16090,7 @@ Points as arguments and returns the distance between them.
 
 
 
-\section{Rectangles}
+\section{Rectangles 矩形}
 \label{rectangles}
 
 Sometimes it is obvious what the attributes of an object should be,
@@ -16101,14 +16101,25 @@ ignore angle; to keep things simple, assume that the rectangle is
 either vertical or horizontal.
 \index{representation}
 
+有时候，一个对象该拥有哪些属性是显而易见的，但有时候你需要好好考虑一番。
+比如，你需要设计一个代表矩形的类。
+为了描述一个矩形的位置和大小，你需要设计哪些属性呢？
+角度是可以忽略的；为了使事情更容易，假设矩形是水平放置的。
+
 There are at least two possibilities: 
+
+至少有两种可能的设计：
 
 \begin{itemize}
 
 \item You could specify one corner of the rectangle
 (or the center), the width, and the height.
 
+你可以指定矩形的一个角（或是中心），宽度，以及长度。
+
 \item You could specify two opposing corners.
+
+你可以指定对角线上的两个角。
 
 \end{itemize}
 
@@ -16117,7 +16128,11 @@ the other, so we'll implement the first one, just as an example.
 \index{Rectangle class}
 \index{class!Rectangle}
 
+这个时候还不能够说明哪个方法优于哪个方法，为了举例，我们先来实现前者。
+
 Here is the class definition:
+
+这是类的定义：
 
 \begin{verbatim}
 class Rectangle(object):
@@ -16131,8 +16146,13 @@ The docstring lists the attributes:  {\tt width} and
 {\tt height} are numbers; {\tt corner} is a Point object that
 specifies the lower-left corner.
 
+文当字符串中列出了属性：{\tt 宽度}和{\tt height}是数字；
+{\tt corner}是一个Point对象，代表了左下角的那个点。
+
 To represent a rectangle, you have to instantiate a Rectangle
 object and assign values to the attributes:
+
+为了描述一个矩形，你需要实例化一个Rectangle对象，并且为它的属性复制。
 
 \begin{verbatim}
 box = Rectangle()
@@ -16148,10 +16168,14 @@ The expression {\tt box.corner.x} means,
 {\tt corner}; then go to that object and select the attribute named
 {\tt x}.''
 
+表达式{\tt box.corner.x}的意思是，
+``前往{\tt box}所引用的对象，找到叫做{\tt corner}的属性；
+然后前往{\tt corner}所引用的对象，找到叫做{\tt x}的属性。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/rectangle.pdf}}
-\caption{Object diagram.}
+\caption{对象图（Object diagram）}
 \label{fig.rectangle}
 \end{figure}
 
@@ -16165,6 +16189,8 @@ An object that is an attribute of another object is {\bf embedded}.
 \index{embedded object}
 \index{object!embedded}
 
+图\ref{fig.rectangle}展示了这个对象的状态。
+一个对象作为另一个对象的一个属性叫做{\bf 嵌套（embedded）}。
 
 \section{Instances as return values}
 \index{instance!as return value}
