@@ -16444,7 +16444,7 @@ returns a new Rectangle instead of modifying the old one.
 \end{exercise}
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \label{hasattr}
 \index{debugging}
 
@@ -16453,6 +16453,9 @@ some new exceptions.  If you try to access an attribute
 that doesn't exist, you get an {\tt AttributeError}:
 \index{exception!AttributeError}
 \index{AttributeError}
+
+当你开始学习对象的时候，你可能会遇到一些新的异常。
+如果你企图使用一个不存在的属性，你会得到{\tt Attributeerror}：
 
 \begin{verbatim}
 >>> p = Point()
@@ -16464,6 +16467,8 @@ If you are not sure what type an object is, you can ask:
 \index{type function}
 \index{function!type}
 
+如果你不确定一个对象的类型，你可以询问：
+
 \begin{verbatim}
 >>> type(p)
 <type '__main__.Point'>
@@ -16473,6 +16478,9 @@ If you are not sure whether an object has a particular attribute,
 you can use the built-in function {\tt hasattr}:
 \index{hasattr function}
 \index{function!hasattr}
+
+如果你不确定一个对象是否拥有某个属性，
+你可以使用内置函数{\tt hasattr}：
 
 \begin{verbatim}
 >>> hasattr(p, 'x')
@@ -16484,6 +16492,8 @@ False
 The first argument can be any object; the second argument is a {\em
 string} that contains the name of the attribute.
 
+第一个参数可以是任何对象；
+第二个参数是一个{\em 字符串}，代表了某个属性的名称。
 
 \section{Glossary}
 
