@@ -15946,8 +15946,8 @@ the class.
 \index{instance}
 \index{instantiation}
 
-返回值是一个Point对象的引用，我们称其为{\tt blank}。
-创建一个新对象的过程叫做{\bf 实例化（instantiation）}，这个对象叫做这个类的{\bf 实例（instance）}。
+返回值是一个Point对象的引用，我们将它赋值给{\tt blank}。
+创建一个新对象的过程叫做{\bf 实例化（instantiation）}，这个对象叫做这个类的一个{\bf 实例（instance）}。
 
 When you print an instance, Python tells you what class it
 belongs to and where it is stored in memory (the prefix
@@ -15955,15 +15955,16 @@ belongs to and where it is stored in memory (the prefix
 \index{hexadecimal}
 
 当你试图打印一个实例，Python会告诉你它属于哪个类，
-以及它在内存中的存储地址（前缀{\tt 0x}代表接下来的数以十六进制表示）。
+以及它在内存中的存储地址（前缀{\tt 0x}代表紧跟的数是以十六进制表示的）。
 
-\section{Attributes}
+\section{Attributes 属性}
 \label{attributes}
 \index{instance attribute}
 \index{attribute!instance}
 \index{dot notation}
 
 You can assign values to an instance using dot notation:
+你可以使用点号给一个实例进行赋值操作：
 
 \begin{verbatim}
 >>> blank.x = 3.0
@@ -15975,8 +15976,15 @@ module, such as {\tt math.pi} or {\tt string.whitespace}.  In this case,
 though, we are assigning values to named elements of an object.
 These elements are called {\bf attributes}.
 
+这个语法类似于从一个模块中选择变量的语法，比如{\tt math.pi}和{\tt string.whitespace}。
+不过在这个例子中，我们是给一个类中已命名的元素赋值。
+我们将这类元素称之为{\bf 属性（attributes）}。
+
 As a noun, ``AT-trib-ute'' is pronounced with emphasis on the first
 syllable, as opposed to ``a-TRIB-ute,'' which is a verb.
+
+作为名词的时候，``属性''的英文``AT-trib-ute''的重音在第一个音节上，
+作为动词的时候，``a-TRIB-ute''重音在第二个音节上。
 
 The following diagram shows the result of these assignments.
 A state diagram that shows an object and its attributes is
@@ -15986,10 +15994,14 @@ called an {\bf object diagram}; see Figure~\ref{fig.point}.
 \index{object diagram}
 \index{diagram!object}
 
+下面这张图展示了这些赋值操作的结果。
+这张状态图展示了一个对象和它的属性，我们称这张图为{\bf 对象图（object diagram）}；
+见图\ref{fig.point}。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/point.pdf}}
-\caption{Object diagram.}
+\caption{对象图（Object diagram）}
 \label{fig.point}
 \end{figure}
 
@@ -15998,7 +16010,12 @@ The variable {\tt blank} refers to a Point object, which
 contains two attributes.  Each attribute refers to a
 floating-point number.
 
+变量{\tt blank}引用了一个Point类，这个类拥有了两个属性。
+每个属性都引用了一个浮点数。
+
 You can read the value of an attribute using the same syntax:
+
+你可以使用相同的语法读出一个属性的值。
 
 \begin{verbatim}
 >>> print blank.y
@@ -16013,7 +16030,13 @@ refers to and get the value of {\tt x}.'' In this case, we assign that
 value to a variable named {\tt x}.  There is no conflict between
 the variable {\tt x} and the attribute {\tt x}.
 
+表达式{\tt blank.x}的意思是，``找到{\tt blank}所引用的对象并且将{\tt x}的值拿出来''。
+在这个例子中，我们将获取到的值赋值给了一个叫做{\tt x}的变量。
+变量{\tt x}和属性{\tt x}并不会冲突。
+
 You can use dot notation as part of any expression.  For example:
+
+你可以在任何表达式中使用点号。例如：
 
 \begin{verbatim}
 >>> print '(%g, %g)' % (blank.x, blank.y)
@@ -16027,6 +16050,9 @@ You can pass an instance as an argument in the usual way.
 For example:
 \index{instance!as argument}
 
+你可以像平常那样将一个势力作为参数传递。
+例如：
+
 \begin{verbatim}
 def print_point(p):
     print '(%g, %g)' % (p.x, p.y)
@@ -16035,6 +16061,9 @@ def print_point(p):
 \verb"print_point" takes a point as an argument and displays it in
 mathematical notation.  To invoke it, you can pass {\tt blank} as
 an argument:
+
+\verb"print_point"将一个点作为参数，打印出其在数学中的表示方法。
+调用它的时候，你可以将{\tt blank}作为参数传递：
 
 \begin{verbatim}
 >>> print_point(blank)
@@ -16045,11 +16074,17 @@ Inside the function, {\tt p} is an alias for {\tt blank}, so if
 the function modifies {\tt p}, {\tt blank} changes.
 \index{aliasing}
 
+在这个函数内部，{\tt p}作为{\tt blank}的别名，
+所以，当函数修改了{\tt p}，{\tt blank}也会随之改变。
+
 
 \begin{exercise}
 
 Write a function called \verb"distance_between_points" that takes two
 Points as arguments and returns the distance between them.
+
+实现一个叫做\verb"distance_between_points"的函数，它将两个Point作为参数，
+返回这两个点之间的距离。
 
 \end{exercise}
 
