@@ -15815,15 +15815,17 @@ Solution: \url{http://thinkpython.com/code/zip_code.py}.
 %\end{exercise}
 
 
-\chapter{Classes and objects}
+\chapter{Classes and objects 类和对象}
 
 Code examples from this chapter are available from
 \url{http://thinkpython.com/code/Point1.py}; solutions
 to the exercises are available from
 \url{http://thinkpython.com/code/Point1_soln.py}.
 
+本章的示例代码可以在\url{http://thinkpython.com/code/Point1.py}获取；
+练习的答案可以在\url{http://thinkpython.com/code/Point1_soln.py}获取。
 
-\section{User-defined types}
+\section{User-defined types 用户自定义类型}
 \label{point}
 \index{user-defined type}
 \index{type!user-defined}
@@ -15834,23 +15836,38 @@ called {\tt Point} that represents a point in two-dimensional
 space.
 \index{point, mathematical}
 
+我们已经使用过了许多Python的内置类型；
+现在我们要定义一个新类型。
+作为例子，我们来创建一个叫做{\tt Point}的类型，代表二维空间的一个点。
+
 In mathematical notation, points are often written in
 parentheses with a comma separating the coordinates. For example,
 $(0,0)$ represents the origin, and $(x,y)$ represents the
 point $x$ units to the right and $y$ units up from the origin.
 
+在数学记法中，点通常被写成在两个小括号中用一个逗号分隔坐标的形式。
+例如$(0,0)$代表原点，$(x,y)$代表原点向右x个单位，向上y个单位的点。
+
 There are several ways we might represent points in Python:
+
+在Python中，有几种表示点的方法：
 
 \begin{itemize}
 
 \item We could store the coordinates separately in two
 variables, {\tt x} and {\tt y}.
 
+我们可以将坐标存储在两个独立的变量，{\tt x}和{\tt y}中。
+
 \item We could store the coordinates as elements in a list
 or tuple.
 
+我们可以将坐标作为一个列表或者元组的元素存储。
+
 \item We could create a new type to represent points as
 objects.
+
+我们可以创建一个新类型将点表示为对象。
 
 \end{itemize}
 \index{representation}
@@ -15859,12 +15876,18 @@ Creating a new type
 is (a little) more complicated than the other options, but
 it has advantages that will be apparent soon.
 
+创建一个新类型比另外的方法（有一点）更复杂，
+但是它的优势一会儿会显现出来。
+
 A user-defined type is also called a {\bf class}.
 A class definition looks like this:
 \index{class}
 \index{object}
 \index{class definition}
 \index{definition!class}
+
+用户自定义类型也被称作{\bf 对象（class）}。
+像这样定义一个对象：
 
 \begin{verbatim}
 class Point(object):
@@ -15877,12 +15900,19 @@ type.
 \index{Point class}
 \index{class!Point}
 
+第一行表明新的类代表一个{\tt 点}，是一种内置的对象类型。
+
 The body is a docstring that explains what the class is for.
 You can define variables and functions inside a class definition,
 but we will get back to that later.
 \index{docstring}
 
+主体部分是文档字符串，用来解释这个类的作用。
+你可以在一个类的定义中定义变量和函数，稍后会讨论这个。
+
 Defining a class named {\tt Point} creates a class object.
+
+定义一个叫做{\tt Point}的类便创建了一个类对象。
 
 \begin{verbatim}
 >>> print Point
@@ -15894,8 +15924,13 @@ name'' is \verb"__main__.Point".
 \index{object!class}
 \index{class object}
 
+由于{\tt Point}是定义在顶层的，所以它的``全名''是\verb"__main__.Point"。
+
 The class object is like a factory for creating objects.  To create a
 Point, you call {\tt Point} as if it were a function.
+
+类对象就像是一个用来创造对象的工厂。
+要创建一个点，你可以像调用函数那样调用{\tt Point}。
 
 \begin{verbatim}
 >>> blank = Point()
@@ -15911,19 +15946,25 @@ the class.
 \index{instance}
 \index{instantiation}
 
+返回值是一个Point对象的引用，我们将它赋值给{\tt blank}。
+创建一个新对象的过程叫做{\bf 实例化（instantiation）}，这个新对象叫做这个类的一个{\bf 实例（instance）}。
+
 When you print an instance, Python tells you what class it
 belongs to and where it is stored in memory (the prefix
 {\tt 0x} means that the following number is in hexadecimal).
 \index{hexadecimal}
 
+当你试图打印一个实例，Python会告诉你它属于哪个类，
+以及它在内存中的存储地址（前缀{\tt 0x}代表紧跟后面的数是以十六进制表示的）。
 
-\section{Attributes}
+\section{Attributes 属性}
 \label{attributes}
 \index{instance attribute}
 \index{attribute!instance}
 \index{dot notation}
 
 You can assign values to an instance using dot notation:
+你可以使用点号给一个实例进行赋值操作：
 
 \begin{verbatim}
 >>> blank.x = 3.0
@@ -15935,8 +15976,15 @@ module, such as {\tt math.pi} or {\tt string.whitespace}.  In this case,
 though, we are assigning values to named elements of an object.
 These elements are called {\bf attributes}.
 
+这个语法类似于从一个模块中使用变量的语法，比如{\tt math.pi}和{\tt string.whitespace}。
+不过在这个例子中，我们是给一个类中已命名的元素赋值。
+我们将这类元素称之为{\bf 属性（attributes）}。
+
 As a noun, ``AT-trib-ute'' is pronounced with emphasis on the first
 syllable, as opposed to ``a-TRIB-ute,'' which is a verb.
+
+作为名词的时候，``属性''的英文``AT-trib-ute''的重音在第一个音节上，
+作为动词的时候，``a-TRIB-ute''重音在第二个音节上。
 
 The following diagram shows the result of these assignments.
 A state diagram that shows an object and its attributes is
@@ -15946,10 +15994,14 @@ called an {\bf object diagram}; see Figure~\ref{fig.point}.
 \index{object diagram}
 \index{diagram!object}
 
+下面这张图展示了这些赋值操作的结果。
+这张状态图展示了一个对象和它的属性，我们称这张图为{\bf 对象图（object diagram）}；
+见图\ref{fig.point}。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/point.pdf}}
-\caption{Object diagram.}
+\caption{对象图（Object diagram）}
 \label{fig.point}
 \end{figure}
 
@@ -15958,7 +16010,12 @@ The variable {\tt blank} refers to a Point object, which
 contains two attributes.  Each attribute refers to a
 floating-point number.
 
+变量{\tt blank}引用了一个Point类，这个类拥有了两个属性。
+每个属性都引用了一个浮点数。
+
 You can read the value of an attribute using the same syntax:
+
+你可以使用相同的语法读出一个属性的值。
 
 \begin{verbatim}
 >>> print blank.y
@@ -15973,7 +16030,13 @@ refers to and get the value of {\tt x}.'' In this case, we assign that
 value to a variable named {\tt x}.  There is no conflict between
 the variable {\tt x} and the attribute {\tt x}.
 
+表达式{\tt blank.x}的意思是，``前往{\tt blank}所引用的对象并且将{\tt x}的值拿出来''。
+在这个例子中，我们将获取到的值赋值给了一个叫做{\tt x}的变量。
+变量{\tt x}和属性{\tt x}并不会冲突。
+
 You can use dot notation as part of any expression.  For example:
+
+你可以在任何表达式中使用点号。例如：
 
 \begin{verbatim}
 >>> print '(%g, %g)' % (blank.x, blank.y)
@@ -15987,6 +16050,9 @@ You can pass an instance as an argument in the usual way.
 For example:
 \index{instance!as argument}
 
+你可以像往常那样将一个实例作为参数传递。
+例如：
+
 \begin{verbatim}
 def print_point(p):
     print '(%g, %g)' % (p.x, p.y)
@@ -15995,6 +16061,9 @@ def print_point(p):
 \verb"print_point" takes a point as an argument and displays it in
 mathematical notation.  To invoke it, you can pass {\tt blank} as
 an argument:
+
+\verb"print_point"将一个点作为参数，打印出其在数学中的表示方法。
+调用它的时候，你可以将{\tt blank}作为参数传递：
 
 \begin{verbatim}
 >>> print_point(blank)
@@ -16005,17 +16074,23 @@ Inside the function, {\tt p} is an alias for {\tt blank}, so if
 the function modifies {\tt p}, {\tt blank} changes.
 \index{aliasing}
 
+在这个函数内部，{\tt p}作为{\tt blank}的别名，
+所以，当函数修改了{\tt p}，{\tt blank}也会随之改变。
+
 
 \begin{exercise}
 
 Write a function called \verb"distance_between_points" that takes two
 Points as arguments and returns the distance between them.
 
+编写一个叫做\verb"distance_between_points"的函数，它将两个Point作为参数，
+返回这两个点之间的距离。
+
 \end{exercise}
 
 
 
-\section{Rectangles}
+\section{Rectangles 矩形}
 \label{rectangles}
 
 Sometimes it is obvious what the attributes of an object should be,
@@ -16026,14 +16101,25 @@ ignore angle; to keep things simple, assume that the rectangle is
 either vertical or horizontal.
 \index{representation}
 
+有时候，一个对象该拥有哪些属性是显而易见的，但有时候你需要好好考虑一番。
+比如，你需要设计一个代表矩形的类。
+为了描述一个矩形的位置和大小，你需要设计哪些属性呢？
+角度是可以忽略的；为了使事情更容易，假设矩形是水平放置的。
+
 There are at least two possibilities: 
+
+至少有两种可能的设计：
 
 \begin{itemize}
 
 \item You could specify one corner of the rectangle
 (or the center), the width, and the height.
 
+你可以指定矩形的一个角（或是中心），宽度，以及长度。
+
 \item You could specify two opposing corners.
+
+你可以指定对角线上的两个角。
 
 \end{itemize}
 
@@ -16042,7 +16128,11 @@ the other, so we'll implement the first one, just as an example.
 \index{Rectangle class}
 \index{class!Rectangle}
 
+这个时候还不能够说明哪个方法优于哪个方法，为了举例，我们先来实现前者。
+
 Here is the class definition:
+
+这是类的定义：
 
 \begin{verbatim}
 class Rectangle(object):
@@ -16056,8 +16146,13 @@ The docstring lists the attributes:  {\tt width} and
 {\tt height} are numbers; {\tt corner} is a Point object that
 specifies the lower-left corner.
 
+文档字符串中列出了属性：{\tt width}和{\tt height}是数字；
+{\tt corner}是一个Point对象，代表了左下角的那个点。
+
 To represent a rectangle, you have to instantiate a Rectangle
 object and assign values to the attributes:
+
+为了描述一个矩形，你需要实例化一个Rectangle对象，并且为它的属性赋值。
 
 \begin{verbatim}
 box = Rectangle()
@@ -16073,10 +16168,14 @@ The expression {\tt box.corner.x} means,
 {\tt corner}; then go to that object and select the attribute named
 {\tt x}.''
 
+表达式{\tt box.corner.x}的意思是，
+``前往{\tt box}所引用的对象，找到叫做{\tt corner}的属性；
+然后前往{\tt corner}所引用的对象，找到叫做{\tt x}的属性。
+
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/rectangle.pdf}}
-\caption{Object diagram.}
+\caption{对象图（Object diagram）}
 \label{fig.rectangle}
 \end{figure}
 
@@ -16090,14 +16189,19 @@ An object that is an attribute of another object is {\bf embedded}.
 \index{embedded object}
 \index{object!embedded}
 
+图\ref{fig.rectangle}展示了这个对象的状态。
+一个对象作为另一个对象的属性叫做{\bf 嵌套（embedded）}。
 
-\section{Instances as return values}
+\section{Instances as return values 实例作为返回值}
 \index{instance!as return value}
 \index{return value}
 
 Functions can return instances.  For example, \verb"find_center"
 takes a {\tt Rectangle} as an argument and returns a {\tt Point}
 that contains the coordinates of the center of the {\tt Rectangle}:
+
+函数可以返回实例。例如，\verb"find_center"将一个{\tt Rectangle}作为参数
+返回一个{\tt Point}，代表了这个{\tt Rectangle}的中心坐标：
 
 \begin{verbatim}
 def find_center(rect):
@@ -16110,6 +16214,8 @@ def find_center(rect):
 Here is an example that passes {\tt box} as an argument and assigns
 the resulting Point to {\tt center}:
 
+这个例子将{\tt box}作为参数传递，将返回的Point赋值给{\tt center}：
+
 \begin{verbatim}
 >>> center = find_center(box)
 >>> print_point(center)
@@ -16117,7 +16223,7 @@ the resulting Point to {\tt center}:
 \end{verbatim}
 %
 
-\section{Objects are mutable}
+\section{Objects are mutable 对象是可变的}
 \index{object!mutable}
 \index{mutability}
 
@@ -16125,6 +16231,9 @@ You can change the state of an object by making an assignment to one of
 its attributes.  For example, to change the size of a rectangle
 without changing its position, you can modify the values of {\tt
 width} and {\tt height}:
+
+你可以通过给一个对象的属性赋值来改变这个对象的状态。
+例如，要改变一个矩形的大小而不改变它的位置，你可以修改{\tt width}和{\tt height}的值：
 
 \begin{verbatim}
 box.width = box.width + 50
@@ -16136,6 +16245,10 @@ You can also write functions that modify objects.  For example,
 {\tt dwidth} and {\tt dheight}, and adds the numbers to the
 width and height of the rectangle:
 
+你也可以编写函数来修改对象。
+例如，\verb"grow_rectangle"接受了一个Rectangle对象和两个数字，
+{\tt dwidth}和{\tt dheight}，并将其加到矩形的宽度和高度上：
+
 \begin{verbatim}
 def grow_rectangle(rect, dwidth, dheight):
     rect.width += dwidth
@@ -16143,6 +16256,8 @@ def grow_rectangle(rect, dwidth, dheight):
 \end{verbatim}
 %
 Here is an example that demonstrates the effect:
+
+这个例子展示了调用后的结果：
 
 \begin{verbatim}
 >>> print box.width
@@ -16160,6 +16275,9 @@ Inside the function, {\tt rect} is an
 alias for {\tt box}, so if the function modifies {\tt rect}, 
 {\tt box} changes.
 
+在函数内部，{\tt rect}是{\tt box}的一个别名，
+所以如果函数修改了{\tt rect}，则{\tt box}也随之改变。
+
 \begin{exercise}
 
 Write a function named \verb"move_rectangle" that takes
@@ -16168,10 +16286,16 @@ should change the location of the rectangle by adding {\tt dx}
 to the {\tt x} coordinate of {\tt corner} and adding {\tt dy}
 to the {\tt y} coordinate of {\tt corner}.
 
+编写一个叫做\verb"move_rectangle"的函数，接受一个Rectangle以及两个数字，
+{\tt dx}和{\tt dy}。
+它把{\tt corner}的{\tt x}坐标加上{\tt dx}，把{\tt corner}的{\tt y}坐标加上{\tt dy}，
+从而改变矩形的位置。
+
+
 \end{exercise}
 
 
-\section{Copying}
+\section{Copying 复制}
 \label{copying}
 \index{aliasing}
 
@@ -16184,9 +16308,15 @@ to a given object.
 \index{copy module}
 \index{module!copy}
 
+别名会造成程序的可读性降低，因为一个地方的变动可能会意外影响另一个地方。
+跟踪所有引用同一个对象的变量是非常困难的。
+
 Copying an object is often an alternative to aliasing.
 The {\tt copy} module contains a function called {\tt copy} that
 can duplicate any object:
+
+通常用复制对象的方法取代为对象起别名。
+{\tt copy}模块拥有一个叫做{\tt copy}的函数，可以复制任何对象：
 
 \begin{verbatim}
 >>> p1 = Point()
@@ -16199,6 +16329,8 @@ can duplicate any object:
 %
 {\tt p1} and {\tt p2} contain the same data, but they are
 not the same Point.
+
+{\tt p1}和{\tt p2}拥有相同的数据，但是它们并不是同一个Point对象。
 
 \begin{verbatim}
 >>> print_point(p1)
@@ -16221,9 +16353,18 @@ equivalence.  This behavior can be changed---we'll see how later.
 \index{is operator}
 \index{operator!is}
 
+正如我们预期的，{\tt is}运算符显示了{\tt p1}和{\tt p2}并非同一个对象。
+不过你可能会认为{\tt ==}运算的结果应该是{\tt True}，因为这两个点的数据是相同的。
+然而结果并不如你想象的那样，{\tt ==}运算符的默认行为和{\tt is}运算符相同；
+它检查对象的身份是否相同，而非对象的值是否相同。
+我们可以改变这个默认的行为---稍后会看到。
+
 If you use {\tt copy.copy} to duplicate a Rectangle, you will find
 that it copies the Rectangle object but not the embedded Point.
 \index{embedded object!copying}
+
+如果你使用{\tt copy.copy}来复制一个矩形，
+你会发现它仅仅复制了Rectangle对象，但没有复制嵌套的Point对象。
 
 \begin{verbatim}
 >>> box2 = copy.copy(box)
@@ -16236,7 +16377,7 @@ True
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/rectangle2.pdf}}
-\caption{Object diagram.}
+\caption{对象图（Object diagram）}
 \label{fig.rectangle2}
 \end{figure}
 
@@ -16250,12 +16391,21 @@ object and any references it contains, but not the embedded objects.
 \index{shallow copy}
 \index{copy!shallow}
 
+图\ref{fig.rectangle2}展示了这个对象图。
+这个操作叫做{\bf 浅复制（shallow copy）}，因为仅复制了对象以及其包含的引用，
+但未复制嵌套的对象。
+
 For most applications, this is not what you want.  In this example,
 invoking \verb"grow_rectangle" on one of the Rectangles would not
 affect the other, but invoking \verb"move_rectangle" on either would
 affect both!  This behavior is confusing and error-prone.
 \index{deep copy}
 \index{copy!deep}
+
+对大多数应用来说，这并非是你想要的结果。
+在这个例子中，对其中一个Rectangle对象调用\verb"grow_rectangle"并不会影响到另外一个，
+然而当对任何一个Rectangle对象调用\verb"move_rectangle"的时候，两者都会被影响！
+这个行为很容易带来疑惑和错误。
 
 Fortunately, the {\tt copy} module contains a method named {\tt
 deepcopy} that copies not only the object but also 
@@ -16265,6 +16415,11 @@ You will not be surprised to learn that this operation is
 called a {\bf deep copy}.
 \index{deepcopy function}
 \index{function!deepcopy}
+
+幸运的是，{\tt copy}模块拥有一个叫做{\tt deepcopy}的方法，
+它不仅可以复制一个对象，还可以复制这个对象所引用的对象，
+甚至可以复制{\em 这个对象所引用的对象}所引用的对象，等等。
+你应该能明白为什么这个操作叫做{\bf 深复制（deep copy）}了吧。
 
 \begin{verbatim}
 >>> box3 = copy.deepcopy(box)
@@ -16276,16 +16431,20 @@ False
 %
 {\tt box3} and {\tt box} are completely separate objects.
 
+{\tt box3}和{\tt box}是完全互不相干的对象。
 
 \begin{exercise}
 
 Write a version of \verb"move_rectangle" that creates and
 returns a new Rectangle instead of modifying the old one.
 
+编写另一个版本的\verb"move_rectangle"，
+它创建并返回一个新的Rectangle对象而非修改原先的那个。
+
 \end{exercise}
 
 
-\section{Debugging}
+\section{Debugging 调试}
 \label{hasattr}
 \index{debugging}
 
@@ -16294,6 +16453,9 @@ some new exceptions.  If you try to access an attribute
 that doesn't exist, you get an {\tt AttributeError}:
 \index{exception!AttributeError}
 \index{AttributeError}
+
+当你开始学习对象的时候，你可能会遇到一些新的异常。
+如果你企图使用一个不存在的属性，你会得到{\tt Attributeerror}：
 
 \begin{verbatim}
 >>> p = Point()
@@ -16305,6 +16467,8 @@ If you are not sure what type an object is, you can ask:
 \index{type function}
 \index{function!type}
 
+如果你不确定一个对象的类型，你可以询问：
+
 \begin{verbatim}
 >>> type(p)
 <type '__main__.Point'>
@@ -16314,6 +16478,9 @@ If you are not sure whether an object has a particular attribute,
 you can use the built-in function {\tt hasattr}:
 \index{hasattr function}
 \index{function!hasattr}
+
+如果你不确定一个对象是否拥有某个属性，
+你可以使用内置函数{\tt hasattr}：
 
 \begin{verbatim}
 >>> hasattr(p, 'x')
@@ -16325,44 +16492,46 @@ False
 The first argument can be any object; the second argument is a {\em
 string} that contains the name of the attribute.
 
+第一个参数可以是任何对象；
+第二个参数是一个{\em 字符串}，代表了某个属性的名字。
 
-\section{Glossary}
+\section{Glossary 术语表}
 
 \begin{description}
 
-\item[class:] A user-defined type.  A class definition creates a new
+\item[class（类）:] A user-defined type.  A class definition creates a new
 class object.
 \index{class}
 
-\item[class object:] An object that contains information about a
+\item[class object（类对象）:] An object that contains information about a
 user-defined type.  The class object can be used to create instances
 of the type.
 \index{class object}
 \index{object!class}
 
-\item[instance:] An object that belongs to a class.
+\item[instance（实例）:] An object that belongs to a class.
 \index{instance}
 
-\item[attribute:] One of the named values associated with an object.
+\item[attribute（属性）:] One of the named values associated with an object.
 \index{attribute!instance}
 \index{instance attribute}
 
-\item[embedded (object):] An object that is stored as an attribute
+\item[embedded (object)（嵌套（对象））:] An object that is stored as an attribute
 of another object.
 \index{embedded object}
 \index{object!embedded}
 
-\item[shallow copy:] To copy the contents of an object, including
+\item[shallow copy（浅复制）:] To copy the contents of an object, including
 any references to embedded objects;
 implemented by the {\tt copy} function in the {\tt copy} module.
 \index{shallow copy}
 
-\item[deep copy:] To copy the contents of an object as well as any
+\item[deep copy（深复制）:] To copy the contents of an object as well as any
 embedded objects, and any objects embedded in them, and so on;
 implemented by the {\tt deepcopy} function in the {\tt copy} module.
 \index{deep copy}
 
-\item[object diagram:] A diagram that shows objects, their
+\item[object diagram（对象图）:] A diagram that shows objects, their
 attributes, and the values of the attributes.
 \index{object diagram}
 \index{diagram!object}
@@ -16370,7 +16539,7 @@ attributes, and the values of the attributes.
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习}
 
 \begin{exercise}
 \label{canvas}
@@ -16382,6 +16551,10 @@ Swampy (see Chapter~\ref{turtlechap}) provides a module named {\tt
   World}, which defines a user-defined type also called {\tt World}.
 You can import it like this:
 
+Swampy（见第\ref{turtlechap}章）提供了一个叫做{\tt World}的模块，
+它定义了一个同样叫做{\tt World}的用户自定义类型。
+你可以像这样导入它：
+
 \begin{verbatim}
 from swampy.World import World
 \end{verbatim}
@@ -16389,6 +16562,9 @@ from swampy.World import World
 The following code creates a World object and calls
 the {\tt mainloop} method, which
 waits for the user.
+
+下面的代码创建了一个World对象，
+并调用了{\tt mainloop}方法，等待用户的操作。
 
 \begin{verbatim}
 world = World()
@@ -16403,6 +16579,10 @@ Add the following lines before calling
 \index{Canvas object}
 \index{object!Canvas}
 
+应该会出现一个带有标题栏和空白方块的窗口。
+我们将会在这个窗口中绘制点、矩形以及其它形状。
+在调用\verb"mainloop"之前加入下面这几行代码，并重新运行程序。
+
 \begin{verbatim}
 canvas = world.ca(width=500, height=500, background='white')
 bbox = [[-150,-100], [150, 100]]
@@ -16415,11 +16595,20 @@ as a white square.  The Canvas object provides methods like
 {\tt rectangle} for drawing various shapes.
 \index{bounding box}
 
+你会看到一个黑色边框的绿色矩形。
+第一行代码创建了一个画布（Canvas），在窗口中以白色方块显示。
+画布（Canvas）对象提供了诸如{\tt rectangle}的方法来绘制各种形状。
+
 {\tt bbox} is a list of lists that represents the ``bounding box''
 of the rectangle.  The first pair of coordinates is the lower-left
 corner of the rectangle; the second pair is the upper-right corner.
 
+{\tt bbox}是列表的列表，代表了矩形的``边界框''。
+第一对坐标是矩形的左下角；第二对坐标是矩形的右上角。
+
 You can draw a circle like this:
+
+你可以像这样绘制一个圆：
 
 \begin{verbatim}
 canvas.circle([-25,0], 70, outline=None, fill='red')
@@ -16428,10 +16617,15 @@ canvas.circle([-25,0], 70, outline=None, fill='red')
 The first parameter is the coordinate pair for the center of the
 circle; the second parameter is the radius.
 
+第一个参数是圆心的坐标；第二个参数是半径。
+
 If you add this line to the program, 
 the result should resemble the national flag of Bangladesh
 (see \url{http://en.wikipedia.org/wiki/Gallery_of_sovereign-state_flags}).
 \index{Bangladesh, national flag}
+
+如果将这行代码加入程序，结果看起来就像是孟加拉国的国旗
+（见 \url{http://en.wikipedia.org/wiki/Gallery_of_sovereign-state_flags})）。
 
 \begin{enumerate}
 
@@ -16439,21 +16633,38 @@ the result should resemble the national flag of Bangladesh
   Canvas and a Rectangle as arguments and draws a
   representation of the Rectangle on the Canvas.
 
+  编写一个叫做\verb"draw_rectangle"的函数，
+  接受一个Canvas对象和一个Rectangle对象作为参数，
+  并在画布上绘制出这个矩形。
+
 \item Add an attribute named {\tt color} to your Rectangle objects and
   modify \verb"draw_rectangle" so that it uses the color attribute as
   the fill color.
 
+  为你的Rectangle对象添加一个叫做{\tt color}的属性，
+  并修改\verb"draw_rectangle"使得可以用color属性作为矩形的填充色。
+
 \item Write a function called \verb"draw_point" that takes a
   Canvas and a Point as arguments and draws a
   representation of the Point on the Canvas.
+
+  编写一个叫做\verb"draw_point"的函数，
+  接受一个Canvas对象和一个Point对象作为参数，
+  并在画布上绘制出这个点。
 
 \item Define a new class called Circle with appropriate attributes and
   instantiate a few Circle objects.  Write a function called
   \verb"draw_circle" that draws circles on the canvas.
 \index{Czech Republic, national flag}
 
+定义一个叫做Circle的新的类，为其添加恰当的属性，并实例化一些Circle对象。
+编写一个叫做\verb"draw_circle"的函数在画布上绘制圆。
+
 \item Write a program that draws the national flag of the Czech Republic.
 Hint: you can draw a polygon like this:
+
+编写一个程序，绘制出捷克共和国的国旗。
+提示：你可以像这样绘制一个多边形：
 
 \begin{verbatim}
 points = [[-150,-100], [150, 100], [150, -100]]
@@ -16466,6 +16677,9 @@ canvas.polygon(points, fill='blue')
 
 I have written a small program that lists the available colors;
 you can download it from \url{http://thinkpython.com/code/color_list.py}.
+
+我写了一个小程序，可以列出常见的颜色；
+你可以在\url{http://thinkpython.com/code/color_list.py}下载到。
 
 \end{exercise}
 
