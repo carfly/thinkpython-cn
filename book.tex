@@ -16192,13 +16192,16 @@ An object that is an attribute of another object is {\bf embedded}.
 图\ref{fig.rectangle}展示了这个对象的状态。
 一个对象作为另一个对象的一个属性叫做{\bf 嵌套（embedded）}。
 
-\section{Instances as return values}
+\section{Instances as return values 实例作为返回值}
 \index{instance!as return value}
 \index{return value}
 
 Functions can return instances.  For example, \verb"find_center"
 takes a {\tt Rectangle} as an argument and returns a {\tt Point}
 that contains the coordinates of the center of the {\tt Rectangle}:
+
+函数可以返回实例。例如，\verb"find_center"将一个{\tt Rectangle}作为参数
+返回一个{\tt Point}，包含了这个{\tt Rectangle}的的中心坐标：
 
 \begin{verbatim}
 def find_center(rect):
@@ -16210,6 +16213,8 @@ def find_center(rect):
 %
 Here is an example that passes {\tt box} as an argument and assigns
 the resulting Point to {\tt center}:
+
+这个例子将{\tt box}作为参数传递，将返回的Point赋值给{\tt center}：
 
 \begin{verbatim}
 >>> center = find_center(box)
