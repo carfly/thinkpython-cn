@@ -16083,7 +16083,7 @@ the function modifies {\tt p}, {\tt blank} changes.
 Write a function called \verb"distance_between_points" that takes two
 Points as arguments and returns the distance between them.
 
-实现一个叫做\verb"distance_between_points"的函数，它将两个Point作为参数，
+编写一个叫做\verb"distance_between_points"的函数，它将两个Point作为参数，
 返回这两个点之间的距离。
 
 \end{exercise}
@@ -16223,7 +16223,7 @@ the resulting Point to {\tt center}:
 \end{verbatim}
 %
 
-\section{Objects are mutable}
+\section{Objects are mutable 对象是可变的}
 \index{object!mutable}
 \index{mutability}
 
@@ -16231,6 +16231,9 @@ You can change the state of an object by making an assignment to one of
 its attributes.  For example, to change the size of a rectangle
 without changing its position, you can modify the values of {\tt
 width} and {\tt height}:
+
+你可以通过给一个对象的属性赋值来改变这个对象的状态。
+例如，要改变一个矩形的大小而不该表它的位置，你可以修改{\tt width}和{\tt height}的值：
 
 \begin{verbatim}
 box.width = box.width + 50
@@ -16242,6 +16245,10 @@ You can also write functions that modify objects.  For example,
 {\tt dwidth} and {\tt dheight}, and adds the numbers to the
 width and height of the rectangle:
 
+你也可以编写函数来修改对象。
+例如，\verb"grow_rectangle"接受了一个Rectangle对象和两个数字，
+{\tt dwidth}和{\tt dheight}，将其加到矩形的宽度和高度上：
+
 \begin{verbatim}
 def grow_rectangle(rect, dwidth, dheight):
     rect.width += dwidth
@@ -16249,6 +16256,8 @@ def grow_rectangle(rect, dwidth, dheight):
 \end{verbatim}
 %
 Here is an example that demonstrates the effect:
+
+这个例子展示了操作的结果：
 
 \begin{verbatim}
 >>> print box.width
@@ -16266,6 +16275,9 @@ Inside the function, {\tt rect} is an
 alias for {\tt box}, so if the function modifies {\tt rect}, 
 {\tt box} changes.
 
+在函数内部，{\tt rect}是{\tt box}的一个别名，
+所以如果函数修改了{\tt rect}，则{\tt box}也随之改变。
+
 \begin{exercise}
 
 Write a function named \verb"move_rectangle" that takes
@@ -16273,6 +16285,12 @@ a Rectangle and two numbers named {\tt dx} and {\tt dy}.  It
 should change the location of the rectangle by adding {\tt dx}
 to the {\tt x} coordinate of {\tt corner} and adding {\tt dy}
 to the {\tt y} coordinate of {\tt corner}.
+
+编写一个叫做\verb"move_rectangle"的函数，接受一个Rectangle以及两个数字，
+{\tt dx}和{\tt dy}。
+它把{\tt corner}的{\tt x}坐标加上{\tt dx}，把{\tt corner}的{\tt y}坐标加上{\tt dy}，
+来改变矩形的位置。
+
 
 \end{exercise}
 
