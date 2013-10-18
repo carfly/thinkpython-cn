@@ -4096,7 +4096,7 @@ A {\tt for} statement is sometimes called a {\bf loop} because
 the flow of execution runs through the body and then loops back
 to the top.  In this case, it runs the body four times.
 
-{\tt for}语句有时被成为{\bf 循环（loop）}，因为执行流程运行整个体然后循环回顶部。
+{\tt for}语句有时被称为{\bf 循环（loop）}，因为执行流程运行整个体然后循环回顶部。
 在此例中，它运行体4次。
 
 This version is actually a little different from the previous
@@ -4107,10 +4107,10 @@ every time through the loop.  This version also has the effect
 of leaving the turtle back in the starting position, facing in
 the starting direction.
 
-此版本和前面画正方形的代码有所不同，因为它在花完正方形最后一条边的时候，
+此版本和前面画正方形的代码有所不同，因为它在画完正方形最后一条边的时候，
 又多转了一下。这个额外的转动多花了些时间，
 但是如果我们通过循环做相同的事情也简化了代码。
-此版本也有一个作用，将海龟留着了出发位置，朝向开始的方向。
+此版本也有一个作用，将海龟留在了出发位置，朝向开始的方向。
 
 \section{Exercises 练习}
 
@@ -4119,8 +4119,8 @@ are meant to be fun, but they have a point, too.  While you are
 working on them, think about what the point is.
 
 下面是一系列使用TurtleWorld的练习。
-他们是很有趣，但是他们也都有一点。
-当你做这些联系的时候，想一想这个点是什么？
+它们是很有趣，但是它们也都有一点。
+当你做这些练习的时候，想一想这个点是什么？
 
 The following sections have solutions to the exercises, so
 don't look until you have finished (or at least tried).
@@ -4157,7 +4157,7 @@ number of degrees.  For example, {\tt lt(bob, 45)} turns {\tt bob} 45
 degrees to the left.
 
 函数{\tt lt}和{\tt rt}默认转动90度，而你可以提供第二个实参来制定角度。
-例如{\tt lt(bob, 45)}向左转动{\tt bob} 45读。
+例如{\tt lt(bob, 45)}向左转动{\tt bob} 45度。
 
 Make a copy of {\tt square} and change the name to {\tt polygon}.  Add
 another parameter named {\tt n} and modify the body so it draws an
@@ -4524,8 +4524,8 @@ sign that you have learned something.
 
 如果我们提前已经计划好了，我们可能首先写{\tt polyline}并避免重构，
 但是在一个项目开始的时候，你经常知道的不足，不能设计全部的接口。
-一旦你开始编码，你更好的理解该问题。
-优势重构是一个信号，说明你已经学到某些东西了。
+一旦你开始编码，你更好地理解该问题。
+有时重构是一个信号，说明你已经学到某些东西了。
 
 
 \section{A development plan 开发方案}
@@ -5074,7 +5074,7 @@ A second form of the {\tt if} statement is {\bf alternative execution},
 in which there are two possibilities and the condition determines
 which one gets executed.  The syntax looks like this:
 
-{\tt if}语句的第二种形式是{\bf 二选一之选那个（alternative execution）}，
+{\tt if}语句的第二种形式是{\bf 二选一执行（alternative execution）}，
 此时有两个可能，条件决定哪一个被执行。
 语法看起来是这样：
 
@@ -5128,7 +5128,7 @@ at the end, but there doesn't have to be one.
 
 {\tt elif}是``else if''的缩写。再次，必有一个分支被执行。 
 {\tt elif}语句的数目没有限制。如果有一个{\tt else}从句，
-它必须是在最后，但不是必须要只有一个。
+它必须是在最后，但不是必须要有一个。
 
 \begin{verbatim}
 if choice == 'a':
@@ -5407,7 +5407,7 @@ there are no more frames.
 
 对于形参{\tt n}，4个{\tt countdown}框架有不同的值。
 栈底，其中{\tt n=0}，被{\bf 基本条件（base case）}调用。
-它不在进行递归调用了，所以没有更多的框架了。
+它不再进行递归调用了，所以没有更多的框架了。
 
 \begin{exercise}
 Draw a stack diagram for \verb"print_n" called with
@@ -5615,7 +5615,7 @@ sometimes on a previous line.
 但是错误信息指向{\tt y}，这是个误导。
 通常，错误信息指向被发现错误的地方，
 但是真实的错误可能在代码中的更早前的地方，
-优势在前一行。
+有时在前一行。
 
 The same is true of runtime errors.  
 
