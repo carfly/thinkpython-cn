@@ -926,7 +926,7 @@ Figure~\ref{fig.compile} shows the structure of a compiler.
 
 编译器在程序开始运行之前，读取整个程序并且将其全部翻译。
 在这种情况下，高级语言程序被称为{\bf 源代码（source code）}，
-翻译后的程序被称为{\bf 目标代码（object code）}或者{\bf 可执行代码（executable）}。
+翻译后的程序被称为{\bf 目标代码（object code）}或者{\bf 可执行程序（executable）}。
 一旦一个程序被编译，你可以重复的执行它无需再翻译。
 图~\ref{fig.compile} 展示了一个编译器的结构。
 
@@ -1311,7 +1311,6 @@ with all valid tokens but with invalid structure.
 写出一个含有无效记号的英文句子。再写另一个所有记号都有效却包含无效结构的句子。
 
 \end{exercise}
-%$Last Time$
 
 When you read a sentence in English or a statement in a formal
 language, you have to figure out what the structure of the sentence is
@@ -1320,7 +1319,7 @@ process is called {\bf parsing}.
 \index{parse}
 
 当你读一个用英语写的句子或者用形式语言写的语句时，
-你得指出句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
+你得了解句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
 这个过程被称作{\bf 分析（parsing）}。
 
 For example, when you hear the sentence, ``The penny dropped,'' you
@@ -1331,8 +1330,8 @@ what a penny is and what it means to drop, you will understand the
 general implication of this sentence.
 
 例如，当你听到句子``The penny dropped''时，你理解``the penny''是主语，
-``dropped''是谓词。一旦你分析完一个句子，你可以指出它的含义是什么，
-或者句子的语义。假设你知道penny是什么以及drop是什么意义，
+``dropped''是谓语。一旦你分析完一个句子，你可以了解它的含义是什么，
+或者句子的语义。假如你知道penny是什么以及drop是什么意义，
 你将理解这个句子的含义。
 
 Although formal and natural languages have many features in
@@ -1363,7 +1362,7 @@ redundancy.  As a result, they are often verbose.  Formal languages
 are less redundant and more concise.
 
 \item[冗余性：] 为了弥补歧义性并且减少误解，自然语言使用很多冗余。
-结果，它们经常很冗长。形式语言较少的冗余，更简洁。
+结果，它们经常很冗长。形式语言则冗余较少，更简洁。
 
 \item[literalness:] Natural languages are full of idiom and metaphor.
 If I say, ``The penny dropped,'' there is probably no penny and
@@ -1371,7 +1370,7 @@ nothing dropping (this idiom means that someone realized something
 after a period of confusion).  Formal languages
 mean exactly what they say.
 
-\item[非引申义性：] 自然语言充满成语和隐喻。如果我说``The penny dropped,''，
+\item[字面性：] 自然语言充满成语和隐喻。如果我说``The penny dropped,''，
 可能根本没有便士也没什么东西掉下来（这个成语意思是有人经过一段时间的混乱后，
 意识到一些事情）。形式语言含义和它们说的完全一样。
 
@@ -1385,7 +1384,7 @@ poetry and prose, but more so:
 \index{prose}
 
 说自然语言长大的人---所有人---经常一时难于适应形式语言。
-在某些方面，形式语言和自然语言直接的不同类似诗歌和散文直接的不同，
+在某些方面，形式语言和自然语言之间的不同类似诗歌和散文之间的不同，
 但是更重要的是：
 
 \begin{description}
@@ -1395,8 +1394,8 @@ their meaning, and the whole poem together creates an effect or
 emotional response.  Ambiguity is not only common but often
 deliberate.
 
-\item[诗歌：] 单词不但被用于表示含义，还被用于表示声音。
-整首诗一起表示一个效果或者情感上的响应。
+\item[诗歌：] 单词的含义和声音都有作用，
+并且整首诗一起造成一个效果或者情感上的响应。
 歧义不但常见，而且经常是故意安排的。
 
 \item[Prose:] The literal meaning of words is more important,
@@ -1411,7 +1410,7 @@ and literal, and can be understood entirely by analysis of the
 tokens and structure.
 
 \item[程序：] 计算机程序的含义是无歧义、无引申义的，
-并且通过对标记和结构的分析被整体理解。
+并且能够通过对标记和结构的分析被完全理解。
 
 \end{description}
 
@@ -1426,12 +1425,12 @@ spelling and punctuation, which you can get away
 with in natural languages, can make a big difference in a formal
 language.
 
-这是对读程序（以及其它形式语言）的一些建议。
+给你一些阅读程序（以及其它形式语言）的一些建议。
 首先，记住形式语言比自然语言稠密的多，因此需要花更长的时间读它们。
 其次，结构非常重要，因此从上到下，从左到右的读通常不是一个好的主意。
 相反，要学会在你的头脑中分析一个程序，识别记号并且理解结构。
-最后，注意细节问题。拼写和标点符号的小错误，
-这些在自然语言中你可以侥幸成功，但是在形式语言中会有很大的不同。
+最后，注意细节问题。拼写和标点符号的小错误在自然语言中可以放过，
+但是在形式语言中会造成很大的不同。
 
 \section{The first program 第一个程序}
 \label{hello}
@@ -1441,8 +1440,8 @@ Traditionally, the first program you write in a new language
 is called ``Hello, World!'' because all it does is display the
 words ``Hello, World!''.  In Python, it looks like this:
 
-传统上，你用一门新的语言写的第一个程序被称作``Hello, World!''，
-因为它所做的所有事情就是显示单词``Hello, World!''。
+传统上，你用一门新的语言写的第一个程序叫做``Hello, World!''，
+因为它只不过是显示单词``Hello, World!''。
 在Python中，它看起来是这个样：
 
 \begin{verbatim}
@@ -1453,7 +1452,7 @@ This is an example of a {\bf print statement}, which
 doesn't actually print anything on paper.  It displays a value on the
 screen.  In this case, the result is the words
 
-这是{\bf 打印语句（print statement）}的一个实例，其并不是真的在纸上打印任何东西。
+这是{\bf 打印语句（print statement）}的一个实例，其并不是真的在纸上打印什么东西。
 它在屏幕上显示一个值。在此例中，结果是单词：
 
 \begin{verbatim}
@@ -1466,8 +1465,8 @@ of the text to be displayed; they don't appear in the result.
 \index{print statement}
 \index{statement!print}
 
-这个程序中的引号标记被打印文本的开始和结束。
-它们并没有出现在结果中。
+这个程序中的引号标记将要打印的文本之首尾，
+它们不会出现在结果中。
 
 In Python 3, the syntax for printing is slightly different:
 
@@ -1488,8 +1487,8 @@ For the rest of this book, I'll use the print statement.  If you
 are using Python 3, you will have to translate.  But other than
 that, there are very few differences we have to worry about.
 
-对于本书剩余的部分，我将使用print语句。
-如果你正在使用Python 3，你将不得不进行翻译。
+对于本书剩余的部分，我将使用打印语句（而非函数）。
+如果你正在使用Python 3，你将必须进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
 \section{Debugging 调试}
@@ -1500,9 +1499,9 @@ try out the examples as you go.  You can run most of the examples in
 interactive mode, but if you put the code in a script, it is easier
 to try out variations.
 
-在一台计算机前阅读本书是一个好的主意，由此你可以边读书边试例子。
-你可以在交互模式下运行大多数的例子，但是如果你将代码放入脚本中，
-可以方便的试着改动它们。
+最好在一台计算机前阅读本书，这样你可以边读书边尝试例子。
+你可以在交互模式下运行大多数的例子，但是如果你将代码写入脚本，
+就可以更方便的改动它们。
 
 Whenever you are experimenting with a new feature, you should try
 to make mistakes.  For example, in the ``Hello, world!'' program,
@@ -1519,7 +1518,7 @@ with debugging, because you get to know what the error messages mean.
 It is better to make mistakes now and on purpose than later
 and accidentally.
 
-这种实验有助于帮你记住你所读过的内容。
+这种实验有助于帮你记住你读到的内容。
 它也有助于调试，因为你会知道各种错误信息的含义。
 现在故意犯些错误总比将来发生意外的错误好。
 
@@ -1527,7 +1526,7 @@ Programming, and especially debugging, sometimes brings out strong
 emotions.  If you are struggling with a difficult bug, you might 
 feel angry, despondent or embarrassed.
 
-编程，特别是调试，有时带有很强的情感。
+编程，特别是调试，有时会带来强烈的情感。
 如果你正和一个很难的错误奋战，你可能感到生气、沮丧或尴尬。
 
 There is evidence that people naturally respond to computers as if
@@ -1542,7 +1541,7 @@ obstinate people (Reeves and Nass, {\it The Media
 
 有证据表明，人们很自然地对计算机做出响应，仿佛它们就是人。
 当它们做得很好的时候，我们认为它们就是队友。
-当它们固执或无礼的时候，我们也会对它们也像对待固执或无礼的人一样。
+当它们固执或无礼的时候，我们也会像对待固执或无礼的人一样对待它们。
 （Reeves and Nass, {\it The Media Equation: 
 How People Treat Computers, Television, and New Media 
 Like Real People and Places}）
@@ -1554,8 +1553,8 @@ particular weaknesses, like lack of empathy and inability
 to grasp the big picture.
 
 对这些反应做好准备有助于你对付它们。
-一种方法是将计算机看做是一个具有特定能力的雇员，
-例如速度和精度，并且有些特别的缺点，像缺乏沟通以及不善于把握大局。
+一种方法是将计算机看做是一个雇员，拥有特定的长处，
+例如速度和精度，也有些特别的缺点，像缺乏沟通以及不善于把握大局。
 
 Your job is to be a good manager: find ways to take advantage
 of the strengths and mitigate the weaknesses.  And find ways
@@ -1563,9 +1562,9 @@ to use your emotions to engage with the problem,
 without letting your reactions interfere with your ability
 to work effectively.
 
-你的工作是成为一个好的管理者：找到充分利用优点，摒弃弱点的方法。
-并且找到使用你的情感进行斗争的方法，
-不让你的反应干扰你有效的工作。
+你的工作是当一个好的管理者：找到充分利用优点，摒弃弱点的方法。
+并且找到使用你的情感来解决问题的方法，
+不让你的反应干扰你有效工作的能力。
 
 Learning to debug can be frustrating, but it is a valuable skill
 that is useful for many activities beyond programming.  At the
@@ -1574,6 +1573,8 @@ with my thoughts about debugging.  I hope they help!
 
 学习调试可能很令人泄气，
 但是它对于许多编程之外的活动也都是一个非常有价值的技能。
+在每一章的结尾都会有一节调试内容，比如说这个，
+讲述我在调试方面的想法。我希望他们能有用！
 
 \section{Glossary 术语表}
 
@@ -1613,7 +1614,7 @@ being compiled.
 the program.
 \index{object code}
 
-\item[executable（可执行）:]  Another name for object code that is ready
+\item[executable（可执行程序）:]  Another name for object code that is ready
 to be executed.
 \index{executable}
 
@@ -1640,7 +1641,7 @@ and execute statements in a script.
 problems.
 \index{algorithm}
 
-\item[bug（臭虫）:]  An error in a program.
+\item[bug（虫子）:]  An error in a program.
 \index{bug}
 
 \item[debugging（调试）:]  The process of finding and removing any of the
@@ -1689,7 +1690,7 @@ interpreter to display a value on the screen.
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习题}
 
 \begin{exercise}
 
@@ -1698,10 +1699,17 @@ This page contains information about Python and links
 to Python-related pages, and it gives you the ability to search
 the Python documentation.
 
+用网页浏览器打开Python网站\url{http://python.org}.。
+这一站点包含了Python的信息和与Python相关页面的链接，而且让你能够搜索Python帮助文档。
+
 For example, if you enter {\tt print} in the search window, the
 first link that appears is the documentation of the {\tt print}
 statement.  At this point, not all of it will make sense to you,
 but it is good to know where it is.
+
+例如，如果你在搜索窗键入{\tt print}，出现的第一个链接就是{\tt print}语句的帮助文档。
+现在，并不是所有内容都对你有用，不过知道它们在哪里也是很好的。
+
 \index{documentation}
 \index{python.org}
 
@@ -1713,10 +1721,17 @@ Start the Python interpreter and type {\tt help()} to start the online
 help utility.  Or you can type \verb"help('print')" to get information
 about the {\tt print} statement.
 
+打开Python解释器，键入{\tt help()} 可以打开在线帮助工具。
+或者你也可以键入\verb"help('print')"，来得到关于{\tt print}语句的信息。
+
 If this example doesn't work, you
 may need to install additional Python documentation or set an
 environment variable; the details depend on your operating system and
 version of Python.
+
+如果这一例子不管用，你也许得额外安装Python文档，或者设置环境变量；
+具体方式取决于你的操作系统和Python版本。
+
 \index{help utility}
 
 \end{exercise}
@@ -1730,9 +1745,17 @@ standard mathematical notation.  For example, the symbols
 and division, as you would expect.  The symbol for
 multiplication is {\tt *}.
 
+打开Python解释器，把它当成计算器来使用。
+Python关于数学运算的语法跟标准数学符号基本一致。例如，
+{\tt +}，{\tt -}，{\tt /}号表示加，减与除，就像你所期望的那样。乘号是{\tt *}。
+
 If you run a 10 kilometer race in 43 minutes 30 seconds, what is your
 average time per mile?  What is your average speed in miles per hour?
 (Hint: there are 1.61 kilometers in a mile).
+
+如果你用43分30秒跑了10千米，你每英里所用的平均时间是多少？
+你的平均速度用英里每小时表示是多少？（提示：一英里为1.61千米。）
+
 \index{calculator}
 \index{running pace}
 
@@ -1743,6 +1766,7 @@ average time per mile?  What is your average speed in miles per hour?
 
 \chapter{Variables, expressions and statements 变量、表达式和语句}
 
+% Last time
 \section{Values and types 值和类型}
 \index{value}
 \index{type}
