@@ -1766,7 +1766,6 @@ average time per mile?  What is your average speed in miles per hour?
 
 \chapter{Variables, expressions and statements 变量、表达式和语句}
 
-% Last time
 \section{Values and types 值和类型}
 \index{value}
 \index{type}
@@ -1779,7 +1778,7 @@ are {\tt 1}, {\tt 2}, and
 \verb"'Hello, World!'".
 
 {\bf 值（value）}是与程序打交道的基本事物之一，像字母或者数字。
-到目前，我们已经见过的值是{\tt 1}、{\tt 2}以及\verb"'Hello, World!'"。
+到目前为止，我们已经见过的值有{\tt 1}、{\tt 2}以及\verb"'Hello, World!'"。
 
 These values belong to different {\bf types}:
 {\tt 2} is an integer, and \verb"'Hello, World!'" is a {\bf string},
@@ -1849,7 +1848,7 @@ When you type a large integer, you might be tempted to use commas
 between groups of three digits, as in {\tt 1,000,000}.  This is not a
 legal integer in Python, but it is legal:
 
-当你有一个比较大的整数，你可能在每三个数字之间使用逗号分割它，如 {\tt 1,000,000}。
+当你有一个比较大的整数，你可能想在每三个数字之间使用逗号分隔它，如 {\tt 1,000,000}。
 在Python中，这不是一个合法的整数，但是它是合法的：
 
 \begin{verbatim}
@@ -1866,9 +1865,9 @@ runs without producing an error message, but it doesn't do the
 \index{error!semantic}
 \index{error message}
 
-然而，那不是你期望的！
-Python翻译{\tt 1,000,000}为逗号分割的一系列整数。
-这是我们所见过的第一个语义错误的例子：
+然而，那完全不是我们期望的！
+Python将{\tt 1,000,000}解释为逗号分割的一系列整数。
+这是我们见到的第一个语义错误的例子：
 代码无错误信息地运行，但是它并没有做``正确的''事情。
 
 \section{Variables 变量}
@@ -1882,7 +1881,7 @@ ability to manipulate {\bf variables}.  A variable is a name that
 refers to a value.
 
 编程语言最强大的特征之一是操作{\bf 变量（variables）}的能力。
-变量是指一个值的名字。
+变量是一个名字，它指向某个值。
 
 An {\bf assignment statement} creates new variables and gives
 them values:
@@ -1903,9 +1902,9 @@ assigns the (approximate) value of $\pi$ to {\tt pi}.
 \index{diagram!state}
 
 这个例子进行了三次赋值。
-第一个将一个字符串赋给一个新的变量名{\tt message}；
-第二个将整数{\tt 17}赋给{\tt n}；
-第三个将$\pi$的（近似）值赋给{\tt pi}。
+第一次将一个字符串赋给一个新的变量名{\tt message}；
+第二次将整数{\tt 17}赋给{\tt n}；
+第三次将$\pi$的（近似）值赋给{\tt pi}。
 
 A common way to represent variables on paper is to write the name with
 an arrow pointing to the variable's value.  This kind of figure is
@@ -1942,6 +1941,8 @@ The type of a variable is the type of the value it refers to.
 If you type an integer with a leading zero, you might get
 a confusing error:
 
+如果你键入一个以零开头的整数，你可能会得到令你疑惑的错误：
+
 \begin{verbatim}
 >>> zipcode = 02492
                   ^
@@ -1949,6 +1950,8 @@ SyntaxError: invalid token
 \end{verbatim}
 
 Other numbers seem to work, but the results are bizarre:
+
+别的数字好像能行得通，但是其结果却更奇怪：
 
 \begin{verbatim}
 >>> zipcode = 02132
@@ -1958,6 +1961,8 @@ Other numbers seem to work, but the results are bizarre:
 
 Can you figure out what is going on?  Hint: display the
 values {\tt 01}, {\tt 010}, {\tt 0100} and {\tt 01000}.
+
+你能说出发生了什么吗？提示：显示这些值 {\tt 01}，{\tt 010}，{\tt 0100}以及{\tt 01000}。
 \index{octal}
 
 \end{exercise}
@@ -2035,14 +2040,14 @@ def       for       lambda    try
 %
 In Python 3, {\tt exec} is no longer a keyword, but {\tt nonlocal} is.
 
-在Python 3中，{\tt exec}不在是一个关键字，但{\tt nonlocal}是。
+在Python 3中，{\tt exec}不再是一个关键字，但{\tt nonlocal}是。
 
 You might want to keep this list handy.  If the interpreter complains
 about one of your variable names and you don't know why, see if it
 is on this list.
 
-你可能想随手携带这个表。如果解释器抱怨你的一个变量名并且你不知道为什么，
-看一下是否它在这个列表中。
+你可能想随手携带这个表。如果解释器抱怨你的一个变量名而你不知道为什么，
+看一下它是否在这个列表中。
 
 \section{Operators and operands 运算符和运算数}
 \index{operator, arithmetic}
@@ -2078,11 +2083,11 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 在一些其它语言中，\verb"^"表示指数运算，
 但是在Python中，它表示XOR（异或）位运算。
 本书不包括位运算符，
-但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容
+但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容。
 
 In Python 2, the division operator might not do what you expect:
 
-在Python 2中，除法运算符可能不是如你所期望的：
+在Python 2中，除法运算符的行为可能不如你所愿：
 
 \begin{verbatim}
 >>> minute = 59
@@ -2097,10 +2102,10 @@ When both of the operands are integers, the result is also an
 integer; floor division chops off the fraction
 part, so in this example it rounds down to zero.
 
-{\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0.
+{\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0。
 造成这一差异的原因是Python执行{\bf 向下取整除（floor division）}。
 当两个运算数都是整数时，结果也是整数；
-向下取整除砍掉小数部分，因此此例中其下舍入成为了0。
+向下取整除会砍掉小数部分，因此此例中其向下舍入成为了0。
 
 In Python 3, the result of this division is a {\tt float}.  The new operator
 {\tt //} performs floor division.
@@ -2110,13 +2115,13 @@ In Python 3, the result of this division is a {\tt float}.  The new operator
 \index{division!floor}
 \index{division!floating-point}
 
-在Python 3中，这一除法的结果是一个{\tt 浮点数}。
+在Python 3中，这一除法的结果是一个{\tt float}。
 新的运算符{\tt //}执行向下取整除。
 
 If either of the operands is a floating-point number, Python performs
 floating-point division, and the result is a {\tt float}:
 
-如果其中有一个运算数是浮点数，则Python执行浮点除，结果是浮点数：
+如果其中有一个运算数是浮点数，则Python执行浮点除，结果是{\tt float}：
 
 \begin{verbatim}
 >>> minute/60.0
@@ -2124,6 +2129,7 @@ floating-point division, and the result is a {\tt float}:
 \end{verbatim}
 
 
+% Last Time
 \section{Expressions and statements 表达式和语句}
 
 An {\bf expression} is a combination of values, variables, and operators.
