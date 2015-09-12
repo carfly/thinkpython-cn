@@ -11896,6 +11896,10 @@ a range of parameters and compare their run times.
 Memoize the Ackermann function from Exercise~\ref{ackermann} and see if
 memoization makes it possible to evaluate the function with bigger
 arguments.  Hint: no.
+
+回忆习题~\ref{ackermann}中的Ackermann函数，看看使用备忘录能否使得此函数能计算更大的输入参数。
+提示：不能
+
 Solution: \url{http://thinkpython.com/code/ackermann_memo.py}.
 \index{Ackermann function}
 \index{function!ack}
@@ -11919,8 +11923,8 @@ persist from one function call to the next.
 因此它属于特殊的被称作\verb"__main__"的框架。
 在\verb"__main__"中的变量有时被称作{\bf 全局的（global）}，
 因为它们可以从任意函数访问。
-和局部变量不同，当它们的函数结束时它们消失，
-从一个函数调用到另一个调用，全局变量都存在。
+和函数结束时它们就会消失的局部变量不同，
+全局变量从一个函数调用到另一个调用一直都存在。
 
 It is common to use global variables for {\bf flags}; that is, 
 boolean variables that indicate (``flag'') whether a condition
@@ -11929,7 +11933,7 @@ a flag named {\tt verbose} to control the level of detail in the
 output:
 
 经常使用全局变量作为{\bf 标记（flags）}；
-也就是指示（标记）是否一个条件为真的布尔变量。
+也就是指示（标记）一个条件是否为真的布尔变量。
 例如，一些程序使用一个被称作{\tt verbose}的标记来控制
 输出中细节的等级：
 
@@ -11947,8 +11951,8 @@ function has been called:
 \index{multiple assignment}
 \index{assignment!multiple}
 
-如果你试图重新对全局变量赋值，你可能很奇怪。
-下面的例子被假定用于记录是否该函数已经被调用过了：
+如果你试图重新对全局变量赋值，你可能会惊讶。
+下面的例子本应该能够记录是否该函数已经被调用过了：
 
 \begin{verbatim}
 been_called = False
@@ -11966,7 +11970,7 @@ the function ends, and has no effect on the global variable.
 \index{declaration}
 
 但是如果你运行它，你将发现\verb"been_called"的值没有改变。
-问题是{\tt example2}生成一个新的被称作\verb"been_called"的局部变量。
+问题在于{\tt example2}生成一个新的被称作\verb"been_called"的局部变量。
 当函数结束的时候，该局部变量也消失了，并且对全局变量没有影响。
 
 To reassign a global variable inside a function you have to
@@ -12074,7 +12078,7 @@ integer, or type {\tt long}.  In Python 3, {\tt long} is gone; all integers,
 even really big ones, are type {\tt int}.
 \index{Python 3}
 
-结尾的{\tt L}表明结果是一个长整数，或者{\tt long}类型。
+结尾的{\tt L}表明结果是一个长整数，或者说{\tt long}类型。
 在Python3中， {\tt long}不存在了；所有的整数，
 即使非常大的，也是 {\tt int}类型。
 
@@ -12082,22 +12086,22 @@ Values with type {\tt int} have a limited range;
 long integers can be arbitrarily big, but as they get bigger
 they consume more space and time.
 
- {\tt int}类型的值有一个有限的取值范围；
- 长整数可以任意任意大，但是随着它们变大，
- 它们消耗更多的空间和时间。
+{\tt int}类型的值有一个有限的取值范围；
+长整数可以任意大，但是随着它们变大，
+它们消耗更多的空间和时间。
 
 The mathematical operators work on long integers, and the functions
 in the {\tt math} module, too, so in general any code that
 works with {\tt int} will also work with {\tt long}.
 
 数学运算可用于长整数并且{\tt math}模块中的函数也可以，
-因此一般来讲，任何{\tt int}好使的代码通用能用于 {\tt long}。
+因此一般来讲，任何能用于{\tt int}的代码也能用于 {\tt long}。
 
 Any time the result of a computation is too big to be represented with
 an integer, Python converts the result as a long integer:
 
-任何时候，一个太大以至于不能用一个整数表示的计算的结果，
-Python会转化该结果为一个长整数：
+任何时候，一个太大以至于不能用整数表示的计算结果，
+Python会将该结果转化为一个长整数：
 
 \begin{verbatim}
 >>> 1000 * 1000
@@ -12109,7 +12113,7 @@ Python会转化该结果为一个长整数：
 In the first case the result has type {\tt int}; in the
 second case it is {\tt long}.
 
-第一个例子中，结果类型是{\tt int}；
+第一个例子中，结果是{\tt int}类型；
 第二个例子中，它是{\tt long}。
 
 \begin{exercise}
@@ -12121,6 +12125,9 @@ Exponentiation of large integers is the basis of common
 algorithms for public-key encryption.  Read the Wikipedia
 page on the RSA algorithm (\url{http://en.wikipedia.org/wiki/RSA})
 and write functions to encode and decode messages.
+
+大整数的指数运算是常见公钥加密算法的基础。阅读维基百科RSA算法的页面
+（\url{http://en.wikipedia.org/wiki/RSA}）并编写加密与解密信息的函数。
 
 % TODO: solution for this one!
 
