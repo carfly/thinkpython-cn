@@ -2129,7 +2129,6 @@ floating-point division, and the result is a {\tt float}:
 \end{verbatim}
 
 
-% Last Time
 \section{Expressions and statements 表达式和语句}
 
 An {\bf expression} is a combination of values, variables, and operators.
@@ -2160,7 +2159,7 @@ Technically an expression is also a statement, but it is probably
 simpler to think of them as different things.  The important difference
 is that an expression has a value; a statement does not.
 
-技术上讲，一个表达式也是一条语句，但是将其认为是非语句可能会更简单。
+技术上讲，一个表达式也是一条语句，但是将他们看作不同的东西可能会更简单。
 重要的不同是表达式具有一个值；语句没有。
 
 \section{Interactive mode and script mode 交互模式和脚本模式}
@@ -2201,7 +2200,7 @@ visible effect.  Python actually evaluates the expression, but it doesn't
 display the value unless you tell it to:
 
 但是如果你将相同的代码键入一个脚本并且运行它，你将根本不能获得输出。
-在完全的脚本模式下，不会有显示效果。
+在完全的脚本模式下，表达式不会有显示效果。
 Python实际上计算了表达式，但是如果你不告诉它，它不会显示结果。
 
 \begin{verbatim}
@@ -2217,8 +2216,8 @@ A script usually contains a sequence of statements.  If there
 is more than one statement, the results appear one at a time
 as the statements execute.
 
-一个脚本通常包括一序列语句。
-如果有多余一条的语句，那么每条语句执行后都显示结果。
+一个脚本通常包括一系列语句。
+如果有多于一条的语句，那么每条语句执行后都显示结果。
 
 For example, the script
 
@@ -2248,6 +2247,8 @@ The assignment statement produces no output.
 Type the following statements in the Python interpreter to see
 what they do:
 
+在Python解释器中键入以下的语句，看看他们的功能：
+
 \begin{verbatim}
 5
 x = 5
@@ -2257,6 +2258,9 @@ x + 1
 Now put the same statements into a script and run it.  What
 is the output?  Modify the script by transforming each
 expression into a print statement and then run it again.
+
+现在将同样的语句写入一个脚本中并执行它。输出是什么？
+修改脚本，将每个表达式变成打印语句，再次运行它。
 \end{exercise}
 
 
@@ -2287,7 +2291,7 @@ if it doesn't change the result.
 
 \item 括号（{\bf P}arentheses）具有最高的优先级，并且可以被用于强制表达式按你需要的顺序计算。
 既然在括号中的表达式首先被计算，那么{\tt 2 * (3-1)}是4，{\tt (1+1)**(5-2)}是8。
-你也可以用括号使得一个表达式更易读，如{\tt (minute * 100) / 60}，即使它不能改变运算的结果。
+你也可以用括号使得一个表达式更易读，如{\tt (minute * 100) / 60}，即使它并不改变运算的结果。
 
 \item {\bf E}xponentiation has the next highest precedence, so
 {\tt 2**1+1} is 3, not 4, and {\tt 3*1**3} is 3, not 27.
@@ -2320,7 +2324,7 @@ I don't work very hard to remember rules of precedence for other
 operators.  If I can't tell by looking at the expression, I use
 parentheses to make it obvious.
 
-我不太努力，所以记不住其它运算符的优先级规则。
+我并没有费力去记住其它运算符的优先级规则。
 如果通过观察表达式，我不能说清楚，我使用括号使其变得更明显。
 
 \section{String operations 字符串运算}
@@ -2376,8 +2380,8 @@ that string concatenation does not?
 \index{commutativity}
 
 {\tt +}和{\tt *}的使用类比加法和乘法也讲得通。
-就像{\tt 4*3}与{\tt 4+4+4}等价，
-我们希望\verb"'Spam'*3"和\verb"'Spam'+'Spam'+'Spam'"一样，而且确实是这样。
+就像由于{\tt 4*3}与{\tt 4+4+4}等价，
+我们就希望\verb"'Spam'*3"和\verb"'Spam'+'Spam'+'Spam'"一样，而它确实是这样。
 另一方面，字符串的级联和重复与整数的加法和乘法截然不同。
 你能想出来一个加法具有，而级联不具有的性质么？
 
@@ -2389,13 +2393,13 @@ to read.  Formal languages are dense, and it is often difficult to
 look at a piece of code and figure out what it is doing, or why.
 
 随着程序变得越来越大，越来越复杂，它们变得越来越难读。
-形式语言是稠密的，读一段代码并输出其做什么或者为什么通常很难。
+形式语言是稠密的，读一段代码并说出其做什么或者为什么这样通常很难。
 
 For this reason, it is a good idea to add notes to your programs to explain
 in natural language what the program is doing.  These notes are called
 {\bf comments}, and they start with the \verb"#" symbol:
 
-因此，在你的程序中用自然语言增加标注来释程序做什么的通常是比较好的办法。
+因此，在你的程序中用自然语言做笔记，来解释程序做什么通常是比较好的办法。
 这些标注被称为{\bf 注释（comments）}，其以\verb"#"符号开始。
 
 \begin{verbatim}
@@ -2422,7 +2426,7 @@ the code.  It is reasonable to assume that the reader can figure out
 {\em what} the code does; it is much more useful to explain {\em why}.
 
 当注释写出代码不明显的特征的时候最有效。
-假设读者能够指出代码做了{\em 什么}比较适当；
+假设读者能够指出代码做了{\em 什么}通常比较适当；
 解释{\em 为什么}则更有用。
 
 This comment is redundant with the code and useless:
@@ -2435,7 +2439,7 @@ v = 5     # assign 5 to v
 %
 This comment contains useful information that is not in the code:
 
-下面的注释包括包含了代码中没有的有用的信息：
+下面的注释包括包含了代码中没有的有用信息：
 
 \begin{verbatim}
 v = 5     # velocity in meters/second. 
@@ -2560,7 +2564,7 @@ far, the statements we have seen are assignments and print statements.
 \item[assignment（赋值）:]  A statement that assigns a value to a variable.
 \index{assignment}
 
-\item[state diagram（状态度）:]  A graphical representation of a set of variables and the
+\item[state diagram（状态图）:]  A graphical representation of a set of variables and the
 values they refer to.
 \index{state diagram}
 
@@ -2609,6 +2613,8 @@ execution of the program.
 
 Assume that we execute the following assignment statements:
 
+假设我们执行如下的赋值语句：
+
 \begin{verbatim}
 width = 17
 height = 12.0
@@ -2617,6 +2623,8 @@ delimiter = '.'
 
 For each of the following expressions, write the value of the
 expression and the type (of the value of the expression).
+
+对下列每一个表达式，写出表达式的值和（表达式的值所具备的）类型。
 
 \begin{enumerate}
 
@@ -2633,11 +2641,15 @@ expression and the type (of the value of the expression).
 \end{enumerate}
 
 Use the Python interpreter to check your answers.
+
+使用Python解释器来检查你的答案。
 \end{exercise}
 
 \begin{exercise}
 
 Practice using the Python interpreter as a calculator: 
+
+练习将Python解释器当作计算器使用：
 \index{calculator}
 
 \begin{enumerate}
@@ -2645,20 +2657,30 @@ Practice using the Python interpreter as a calculator:
 \item The volume of a sphere with radius $r$ is $\frac{4}{3} \pi r^3$.
   What is the volume of a sphere with radius 5?  Hint: 392.7 is wrong!
 
+\item 半径为$r$的球体积是$\frac{4}{3} \pi r^3$。
+    半径为5的球体积是多少？提示：392.7是错误答案！
+
 \item Suppose the cover price of a book is \$24.95, but bookstores get a
   40\% discount.  Shipping costs \$3 for the first copy and 75 cents
   for each additional copy.  What is the total wholesale cost for
   60 copies?
 
+\item 假设一本书的零售价是\$24.95，但书店有40\%的折扣。运费则是第一本\$3，以后每本75美分。
+    购买60本的总价是多少？
+
 \item If I leave my house at 6:52 am and run 1 mile at an easy pace
   (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at
   easy pace again, what time do I get home for breakfast?
+
+\item 如果我上午6:52离开家，以随意的节奏跑1英里（每英里8:15），再以
+    较快速度跑3英里（每英里7:12)，之后又以随意的节奏跑1英里，我什么时候回到家吃早饭？
 \index{running pace}
 
 \end{enumerate}
 \end{exercise}
 
 
+%Last Time
 \chapter{Functions 函数}
 \label{funcchap}
 
