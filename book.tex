@@ -1487,7 +1487,7 @@ For the rest of this book, I'll use the print statement.  If you
 are using Python 3, you will have to translate.  But other than
 that, there are very few differences we have to worry about.
 
-对于本书剩余的部分，我将使用打印语句（而非函数）。
+对于本书剩余的部分，我将使用打印语句（译者注：而非函数）。
 如果你正在使用Python 3，你将必须进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
@@ -1699,7 +1699,7 @@ This page contains information about Python and links
 to Python-related pages, and it gives you the ability to search
 the Python documentation.
 
-用网页浏览器打开Python网站\url{http://python.org}.。
+用网页浏览器打开Python网站\url{http://python.org}。
 这一站点包含了Python的信息和与Python相关页面的链接，而且让你能够搜索Python帮助文档。
 
 For example, if you enter {\tt print} in the search window, the
@@ -2081,7 +2081,7 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 \index{operator!bitwise}
 
 在一些其它语言中，\verb"^"表示指数运算，
-但是在Python中，它表示XOR（异或）位运算。
+但是在Python中，它表示XOR（译者注：异或）位运算。
 本书不包括位运算符，
 但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容。
 
@@ -2650,6 +2650,7 @@ Use the Python interpreter to check your answers.
 Practice using the Python interpreter as a calculator: 
 
 练习将Python解释器当作计算器使用：
+
 \index{calculator}
 
 \begin{enumerate}
@@ -2657,7 +2658,7 @@ Practice using the Python interpreter as a calculator:
 \item The volume of a sphere with radius $r$ is $\frac{4}{3} \pi r^3$.
   What is the volume of a sphere with radius 5?  Hint: 392.7 is wrong!
 
-\item 半径为$r$的球体积是$\frac{4}{3} \pi r^3$。
+    半径为$r$的球体积是$\frac{4}{3} \pi r^3$。
     半径为5的球体积是多少？提示：392.7是错误答案！
 
 \item Suppose the cover price of a book is \$24.95, but bookstores get a
@@ -2665,14 +2666,14 @@ Practice using the Python interpreter as a calculator:
   for each additional copy.  What is the total wholesale cost for
   60 copies?
 
-\item 假设一本书的零售价是\$24.95，但书店有40\%的折扣。运费则是第一本\$3，以后每本75美分。
+    假设一本书的零售价是\$24.95，但书店有40\%的折扣。运费则是第一本\$3，以后每本75美分。
     购买60本的总价是多少？
 
 \item If I leave my house at 6:52 am and run 1 mile at an easy pace
   (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at
   easy pace again, what time do I get home for breakfast?
 
-\item 如果我上午6:52离开家，以随意的节奏跑1英里（每英里8:15），再以
+    如果我上午6:52离开家，以随意的节奏跑1英里（每英里8:15），再以
     较快速度跑3英里（每英里7:12)，之后又以随意的节奏跑1英里，我什么时候回到家吃早饭？
 \index{running pace}
 
@@ -2680,7 +2681,6 @@ Practice using the Python interpreter as a calculator:
 \end{exercise}
 
 
-%Last Time
 \chapter{Functions 函数}
 \label{funcchap}
 
@@ -2694,7 +2694,7 @@ you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
 We have already seen one example of a {\bf function call}:
 
-在编程的语境下，{\bf 函数（function）}是对一序列执行计算的语句的命名。
+在编程的语境下，{\bf 函数（function）}是有名字的一序列执行计算的语句。
 当你定义一个函数的时候，你指定了名字和语句序列。
 随后，你可以通过名字``调用''该函数。
 我们已经见过了一个{\bf 函数调用（function call）}的例子。
@@ -2709,7 +2709,7 @@ is called the {\bf argument} of the function.  The result, for this
 function, is the type of the argument.
 \index{parentheses!argument in}
 
-函数名是{\tt type}。括号中的表达是被称为函数的{\bf 实参（argument）}。
+函数名是{\tt type}。括号中的表达式被称为函数的{\bf 实参（argument）}。
 此函数的结果是实参的类型。
 
 It is common to say that a function ``takes'' an argument and ``returns''
@@ -2753,7 +2753,7 @@ ValueError: invalid literal for int(): Hello
 {\tt int} can convert floating-point values to integers, but it
 doesn't round off; it chops off the fraction part:
 
-{\tt int}能将浮点数转换为整数，但是它并不完美，截掉了小数部分：
+{\tt int}能将浮点数转换为整数，但是它并不进行舍入，而是截掉了小数部分：
 
 \begin{verbatim}
 >>> int(3.99999)
@@ -2767,7 +2767,7 @@ numbers:
 \index{float function}
 \index{function!float}
 
-{\tt float}将整数或者字符串转化为浮点数：
+{\tt float}将整数或者字符串转换为浮点数：
 
 \begin{verbatim}
 >>> float(32)
@@ -2780,7 +2780,7 @@ Finally, {\tt str} converts its argument to a string:
 \index{str function}
 \index{function!str}
 
-最后，{\tt str}将实参转成字符串。
+最后，{\tt str}将其实参转换成字符串。
 
 \begin{verbatim}
 >>> str(32)
@@ -2832,8 +2832,8 @@ known as a period).  This format is called {\bf dot notation}.
 
 该模块对象包括定义在模块内的函数和变量。
 为了访问其中一个函数，你必须指出该模块的名字以及函数名，
-并以点（也被称作句号）分割。
-这种格式被称作{\bf 点记法（dot notation）}。
+并以点（即（译者注：英文中的）句号）分割。
+这种格式被称作{\bf 点标记法（dot notation）}。
 
 \begin{verbatim}
 >>> ratio = signal_power / noise_power
@@ -2863,8 +2863,8 @@ functions ({\tt cos}, {\tt tan}, etc.)  take arguments in radians. To
 convert from degrees to radians, divide by 360 and multiply by
 $2 \pi$:
 
-第二个例子计算{\tt radians}的sine值。
-变量名暗示{\tt sin}函数以及其它三角函数（{\tt cos}、{\tt tan}等）接受弧度参数。
+第二个例子计算{\tt radians}的正弦值。
+变量名暗示{\tt sin}函数以及其它三角函数（{\tt cos}、{\tt tan}等）接受弧度实参。
 为了从度转为弧度，除以360并乘以$2 \pi$：
 
 \begin{verbatim}
@@ -2880,7 +2880,7 @@ of $\pi$, accurate to about 15 digits.
 \index{pi}
 
 表达式{\tt math.pi}从math模块中获得变量{\tt pi}。
-该变量的值是对$\pi$的近似，精度大约15位数。
+该变量的值是对$\pi$的近似，精确到大约15位数。
 
 If you know
 your trigonometry, you can check the previous result by comparing it to
@@ -2888,7 +2888,7 @@ the square root of two divided by two:
 \index{sqrt function}
 \index{function!sqrt}
 
-如果你懂几何学，你可以通过将之前的结果和2的平方根再除以2进行比较：
+如果你懂几何学，你可以将之前的结果和2分之根号2进行比较以检查它：
 
 \begin{verbatim}
 >>> math.sqrt(2) / 2.0
@@ -2911,8 +2911,8 @@ ability to take small building blocks and {\bf compose} them.  For
 example, the argument of a function can be any kind of expression,
 including arithmetic operators:
 
-程序设计语言的最有用特征之一是分解成小块并将其{\bf 组合（compose）}的能力。
-例如，函数的实参能够接受任何类型的表达式，包括算数运算符：
+程序设计语言的最有用特征之一是将小块建筑材料{\bf 组合（compose）}的能力。
+例如，函数的实参可以是任何类型的表达式，包含算数运算符也行：
 
 \begin{verbatim}
 x = math.sin(degrees / 360.0 * 2 * math.pi)
@@ -2935,6 +2935,7 @@ later).
 你几乎可以将一个任意值、表达式，放在任何地方，除了一个例外：
 赋值语句的左侧必须是一个变量名，任何其它的表达式都是语法错误的
 （后面我们会看到这个例外的规则）。
+% 存疑，读到再回来翻译此处
 
 \begin{verbatim}
 >>> minutes = hours * 60                 # right
@@ -2983,7 +2984,7 @@ name.
 \index{argument}
 
 {\tt def}是一个关键字，其指明这是一个函数定义。
-函数名是\verb"print_lyrics"。
+这个函数的名字是\verb"print_lyrics"。
 函数的命名规则和变量名相同：字母、数字以及一些标点符号是合法的，
 但是第一个字符不能是数字。不能使用关键字作为函数名，并应该避免
 一个变量和一个函数同名。
@@ -3017,7 +3018,7 @@ a single quote (which is also an apostrophe) appears in the string.
 \index{ellipses}
 
 打印语句中的字符串被括在双引号中。单引号和双引号做同样的事情。
-大多数人使用单引号，除了类似这里的情况，即单引号（也表示撇号）出现在字符串中。
+大多数人使用单引号，除了类似这里的情况，即单引号（同时也是撇号）出现在字符串中。
 
 If you type a function definition in interactive mode, the interpreter
 prints ellipses ({\em ...}) to let you know that the definition
@@ -3072,7 +3073,7 @@ Once you have defined a function, you can use it inside another
 function.  For example, to repeat the previous refrain, we could write
 a function called \verb"repeat_lyrics":
 
-一旦你定义了一个函数，你可以在另一个函数内部使用它。
+一旦你定义了一个函数，你就可以在另一个函数内部使用它。
 例如，为了重复之前的叠句，我们可以写一个叫\verb"repeat_lyrics"的函数：
 
 \begin{verbatim}
@@ -3103,7 +3104,7 @@ But that's not really how the song goes.
 Pulling together the code fragments from the previous section, the
 whole program looks like this:
 
-汇集上一节的代码切片，整个程序看起来像这样：
+汇集上一节的代码片断，整个程序看起来是这样的：
 
 \begin{verbatim}
 def print_lyrics():
@@ -3125,8 +3126,8 @@ the function definition generates no output.
 \index{use before def}
 
 该程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
-函数定义就像其它语句执行一样，但是左右是生成函数对象。
-函数内部的语句直到被调用才会被执行，并且函数定义没有任何输出。
+函数定义就像其它语句一样被执行，但是作用是生成函数对象。
+函数内部的语句直到被调用时才会被执行，并且函数定义没有任何输出。
 
 As you might expect, you have to create a function before you can
 execute it.  In other words, the function definition has to be
@@ -3142,6 +3143,9 @@ to the top, so the function call appears before the definitions. Run
 the program and see what error
 message you get.
 
+将这一程序的最后一行移动到顶端，于是函数调用出现在其定义之前。
+运行此程序看看你会获得什么出错信息。
+
 \end{exercise}
 
 \begin{exercise}
@@ -3150,7 +3154,11 @@ Move the function call back to the bottom
 and move the definition of \verb"print_lyrics" after the definition of
 \verb"repeat_lyrics".  What happens when you run this program?
 
+将函数调用移回底部，不过将\verb"print_lyrics"的定义移到\verb"repeat_lyrics"的定义之后。
+运行这一程序时发生了什么？
+
 \end{exercise}
+% Last time
 
 
 \section{Flow of execution 执行流程}
@@ -3629,7 +3637,7 @@ As an alternative, you can import an object from a module like this:
 Now you can access {\tt pi} directly, without dot notation.
 \index{dot notation}
 
-现在，你可以直接访问{\tt pi}，不需要点记法了。
+现在，你可以直接访问{\tt pi}，不需要点标记法了。
 
 \begin{verbatim}
 >>> print pi
@@ -3766,7 +3774,7 @@ a module object.
 that provides access to the values defined in a module.
 \index{module}
 
-\item[dot notation（点记法）:]  The syntax for calling a function in another
+\item[dot notation（点标记法）:]  The syntax for calling a function in another
 module by specifying the module name followed by a dot (period) and
 the function name.
 \index{dot notation}
@@ -8422,7 +8430,7 @@ word}.  The empty parentheses indicate that this method takes no
 argument.
 \index{parentheses!empty}
 
-点号的形式指出方法的名字，{\tt upper}，以及应用该方法的字符串的名字，{\tt word}。
+点标记法的形式指出方法的名字，{\tt upper}，以及应用该方法的字符串的名字，{\tt word}。
 空括号指出该方法不接受实参。
 
 A method call is called an {\bf invocation}; in this case, we would
@@ -16028,7 +16036,7 @@ belongs to and where it is stored in memory (the prefix
 \index{dot notation}
 
 You can assign values to an instance using dot notation:
-你可以使用点号给一个实例进行赋值操作：
+你可以使用点标记法给一个实例进行赋值操作：
 
 \begin{verbatim}
 >>> blank.x = 3.0
@@ -16100,7 +16108,7 @@ the variable {\tt x} and the attribute {\tt x}.
 
 You can use dot notation as part of any expression.  For example:
 
-你可以在任何表达式中使用点号。例如：
+你可以在任何表达式中使用点标记法。例如：
 
 \begin{verbatim}
 >>> print '(%g, %g)' % (blank.x, blank.y)
@@ -17560,7 +17568,7 @@ In this use of dot notation, {\tt Time} is the name of the class,
 and \verb"print_time" is the name of the method.  {\tt start} is
 passed as a parameter.
 
-在这个点语法中，{\tt Time}是类的名字，然后\verb"print_time"是方法的名字。{\tt
+在这个点标记法的用法中，{\tt Time}是类的名字，然后\verb"print_time"是方法的名字。{\tt
 start}是传递的参数。
 
 The second (and more concise) way is to use method syntax:
@@ -17580,7 +17588,7 @@ subject of a sentence is what the sentence is about, the subject
 of a method invocation is what the method is about.
 \index{subject}
 
-在这个点语法中，\verb"print_time"是方法的名称，然后{\tt start}是调用方法的对象
+在这个点标记法的用法中，\verb"print_time"是方法的名称，然后{\tt start}是调用方法的对象
 ，被称为主语（{\bf subject}）。就像一个句子的主语是句子的核心，方法的主语也是方
 法作用的主要对象。
 
@@ -18726,7 +18734,7 @@ and {\tt self.rank} is its rank.  Similarly, {\tt Card}
 is a class object, and \verb"Card.rank_names" is a
 list of strings associated with the class.
 
-这两种属性都使用点符号来访问。例如，在\verb"__str__"中，{\tt self}是一个卡牌对
+这两种属性都使用点标记法来访问。例如，在\verb"__str__"中，{\tt self}是一个卡牌对
 象，{\tt self.rank}是它的等级。同样的，{\tt Card}是一个类对象，
 \verb"Card.rank_names"是一个和类关联的字符串列表。
 
