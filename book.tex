@@ -1886,7 +1886,7 @@ refers to a value.
 An {\bf assignment statement} creates new variables and gives
 them values:
 
-一个{\bf 赋值语句（assignment statement）}生成新的变量并且将值赋给它们。
+一个{\bf 赋值语句（assignment statement）}创建新的变量并且将值赋给它们。
 
 \begin{verbatim}
 >>> message = 'And now for something completely different'
@@ -2888,7 +2888,7 @@ the square root of two divided by two:
 \index{sqrt function}
 \index{function!sqrt}
 
-如果你懂几何学，你可以将之前的结果和2分之根号2进行比较以检查它：
+如果你懂几何学，你可以将之前的结果和二分之根号二进行比较以检查它：
 
 \begin{verbatim}
 >>> math.sqrt(2) / 2.0
@@ -3041,7 +3041,7 @@ not necessary in a script).
 
 Defining a function creates a variable with the same name.
 
-定义一个函数生成一个同名的变量。
+定义一个函数即创建一个同名的变量。
 
 \begin{verbatim}
 >>> print print_lyrics
@@ -3126,14 +3126,14 @@ the function definition generates no output.
 \index{use before def}
 
 该程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
-函数定义就像其它语句一样被执行，但是作用是生成函数对象。
+函数定义就像其它语句一样被执行，但是作用是创建函数对象。
 函数内部的语句直到被调用时才会被执行，并且函数定义没有任何输出。
 
 As you might expect, you have to create a function before you can
 execute it.  In other words, the function definition has to be
 executed before the first time it is called.
 
-和你所期望的一样，函数执行之前，你必须生成它。
+和你所期望的一样，函数执行之前，你必须创建它。
 换句话说，函数定义必须在其第一次调用之前执行。
 
 \begin{exercise}
@@ -3158,7 +3158,6 @@ and move the definition of \verb"print_lyrics" after the definition of
 运行这一程序时发生了什么？
 
 \end{exercise}
-% Last time
 
 
 \section{Flow of execution 执行流程}
@@ -3187,7 +3186,7 @@ going to the next statement, the flow jumps to the body of
 the function, executes all the statements there, and then comes back
 to pick up where it left off.
 
-函数调用像是在执行流程上饶了一个弯路。
+函数调用像是在执行流程上绕了一个弯路。
 流程不是到下一条语句，而是跳入函数体，执行那里所有的语句，然后回到它离开的位置。
 
 That sounds simple enough, until you remember that one function can
@@ -3196,23 +3195,23 @@ have to execute the statements in another function. But while
 executing that new function, the program might have to execute yet
 another function!
 
-听起来足够简单，直到你记得一个函数可以调用另一个函数。
-当在一个函数中间的时候，程序可能不得不执行另一个函数里的语句。
-但是当执行那个新函数的时候，程序可能不得不又执行另外一个函数！
+听起来足够简单，至少在你想起一个函数可以调用另一个函数之前。
+当在一个函数中间的时候，程序可能要执行另一个函数里的语句。
+但是当执行那个新函数的时候，程序可能又得执行另外一个函数！
 
 Fortunately, Python is good at keeping track of where it is, so each
 time a function completes, the program picks up where it left off in
 the function that called it.  When it gets to the end of the program,
 it terminates.
 
-幸运的是，Python善于跟踪它在哪里，因此每次一个函数完成时，
+幸运的是，Python善于记录它的位置，因此每次一个函数完成时，
 程序回到调用它的那个函数。当到达程序结尾时，程序终止。
 
 What's the moral of this sordid tale?  When you read a program, you
 don't always want to read from top to bottom.  Sometimes it makes
 more sense if you follow the flow of execution.
 
-什么是道德，这个肮脏的故事？当你读一个程序的时候，
+这个糟糕的故事的寓意是什么？当你读一个程序的时候，
 你不总是从上到下的读。有时，如果你遵从执行流程会更有道理。
 
 \section{Parameters and arguments 形参和实参}
@@ -3227,7 +3226,7 @@ example, when you call {\tt math.sin} you pass a number
 as an argument.  Some functions take more than one argument:
 {\tt math.pow} takes two, the base and the exponent.
 
-我们已经见过的一些内建函数需要实参。
+一些我们刚见过的内建函数需要实参。
 例如，当你调用{\tt math.sin}时，你传递一个数字作为实参。
 有些函数接受多于一个的实参：{\tt math.pow} 接受两个，底数和指数。
 
@@ -3236,8 +3235,8 @@ variables called {\bf parameters}.  Here is an example of a
 user-defined function that takes an argument:
 \index{parentheses!parameters in}
 
-在函数内部，实参被赋给被称作{\bf 形参（parameters）}的变量。
-这是一个用户自定义函数的例子，其接受一个形参：
+在函数内部，实参被赋给称作{\bf 形参（parameters）}的变量。
+这是一个用户自定义函数的例子，其接受一个实参：
 
 \begin{verbatim}
 def print_twice(bruce):
@@ -3273,7 +3272,7 @@ apply to user-defined functions, so we can use any kind of expression
 as an argument for \verb"print_twice":
 \index{composition}
 
-相同的应用于内建函数的组合规则也适用于用户自定义函数，
+适用于内建函数的组合规则同样也适用于用户自定义函数，
 因此我们可以使用任意类型的表达式作为\verb"print_twice"的实参。
 
 \begin{verbatim}
@@ -3309,8 +3308,8 @@ nothing to do with the name of the parameter ({\tt bruce}).  It
 doesn't matter what the value was called back home (in the caller);
 here in \verb"print_twice", we call everybody {\tt bruce}.
 
-我们传递的实参名（{\tt michael}）对形参（{\tt bruce}）没有任何影响。
-（在调用者里）无论值是什么都不要紧；
+我们传递的实参名（{\tt michael}）与形参的名字（{\tt bruce}）没有任何关系。
+这个值在自己家里（即对于原本调用它的人）无论叫什么名字都不要紧；
 此处在\verb"print_twice"里面，我们将所有人都叫做{\tt bruce}。
 
 
@@ -3323,7 +3322,7 @@ which means that it only
 exists inside the function.  For example:
 \index{parentheses!parameters in}
 
-当你在一个函数里面生成一个变量时，它是{\bf 局部的（local）}，
+当你在一个函数里面创建一个变量时，它是{\bf 局部的（local）}，
 也就是说它只在函数内部存在。例如：
 
 \begin{verbatim}
@@ -3353,7 +3352,7 @@ is destroyed.  If we try to print it, we get an exception:
 \index{exception!NameError}
 
 当\verb"cat_twice"结束时，变量{\tt cat}被销毁了。
-如果我们试图打印它，我们获得一个异常：
+如果我们试图打印它，我们将获得一个异常：
 
 \begin{verbatim}
 >>> print cat
@@ -3383,7 +3382,7 @@ function each variable belongs to.
 \index{diagram!stack}
 
 为了跟踪哪个变量能在哪儿用，有时画一个{\bf 栈图（stack diagram）}比较有用。
-像状态图一样，栈图展示每个变量的值，但是它们也展示了每个变量属于的函数。
+像状态图一样，栈图展示每个变量的值，但是它们也展示了每个变量所属的函数。
 
 Each function is represented by a {\bf frame}.  A frame is a box
 with the name of a function
@@ -3392,8 +3391,8 @@ The stack diagram for the
 previous example is shown in Figure~\ref{fig.stack}.
 
 每个函数用一个{\bf 框架（frame）}表示。
-一个框架是一个有函数名的盒子，除此之外还有形参以及函数内部的变量。
-前面例子的栈图如图\ref{fig.stack}所示。
+一个框架是一个盒子，函数名写在旁边，形参以及函数内部的变量写在里面。
+前面例子的栈图如图~\ref{fig.stack}所示。
 
 \begin{figure}
 \centerline
@@ -3410,10 +3409,10 @@ was called by \verb"cat_twice", and \verb"cat_twice" was called by
 you create a variable outside of any function, it belongs to 
 \verb"__main__".
 
-栈里面的框架指出哪个函数被哪个函数调用等。
+这些框架以栈的形式排列，用以表示哪个函数调用了哪个函数等。
 在此例中，\verb"print_twice"被\verb"cat_twice"调用，
-\verb"cat_twice"被\verb"__main__"调用，这是一个表示最上层框架的特殊的名字。
-当你在所有函数之外生成一个变量时，它属于\verb"__main__"。
+\verb"cat_twice"又被\verb"__main__"调用，这是一个表示最上层框架的特殊的名字。
+当你在所有函数之外创建一个变量时，它属于\verb"__main__"。
 
 Each parameter refers to the same value as its corresponding
 argument.  So, {\tt part1} has the same value as
@@ -3430,13 +3429,13 @@ it, and the name of the function that called {\em that}, all the
 way back to \verb"__main__".
 
 如果函数调用时发生错误，Python打印此函数的名字以及调用它的函数的名字，
-以及那个调用的函数的名字，所有回到\verb"__main__"的路径。
+以及调用那个函数的函数的名字，一路直到\verb"__main__"。
 
 For example, if you try to access {\tt cat} from within 
 \verb"print_twice", you get a {\tt NameError}:
 
 例如，如果你在\verb"print_twice"里面试图访问{\tt cat}，
-你获得一个{\tt NameError}：
+你将获得一个{\tt NameError}：
 
 \begin{verbatim}
 Traceback (innermost last):
@@ -3456,12 +3455,14 @@ caused the error.
 \index{traceback}
 
 这个函数列表被称作一个{\bf 回溯（traceback）}。
-它告诉你发生错误的程序文件，以及此时执行到哪一行，哪个函数。
-它也展示引起错误的代码行。
+它告诉你发生错误的程序文件，错误在哪一行，以及当时在执行哪个函数。
+它也显示引起错误的那一行代码。
 
 The order of the functions in the traceback is the same as the
 order of the frames in the stack diagram.  The function that is
 currently running is at the bottom.
+
+回溯中的函数顺序正是栈图中的函数顺序。正在运行的那个函数位于底部。
 
 
 \section{Fruitful functions and void functions 有返回值函数和无返回值函数}
@@ -3478,7 +3479,7 @@ action but don't return a value.  They are called {\bf void
   
 有一些我们正在用的函数，例如数学函数，会产生结果；
 由于没有更好地命名，我叫它们{\bf 有返回值函数（fruitful functions）}。
-其它的函数，像\verb"print_twice"，执行一个动作但是不返回一个值。
+其它的函数，像\verb"print_twice"，执行一个动作但是不返回任何值。
 它们被称为{\bf 无返回值函数（void functions）}。
 
 When you call a fruitful function, you almost always
@@ -3506,8 +3507,8 @@ the result:
 But in a script, if you call a fruitful function all by itself,
 the return value is lost forever!
 
-但是在脚本中，如果你只调用一个有返回值函数，
-返回值永远就丢失了！
+但是在脚本中，如果你单单调用一个有返回值函数，
+返回值就永远丢失了！
 
 \begin{verbatim}
 math.sqrt(5)
@@ -3519,7 +3520,7 @@ or display the result, it is not very useful.
 \index{script mode}
 
 该脚本计算5的平方根，但是既然它没保存或者显示这个结果，
-它不是非常有用。
+这就不是非常有用。
 
 Void functions might display something on the screen or have some
 other effect, but they don't have a return value.  If you try to
@@ -3543,7 +3544,7 @@ None
 The value {\tt None} is not the same as the string \verb"'None'". 
 It is a special value that has its own type:
 
-值{\tt None}和字符串\verb"'None'"不同。这是一个有它自己的类型的特殊变量：
+值{\tt None}和字符串\verb"'None'"不同。这是一个有它自己的类型的特殊值：
 
 \begin{verbatim}
 >>> print type(None)
@@ -3563,7 +3564,7 @@ writing fruitful functions in a few chapters.
 It may not be clear why it is worth the trouble to divide
 a program into functions.  There are several reasons:
 
-为什么值得麻烦地将一个程序分解成函数可能还不是很清楚。
+为什么值得麻烦地将一个程序分解成函数可能还不是很清晰。
 有几个原因：
 
 \begin{itemize}
@@ -3571,25 +3572,25 @@ a program into functions.  There are several reasons:
 \item Creating a new function gives you an opportunity to name a group
 of statements, which makes your program easier to read and debug.
 
-生成一个新的函数给你一个命名一组语句的机会，
+\item 创建一个新的函数给你命名一组语句的机会，
 这使得你的程序更容易读和调试。
 
 \item Functions can make a program smaller by eliminating repetitive
 code.  Later, if you make a change, you only have
 to make it in one place.
 
-通过避免重复调用代码，函数使得程序更小。
-之后，如果你要做个变动，你只需在一处变动即可。
+\item 通过消除重复的代码，函数使得程序更小。
+以后，如果你要做个变动，你只需在一处变动即可。
 
 \item Dividing a long program into functions allows you to debug the
 parts one at a time and then assemble them into a working whole.
 
-将一个长程序分解为函数允许你一次调试一部分然后将它们集成为一个可行的整体。
+\item 将一个长程序分解为函数允许你一次调试一部分然后将它们集成为一个可行的整体。
 
 \item Well-designed functions are often useful for many programs.
 Once you write and debug one, you can reuse it.
 
-良好设计的函数经常对多个程序都有用。一旦你写出并调试了一个函数，你可以重用它。
+\item 设计良好的函数经常对多个程序都有用。一旦你写出并调试好一个函数，你就可以重复使用它。
 
 \end{itemize}
 
@@ -3660,8 +3661,8 @@ code can be more concise.  The disadvantage is that there might be
 conflicts between names defined in different modules, or between
 a name from a module and one of your variables.
 
-从数学模块中导入所有东西的优点是你的代码变得更简洁。
-缺点是不同模块之间的名字，或者来自模块的名与你自己的变量名可能会冲突。
+从数学模块中导入所有东西的优点是你的代码会变得更简洁。
+缺点是不同模块之间的名字，或者来自模块的名字与你自己的变量名可能会冲突。
 
 
 \section{Debugging 调试}
@@ -3693,7 +3694,7 @@ is not the same as the program you are running.
 
 同时，别忘了在运行程序之前保存它。
 一些开发环境自动做这个，但是有些不是。
-如果是这样的话，你在文本编辑器上看到的程序和你运行的不一样。
+如果是这样的话，你在文本编辑器上看到的程序可不是你运行的程序。
 
 Debugging can take a long time if you keep running the same,
 incorrect, program over and over!
@@ -3705,9 +3706,9 @@ If you're not sure, put something like \verb"print 'hello'" at the
 beginning of the program and run it again.  If you don't see
 \verb"hello", you're not running the right program!
 
-确定你所看到的代码是你所运行的。
+你得确定你所看到的代码正是你所运行的。
 如果不确定，将一些类似\verb"print 'hello'"的代码放到程序的开始并再次运行它。
-如果你么有看到\verb"hello"，那么你没在运行一个正确的程序。
+如果你没有看到\verb"hello"，那么你在运行就不是正确的程序！
 
 
 \section{Glossary 术语表}
@@ -3813,10 +3814,16 @@ printed when an exception occurs.
 Python provides a built-in function called {\tt len} that
 returns the length of a string, so the value of \verb"len('allen')" is 5.
 
+Python提供一个叫做{\tt len}的内建函数，其返回一个字符串的长度，
+故\verb"len('allen')"的值是5。
+
 Write a function named \verb"right_justify" that takes a string
 named {\tt s} as a parameter and prints the string with enough
 leading spaces so that the last letter of the string is in column 70
 of the display.
+
+写一个名为\verb"right_justify"的函数，接受一个名为{\tt s}的形参，
+并在打印足够多的空格之后打印这个字符串，使得字符串的最后一个字母位于显示屏的第70列。
 
 \begin{verbatim}
 >>> right_justify('allen')
@@ -3834,6 +3841,9 @@ A function object is a value you can assign to a variable
 or pass as an argument.  For example, \verb"do_twice" is a function
 that takes a function object as an argument and calls it twice:
 
+一个函数对象是一个值，你可以将其赋给一个变量，或作为实参传递。例如，
+\verb"do_twice"是一个接受函数对象作为实参，并调用它两次的函数：
+
 \begin{verbatim}
 def do_twice(f):
     f()
@@ -3842,6 +3852,8 @@ def do_twice(f):
 
 Here's an example that uses \verb"do_twice" to call a function
 named \verb"print_spam" twice.
+
+这是一个使用\verb"do_twice"来调用名为\verb"print_spam"的函数两次的例子。
 
 \begin{verbatim}
 def print_spam():
@@ -3854,16 +3866,26 @@ do_twice(print_spam)
 
 \item Type this example into a script and test it.
 
+    将这一例子写成脚本以测试它的功能。
+
 \item Modify \verb"do_twice" so that it takes two arguments, a
 function object and a value, and calls the function twice,
 passing the value as an argument.
+
+    修改\verb"do_twice"，使其接受两个实参，一个是函数对象，另一个是值，
+    然后调用这一函数两次，将这一值传递给函数作为实参。
 
 \item Write a more general version of \verb"print_spam", called
 \verb"print_twice", that takes a string as a parameter and prints
 it twice.
 
+    写一个更通用版本的\verb"print_spam"，命名为\verb"print_twice"，
+    其能够接受一个字符串作为实参并打印它两次。
+
 \item Use the modified version of \verb"do_twice" to call
 \verb"print_twice" twice, passing \verb"'spam'" as an argument.
+
+    使用修改过的\verb"do_twice"调用\verb"print_twice"两次，将\verb"'spam'"传递给它作为实参。
 
 \item Define a new function called 
 \verb"do_four" that takes a function object and a value
@@ -3871,12 +3893,19 @@ and calls the function four times, passing the value
 as a parameter.  There should be only
 two statements in the body of this function, not four.
 
+    定义一个名为\verb"do_four"的新函数，其接受一个函数对象和一个值作为实参，
+    调用这个函数四次，将这个值作为形参传递给它。
+    函数体中应该只有两条语句，而不是四条。
+
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/do_four.py}.
 
+解答在：\url{http://thinkpython.com/code/do_four.py}。
+
 \end{exercise}
 
+%Last time
 
 
 \begin{exercise}
@@ -3885,9 +3914,13 @@ This exercise can be
 done using only the statements and other features we have learned so
 far.  
 
+这一习题可以仅使用当前我们学到的语句和特性来完成。
+
 \begin{enumerate}
 
 \item Write a function that draws a grid like the following:
+
+    写一个能画出如下格子的函数：
 \index{grid}
 
 \begin{verbatim}
@@ -3907,12 +3940,17 @@ far.
 Hint: to print more than one value on a line, you can print
 a comma-separated sequence:
 
+提示：要在一行打印出多个值，你可以打印一个用逗号分隔的序列：
+
 \begin{verbatim}
 print '+', '-'
 \end{verbatim}
 %
 If the sequence ends with a comma, Python leaves the line unfinished,
 so the value printed next appears on the same line.
+
+如果一个序列以逗号结尾，Python会认为这一行没有结束，
+于是下一个打印出的值会出现在同一行。
 
 \begin{verbatim}
 print '+', 
@@ -3921,18 +3959,29 @@ print '-'
 %
 The output of these statements is \verb"'+ -'".
 
+这两条语句的输出结果是\verb"'+ -'"。
+
 A {\tt print} statement all by itself ends the current line and
 goes to the next line.
 
+一条单独的{\tt print}语句会结束当前行，开始下一行。
+
 \item Write a function that draws a similar grid
 with four rows and four columns.
+
+    写一个能够画出四行四列的类似格子的函数。
 
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/grid.py}.
 Credit: This exercise is based on an exercise in Oualline, {\em
     Practical C Programming, Third Edition}, O'Reilly Media, 1997.
+
+解答在：\url{http://thinkpython.com/code/grid.py}。
+感谢：这道习题基于Oualline的一道习题，{\em Practical C Programming, Third Edition}, O'Reilly Media, 1997。
+
 \end{exercise}
+%Last time
 \chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
 Code examples from this chapter are available from
