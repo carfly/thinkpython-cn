@@ -3905,7 +3905,6 @@ Solution: \url{http://thinkpython.com/code/do_four.py}.
 
 \end{exercise}
 
-%Last time
 
 
 \begin{exercise}
@@ -3981,7 +3980,7 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 感谢：这道习题基于Oualline的一道习题，{\em Practical C Programming, Third Edition}, O'Reilly Media, 1997。
 
 \end{exercise}
-%Last time
+
 \chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
 Code examples from this chapter are available from
@@ -4005,12 +4004,12 @@ drawing lines by steering turtles around the screen.
 \index{package}
 
 一个{\bf 包（package）}是一套模块，{\tt TurtleWorld}是Swampy中的一个模块，
-其提供了一组通过在屏幕上转向海龟的画线函数。
+其提供了一组通过在屏幕上指引海龟来画线的函数。
  
 If Swampy is installed as a package on your system, you can import
 {\tt TurtleWorld} like this:
 
-如果Swampy作为包被安装在了你的系统上，你可以像这样导入{\tt TurtleWorld}：
+如果Swampy包被安装在了你的系统上，你可以像这样导入{\tt TurtleWorld}：
 
 \begin{verbatim}
 from swampy.TurtleWorld import *
@@ -4023,7 +4022,7 @@ files, or add that directory to Python's search path.  Then you can import
 
 如果你下载了Swampy模块但是没有作为包安装，
 你要么可以在含有Swampy的文件夹里工作，或者将此目录增加到Python的搜索路径。
-然后你可以像这样导入{\tt TurtleWorld}：
+然后你就可以像这样导入{\tt TurtleWorld}：
 
 \begin{verbatim}
 from TurtleWorld import *
@@ -4036,12 +4035,12 @@ at \url{http://thinkpython.com/swampy}.
 
 安装和设置Python搜索路径的细节依赖于你的系统，
 所以我不在此包括那些细节了，
-我将试着在\url{http://thinkpython.com/swampy}维护多个系统的最新的信息。
+我将试着在\url{http://thinkpython.com/swampy}保留几个系统的最新的信息。
 
 Create a file named {\tt mypolygon.py} and type in the following
 code:
 
-生成一个叫{\tt mypolygon.py}的文件并键入如下代码：
+创建一个叫{\tt mypolygon.py}的文件并键入如下代码：
 
 \begin{verbatim}
 from swampy.TurtleWorld import *
@@ -4058,14 +4057,14 @@ in the {\tt swampy} package.
 \index{import statement}
 \index{statement!import}
 
-第一行在{\tt swampy}里从{\tt TurtleWorld}模块导入内容。
+第一行从{\tt swampy}包里的{\tt TurtleWorld}模块导入所有内容。
 
 The next lines create a TurtleWorld assigned to {\tt world} and
 a Turtle assigned to {\tt bob}.  Printing {\tt bob} yields something
 like:
 
-接下来几行生成一个TurtleWorld赋给{\tt world}以及生成一个Turtle赋给{\tt bob}。
-打印{\tt bob}产生像下面这样的东西：
+接下来几行生成一个TurtleWorld，赋给{\tt world}，以及生成一个Turtle，赋给{\tt bob}。
+打印{\tt bob}会出现像下面这样的东西：
 
 \begin{verbatim}
 <TurtleWorld.Turtle instance at 0xb7bfbf4c>
@@ -4078,15 +4077,15 @@ as defined in module {\tt TurtleWorld}.  In this context,
 this Turtle is one of the set of possible Turtles.
 \index{instance}
 
-这意味着{\tt bob}指向一个如{\tt TurtleWorld}中定义的Turtle的{\bf 实例（instance）}。
+这意味着{\tt bob}指向一个Turtle的{\bf 实例（instance）}，其被定义在{\tt TurtleWorld}中。
 在此处，``实例''的意思是集合的一个成员，该Turtle是所有可能的Turtle构成的集合的一个元素。
 
 \verb"wait_for_user" tells TurtleWorld to wait for the user
 to do something, although in this case there's not much for
 the user to do except close the window.
 
-\verb"wait_for_user"告诉TurtleWorld等待用户做些什么，
-但是在此例中除了关闭窗口外用户也做不了其它的事情。
+\verb"wait_for_user"告诉TurtleWorld等待用户操作，
+尽管在此例中除了关闭窗口外用户也做不了其它的事情。
 
 TurtleWorld provides several
 turtle-steering functions: {\tt fd} and {\tt bk} for
@@ -4096,16 +4095,16 @@ either down or up; if the pen is down, the Turtle leaves
 a trail when it moves.  The functions {\tt pu} and {\tt pd}
 stand for ``pen up'' and ``pen down''.
 
-TurtleWorld提供几个海龟转向函数：
-{\tt fd}和{\tt bk}用于向前和向后，{\tt lt}和{\tt rt}是向左和向右。
-每个海龟都握有一支笔，要么放下，要么抬起。
+TurtleWorld提供几个海龟控制函数：
+{\tt fd}和{\tt bk}用于向前和向后，{\tt lt}和{\tt rt}是左转和右转。
+并且，每个海龟都握有一支笔，要么放下，要么抬起。
 如果笔被放下，该海龟留下它走过的痕迹。
 函数{\tt pu}和{\tt pd}代表``笔抬起''和``笔放下''。
 
 To draw a right angle, add these lines to the program
 (after creating {\tt bob} and before calling \verb"wait_for_user"):
 
-为了画一个向右的三角，在程序中加入这些代码
+为了画一个直角，在程序中加入这些代码
 （在生成{\tt bob}之后，调用\verb"wait_for_user"之前）：
 
 \begin{verbatim}
@@ -4122,8 +4121,8 @@ forward.  The second line tells him to turn left.
 When you run this program, you should see {\tt bob} move east and then
 north, leaving two line segments behind.
 
-当运行此程序时，你应该会看见{\tt bob}现象东移动，然后向北，
-在它后面留下两条线段。
+当运行此程序时，你应该会看见{\tt bob}先向东移动，然后向北，
+在身后留下两条线段。
 
 Now modify the program to draw a square.  Don't go on until
 you've got it working!
@@ -4139,7 +4138,7 @@ you've got it working!
 Chances are you wrote something like this (leaving out the code
 that creates TurtleWorld and waits for the user):
 
-假设你写了如下的代码（不包括生成TurtleWorld以及等待用户的代码）：
+有可能你写了如下的代码（不包括生成TurtleWorld以及等待用户的代码）：
 
 \begin{verbatim}
 fd(bob, 100)
@@ -4184,12 +4183,12 @@ more later.  But that should be enough to let you rewrite your
 square-drawing program.  Don't go on until you do.
 
 这是{\tt for}语句最简单的用法，后面我们会看到更多的。
-但是这对于你重写你的画正方形程序已经足够了。
+但是这对于让你重写你的画正方形程序已经足够了。
 如果没有完成不要继续。
 
 Here is a {\tt for} statement that draws a square:
 
-下面是使用{\tt for}语句画正方形：
+这是一个画正方形的{\tt for}语句：
 
 \begin{verbatim}
 for i in range(4):
@@ -4203,15 +4202,15 @@ body.  The body can contain any number of statements.
 \index{loop}
 
 {\tt for}语句的语法和函数定义类似。
-它有一个以冒号结尾的头以及一个缩进的体。
-体可以包含任意条数的语句。
+它有一个以冒号结尾的语句头以及一个缩进的语句体。
+语句体可以包含任意条语句。
 
 A {\tt for} statement is sometimes called a {\bf loop} because
 the flow of execution runs through the body and then loops back
 to the top.  In this case, it runs the body four times.
 
-{\tt for}语句有时被称为{\bf 循环（loop）}，因为执行流程运行整个体然后循环回顶部。
-在此例中，它运行体4次。
+{\tt for}语句有时被称为{\bf 循环（loop）}，因为执行流程会运行整个语句体然后循环回顶部。
+在此例中，它运行语句体四次。
 
 This version is actually a little different from the previous
 square-drawing code because it makes another turn after
@@ -4221,10 +4220,10 @@ every time through the loop.  This version also has the effect
 of leaving the turtle back in the starting position, facing in
 the starting direction.
 
-此版本和前面画正方形的代码有所不同，因为它在画完正方形最后一条边的时候，
+此版本和前面画正方形的代码有所不同，因为它在画完正方形最后一条边后，
 又多转了一下。这个额外的转动多花了些时间，
 但是如果我们通过循环做相同的事情也简化了代码。
-此版本也有一个作用，将海龟留在了出发位置，朝向开始的方向。
+此版本也有一个作用，将海龟放回了出发位置，面朝开始的方向。
 
 \section{Exercises 练习}
 
@@ -4233,13 +4232,13 @@ are meant to be fun, but they have a point, too.  While you are
 working on them, think about what the point is.
 
 下面是一系列使用TurtleWorld的练习。
-它们是很有趣，但是它们也都有一点。
-当你做这些练习的时候，想一想这个点是什么？
+它们是为了好玩而设计的，但是它们也有想表达的东西。
+当你做这些练习的时候，想一想它们想告诉你的是什么。
 
 The following sections have solutions to the exercises, so
 don't look until you have finished (or at least tried).
 
-下面几节是这些练习的答案，因此如果你没完成（或者至少试过了），不要看答案。
+后面几节是这些练习的答案，因此如果你没完成（或者至少试过），不要看答案。
 
 \begin{enumerate}
 
@@ -4247,7 +4246,7 @@ don't look until you have finished (or at least tried).
 named {\tt t}, which is a turtle.  It should use the turtle to draw
 a square.
 
-写一个名为{\tt square}的函数，有一个名为{\tt t}的形参，它是一个海龟。
+写一个名为{\tt square}的函数，接受一个名为{\tt t}的形参，它是一个海龟。
 用这只海龟画一个正方形。
 
 Write a function call that passes {\tt bob} as an argument to
@@ -4263,15 +4262,15 @@ length}.
 
 给{\tt square}加入另一个名为{\tt length}的形参。
 修改函数体，使得边的长度是{\tt square}，然后修改函数调用以提供第二个实参。
-重新运行程序。用一个范围内的{\tt length}值测试你的程序。
+重新运行程序。用一系列{\tt length}值测试你的程序。
 
 \item The functions {\tt lt} and {\tt rt} make 90-degree turns by
 default, but you can provide a second argument that specifies the
 number of degrees.  For example, {\tt lt(bob, 45)} turns {\tt bob} 45
 degrees to the left.
 
-函数{\tt lt}和{\tt rt}默认转动90度，而你可以提供第二个实参来制定角度。
-例如{\tt lt(bob, 45)}向左转动{\tt bob} 45度。
+函数{\tt lt}和{\tt rt}默认转动90度，不过你可以提供第二个实参来指定角度。
+例如{\tt lt(bob, 45)}将{\tt bob}向左转45度。
 
 Make a copy of {\tt square} and change the name to {\tt polygon}.  Add
 another parameter named {\tt n} and modify the body so it draws an
@@ -4281,8 +4280,8 @@ polygon are $360/n$ degrees.
 \index{function!polygon}
 
 复制{\tt square}并改名为{\tt polygon}。
-增加另外一个名为{\tt n}的参数并改变函数体，让它画一个n边形。
-提示：n边型的外角是$360/n$度。
+增加另外一个名为{\tt n}的形参并修改函数体，让它画一个正n边形。
+提示：正n边型的外角是$360/n$度。
 
 \item Write a function called {\tt circle} that takes a turtle, {\tt t},
 and radius, {\tt r}, as parameters and that draws an approximate circle
@@ -4291,21 +4290,21 @@ sides.  Test your function with a range of values of {\tt r}.
 \index{circle function}
 \index{function!circle}
 
-写一个名为{\tt circle}的函数，它接受一个乌龟{\tt t}和半径{\tt r}作为形参，
-然后通过调用{\tt polygon}，用合适的边的数目和长度画一个近似圆形。
-用一定范围内的{\tt r}值测试你的函数。
+写一个名为{\tt circle}的函数，它接受一个海龟{\tt t}和半径{\tt r}作为形参，
+然后通过以合适的边长和边数调用{\tt polygon}，画一个近似圆形。
+用一系列{\tt r}值测试你的函数。
 
 Hint: figure out the circumference of the circle and make sure that
 {\tt length * n = circumference}.
 
-提示：指出圆的周长并确定{\tt length * n = circumference}。
+提示：算出圆的周长并确保{\tt length * n = circumference}。
 
 Another hint: if {\tt bob} is too slow for you, you can speed
 him up by changing {\tt bob.delay}, which is the time between moves,
 in seconds.  {\tt bob.delay = 0.01} ought to get him moving.
 
 另外一个提示：如果{\tt bob}对你来说太慢了，你可以通过修改{\tt bob.delay}加速，
-它是两次移动之间的时间（秒）。{\tt bob.delay = 0.01}应该让它移动。
+它是两次移动之间的时间（秒）。{\tt bob.delay = 0.01}应该能让它动起来。
 
 % change this to world.delay
 
@@ -4317,7 +4316,7 @@ circle.
 \index{arc function}
 \index{function!arc}
 
-完成一个更一般的{\tt circle}版本{\tt arc}，其接受一个额外的参数{\tt angle}，
+完成一个更一般的{\tt circle}版本，称作{\tt arc}，其接受一个额外的参数{\tt angle}，
 确定画多大部分的圆。{\tt angle}的单位是度，因此当{\tt angle=360}时，
 {\tt arc} 应该画一个整圆。
 
@@ -4329,8 +4328,8 @@ The first exercise asks you to put your square-drawing code
 into a function definition and then call the function, passing
 the turtle as a parameter.  Here is a solution:
 
-第一个练习需要你将画正方形的代码放到函数定义中然后调用该函数，
-传递海龟作为参数。这是答案：
+第一个练习要求你将画正方形的代码放到函数定义中然后调用该函数，
+将海龟作为参数传递给它。这是一个解法：
 
 \begin{verbatim}
 def square(t):
@@ -4347,8 +4346,8 @@ which is inside the function definition.  The next line,
 {\tt square(bob)}, is flush with the left margin, so that is the
 end of both the {\tt for} loop and the function definition.
 
-最内部的语句，{\tt fd}和{\tt lt}缩进两次以显示它们在{\tt for}循环内，
-该循环在函数内。下一行{\tt square(bob)}和左边界对齐，
+最内部的语句，{\tt fd}和{\tt lt}被缩进两次以显示它们在{\tt for}循环内，
+该循环又在函数定义内。下一行{\tt square(bob)}和左边界对齐，
 因此它是{\tt for}循环和函数定义的结束。
 
 Inside the function, {\tt t} refers to the same turtle {\tt bob}
@@ -4360,7 +4359,7 @@ a second turtle and pass it as an argument to {\tt square}:
 在函数内部，{\tt t}和{\tt bob}指的是同一只海龟，
 所以{\tt lt(t)}和{\tt lt(bob)}功能相同。
 那么为什么不将形参命名为{\tt bob}呢？
-想法是{\tt t}可以是任何海龟而不仅仅是{\tt bob}，
+因为{\tt t}可以是任何海龟而不仅仅是{\tt bob}，
 所以你可以生成第二只海龟并且将它作为实参传递给{\tt square}：
 
 \begin{verbatim}
@@ -4377,15 +4376,15 @@ to call a function twice than to copy and paste the body!
 
 将一部分代码包装在函数里被称作 {\bf encapsulation（封装）}。
 封装的好处之一是它将这些代码赋予一个名字，
-这充当了一种文档。另一个好处是你可以重用这些代码，
-调用函数两次要比拷贝粘贴函数体要简洁！
+这充当了一种说明。另一个好处是你可以重复使用这些代码，
+调用函数两次比拷贝粘贴函数体要简洁！
 
 \section{Generalization 泛化}
 
 The next step is to add a {\tt length} parameter to {\tt square}.
 Here is a solution:
 
-下一步是给{\tt square}增加一个{\tt length}形参。这是解决方案：
+下一步是给{\tt square}增加一个{\tt length}形参。这是一个解法：
 
 \begin{verbatim}
 def square(t, length):
@@ -4403,15 +4402,15 @@ it can be any size.
 \index{generalization}
 
 为函数增加一个形参被称作{\bf 泛化（generalization）}，
-因为其使得函数更一般：在前面的版本中，
-正方形总是相同大小的；此版本它可以是任意的大小。
+因为这使得函数更通用：在前面的版本中，
+正方形总是相同大小的；此版本中它可以是任意大小。
 
 The next step is also a generalization.  Instead of drawing
 squares, {\tt polygon} draws regular polygons with any number of
 sides.  Here is a solution:
 
-下一步也是一个泛化。不是画一个正方形，{\tt polygon}画任意的多边形。
-这是解决方案：
+下一步也是一个泛化。不是画一个正方形，{\tt polygon}画任意的正多边形。
+这是一个解法：
 
 \begin{verbatim}
 def polygon(t, n, length):
@@ -4430,7 +4429,7 @@ helpful, to include the names of the parameters in the argument
 list:
 
 这画了一个7边形，边长为70。
-如果你有更多的形参，很容易忘记它们多是什么或者它们的顺序应该是什么。
+如果你有几个数字实参，很容易忘记它们是什么或者它们的顺序应该是什么。
 将形参名放入实参列表是合法的，而且有时很有用：
 
 \begin{verbatim}
@@ -4451,7 +4450,7 @@ about how arguments and parameters work: when you call a function, the
 arguments are assigned to the parameters.
 
 这一语法使得程序更可读。
-它也是关于实参和形参如何工作的一个提醒：
+它也是关于实参和形参工作方式的一个提醒：
 当你调用函数时，实参被赋给形参。
 
 
@@ -4462,7 +4461,7 @@ The next step is to write {\tt circle}, which takes a radius,
 {\tt polygon} to draw a 50-sided polygon:
 
 下一步是写{\tt circle}，它将半径{\tt r}作为形参。
-这是一个简单的解决方案，它使用{\tt polygon}画一个50边形：
+这是一个简单的解法，它使用{\tt polygon}画一个50边形：
 
 \begin{verbatim}
 def circle(t, r):
@@ -4485,8 +4484,8 @@ are usually at the beginning of the script.
 so {\tt length} is the length of each segment.  Thus, {\tt polygon}
 draws a 50-sides polygon that approximates a circle with radius {\tt r}.
 
-{\tt n}是我们估计的圆的线段的个数，所以{\tt length}是每一段的长度。
-这样{\tt polygon}画一个50边形来估计一个半径为{\tt r}的圆。
+{\tt n}是我们的近似圆中线段的条数，所以{\tt length}是每一段的长度。
+这样{\tt polygon}画一个50边形来近似一个半径为{\tt r}的圆。
 
 One limitation of this solution is that {\tt n} is a constant, which
 means that for very big circles, the line segments are too long, and
@@ -4496,11 +4495,11 @@ a parameter.  This would give the user (whoever calls {\tt circle})
 more control, but the interface would be less clean.
 \index{interface}
 
-这种解决方案的一个局限性是{\tt n}是常数，这意味着对于非常大的圆，
-线段会非常长，并且对于小圆，我们浪费时间画非常小的线段。
+这种解决方案的一个局限在于{\tt n}是常数，这意味着对于非常大的圆，
+线段会非常长，而对于小圆，我们浪费时间画非常小的线段。
 一个解决方案是通过将{\tt n}作为形参来泛化函数。
-这将给用户（调用{\tt circle}的人）更多的控制，
-但是接口将不那么干净了。
+这将给用户（调用{\tt circle}的人）更多的掌控力，
+但是接口就不那么干净了。
 
 The {\bf interface} of a function is a summary of how it is used: what
 are the parameters?  What does the function do?  And what is the return
@@ -4508,9 +4507,9 @@ value?  An interface is ``clean'' if it is ``as simple as
 possible, but not simpler. (Einstein)''
 \index{Einstein, Albert}
 
-函数的{\bf 接口（interface）}是一个如何使用它的摘要：
+函数的{\bf 接口（interface）}是一份关于如何使用的总结：
 形参是什么？函数做什么？返回值是什么？
-如果接口``尽可能简单，但不能过于简单（爱因斯坦）''的话，则说它是``干净的''。
+如果接口``尽可能简单，又不过于简单（爱因斯坦）''的话，则说它是``干净的''。
 
 In this example, {\tt r} belongs in the interface because it
 specifies the circle to be drawn.  {\tt n} is less appropriate
@@ -4524,7 +4523,7 @@ Rather than clutter up the interface, it is better
 to choose an appropriate value of {\tt n}
 depending on {\tt circumference}:
 
-不要把接口弄乱，依赖{\tt circumference}选择一个合适的{\tt n}值比较好。
+依赖{\tt circumference}选择一个合适的{\tt n}值，而不是把接口弄乱，会比较好。
 
 \begin{verbatim}
 def circle(t, r):
@@ -4540,9 +4539,8 @@ enough that the circles look good, but big enough to be efficient,
 and appropriate for any size circle.
 
 现在线段的数量（大概）是{\tt circumference/3}，
-所以每条线段的长度（大概）是3，这足够的小了，
-使得圆看上去不错，但是对于保证效率也足够大了，
-适合任何大小的圆。
+所以每条线段的长度（大概）是3，小到足以使圆看上去不错，
+又大到对任何大小的圆都能够又快又合适。
 
 \section{Refactoring 重构}
 \label{refactoring}
@@ -4555,7 +4553,7 @@ or {\tt circle} to draw an arc.
 
 当我写{\tt circle}的时候，我能够重用{\tt polygon}，
 因为一个多边形是对圆的很好的近似。
-但是{\tt arc}不太易于合作，我们不能使用{\tt polygon}或者{\tt circle}来画一个弧。
+但是{\tt arc}就不那么合作，我们不能使用{\tt polygon}或者{\tt circle}来画一个弧。
 
 One alternative is to start with a copy
 of {\tt polygon} and transform it into {\tt arc}.  The result
@@ -4596,6 +4594,7 @@ def polyline(t, n, length, angle):
 \end{verbatim}
 %
 Now we can rewrite {\tt polygon} and {\tt arc} to use {\tt polyline}:
+
 现在，我们可以用{\tt polyline}重写{\tt polygon}和{\tt arc}：
 
 \begin{verbatim}
@@ -4612,6 +4611,7 @@ def arc(t, r, angle):
 \end{verbatim}
 %
 Finally, we can rewrite {\tt circle} to use {\tt arc}:
+
 最后，我们可以用{\tt arc}重写{\tt circle}：
 
 \begin{verbatim}
@@ -4637,11 +4637,12 @@ coding, you understand the problem better.  Sometimes refactoring is a
 sign that you have learned something.
 
 如果我们提前已经计划好了，我们可能首先写{\tt polyline}并避免重构，
-但是在一个项目开始的时候，你经常知道的不足，不能设计全部的接口。
-一旦你开始编码，你更好地理解该问题。
+但是在一个项目开始的时候，你常常并不知道那么多，不能设计好全部的接口。
+当你开始编码时，你才能更好地理解该问题。
 有时重构是一个信号，说明你已经学到某些东西了。
 
 
+%Last time
 \section{A development plan 开发方案}
 \index{development plan!encapsulation and generalization}
 
