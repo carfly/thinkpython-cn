@@ -261,9 +261,9 @@ and I would spend the rest of the semester picking up the pieces.
 我看到的问题之一是教材。
 它们都太大了，有太多不必要的关于Java的细节，
 并且缺乏关于如何编程的上层的指导。
-同时，它们也缺乏陷阱门效应（trap door effect），即从简单之处开始，并逐渐深入。
-因此，大概到第五章左右，后面的学生开始掉队了。
-学生们获得太多的材料，进展太快，并且我在剩下的学期选择一些片段。
+同时，它们都在陷阱门效应（trap door effect）上栽了跟头，即从简单之处开始，并逐渐深入，
+然后，大概到第五章左右，后面的学生开始掉队了。
+学生们得看太多的材料，进展太快，然后我在剩下的学期内就得用大量时间复习一些碎片知识。
 
 Two weeks before the first day of classes, I decided to write my
 own book.  
@@ -277,23 +277,23 @@ My goals were:
 \item Keep it short.  It is better for students to read 10 pages
 than not read 50 pages.
 
-尽量简短。对于学生，读10页比读50页好。
+\item 尽量简短。让学生读10页比给他们50页但不读好。
 
 \item Be careful with vocabulary.  I tried to minimize the jargon
 and define each term at first use.
 
-关注术语表。我试图使用最少的术语并且在第一次使用的时候给出定义。
+\item 关注术语使用。我试图使用最少的术语并且在第一次使用的时候给出定义。
 
 \item Build gradually. To avoid trap doors, I took the most difficult
 topics and split them into a series of small steps. 
 
-循序渐进。为了避免陷阱门，我将最难的主题拆分成一系列小的步骤。
+\item 循序渐进。为了避免陷阱门，我将最难的主题拆分成一系列小的步骤。
 
 \item Focus on programming, not the programming language.  I included
 the minimum useful subset of Java and left out the rest.
 
-聚焦于编程，而不是编程语言。我只包括了Java最小的有用的子集，
-并且忽略其余的。
+\item 聚焦于编程，而不是编程语言。我只涵盖了Java最小的有用的子集，
+忽略了其余的。
 
 \end{itemize}
 
@@ -308,7 +308,7 @@ topics, the interesting topics and (most important) letting the
 students practice.
 
 第一版很粗糙，但是它有效。学生们读它，并且他们足够理解它。
-然后我可以将上课时间花在那些难的、有趣的主题上，
+于是我可以将上课时间花在那些难的、有趣的主题上，
 并且让学生们实践（这点最重要）。
 
 I released the book under the GNU Free Documentation License,
@@ -352,7 +352,7 @@ adding material, especially exercises.
 The result is this book, now with the less grandiose title
 {\em Think Python}.  Some of the changes are:
 
-本书的结果是，现在有了一个更具体的名字《Think Python》。
+最后结果就是这本书，现在有了一个更具体的名字《Think Python》。
 下面是一些变化：
 
 \begin{itemize}
@@ -361,15 +361,15 @@ The result is this book, now with the less grandiose title
   These sections present general techniques for finding and avoiding
   bugs, and warnings about Python pitfalls.
   
-每章最后，我都增加了一节关于调试（debugging）的内容。
+\item 每章最后，我都增加了一节关于调试（debugging）的内容。
 这些小节给出关于发现和避免一些错误的通常的技术，
-以及关于Python的陷阱。
+以及关于Python陷阱的警告。
 
 \item I added more exercises, ranging from short tests of
   understanding to a few substantial projects.  And I wrote
   solutions for most of them.
 
-增加了更多的练习题，涵盖了从为了理解的简短的测试到真正的项目。
+\item 增加了更多的练习题，涵盖了从为了理解的简短的测试到真正的项目。
 并且为其中大部分写了答案。
 
 \item I added a series of case studies---longer examples with
@@ -378,20 +378,20 @@ The result is this book, now with the less grandiose title
   Swampy, code examples, and some solutions are available from
   \url{http://thinkpython.com}.
   
-我增加了一系列范例分析（case studies），
-即具有联系、答案以及讨论的更长的样例。
-其中一些基于Swampy，我写的一套用于我的课程的Pythong程序。
+\item 我增加了一系列范例分析（case studies），
+即具有练习、答案以及讨论的更长的样例。
+其中一些基于Swampy，我写的一套用于我的课程的Python程序。
 Swampy、代码样例、以及一些答案可以从 \url{http://thinkpython.com} 获得。
 
 \item I expanded the discussion of program development plans
   and basic design patterns.
 
-我扩展了关于程序开发规划和基本设计模式的讨论。
+\item 我扩展了关于程序开发规划和基本设计模式的讨论。
 
 \item I added appendices about debugging, analysis of algorithms, and
   UML diagrams with Lumpy.
 
-我增加了关于调试、算法分析以及使用Lumpy画UML图的附录。
+\item 我增加了关于调试、算法分析以及使用Lumpy画UML图的附录。
 
 \end{itemize}
 
@@ -399,8 +399,8 @@ I hope you enjoy working with this book, and that it helps
 you learn to program and think, at least a little bit, like
 a computer scientist.
 
-我希望你能使用该书愉快的工作，并且它能帮助你学习编程和思考，
-至少或多或少像一个计算机科学家。
+我希望你能使用该书愉快的工作，也希望它能帮助你学习编程和思考，
+至少有那么点像一个计算机科学家。
 
 Allen B. Downey \\
 Needham MA\\
@@ -813,7 +813,7 @@ they observe the behavior of complex systems, form hypotheses, and test
 predictions.
 \index{problem solving}
 
-本书的目标是教给你像计算机科学家一样思考。
+本书的目标是教你像计算机科学家一样思考。
 这一思考的方式集成了数学、工程以及自然科学的一些最好的特点。
 像数学家一样，计算机科学家使用形式语言表示思想（特别是计算）。
 像工程师一样，计算机科学家设计东西，将零件组成系统，在各种选择之间寻求平衡。
@@ -837,7 +837,7 @@ an end.  As we go along, that end will become clearer.
 
 一个层面上，你将学习编程，本身就是一个有用的技能。
 另一个层面上，你将使用编程作为达到目的的手段。
-随着我们的深入，这将变得更清晰。
+随着我们的深入，这一目的将变得更清晰。
 
 \section{The Python programming language Python编程语言}
 \index{programming language}
@@ -848,7 +848,7 @@ an example of a {\bf high-level language}; other high-level languages
 you might have heard of are C, C++, Perl, and Java.
 
 你将学习的编程语言是Python。Python是{\bf 高级语言（high-level language）}的一个例子；
-其它你可能听说的高级语言包括C、C++、Perl以及Java。
+其它你可能听说过的高级语言包括C、C++、Perl以及Java。
 
 There are
 also {\bf low-level languages}, sometimes referred to as ``machine
@@ -877,10 +877,10 @@ with few or no modifications.  Low-level programs can run on only one
 kind of computer and have to be rewritten to run on another.
 
 优点是巨大的。首先，使用高级语言编程要容易的多。
-用高级语言写程序需要花更少的时间，它们更短、更易读并且更有可能正确。
+高级语言程序写起来花的时间更少，它们也更短、更易读并且更有可能正确。
 其次，高级语言是{\bf 可移植的（portable）}，也就是说只需很少的修改或者无需修改，
-它们就可以运行在不同类型的计算机上。
-低级语言只能运行于一种类型的计算机上，如果要运行于其它类型的计算机上，
+它们就可以在不同类型的计算机上运行。
+低级语言程序只能运行于一种类型的计算机上，如果要运行于其它类型的计算机上，
 不得不进行重写。
 
 Due to these advantages, almost all programs are written in high-level
@@ -904,7 +904,8 @@ Figure~\ref{fig.interpret} shows the structure of an interpreter.
 
 将高级语言处理成低级语言有两种程序：{\bf 解释器（interpreters）}和{\bf 编译器（compilers）}。
 解释器读高级语言程序并且执行它，也就是说它按照程序说的去做。
-它一次处理一些程序，交替地读几行程序并且执行计算。
+它一次只处理程序的一小段，读一行，执行计算，如此交替进行。
+% 舍弃逐字直译，表达原文意思。因alternatively的意义，read lines此处的确是读一行的意思。
 图~\ref{fig.interpret} 展示了一个解释器的结构。
 
 \begin{figure}
@@ -912,7 +913,7 @@ Figure~\ref{fig.interpret} shows the structure of an interpreter.
 {\includegraphics[scale=0.9]{figs/interpret.pdf}}
 \caption{An interpreter processes the program a little at a time,
 alternately reading lines and performing computations. 
-解释器一次处理一些程序，交替地读几行程序并且执行计算。}
+解释器一次只处理程序的一小段，读一行，执行计算，如此交替进行。}
 \label{fig.interpret}
 \end{figure}
 
@@ -925,7 +926,7 @@ Figure~\ref{fig.compile} shows the structure of a compiler.
 
 编译器在程序开始运行之前，读取整个程序并且将其全部翻译。
 在这种情况下，高级语言程序被称为{\bf 源代码（source code）}，
-翻译后的程序被称为{\bf 目标代码（object code）}或者{\bf 可执行代码（executable）}。
+翻译后的程序被称为{\bf 目标代码（object code）}或者{\bf 可执行程序（executable）}。
 一旦一个程序被编译，你可以重复的执行它无需再翻译。
 图~\ref{fig.compile} 展示了一个编译器的结构。
 
@@ -946,9 +947,9 @@ the result:
 \index{interactive mode}
 \index{script mode}
 
-Python被认为是解释性语言，因为Python程序被解释器执行。
-有两种方法使用解释器：{\bf 交互式模式（interactive mode）}和{\bf 脚本模式（script mode）}。
-在交互式模式下，你键入Python程序，解释器显示结果：
+Python被认为是解释性语言，因为Python程序由解释器执行。
+有两种方法使用解释器：{\bf 交互模式（interactive mode）}和{\bf 脚本模式（script mode）}。
+在交互模式下，你键入Python程序，解释器就显示结果：
 
 \begin{verbatim}
 >>> 1 + 1
@@ -960,7 +961,7 @@ The chevron, \verb">>>", is the
 you type {\tt 1 + 1}, the interpreter replies {\tt 2}.
 \index{prompt}
 
-\verb">>>"是{\bf 提示符（prompt）}，解释器用其表示它准备好了。
+像军衔样的图标\verb">>>"是{\bf 提示符（prompt）}，解释器用其表示它准备好了。
 如果你键入{\tt 1 + 1}，解释器回复{\tt 2}。
 
 Alternatively, you can store code in a file and use the interpreter to
@@ -968,8 +969,8 @@ execute the contents of the file, which is called a {\bf script}.  By
 convention, Python scripts have names that end with {\tt .py}.
 \index{script}
 
-另外，你可以将代码存储在一个文件中，并且用解释器执行这个文件的内容，
-其被称为{\bf 脚本（script）}。习惯上，Python脚本以{\tt .py}结尾命名。
+另外，你也可以将代码存储在一个文件中，其被称为{\bf 脚本（script）}，
+然后用解释器执行这个文件的内容。习惯上，Python脚本的名字以{\tt .py}结尾。
 
 To execute the script, you have to tell the interpreter the name of
 the file.  If you have a script named {\tt dinsdale.py} and you are
@@ -980,8 +981,8 @@ your environment at the Python website \url{http://python.org}.
 \index{testing!interactive mode}
 
 为了执行脚本，你必须告诉解释器文件名。
-如果你有一个命名为{\tt dinsdale.py}的脚本并且你在UNIX命令窗口中工作，
-你键入{\tt python dinsdale.py}。在其它的开发环境中，
+如果你有一个名为{\tt dinsdale.py}的脚本并且你在UNIX命令窗口中工作，
+你只要键入{\tt python dinsdale.py}就好了。在其它的开发环境中，
 执行脚本的细节不太一样。
 你可以在Python网站\url{http://python.org}中找到对于你的环境的说明。
 
@@ -991,7 +992,7 @@ anything more than a few lines, you should save your code
 as a script so you can modify and execute it in the future.
 
 在交互模式中工作便于测试零散的代码，因为你可以立即键入并且执行它们。
-但是对于任何多于几行的代码，你应该保存你的代码为脚本以便将来修改并执行它。
+但是对于任何多于几行的代码来说，你应该将你的代码保存为脚本以便将来可以修改再执行。
 
 \section{What is a program? 什么是程序？}
 
@@ -1003,8 +1004,8 @@ as searching and replacing text in a document or (strangely enough)
 compiling a program.
 \index{program}
 
-一个{\bf 程序（program）}是一序列指令，其具体说明如何执行一个计算。
-计算可能是一些数学的东西，例如解一个公式系统或者找到一个多项式的解，
+一个{\bf 程序（program）}是一串指令，其具体说明如何执行一个计算。
+计算可能是一些数学的东西，例如解一个公式系统或者找到一个多项式的根，
 而它也可能是一个符号计算，例如在一个文档中搜索并替换文本或者（不可思议地）编译一个程序。
 
 The details look different in different languages, but a few basic
@@ -1032,7 +1033,7 @@ multiplication.
 \item[conditional execution:] Check for certain conditions and
 execute the appropriate code.
 
-\item[有条件执行：] 检查某一条件并执行适当的代码。
+\item[有条件执行：] 检查某一条件并执行相应的代码。
 
 \item[repetition:] Perform some action repeatedly, usually with
 some variation.
@@ -1050,9 +1051,9 @@ simple enough to be performed with one of these basic instructions.
 \index{algorithm}
 
 无论你是否相信，这几乎是程序的全部了。
-每个你曾经用过的程序，无论多么复杂，几乎都是由这些指令构成的。
+每个你曾经用过的程序，无论多么复杂，都是由跟这些差不多的指令构成的。
 因此你可以认为编程就是将大的、复杂的任务分解为越来越小的子任务，
-直到这些子任务足够简单到被其中一个基本指令执行。
+直到这些子任务足够简单，可以被这其中一个基本指令执行。
 
 That may be a little vague, but we will come back to this topic
 when we talk about {\bf algorithms}.
@@ -1070,7 +1071,7 @@ are called {\bf bugs} and the process of tracking them down is called
 \index{bug}
 
 编程是易于出错的。由于比较奇怪的原因，编程的错误被称为{\bf 虫子（bugs）}，
-并且追踪它们的过程被称为{\bf 找虫子或调试（debugging）}。
+并且追踪它们的过程被称为{\bf 捉虫或调试（debugging）}。
 
 Three kinds of errors can occur in a program: syntax errors, runtime 
 errors, and semantic errors. It is useful
@@ -1109,12 +1110,12 @@ weeks of your programming career, you will probably spend a lot of
 time tracking down syntax errors.  As you gain experience, you will
 make fewer errors and find them faster.
 
-英语读者能容忍大多数语法错误，
-这也是为什么我们能读e. e. cummings的诗而不会发出错误信息。
-Python没这么宽容。如果你的程序任何地方有一个语法错误，
-Python将显示一个错误信息并且退出。你将不能运行你的程序。
+用英语时，读者能容忍大多数语法错误，
+这也是为什么我们能读E. E. 卡明斯的诗而不会发出错误信息。
+Python就没这么宽容。如果你的程序任何地方有一个语法错误，
+Python将显示一个错误信息并且退出，你就不能运行你的程序。
 在你编程生涯的前几周，你可能将花很多时间追踪语法错误。
-当你更有经验时，你将犯更少的错误并且更快的找到它们。
+当你更有经验时，你的错误将会变少并且更快的找到它们。
 
 \subsection{Runtime errors 运行时错误}
 \label{runtime}
@@ -1131,12 +1132,12 @@ indicate that something exceptional (and bad) has happened.
 
 第二类错误是运行时错误，之所以这么叫，是因为程序开始运行以后，
 这些错误才出现。这些错误也被称为{\bf 异常（exceptions）}，
-因为它们通常意味着一些异常的（并且是坏的）事情发生。
+因为它们通常意味着一些异常的（并且是坏的）事情发生了。
 
 Runtime errors are rare in the simple programs you will see in the
 first few chapters, so it might be a while before you encounter one.
 
-在前几章简单的程序中很少有运行时错误，因此在你遇到它之前可能要一段时间。
+在前几章简单的程序中很少有运行时错误，因此你可能得有一阵子才会遇到它。
 
 \subsection{Semantic errors 语义错误}
 \index{semantics}
@@ -1152,8 +1153,8 @@ will do what you told it to do.
 
 第三类错误是{\bf 语义错误（semantic error）}。
 如果你的程序中有一个语义错误，在计算机不会生成错误信息的意义上，
-它将成功运行。但是，它将不会做正确的事情。它将做其它的事情。
-特别地，它将做你告诉它要做的事情。
+它将成功运行。但是，它不会做正确的事情。它将做其它的事情。
+特别地，它将做你让它做的事情。
 
 The problem is that the program you wrote is not the program you
 wanted to write.  The meaning of the program (its semantics) is wrong.
@@ -1161,8 +1162,8 @@ Identifying semantic errors can be tricky because it requires you to work
 backward by looking at the output of the program and trying to figure
 out what it is doing.
 
-问题是你写的程序不是你想写的程序。程序的意义（它的语义）是错误的。
-识别语义错误可能是棘手的，因为这需要你反过头来看一下程序的输出以及试图指出它在做什么。
+问题在于你写的程序不是你原本想写的程序。程序的意义（它的语义）是错误的。
+识别语义错误可能是棘手的，因为这需要你反过来思考，通过观察程序的输出来搞清楚它在做什么。
 
 \subsection{Experimental debugging 实验性调试}
 
@@ -1181,7 +1182,7 @@ with clues, and you have to infer the processes and events that led
 to the results you see.
 
 在某些方面，调试像是侦探工作。
-你面对一些线索并且你必须对导致你看到的结果的过程和事件进行推理。
+你面对一些线索，你必须推理，是什么过程和事件导致了你看到的结果。
 
 Debugging is also like an experimental science.  Once you have an idea
 about what is going wrong, you modify your program and try again.  If
@@ -1194,12 +1195,13 @@ impossible, whatever remains, however improbable, must be the truth.''
 \index{Holmes, Sherlock}
 \index{Doyle, Arthur Conan}
 
-调试也像是一种实验性科学。一旦你有一个关于什么出错了的想法，
-你修改你的程序然后重试。
-如果你的假设是正确的，那么你可以预测修改的结果，并且你向好使的程序迈近了一步。
-如果你的假设是错误地，那么你不得不再提一个新的想法。
-如Sherlock Holmes所指出的：``当你排除了所有的不可能，无论剩下的是什么，
-即使是不可能的，一定是真相。''（A. Conan Doyle, {\em The Sign of Four}）
+调试也像是一种实验性科学。一旦你有了一个想法，大概哪里出错了，
+你就修改你的程序再试一次。
+如果你的假设是正确的，那么你就可以预测到修改的结果，并且向好使的程序迈进了一步。
+如果你的假设是错误的，你就不得不再提一个新的想法。
+如夏洛克·福尔摩斯所指出的：``当你排除了所有的不可能，无论剩下的是什么，
+不管多么难以置信，一定是真相。''（阿瑟·柯南·道尔，{\em 《四签名》}）
+% improbable不应当翻译为不可能，福尔摩斯及其作者是中文读者耳熟能详的人物，应加以翻译
 
 For some people, programming and debugging are the same thing.  That
 is, programming is the process of gradually debugging a program until
@@ -1208,9 +1210,9 @@ program that does {\em something} and make small modifications,
 debugging them as you go, so that you always have a working program.
 
 对一些人来说，编程和调试是相同的事情。
-那就是，编程是逐步调试一个程序的过程，直到它做了你想要的。
-这一想法意味着你应该从一个能做些事情的程序开始并做小的改动，
-随着你进展调试它，以至于你总是有一个可以工作的程序。
+就是说，编程是逐步调试一个程序的过程，直到它做了你想要的。
+这一想法意味着你应该从一个能{\em 做些事情}的程序开始并做小的改动，
+随着你进展调试它，这样你总是有一个有效的程序。
 
 For example, Linux is an operating system that contains thousands of
 lines of code, but it started out as a simple program Linus Torvalds
@@ -1242,7 +1244,7 @@ by people (although people try to impose some order on them);
 they evolved naturally.
 
 {\bf 自然语言（natural languages）}是人们说的语言，例如英语、西班牙语和法语。
-它们不是人类设计的（虽然人们试图在其上强加上一些顺序），
+它们不是由人类设计的（虽然人们试图强加一些命令），
 它们自然地演变。
 
 {\bf Formal languages} are languages that are designed by people for
@@ -1252,16 +1254,16 @@ relationships among numbers and symbols.  Chemists use a formal
 language to represent the chemical structure of molecules.  And
 most importantly:
 
-{\bf 形式语言（formal languages）}是由人为了特殊应用设计的。
-例如，数学家使用的符号就是形式语言，其特别擅长表示数字和符号直接的关系。
-化学家使用形式语言表示分子的化学结构。
+{\bf 形式语言（formal languages）}是由人为了特殊用途设计的。
+例如，数学家使用的记号就是形式语言，其特别擅长表示数字和符号之间的关系。
+化学家使用他们的形式语言表示分子的化学结构。
 最重要的是：
 
 \begin{quote}
 {\bf Programming languages are formal languages that have been
 designed to express computations.}
 
-{\bf 编程语言是被设计用于表示计算的形式语言。}
+{\bf 编程语言是被设计用于表达计算的形式语言。}
 \end{quote}
 
 Formal languages tend to have strict rules about syntax.  For example,
@@ -1272,7 +1274,7 @@ chemical formula, but $_2Zz$ is not.
 
 形式语言倾向于具有严格的语法规则。
 例如$3 + 3 = 6$是语法正确的数学表达式，而$3 + = 3 \mbox{\$} 6$则不是。
-$H_2O$是语法正确的化学表达式，而$_2Zz$则不是。
+$H_2O$是语法正确的化学式，而$_2Zz$则不是。
 
 Syntax rules come in two flavors, pertaining to {\bf tokens} and
 structure.  Tokens are the basic elements of the language, such as
@@ -1286,7 +1288,7 @@ there is no element with the abbreviation $Zz$.
 语法规则有关于{\bf 记号（tokens）}和结构的两种类型。
 记号是语言的基本元素，例如单词、数字和化学元素。
 $3 + = 3 \mbox{\$} 6$的问题之一就是\( \$ \)在数学中不是一个合法的记号
-（至少据我所知）。相似的，$_2Zz$也不合法，因为没有一个元素简称$Zz$。
+（至少据我所知）。类似的，$_2Zz$也不合法，因为没有一个元素简写为$Zz$。
 
 The second type of syntax error pertains to the structure of a
 statement; that is, the way the tokens are arranged.  The statement
@@ -1295,16 +1297,18 @@ legal tokens, you can't have one right after the other.  Similarly,
 in a chemical formula the subscript comes after the element name, not
 before.
 
-第二种语法错误关于一个语句的结构。
-也就是记号被安排的方式。语句$3 + = 3$是非法的，因为即使$+$和$=$都是合法的记号，
-你也不能把其中一个放在另一个右面。
-相似的，在化学式中，下标位于元素之后，不能在前面。
+第二种语法错误关于语句的结构。
+即记号被安排的方式。语句$3 + = 3$是非法的，因为即使$+$和$=$都是合法的记号，
+你也不能把它们俩紧挨在一起。
+类似的，在化学式中，下标位于元素之后，而不是在前面。
 
 \begin{exercise}
 
 Write a well-structured English
 sentence with invalid tokens in it.  Then write another sentence
 with all valid tokens but with invalid structure.
+
+写出一个含有无效记号的英文句子。再写另一个所有记号都有效却包含无效结构的句子。
 
 \end{exercise}
 
@@ -1315,7 +1319,7 @@ process is called {\bf parsing}.
 \index{parse}
 
 当你读一个用英语写的句子或者用形式语言写的语句时，
-你得指出句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
+你得了解句子的结构是什么（虽然在自然语言中，你潜意识地做这个）。
 这个过程被称作{\bf 分析（parsing）}。
 
 For example, when you hear the sentence, ``The penny dropped,'' you
@@ -1326,8 +1330,8 @@ what a penny is and what it means to drop, you will understand the
 general implication of this sentence.
 
 例如，当你听到句子``The penny dropped''时，你理解``the penny''是主语，
-``dropped''是谓词。一旦你分析完一个句子，你可以指出它的含义是什么，
-或者句子的语义。假设你知道penny是什么以及drop是什么意义，
+``dropped''是谓语。一旦你分析完一个句子，你可以了解它的含义是什么，
+或者句子的语义。假如你知道penny是什么以及drop是什么意义，
 你将理解这个句子的含义。
 
 Although formal and natural languages have many features in
@@ -1358,7 +1362,7 @@ redundancy.  As a result, they are often verbose.  Formal languages
 are less redundant and more concise.
 
 \item[冗余性：] 为了弥补歧义性并且减少误解，自然语言使用很多冗余。
-结果，它们经常很冗长。形式语言较少的冗余，更简洁。
+结果，它们经常很冗长。形式语言则冗余较少，更简洁。
 
 \item[literalness:] Natural languages are full of idiom and metaphor.
 If I say, ``The penny dropped,'' there is probably no penny and
@@ -1366,7 +1370,7 @@ nothing dropping (this idiom means that someone realized something
 after a period of confusion).  Formal languages
 mean exactly what they say.
 
-\item[非引申义性：] 自然语言充满成语和隐喻。如果我说``The penny dropped,''，
+\item[字面性：] 自然语言充满成语和隐喻。如果我说``The penny dropped,''，
 可能根本没有便士也没什么东西掉下来（这个成语意思是有人经过一段时间的混乱后，
 意识到一些事情）。形式语言含义和它们说的完全一样。
 
@@ -1380,7 +1384,7 @@ poetry and prose, but more so:
 \index{prose}
 
 说自然语言长大的人---所有人---经常一时难于适应形式语言。
-在某些方面，形式语言和自然语言直接的不同类似诗歌和散文直接的不同，
+在某些方面，形式语言和自然语言之间的不同类似诗歌和散文之间的不同，
 但是更重要的是：
 
 \begin{description}
@@ -1390,8 +1394,8 @@ their meaning, and the whole poem together creates an effect or
 emotional response.  Ambiguity is not only common but often
 deliberate.
 
-\item[诗歌：] 单词不但被用于表示含义，还被用于表示声音。
-整首诗一起表示一个效果或者情感上的响应。
+\item[诗歌：] 单词的含义和声音都有作用，
+并且整首诗一起造成一个效果或者情感上的响应。
 歧义不但常见，而且经常是故意安排的。
 
 \item[Prose:] The literal meaning of words is more important,
@@ -1406,7 +1410,7 @@ and literal, and can be understood entirely by analysis of the
 tokens and structure.
 
 \item[程序：] 计算机程序的含义是无歧义、无引申义的，
-并且通过对标记和结构的分析被整体理解。
+并且能够通过对标记和结构的分析被完全理解。
 
 \end{description}
 
@@ -1421,12 +1425,12 @@ spelling and punctuation, which you can get away
 with in natural languages, can make a big difference in a formal
 language.
 
-这是对读程序（以及其它形式语言）的一些建议。
+给你一些阅读程序（以及其它形式语言）的一些建议。
 首先，记住形式语言比自然语言稠密的多，因此需要花更长的时间读它们。
 其次，结构非常重要，因此从上到下，从左到右的读通常不是一个好的主意。
 相反，要学会在你的头脑中分析一个程序，识别记号并且理解结构。
-最后，注意细节问题。拼写和标点符号的小错误，
-这些在自然语言中你可以侥幸成功，但是在形式语言中会有很大的不同。
+最后，注意细节问题。拼写和标点符号的小错误在自然语言中可以放过，
+但是在形式语言中会造成很大的不同。
 
 \section{The first program 第一个程序}
 \label{hello}
@@ -1436,8 +1440,8 @@ Traditionally, the first program you write in a new language
 is called ``Hello, World!'' because all it does is display the
 words ``Hello, World!''.  In Python, it looks like this:
 
-传统上，你用一门新的语言写的第一个程序被称作``Hello, World!''，
-因为它所做的所有事情就是显示单词``Hello, World!''。
+传统上，你用一门新的语言写的第一个程序叫做``Hello, World!''，
+因为它只不过是显示单词``Hello, World!''。
 在Python中，它看起来是这个样：
 
 \begin{verbatim}
@@ -1448,7 +1452,7 @@ This is an example of a {\bf print statement}, which
 doesn't actually print anything on paper.  It displays a value on the
 screen.  In this case, the result is the words
 
-这是{\bf 打印语句（print statement）}的一个实例，其并不是真的在纸上打印任何东西。
+这是{\bf 打印语句（print statement）}的一个实例，其并不是真的在纸上打印什么东西。
 它在屏幕上显示一个值。在此例中，结果是单词：
 
 \begin{verbatim}
@@ -1461,8 +1465,8 @@ of the text to be displayed; they don't appear in the result.
 \index{print statement}
 \index{statement!print}
 
-这个程序中的引号标记被打印文本的开始和结束。
-它们并没有出现在结果中。
+这个程序中的引号标记将要打印的文本之首尾，
+它们不会出现在结果中。
 
 In Python 3, the syntax for printing is slightly different:
 
@@ -1483,8 +1487,8 @@ For the rest of this book, I'll use the print statement.  If you
 are using Python 3, you will have to translate.  But other than
 that, there are very few differences we have to worry about.
 
-对于本书剩余的部分，我将使用print语句。
-如果你正在使用Python 3，你将不得不进行翻译。
+对于本书剩余的部分，我将使用打印语句（译者注：而非函数）。
+如果你正在使用Python 3，你将必须进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
 \section{Debugging 调试}
@@ -1495,9 +1499,9 @@ try out the examples as you go.  You can run most of the examples in
 interactive mode, but if you put the code in a script, it is easier
 to try out variations.
 
-在一台计算机前阅读本书是一个好的主意，由此你可以边读书边试例子。
-你可以在交互模式下运行大多数的例子，但是如果你将代码放入脚本中，
-可以方便的试着改动它们。
+最好在一台计算机前阅读本书，这样你可以边读书边尝试例子。
+你可以在交互模式下运行大多数的例子，但是如果你将代码写入脚本，
+就可以更方便的改动它们。
 
 Whenever you are experimenting with a new feature, you should try
 to make mistakes.  For example, in the ``Hello, world!'' program,
@@ -1514,7 +1518,7 @@ with debugging, because you get to know what the error messages mean.
 It is better to make mistakes now and on purpose than later
 and accidentally.
 
-这种实验有助于帮你记住你所读过的内容。
+这种实验有助于帮你记住你读到的内容。
 它也有助于调试，因为你会知道各种错误信息的含义。
 现在故意犯些错误总比将来发生意外的错误好。
 
@@ -1522,7 +1526,7 @@ Programming, and especially debugging, sometimes brings out strong
 emotions.  If you are struggling with a difficult bug, you might 
 feel angry, despondent or embarrassed.
 
-编程，特别是调试，有时带有很强的情感。
+编程，特别是调试，有时会带来强烈的情感。
 如果你正和一个很难的错误奋战，你可能感到生气、沮丧或尴尬。
 
 There is evidence that people naturally respond to computers as if
@@ -1537,7 +1541,7 @@ obstinate people (Reeves and Nass, {\it The Media
 
 有证据表明，人们很自然地对计算机做出响应，仿佛它们就是人。
 当它们做得很好的时候，我们认为它们就是队友。
-当它们固执或无礼的时候，我们也会对它们也像对待固执或无礼的人一样。
+当它们固执或无礼的时候，我们也会像对待固执或无礼的人一样对待它们。
 （Reeves and Nass, {\it The Media Equation: 
 How People Treat Computers, Television, and New Media 
 Like Real People and Places}）
@@ -1549,8 +1553,8 @@ particular weaknesses, like lack of empathy and inability
 to grasp the big picture.
 
 对这些反应做好准备有助于你对付它们。
-一种方法是将计算机看做是一个具有特定能力的雇员，
-例如速度和精度，并且有些特别的缺点，像缺乏沟通以及不善于把握大局。
+一种方法是将计算机看做是一个雇员，拥有特定的长处，
+例如速度和精度，也有些特别的缺点，像缺乏沟通以及不善于把握大局。
 
 Your job is to be a good manager: find ways to take advantage
 of the strengths and mitigate the weaknesses.  And find ways
@@ -1558,9 +1562,9 @@ to use your emotions to engage with the problem,
 without letting your reactions interfere with your ability
 to work effectively.
 
-你的工作是成为一个好的管理者：找到充分利用优点，摒弃弱点的方法。
-并且找到使用你的情感进行斗争的方法，
-不让你的反应干扰你有效的工作。
+你的工作是当一个好的管理者：找到充分利用优点，摒弃弱点的方法。
+并且找到使用你的情感来解决问题的方法，
+不让你的反应干扰你有效工作的能力。
 
 Learning to debug can be frustrating, but it is a valuable skill
 that is useful for many activities beyond programming.  At the
@@ -1569,6 +1573,8 @@ with my thoughts about debugging.  I hope they help!
 
 学习调试可能很令人泄气，
 但是它对于许多编程之外的活动也都是一个非常有价值的技能。
+在每一章的结尾都会有一节调试内容，比如说这个，
+讲述我在调试方面的想法。我希望他们能有用！
 
 \section{Glossary 术语表}
 
@@ -1608,7 +1614,7 @@ being compiled.
 the program.
 \index{object code}
 
-\item[executable（可执行）:]  Another name for object code that is ready
+\item[executable（可执行程序）:]  Another name for object code that is ready
 to be executed.
 \index{executable}
 
@@ -1635,7 +1641,7 @@ and execute statements in a script.
 problems.
 \index{algorithm}
 
-\item[bug（臭虫）:]  An error in a program.
+\item[bug（虫子）:]  An error in a program.
 \index{bug}
 
 \item[debugging（调试）:]  The process of finding and removing any of the
@@ -1684,7 +1690,7 @@ interpreter to display a value on the screen.
 \end{description}
 
 
-\section{Exercises}
+\section{Exercises 练习题}
 
 \begin{exercise}
 
@@ -1693,10 +1699,17 @@ This page contains information about Python and links
 to Python-related pages, and it gives you the ability to search
 the Python documentation.
 
+用网页浏览器打开Python网站\url{http://python.org}。
+这一站点包含了Python的信息和与Python相关页面的链接，而且让你能够搜索Python帮助文档。
+
 For example, if you enter {\tt print} in the search window, the
 first link that appears is the documentation of the {\tt print}
 statement.  At this point, not all of it will make sense to you,
 but it is good to know where it is.
+
+例如，如果你在搜索窗键入{\tt print}，出现的第一个链接就是{\tt print}语句的帮助文档。
+现在，并不是所有内容都对你有用，不过知道它们在哪里也是很好的。
+
 \index{documentation}
 \index{python.org}
 
@@ -1708,10 +1721,17 @@ Start the Python interpreter and type {\tt help()} to start the online
 help utility.  Or you can type \verb"help('print')" to get information
 about the {\tt print} statement.
 
+打开Python解释器，键入{\tt help()} 可以打开在线帮助工具。
+或者你也可以键入\verb"help('print')"，来得到关于{\tt print}语句的信息。
+
 If this example doesn't work, you
 may need to install additional Python documentation or set an
 environment variable; the details depend on your operating system and
 version of Python.
+
+如果这一例子不管用，你也许得额外安装Python文档，或者设置环境变量；
+具体方式取决于你的操作系统和Python版本。
+
 \index{help utility}
 
 \end{exercise}
@@ -1725,9 +1745,17 @@ standard mathematical notation.  For example, the symbols
 and division, as you would expect.  The symbol for
 multiplication is {\tt *}.
 
+打开Python解释器，把它当成计算器来使用。
+Python关于数学运算的语法跟标准数学符号基本一致。例如，
+{\tt +}，{\tt -}，{\tt /}号表示加，减与除，就像你所期望的那样。乘号是{\tt *}。
+
 If you run a 10 kilometer race in 43 minutes 30 seconds, what is your
 average time per mile?  What is your average speed in miles per hour?
 (Hint: there are 1.61 kilometers in a mile).
+
+如果你用43分30秒跑了10千米，你每英里所用的平均时间是多少？
+你的平均速度用英里每小时表示是多少？（提示：一英里为1.61千米。）
+
 \index{calculator}
 \index{running pace}
 
@@ -1750,7 +1778,7 @@ are {\tt 1}, {\tt 2}, and
 \verb"'Hello, World!'".
 
 {\bf 值（value）}是与程序打交道的基本事物之一，像字母或者数字。
-到目前，我们已经见过的值是{\tt 1}、{\tt 2}以及\verb"'Hello, World!'"。
+到目前为止，我们已经见过的值有{\tt 1}、{\tt 2}以及\verb"'Hello, World!'"。
 
 These values belong to different {\bf types}:
 {\tt 2} is an integer, and \verb"'Hello, World!'" is a {\bf string},
@@ -1820,7 +1848,7 @@ When you type a large integer, you might be tempted to use commas
 between groups of three digits, as in {\tt 1,000,000}.  This is not a
 legal integer in Python, but it is legal:
 
-当你有一个比较大的整数，你可能在每三个数字之间使用逗号分割它，如 {\tt 1,000,000}。
+当你有一个比较大的整数，你可能想在每三个数字之间使用逗号分隔它，如 {\tt 1,000,000}。
 在Python中，这不是一个合法的整数，但是它是合法的：
 
 \begin{verbatim}
@@ -1837,9 +1865,9 @@ runs without producing an error message, but it doesn't do the
 \index{error!semantic}
 \index{error message}
 
-然而，那不是你期望的！
-Python翻译{\tt 1,000,000}为逗号分割的一系列整数。
-这是我们所见过的第一个语义错误的例子：
+然而，那完全不是我们期望的！
+Python将{\tt 1,000,000}解释为逗号分割的一系列整数。
+这是我们见到的第一个语义错误的例子：
 代码无错误信息地运行，但是它并没有做``正确的''事情。
 
 \section{Variables 变量}
@@ -1853,12 +1881,12 @@ ability to manipulate {\bf variables}.  A variable is a name that
 refers to a value.
 
 编程语言最强大的特征之一是操作{\bf 变量（variables）}的能力。
-变量是指一个值的名字。
+变量是一个名字，它指向某个值。
 
 An {\bf assignment statement} creates new variables and gives
 them values:
 
-一个{\bf 赋值语句（assignment statement）}生成新的变量并且将值赋给它们。
+一个{\bf 赋值语句（assignment statement）}创建新的变量并且将值赋给它们。
 
 \begin{verbatim}
 >>> message = 'And now for something completely different'
@@ -1874,9 +1902,9 @@ assigns the (approximate) value of $\pi$ to {\tt pi}.
 \index{diagram!state}
 
 这个例子进行了三次赋值。
-第一个将一个字符串赋给一个新的变量名{\tt message}；
-第二个将整数{\tt 17}赋给{\tt n}；
-第三个将$\pi$的（近似）值赋给{\tt pi}。
+第一次将一个字符串赋给一个新的变量名{\tt message}；
+第二次将整数{\tt 17}赋给{\tt n}；
+第三次将$\pi$的（近似）值赋给{\tt pi}。
 
 A common way to represent variables on paper is to write the name with
 an arrow pointing to the variable's value.  This kind of figure is
@@ -1913,6 +1941,8 @@ The type of a variable is the type of the value it refers to.
 If you type an integer with a leading zero, you might get
 a confusing error:
 
+如果你键入一个以零开头的整数，你可能会得到令你疑惑的错误：
+
 \begin{verbatim}
 >>> zipcode = 02492
                   ^
@@ -1920,6 +1950,8 @@ SyntaxError: invalid token
 \end{verbatim}
 
 Other numbers seem to work, but the results are bizarre:
+
+别的数字好像能行得通，但是其结果却更奇怪：
 
 \begin{verbatim}
 >>> zipcode = 02132
@@ -1929,6 +1961,8 @@ Other numbers seem to work, but the results are bizarre:
 
 Can you figure out what is going on?  Hint: display the
 values {\tt 01}, {\tt 010}, {\tt 0100} and {\tt 01000}.
+
+你能说出发生了什么吗？提示：显示这些值 {\tt 01}，{\tt 010}，{\tt 0100}以及{\tt 01000}。
 \index{octal}
 
 \end{exercise}
@@ -2006,14 +2040,14 @@ def       for       lambda    try
 %
 In Python 3, {\tt exec} is no longer a keyword, but {\tt nonlocal} is.
 
-在Python 3中，{\tt exec}不在是一个关键字，但{\tt nonlocal}是。
+在Python 3中，{\tt exec}不再是一个关键字，但{\tt nonlocal}是。
 
 You might want to keep this list handy.  If the interpreter complains
 about one of your variable names and you don't know why, see if it
 is on this list.
 
-你可能想随手携带这个表。如果解释器抱怨你的一个变量名并且你不知道为什么，
-看一下是否它在这个列表中。
+你可能想随手携带这个表。如果解释器抱怨你的一个变量名而你不知道为什么，
+看一下它是否在这个列表中。
 
 \section{Operators and operands 运算符和运算数}
 \index{operator, arithmetic}
@@ -2047,13 +2081,13 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 \index{operator!bitwise}
 
 在一些其它语言中，\verb"^"表示指数运算，
-但是在Python中，它表示XOR（异或）位运算。
+但是在Python中，它表示XOR（译者注：异或）位运算。
 本书不包括位运算符，
-但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容
+但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容。
 
 In Python 2, the division operator might not do what you expect:
 
-在Python 2中，除法运算符可能不是如你所期望的：
+在Python 2中，除法运算符的行为可能不如你所愿：
 
 \begin{verbatim}
 >>> minute = 59
@@ -2068,10 +2102,10 @@ When both of the operands are integers, the result is also an
 integer; floor division chops off the fraction
 part, so in this example it rounds down to zero.
 
-{\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0.
+{\tt minute}的值是59，通常的算数中，59除以60是0.98333而不是0。
 造成这一差异的原因是Python执行{\bf 向下取整除（floor division）}。
 当两个运算数都是整数时，结果也是整数；
-向下取整除砍掉小数部分，因此此例中其下舍入成为了0。
+向下取整除会砍掉小数部分，因此此例中其向下舍入成为了0。
 
 In Python 3, the result of this division is a {\tt float}.  The new operator
 {\tt //} performs floor division.
@@ -2081,13 +2115,13 @@ In Python 3, the result of this division is a {\tt float}.  The new operator
 \index{division!floor}
 \index{division!floating-point}
 
-在Python 3中，这一除法的结果是一个{\tt 浮点数}。
+在Python 3中，这一除法的结果是一个{\tt float}。
 新的运算符{\tt //}执行向下取整除。
 
 If either of the operands is a floating-point number, Python performs
 floating-point division, and the result is a {\tt float}:
 
-如果其中有一个运算数是浮点数，则Python执行浮点除，结果是浮点数：
+如果其中有一个运算数是浮点数，则Python执行浮点除，结果是{\tt float}：
 
 \begin{verbatim}
 >>> minute/60.0
@@ -2125,7 +2159,7 @@ Technically an expression is also a statement, but it is probably
 simpler to think of them as different things.  The important difference
 is that an expression has a value; a statement does not.
 
-技术上讲，一个表达式也是一条语句，但是将其认为是非语句可能会更简单。
+技术上讲，一个表达式也是一条语句，但是将他们看作不同的东西可能会更简单。
 重要的不同是表达式具有一个值；语句没有。
 
 \section{Interactive mode and script mode 交互模式和脚本模式}
@@ -2166,7 +2200,7 @@ visible effect.  Python actually evaluates the expression, but it doesn't
 display the value unless you tell it to:
 
 但是如果你将相同的代码键入一个脚本并且运行它，你将根本不能获得输出。
-在完全的脚本模式下，不会有显示效果。
+在完全的脚本模式下，表达式不会有显示效果。
 Python实际上计算了表达式，但是如果你不告诉它，它不会显示结果。
 
 \begin{verbatim}
@@ -2182,8 +2216,8 @@ A script usually contains a sequence of statements.  If there
 is more than one statement, the results appear one at a time
 as the statements execute.
 
-一个脚本通常包括一序列语句。
-如果有多余一条的语句，那么每条语句执行后都显示结果。
+一个脚本通常包括一系列语句。
+如果有多于一条的语句，那么每条语句执行后都显示结果。
 
 For example, the script
 
@@ -2213,6 +2247,8 @@ The assignment statement produces no output.
 Type the following statements in the Python interpreter to see
 what they do:
 
+在Python解释器中键入以下的语句，看看他们的功能：
+
 \begin{verbatim}
 5
 x = 5
@@ -2222,6 +2258,9 @@ x + 1
 Now put the same statements into a script and run it.  What
 is the output?  Modify the script by transforming each
 expression into a print statement and then run it again.
+
+现在将同样的语句写入一个脚本中并执行它。输出是什么？
+修改脚本，将每个表达式变成打印语句，再次运行它。
 \end{exercise}
 
 
@@ -2252,7 +2291,7 @@ if it doesn't change the result.
 
 \item 括号（{\bf P}arentheses）具有最高的优先级，并且可以被用于强制表达式按你需要的顺序计算。
 既然在括号中的表达式首先被计算，那么{\tt 2 * (3-1)}是4，{\tt (1+1)**(5-2)}是8。
-你也可以用括号使得一个表达式更易读，如{\tt (minute * 100) / 60}，即使它不能改变运算的结果。
+你也可以用括号使得一个表达式更易读，如{\tt (minute * 100) / 60}，即使它并不改变运算的结果。
 
 \item {\bf E}xponentiation has the next highest precedence, so
 {\tt 2**1+1} is 3, not 4, and {\tt 3*1**3} is 3, not 27.
@@ -2285,7 +2324,7 @@ I don't work very hard to remember rules of precedence for other
 operators.  If I can't tell by looking at the expression, I use
 parentheses to make it obvious.
 
-我不太努力，所以记不住其它运算符的优先级规则。
+我并没有费力去记住其它运算符的优先级规则。
 如果通过观察表达式，我不能说清楚，我使用括号使其变得更明显。
 
 \section{String operations 字符串运算}
@@ -2341,8 +2380,8 @@ that string concatenation does not?
 \index{commutativity}
 
 {\tt +}和{\tt *}的使用类比加法和乘法也讲得通。
-就像{\tt 4*3}与{\tt 4+4+4}等价，
-我们希望\verb"'Spam'*3"和\verb"'Spam'+'Spam'+'Spam'"一样，而且确实是这样。
+就像由于{\tt 4*3}与{\tt 4+4+4}等价，
+我们就希望\verb"'Spam'*3"和\verb"'Spam'+'Spam'+'Spam'"一样，而它确实是这样。
 另一方面，字符串的级联和重复与整数的加法和乘法截然不同。
 你能想出来一个加法具有，而级联不具有的性质么？
 
@@ -2354,13 +2393,13 @@ to read.  Formal languages are dense, and it is often difficult to
 look at a piece of code and figure out what it is doing, or why.
 
 随着程序变得越来越大，越来越复杂，它们变得越来越难读。
-形式语言是稠密的，读一段代码并输出其做什么或者为什么通常很难。
+形式语言是稠密的，读一段代码并说出其做什么或者为什么这样通常很难。
 
 For this reason, it is a good idea to add notes to your programs to explain
 in natural language what the program is doing.  These notes are called
 {\bf comments}, and they start with the \verb"#" symbol:
 
-因此，在你的程序中用自然语言增加标注来释程序做什么的通常是比较好的办法。
+因此，在你的程序中用自然语言做笔记，来解释程序做什么通常是比较好的办法。
 这些标注被称为{\bf 注释（comments）}，其以\verb"#"符号开始。
 
 \begin{verbatim}
@@ -2387,7 +2426,7 @@ the code.  It is reasonable to assume that the reader can figure out
 {\em what} the code does; it is much more useful to explain {\em why}.
 
 当注释写出代码不明显的特征的时候最有效。
-假设读者能够指出代码做了{\em 什么}比较适当；
+假设读者能够指出代码做了{\em 什么}通常比较适当；
 解释{\em 为什么}则更有用。
 
 This comment is redundant with the code and useless:
@@ -2400,7 +2439,7 @@ v = 5     # assign 5 to v
 %
 This comment contains useful information that is not in the code:
 
-下面的注释包括包含了代码中没有的有用的信息：
+下面的注释包括包含了代码中没有的有用信息：
 
 \begin{verbatim}
 v = 5     # velocity in meters/second. 
@@ -2525,7 +2564,7 @@ far, the statements we have seen are assignments and print statements.
 \item[assignment（赋值）:]  A statement that assigns a value to a variable.
 \index{assignment}
 
-\item[state diagram（状态度）:]  A graphical representation of a set of variables and the
+\item[state diagram（状态图）:]  A graphical representation of a set of variables and the
 values they refer to.
 \index{state diagram}
 
@@ -2574,6 +2613,8 @@ execution of the program.
 
 Assume that we execute the following assignment statements:
 
+假设我们执行如下的赋值语句：
+
 \begin{verbatim}
 width = 17
 height = 12.0
@@ -2582,6 +2623,8 @@ delimiter = '.'
 
 For each of the following expressions, write the value of the
 expression and the type (of the value of the expression).
+
+对下列每一个表达式，写出表达式的值和（表达式的值所具备的）类型。
 
 \begin{enumerate}
 
@@ -2598,11 +2641,16 @@ expression and the type (of the value of the expression).
 \end{enumerate}
 
 Use the Python interpreter to check your answers.
+
+使用Python解释器来检查你的答案。
 \end{exercise}
 
 \begin{exercise}
 
 Practice using the Python interpreter as a calculator: 
+
+练习将Python解释器当作计算器使用：
+
 \index{calculator}
 
 \begin{enumerate}
@@ -2610,14 +2658,23 @@ Practice using the Python interpreter as a calculator:
 \item The volume of a sphere with radius $r$ is $\frac{4}{3} \pi r^3$.
   What is the volume of a sphere with radius 5?  Hint: 392.7 is wrong!
 
+    半径为$r$的球体积是$\frac{4}{3} \pi r^3$。
+    半径为5的球体积是多少？提示：392.7是错误答案！
+
 \item Suppose the cover price of a book is \$24.95, but bookstores get a
   40\% discount.  Shipping costs \$3 for the first copy and 75 cents
   for each additional copy.  What is the total wholesale cost for
   60 copies?
 
+    假设一本书的零售价是\$24.95，但书店有40\%的折扣。运费则是第一本\$3，以后每本75美分。
+    购买60本的总价是多少？
+
 \item If I leave my house at 6:52 am and run 1 mile at an easy pace
   (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at
   easy pace again, what time do I get home for breakfast?
+
+    如果我上午6:52离开家，以随意的节奏跑1英里（每英里8:15），再以
+    较快速度跑3英里（每英里7:12)，之后又以随意的节奏跑1英里，我什么时候回到家吃早饭？
 \index{running pace}
 
 \end{enumerate}
@@ -2637,7 +2694,7 @@ you specify the name and the sequence of statements.  Later, you can
 ``call'' the function by name.  
 We have already seen one example of a {\bf function call}:
 
-在编程的语境下，{\bf 函数（function）}是对一序列执行计算的语句的命名。
+在编程的语境下，{\bf 函数（function）}是有名字的一序列执行计算的语句。
 当你定义一个函数的时候，你指定了名字和语句序列。
 随后，你可以通过名字``调用''该函数。
 我们已经见过了一个{\bf 函数调用（function call）}的例子。
@@ -2652,7 +2709,7 @@ is called the {\bf argument} of the function.  The result, for this
 function, is the type of the argument.
 \index{parentheses!argument in}
 
-函数名是{\tt type}。括号中的表达是被称为函数的{\bf 实参（argument）}。
+函数名是{\tt type}。括号中的表达式被称为函数的{\bf 实参（argument）}。
 此函数的结果是实参的类型。
 
 It is common to say that a function ``takes'' an argument and ``returns''
@@ -2696,7 +2753,7 @@ ValueError: invalid literal for int(): Hello
 {\tt int} can convert floating-point values to integers, but it
 doesn't round off; it chops off the fraction part:
 
-{\tt int}能将浮点数转换为整数，但是它并不完美，截掉了小数部分：
+{\tt int}能将浮点数转换为整数，但是它并不进行舍入，而是截掉了小数部分：
 
 \begin{verbatim}
 >>> int(3.99999)
@@ -2710,7 +2767,7 @@ numbers:
 \index{float function}
 \index{function!float}
 
-{\tt float}将整数或者字符串转化为浮点数：
+{\tt float}将整数或者字符串转换为浮点数：
 
 \begin{verbatim}
 >>> float(32)
@@ -2723,7 +2780,7 @@ Finally, {\tt str} converts its argument to a string:
 \index{str function}
 \index{function!str}
 
-最后，{\tt str}将实参转成字符串。
+最后，{\tt str}将其实参转换成字符串。
 
 \begin{verbatim}
 >>> str(32)
@@ -2775,8 +2832,8 @@ known as a period).  This format is called {\bf dot notation}.
 
 该模块对象包括定义在模块内的函数和变量。
 为了访问其中一个函数，你必须指出该模块的名字以及函数名，
-并以点（也被称作句号）分割。
-这种格式被称作{\bf 点记法（dot notation）}。
+并以点（即（译者注：英文中的）句号）分割。
+这种格式被称作{\bf 点标记法（dot notation）}。
 
 \begin{verbatim}
 >>> ratio = signal_power / noise_power
@@ -2806,8 +2863,8 @@ functions ({\tt cos}, {\tt tan}, etc.)  take arguments in radians. To
 convert from degrees to radians, divide by 360 and multiply by
 $2 \pi$:
 
-第二个例子计算{\tt radians}的sine值。
-变量名暗示{\tt sin}函数以及其它三角函数（{\tt cos}、{\tt tan}等）接受弧度参数。
+第二个例子计算{\tt radians}的正弦值。
+变量名暗示{\tt sin}函数以及其它三角函数（{\tt cos}、{\tt tan}等）接受弧度实参。
 为了从度转为弧度，除以360并乘以$2 \pi$：
 
 \begin{verbatim}
@@ -2823,7 +2880,7 @@ of $\pi$, accurate to about 15 digits.
 \index{pi}
 
 表达式{\tt math.pi}从math模块中获得变量{\tt pi}。
-该变量的值是对$\pi$的近似，精度大约15位数。
+该变量的值是对$\pi$的近似，精确到大约15位数。
 
 If you know
 your trigonometry, you can check the previous result by comparing it to
@@ -2831,7 +2888,7 @@ the square root of two divided by two:
 \index{sqrt function}
 \index{function!sqrt}
 
-如果你懂几何学，你可以通过将之前的结果和2的平方根再除以2进行比较：
+如果你懂几何学，你可以将之前的结果和二分之根号二进行比较以检查它：
 
 \begin{verbatim}
 >>> math.sqrt(2) / 2.0
@@ -2854,8 +2911,8 @@ ability to take small building blocks and {\bf compose} them.  For
 example, the argument of a function can be any kind of expression,
 including arithmetic operators:
 
-程序设计语言的最有用特征之一是分解成小块并将其{\bf 组合（compose）}的能力。
-例如，函数的实参能够接受任何类型的表达式，包括算数运算符：
+程序设计语言的最有用特征之一是将小块建筑材料{\bf 组合（compose）}的能力。
+例如，函数的实参可以是任何类型的表达式，包含算数运算符也行：
 
 \begin{verbatim}
 x = math.sin(degrees / 360.0 * 2 * math.pi)
@@ -2878,6 +2935,7 @@ later).
 你几乎可以将一个任意值、表达式，放在任何地方，除了一个例外：
 赋值语句的左侧必须是一个变量名，任何其它的表达式都是语法错误的
 （后面我们会看到这个例外的规则）。
+% 存疑，读到再回来翻译此处
 
 \begin{verbatim}
 >>> minutes = hours * 60                 # right
@@ -2926,7 +2984,7 @@ name.
 \index{argument}
 
 {\tt def}是一个关键字，其指明这是一个函数定义。
-函数名是\verb"print_lyrics"。
+这个函数的名字是\verb"print_lyrics"。
 函数的命名规则和变量名相同：字母、数字以及一些标点符号是合法的，
 但是第一个字符不能是数字。不能使用关键字作为函数名，并应该避免
 一个变量和一个函数同名。
@@ -2960,7 +3018,7 @@ a single quote (which is also an apostrophe) appears in the string.
 \index{ellipses}
 
 打印语句中的字符串被括在双引号中。单引号和双引号做同样的事情。
-大多数人使用单引号，除了类似这里的情况，即单引号（也表示撇号）出现在字符串中。
+大多数人使用单引号，除了类似这里的情况，即单引号（同时也是撇号）出现在字符串中。
 
 If you type a function definition in interactive mode, the interpreter
 prints ellipses ({\em ...}) to let you know that the definition
@@ -2983,7 +3041,7 @@ not necessary in a script).
 
 Defining a function creates a variable with the same name.
 
-定义一个函数生成一个同名的变量。
+定义一个函数即创建一个同名的变量。
 
 \begin{verbatim}
 >>> print print_lyrics
@@ -3015,7 +3073,7 @@ Once you have defined a function, you can use it inside another
 function.  For example, to repeat the previous refrain, we could write
 a function called \verb"repeat_lyrics":
 
-一旦你定义了一个函数，你可以在另一个函数内部使用它。
+一旦你定义了一个函数，你就可以在另一个函数内部使用它。
 例如，为了重复之前的叠句，我们可以写一个叫\verb"repeat_lyrics"的函数：
 
 \begin{verbatim}
@@ -3046,7 +3104,7 @@ But that's not really how the song goes.
 Pulling together the code fragments from the previous section, the
 whole program looks like this:
 
-汇集上一节的代码切片，整个程序看起来像这样：
+汇集上一节的代码片断，整个程序看起来是这样的：
 
 \begin{verbatim}
 def print_lyrics():
@@ -3068,14 +3126,14 @@ the function definition generates no output.
 \index{use before def}
 
 该程序包含两个函数定义：\verb"print_lyrics"和\verb"repeat_lyrics"。
-函数定义就像其它语句执行一样，但是左右是生成函数对象。
-函数内部的语句直到被调用才会被执行，并且函数定义没有任何输出。
+函数定义就像其它语句一样被执行，但是作用是创建函数对象。
+函数内部的语句直到被调用时才会被执行，并且函数定义没有任何输出。
 
 As you might expect, you have to create a function before you can
 execute it.  In other words, the function definition has to be
 executed before the first time it is called.
 
-和你所期望的一样，函数执行之前，你必须生成它。
+和你所期望的一样，函数执行之前，你必须创建它。
 换句话说，函数定义必须在其第一次调用之前执行。
 
 \begin{exercise}
@@ -3085,6 +3143,9 @@ to the top, so the function call appears before the definitions. Run
 the program and see what error
 message you get.
 
+将这一程序的最后一行移动到顶端，于是函数调用出现在其定义之前。
+运行此程序看看你会获得什么出错信息。
+
 \end{exercise}
 
 \begin{exercise}
@@ -3092,6 +3153,9 @@ message you get.
 Move the function call back to the bottom
 and move the definition of \verb"print_lyrics" after the definition of
 \verb"repeat_lyrics".  What happens when you run this program?
+
+将函数调用移回底部，不过将\verb"print_lyrics"的定义移到\verb"repeat_lyrics"的定义之后。
+运行这一程序时发生了什么？
 
 \end{exercise}
 
@@ -3122,7 +3186,7 @@ going to the next statement, the flow jumps to the body of
 the function, executes all the statements there, and then comes back
 to pick up where it left off.
 
-函数调用像是在执行流程上饶了一个弯路。
+函数调用像是在执行流程上绕了一个弯路。
 流程不是到下一条语句，而是跳入函数体，执行那里所有的语句，然后回到它离开的位置。
 
 That sounds simple enough, until you remember that one function can
@@ -3131,23 +3195,23 @@ have to execute the statements in another function. But while
 executing that new function, the program might have to execute yet
 another function!
 
-听起来足够简单，直到你记得一个函数可以调用另一个函数。
-当在一个函数中间的时候，程序可能不得不执行另一个函数里的语句。
-但是当执行那个新函数的时候，程序可能不得不又执行另外一个函数！
+听起来足够简单，至少在你想起一个函数可以调用另一个函数之前。
+当在一个函数中间的时候，程序可能要执行另一个函数里的语句。
+但是当执行那个新函数的时候，程序可能又得执行另外一个函数！
 
 Fortunately, Python is good at keeping track of where it is, so each
 time a function completes, the program picks up where it left off in
 the function that called it.  When it gets to the end of the program,
 it terminates.
 
-幸运的是，Python善于跟踪它在哪里，因此每次一个函数完成时，
+幸运的是，Python善于记录它的位置，因此每次一个函数完成时，
 程序回到调用它的那个函数。当到达程序结尾时，程序终止。
 
 What's the moral of this sordid tale?  When you read a program, you
 don't always want to read from top to bottom.  Sometimes it makes
 more sense if you follow the flow of execution.
 
-什么是道德，这个肮脏的故事？当你读一个程序的时候，
+这个糟糕的故事的寓意是什么？当你读一个程序的时候，
 你不总是从上到下的读。有时，如果你遵从执行流程会更有道理。
 
 \section{Parameters and arguments 形参和实参}
@@ -3162,7 +3226,7 @@ example, when you call {\tt math.sin} you pass a number
 as an argument.  Some functions take more than one argument:
 {\tt math.pow} takes two, the base and the exponent.
 
-我们已经见过的一些内建函数需要实参。
+一些我们刚见过的内建函数需要实参。
 例如，当你调用{\tt math.sin}时，你传递一个数字作为实参。
 有些函数接受多于一个的实参：{\tt math.pow} 接受两个，底数和指数。
 
@@ -3171,8 +3235,8 @@ variables called {\bf parameters}.  Here is an example of a
 user-defined function that takes an argument:
 \index{parentheses!parameters in}
 
-在函数内部，实参被赋给被称作{\bf 形参（parameters）}的变量。
-这是一个用户自定义函数的例子，其接受一个形参：
+在函数内部，实参被赋给称作{\bf 形参（parameters）}的变量。
+这是一个用户自定义函数的例子，其接受一个实参：
 
 \begin{verbatim}
 def print_twice(bruce):
@@ -3208,7 +3272,7 @@ apply to user-defined functions, so we can use any kind of expression
 as an argument for \verb"print_twice":
 \index{composition}
 
-相同的应用于内建函数的组合规则也适用于用户自定义函数，
+适用于内建函数的组合规则同样也适用于用户自定义函数，
 因此我们可以使用任意类型的表达式作为\verb"print_twice"的实参。
 
 \begin{verbatim}
@@ -3244,8 +3308,8 @@ nothing to do with the name of the parameter ({\tt bruce}).  It
 doesn't matter what the value was called back home (in the caller);
 here in \verb"print_twice", we call everybody {\tt bruce}.
 
-我们传递的实参名（{\tt michael}）对形参（{\tt bruce}）没有任何影响。
-（在调用者里）无论值是什么都不要紧；
+我们传递的实参名（{\tt michael}）与形参的名字（{\tt bruce}）没有任何关系。
+这个值在自己家里（即对于原本调用它的人）无论叫什么名字都不要紧；
 此处在\verb"print_twice"里面，我们将所有人都叫做{\tt bruce}。
 
 
@@ -3258,7 +3322,7 @@ which means that it only
 exists inside the function.  For example:
 \index{parentheses!parameters in}
 
-当你在一个函数里面生成一个变量时，它是{\bf 局部的（local）}，
+当你在一个函数里面创建一个变量时，它是{\bf 局部的（local）}，
 也就是说它只在函数内部存在。例如：
 
 \begin{verbatim}
@@ -3288,7 +3352,7 @@ is destroyed.  If we try to print it, we get an exception:
 \index{exception!NameError}
 
 当\verb"cat_twice"结束时，变量{\tt cat}被销毁了。
-如果我们试图打印它，我们获得一个异常：
+如果我们试图打印它，我们将获得一个异常：
 
 \begin{verbatim}
 >>> print cat
@@ -3318,7 +3382,7 @@ function each variable belongs to.
 \index{diagram!stack}
 
 为了跟踪哪个变量能在哪儿用，有时画一个{\bf 栈图（stack diagram）}比较有用。
-像状态图一样，栈图展示每个变量的值，但是它们也展示了每个变量属于的函数。
+像状态图一样，栈图展示每个变量的值，但是它们也展示了每个变量所属的函数。
 
 Each function is represented by a {\bf frame}.  A frame is a box
 with the name of a function
@@ -3327,8 +3391,8 @@ The stack diagram for the
 previous example is shown in Figure~\ref{fig.stack}.
 
 每个函数用一个{\bf 框架（frame）}表示。
-一个框架是一个有函数名的盒子，除此之外还有形参以及函数内部的变量。
-前面例子的栈图如图\ref{fig.stack}所示。
+一个框架是一个盒子，函数名写在旁边，形参以及函数内部的变量写在里面。
+前面例子的栈图如图~\ref{fig.stack}所示。
 
 \begin{figure}
 \centerline
@@ -3345,10 +3409,10 @@ was called by \verb"cat_twice", and \verb"cat_twice" was called by
 you create a variable outside of any function, it belongs to 
 \verb"__main__".
 
-栈里面的框架指出哪个函数被哪个函数调用等。
+这些框架以栈的形式排列，用以表示哪个函数调用了哪个函数等。
 在此例中，\verb"print_twice"被\verb"cat_twice"调用，
-\verb"cat_twice"被\verb"__main__"调用，这是一个表示最上层框架的特殊的名字。
-当你在所有函数之外生成一个变量时，它属于\verb"__main__"。
+\verb"cat_twice"又被\verb"__main__"调用，这是一个表示最上层框架的特殊的名字。
+当你在所有函数之外创建一个变量时，它属于\verb"__main__"。
 
 Each parameter refers to the same value as its corresponding
 argument.  So, {\tt part1} has the same value as
@@ -3365,13 +3429,13 @@ it, and the name of the function that called {\em that}, all the
 way back to \verb"__main__".
 
 如果函数调用时发生错误，Python打印此函数的名字以及调用它的函数的名字，
-以及那个调用的函数的名字，所有回到\verb"__main__"的路径。
+以及调用那个函数的函数的名字，一路直到\verb"__main__"。
 
 For example, if you try to access {\tt cat} from within 
 \verb"print_twice", you get a {\tt NameError}:
 
 例如，如果你在\verb"print_twice"里面试图访问{\tt cat}，
-你获得一个{\tt NameError}：
+你将获得一个{\tt NameError}：
 
 \begin{verbatim}
 Traceback (innermost last):
@@ -3391,12 +3455,14 @@ caused the error.
 \index{traceback}
 
 这个函数列表被称作一个{\bf 回溯（traceback）}。
-它告诉你发生错误的程序文件，以及此时执行到哪一行，哪个函数。
-它也展示引起错误的代码行。
+它告诉你发生错误的程序文件，错误在哪一行，以及当时在执行哪个函数。
+它也显示引起错误的那一行代码。
 
 The order of the functions in the traceback is the same as the
 order of the frames in the stack diagram.  The function that is
 currently running is at the bottom.
+
+回溯中的函数顺序正是栈图中的函数顺序。正在运行的那个函数位于底部。
 
 
 \section{Fruitful functions and void functions 有返回值函数和无返回值函数}
@@ -3413,7 +3479,7 @@ action but don't return a value.  They are called {\bf void
   
 有一些我们正在用的函数，例如数学函数，会产生结果；
 由于没有更好地命名，我叫它们{\bf 有返回值函数（fruitful functions）}。
-其它的函数，像\verb"print_twice"，执行一个动作但是不返回一个值。
+其它的函数，像\verb"print_twice"，执行一个动作但是不返回任何值。
 它们被称为{\bf 无返回值函数（void functions）}。
 
 When you call a fruitful function, you almost always
@@ -3441,8 +3507,8 @@ the result:
 But in a script, if you call a fruitful function all by itself,
 the return value is lost forever!
 
-但是在脚本中，如果你只调用一个有返回值函数，
-返回值永远就丢失了！
+但是在脚本中，如果你单单调用一个有返回值函数，
+返回值就永远丢失了！
 
 \begin{verbatim}
 math.sqrt(5)
@@ -3454,7 +3520,7 @@ or display the result, it is not very useful.
 \index{script mode}
 
 该脚本计算5的平方根，但是既然它没保存或者显示这个结果，
-它不是非常有用。
+这就不是非常有用。
 
 Void functions might display something on the screen or have some
 other effect, but they don't have a return value.  If you try to
@@ -3478,7 +3544,7 @@ None
 The value {\tt None} is not the same as the string \verb"'None'". 
 It is a special value that has its own type:
 
-值{\tt None}和字符串\verb"'None'"不同。这是一个有它自己的类型的特殊变量：
+值{\tt None}和字符串\verb"'None'"不同。这是一个有它自己的类型的特殊值：
 
 \begin{verbatim}
 >>> print type(None)
@@ -3498,7 +3564,7 @@ writing fruitful functions in a few chapters.
 It may not be clear why it is worth the trouble to divide
 a program into functions.  There are several reasons:
 
-为什么值得麻烦地将一个程序分解成函数可能还不是很清楚。
+为什么值得麻烦地将一个程序分解成函数可能还不是很清晰。
 有几个原因：
 
 \begin{itemize}
@@ -3506,25 +3572,25 @@ a program into functions.  There are several reasons:
 \item Creating a new function gives you an opportunity to name a group
 of statements, which makes your program easier to read and debug.
 
-生成一个新的函数给你一个命名一组语句的机会，
+\item 创建一个新的函数给你命名一组语句的机会，
 这使得你的程序更容易读和调试。
 
 \item Functions can make a program smaller by eliminating repetitive
 code.  Later, if you make a change, you only have
 to make it in one place.
 
-通过避免重复调用代码，函数使得程序更小。
-之后，如果你要做个变动，你只需在一处变动即可。
+\item 通过消除重复的代码，函数使得程序更小。
+以后，如果你要做个变动，你只需在一处变动即可。
 
 \item Dividing a long program into functions allows you to debug the
 parts one at a time and then assemble them into a working whole.
 
-将一个长程序分解为函数允许你一次调试一部分然后将它们集成为一个可行的整体。
+\item 将一个长程序分解为函数允许你一次调试一部分然后将它们集成为一个可行的整体。
 
 \item Well-designed functions are often useful for many programs.
 Once you write and debug one, you can reuse it.
 
-良好设计的函数经常对多个程序都有用。一旦你写出并调试了一个函数，你可以重用它。
+\item 设计良好的函数经常对多个程序都有用。一旦你写出并调试好一个函数，你就可以重复使用它。
 
 \end{itemize}
 
@@ -3572,7 +3638,7 @@ As an alternative, you can import an object from a module like this:
 Now you can access {\tt pi} directly, without dot notation.
 \index{dot notation}
 
-现在，你可以直接访问{\tt pi}，不需要点记法了。
+现在，你可以直接访问{\tt pi}，不需要点标记法了。
 
 \begin{verbatim}
 >>> print pi
@@ -3595,8 +3661,8 @@ code can be more concise.  The disadvantage is that there might be
 conflicts between names defined in different modules, or between
 a name from a module and one of your variables.
 
-从数学模块中导入所有东西的优点是你的代码变得更简洁。
-缺点是不同模块之间的名字，或者来自模块的名与你自己的变量名可能会冲突。
+从数学模块中导入所有东西的优点是你的代码会变得更简洁。
+缺点是不同模块之间的名字，或者来自模块的名字与你自己的变量名可能会冲突。
 
 
 \section{Debugging 调试}
@@ -3628,7 +3694,7 @@ is not the same as the program you are running.
 
 同时，别忘了在运行程序之前保存它。
 一些开发环境自动做这个，但是有些不是。
-如果是这样的话，你在文本编辑器上看到的程序和你运行的不一样。
+如果是这样的话，你在文本编辑器上看到的程序可不是你运行的程序。
 
 Debugging can take a long time if you keep running the same,
 incorrect, program over and over!
@@ -3640,9 +3706,9 @@ If you're not sure, put something like \verb"print 'hello'" at the
 beginning of the program and run it again.  If you don't see
 \verb"hello", you're not running the right program!
 
-确定你所看到的代码是你所运行的。
+你得确定你所看到的代码正是你所运行的。
 如果不确定，将一些类似\verb"print 'hello'"的代码放到程序的开始并再次运行它。
-如果你么有看到\verb"hello"，那么你没在运行一个正确的程序。
+如果你没有看到\verb"hello"，那么你在运行就不是正确的程序！
 
 
 \section{Glossary 术语表}
@@ -3709,7 +3775,7 @@ a module object.
 that provides access to the values defined in a module.
 \index{module}
 
-\item[dot notation（点记法）:]  The syntax for calling a function in another
+\item[dot notation（点标记法）:]  The syntax for calling a function in another
 module by specifying the module name followed by a dot (period) and
 the function name.
 \index{dot notation}
@@ -3748,10 +3814,16 @@ printed when an exception occurs.
 Python provides a built-in function called {\tt len} that
 returns the length of a string, so the value of \verb"len('allen')" is 5.
 
+Python提供一个叫做{\tt len}的内建函数，其返回一个字符串的长度，
+故\verb"len('allen')"的值是5。
+
 Write a function named \verb"right_justify" that takes a string
 named {\tt s} as a parameter and prints the string with enough
 leading spaces so that the last letter of the string is in column 70
 of the display.
+
+写一个名为\verb"right_justify"的函数，接受一个名为{\tt s}的形参，
+并在打印足够多的空格之后打印这个字符串，使得字符串的最后一个字母位于显示屏的第70列。
 
 \begin{verbatim}
 >>> right_justify('allen')
@@ -3769,6 +3841,9 @@ A function object is a value you can assign to a variable
 or pass as an argument.  For example, \verb"do_twice" is a function
 that takes a function object as an argument and calls it twice:
 
+一个函数对象是一个值，你可以将其赋给一个变量，或作为实参传递。例如，
+\verb"do_twice"是一个接受函数对象作为实参，并调用它两次的函数：
+
 \begin{verbatim}
 def do_twice(f):
     f()
@@ -3777,6 +3852,8 @@ def do_twice(f):
 
 Here's an example that uses \verb"do_twice" to call a function
 named \verb"print_spam" twice.
+
+这是一个使用\verb"do_twice"来调用名为\verb"print_spam"的函数两次的例子。
 
 \begin{verbatim}
 def print_spam():
@@ -3789,16 +3866,26 @@ do_twice(print_spam)
 
 \item Type this example into a script and test it.
 
+    将这一例子写成脚本以测试它的功能。
+
 \item Modify \verb"do_twice" so that it takes two arguments, a
 function object and a value, and calls the function twice,
 passing the value as an argument.
+
+    修改\verb"do_twice"，使其接受两个实参，一个是函数对象，另一个是值，
+    然后调用这一函数两次，将这一值传递给函数作为实参。
 
 \item Write a more general version of \verb"print_spam", called
 \verb"print_twice", that takes a string as a parameter and prints
 it twice.
 
+    写一个更通用版本的\verb"print_spam"，命名为\verb"print_twice"，
+    其能够接受一个字符串作为实参并打印它两次。
+
 \item Use the modified version of \verb"do_twice" to call
 \verb"print_twice" twice, passing \verb"'spam'" as an argument.
+
+    使用修改过的\verb"do_twice"调用\verb"print_twice"两次，将\verb"'spam'"传递给它作为实参。
 
 \item Define a new function called 
 \verb"do_four" that takes a function object and a value
@@ -3806,12 +3893,19 @@ and calls the function four times, passing the value
 as a parameter.  There should be only
 two statements in the body of this function, not four.
 
+    定义一个名为\verb"do_four"的新函数，其接受一个函数对象和一个值作为实参，
+    调用这个函数四次，将这个值作为形参传递给它。
+    函数体中应该只有两条语句，而不是四条。
+
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/do_four.py}.
 
+解答在：\url{http://thinkpython.com/code/do_four.py}。
+
 \end{exercise}
 
+%Last time
 
 
 \begin{exercise}
@@ -3820,9 +3914,13 @@ This exercise can be
 done using only the statements and other features we have learned so
 far.  
 
+这一习题可以仅使用当前我们学到的语句和特性来完成。
+
 \begin{enumerate}
 
 \item Write a function that draws a grid like the following:
+
+    写一个能画出如下格子的函数：
 \index{grid}
 
 \begin{verbatim}
@@ -3842,12 +3940,17 @@ far.
 Hint: to print more than one value on a line, you can print
 a comma-separated sequence:
 
+提示：要在一行打印出多个值，你可以打印一个用逗号分隔的序列：
+
 \begin{verbatim}
 print '+', '-'
 \end{verbatim}
 %
 If the sequence ends with a comma, Python leaves the line unfinished,
 so the value printed next appears on the same line.
+
+如果一个序列以逗号结尾，Python会认为这一行没有结束，
+于是下一个打印出的值会出现在同一行。
 
 \begin{verbatim}
 print '+', 
@@ -3856,18 +3959,29 @@ print '-'
 %
 The output of these statements is \verb"'+ -'".
 
+这两条语句的输出结果是\verb"'+ -'"。
+
 A {\tt print} statement all by itself ends the current line and
 goes to the next line.
 
+一条单独的{\tt print}语句会结束当前行，开始下一行。
+
 \item Write a function that draws a similar grid
 with four rows and four columns.
+
+    写一个能够画出四行四列的类似格子的函数。
 
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/grid.py}.
 Credit: This exercise is based on an exercise in Oualline, {\em
     Practical C Programming, Third Edition}, O'Reilly Media, 1997.
+
+解答在：\url{http://thinkpython.com/code/grid.py}。
+感谢：这道习题基于Oualline的一道习题，{\em Practical C Programming, Third Edition}, O'Reilly Media, 1997。
+
 \end{exercise}
+%Last time
 \chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
 Code examples from this chapter are available from
@@ -8365,7 +8479,7 @@ word}.  The empty parentheses indicate that this method takes no
 argument.
 \index{parentheses!empty}
 
-点号的形式指出方法的名字，{\tt upper}，以及应用该方法的字符串的名字，{\tt word}。
+点标记法的形式指出方法的名字，{\tt upper}，以及应用该方法的字符串的名字，{\tt word}。
 空括号指出该方法不接受实参。
 
 A method call is called an {\bf invocation}; in this case, we would
@@ -11839,6 +11953,10 @@ a range of parameters and compare their run times.
 Memoize the Ackermann function from Exercise~\ref{ackermann} and see if
 memoization makes it possible to evaluate the function with bigger
 arguments.  Hint: no.
+
+回忆习题~\ref{ackermann}中的Ackermann函数，看看使用备忘录能否使得此函数能计算更大的输入参数。
+提示：不能
+
 Solution: \url{http://thinkpython.com/code/ackermann_memo.py}.
 \index{Ackermann function}
 \index{function!ack}
@@ -11862,8 +11980,8 @@ persist from one function call to the next.
 因此它属于特殊的被称作\verb"__main__"的框架。
 在\verb"__main__"中的变量有时被称作{\bf 全局的（global）}，
 因为它们可以从任意函数访问。
-和局部变量不同，当它们的函数结束时它们消失，
-从一个函数调用到另一个调用，全局变量都存在。
+和函数结束时它们就会消失的局部变量不同，
+全局变量从一个函数调用到另一个调用一直都存在。
 
 It is common to use global variables for {\bf flags}; that is, 
 boolean variables that indicate (``flag'') whether a condition
@@ -11872,7 +11990,7 @@ a flag named {\tt verbose} to control the level of detail in the
 output:
 
 经常使用全局变量作为{\bf 标记（flags）}；
-也就是指示（标记）是否一个条件为真的布尔变量。
+也就是指示（标记）一个条件是否为真的布尔变量。
 例如，一些程序使用一个被称作{\tt verbose}的标记来控制
 输出中细节的等级：
 
@@ -11890,8 +12008,8 @@ function has been called:
 \index{multiple assignment}
 \index{assignment!multiple}
 
-如果你试图重新对全局变量赋值，你可能很奇怪。
-下面的例子被假定用于记录是否该函数已经被调用过了：
+如果你试图重新对全局变量赋值，你可能会惊讶。
+下面的例子本应该能够记录是否该函数已经被调用过了：
 
 \begin{verbatim}
 been_called = False
@@ -11909,7 +12027,7 @@ the function ends, and has no effect on the global variable.
 \index{declaration}
 
 但是如果你运行它，你将发现\verb"been_called"的值没有改变。
-问题是{\tt example2}生成一个新的被称作\verb"been_called"的局部变量。
+问题在于{\tt example2}生成一个新的被称作\verb"been_called"的局部变量。
 当函数结束的时候，该局部变量也消失了，并且对全局变量没有影响。
 
 To reassign a global variable inside a function you have to
@@ -12017,7 +12135,7 @@ integer, or type {\tt long}.  In Python 3, {\tt long} is gone; all integers,
 even really big ones, are type {\tt int}.
 \index{Python 3}
 
-结尾的{\tt L}表明结果是一个长整数，或者{\tt long}类型。
+结尾的{\tt L}表明结果是一个长整数，或者说{\tt long}类型。
 在Python3中， {\tt long}不存在了；所有的整数，
 即使非常大的，也是 {\tt int}类型。
 
@@ -12025,22 +12143,22 @@ Values with type {\tt int} have a limited range;
 long integers can be arbitrarily big, but as they get bigger
 they consume more space and time.
 
- {\tt int}类型的值有一个有限的取值范围；
- 长整数可以任意任意大，但是随着它们变大，
- 它们消耗更多的空间和时间。
+{\tt int}类型的值有一个有限的取值范围；
+长整数可以任意大，但是随着它们变大，
+它们消耗更多的空间和时间。
 
 The mathematical operators work on long integers, and the functions
 in the {\tt math} module, too, so in general any code that
 works with {\tt int} will also work with {\tt long}.
 
 数学运算可用于长整数并且{\tt math}模块中的函数也可以，
-因此一般来讲，任何{\tt int}好使的代码通用能用于 {\tt long}。
+因此一般来讲，任何能用于{\tt int}的代码也能用于 {\tt long}。
 
 Any time the result of a computation is too big to be represented with
 an integer, Python converts the result as a long integer:
 
-任何时候，一个太大以至于不能用一个整数表示的计算的结果，
-Python会转化该结果为一个长整数：
+任何时候，一个太大以至于不能用整数表示的计算结果，
+Python会将该结果转化为一个长整数：
 
 \begin{verbatim}
 >>> 1000 * 1000
@@ -12052,7 +12170,7 @@ Python会转化该结果为一个长整数：
 In the first case the result has type {\tt int}; in the
 second case it is {\tt long}.
 
-第一个例子中，结果类型是{\tt int}；
+第一个例子中，结果是{\tt int}类型；
 第二个例子中，它是{\tt long}。
 
 \begin{exercise}
@@ -12064,6 +12182,9 @@ Exponentiation of large integers is the basis of common
 algorithms for public-key encryption.  Read the Wikipedia
 page on the RSA algorithm (\url{http://en.wikipedia.org/wiki/RSA})
 and write functions to encode and decode messages.
+
+大整数的指数运算是常见公钥加密算法的基础。阅读维基百科RSA算法的页面
+（\url{http://en.wikipedia.org/wiki/RSA}）并编写加密与解密信息的函数。
 
 % TODO: solution for this one!
 
@@ -15964,7 +16085,7 @@ belongs to and where it is stored in memory (the prefix
 \index{dot notation}
 
 You can assign values to an instance using dot notation:
-你可以使用点号给一个实例进行赋值操作：
+你可以使用点标记法给一个实例进行赋值操作：
 
 \begin{verbatim}
 >>> blank.x = 3.0
@@ -16036,7 +16157,7 @@ the variable {\tt x} and the attribute {\tt x}.
 
 You can use dot notation as part of any expression.  For example:
 
-你可以在任何表达式中使用点号。例如：
+你可以在任何表达式中使用点标记法。例如：
 
 \begin{verbatim}
 >>> print '(%g, %g)' % (blank.x, blank.y)
@@ -17496,7 +17617,7 @@ In this use of dot notation, {\tt Time} is the name of the class,
 and \verb"print_time" is the name of the method.  {\tt start} is
 passed as a parameter.
 
-在这个点语法中，{\tt Time}是类的名字，然后\verb"print_time"是方法的名字。{\tt
+在这个点标记法的用法中，{\tt Time}是类的名字，然后\verb"print_time"是方法的名字。{\tt
 start}是传递的参数。
 
 The second (and more concise) way is to use method syntax:
@@ -17516,7 +17637,7 @@ subject of a sentence is what the sentence is about, the subject
 of a method invocation is what the method is about.
 \index{subject}
 
-在这个点语法中，\verb"print_time"是方法的名称，然后{\tt start}是调用方法的对象
+在这个点标记法的用法中，\verb"print_time"是方法的名称，然后{\tt start}是调用方法的对象
 ，被称为主语（{\bf subject}）。就像一个句子的主语是句子的核心，方法的主语也是方
 法作用的主要对象。
 
@@ -18662,7 +18783,7 @@ and {\tt self.rank} is its rank.  Similarly, {\tt Card}
 is a class object, and \verb"Card.rank_names" is a
 list of strings associated with the class.
 
-这两种属性都使用点符号来访问。例如，在\verb"__str__"中，{\tt self}是一个卡牌对
+这两种属性都使用点标记法来访问。例如，在\verb"__str__"中，{\tt self}是一个卡牌对
 象，{\tt self.rank}是它的等级。同样的，{\tt Card}是一个类对象，
 \verb"Card.rank_names"是一个和类关联的字符串列表。
 
