@@ -4518,7 +4518,7 @@ because it pertains to the details of {\em how} the circle should
 be rendered.
 
 在这个例子中，{\tt r}属于接口，因为它确定了被画的圆。
-{\tt n}就不太合适，因为他是关于如何画圆的细节。
+{\tt n}就不太合适，因为它是关于如何画圆的细节。
 
 Rather than clutter up the interface, it is better
 to choose an appropriate value of {\tt n}
@@ -10748,7 +10748,7 @@ Figure~\ref{fig.stack5}.
 Since the list is shared by two frames, I drew
 it between them.
 
-既然列表被两个框架共享，我把它画在他们之间。
+既然列表被两个框架共享，我把它画在它们之间。
 
 It is important to distinguish between operations that
 modify lists and operations that create new lists.  For
@@ -10832,7 +10832,7 @@ can lead to long hours of debugging.  Here are some common
 pitfalls and ways to avoid them:
 
 不仔细的列表使用（以及其它可变对象）可能导致长时间的调试。
-这是一些通常的陷阱以及避免他们的方法：
+这是一些通常的陷阱以及避免它们的方法：
 
 \begin{enumerate}
 
@@ -10924,8 +10924,8 @@ you understand what they do.  Notice that only the last
 one causes a runtime error; the other three are legal, but they
 do the wrong thing.
 
-在交互模式下测试每个例子，确保你理解他们做了什么。
-主意，只有最后一个引起运行时错误，其它三个是合法的，
+在交互模式下测试每个例子，确保你理解它们做了什么。
+注意，只有最后一个引起运行时错误，其它三个是合法的，
 但是它们做了错误的事情。
 
 
@@ -11335,7 +11335,7 @@ as a value is not good enough).
 \index{in operator}
 \index{operator!in}
 
-{\tt in}运算符对字典起作用，他告诉你是否一些东西在字典中作为键出现
+{\tt in}运算符对字典起作用，它告诉你是否一些东西在字典中作为键出现
 （作为值出现不够好）。
 
 \begin{verbatim}
@@ -11781,7 +11781,7 @@ outside the box, just to keep the diagram simple.
 
 图\ref{fig.dict1}是一个状态图，显示{\tt hist}和{\tt inverse}。
 一个字典被表示为一个盒子，类型类型{\tt dict}在上面，键-值对在里面。
-如果值是整数、浮点数或者字符串，那么我通常把他们画在盒子里，
+如果值是整数、浮点数或者字符串，那么我通常把它们画在盒子里，
 但是我通常将列表画在盒子外，仅仅是为了使图简洁。
 
 Lists can be values in a dictionary, as this example shows, but they
@@ -17871,7 +17871,7 @@ If you provide one argument, it overrides {\tt hour}:
 If you provide two arguments, they override {\tt hour} and
 {\tt minute}.
 
-如果你提供两个参数，他们会覆盖{\tt hour}和{\tt minute}。
+如果你提供两个参数，它们会覆盖{\tt hour}和{\tt minute}。
 
 \begin{verbatim}
 >>> time = Time(9, 45)
@@ -18364,7 +18364,7 @@ see \url{http://en.wikipedia.org/wiki/Information_hiding}.
 \index{information hiding}
 
 保持接口于实现分离意味着你必须隐藏属性。程序其它部分的代码（在类外定义的）应该
-使用方法来读取和修改对象的状态。他们不应该直接访问属性。这个原则叫做{\bf 信息隐
+使用方法来读取和修改对象的状态。它们不应该直接访问属性。这个原则叫做{\bf 信息隐
 藏}；参见\url{http://en.wikipedia.org/wiki/Information_hiding}。
 
 
@@ -18767,7 +18767,7 @@ class attributes because they are associated with the class object
 \index{attribute!instance}
 
 \verb"suit_names" 和 \verb"rank_names" 变量定义在一个类的内部但是在方法之外，被
-称为类属性。因为他们被关联到{\tt Card}类对象上的。
+称为类属性。因为它们被关联到{\tt Card}类对象上的。
 
 This term distinguishes them from variables like {\tt suit} and {\tt
   rank}, which are called {\bf instance attributes} because they are
@@ -18775,7 +18775,7 @@ associated with a particular instance.
 \index{dot notation}
 
 这个术语将它们同{\tt suit}和{\tt rank}变量区分开来，后者被称为{\bf 实例属性}因
-为他们被关联到了特定的实例。
+为它们被关联到了特定的实例。
 
 Both kinds of attribute are accessed using dot notation.  For
 example, in \verb"__str__", {\tt self} is a Card object,
@@ -19059,7 +19059,7 @@ King of Spades
 Even though the result appears on 52 lines, it is
 one long string that contains newlines.
 
-虽然这个结果有52行，但他实际上是包含回车符的一个大字符串。
+虽然这个结果有52行，但它实际上是包含回车符的一个大字符串。
 
 
 \section{Add, remove, shuffle and sort 添加，移除，洗牌和排序}
@@ -20003,7 +20003,7 @@ it is the easiest to get started with.  Most of the concepts
 in this chapter apply to the other GUI modules, too.
 
 在这个章节我会展示给大家的是Tkinter，因为我认为这个是最容易开始的。这个章节的大
-部分概念也适用于其他GUI模块。
+部分概念也适用于其它GUI模块。
 
 There are several books and web pages about Tkinter.  One of
 the best online resources is {\em An Introduction to Tkinter}
@@ -20020,7 +20020,7 @@ Swampy.  It provides a simplified interface to the functions
 and classes in Tkinter.  The examples in this chapter are
 based on this module.
 
-我已经写了一个叫{\tt Gui.py}的模块（从Swampy取出来的）。他提供了一个简单的使用
+我已经写了一个叫{\tt Gui.py}的模块（从Swampy取出来的）。它提供了一个简单的使用
 Tkinter的函数和类的封装。本章的例子都是基于这个模块的。
 
 Here is a simple example that creates and displays a Gui:
@@ -20060,7 +20060,7 @@ This Gui doesn't do much because it doesn't have any
 GUI; they include:
 \index{widget}
 
-Gui什么都不会做，因为他没有任何组件({\bf widgets})。组件是组成GUI的基本元素；他们包括：
+Gui什么都不会做，因为它没有任何组件({\bf widgets})。组件是组成GUI的基本元素；它们包括：
 
 \begin{description}
 
@@ -20093,7 +20093,7 @@ widgets.
 The empty gray square you see when you create a Gui is
 a Frame.  When you create a new widget, it is added to this Frame.
 
-你看到你创建的Gui的空白灰色方框就是一个框架。当你创建了一个新的组件，他就会被加入这个框架。
+你看到你创建的Gui的空白灰色方框就是一个框架。当你创建了一个新的组件，它就会被加入这个框架。
 
 \section{Buttons and callbacks  按钮和回调函数}
 \index{Button widget}
@@ -20134,7 +20134,7 @@ add more widgets, the Frame grows to accommodate them.
 \index{Label widget}
 \index{widget!Label}
 
-当你添加一个组件到框架，他会``自动调节大小''，就是说框架会收缩到按钮的尺寸。如
+当你添加一个组件到框架，它会``自动调节大小''，就是说框架会收缩到按钮的尺寸。如
 果你添加更多组建，框架会自适应它们。\footnote{如果用鼠标调整窗口大小，其中的按
 钮又会自动放大。所以原文中的收缩含义不完整。}
 
@@ -20306,7 +20306,7 @@ where the origin is in the upper left corner, with the $y$ axis
 pointing down.
 
 {\tt Gui.py}提供了一个原点在画布中央的标准笛卡尔坐标系。$y$轴指向上方。这个可能
-和一些其他的图形系统不一样。其它的可能是原点在左上角，$y$轴指向下方。
+和一些其它的图形系统不一样。其它的可能是原点在左上角，$y$轴指向下方。
 
 The {\tt fill} option specifies that the circle should be filled
 in with red.
@@ -20581,7 +20581,7 @@ subsequent widgets are packed in a row.
 Here is the code that creates the Canvas and the column Frame
 that hold the other widgets:
 
-下面是创建了一个画布和一个容纳其他组件的纵向框架的代码：
+下面是创建了一个画布和一个容纳其它组件的纵向框架的代码：
 
 \begin{verbatim}
         self.canvas = self.ca(width=400, height=400, bg='white')
@@ -20619,7 +20619,7 @@ are associated with a particular object.  When they are invoked, they
 are invoked on the object.
 
 第一个按钮使用{\tt self.canvas.dump}作为回调；第二个使用{\tt self.quit}。这些都
-是{\bf 绑定方法}，也就是它们和特定的对象绑定到一起的。当它们被调用时，他们是在
+是{\bf 绑定方法}，也就是它们和特定的对象绑定到一起的。当它们被调用时，它们是在
 对象上被调用的。\footnote{可以简单的理解为对象的方法，self指针会指向对象}
 
 The next widget in the column is a row Frame that contains
@@ -20858,7 +20858,7 @@ events include {\tt ButtonMotion}, {\tt ButtonRelease} and
 \index{event string}
 \index{event handler}
 
-第一个参数是一个事件的名称：当用户点击了鼠标的左键时触发这个时间。其他的鼠标事
+第一个参数是一个事件的名称：当用户点击了鼠标的左键时触发这个时间。其它的鼠标事
 件包括{\tt ButtonMotion}, {\tt ButtonRelease}和 {\tt Double-Button}。
 
 The second argument is an event handler.  An event handler
@@ -21428,7 +21428,7 @@ in order to track them down more quickly:
   the colon at the end of a {\tt def} statement yields the somewhat
   redundant message {\tt SyntaxError: invalid syntax}.
 
-  语法错误是Python将源代码翻译成字节代码的时候产生的。他们通常预示着程序的语法
+  语法错误是Python将源代码翻译成字节代码的时候产生的。它们通常预示着程序的语法
   有一些错误。例如：省略了{\tt def}语句后面的冒号会产生一些冗余的信息 {\tt
   SyntaxError: invalid syntax}.
 
@@ -21438,7 +21438,7 @@ in order to track them down more quickly:
   functions were executing.  Example: An infinite recursion eventually
   causes the runtime error ``maximum recursion depth exceeded.''
 
-  运行时错误是当程序运行时发生了一些错误，解释器产生的错误。大多数运行时错误会
+  运行时错误是当程序运行时发生的一些错误，是由解释器产生的错误。大多数运行时错误会
   包含诸如在哪里产生的错误和正在执行哪个函数等信息。例如：一个无限递归最终会造
   成``超过递归最大深度''的错误。
 
@@ -21466,7 +21466,7 @@ error you are dealing with.  Although the following sections are
 organized by error type, some techniques are
 applicable in more than one situation.
 
-调试的第一步是指出你正在处理那种错误。虽然下面的小节按照错误类型来组织的，一些
+调试的第一步是指出你正在处理哪种错误。虽然下面的小节是按照错误类型来组织的，一些
 方法能应用在更多的情况下。
 
 \section{Syntax errors 语法错误}
@@ -21489,7 +21489,7 @@ message, often on the preceding line.
 \index{incremental development}
 \index{development plan!incremental}
 
-另一方面，这些错误消息并不告诉你程序的哪里出现的错误。实际上，它告诉你Python是
+另一方面，这些错误消息并不告诉你在程序的哪里出现的错误。实际上，它告诉你Python是
 在哪里发现的问题，和错误具体在哪里无关。有时，错误在消息提示的代码的前面，通常
 则是在后面。
 
@@ -21506,11 +21506,11 @@ At the same time, remember that the book might be wrong, so
 if you see something that looks like a syntax error, it might be.
 
 如果你是从书上复制的代码，那请仔细地从头和书对照代码。一个一个字母地比照。不过
-，另外，也可能是书上就错了，所以如果你发现哪里就像是语法错误，那可能就是了。
+，也可能是书上就错了，所以如果你发现哪里就像是语法错误，那可能就是了。
 
 Here are some ways to avoid the most common syntax errors:
 
-下面是一些方法用于避免大部分常见的语法错误：
+下面是一些用于避免大部分常见的语法错误的方法：
 \index{syntax}
 
 \begin{enumerate}
@@ -21533,7 +21533,7 @@ compound statement, including {\tt for}, {\tt while},
 quotation marks.
 \index{quotation mark}
 
-确保你的字符串都有匹配地引号。
+确保你的字符串都有匹配的引号。
 
 \item If you have multiline strings with triple quotes (single or double), make
 sure you have terminated the string properly.  An unterminated string
@@ -21544,8 +21544,8 @@ message at all!
 \index{multiline string}
 \index{string!multiline}
 
-如果你有三引号地多行字符串，确保你合适的结束了字符串。一个没有结束的字符串会在
-程序的末尾产生{\tt invalid token}错误，或者它会吧剩下的程序部分的代码看作字符串
+如果你有三引号的多行字符串，确保你正确地结束了字符串。一个没有结束的字符串会在
+程序的末尾产生{\tt invalid token}错误，或者它会把剩下的程序部分的代码看作字符串
 的一部分，直到遇到下一个三引号字符串。第二种情况可能直接不会产生错误！
 \footnote{有语法着色功能的编辑器则能够方便的看出}
 
@@ -21571,25 +21571,25 @@ consistent indentation.
 \index{indentation}
 \index{whitespace}
 
-确保每行地缩进是符合语法地。Python能够处理空格和Tab，但是如果你混用它们可能出错
-。最好的方法是使用一个了解Python语法的纯文本编辑器\footnote{如llinux下面的vim，
-跨平台的sublime text等等}来产生一致的缩进。
+确保每行的缩进是符合语法的。Python能够处理空格和Tab，但是如果你混用它们可能出错
+。最好的方法是使用一个了解Python语法的纯文本编辑器\footnote{如Linux下面的Vim，
+跨平台的Sublime Text等等}来产生一致的缩进。
 
 \end{enumerate}
 
 If nothing works, move on to the next section...
 
-如果还是不行，请看下一节。。。
+如果还是不行，请看下一节...
 
 
-\subsection{I keep making changes and it makes no difference. \\ 我不断的改代码似乎一点用都没有。}
+\subsection{I keep making changes and it makes no difference. \\ 我不断地改代码似乎一点用都没有。}
 
 If the interpreter says there is an error and you don't see it, that
 might be because you and the interpreter are not looking at the same
 code.  Check your programming environment to make sure that the
 program you are editing is the one Python is trying to run.
 
-如果翻译器说这里有一个错误但是你怎么也看不出来，可能是因为你和翻译器没有看同一
+如果解释器说这里有一个错误但是你怎么也看不出来，可能是因为你和解释器没有看同一
 份代码。检查你的编码环境确保你正在编辑的就是Python尝试运行的。
 
 If you are not sure, try putting an obvious and deliberate syntax
@@ -21597,8 +21597,8 @@ error at the beginning of the program.  Now run it again.  If the
 interpreter doesn't find the new error, you are not running the
 new code.
 
-如果你不确定，尝试在代码的开始制造一些明显的故意的语法错误。再运行一次。如果翻
-译器不能找出新的错误，说明你没有运行正确的文件。
+如果你不确定，尝试在代码的开始制造一些明显的故意的语法错误。再运行一次。
+如果解释器不能找出新的错误，说明你没有运行正确的文件。
 
 There are a few likely culprits:
 
@@ -21614,12 +21614,12 @@ for you, but some don't.
 \item You changed the name of the file, but you are still running
 the old name.
 
-你更改了文件的名字，但是你任然运行旧名字的文件。
+你更改了文件的名字，但是你仍然运行的是旧名字的文件。
 
 \item Something in your development environment is configured
 incorrectly.
 
-你开发环境的一些配置不正确。
+你的开发环境的一些配置不正确。
 
 \item If you are writing a module and using {\tt import},
 make sure you don't give your module the same name as one
@@ -21636,10 +21636,10 @@ that you have to restart the interpreter or use {\tt reload}
 to read a modified file.  If you import the module again, it
 doesn't do anything.
 
-如果你使用{\tt import}来载入一个模块，记住你必须重启翻译器才能重新载入一个修改
+如果你使用{\tt import}来载入一个模块，记住你必须重启解释器才能重新载入一个修改
 了的内存模块。如果你导入一个模块两次，第二次是无效的。\footnote{译者注：因为载
-入的模块在内存中，如果不退出翻译器，是不会释放在内存中的模块的。通常是在交互式
-的换进中才会有该问题}
+入的模块在内存中，如果不退出解释器，是不会释放在内存中的模块的。通常是在交互式
+的环境中才会有该问题。}
 
 \end{itemize}
 
@@ -21676,7 +21676,7 @@ the interactive prompt.  Also see the ``Flow of Execution'' section
 below.
 
 如果你不是想这样的，确保你调用了一个函数来开始执行。或从交互式终端执行一个函数
-。参见下面 ``Flow of Execution'' 一节
+。参见下面 ``执行流'' 一节。
 
 \subsection{My program hangs. \\ 我的程序挂了}
 \index{infinite loop}
@@ -21731,7 +21731,7 @@ loops and other recursive functions and methods.
 you don't understand the flow of execution in your program.
 Go to the ``Flow of Execution'' section below.
 
-如果还是不行，可能是你没有正确的理解你的程序的执行流程。转到``Flow of Execution''一节。
+如果还是不行，可能是你没有正确的理解你的程序的执行流程。转到``执行流''一节。
 
 \end{itemize}
 
@@ -21845,13 +21845,13 @@ calls occurs.
 
 调用栈（backtrace,traceback,callstack）能够表明正在运行的函数，以及调用它的上层
 函数，上上层函数等等。总之，它表明了函数调用的顺序以及运行到哪里了。它也包含源
-代码中产生调用的地方的行号
+代码中产生调用的地方的行号。
 
 The first step is to examine the place in the program where
 the error occurred and see if you can figure out what happened.
 These are some of the most common runtime errors:
 
-第一步是检查发生错误的位置，看你能不能找出怎么就错了。下面是一些常见错误
+第一步是检查发生错误的位置，看你能不能找出怎么就错了。下面是一些常见错误：
 
 \begin{description}
 
@@ -21877,7 +21877,7 @@ cannot refer to them from outside the function where they are defined.
 a string, list, or tuple with something other than an integer.
 \index{index}
 
-你正在不正确的使用一个值。例如：使用除整数以外的某些东西作为字符串，列表或元组
+你正在不正确地使用一个值。例如：使用除整数以外的某些东西作为字符串、列表或元组
 的索引下标。
 
 \item There is a mismatch between the items in a format string and
@@ -21886,6 +21886,8 @@ of items does not match or an invalid conversion is called for.
 \index{format operator}
 \index{operator!format}
 
+格式化字符串中的元素和要转化的元素产生错误的匹配。
+当元素的数量不匹配或者有非法的转化时会产生这个错误。
 
 \item You are passing the wrong number of arguments to a function or method.
 For methods, look at the method definition and
@@ -21895,7 +21897,7 @@ object with the right type and providing the other arguments
 correctly.
 
 你传递错误数量的参数给函数或方法。对于方法，看看方法定义是不是以{\tt self}作为
-地一个参数。然后看看方法调用；确保你在一个正确的类型的对象上调用方法并且正确得
+第一个参数。然后看看方法调用；确保你在一个正确的类型的对象上调用方法并且正确地
 提供了其它参数。
 
 \end{itemize}
@@ -21938,7 +21940,7 @@ Is the array the right size?  Is the index the right value?
 \index{IndexError}
 \index{exception!IndexError}
 
-索引错误：你访问一个列表，字符串或元组的索引超过了它的长度-1。在这类错误的前面
+索引错误：你访问一个列表，字符串或元组的索引超过了它的长度减一。在这类错误的前面
 ，用一个{\tt print}语句来打印索引的值和数组的长度。数组是有着正确的长度吗？索引
 是正确的吗？
 
@@ -21952,8 +21954,8 @@ Exceptions because it allows you to examine the state of the
 program immediately before the error.  You can read
 about {\tt pdb} at \url{docs.python.org/lib/module-pdb.html}.
 
-Python debugger ({\tt pdf})是用来追踪异常的非常有用的工具，因为它让你可以检查程
-序在出现错误时的状态。而不是直接的退出。你可以阅读
+Python调试器（Python debugger）（{\tt pdb}）是用来追踪异常的非常有用的工具，因为它让你可以检查程
+序在出现错误时的状态。而不是直接退出。你可以阅读
 \url{docs.python.org/lib/module-pdb.html}关于{\tt pdb}一节。
 
 \subsection{I added so many {\tt print} statements I get inundated with
@@ -21973,10 +21975,10 @@ statements that aren't helping, or combine them, or format
 the output so it is easier to understand.
 
 为了简化输出，你可以移除或注释掉不再需要的{\tt print}语句，或者合并它们，或者格
-式化输出便于理解。\footnote{也可以采用c的宏定义的思想，使用一个ENABLE\_DEBUG的
+式化输出便于理解。\footnote{也可以采用C语言的宏定义的思想，使用一个ENABLE\_DEBUG的
 全局变量，然后使用{\tt if(ENABLE\_DEBUG) print(...)}这种，通过将ENABLE\_DEBUG赋
-值为false来关闭所有输出。}\footnote{再层次化的输出就被称为Log了。也是一种必要的
-调试方法}
+值为False来关闭所有输出。}\footnote{再层次化的输出就被称为Log了。也是一种必要的
+调试方法。}
 
 To simplify the program, there are several things you can do.  First,
 scale down the problem the program is working on.  For example, if you
@@ -21986,7 +21988,7 @@ problem.
 \index{dead code}
 
 为了简化程序，有几件事情可以做的。首先，缩减当前求解问题的规模。例如，如果你查
-找一个列表，使用一个小的列表来查找。如果程序从用户获得输入。给一个足够简单的输
+找一个列表，使用一个小的列表来查找。如果程序从用户获得输入，给一个足够简单的输
 入。
 
 Second, clean up the program.  Remove dead code and reorganize the
@@ -21999,7 +22001,7 @@ separately.
 \index{test case, minimal}
 
 其次，清理程序。移除死代码\footnote{计算出来的结果没有用于其它运算中，所以根本
-没必要计算}(dead code)并且重新组织程序易于理解（也称为代码重构）。例如，如果你
+没必要计算}（dead code）并且重新组织程序易于理解（也称为代码重构）。例如，如果你
 怀疑问题来自程序深度嵌套的部分，尝试使用简单的结构重写它。如果你怀疑一个大的函
 数，尝试分解它为小函数分别测试（也称为单元测试）。
 
@@ -22044,7 +22046,7 @@ insert a few well-placed {\tt print} statements is often short compared to
 setting up the debugger, inserting and removing breakpoints, and
 ``stepping'' the program to where the error is occurring.
 
-你需要使得程序能够慢下来使得你能跟上它的速度，通过一些调试器(debugger)就能做到
+你需要使得程序能够慢下来使得你能跟上它的速度，通过一些调试器（debugger）就能做到
 。但是有时候插入一些安排好位置的{\tt print}语句要比你设置好调试器，插入或者移除
 断点，然后``步进''程序到发生错误的地方要更简洁。
 
@@ -22079,7 +22081,7 @@ Try them out by writing simple test cases and checking the results.
 
 是不是有一些代码的效果和你预期的不一样？确保你理解了有问题的代码，特别是当它涉
 及调用其它模块的函数或者方法。阅读你调用的函数的文档。尝试写一些简单的测试案例
-来测试他们是不是得到了正确的结果。
+来测试它们是不是得到了正确的结果。
 
 \end{itemize}
 
@@ -22122,7 +22124,7 @@ temporary variables.
 
 For example:
 
-写复杂的表达式是没有问题的，前提是在它们依然保持可读性的长度内，但是他们可能很
+写复杂的表达式是没有问题的，前提是在它们依然保持可读性的长度内，但是它们可能很
 难调试。通常把复杂的表达是打散成一系列的临时变量的赋值语句是很好的。
 
 例如：
@@ -22246,8 +22248,7 @@ hat backward'').
 \index{debugging!superstition}
 \index{superstitious debugging}
 
-迷幻的认知(``电脑就是和我作对'')和魔幻的想法(``我去带上帽子程序就正常工作了'')
-。
+迷幻的认知（``电脑就是和我作对''）和魔幻的想法（``我反着戴帽子程序就能正常工作了''）。
 
 \item Random walk programming (the attempt to program by writing
 every possible program and choosing the one that does the right
@@ -22292,7 +22293,8 @@ appropriate places (and the output they produce should be
 comprehensible).  You should understand the problem well enough
 to describe it concisely.
 
-当你找某人帮忙时，确保你已经准备好了。你的程序应该尽量简洁，你应该准备好造成错误的最小的输入。你应该在合适的地方写好{\tt print}语句（并且输出最好是易于理解的）。你应该足够的熟悉问题以便简洁的描述它。
+当你找某人帮忙时，确保你已经准备好了。你的程序应该尽量简洁，你应该准备好造成错误的最小的输入。
+你应该在合适的地方写好{\tt print}语句（并且输出最好是易于理解的）。你应该足够的熟悉问题以便简介地描述它。
 
 When you bring someone in to help, be sure to give
 them the information they need:
@@ -22329,7 +22331,7 @@ similar, you will be able to find the bug more quickly.
 Remember, the goal is not just to make the program
 work.  The goal is to learn how to make the program work.
 
-记住，最终目标不是让程序工作，而是学习如何是程序能工作的。
+记住，最终目标不是让程序正确工作，而是学习如何使程序能正确工作。
 
 
 \chapter{Analysis of Algorithms 算法分析}
@@ -22351,7 +22353,7 @@ space requirements.  See
 \index{algorithm} \index{analysis of algorithms}
 
 {\bf 算法分析（Analysis of algorithms）}是计算机科学的一个分支，
-其研究算法的性能，特别是他们运行的时间和空间需求。
+其研究算法的性能，特别是它们运行的时间和空间需求。
 见：\url{http://en.wikipedia.org/wiki/Analysis_of_algorithms}。
 
 The practical goal of algorithm analysis is to predict the performance
@@ -22373,7 +22375,7 @@ See \url{http://www.youtube.com/watch?v=k4RRi_ntQc8}.
 2008年美国总统选举期间，当候选人Barack Obama访问Google时，
 他被要求进行即席的分析。首席执行官Eric Schmidt开玩笑的问他
 ``对一百万个32位整数排序的最有效的方法''。
-显然有人暗中通知了Obama，因为他很快回答，
+显然有人暗中告诉了Obama，因为他很快回答，
 ``我认为冒泡排序是错误的方法''。
 见：\url{http://www.youtube.com/watch?v=k4RRi_ntQc8}。
 
@@ -22439,7 +22441,8 @@ and it might not be obvious what set of cases to average over.
 例如，如果数据已经部分排好序，一些排序算法可能更快；
 此时其它算法运行的比较慢。
 避免该问题的一般方法是分析{\bf 最坏情况（worst case）}。
-有时分析平均情况性能，但那通常更难而且可能对什么案例的集合进行平均并不明显。
+有时分析平均情况性能，但那通常更难，
+而且需要对哪类情况分析平均并不明显。
 
 \item Relative performance also depends on the size of the
 problem.  A sorting algorithm that is fast for small lists
@@ -22453,7 +22456,7 @@ size increases.
 相对性能也依赖于问题的规模。
 一个对于小列表很快的排序算法可能对于长列表很慢。
 对此问题通常的解决方法是将运行时间（或则运算的数目）表示成问题规模的函数，
-并且随着问题规模的增长{\bf 渐近地（asymptotically）}比较函数
+并且随着问题规模的增长{\bf 渐近地（asymptotically）}比较函数。
 
 \end{itemize}
 
@@ -22464,7 +22467,7 @@ proportional to the size of the input, $n$, and Algorithm B
 tends to be proportional to $n^2$, then I
 expect A to be faster than B for large values of $n$.
 
-关于此类比较的好处是对算法的简单分类。
+关于此类比较的好处是能够对算法进行简单分类。
 例如，如果我知道算法A的运行时间与输入的规模$n$成正比，
 算法B与$n^2$成正比，那么我期望对于很大的$n$值，A比B快。
 
@@ -22548,7 +22551,7 @@ about it.
 一般来讲，我们希望一个算法有一个较小的首项，使得对于大的问题其是一个好算法，
 但是对于小问题，可能有一个{\bf 交叉点（crossover point）} ，在此另一个算法更好。
 交叉点的位置依赖于算法的细节、输入以及硬件，因此对于算法分析目的，它通常被忽略。
-但是这不意味着你可以忘记它。
+但是这不意味着你可以忽略它。
 
 If two algorithms have the same leading order term, it is hard to say
 which is better; again, the answer depends on the details.  So for
@@ -22615,8 +22618,8 @@ only useful for small problems.
 
 对于log项，log的基数没有什么关系。
 改变阶数等价于乘以一个常数，其不改变增长阶数。
-简单来讲，如果不考虑指数的基数，指数函数属于相同的增长结束。
-指数函数增长的非常快，因此指数级算法只对于小问题有用。
+简单来讲，如果不考虑指数的基数，指数函数属于相同的增长阶数。
+指数函数增长得非常快，因此指数级算法只对于小问题有用。
 
 \begin{exercise}
 
@@ -22692,7 +22695,7 @@ or dictionary---are also constant time, regardless of the size
 of the data structure.
 \index{indexing}
 
-索引运算---在序列或字典中读或写元素--也是常数时间，
+索引运算---在序列或字典中读或写元素---也是常数时间，
 不考虑数据结构的大小。
 
 A {\tt for} loop that traverses a sequence or dictionary is
@@ -22899,7 +22902,7 @@ In the worst case it has to traverse the entire collection, so the run
 time is linear.
 \index{linear search}
 
-最简单的搜素算法是``线性搜索''，其按顺序遍历集合中的项，
+最简单的搜索算法是``线性搜索''，其按顺序遍历集合中的项，
 如果找到目标则停止。最坏的情况下，它不得不遍历全部集合，
 所以运行时间是线性的。
 
@@ -22921,13 +22924,13 @@ of the sequence.  Otherwise you search the second half.  Either way,
 you cut the number of remaining items in half.  
 \index{bisection search}
 
-如果训练是排好序的，你可以用{\bf 二分搜素（bisection search）}，
+如果序列是排好序的，你可以用{\bf 二分搜索（bisection search）}，
 其是$O(\log n)$。二分搜索和你在字典中查找一个单词的算法类似
 （真正的字典，不是数据结构）。
 不是从头开始并按顺序检查每个项，
 你从中间的项开始并检查你要查找的单词在前面还是后面。
 如果它出现在前面，那么你搜索序列的前半部分。
-否则你搜索后一半。如论如何，你将剩余的项数分为一半。
+否则你搜索后一半。无论如何，你将剩余的项数分为一半。
 
 If the sequence has 1,000,000 items, it will take about 20 steps to
 find the word or conclude that it's not there.  So that's about 50,000
@@ -22993,14 +22996,14 @@ to value {\tt v}.  With a Python dictionary, {\tt d}, this operation
 is written {\tt d[k] = v}.
 
 \item[{\tt add(k, v)}:] 增加一个新的项，其从关键字{\tt k}映射到值{\tt v}。
-使用Pythong的字典{\tt d}，该运算被写作{\tt d[k] = v}。
+使用Python的字典{\tt d}，该运算被写作{\tt d[k] = v}。
 
 \item[{\tt get(target)}:] Look up and return the value that corresponds
 to key {\tt target}.  With a Python dictionary, {\tt d}, this operation
 is written {\tt d[target]} or {\tt d.get(target)}.
 
 \item[{\tt get(target)}:] 查找并返回相应关键字为{\tt target}的值。
-使用Pythong的字典{\tt d}，该运算被写作{\tt d[target]}或{\tt d.get(target)}。
+使用Python的字典{\tt d}，该运算被写作{\tt d[target]}或{\tt d.get(target)}。
 
 \end{description}
 
@@ -23032,7 +23035,7 @@ class LinearMap(object):
 {\tt add} appends a key-value tuple to the list of items, which
 takes constant time.
 
-{\tt add}向项列表追加一个关键字-值元组，这是常数时间。
+{\tt add}向列表追加一个关键字-值元组，这是常数时间。
 
 {\tt get} uses a {\tt for} loop to search the list:
 if it finds the target key it returns the corresponding value;
@@ -23059,7 +23062,7 @@ constant time, so let's move on.
 因此这可能不是最好的选择。
 有其它的数据结构（见：\url{http://en.wikipedia.org/wiki/Red-black_tree}）
 能在log时间内实现{\tt add} and {\tt get}，但是这仍然不如常数时间好，
-因此让我妈继续。
+因此让我们继续。
 
 One way to improve {\tt LinearMap} is to break the list of key-value
 pairs into smaller lists.  Here's an implementation called
@@ -23111,7 +23114,7 @@ implementation is that it only works with hashable keys.  Mutable
 types like lists and dictionaries are unhashable.
 \index{hash function}
 
-\verb"find_map"使用内建{\tt hash}函数，其接受几乎任何Pythong对象并返回一个整数。
+\verb"find_map"使用内建{\tt hash}函数，其接受几乎任何Python对象并返回一个整数。
 这一实现的一个限制是它仅适用于哈希表关键字。
 如列表和字典等易变的类型是不能哈希的。
 
@@ -23129,7 +23132,8 @@ hash values will wrap onto the same index.  But if the hash function
 spreads things out pretty evenly (which is what hash functions
 are designed to do), then we expect $n/100$ items per LinearMap.
 
-\verb"find_map"使用求余运算符将哈希值包在0到{\tt len(self.maps)}之间，
+\verb"find_map"使用求余运算符将哈希值包在0到{\tt len(self.maps)}
+\footnote{译者注：不包含{\tt len(self.maps)}}之间，
 因此结果是对于该列表合法的索引值。
 当然，这意味着许多不同的哈希值将被包成相同的索引值。
 但是如果哈希函数散布相当均匀（这是哈希函数被设计的初衷），
@@ -23254,7 +23258,7 @@ costs 1 unit, so the total so far is
 我们以两个LinearMap开始，因此前两个add很快（不需要resize）。
 我们说它们每个花费一个工作单元。
 下一个add需要一次resize，因此我们必须重哈希前两项
-（我们调用两个额外的工作单元）然后增加第3项（一个额外单语）。
+（我们调用两个额外的工作单元）然后增加第3项（一个额外单元）。
 增加下一项花费1个单元，所以对于4项总共需要6个单元。
 
 The next {\tt add} costs 5 units, but the next three
@@ -23307,7 +23311,7 @@ over the towers, amortizing the cost of resizing over all
 adds, you can see graphically that the total cost after $n$
 adds is $2n - 2$.
 
-重哈希的额外工作显示为一序列增加的高塔并在它们之间增加空间。
+重哈希的额外工作看上去像一列增加的高塔并在它们之间增加空间。
 现在，如果你打翻这些塔，将resize的代价均摊到所有的add上，
 你会从图上看到$n$个add的整个花费是$2n - 2$。
 
@@ -23366,10 +23370,10 @@ object and an instance, each with their own attributes.
 \index{object diagram}
 \index{diagram!object}
 
-\ref{attributes}节介绍了对象图，其展示了一个对象的属性的状态以及他们的属性等。
-\ref{rectangles}节有对于矩形以及他们嵌入的点的对象图。
+\ref{attributes}节介绍了对象图，其展示了一个对象的属性的状态以及它们的属性等。
+\ref{rectangles}节有对于矩形以及它们嵌入的点的对象图。
 \ref{time.object} 节显示了一个Time对象的状态。
-\ref{class.attribute}有一个图，其包括一个类对象以及一个实例，每个都有他们自己的属性。
+\ref{class.attribute}有一个图，其包括一个类对象以及一个实例，每个都有它们自己的属性。
 
 Finally, Section~\ref{class.diagram} introduces class diagrams,
 which show the classes that make up a program and the relationships
@@ -23689,8 +23693,8 @@ mutable types, it is highly error-prone.
 \index{shallow copy}
 
 图\ref{fig.lumpy5}显示结果。
-{\tt copy.copy}进行浅拷贝，所以{\tt box}和{\tt box2}有它们自己的{\tt width}和{\tt height}，
-但是它们共享相同的嵌入Point对象。
+{\tt copy.copy}进行浅复制，所以{\tt box}和{\tt box2}有它们自己的{\tt width}和{\tt height}，
+但是它们共享相同的嵌套Point对象。
 这种共享通常对于不可变对象是好的，但是对于可变类型，它非常容易出错。
 
 \section{Function and class objects 函数和类对象}
