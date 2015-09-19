@@ -4449,7 +4449,8 @@ This syntax makes the program more readable.  It is also a reminder
 about how arguments and parameters work: when you call a function, the
 arguments are assigned to the parameters.
 
-这一语法使得程序更可读。
+这一语法使得程序更可读。（译者注：而实际上它的好处更在于可以在调用函数时
+改变参数的顺序，此处不提。）
 它也是关于实参和形参工作方式的一个提醒：
 当你调用函数时，实参被赋给形参。
 
@@ -4642,7 +4643,6 @@ sign that you have learned something.
 有时重构是一个信号，说明你已经学到某些东西了。
 
 
-%Last time
 \section{A development plan 开发方案}
 \index{development plan!encapsulation and generalization}
 
@@ -4674,14 +4674,14 @@ and give it a name.
 Copy and paste working code to avoid retyping (and re-debugging).
 
 重复1--3步，直到你有一些可运转的函数。
-拷贝和粘贴代码以避免重新键入（和重新调试）。
+复制粘贴有用的代码以避免重新键入（和重新调试）。
 
 \item Look for opportunities to improve the program by refactoring.
 For example, if you have similar code in several places, consider
 factoring it into an appropriately general function.
 
 寻找机会通过重构改进程序。
-例如如果在多个地方有相似的代码，考虑将它分解到一个合适的函数中。
+例如如果在多个地方有相似的代码，考虑将它分解到一个合适的通用函数中。
 
 \end{enumerate}
 
@@ -4691,7 +4691,7 @@ program into functions.  This approach lets you design as you go
 along.
 
 这个过程有一些缺点---后面我们将看到替代方案---
-但是如果你之前不知道如果将程序分解为函数，它可能很有用。
+但是如果你事先不知道如何将程序分解为函数，它可能很有用。
 该方法让你一边编程，一边设计。
 
 
@@ -4704,7 +4704,7 @@ explains the interface (``doc'' is short for ``documentation'').  Here
 is an example:
 
 一个{\bf 文档字符串（docstring）}是位于函数开始的字符串，
-其解释函数的接口（``doc''是``document''的缩写）。
+其解释函数的接口（``doc''是``documentation''的缩写）。
 这是一个例子：
 
 \begin{verbatim}
@@ -4726,8 +4726,8 @@ to span more than one line.
 \index{multiline string}
 \index{string!multiline}
 
-此文档字符串是一个三引号字符串，也被称为多行字符串，
-因为三引号允许字符串超过一行。
+此文档字符串是一个三重引号字符串，也被称为多行字符串，
+因为三重引号允许字符串超过一行。
 
 It is terse, but it contains the essential information
 someone would need to use this function.  It explains concisely what
@@ -4736,10 +4736,10 @@ it).  It explains what effect each parameter has on the behavior of
 the function and what type each parameter should be (if it is not
 obvious).
 
-它很简单，但是它包括了该函数的必要信息。
-它简要的说明了该函数做什么（没有介绍它如何工作的细节）。
+它很简单，但是它包括了他人使用此函数时需要的关键信息。
+它简要说明该函数做什么（不介绍它如何做到的细节）。
 它说明了每个形参对函数的行为有什么作用以及每个形参应有的类型
-（如果它并不明显）。
+（如果它不明显的话）。
 
 Writing this kind of documentation is an important part of interface
 design.  A well-designed interface should be simple to explain;
@@ -4747,8 +4747,8 @@ if you are having a hard time explaining one of your functions,
 that might be a sign that the interface could be improved.
 
 写这种文档是接口设计很重要的部分。
-一个良好设计的接口应该解释起来很简单，
-如果你很难解释你的函数，这也许是该接口可能需要被改进的一个信号。
+一个设计良好的接口应该很容易解释，
+如果你很难解释你的函数，这也许是该接口需要改进的一个信号。
 
 
 \section{Debugging 调试}
@@ -4759,8 +4759,8 @@ An interface is like a contract between a function and a caller.
 The caller agrees to provide certain parameters and the function
 agrees to do certain work.
 
-接口就像是函数和一个调用者之间的合同。
-调用者同意提供某些参数，函数统一做某些工作。
+接口就像是一个函数和调用者之间的合同。
+调用者同意提供合适的参数，函数同意完成相应的工作。
 
 For example, {\tt polyline} requires four arguments: {\tt t} has to be
 a Turtle; {\tt n} is the number of line segments, so it has to be an
@@ -4770,7 +4770,7 @@ integer; {\tt length} should be a positive number; and {\tt
 例如，{\tt polyline}需要4个实参：{\tt t}必须是一个Turtle；
 {\tt n}是线段的个数，因此它必须是一个整数；
 {\tt length}应该是一个正数；
-{\tt angle}必须是一个数，它被理解为一个度数。
+{\tt angle}必须是一个数，它以度数为单位。
 
 These requirements are called {\bf preconditions} because they
 are supposed to be true before the function starts executing.
@@ -4783,17 +4783,17 @@ in the World).
 \index{postcondition}
 
 这些需求被称作{\bf 先决条件（preconditions）}，
-因为它们在函数开始执行之前被假设为正确的。
+因为它们在函数开始执行之前应当是正确的。
 相反，函数结束时的条件是{\bf 后置条件（postconditions）}。
-后置条件包括函数预期的效果（如画线段）以及任何侧面效果
-（如移动Turtle或者World中的其它改变）。
+后置条件包括函数预期的效果（如画线段）以及任何副作用
+（如移动Turtle或者在World中做其它改变）。
 
 Preconditions are the responsibility of the caller.  If the caller
 violates a (properly documented!) precondition and the function
 doesn't work correctly, the bug is in the caller, not the function.
 
-先决条件是调用者的职责。如果调用者违反一个（恰当的说明）
-先决条件并且函数不正确的工作，则错误在调用者中，而不是函数中。
+先决条件由调用者负责。如果调用者违反一个（已经说明清楚的）
+先决条件而函数没有正确工作，则错误在调用者一方，而不是函数一方。
 
 % Removing this because we haven't seen conditionals yet!
 %However, for purposes of debugging it is often a good idea for
@@ -4860,15 +4860,23 @@ the function before it ends.
 Download the code in this chapter from
 \url{http://thinkpython.com/code/polygon.py}.
 
+可从\url{http://thinkpython.com/code/polygon.py}下载本章的代码。
+
 \begin{enumerate}
 
 \item Write appropriate docstrings for {\tt polygon}, {\tt arc} and
 {\tt circle}.
+
+为{\tt polygon}，{\tt arc}和{\tt circle}写适当的文档字符串。
+
 \index{stack diagram}
 
 \item Draw a stack diagram that shows the state of the program
 while executing {\tt circle(bob, radius)}.  You can do the
 arithmetic by hand or add {\tt print} statements to the code.
+
+画一个栈图，说明程序执行{\tt circle(bob, radius)}时的状态。
+为了做那些算术，你可以自己动手，或者在代码中加入{\tt print}语句。
 
 \item The version of {\tt arc} in Section~\ref{refactoring} is not
 very accurate because the linear approximation of the
@@ -4877,6 +4885,12 @@ the turtle ends up a few units away from the correct
 destination. My solution shows a way to reduce
 the effect of this error.  Read the code and see if it makes
 sense to you.  If you draw a diagram, you might see how it works.
+
+第~\ref{refactoring}节中的{\tt arc}版本并不很精确，
+因为用线段近似画的圆总是在实际圆的外部。结果是，
+海龟总是偏离正确的终点几个单位。
+我的解答展示了一种减轻这一效果的办法。阅读代码看看你能否理解。
+如果你画个图，你也许会明白它的工作原理。
 
 \end{enumerate}
 
@@ -4895,8 +4909,13 @@ sense to you.  If you draw a diagram, you might see how it works.
 Write an appropriately general set of functions that
 can draw flowers as in Figure~\ref{fig.flowers}.
 
+写一些合适的、通用的函数，使它们能画出图~\ref{fig.flowers}中的花。
+
 Solution: \url{http://thinkpython.com/code/flower.py},
 also requires \url{http://thinkpython.com/code/polygon.py}.
+
+解答在：\url{http://thinkpython.com/code/flower.py}，
+它需要使用\url{http://thinkpython.com/code/polygon.py}。
 
 \end{exercise}
 
@@ -4914,8 +4933,13 @@ also requires \url{http://thinkpython.com/code/polygon.py}.
 Write an appropriately general set of functions that
 can draw shapes as in Figure~\ref{fig.pies}.
 
+写一些合适的、通用的函数，使它们能画出图~\ref{fig.pies}中的形状。
+
 Solution: \url{http://thinkpython.com/code/pie.py}.
 
+解答在：\url{http://thinkpython.com/code/pie.py}。
+
+%Last time
 \end{exercise}
 
 \begin{exercise}
@@ -21545,9 +21569,9 @@ message at all!
 \index{multiline string}
 \index{string!multiline}
 
-如果你有三引号地多行字符串，确保你合适的结束了字符串。一个没有结束的字符串会在
+如果你有三重引号地多行字符串，确保你合适的结束了字符串。一个没有结束的字符串会在
 程序的末尾产生{\tt invalid token}错误，或者它会吧剩下的程序部分的代码看作字符串
-的一部分，直到遇到下一个三引号字符串。第二种情况可能直接不会产生错误！
+的一部分，直到遇到下一个三重引号字符串。第二种情况可能直接不会产生错误！
 \footnote{有语法着色功能的编辑器则能够方便的看出}
 
 \item An unclosed opening operator---\verb+(+, \verb+{+, or
