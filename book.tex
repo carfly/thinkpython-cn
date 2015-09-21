@@ -905,7 +905,6 @@ Figure~\ref{fig.interpret} shows the structure of an interpreter.
 将高级语言处理成低级语言有两种程序：{\bf 解释器（interpreters）}和{\bf 编译器（compilers）}。
 解释器读高级语言程序并且执行它，也就是说它按照程序说的去做。
 它一次只处理程序的一小段，读一行，执行计算，如此交替进行。
-% 舍弃逐字直译，表达原文意思。因alternatively的意义，read lines此处的确是读一行的意思。
 图~\ref{fig.interpret} 展示了一个解释器的结构。
 
 \begin{figure}
@@ -1201,7 +1200,6 @@ impossible, whatever remains, however improbable, must be the truth.''
 如果你的假设是错误的，你就不得不再提一个新的想法。
 如夏洛克·福尔摩斯所指出的：``当你排除了所有的不可能，无论剩下的是什么，
 不管多么难以置信，一定是真相。''（阿瑟·柯南·道尔，{\em 《四签名》}）
-% improbable不应当翻译为不可能，福尔摩斯及其作者是中文读者耳熟能详的人物，应加以翻译
 
 For some people, programming and debugging are the same thing.  That
 is, programming is the process of gradually debugging a program until
@@ -3008,7 +3006,7 @@ any number of statements.
 函数定义的第一行被称作{\bf 函数头（header）}；
 其余部分被称作{\bf 函数体（body）}。
 函数体必须以冒号结尾，函数体必须是缩进的。
-按照惯例，缩进经常是4个空格（见\ref{editor}节）。
+按照惯例，缩进经常是4个空格（见~\ref{editor}节）。
 函数体能包含任意条语句。
 
 The strings in the print statements are enclosed in double
@@ -4939,7 +4937,6 @@ Solution: \url{http://thinkpython.com/code/pie.py}.
 
 解答在：\url{http://thinkpython.com/code/pie.py}。
 
-%Last time
 \end{exercise}
 
 \begin{exercise}
@@ -4953,14 +4950,25 @@ curves.  Design a font that can be drawn with a minimal number of
 basic elements and then write functions that draw letters of the
 alphabet.
 
+字母表中的字母可以由少量基本元素构成，例如竖线和横线，以及一些曲线。
+设计一种可以经由最少的基本元素写出的字体，然后编写能画出各个字母的函数。
+
 You should write one function for each letter, with names
 \verb"draw_a", \verb"draw_b", etc., and put your functions
 in a file named {\tt letters.py}.  You can download a
 ``turtle typewriter'' from \url{http://thinkpython.com/code/typewriter.py}
 to help you test your code.
 
+你应当为每个字母写一个函数，起名为\verb"draw_a"，\verb"draw_b"等等，
+然后将你的函数放在一个名为{\tt letters.py}的文件里。
+你可以从\url{http://thinkpython.com/code/typewriter.py}
+下载一个``海龟打字员''来帮你测试代码。
+
 Solution: \url{http://thinkpython.com/code/letters.py}, also requires
 \url{http://thinkpython.com/code/polygon.py}.
+
+解答在：\url{http://thinkpython.com/code/letters.py}，
+同时需要\url{http://thinkpython.com/code/polygon.py}。
 
 \end{exercise}
 
@@ -4971,6 +4979,10 @@ write a program that draws an Archimedian spiral (or one of the other
 kinds).  Solution: \url{http://thinkpython.com/code/spiral.py}.
 \index{spiral}
 \index{Archimedian spiral} 
+
+上\url{http://en.wikipedia.org/wiki/Spiral}阅读螺线的相关知识；
+然后编写一个绘制阿基米德螺线（或者其他种类的螺线）的程序。
+解答在：\url{http://thinkpython.com/code/spiral.py}。
 
 \end{exercise}
 
@@ -4986,7 +4998,8 @@ when the first operand is divided by the second.  In Python, the
 modulus operator is a percent sign (\verb"%").  The syntax is the same
 as for other operators:
 
-{\bf 求余运算符（modulus operator）}对整数进行运算并且产生第一个运算数和第二个的余数。
+{\bf 求余运算符（modulus operator）}对整数进行运算，
+产生第一个运算数除以第二个所得的余数。
 在Python中，求余运算符是一个百分号（\verb"%"）。
 语法和其它运算符相同：
 
@@ -5001,7 +5014,7 @@ as for other operators:
 %
 So 7 divided by 3 is 2 with 1 left over.
 
-因此7被3除得2剩余1.
+因此7除以3得2余1.
 
 The modulus operator turns out to be surprisingly useful.  For
 example, you can check whether one number is divisible by another---if
@@ -5017,8 +5030,8 @@ or digits from a number.  For example, {\tt x \% 10} yields the
 right-most digit of {\tt x} (in base 10).  Similarly {\tt x \% 100}
 yields the last two digits.
 
-同时，你能获得一个数的最右一位或者各位的数字。
-例如{\tt x \% 10}产生{\tt x}的最右一位数字（以10为底）。
+此外，你也能获得一个数的最右一位或者各位的数字。
+例如{\tt x \% 10}产生{\tt x}的最右一位数字（十进制中）。
 相似的，{\tt x \% 100}产生最后两位数字。
 
 
@@ -5175,15 +5188,15 @@ statement gets executed.  If not, nothing happens.
 \index{statement!compound}
 
 {\tt if}之后的布尔表达式被称作{\bf 条件（condition）}。
-如果它为真，则缩进的语句被执行。
-如果不是，则什么也不好发生。
+如果它为真，则缩进的语句会被执行。
+如果不是，则什么也不会发生。
 
 {\tt if} statements have the same structure as function definitions:
 a header followed by an indented body.  Statements like this are
 called {\bf compound statements}.
 
-{\tt if}和函数定义有相同的结构：一个头跟着一个缩进的体。
-类似的语句被称作{\bf 合成语句（compound statements）}。
+{\tt if}语句和函数定义有相同的结构：一个语句头跟着一个缩进的语句体。
+类似的语句被称作{\bf 复合语句（compound statements）}。
 
 There is no limit on the number of statements that can appear in
 the body, but there has to be at least one.
@@ -5193,9 +5206,9 @@ case, you can use the {\tt pass} statement, which does nothing.
 \index{pass statement}
 \index{statement!pass}
 
-体中可出现的语句数目没有限制，但是至少有一个。
-有时候，没有任何语句的体会有用（通常对于你还没写的代码作一个占位）。
-那样，你可以使用{\tt pass}，它什么也不做。
+语句体中可出现的语句数目没有限制，但是至少得有一个。
+偶尔，一条语句都没有的语句体也是有用的（通常是为你还没写的代码占一个位子）。
+这种情况下，你可以使用{\tt pass}语句，它什么也不做。
 
 \begin{verbatim}
 if x < 0:
@@ -5214,7 +5227,7 @@ in which there are two possibilities and the condition determines
 which one gets executed.  The syntax looks like this:
 
 {\tt if}语句的第二种形式是{\bf 二选一执行（alternative execution）}，
-此时有两个可能，条件决定哪一个被执行。
+此时有两个可能的选择，由条件决定执行哪一个。
 语法看起来是这样：
 
 \begin{verbatim}
@@ -5234,9 +5247,9 @@ the alternatives will be executed.  The alternatives are called
 
 如果{\tt x}除以2的余数是0，那么我们知道{\tt x}是偶数，
 并且程序对这一效果显示一个信息。
-如果条件为假，第2个语句集合被执行。
-既然条件只能是真或假，两个选择之一必被执行。
-此选择被称作{\bf 分支（branches）}，因为它们是执行流的分支。
+如果条件为假，执行第二段语句。
+既然条件要么为真要么为假，两个选择之一必被执行。
+这些选择被称作{\bf 分支（branches）}，因为它们是执行流的分支。
 
 \section{Chained conditionals 链式条件}
 \index{chained conditional}
@@ -5246,8 +5259,8 @@ Sometimes there are more than two possibilities and we need more than
 two branches.  One way to express a computation like that is a {\bf
 chained conditional}:
 
-有时有超过两个可能的条件并且我们需要多余两个的分支。
-一种表示像这样的计算的方法是{\bf 链式条件（chained conditional）}：
+有时有超过两个可能的情况，于是我们需要多于两个的分支。
+表示像这样的计算的方法之一是{\bf 链式条件（chained conditional）}：
 
 \begin{verbatim}
 if x < y:
@@ -5265,9 +5278,9 @@ at the end, but there doesn't have to be one.
 \index{elif keyword}
 \index{keyword!elif}
 
-{\tt elif}是``else if''的缩写。再次，必有一个分支被执行。 
+{\tt elif}是``else if''的缩写。同样地，必有一个分支被执行。 
 {\tt elif}语句的数目没有限制。如果有一个{\tt else}从句，
-它必须是在最后，但不是必须要有一个。
+它必须是在最后，但并不是必须要有一个。
 
 \begin{verbatim}
 if choice == 'a':
@@ -5284,9 +5297,9 @@ true, the corresponding branch executes, and the statement
 ends.  Even if more than one condition is true, only the
 first true branch executes.  
 
-每个条件被按顺序检测。如果第一个为假，检测下一个，以此类推。
+按顺序检测逐个条件，如果第一个为假，检测下一个，以此类推。
 如果它们中有一个为真，相应的分支被执行，并且语句结束。
-即使不止一个条件为真，只执行第一个为真的分支。
+即便有不止一个条件为真，也只执行第一个为真的分支。
 
 \section{Nested conditionals 嵌套条件}
 \index{nested conditional}
@@ -5295,7 +5308,7 @@ first true branch executes.
 One conditional can also be nested within another.  We could have
 written the trichotomy example like this:
 
-一个条件可以嵌到另一个里面。我们可以像这样写三分的例子：
+一个条件可以嵌到另一个里面。一分为三的例子我们可以这样写：
 
 \begin{verbatim}
 if x == y:
@@ -5314,21 +5327,21 @@ own.  Those two branches are both simple statements,
 although they could have been conditional statements as well.
 
 外面的条件包括两个分支。第一个分支包括一条简单的语句。
-第二个分支包括另外一个{\tt if}语句，它有自己的两个分支。
-那两个分支都是简单的语句，当然它们也能有条件语句。
+第二个分支又包括一个{\tt if}语句，它有自己的两个分支。
+那两个分支都是简单的语句，当然它们也可以是条件语句。
 
 Although the indentation of the statements makes the structure
 apparent, {\bf nested conditionals} become difficult to read very
 quickly. In general, it is a good idea to avoid them when you can.
 
 虽然语句的缩进使得结构很明显，但是{\bf 嵌套条件（nested conditionals）}
-很难快速的读它们。一般来讲，当你可以的时候，避免使用嵌套条件是个好办法。
+仍然很难快速地阅读。一般来讲，当你可以的时候，避免使用嵌套条件是个好办法。
 
 Logical operators often provide a way to simplify nested conditional
 statements.  For example, we can rewrite the following code using a
 single conditional:
 
-逻辑运算符经常提供一个化简条件语句的方法。
+逻辑运算符经常提供一个化简嵌套条件语句的方法。
 例如，我们可以用一个单一条件重写下面的代码：
 
 \begin{verbatim}
@@ -5340,8 +5353,8 @@ if 0 < x:
 The {\tt print} statement is executed only if we make it past both
 conditionals, so we can get the same effect with the {\tt and} operator:
 
-只有我们通过两个条件的时候，{\tt print}语句才被执行，
-因此我们能够获得和{\tt and}运算符相同的效果：
+只有我们通过了两个条件检测的时候，{\tt print}语句才被执行，
+因此我们可以用{\tt and}运算符得到相同的效果：
 
 \begin{verbatim}
 if 0 < x and x < 10:
@@ -5360,8 +5373,8 @@ magical things a program can do.
 For example, look at the following function:
 
 一个函数调用另一个是合法的，一个函数调用它自己也是合法的。
-为什么这一个和好事情可能不明显，但它是一个程序能做的最神奇的东西之一。
-例如，看一下下面的程序：
+这是一件好事的原因可能不明显，但它实际上成为了程序能做到的最神奇的事情之一。
+例如，看一下这个程序：
 
 \begin{verbatim}
 def countdown(n):
@@ -5456,7 +5469,7 @@ called {\bf recursion}.
 As another example, we can write a function that prints a
 string {\tt n} times.
 
-作为另一个例子，我们可以写一个函数，其打印一个字符串{\tt n}次。
+再举一例，我们可以写一个函数，其打印一个字符串{\tt n}次。
 
 \begin{verbatim}
 def print_n(s, n):
@@ -5473,7 +5486,7 @@ lines of the function are not executed.
 \index{statement!return}
 
 如果{\tt n <= 0}，{\tt return}语句退出函数。
-执行流马上返回到调用者，函数剩余的行不被执行。
+执行流马上返回到调用者，函数剩余的行不会被执行。
 
 The rest of the function is similar to {\tt countdown}: if {\tt n} is
 greater than 0, it displays {\tt s} and then calls itself to display
@@ -5481,7 +5494,7 @@ greater than 0, it displays {\tt s} and then calls itself to display
 is {\tt 1 + (n - 1)}, which adds up to {\tt n}.
 
 函数的其余部分和{\tt countdown}相似：
-如果{\tt n}比0大，它显示{\tt s}并调用它自己来额外显示{\tt s} $n-1$次。
+如果{\tt n}比0大，它显示{\tt s}并调用它自己，再显示{\tt s} $n-1$次。
 因此，输出的行数是{\tt 1 + (n - 1)}，加起来是{\tt n}。
 
 For simple examples like this, it is probably easier to use a {\tt
@@ -5490,7 +5503,7 @@ with a {\tt for} loop and easy to write with recursion, so it is
 good to start early.
 
 对于像这样简单的例子，使用{\tt for}循环可能更容易。
-但是我们后面将看到一些用一个{\tt for}循环很难写的例子，
+但是我们后面将看到一些用{\tt for}循环很难写，用递归却很容易的例子，
 所以早点儿开始有好处。
 
 
@@ -5504,22 +5517,22 @@ In Section~\ref{stackdiagram}, we used a stack diagram to represent
 the state of a program during a function call.  The same kind of
 diagram can help interpret a recursive function.
 
-在\ref{stackdiagram}节中，我们用一个栈图表示函数调用期间程序的状态。
-相同类型的图能帮助理解一个递归函数。
+在~\ref{stackdiagram}节中，我们用栈图表示函数调用期间程序的状态。
+同样的图能帮我们理解一个递归函数。
 
 Every time a function gets called, Python creates a new function
 frame, which contains the function's local variables and parameters.
 For a recursive function, there might be more than one frame on the
 stack at the same time.
 
-一个函数每次被调用，Python生成一个新的函数框架，
+每当一个函数被调用时，Python生成一个新的函数框架，
 其包括函数的局部变量和形参。
-对于一个递归函数，在栈上可能同时有超过一个的框架。
+对于一个递归函数，在栈上可能同时有多个框架。
 
 Figure~\ref{fig.stack2} shows a stack diagram for {\tt countdown} called with
 {\tt n = 3}.
 
-图\ref{fig.stack2}展示了一个对于用{\tt n = 3}调用{\tt countdown}的栈图。
+图~\ref{fig.stack2}展示了一个以{\tt n = 3}调用{\tt countdown}的栈图。
 
 \begin{figure}
 \centerline
@@ -5535,8 +5548,8 @@ It is empty because we did not create any variables in
 \index{base case}
 \index{recursion!base case}
 
-通常，栈顶是\verb"__main__"的框架。
-因为我们在\verb"__main__"中没有生成任何变量也没有传递任何实参给它，
+通常，栈顶是\verb"__main__"框架。
+因为我们在\verb"__main__"中没有创建任何变量也没有传递任何实参给它，
 所以它是空的。
 
 The four {\tt countdown} frames have different values for the
@@ -5544,19 +5557,24 @@ parameter {\tt n}.  The bottom of the stack, where {\tt n=0}, is
 called the {\bf base case}.  It does not make a recursive call, so
 there are no more frames.
 
-对于形参{\tt n}，4个{\tt countdown}框架有不同的值。
-栈底，其中{\tt n=0}，被{\bf 基本条件（base case）}调用。
+对于形参{\tt n}，四个{\tt countdown}框架有不同的值。
+{\tt n=0}的栈底，被称作{\bf 基础情形（base case）}。
 它不再进行递归调用了，所以没有更多的框架了。
 
 \begin{exercise}
 Draw a stack diagram for \verb"print_n" called with
 \verb"s = 'Hello'" and {\tt n=2}.
+
+画一个以\verb"s = 'Hello'"和{\tt n=2}调用\verb"print_n"的栈图。
 \end{exercise}
 
 \begin{exercise}
 Write a function called \verb"do_n" that takes a function
 object and a number, {\tt n}, as arguments, and that calls
 the given function {\tt n} times.
+
+写一个名为\verb"do_n"的函数，接受一个函数对象和一个数{\tt n}作为实参，
+能够调用指定的函数{\tt n}次。
 \end{exercise}
 
 
@@ -5573,9 +5591,9 @@ recursive calls forever, and the program never terminates.  This is
 known as {\bf infinite recursion}, and it is generally not
 a good idea.  Here is a minimal program with an infinite recursion:
 
-如果一个递归从不会到达基本条件，它永远进行递归调用，
-并且程序从来不会终止。这被称作{\bf 无限递归（infinite recursion）}，
-通常这不是一个好主意。这是一个具有无限递归的微型程序：
+如果一个递归永不会到达基础情形，它将永远进行递归调用，
+并且程序永远不会终止。这被称作{\bf 无限递归（infinite recursion）}，
+通常这不是一个好主意。这是最小的具有无限递归的程序：
 
 \begin{verbatim}
 def recurse():
@@ -5607,7 +5625,7 @@ previous chapter.  When the error occurs, there are 1000
 {\tt recurse} frames on the stack!
 
 此回溯比我们在前面章节看到的大一点。
-当错误出现的时候，在栈上有1000个递归框架。
+当错误出现的时候，在栈上有1000个递归框架！
 
 \section{Keyboard input 键盘输入}
 \index{keyboard input}
@@ -5629,10 +5647,10 @@ returns what the user typed as a string.
 \index{raw\_input function}
 \index{function!raw\_input}
 
-Python 2提供了一个被称为\verb"raw_input"的内建函数，从键盘获得输入。
+Python 2提供了一个叫做\verb"raw_input"的内建函数，从键盘获得输入。
 在Python 3中，它被称作{\tt input}。
-当此函数被调用时，程序停下来并且等待用户键入一些东西。
-当用户按回车时，程序恢复执行并且\verb"raw_input"作为字符串返回用户加入的内容。
+当此函数被调用时，程序停下来并且等待用户键入。
+当用户按回车时，程序恢复执行并且\verb"raw_input"以字符串形式返回用户键入的内容。
 
 \begin{verbatim}
 >>> input = raw_input()
@@ -5646,8 +5664,8 @@ prompt telling the user what to input.  \verb"raw_input" can take a
 prompt as an argument:
 \index{prompt}
 
-在从用户哪儿获得输入之前，打印一个提示告诉用户输入什么是个好办法。
-\verb"raw_input"能接受一个提示作为实参。
+在从用户那儿获得输入之前，打印一个提示告诉用户输入什么是个好办法。
+\verb"raw_input"把提示语作为实参。
 
 \begin{verbatim}
 >>> name = raw_input('What...is your name?\n')
@@ -5662,9 +5680,9 @@ which is a special character that causes a line break.
 That's why the user's input appears below the prompt.
 \index{newline}
 
-提示最后的序列\verb"\n"表示一个{\bf 新行（newline）}，
-它是一个特别的字符，引起一个断行。
-这也是为什么用户的输入出现在提示符的下面。
+提示的最后这一段\verb"\n"表示一个{\bf 新行（newline）}，
+它是一个特别的字符，会造成换行。
+这也是用户的输入出现在提示符下面的原因。
 
 If you expect the user to type an integer, you can try to convert
 the return value to {\tt int}:
@@ -5683,7 +5701,7 @@ What...is the airspeed velocity of an unladen swallow?
 But if the user types something other than a string of digits,
 you get an error:
 
-但是，如果用户键入非数字字符串的其它东西，你获得一个错误：
+但是，如果用户键入不是数字构成的字符串，你获得一个错误：
 
 \begin{verbatim}
 >>> speed = raw_input(prompt)
@@ -5697,7 +5715,7 @@ We will see how to handle this kind of error later.
 \index{ValueError}
 \index{exception!ValueError}
 
-我们后面将会看到如何处理这类错误。
+我们后面将会看到处理这类错误的方法。
 
 \section{Debugging 调试}
 \label{whitespace}
@@ -5710,18 +5728,18 @@ when there are many frames on the stack.  The most
 useful parts are usually:
 
 当一个错误发生时，Python显示的回溯包含许多信息，
-但是它可能被淹没了，特别是在栈上有有许多框架时。
+但是它可能让人抓狂，特别是在栈上有有许多框架时。
 最有用的部分通常是：
 
 \begin{itemize}
 
 \item What kind of error it was, and
 
-错误是哪类，以及
+\item 错误是哪类，以及
 
 \item Where it occurred.
 
-它发生在哪儿。
+\item 它发生在哪儿。
 
 \end{itemize}
 
@@ -5730,8 +5748,8 @@ gotchas.  Whitespace errors can be tricky because spaces and
 tabs are invisible and we are used to ignoring them.
 \index{whitespace}
 
-语法错误通常很容易被找到，但也有一些难度。
-空白分隔符错误很棘手，因为空格和制表符是不可见的而且我们会忽略它们。
+语法错误通常很容易被找到，但也有一些需要想想。
+空白分隔符错误很棘手，因为空格和制表符是不可见的而且我们习惯于忽略它们。
 
 \begin{verbatim}
 >>> x = 5
@@ -5750,10 +5768,10 @@ sometimes on a previous line.
 \index{error!runtime}
 \index{runtime error}
 
-在这个例子中，问题是第二行被一个空格缩进了。
+在这个例子中，问题在于第二行缩进了一个空格。
 但是错误信息指向{\tt y}，这是个误导。
-通常，错误信息指向被发现错误的地方，
-但是真实的错误可能在代码中的更早前的地方，
+通常，错误信息指向发现错误的地方，
+但是实际的错误可能发生在代码中的更早前的地方，
 有时在前一行。
 
 The same is true of runtime errors.  
@@ -5765,7 +5783,7 @@ to compute a signal-to-noise ratio in decibels.  The formula
 is $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$.  In Python,
 you might write something like this:
 
-假设你正试图给计算机键入一个信噪比。
+假设你正试图给计算机键入一个分贝信噪比。
 公式是$SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$。
 在Python中，你可能如此写：
 
@@ -5783,7 +5801,7 @@ But when you run it in Python 2, you get an error message.
 \index{OverflowError}
 
 但是，当你在Python 2中运行它的时候，
-你获得一个错误信息。
+你将获得一个错误信息。
 
 \begin{verbatim}
 Traceback (most recent call last):
@@ -5802,20 +5820,20 @@ and noise power with floating-point values.
 \index{division!floor}
 
 该错误信息指向第5行，但是那一行没什么错误。
-为了找到真实的错误，打印{\tt ratio}也许会有用，它变成了0。
+为了找到真正的错误，打印{\tt ratio}也许会有用，它实际上是0。
 问题是在第4行，因为两个整数的除法是向下取整除。
-解决办法是用浮点值表示信号功率和噪声功率。
+解决办法是将信号功率和噪声功率用浮点值表示。
 
 In general, error messages tell you where the problem was discovered, 
 but that is often not where it was caused.
 
-通常，错误信息告诉你问题在哪儿发现的，但那经常并是非引起错误的地方。
+通常，错误信息会告诉你问题是在哪儿发现的，但那经常并非是引起错误的地方。
 
 In Python 3, this example does not cause an error; the division operator
 performs floating-point division even with integer operands.
 
-在Python 3中，此例不会引起一个错误。
-即使是对整数运算数，除法运算符执行浮点除
+在Python 3中，此例不会引起错误。
+即使是对整数运算数，除法运算符也执行浮点除。
 
 
 \section{Glossary 术语表}
@@ -5836,7 +5854,7 @@ number is divided by another.
 \item[relational operator（关系运算符）:] One of the operators that compares
 its operands: {\tt ==}, {\tt !=}, {\tt >}, {\tt <}, {\tt >=}, and {\tt <=}.
 
-\item[logical operator:] One of the operators that combines boolean
+\item[logical operator（逻辑运算符）:] One of the operators that combines boolean
 expressions: {\tt and}, {\tt or}, and {\tt not}.
 
 \item[conditional statement（条件语句）:]  A statement that controls the flow of
@@ -5848,7 +5866,7 @@ execution depending on some condition.
 that determines which branch is executed.
 \index{condition}
 
-\item[compound statement（合成语句）:]  A statement that consists of a header
+\item[compound statement（复合语句）:]  A statement that consists of a header
 and a body.  The header ends with a colon (:).  The body is indented
 relative to the header.
 \index{compound statement}
@@ -5871,9 +5889,10 @@ in one of the branches of another conditional statement.
 currently executing.
 \index{recursion}
 
-\item[base case（基本条件）:]  A conditional branch in a
+\item[base case（基础情形）:]  A conditional branch in a
 recursive function that does not make a recursive call.
 \index{base case}
+%可能更应当翻译为“递归基础”，我考虑一阵子再决定
 
 \item[infinite recursion（无限递归）:]  A recursion that doesn't have a
 base case, or never reaches it.  Eventually, an infinite recursion
@@ -5881,6 +5900,7 @@ causes a runtime error.
 \index{infinite recursion}
 
 \end{description}
+%Last time
 
 \section{Exercises}
 
@@ -6856,8 +6876,8 @@ we can {\em miss} the base case and recurse forever.
 \index{recursion!infinite}
 
 看上去像是一个无限循环。但那是如何发生的的？
-有一个基本条件---当{\tt n == 0}时。
-但是如果{\tt n}不是一个整数，我们会错过此基本条件并永远递归下去。
+有一个基础情形---当{\tt n == 0}时。
+但是如果{\tt n}不是一个整数，我们会错过此基础情形并永远递归下去。
 
 In the first recursive call, the value of {\tt n} is 0.5.
 In the next, it is -0.5.  From there, it gets smaller
@@ -6906,7 +6926,7 @@ second catches negative integers.  In both cases, the program prints
 an error message and returns {\tt None} to indicate that something
 went wrong:
 
-第一个基本条件处理非整数，第二个抓住负整数。
+第一个基础情形处理非整数，第二个抓住负整数。
 在这两个条件中，程序打印一个错误信息并返回{\tt None}以指明一些东西是错误的：
 
 \begin{verbatim}
@@ -21817,7 +21837,7 @@ function or method to return without making a recursive invocation.
 If not, then you need to rethink the algorithm and identify a base
 case.
 
-如果你怀疑一个函数或者方法造成了无限递归，确保函数体有一个初始条件。也就是有一
+如果你怀疑一个函数或者方法造成了无限递归，确保函数体有一个基础情形。也就是有一
 些条件能够直接返回值而不会再递归调用下去。如果没有，你需要重新思考算法找到一个
 初始条件。
 
@@ -21828,9 +21848,9 @@ a few lines of output every time the function or method is invoked,
 and you will see the parameters.  If the parameters are not moving
 toward the base case, you will get some ideas about why not.
 
-如果有了初始条件了但是程序还是没有到达它，在函数或方法的开始加入一个{\tt print}
+如果有了基础情形了但是程序还是没有到达它，在函数或方法的开始加入一个{\tt print}
 语句来打印参数。现在当你运行程序，每次递归调用你都能看到几行输出，你可以看到参
-数。如果参数没有趋于初始条件，你需要想想为什么。
+数。如果参数没有趋于基础情形，你需要想想为什么。
 
 \subsubsection{Flow of Execution 执行流}
 \index{flow of execution}
