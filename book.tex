@@ -5900,7 +5900,6 @@ causes a runtime error.
 \index{infinite recursion}
 
 \end{description}
-%Last time
 
 \section{Exercises}
 
@@ -5910,9 +5909,13 @@ causes a runtime error.
 Fermat's Last Theorem says that there are no integers
 $a$, $b$, and $c$ such that
 
+费马最后定理的内容是，没有任何整数$a$，$b$，$c$能够使
+
 \[ a^n + b^n = c^n \]
 %
 for any values of $n$ greater than 2.
+
+对于任何大于2的$n$成立。
 
 \begin{enumerate}
 
@@ -5921,15 +5924,26 @@ parameters---{\tt a}, {\tt b}, {\tt c} and {\tt n}---and
 that checks to see if Fermat's theorem holds.  If
 $n$ is greater than 2 and it turns out to be true that 
 
+写一个名为\verb"check_fermat"的函数，其接受四个形参---{\tt a}，{\tt b}，{\tt c}以及{\tt n}
+---然后检查费马最后定理是否成立。
+如果$n$大于2且等式
+
 \[a^n + b^n = c^n \]
 %
+
 the program should print, ``Holy smokes, Fermat was wrong!''
 Otherwise the program should print, ``No, that doesn't work.''
+
+成立，程序会输出``Holy smokes, Fermat was wrong!''。
+否则程序输出``No, that doesn't work.''。
 
 \item Write a function that prompts the user to input values
 for {\tt a}, {\tt b}, {\tt c} and {\tt n}, converts them to
 integers, and uses \verb"check_fermat" to check whether they
 violate Fermat's theorem.
+
+写一个函数提示用户输入{\tt a}，{\tt b}，{\tt c}以及{\tt n}的值，将它们转换成整数，
+然后使用\verb"check_fermat"检查他们是否会违反费马最后定理。
 
 \end{enumerate}
 
@@ -5946,11 +5960,20 @@ not be able to get the short sticks to meet in the middle.  For any
 three lengths, there is a simple test to see if it is possible to form
 a triangle:
 
+如果你有三根棍子，你有可能将它们组成三角形，也可能不行。
+比如，如果一根棍子是12英寸长，其它两根都是1英寸长，显然
+你不可能让两根短的在中间接合。对于任意三个长度，有一个简单的测试
+它们能否组成三角形的办法：
+
 \begin{quotation}
 If any of the three lengths is greater than the sum of the other
   two, then you cannot form a triangle.  Otherwise, you
   can.  (If the sum of two lengths equals the third, they form
     what is called a ``degenerate'' triangle.)
+
+如果三个长度中的任意一个超过了其它二者之和，你就不能组成三角形。否则你就可以
+组成三角形。（如果两个长度之和等于第三个，它们就组成所谓``退化的''三角形。）
+
 \end{quotation}
 
 \begin{enumerate}
@@ -5960,9 +5983,15 @@ If any of the three lengths is greater than the sum of the other
   on whether you can or cannot form a triangle from sticks with the
   given lengths.
 
+写一个名为\verb"is_triangle"的函数，其接受三个整数作为形参，
+能够根据给定的三个长度的棍子能否构成三角形来打印``Yes''或``No''。
+
 \item Write a function that prompts the user to input three stick
   lengths, converts them to integers, and uses \verb"is_triangle" to
   check whether sticks with the given lengths can form a triangle.
+
+写一个函数，提示用户输入三根棍子的长度，将它们转换成整数，然后使用
+\verb"is_triangle"检查给定长度的棍子能否构成三角形。
 
 \end{enumerate}
 
@@ -5971,10 +6000,14 @@ If any of the three lengths is greater than the sum of the other
 The following exercises use TurtleWorld from Chapter~\ref{turtlechap}:
 \index{TurtleWorld}
 
+后面的习题要用到第~\ref{turtlechap}章中的TurtleWorld：
+
 \begin{exercise}
 
 Read the following function and see if you can figure out
 what it does.  Then run it (see the examples in Chapter~\ref{turtlechap}).
+
+阅读如下的函数，看看你能否看懂它是做什么的。然后运行它（见第~\ref{turtlechap}章的例子）。
 
 \begin{verbatim}
 def draw(t, length, n):
@@ -6007,26 +6040,46 @@ The Koch curve is a fractal that looks something like
 Figure~\ref{fig.koch}.  To draw a Koch curve with length $x$, all you
 have to do is
 
+Koch曲线是一个看起来类似图~\ref{fig.koch}的分形。想要画一个长度为$x$的Koch曲线，
+你只需要
+
 \begin{enumerate}
 
 \item Draw a Koch curve with length $x/3$.
 
+    画一个长度为$x/3$的Koch曲线。
+
 \item Turn left 60 degrees.
 
+    左转60度。
+
 \item Draw a Koch curve with length $x/3$.
+
+    画一个长度为$x/3$的Koch曲线。
 
 \item Turn right 120 degrees.
 
+    右转60度。
+
 \item Draw a Koch curve with length $x/3$.
+
+    画一个长度为$x/3$的Koch曲线。
 
 \item Turn left 60 degrees.
 
+    左转60度。
+
 \item Draw a Koch curve with length $x/3$.
+
+    画一个长度为$x/3$的Koch曲线。
 
 \end{enumerate}
 
 The exception is if $x$ is less than 3: in that case,
 you can just draw a straight line with length $x$.
+
+例外情况是$x$小于3的情形：此时，你可以仅仅
+画一道长度为$x$的直线。
 
 \begin{enumerate}
 
@@ -6034,19 +6087,30 @@ you can just draw a straight line with length $x$.
 a length as parameters, and that uses the turtle to draw a Koch
 curve with the given length.
 
+    写一个名为{\tt koch}的函数，接受一个海龟和一个长度作为形参，然后
+    使用海龟画一条给定长度的Koch曲线。
+
 \item Write a function called {\tt snowflake} that draws three
 Koch curves to make the outline of a snowflake.
 
+    写一个名为{\tt snowflake}的函数，其能够画出三条Koch曲线，以构成雪花的轮廓。
+
 Solution: \url{http://thinkpython.com/code/koch.py}.
+
+    解答在：\url{http://thinkpython.com/code/koch.py}。
 
 \item The Koch curve can be generalized in several ways.  See
 \url{http://en.wikipedia.org/wiki/Koch_snowflake} for examples and
 implement your favorite.
 
+    Koch曲线能够以多种方式被泛化，
+    见\url{http://en.wikipedia.org/wiki/Koch_snowflake}的例子，并实现你最喜欢的一个。
+
 \end{enumerate}
 \end{exercise}
 
 
+%Last time
 \chapter{Fruitful functions 有返回值的函数}
 \label{fruitchap}
 
