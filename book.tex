@@ -905,8 +905,7 @@ Figure~\ref{fig.interpret} shows the structure of an interpreter.
 将高级语言处理成低级语言有两种程序：{\bf 解释器（interpreters）}和{\bf 编译器（compilers）}。
 解释器读高级语言程序并且执行它，也就是说它按照程序说的去做。
 它一次只处理程序的一小段，读一行，执行计算，如此交替进行。
-% 舍弃逐字直译，表达原文意思。因alternatively的意义，read lines此处的确是读一行的意思。
-图~\ref{fig.interpret} 展示了一个解释器的结构。
+图\ref{fig.interpret} 展示了一个解释器的结构。
 
 \begin{figure}
 \centerline
@@ -928,7 +927,7 @@ Figure~\ref{fig.compile} shows the structure of a compiler.
 在这种情况下，高级语言程序被称为{\bf 源代码（source code）}，
 翻译后的程序被称为{\bf 目标代码（object code）}或者{\bf 可执行程序（executable）}。
 一旦一个程序被编译，你可以重复的执行它无需再翻译。
-图~\ref{fig.compile} 展示了一个编译器的结构。
+图\ref{fig.compile} 展示了一个编译器的结构。
 
 \begin{figure}
 \centerline
@@ -1201,7 +1200,6 @@ impossible, whatever remains, however improbable, must be the truth.''
 如果你的假设是错误的，你就不得不再提一个新的想法。
 如夏洛克·福尔摩斯所指出的：``当你排除了所有的不可能，无论剩下的是什么，
 不管多么难以置信，一定是真相。''（阿瑟·柯南·道尔，{\em 《四签名》}）
-% improbable不应当翻译为不可能，福尔摩斯及其作者是中文读者耳熟能详的人物，应加以翻译
 
 For some people, programming and debugging are the same thing.  That
 is, programming is the process of gradually debugging a program until
@@ -1481,13 +1479,13 @@ to functions in Chapter~\ref{funcchap}.
 \index{function} \index{print function} \index{Python 3}
 
 括号指出{\tt print}是一个函数。
-我们将在第~\ref{funcchap}章接触函数。
+我们将在第\ref{funcchap}章接触函数。
 
 For the rest of this book, I'll use the print statement.  If you
 are using Python 3, you will have to translate.  But other than
 that, there are very few differences we have to worry about.
 
-对于本书剩余的部分，我将使用打印语句（译者注：而非函数）。
+对于本书剩余的部分，我将使用打印语句\footnote{译者注：而非函数}。
 如果你正在使用Python 3，你将必须进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
@@ -1914,7 +1912,7 @@ Figure~\ref{fig.state2} shows the result of the previous example.
 
 在纸上表示变量的方法通常是写一个变量名跟着一个箭头指向变量的值。
 这种图被称为{\bf 状态图（state diagram）}，因为它展示了每个变量所处的状态（将其想为变量的心理状态）。
-图~\ref{fig.state2}展示了前面例子的的结果。
+图\ref{fig.state2}展示了前面例子的的结果。
 
 \begin{figure}
 \centerline
@@ -2081,7 +2079,7 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 \index{operator!bitwise}
 
 在一些其它语言中，\verb"^"表示指数运算，
-但是在Python中，它表示XOR（译者注：异或）位运算。
+但是在Python中，它表示XOR\footnote{译者注：异或}位运算。
 本书不包括位运算符，
 但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容。
 
@@ -2832,7 +2830,8 @@ known as a period).  This format is called {\bf dot notation}.
 
 该模块对象包括定义在模块内的函数和变量。
 为了访问其中一个函数，你必须指出该模块的名字以及函数名，
-并以点（即（译者注：英文中的）句号）分割。
+并以点（即句号\footnote{译者注：这里指英文中的句号，在中文语境中这句话
+原本不必要译出，但作者写了，删掉似又不尊重。}）分割。
 这种格式被称作{\bf 点标记法（dot notation）}。
 
 \begin{verbatim}
@@ -3392,7 +3391,7 @@ previous example is shown in Figure~\ref{fig.stack}.
 
 每个函数用一个{\bf 框架（frame）}表示。
 一个框架是一个盒子，函数名写在旁边，形参以及函数内部的变量写在里面。
-前面例子的栈图如图~\ref{fig.stack}所示。
+前面例子的栈图如图\ref{fig.stack}所示。
 
 \begin{figure}
 \centerline
@@ -3905,7 +3904,6 @@ Solution: \url{http://thinkpython.com/code/do_four.py}.
 
 \end{exercise}
 
-%Last time
 
 
 \begin{exercise}
@@ -3981,7 +3979,7 @@ Credit: This exercise is based on an exercise in Oualline, {\em
 感谢：这道习题基于Oualline的一道习题，{\em Practical C Programming, Third Edition}, O'Reilly Media, 1997。
 
 \end{exercise}
-%Last time
+
 \chapter{Case study: interface design 案例学习：接口设计}
 \label{turtlechap}
 Code examples from this chapter are available from
@@ -4005,12 +4003,12 @@ drawing lines by steering turtles around the screen.
 \index{package}
 
 一个{\bf 包（package）}是一套模块，{\tt TurtleWorld}是Swampy中的一个模块，
-其提供了一组通过在屏幕上转向海龟的画线函数。
+其提供了一组通过在屏幕上指引海龟来画线的函数。
  
 If Swampy is installed as a package on your system, you can import
 {\tt TurtleWorld} like this:
 
-如果Swampy作为包被安装在了你的系统上，你可以像这样导入{\tt TurtleWorld}：
+如果Swampy包被安装在了你的系统上，你可以像这样导入{\tt TurtleWorld}：
 
 \begin{verbatim}
 from swampy.TurtleWorld import *
@@ -4023,7 +4021,7 @@ files, or add that directory to Python's search path.  Then you can import
 
 如果你下载了Swampy模块但是没有作为包安装，
 你要么可以在含有Swampy的文件夹里工作，或者将此目录增加到Python的搜索路径。
-然后你可以像这样导入{\tt TurtleWorld}：
+然后你就可以像这样导入{\tt TurtleWorld}：
 
 \begin{verbatim}
 from TurtleWorld import *
@@ -4036,12 +4034,12 @@ at \url{http://thinkpython.com/swampy}.
 
 安装和设置Python搜索路径的细节依赖于你的系统，
 所以我不在此包括那些细节了，
-我将试着在\url{http://thinkpython.com/swampy}维护多个系统的最新的信息。
+我将试着在\url{http://thinkpython.com/swampy}保留几个系统的最新的信息。
 
 Create a file named {\tt mypolygon.py} and type in the following
 code:
 
-生成一个叫{\tt mypolygon.py}的文件并键入如下代码：
+创建一个叫{\tt mypolygon.py}的文件并键入如下代码：
 
 \begin{verbatim}
 from swampy.TurtleWorld import *
@@ -4058,14 +4056,14 @@ in the {\tt swampy} package.
 \index{import statement}
 \index{statement!import}
 
-第一行在{\tt swampy}里从{\tt TurtleWorld}模块导入内容。
+第一行从{\tt swampy}包里的{\tt TurtleWorld}模块导入所有内容。
 
 The next lines create a TurtleWorld assigned to {\tt world} and
 a Turtle assigned to {\tt bob}.  Printing {\tt bob} yields something
 like:
 
-接下来几行生成一个TurtleWorld赋给{\tt world}以及生成一个Turtle赋给{\tt bob}。
-打印{\tt bob}产生像下面这样的东西：
+接下来几行生成一个TurtleWorld，赋给{\tt world}，以及生成一个Turtle，赋给{\tt bob}。
+打印{\tt bob}会出现像下面这样的东西：
 
 \begin{verbatim}
 <TurtleWorld.Turtle instance at 0xb7bfbf4c>
@@ -4078,15 +4076,15 @@ as defined in module {\tt TurtleWorld}.  In this context,
 this Turtle is one of the set of possible Turtles.
 \index{instance}
 
-这意味着{\tt bob}指向一个如{\tt TurtleWorld}中定义的Turtle的{\bf 实例（instance）}。
+这意味着{\tt bob}指向一个Turtle的{\bf 实例（instance）}，其被定义在{\tt TurtleWorld}中。
 在此处，``实例''的意思是集合的一个成员，该Turtle是所有可能的Turtle构成的集合的一个元素。
 
 \verb"wait_for_user" tells TurtleWorld to wait for the user
 to do something, although in this case there's not much for
 the user to do except close the window.
 
-\verb"wait_for_user"告诉TurtleWorld等待用户做些什么，
-但是在此例中除了关闭窗口外用户也做不了其它的事情。
+\verb"wait_for_user"告诉TurtleWorld等待用户操作，
+尽管在此例中除了关闭窗口外用户也做不了其它的事情。
 
 TurtleWorld provides several
 turtle-steering functions: {\tt fd} and {\tt bk} for
@@ -4096,16 +4094,16 @@ either down or up; if the pen is down, the Turtle leaves
 a trail when it moves.  The functions {\tt pu} and {\tt pd}
 stand for ``pen up'' and ``pen down''.
 
-TurtleWorld提供几个海龟转向函数：
-{\tt fd}和{\tt bk}用于向前和向后，{\tt lt}和{\tt rt}是向左和向右。
-每个海龟都握有一支笔，要么放下，要么抬起。
+TurtleWorld提供几个海龟控制函数：
+{\tt fd}和{\tt bk}用于向前和向后，{\tt lt}和{\tt rt}是左转和右转。
+并且，每个海龟都握有一支笔，要么放下，要么抬起。
 如果笔被放下，该海龟留下它走过的痕迹。
 函数{\tt pu}和{\tt pd}代表``笔抬起''和``笔放下''。
 
 To draw a right angle, add these lines to the program
 (after creating {\tt bob} and before calling \verb"wait_for_user"):
 
-为了画一个向右的三角，在程序中加入这些代码
+为了画一个直角，在程序中加入这些代码
 （在生成{\tt bob}之后，调用\verb"wait_for_user"之前）：
 
 \begin{verbatim}
@@ -4122,8 +4120,8 @@ forward.  The second line tells him to turn left.
 When you run this program, you should see {\tt bob} move east and then
 north, leaving two line segments behind.
 
-当运行此程序时，你应该会看见{\tt bob}现象东移动，然后向北，
-在它后面留下两条线段。
+当运行此程序时，你应该会看见{\tt bob}先向东移动，然后向北，
+在身后留下两条线段。
 
 Now modify the program to draw a square.  Don't go on until
 you've got it working!
@@ -4139,7 +4137,7 @@ you've got it working!
 Chances are you wrote something like this (leaving out the code
 that creates TurtleWorld and waits for the user):
 
-假设你写了如下的代码（不包括生成TurtleWorld以及等待用户的代码）：
+有可能你写了如下的代码（不包括生成TurtleWorld以及等待用户的代码）：
 
 \begin{verbatim}
 fd(bob, 100)
@@ -4184,12 +4182,12 @@ more later.  But that should be enough to let you rewrite your
 square-drawing program.  Don't go on until you do.
 
 这是{\tt for}语句最简单的用法，后面我们会看到更多的。
-但是这对于你重写你的画正方形程序已经足够了。
+但是这对于让你重写你的画正方形程序已经足够了。
 如果没有完成不要继续。
 
 Here is a {\tt for} statement that draws a square:
 
-下面是使用{\tt for}语句画正方形：
+这是一个画正方形的{\tt for}语句：
 
 \begin{verbatim}
 for i in range(4):
@@ -4203,15 +4201,15 @@ body.  The body can contain any number of statements.
 \index{loop}
 
 {\tt for}语句的语法和函数定义类似。
-它有一个以冒号结尾的头以及一个缩进的体。
-体可以包含任意条数的语句。
+它有一个以冒号结尾的语句头以及一个缩进的语句体。
+语句体可以包含任意条语句。
 
 A {\tt for} statement is sometimes called a {\bf loop} because
 the flow of execution runs through the body and then loops back
 to the top.  In this case, it runs the body four times.
 
-{\tt for}语句有时被称为{\bf 循环（loop）}，因为执行流程运行整个体然后循环回顶部。
-在此例中，它运行体4次。
+{\tt for}语句有时被称为{\bf 循环（loop）}，因为执行流程会运行整个语句体然后循环回顶部。
+在此例中，它运行语句体四次。
 
 This version is actually a little different from the previous
 square-drawing code because it makes another turn after
@@ -4221,10 +4219,10 @@ every time through the loop.  This version also has the effect
 of leaving the turtle back in the starting position, facing in
 the starting direction.
 
-此版本和前面画正方形的代码有所不同，因为它在画完正方形最后一条边的时候，
+此版本和前面画正方形的代码有所不同，因为它在画完正方形最后一条边后，
 又多转了一下。这个额外的转动多花了些时间，
 但是如果我们通过循环做相同的事情也简化了代码。
-此版本也有一个作用，将海龟留在了出发位置，朝向开始的方向。
+此版本也有一个作用，将海龟放回了出发位置，面朝开始的方向。
 
 \section{Exercises 练习}
 
@@ -4233,13 +4231,13 @@ are meant to be fun, but they have a point, too.  While you are
 working on them, think about what the point is.
 
 下面是一系列使用TurtleWorld的练习。
-它们是很有趣，但是它们也都有一点。
-当你做这些练习的时候，想一想这个点是什么？
+它们是为了好玩而设计的，但是它们也有想表达的东西。
+当你做这些练习的时候，想一想它们想告诉你的是什么。
 
 The following sections have solutions to the exercises, so
 don't look until you have finished (or at least tried).
 
-下面几节是这些练习的答案，因此如果你没完成（或者至少试过了），不要看答案。
+后面几节是这些练习的答案，因此如果你没完成（或者至少试过），不要看答案。
 
 \begin{enumerate}
 
@@ -4247,7 +4245,7 @@ don't look until you have finished (or at least tried).
 named {\tt t}, which is a turtle.  It should use the turtle to draw
 a square.
 
-写一个名为{\tt square}的函数，有一个名为{\tt t}的形参，它是一个海龟。
+写一个名为{\tt square}的函数，接受一个名为{\tt t}的形参，它是一个海龟。
 用这只海龟画一个正方形。
 
 Write a function call that passes {\tt bob} as an argument to
@@ -4263,15 +4261,15 @@ length}.
 
 给{\tt square}加入另一个名为{\tt length}的形参。
 修改函数体，使得边的长度是{\tt square}，然后修改函数调用以提供第二个实参。
-重新运行程序。用一个范围内的{\tt length}值测试你的程序。
+重新运行程序。用一系列{\tt length}值测试你的程序。
 
 \item The functions {\tt lt} and {\tt rt} make 90-degree turns by
 default, but you can provide a second argument that specifies the
 number of degrees.  For example, {\tt lt(bob, 45)} turns {\tt bob} 45
 degrees to the left.
 
-函数{\tt lt}和{\tt rt}默认转动90度，而你可以提供第二个实参来制定角度。
-例如{\tt lt(bob, 45)}向左转动{\tt bob} 45度。
+函数{\tt lt}和{\tt rt}默认转动90度，不过你可以提供第二个实参来指定角度。
+例如{\tt lt(bob, 45)}将{\tt bob}向左转45度。
 
 Make a copy of {\tt square} and change the name to {\tt polygon}.  Add
 another parameter named {\tt n} and modify the body so it draws an
@@ -4281,8 +4279,8 @@ polygon are $360/n$ degrees.
 \index{function!polygon}
 
 复制{\tt square}并改名为{\tt polygon}。
-增加另外一个名为{\tt n}的参数并改变函数体，让它画一个n边形。
-提示：n边型的外角是$360/n$度。
+增加另外一个名为{\tt n}的形参并修改函数体，让它画一个正n边形。
+提示：正n边型的外角是$360/n$度。
 
 \item Write a function called {\tt circle} that takes a turtle, {\tt t},
 and radius, {\tt r}, as parameters and that draws an approximate circle
@@ -4291,21 +4289,21 @@ sides.  Test your function with a range of values of {\tt r}.
 \index{circle function}
 \index{function!circle}
 
-写一个名为{\tt circle}的函数，它接受一个乌龟{\tt t}和半径{\tt r}作为形参，
-然后通过调用{\tt polygon}，用合适的边的数目和长度画一个近似圆形。
-用一定范围内的{\tt r}值测试你的函数。
+写一个名为{\tt circle}的函数，它接受一个海龟{\tt t}和半径{\tt r}作为形参，
+然后通过以合适的边长和边数调用{\tt polygon}，画一个近似圆形。
+用一系列{\tt r}值测试你的函数。
 
 Hint: figure out the circumference of the circle and make sure that
 {\tt length * n = circumference}.
 
-提示：指出圆的周长并确定{\tt length * n = circumference}。
+提示：算出圆的周长并确保{\tt length * n = circumference}。
 
 Another hint: if {\tt bob} is too slow for you, you can speed
 him up by changing {\tt bob.delay}, which is the time between moves,
 in seconds.  {\tt bob.delay = 0.01} ought to get him moving.
 
 另外一个提示：如果{\tt bob}对你来说太慢了，你可以通过修改{\tt bob.delay}加速，
-它是两次移动之间的时间（秒）。{\tt bob.delay = 0.01}应该让它移动。
+它是两次移动之间的时间（秒）。{\tt bob.delay = 0.01}应该能让它动起来。
 
 % change this to world.delay
 
@@ -4317,7 +4315,7 @@ circle.
 \index{arc function}
 \index{function!arc}
 
-完成一个更一般的{\tt circle}版本{\tt arc}，其接受一个额外的参数{\tt angle}，
+完成一个更一般的{\tt circle}版本，称作{\tt arc}，其接受一个额外的参数{\tt angle}，
 确定画多大部分的圆。{\tt angle}的单位是度，因此当{\tt angle=360}时，
 {\tt arc} 应该画一个整圆。
 
@@ -4329,8 +4327,8 @@ The first exercise asks you to put your square-drawing code
 into a function definition and then call the function, passing
 the turtle as a parameter.  Here is a solution:
 
-第一个练习需要你将画正方形的代码放到函数定义中然后调用该函数，
-传递海龟作为参数。这是答案：
+第一个练习要求你将画正方形的代码放到函数定义中然后调用该函数，
+将海龟作为参数传递给它。这是一个解法：
 
 \begin{verbatim}
 def square(t):
@@ -4347,8 +4345,8 @@ which is inside the function definition.  The next line,
 {\tt square(bob)}, is flush with the left margin, so that is the
 end of both the {\tt for} loop and the function definition.
 
-最内部的语句，{\tt fd}和{\tt lt}缩进两次以显示它们在{\tt for}循环内，
-该循环在函数内。下一行{\tt square(bob)}和左边界对齐，
+最内部的语句，{\tt fd}和{\tt lt}被缩进两次以显示它们在{\tt for}循环内，
+该循环又在函数定义内。下一行{\tt square(bob)}和左边界对齐，
 因此它是{\tt for}循环和函数定义的结束。
 
 Inside the function, {\tt t} refers to the same turtle {\tt bob}
@@ -4360,7 +4358,7 @@ a second turtle and pass it as an argument to {\tt square}:
 在函数内部，{\tt t}和{\tt bob}指的是同一只海龟，
 所以{\tt lt(t)}和{\tt lt(bob)}功能相同。
 那么为什么不将形参命名为{\tt bob}呢？
-想法是{\tt t}可以是任何海龟而不仅仅是{\tt bob}，
+因为{\tt t}可以是任何海龟而不仅仅是{\tt bob}，
 所以你可以生成第二只海龟并且将它作为实参传递给{\tt square}：
 
 \begin{verbatim}
@@ -4377,15 +4375,15 @@ to call a function twice than to copy and paste the body!
 
 将一部分代码包装在函数里被称作 {\bf encapsulation（封装）}。
 封装的好处之一是它将这些代码赋予一个名字，
-这充当了一种文档。另一个好处是你可以重用这些代码，
-调用函数两次要比拷贝粘贴函数体要简洁！
+这充当了一种说明。另一个好处是你可以重复使用这些代码，
+调用函数两次比拷贝粘贴函数体要简洁！
 
 \section{Generalization 泛化}
 
 The next step is to add a {\tt length} parameter to {\tt square}.
 Here is a solution:
 
-下一步是给{\tt square}增加一个{\tt length}形参。这是解决方案：
+下一步是给{\tt square}增加一个{\tt length}形参。这是一个解法：
 
 \begin{verbatim}
 def square(t, length):
@@ -4403,15 +4401,15 @@ it can be any size.
 \index{generalization}
 
 为函数增加一个形参被称作{\bf 泛化（generalization）}，
-因为其使得函数更一般：在前面的版本中，
-正方形总是相同大小的；此版本它可以是任意的大小。
+因为这使得函数更通用：在前面的版本中，
+正方形总是相同大小的；此版本中它可以是任意大小。
 
 The next step is also a generalization.  Instead of drawing
 squares, {\tt polygon} draws regular polygons with any number of
 sides.  Here is a solution:
 
-下一步也是一个泛化。不是画一个正方形，{\tt polygon}画任意的多边形。
-这是解决方案：
+下一步也是一个泛化。不是画一个正方形，{\tt polygon}画任意的正多边形。
+这是一个解法：
 
 \begin{verbatim}
 def polygon(t, n, length):
@@ -4430,7 +4428,7 @@ helpful, to include the names of the parameters in the argument
 list:
 
 这画了一个7边形，边长为70。
-如果你有更多的形参，很容易忘记它们多是什么或者它们的顺序应该是什么。
+如果你有几个数字实参，很容易忘记它们是什么或者它们的顺序应该是什么。
 将形参名放入实参列表是合法的，而且有时很有用：
 
 \begin{verbatim}
@@ -4450,8 +4448,9 @@ This syntax makes the program more readable.  It is also a reminder
 about how arguments and parameters work: when you call a function, the
 arguments are assigned to the parameters.
 
-这一语法使得程序更可读。
-它也是关于实参和形参如何工作的一个提醒：
+这一语法使得程序更可读。\footnote{译者注：而实际上它的好处更在于可以在调用函数时
+改变参数的顺序，此处不提，后文会有例子。}
+它也是关于实参和形参工作方式的一个提醒：
 当你调用函数时，实参被赋给形参。
 
 
@@ -4462,7 +4461,7 @@ The next step is to write {\tt circle}, which takes a radius,
 {\tt polygon} to draw a 50-sided polygon:
 
 下一步是写{\tt circle}，它将半径{\tt r}作为形参。
-这是一个简单的解决方案，它使用{\tt polygon}画一个50边形：
+这是一个简单的解法，它使用{\tt polygon}画一个50边形：
 
 \begin{verbatim}
 def circle(t, r):
@@ -4485,8 +4484,8 @@ are usually at the beginning of the script.
 so {\tt length} is the length of each segment.  Thus, {\tt polygon}
 draws a 50-sides polygon that approximates a circle with radius {\tt r}.
 
-{\tt n}是我们估计的圆的线段的个数，所以{\tt length}是每一段的长度。
-这样{\tt polygon}画一个50边形来估计一个半径为{\tt r}的圆。
+{\tt n}是我们的近似圆中线段的条数，所以{\tt length}是每一段的长度。
+这样{\tt polygon}画一个50边形来近似一个半径为{\tt r}的圆。
 
 One limitation of this solution is that {\tt n} is a constant, which
 means that for very big circles, the line segments are too long, and
@@ -4496,11 +4495,11 @@ a parameter.  This would give the user (whoever calls {\tt circle})
 more control, but the interface would be less clean.
 \index{interface}
 
-这种解决方案的一个局限性是{\tt n}是常数，这意味着对于非常大的圆，
-线段会非常长，并且对于小圆，我们浪费时间画非常小的线段。
+这种解决方案的一个局限在于{\tt n}是常数，这意味着对于非常大的圆，
+线段会非常长，而对于小圆，我们浪费时间画非常小的线段。
 一个解决方案是通过将{\tt n}作为形参来泛化函数。
-这将给用户（调用{\tt circle}的人）更多的控制，
-但是接口将不那么干净了。
+这将给用户（调用{\tt circle}的人）更多的掌控力，
+但是接口就不那么干净了。
 
 The {\bf interface} of a function is a summary of how it is used: what
 are the parameters?  What does the function do?  And what is the return
@@ -4508,9 +4507,9 @@ value?  An interface is ``clean'' if it is ``as simple as
 possible, but not simpler. (Einstein)''
 \index{Einstein, Albert}
 
-函数的{\bf 接口（interface）}是一个如何使用它的摘要：
+函数的{\bf 接口（interface）}是一份关于如何使用的总结：
 形参是什么？函数做什么？返回值是什么？
-如果接口``尽可能简单，但不能过于简单（爱因斯坦）''的话，则说它是``干净的''。
+如果接口``尽可能简单，又不过于简单（爱因斯坦）''的话，则说它是``干净的''。
 
 In this example, {\tt r} belongs in the interface because it
 specifies the circle to be drawn.  {\tt n} is less appropriate
@@ -4524,7 +4523,7 @@ Rather than clutter up the interface, it is better
 to choose an appropriate value of {\tt n}
 depending on {\tt circumference}:
 
-不要把接口弄乱，依赖{\tt circumference}选择一个合适的{\tt n}值比较好。
+依赖{\tt circumference}选择一个合适的{\tt n}值，而不是把接口弄乱，会比较好。
 
 \begin{verbatim}
 def circle(t, r):
@@ -4540,9 +4539,8 @@ enough that the circles look good, but big enough to be efficient,
 and appropriate for any size circle.
 
 现在线段的数量（大概）是{\tt circumference/3}，
-所以每条线段的长度（大概）是3，这足够的小了，
-使得圆看上去不错，但是对于保证效率也足够大了，
-适合任何大小的圆。
+所以每条线段的长度（大概）是3，小到足以使圆看上去不错，
+又大到对任何大小的圆都能够又快又合适。
 
 \section{Refactoring 重构}
 \label{refactoring}
@@ -4555,7 +4553,7 @@ or {\tt circle} to draw an arc.
 
 当我写{\tt circle}的时候，我能够重用{\tt polygon}，
 因为一个多边形是对圆的很好的近似。
-但是{\tt arc}不太易于合作，我们不能使用{\tt polygon}或者{\tt circle}来画一个弧。
+但是{\tt arc}就不那么合作，我们不能使用{\tt polygon}或者{\tt circle}来画一个弧。
 
 One alternative is to start with a copy
 of {\tt polygon} and transform it into {\tt arc}.  The result
@@ -4596,6 +4594,7 @@ def polyline(t, n, length, angle):
 \end{verbatim}
 %
 Now we can rewrite {\tt polygon} and {\tt arc} to use {\tt polyline}:
+
 现在，我们可以用{\tt polyline}重写{\tt polygon}和{\tt arc}：
 
 \begin{verbatim}
@@ -4612,6 +4611,7 @@ def arc(t, r, angle):
 \end{verbatim}
 %
 Finally, we can rewrite {\tt circle} to use {\tt arc}:
+
 最后，我们可以用{\tt arc}重写{\tt circle}：
 
 \begin{verbatim}
@@ -4637,8 +4637,8 @@ coding, you understand the problem better.  Sometimes refactoring is a
 sign that you have learned something.
 
 如果我们提前已经计划好了，我们可能首先写{\tt polyline}并避免重构，
-但是在一个项目开始的时候，你经常知道的不足，不能设计全部的接口。
-一旦你开始编码，你更好地理解该问题。
+但是在一个项目开始的时候，你常常并不知道那么多，不能设计好全部的接口。
+当你开始编码时，你才能更好地理解该问题。
 有时重构是一个信号，说明你已经学到某些东西了。
 
 
@@ -4673,14 +4673,14 @@ and give it a name.
 Copy and paste working code to avoid retyping (and re-debugging).
 
 重复1--3步，直到你有一些可运转的函数。
-拷贝和粘贴代码以避免重新键入（和重新调试）。
+复制粘贴有用的代码以避免重新键入（和重新调试）。
 
 \item Look for opportunities to improve the program by refactoring.
 For example, if you have similar code in several places, consider
 factoring it into an appropriately general function.
 
 寻找机会通过重构改进程序。
-例如如果在多个地方有相似的代码，考虑将它分解到一个合适的函数中。
+例如如果在多个地方有相似的代码，考虑将它分解到一个合适的通用函数中。
 
 \end{enumerate}
 
@@ -4690,7 +4690,7 @@ program into functions.  This approach lets you design as you go
 along.
 
 这个过程有一些缺点---后面我们将看到替代方案---
-但是如果你之前不知道如果将程序分解为函数，它可能很有用。
+但是如果你事先不知道如何将程序分解为函数，它可能很有用。
 该方法让你一边编程，一边设计。
 
 
@@ -4703,7 +4703,7 @@ explains the interface (``doc'' is short for ``documentation'').  Here
 is an example:
 
 一个{\bf 文档字符串（docstring）}是位于函数开始的字符串，
-其解释函数的接口（``doc''是``document''的缩写）。
+其解释函数的接口（``doc''是``documentation''的缩写）。
 这是一个例子：
 
 \begin{verbatim}
@@ -4725,8 +4725,8 @@ to span more than one line.
 \index{multiline string}
 \index{string!multiline}
 
-此文档字符串是一个三引号字符串，也被称为多行字符串，
-因为三引号允许字符串超过一行。
+此文档字符串是一个三重引号字符串，也被称为多行字符串，
+因为三重引号允许字符串超过一行。
 
 It is terse, but it contains the essential information
 someone would need to use this function.  It explains concisely what
@@ -4735,10 +4735,10 @@ it).  It explains what effect each parameter has on the behavior of
 the function and what type each parameter should be (if it is not
 obvious).
 
-它很简单，但是它包括了该函数的必要信息。
-它简要的说明了该函数做什么（没有介绍它如何工作的细节）。
+它很简单，但是它包括了他人使用此函数时需要的关键信息。
+它简要说明该函数做什么（不介绍它如何做到的细节）。
 它说明了每个形参对函数的行为有什么作用以及每个形参应有的类型
-（如果它并不明显）。
+（如果它不明显的话）。
 
 Writing this kind of documentation is an important part of interface
 design.  A well-designed interface should be simple to explain;
@@ -4746,8 +4746,8 @@ if you are having a hard time explaining one of your functions,
 that might be a sign that the interface could be improved.
 
 写这种文档是接口设计很重要的部分。
-一个良好设计的接口应该解释起来很简单，
-如果你很难解释你的函数，这也许是该接口可能需要被改进的一个信号。
+一个设计良好的接口应该很容易解释，
+如果你很难解释你的函数，这也许是该接口需要改进的一个信号。
 
 
 \section{Debugging 调试}
@@ -4758,8 +4758,8 @@ An interface is like a contract between a function and a caller.
 The caller agrees to provide certain parameters and the function
 agrees to do certain work.
 
-接口就像是函数和一个调用者之间的合同。
-调用者同意提供某些参数，函数统一做某些工作。
+接口就像是一个函数和调用者之间的合同。
+调用者同意提供合适的参数，函数同意完成相应的工作。
 
 For example, {\tt polyline} requires four arguments: {\tt t} has to be
 a Turtle; {\tt n} is the number of line segments, so it has to be an
@@ -4769,7 +4769,7 @@ integer; {\tt length} should be a positive number; and {\tt
 例如，{\tt polyline}需要4个实参：{\tt t}必须是一个Turtle；
 {\tt n}是线段的个数，因此它必须是一个整数；
 {\tt length}应该是一个正数；
-{\tt angle}必须是一个数，它被理解为一个度数。
+{\tt angle}必须是一个数，它以度数为单位。
 
 These requirements are called {\bf preconditions} because they
 are supposed to be true before the function starts executing.
@@ -4782,17 +4782,17 @@ in the World).
 \index{postcondition}
 
 这些需求被称作{\bf 先决条件（preconditions）}，
-因为它们在函数开始执行之前被假设为正确的。
+因为它们在函数开始执行之前应当是正确的。
 相反，函数结束时的条件是{\bf 后置条件（postconditions）}。
-后置条件包括函数预期的效果（如画线段）以及任何侧面效果
-（如移动Turtle或者World中的其它改变）。
+后置条件包括函数预期的效果（如画线段）以及任何副作用
+（如移动Turtle或者在World中做其它改变）。
 
 Preconditions are the responsibility of the caller.  If the caller
 violates a (properly documented!) precondition and the function
 doesn't work correctly, the bug is in the caller, not the function.
 
-先决条件是调用者的职责。如果调用者违反一个（恰当的说明）
-先决条件并且函数不正确的工作，则错误在调用者中，而不是函数中。
+先决条件由调用者负责。如果调用者违反一个（已经说明清楚的）
+先决条件而函数没有正确工作，则错误在调用者一方，而不是函数一方。
 
 % Removing this because we haven't seen conditionals yet!
 %However, for purposes of debugging it is often a good idea for
@@ -4859,15 +4859,23 @@ the function before it ends.
 Download the code in this chapter from
 \url{http://thinkpython.com/code/polygon.py}.
 
+可从\url{http://thinkpython.com/code/polygon.py}下载本章的代码。
+
 \begin{enumerate}
 
 \item Write appropriate docstrings for {\tt polygon}, {\tt arc} and
 {\tt circle}.
+
+为{\tt polygon}，{\tt arc}和{\tt circle}写适当的文档字符串。
+
 \index{stack diagram}
 
 \item Draw a stack diagram that shows the state of the program
 while executing {\tt circle(bob, radius)}.  You can do the
 arithmetic by hand or add {\tt print} statements to the code.
+
+画一个栈图，说明程序执行{\tt circle(bob, radius)}时的状态。
+为了做那些算术，你可以自己动手，或者在代码中加入{\tt print}语句。
 
 \item The version of {\tt arc} in Section~\ref{refactoring} is not
 very accurate because the linear approximation of the
@@ -4876,6 +4884,12 @@ the turtle ends up a few units away from the correct
 destination. My solution shows a way to reduce
 the effect of this error.  Read the code and see if it makes
 sense to you.  If you draw a diagram, you might see how it works.
+
+第\ref{refactoring}节中的{\tt arc}版本并不很精确，
+因为用线段近似画的圆总是在实际圆的外部。结果是，
+海龟总是偏离正确的终点几个单位。
+我的解答展示了一种减轻这一效果的办法。阅读代码看看你能否理解。
+如果你画个图，你也许会明白它的工作原理。
 
 \end{enumerate}
 
@@ -4894,8 +4908,13 @@ sense to you.  If you draw a diagram, you might see how it works.
 Write an appropriately general set of functions that
 can draw flowers as in Figure~\ref{fig.flowers}.
 
+写一些合适的、通用的函数，使它们能画出图\ref{fig.flowers}中的花。
+
 Solution: \url{http://thinkpython.com/code/flower.py},
 also requires \url{http://thinkpython.com/code/polygon.py}.
+
+解答在：\url{http://thinkpython.com/code/flower.py}，
+它需要使用\url{http://thinkpython.com/code/polygon.py}。
 
 \end{exercise}
 
@@ -4913,7 +4932,11 @@ also requires \url{http://thinkpython.com/code/polygon.py}.
 Write an appropriately general set of functions that
 can draw shapes as in Figure~\ref{fig.pies}.
 
+写一些合适的、通用的函数，使它们能画出图\ref{fig.pies}中的形状。
+
 Solution: \url{http://thinkpython.com/code/pie.py}.
+
+解答在：\url{http://thinkpython.com/code/pie.py}。
 
 \end{exercise}
 
@@ -4928,14 +4951,25 @@ curves.  Design a font that can be drawn with a minimal number of
 basic elements and then write functions that draw letters of the
 alphabet.
 
+字母表中的字母可以由少量基本元素构成，例如竖线和横线，以及一些曲线。
+设计一种可以经由最少的基本元素写出的字体，然后编写能画出各个字母的函数。
+
 You should write one function for each letter, with names
 \verb"draw_a", \verb"draw_b", etc., and put your functions
 in a file named {\tt letters.py}.  You can download a
 ``turtle typewriter'' from \url{http://thinkpython.com/code/typewriter.py}
 to help you test your code.
 
+你应当为每个字母写一个函数，起名为\verb"draw_a"，\verb"draw_b"等等，
+然后将你的函数放在一个名为{\tt letters.py}的文件里。
+你可以从\url{http://thinkpython.com/code/typewriter.py}
+下载一个``海龟打字员''来帮你测试代码。
+
 Solution: \url{http://thinkpython.com/code/letters.py}, also requires
 \url{http://thinkpython.com/code/polygon.py}.
+
+解答在：\url{http://thinkpython.com/code/letters.py}，
+同时需要\url{http://thinkpython.com/code/polygon.py}。
 
 \end{exercise}
 
@@ -4946,6 +4980,10 @@ write a program that draws an Archimedian spiral (or one of the other
 kinds).  Solution: \url{http://thinkpython.com/code/spiral.py}.
 \index{spiral}
 \index{Archimedian spiral} 
+
+上\url{http://en.wikipedia.org/wiki/Spiral}阅读螺线的相关知识；
+然后编写一个绘制阿基米德螺线（或者其他种类的螺线）的程序。
+解答在：\url{http://thinkpython.com/code/spiral.py}。
 
 \end{exercise}
 
@@ -4961,7 +4999,8 @@ when the first operand is divided by the second.  In Python, the
 modulus operator is a percent sign (\verb"%").  The syntax is the same
 as for other operators:
 
-{\bf 求余运算符（modulus operator）}对整数进行运算并且产生第一个运算数和第二个的余数。
+{\bf 求余运算符（modulus operator）}对整数进行运算，
+产生第一个运算数除以第二个所得的余数。
 在Python中，求余运算符是一个百分号（\verb"%"）。
 语法和其它运算符相同：
 
@@ -4976,7 +5015,7 @@ as for other operators:
 %
 So 7 divided by 3 is 2 with 1 left over.
 
-因此7被3除得2剩余1.
+因此7除以3得2余1.
 
 The modulus operator turns out to be surprisingly useful.  For
 example, you can check whether one number is divisible by another---if
@@ -4992,8 +5031,8 @@ or digits from a number.  For example, {\tt x \% 10} yields the
 right-most digit of {\tt x} (in base 10).  Similarly {\tt x \% 100}
 yields the last two digits.
 
-同时，你能获得一个数的最右一位或者各位的数字。
-例如{\tt x \% 10}产生{\tt x}的最右一位数字（以10为底）。
+此外，你也能获得一个数的最右一位或者各位的数字。
+例如{\tt x \% 10}产生{\tt x}的最右一位数字（十进制中）。
 相似的，{\tt x \% 100}产生最后两位数字。
 
 
@@ -5150,15 +5189,15 @@ statement gets executed.  If not, nothing happens.
 \index{statement!compound}
 
 {\tt if}之后的布尔表达式被称作{\bf 条件（condition）}。
-如果它为真，则缩进的语句被执行。
-如果不是，则什么也不好发生。
+如果它为真，则缩进的语句会被执行。
+如果不是，则什么也不会发生。
 
 {\tt if} statements have the same structure as function definitions:
 a header followed by an indented body.  Statements like this are
 called {\bf compound statements}.
 
-{\tt if}和函数定义有相同的结构：一个头跟着一个缩进的体。
-类似的语句被称作{\bf 合成语句（compound statements）}。
+{\tt if}语句和函数定义有相同的结构：一个语句头跟着一个缩进的语句体。
+类似的语句被称作{\bf 复合语句（compound statements）}。
 
 There is no limit on the number of statements that can appear in
 the body, but there has to be at least one.
@@ -5168,9 +5207,9 @@ case, you can use the {\tt pass} statement, which does nothing.
 \index{pass statement}
 \index{statement!pass}
 
-体中可出现的语句数目没有限制，但是至少有一个。
-有时候，没有任何语句的体会有用（通常对于你还没写的代码作一个占位）。
-那样，你可以使用{\tt pass}，它什么也不做。
+语句体中可出现的语句数目没有限制，但是至少得有一个。
+偶尔，一条语句都没有的语句体也是有用的（通常是为你还没写的代码占一个位子）。
+这种情况下，你可以使用{\tt pass}语句，它什么也不做。
 
 \begin{verbatim}
 if x < 0:
@@ -5189,7 +5228,7 @@ in which there are two possibilities and the condition determines
 which one gets executed.  The syntax looks like this:
 
 {\tt if}语句的第二种形式是{\bf 二选一执行（alternative execution）}，
-此时有两个可能，条件决定哪一个被执行。
+此时有两个可能的选择，由条件决定执行哪一个。
 语法看起来是这样：
 
 \begin{verbatim}
@@ -5209,9 +5248,9 @@ the alternatives will be executed.  The alternatives are called
 
 如果{\tt x}除以2的余数是0，那么我们知道{\tt x}是偶数，
 并且程序对这一效果显示一个信息。
-如果条件为假，第2个语句集合被执行。
-既然条件只能是真或假，两个选择之一必被执行。
-此选择被称作{\bf 分支（branches）}，因为它们是执行流的分支。
+如果条件为假，执行第二段语句。
+既然条件要么为真要么为假，两个选择之一必被执行。
+这些选择被称作{\bf 分支（branches）}，因为它们是执行流程的分支。
 
 \section{Chained conditionals 链式条件}
 \index{chained conditional}
@@ -5221,8 +5260,8 @@ Sometimes there are more than two possibilities and we need more than
 two branches.  One way to express a computation like that is a {\bf
 chained conditional}:
 
-有时有超过两个可能的条件并且我们需要多余两个的分支。
-一种表示像这样的计算的方法是{\bf 链式条件（chained conditional）}：
+有时有超过两个可能的情况，于是我们需要多于两个的分支。
+表示像这样的计算的方法之一是{\bf 链式条件（chained conditional）}：
 
 \begin{verbatim}
 if x < y:
@@ -5240,9 +5279,9 @@ at the end, but there doesn't have to be one.
 \index{elif keyword}
 \index{keyword!elif}
 
-{\tt elif}是``else if''的缩写。再次，必有一个分支被执行。 
+{\tt elif}是``else if''的缩写。同样地，必有一个分支被执行。 
 {\tt elif}语句的数目没有限制。如果有一个{\tt else}从句，
-它必须是在最后，但不是必须要有一个。
+它必须是在最后，但并不是必须要有一个。
 
 \begin{verbatim}
 if choice == 'a':
@@ -5259,9 +5298,9 @@ true, the corresponding branch executes, and the statement
 ends.  Even if more than one condition is true, only the
 first true branch executes.  
 
-每个条件被按顺序检测。如果第一个为假，检测下一个，以此类推。
+按顺序检测逐个条件，如果第一个为假，检测下一个，以此类推。
 如果它们中有一个为真，相应的分支被执行，并且语句结束。
-即使不止一个条件为真，只执行第一个为真的分支。
+即便有不止一个条件为真，也只执行第一个为真的分支。
 
 \section{Nested conditionals 嵌套条件}
 \index{nested conditional}
@@ -5270,7 +5309,7 @@ first true branch executes.
 One conditional can also be nested within another.  We could have
 written the trichotomy example like this:
 
-一个条件可以嵌到另一个里面。我们可以像这样写三分的例子：
+一个条件可以嵌到另一个里面。一分为三的例子我们可以这样写：
 
 \begin{verbatim}
 if x == y:
@@ -5289,21 +5328,21 @@ own.  Those two branches are both simple statements,
 although they could have been conditional statements as well.
 
 外面的条件包括两个分支。第一个分支包括一条简单的语句。
-第二个分支包括另外一个{\tt if}语句，它有自己的两个分支。
-那两个分支都是简单的语句，当然它们也能有条件语句。
+第二个分支又包括一个{\tt if}语句，它有自己的两个分支。
+那两个分支都是简单的语句，当然它们也可以是条件语句。
 
 Although the indentation of the statements makes the structure
 apparent, {\bf nested conditionals} become difficult to read very
 quickly. In general, it is a good idea to avoid them when you can.
 
 虽然语句的缩进使得结构很明显，但是{\bf 嵌套条件（nested conditionals）}
-很难快速的读它们。一般来讲，当你可以的时候，避免使用嵌套条件是个好办法。
+仍然很难快速地阅读。一般来讲，当你可以的时候，避免使用嵌套条件是个好办法。
 
 Logical operators often provide a way to simplify nested conditional
 statements.  For example, we can rewrite the following code using a
 single conditional:
 
-逻辑运算符经常提供一个化简条件语句的方法。
+逻辑运算符经常提供一个化简嵌套条件语句的方法。
 例如，我们可以用一个单一条件重写下面的代码：
 
 \begin{verbatim}
@@ -5315,8 +5354,8 @@ if 0 < x:
 The {\tt print} statement is executed only if we make it past both
 conditionals, so we can get the same effect with the {\tt and} operator:
 
-只有我们通过两个条件的时候，{\tt print}语句才被执行，
-因此我们能够获得和{\tt and}运算符相同的效果：
+只有我们通过了两个条件检测的时候，{\tt print}语句才被执行，
+因此我们可以用{\tt and}运算符得到相同的效果：
 
 \begin{verbatim}
 if 0 < x and x < 10:
@@ -5335,8 +5374,8 @@ magical things a program can do.
 For example, look at the following function:
 
 一个函数调用另一个是合法的，一个函数调用它自己也是合法的。
-为什么这一个和好事情可能不明显，但它是一个程序能做的最神奇的东西之一。
-例如，看一下下面的程序：
+这是一件好事的原因可能不明显，但它实际上成为了程序能做到的最神奇的事情之一。
+例如，看一下这个程序：
 
 \begin{verbatim}
 def countdown(n):
@@ -5431,7 +5470,7 @@ called {\bf recursion}.
 As another example, we can write a function that prints a
 string {\tt n} times.
 
-作为另一个例子，我们可以写一个函数，其打印一个字符串{\tt n}次。
+再举一例，我们可以写一个函数，其打印一个字符串{\tt n}次。
 
 \begin{verbatim}
 def print_n(s, n):
@@ -5448,7 +5487,7 @@ lines of the function are not executed.
 \index{statement!return}
 
 如果{\tt n <= 0}，{\tt return}语句退出函数。
-执行流马上返回到调用者，函数剩余的行不被执行。
+执行流程马上返回到调用者，函数剩余的行不会被执行。
 
 The rest of the function is similar to {\tt countdown}: if {\tt n} is
 greater than 0, it displays {\tt s} and then calls itself to display
@@ -5456,7 +5495,7 @@ greater than 0, it displays {\tt s} and then calls itself to display
 is {\tt 1 + (n - 1)}, which adds up to {\tt n}.
 
 函数的其余部分和{\tt countdown}相似：
-如果{\tt n}比0大，它显示{\tt s}并调用它自己来额外显示{\tt s} $n-1$次。
+如果{\tt n}比0大，它显示{\tt s}并调用它自己，再显示{\tt s} $n-1$次。
 因此，输出的行数是{\tt 1 + (n - 1)}，加起来是{\tt n}。
 
 For simple examples like this, it is probably easier to use a {\tt
@@ -5465,7 +5504,7 @@ with a {\tt for} loop and easy to write with recursion, so it is
 good to start early.
 
 对于像这样简单的例子，使用{\tt for}循环可能更容易。
-但是我们后面将看到一些用一个{\tt for}循环很难写的例子，
+但是我们后面将看到一些用{\tt for}循环很难写，用递归却很容易的例子，
 所以早点儿开始有好处。
 
 
@@ -5479,22 +5518,22 @@ In Section~\ref{stackdiagram}, we used a stack diagram to represent
 the state of a program during a function call.  The same kind of
 diagram can help interpret a recursive function.
 
-在\ref{stackdiagram}节中，我们用一个栈图表示函数调用期间程序的状态。
-相同类型的图能帮助理解一个递归函数。
+在\ref{stackdiagram}节中，我们用栈图表示函数调用期间程序的状态。
+同样的图能帮我们理解一个递归函数。
 
 Every time a function gets called, Python creates a new function
 frame, which contains the function's local variables and parameters.
 For a recursive function, there might be more than one frame on the
 stack at the same time.
 
-一个函数每次被调用，Python生成一个新的函数框架，
+每当一个函数被调用时，Python生成一个新的函数框架，
 其包括函数的局部变量和形参。
-对于一个递归函数，在栈上可能同时有超过一个的框架。
+对于一个递归函数，在栈上可能同时有多个框架。
 
 Figure~\ref{fig.stack2} shows a stack diagram for {\tt countdown} called with
 {\tt n = 3}.
 
-图\ref{fig.stack2}展示了一个对于用{\tt n = 3}调用{\tt countdown}的栈图。
+图\ref{fig.stack2}展示了一个以{\tt n = 3}调用{\tt countdown}的栈图。
 
 \begin{figure}
 \centerline
@@ -5510,8 +5549,8 @@ It is empty because we did not create any variables in
 \index{base case}
 \index{recursion!base case}
 
-通常，栈顶是\verb"__main__"的框架。
-因为我们在\verb"__main__"中没有生成任何变量也没有传递任何实参给它，
+通常，栈顶是\verb"__main__"框架。
+因为我们在\verb"__main__"中没有创建任何变量也没有传递任何实参给它，
 所以它是空的。
 
 The four {\tt countdown} frames have different values for the
@@ -5519,19 +5558,24 @@ parameter {\tt n}.  The bottom of the stack, where {\tt n=0}, is
 called the {\bf base case}.  It does not make a recursive call, so
 there are no more frames.
 
-对于形参{\tt n}，4个{\tt countdown}框架有不同的值。
-栈底，其中{\tt n=0}，被{\bf 基本条件（base case）}调用。
+对于形参{\tt n}，四个{\tt countdown}框架有不同的值。
+{\tt n=0}的栈底，被称作{\bf 基础情形（base case）}。
 它不再进行递归调用了，所以没有更多的框架了。
 
 \begin{exercise}
 Draw a stack diagram for \verb"print_n" called with
 \verb"s = 'Hello'" and {\tt n=2}.
+
+画一个以\verb"s = 'Hello'"和{\tt n=2}调用\verb"print_n"的栈图。
 \end{exercise}
 
 \begin{exercise}
 Write a function called \verb"do_n" that takes a function
 object and a number, {\tt n}, as arguments, and that calls
 the given function {\tt n} times.
+
+写一个名为\verb"do_n"的函数，接受一个函数对象和一个数{\tt n}作为实参，
+能够调用指定的函数{\tt n}次。
 \end{exercise}
 
 
@@ -5548,9 +5592,9 @@ recursive calls forever, and the program never terminates.  This is
 known as {\bf infinite recursion}, and it is generally not
 a good idea.  Here is a minimal program with an infinite recursion:
 
-如果一个递归从不会到达基本条件，它永远进行递归调用，
-并且程序从来不会终止。这被称作{\bf 无限递归（infinite recursion）}，
-通常这不是一个好主意。这是一个具有无限递归的微型程序：
+如果一个递归永不会到达基础情形，它将永远进行递归调用，
+并且程序永远不会终止。这被称作{\bf 无限递归（infinite recursion）}，
+通常这不是一个好主意。这是最小的具有无限递归的程序：
 
 \begin{verbatim}
 def recurse():
@@ -5582,7 +5626,7 @@ previous chapter.  When the error occurs, there are 1000
 {\tt recurse} frames on the stack!
 
 此回溯比我们在前面章节看到的大一点。
-当错误出现的时候，在栈上有1000个递归框架。
+当错误出现的时候，在栈上有1000个递归框架！
 
 \section{Keyboard input 键盘输入}
 \index{keyboard input}
@@ -5604,10 +5648,10 @@ returns what the user typed as a string.
 \index{raw\_input function}
 \index{function!raw\_input}
 
-Python 2提供了一个被称为\verb"raw_input"的内建函数，从键盘获得输入。
+Python 2提供了一个叫做\verb"raw_input"的内建函数，从键盘获得输入。
 在Python 3中，它被称作{\tt input}。
-当此函数被调用时，程序停下来并且等待用户键入一些东西。
-当用户按回车时，程序恢复执行并且\verb"raw_input"作为字符串返回用户加入的内容。
+当此函数被调用时，程序停下来并且等待用户键入。
+当用户按回车时，程序恢复执行并且\verb"raw_input"以字符串形式返回用户键入的内容。
 
 \begin{verbatim}
 >>> input = raw_input()
@@ -5621,8 +5665,8 @@ prompt telling the user what to input.  \verb"raw_input" can take a
 prompt as an argument:
 \index{prompt}
 
-在从用户哪儿获得输入之前，打印一个提示告诉用户输入什么是个好办法。
-\verb"raw_input"能接受一个提示作为实参。
+在从用户那儿获得输入之前，打印一个提示告诉用户输入什么是个好办法。
+\verb"raw_input"把提示语作为实参。
 
 \begin{verbatim}
 >>> name = raw_input('What...is your name?\n')
@@ -5637,9 +5681,9 @@ which is a special character that causes a line break.
 That's why the user's input appears below the prompt.
 \index{newline}
 
-提示最后的序列\verb"\n"表示一个{\bf 新行（newline）}，
-它是一个特别的字符，引起一个断行。
-这也是为什么用户的输入出现在提示符的下面。
+提示的最后这一段\verb"\n"表示一个{\bf 新行（newline）}，
+它是一个特别的字符，会造成换行。
+这也是用户的输入出现在提示符下面的原因。
 
 If you expect the user to type an integer, you can try to convert
 the return value to {\tt int}:
@@ -5658,7 +5702,7 @@ What...is the airspeed velocity of an unladen swallow?
 But if the user types something other than a string of digits,
 you get an error:
 
-但是，如果用户键入非数字字符串的其它东西，你获得一个错误：
+但是，如果用户键入不是数字构成的字符串，你获得一个错误：
 
 \begin{verbatim}
 >>> speed = raw_input(prompt)
@@ -5672,7 +5716,7 @@ We will see how to handle this kind of error later.
 \index{ValueError}
 \index{exception!ValueError}
 
-我们后面将会看到如何处理这类错误。
+我们后面将会看到处理这类错误的方法。
 
 \section{Debugging 调试}
 \label{whitespace}
@@ -5685,18 +5729,18 @@ when there are many frames on the stack.  The most
 useful parts are usually:
 
 当一个错误发生时，Python显示的回溯包含许多信息，
-但是它可能被淹没了，特别是在栈上有有许多框架时。
+但是它可能让人抓狂，特别是在栈上有有许多框架时。
 最有用的部分通常是：
 
 \begin{itemize}
 
 \item What kind of error it was, and
 
-错误是哪类，以及
+\item 错误是哪类，以及
 
 \item Where it occurred.
 
-它发生在哪儿。
+\item 它发生在哪儿。
 
 \end{itemize}
 
@@ -5705,8 +5749,8 @@ gotchas.  Whitespace errors can be tricky because spaces and
 tabs are invisible and we are used to ignoring them.
 \index{whitespace}
 
-语法错误通常很容易被找到，但也有一些难度。
-空白分隔符错误很棘手，因为空格和制表符是不可见的而且我们会忽略它们。
+语法错误通常很容易被找到，但也有一些需要想想。
+空白分隔符错误很棘手，因为空格和制表符是不可见的而且我们习惯于忽略它们。
 
 \begin{verbatim}
 >>> x = 5
@@ -5725,10 +5769,10 @@ sometimes on a previous line.
 \index{error!runtime}
 \index{runtime error}
 
-在这个例子中，问题是第二行被一个空格缩进了。
+在这个例子中，问题在于第二行缩进了一个空格。
 但是错误信息指向{\tt y}，这是个误导。
-通常，错误信息指向被发现错误的地方，
-但是真实的错误可能在代码中的更早前的地方，
+通常，错误信息指向发现错误的地方，
+但是实际的错误可能发生在代码中的更早前的地方，
 有时在前一行。
 
 The same is true of runtime errors.  
@@ -5740,7 +5784,7 @@ to compute a signal-to-noise ratio in decibels.  The formula
 is $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$.  In Python,
 you might write something like this:
 
-假设你正试图给计算机键入一个信噪比。
+假设你正试图给计算机键入一个分贝信噪比。
 公式是$SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$。
 在Python中，你可能如此写：
 
@@ -5758,7 +5802,7 @@ But when you run it in Python 2, you get an error message.
 \index{OverflowError}
 
 但是，当你在Python 2中运行它的时候，
-你获得一个错误信息。
+你将获得一个错误信息。
 
 \begin{verbatim}
 Traceback (most recent call last):
@@ -5777,20 +5821,20 @@ and noise power with floating-point values.
 \index{division!floor}
 
 该错误信息指向第5行，但是那一行没什么错误。
-为了找到真实的错误，打印{\tt ratio}也许会有用，它变成了0。
+为了找到真正的错误，打印{\tt ratio}也许会有用，它实际上是0。
 问题是在第4行，因为两个整数的除法是向下取整除。
-解决办法是用浮点值表示信号功率和噪声功率。
+解决办法是将信号功率和噪声功率用浮点值表示。
 
 In general, error messages tell you where the problem was discovered, 
 but that is often not where it was caused.
 
-通常，错误信息告诉你问题在哪儿发现的，但那经常并是非引起错误的地方。
+通常，错误信息会告诉你问题是在哪儿发现的，但那经常并非是引起错误的地方。
 
 In Python 3, this example does not cause an error; the division operator
 performs floating-point division even with integer operands.
 
-在Python 3中，此例不会引起一个错误。
-即使是对整数运算数，除法运算符执行浮点除
+在Python 3中，此例不会引起错误。
+即使是对整数运算数，除法运算符也执行浮点除。
 
 
 \section{Glossary 术语表}
@@ -5811,7 +5855,7 @@ number is divided by another.
 \item[relational operator（关系运算符）:] One of the operators that compares
 its operands: {\tt ==}, {\tt !=}, {\tt >}, {\tt <}, {\tt >=}, and {\tt <=}.
 
-\item[logical operator:] One of the operators that combines boolean
+\item[logical operator（逻辑运算符）:] One of the operators that combines boolean
 expressions: {\tt and}, {\tt or}, and {\tt not}.
 
 \item[conditional statement（条件语句）:]  A statement that controls the flow of
@@ -5823,7 +5867,7 @@ execution depending on some condition.
 that determines which branch is executed.
 \index{condition}
 
-\item[compound statement（合成语句）:]  A statement that consists of a header
+\item[compound statement（复合语句）:]  A statement that consists of a header
 and a body.  The header ends with a colon (:).  The body is indented
 relative to the header.
 \index{compound statement}
@@ -5846,9 +5890,10 @@ in one of the branches of another conditional statement.
 currently executing.
 \index{recursion}
 
-\item[base case（基本条件）:]  A conditional branch in a
+\item[base case（基础情形）:]  A conditional branch in a
 recursive function that does not make a recursive call.
 \index{base case}
+%可能更应当翻译为“递归基础”，我考虑一阵子再决定
 
 \item[infinite recursion（无限递归）:]  A recursion that doesn't have a
 base case, or never reaches it.  Eventually, an infinite recursion
@@ -5865,9 +5910,13 @@ causes a runtime error.
 Fermat's Last Theorem says that there are no integers
 $a$, $b$, and $c$ such that
 
+费马最后定理的内容是，没有任何整数$a$，$b$，$c$能够使
+
 \[ a^n + b^n = c^n \]
 %
 for any values of $n$ greater than 2.
+
+对于任何大于2的$n$成立。
 
 \begin{enumerate}
 
@@ -5876,15 +5925,26 @@ parameters---{\tt a}, {\tt b}, {\tt c} and {\tt n}---and
 that checks to see if Fermat's theorem holds.  If
 $n$ is greater than 2 and it turns out to be true that 
 
+写一个名为\verb"check_fermat"的函数，其接受四个形参---{\tt a}，{\tt b}，{\tt c}以及{\tt n}
+---然后检查费马最后定理是否成立。
+如果$n$大于2且等式
+
 \[a^n + b^n = c^n \]
 %
+
 the program should print, ``Holy smokes, Fermat was wrong!''
 Otherwise the program should print, ``No, that doesn't work.''
+
+成立，程序会输出``Holy smokes, Fermat was wrong!''。
+否则程序输出``No, that doesn't work.''。
 
 \item Write a function that prompts the user to input values
 for {\tt a}, {\tt b}, {\tt c} and {\tt n}, converts them to
 integers, and uses \verb"check_fermat" to check whether they
 violate Fermat's theorem.
+
+写一个函数提示用户输入{\tt a}，{\tt b}，{\tt c}以及{\tt n}的值，将它们转换成整数，
+然后使用\verb"check_fermat"检查他们是否会违反费马最后定理。
 
 \end{enumerate}
 
@@ -5901,11 +5961,20 @@ not be able to get the short sticks to meet in the middle.  For any
 three lengths, there is a simple test to see if it is possible to form
 a triangle:
 
+如果你有三根棍子，你有可能将它们组成三角形，也可能不行。
+比如，如果一根棍子是12英寸长，其它两根都是1英寸长，显然
+你不可能让两根短的在中间接合。对于任意三个长度，有一个简单的测试
+它们能否组成三角形的办法：
+
 \begin{quotation}
 If any of the three lengths is greater than the sum of the other
   two, then you cannot form a triangle.  Otherwise, you
   can.  (If the sum of two lengths equals the third, they form
     what is called a ``degenerate'' triangle.)
+
+如果三个长度中的任意一个超过了其它二者之和，你就不能组成三角形。否则你就可以
+组成三角形。（如果两个长度之和等于第三个，它们就组成所谓``退化的''三角形。）
+
 \end{quotation}
 
 \begin{enumerate}
@@ -5915,9 +5984,15 @@ If any of the three lengths is greater than the sum of the other
   on whether you can or cannot form a triangle from sticks with the
   given lengths.
 
+写一个名为\verb"is_triangle"的函数，其接受三个整数作为形参，
+能够根据给定的三个长度的棍子能否构成三角形来打印``Yes''或``No''。
+
 \item Write a function that prompts the user to input three stick
   lengths, converts them to integers, and uses \verb"is_triangle" to
   check whether sticks with the given lengths can form a triangle.
+
+写一个函数，提示用户输入三根棍子的长度，将它们转换成整数，然后使用
+\verb"is_triangle"检查给定长度的棍子能否构成三角形。
 
 \end{enumerate}
 
@@ -5926,10 +6001,14 @@ If any of the three lengths is greater than the sum of the other
 The following exercises use TurtleWorld from Chapter~\ref{turtlechap}:
 \index{TurtleWorld}
 
+后面的习题要用到第\ref{turtlechap}章中的TurtleWorld：
+
 \begin{exercise}
 
 Read the following function and see if you can figure out
 what it does.  Then run it (see the examples in Chapter~\ref{turtlechap}).
+
+阅读如下的函数，看看你能否看懂它是做什么的。然后运行它（见第\ref{turtlechap}章的例子）。
 
 \begin{verbatim}
 def draw(t, length, n):
@@ -5962,26 +6041,46 @@ The Koch curve is a fractal that looks something like
 Figure~\ref{fig.koch}.  To draw a Koch curve with length $x$, all you
 have to do is
 
+Koch曲线是一个看起来类似图\ref{fig.koch}的分形。想要画一个长度为$x$的Koch曲线，
+你只需要
+
 \begin{enumerate}
 
 \item Draw a Koch curve with length $x/3$.
 
+    画一个长度为$x/3$的Koch曲线。
+
 \item Turn left 60 degrees.
 
+    左转60度。
+
 \item Draw a Koch curve with length $x/3$.
+
+    画一个长度为$x/3$的Koch曲线。
 
 \item Turn right 120 degrees.
 
+    右转60度。
+
 \item Draw a Koch curve with length $x/3$.
+
+    画一个长度为$x/3$的Koch曲线。
 
 \item Turn left 60 degrees.
 
+    左转60度。
+
 \item Draw a Koch curve with length $x/3$.
+
+    画一个长度为$x/3$的Koch曲线。
 
 \end{enumerate}
 
 The exception is if $x$ is less than 3: in that case,
 you can just draw a straight line with length $x$.
+
+例外情况是$x$小于3的情形：此时，你可以仅仅
+画一道长度为$x$的直线。
 
 \begin{enumerate}
 
@@ -5989,14 +6088,24 @@ you can just draw a straight line with length $x$.
 a length as parameters, and that uses the turtle to draw a Koch
 curve with the given length.
 
+    写一个名为{\tt koch}的函数，接受一个海龟和一个长度作为形参，然后
+    使用海龟画一条给定长度的Koch曲线。
+
 \item Write a function called {\tt snowflake} that draws three
 Koch curves to make the outline of a snowflake.
 
+    写一个名为{\tt snowflake}的函数，其能够画出三条Koch曲线，以构成雪花的轮廓。
+
 Solution: \url{http://thinkpython.com/code/koch.py}.
+
+    解答在：\url{http://thinkpython.com/code/koch.py}。
 
 \item The Koch curve can be generalized in several ways.  See
 \url{http://en.wikipedia.org/wiki/Koch_snowflake} for examples and
 implement your favorite.
+
+    Koch曲线能够以多种方式被泛化，
+    见\url{http://en.wikipedia.org/wiki/Koch_snowflake}的例子，并实现你最喜欢的一个。
 
 \end{enumerate}
 \end{exercise}
@@ -6013,8 +6122,8 @@ functions, produce results.  Calling the function generates a
 value, which we usually assign to a variable or use as part of an
 expression.
 
-有一些我们用过的内建函数，例如数学函数，产生结果。
-调用此函数产生一个值，通常我们将其赋给一个变量或者作为一个表达式的一部分使用。
+我们使用过的一些内建函数，例如数学函数，会产生结果。
+调用这些函数会产生一个值，通常我们将其赋给一个变量或者作为表达式的一部分来使用。
 
 \begin{verbatim}
 e = math.exp(1.0)
@@ -6025,15 +6134,15 @@ All of the functions we have written so far are void; they print
 something or move turtles around, but their return value is {\tt
 None}.
 
-目前为止所有我们写的函数都是无返回值的，
-它们打印一些东西或者移动海龟，但是它们的返回值是{\tt None}。
+目前为止所有我们自己写的函数都是无返回值的，
+它们打印一些内容或者移动海龟，但是它们的返回值是{\tt None}。
 
 In this chapter, we are (finally) going to write fruitful functions.
 The first example is {\tt area}, which returns the area of a circle
 with the given radius:
 
-在本章中，我们（最后）将写有返回值的函数。
-第一个例子是{\tt area}，给出半径，其返回一个圆的面积。
+在本章中，我们（终于）将要写有返回值的函数了。
+第一个例子是{\tt area}，给出半径，其返回圆的面积。
 
 \begin{verbatim}
 def area(radius):
@@ -6051,8 +6160,8 @@ have written this function more concisely:
 \index{statement!return}
 
 之前我们已经见过{\tt return}语句了，但是在一个有返回值的函数中，
-{\tt return}语句包含一个表达式。
-这条语句意思是：``马上从该函数返回并使用下面的表达式作为返回值''。
+{\tt return}语句要包括一个表达式。
+这条语句意思是：``立刻从当前函数返回并使用下面的表达式作为返回值。''
 此表达式可以是任意复杂的，因此我们可以将该函数写得更简洁些：
 
 \begin{verbatim}
@@ -6065,12 +6174,12 @@ debugging easier.
 \index{temporary variable}
 \index{variable!temporary}
 
-另一方面，类似{\tt temp}的{\bf 临时变量（temporary variables）}经常会使调试更容易些。
+不过，类似{\tt temp}的{\bf 临时变量（temporary variables）}经常会将调试变得容易些。
 
 Sometimes it is useful to have multiple return statements, one in each
 branch of a conditional:
 
-有时，有多个返回语句会很有用，在每个条件的分支内有一个。
+有时，在每个条件的分支内都有一个返回语句会很有用。
 
 \begin{verbatim}
 def absolute_value(x):
@@ -6083,7 +6192,7 @@ def absolute_value(x):
 Since these {\tt return} statements are in an alternative conditional,
 only one will be executed.
 
-既然这些{\tt return}语句在不同的条件内，只有一个会被执行。
+因为这些{\tt return}语句在不同的条件内，只有一个会被执行。
 
 As soon as a return statement executes, the function
 terminates without executing any subsequent statements.
@@ -6092,14 +6201,15 @@ the flow of execution can never reach, is called {\bf dead code}.
 \index{dead code}
 
 一旦一条返回语句执行，函数则终止，不再执行后续的语句。
+出现在某条{\tt return}语句之后的代码，或者在执行流程永远不会到达之处的
+代码，被称为{\bf 死代码（dead code）}。
 
 In a fruitful function, it is a good idea to ensure
 that every possible path through the program hits a
 {\tt return} statement.  For example:
 
-在一个有返回值的函数中，
-保证通过程序的每个可能的路径都遇到一个{\tt return}语句是个好注意。
-例如：
+在一个有返回值的函数中，保证通过程序的每个可能的路径
+都会遇到一个{\tt return}语句是个好主意。例如：
 
 \begin{verbatim}
 def absolute_value(x):
@@ -6118,9 +6228,9 @@ the absolute value of 0.
 \index{special value!None}
 
 该函数是不正确的，因为如果{\tt x}恰好是0，
-则没有条件为真，并且函数在没遇到任何{\tt return}语句条件下终止。
-如果执行流到达函数的结尾，则返回值是{\tt None}，
-它不是0的绝对值。
+则两个条件均不为真，于是函数在没遇到任何{\tt return}语句的情况下终止。
+如果执行流程到达函数的结尾，则返回值是{\tt None}，
+它并不是0的绝对值。
 
 \begin{verbatim}
 >>> print absolute_value(0)
@@ -6132,7 +6242,7 @@ By the way, Python provides a built-in function called
 \index{abs function}
 \index{function!abs}
 
-顺便说一下，Python提供一个被称为{\tt abs}的内建函数用来计算绝对值。
+顺带一提，Python提供一个被称为{\tt abs}的内建函数用来计算绝对值。
 
 \begin{exercise}
 \index{compare function}
@@ -6141,6 +6251,9 @@ By the way, Python provides a built-in function called
 Write a {\tt compare} function
 that returns {\tt 1} if {\tt x > y},
 {\tt 0} if {\tt x == y}, and {\tt -1} if {\tt x < y}.
+
+编写一个{\tt compare}函数，当{\tt x > y}时
+返回{\tt 1}，当{\tt x == y}时返回{\tt 0}，当{\tt x < y}时返回{\tt -1}。
 \end{exercise}
 
 
@@ -6161,16 +6274,17 @@ a small amount of code at a time.
 \index{testing!incremental development}
 \index{Pythagorean theorem}
 
-为了对付越来越负责的程序，
-你可能想试一种叫做{\bf 增量式开发（incremental development）}的过程。
-增量式开发的目标是通过每次增加和测试一小部分代码，以避免调试长代码。
+为了对付越来越复杂的程序，
+你可能想尝试一种叫做{\bf 增量式开发（incremental development）}的过程。
+增量式开发的目标是，通过每次只增加和测试少量代码，以避免长时间的调试。
 
 As an example, suppose you want to find the distance between two
 points, given by the coordinates $(x_1, y_1)$ and $(x_2, y_2)$.
 By the Pythagorean theorem, the distance is:
 
-作为一个例子，假设给定两个点的坐标$(x_1, y_1)$和$(x_2, y_2)$，
-你想计算两个点之间的距离。通过毕达哥拉斯定力，距离是：
+举一个例子，假设已有两个点的坐标$(x_1, y_1)$和$(x_2, y_2)$，
+你想计算两个点之间的距离。使用勾股定理计算，距离是：
+% 在中文语境中勾股定理应当正确翻译，不应直接使用毕达哥拉斯定理之名
 
 \begin{displaymath}
 \mathrm{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
@@ -6187,12 +6301,12 @@ In this case, the inputs are two points, which you can represent
 using four numbers.  The return value is the distance, which is
 a floating-point value.
 
-此例中，输入是可以用4个数表示的两个点。
-返回值是距离，其是一个浮点数。
+此例中，输入是两个点，你可以用四个数表示。
+返回值是距离，应当是一个浮点值。
 
 Already you can write an outline of the function:
 
-因此，你可以写出此函数的轮廓：
+这样你就已经可以写出函数的轮廓了：
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
@@ -6203,8 +6317,9 @@ Obviously, this version doesn't compute distances; it always returns
 zero.  But it is syntactically correct, and it runs, which means that
 you can test it before you make it more complicated.
 
-显然，此版本不能计算距离，它总是返回0。
-但它是语法上正确的，并且它能运行，
+显然，此版本不能计算距离——它总是返回0。
+% 按照中文标点符号用法，此处应使用破折号。英文中分号和冒号都可以用来对前半句进行解释，中文则只有破折号有此功能
+但它在语法上是正确的，并且它能运行，
 也就是说在你将它变得更复杂之前，你能够测试它。
 
 To test the new function, call it with sample arguments:
@@ -6222,8 +6337,8 @@ vertical distance is 4; that way, the result is 5
 useful to know the right answer.
 \index{testing!knowing the answer}
 
-我选择这些值以便水平距离是3，垂直距离是4。
-这样结果是5（3-4-5三角形直角三角形的斜边）。
+我选择这些值使得水平距离为3，垂直距离为4。
+这样结果是5（3-4-5直角三角形的斜边）。
 当测试一个函数时，知道正确的结果很有用。
 
 At this point we have confirmed that the function is syntactically
@@ -6232,9 +6347,9 @@ A reasonable next step is to find the differences
 $x_2 - x_1$ and $y_2 - y_1$.  The next version stores those values in
 temporary variables and prints them.
 
-在这一点上，我们已经确定函数是语法正确的了，
-我们可以在函数体中开始增加代码。
-一个可行的下一步是找到$x_2 - x_1$和$y_2 - y_1$之间的不同。
+此时，我们已经确定函数的语法是正确的了，
+我们就可以开始在函数体中增加代码。
+一个可行的下一步是找到差值$x_2 - x_1$和$y_2 - y_1$。
 下一个版本在临时变量中存储这些值并打印它们。
 
 \begin{verbatim}
@@ -6251,9 +6366,9 @@ If the function is working, it should display \verb"'dx is 3'" and {\tt
 arguments and performing the first computation correctly.  If not,
 there are only a few lines to check.
 
-如果此函数好使，它应该显示\verb"'dx is 3'"以及{\tt 'dy is 4'}。
-如果这样，我们知道此函数获得了正确的实参并且正确的执行第一步计算。
-如果不是，只需检查很少的几行。
+如果此函数正常工作，它应该显示\verb"'dx is 3'"以及{\tt 'dy is 4'}。
+如此，我们就知道此函数获得了正确的实参并且正确地执行了第一步计算。
+如果不是，只有寥寥几行代码需要检查。
 
 Next we compute the sum of squares of {\tt dx} and {\tt dy}:
 
@@ -6274,7 +6389,7 @@ Finally, you can use {\tt math.sqrt} to compute and return the result:
 \index{sqrt}
 \index{function!sqrt}
 
-再一次，你运行此程序并检查输出（它应该是25）。
+你又可以运行此程序并检查输出（它应该是25）。
 最后，你可以使用{\tt math.sqrt}计算并返回结果：
 
 \begin{verbatim}
@@ -6291,7 +6406,7 @@ want to print the value of {\tt result} before the return
 statement.
 
 如果其正确工作，你完成了。
-否则，你可能想在返回语句之前打印返回值。
+否则，你可能想在返回语句之前打印{\tt result}的值。
 
 The final version of the function doesn't display anything when it
 runs; it only returns a value.  The {\tt print} statements we wrote
@@ -6301,18 +6416,18 @@ because it is helpful for building the program but is not part of the
 final product.
 \index{scaffolding}
 
-当该函数的最终版本运行的时候，其不显示任何东西，它值返回一个值。
-我们写的{\tt print}语句对于调试很有用，但是一旦你使得该寒素正确运行了，
-你应该删除它们。类似的代码被称作{\bf 脚手架（scaffolding）}，
-因为它对建造程序很有用，但是不是最终产品的一部分。
+当该函数的最终版本运行的时候，其不显示任何东西，只返回一个值。
+我们写的{\tt print}语句对于调试很有用，不过一旦你使得该函数正确运行了，
+你就应该删除它们。类似的代码被称作{\bf 脚手架（scaffolding）}，
+因为它对搭建程序很有用，却不是最终产品的一部分。
 
 When you start out, you should add only a line or two of code at a
 time.  As you gain more experience, you might find yourself writing
 and debugging bigger chunks.  Either way, incremental development
 can save you a lot of debugging time.
 
-当你刚开始的时候，你每次应该只增加一或两行代码。
-随着你获得越来越多的经验，你可能发现你自己能写并调试更大的块了。
+当你刚开始的时候，你应该每次只增加一到两行代码。
+随着你获得越来越多的经验，你可能发现你自己能写并调试较多的代码了。
 无论哪种方式，增量式开发能够节省你大量调试的时间。
 
 The key aspects of the process are:
@@ -6325,13 +6440,13 @@ The key aspects of the process are:
 At any point, if there is an error, you should have a good idea
 where it is.
 
-从一个好使的程序开始并做小的增量式的修改。
-如论何时，如果有一个错误，你应该知道它在哪儿。
+从一个能运行的程序开始并做小的增量式的修改。
+如论何时，如果发生了错误，你应该知道它在哪儿。
 
 \item Use temporary variables to hold intermediate values so you can
 display and check them.
 
-使用临时变量来存储中间值，因此你能显示并检查它们。
+使用临时变量来存储中间值，这样你就能显示并检查它们。
 
 \item Once the program is working, you might want to remove some of
 the scaffolding or consolidate multiple statements into compound
@@ -6339,7 +6454,8 @@ expressions, but only if it does not make the program difficult to
 read.
 
 一旦程序正常运行，你可能想删掉一些脚手架或者将多条语句组成复合表达式，
-但是只有这不会使程序难读懂时。
+不过仅当这不会使程序难读懂时\footnote{译者注：才应该这么做}。
+% 这句的翻译很难受
 
 \end{enumerate}
 
@@ -6350,6 +6466,9 @@ Use incremental development to write a function
 called {\tt hypotenuse} that returns the length of the hypotenuse of a
 right triangle given the lengths of the two legs as arguments.
 Record each stage of the development process as you go.
+
+使用增量式开发方法编写一个名为 的函数，以两条直角边为实参，返回直角三角形的斜边长度。
+在你进行时，请记录开发的每一个阶段。
 \end{exercise}
 
 
@@ -6360,15 +6479,15 @@ Record each stage of the development process as you go.
 As you should expect by now, you can call one function from
 within another.  This ability is called {\bf composition}.
 
-和你现在可能期望的一样，你可以从一个函数内部调用另一个函数。
+正如你现在可能期望的一样，你可以从一个函数内部调用另一个函数。
 这种能力被称作{\bf 组合（composition）}
 
 As an example, we'll write a function that takes two points,
 the center of the circle and a point on the perimeter, and computes
 the area of the circle.
 
-作为一个例子，我们将写一个接受两个点的函数，
-圆心以及圆周上的一个点，然后计算此圆的面积。
+举一个例子，我们将写一个接受两个点的函数，
+这两点是圆心以及圆周上的一个点，然后计算此圆的面积。
 
 Assume that the center point is stored in the variables {\tt xc} and
 {\tt yc}, and the perimeter point is in {\tt xp} and {\tt yp}. The
@@ -6378,7 +6497,7 @@ distance}, that does that:
 
 假设圆心点存储在变量{\tt xc}和{\tt yc}中，圆周点在{\tt xp}在{\tt yp}中。
 第一步是计算圆的半径，其是两个点之间的距离。
-我们刚写了一个函数{\tt distance}来做这个：
+我们刚写了一个函数{\tt distance}能够做到这一点：
 
 \begin{verbatim}
 radius = distance(xc, yc, xp, yp)
@@ -6387,7 +6506,7 @@ radius = distance(xc, yc, xp, yp)
 The next step is to find the area of a circle with that radius;
 we just wrote that, too:
 
-下一步是用那个半径计算一个圆的面积，我们也刚写过：
+下一步是用半径计算圆的面积，我们也刚写过：
 
 \begin{verbatim}
 result = area(radius)
@@ -6409,7 +6528,7 @@ The temporary variables {\tt radius} and {\tt result} are useful for
 development and debugging, but once the program is working, we can
 make it more concise by composing the function calls:
 
-临时变量{\tt radius}和{\tt result}对于开发和调试很有用，但是一旦改程序工作了，
+临时变量{\tt radius}和{\tt result}对于开发和调试很有用，但是一旦该程序正常工作了，
 我们可以通过组合函数调用，把它变得更简洁：
 
 \begin{verbatim}
@@ -6425,7 +6544,7 @@ Functions can return booleans, which is often convenient for hiding
 complicated tests inside functions.  \index{boolean function}
 For example:
 
-函数能返回布尔值，将复杂的测试隐藏在函数中通常很方便。
+函数能返回布尔值，这一点为将复杂的测试隐藏在函数中提供了便利。
 例如：
 
 \begin{verbatim}
@@ -6440,8 +6559,8 @@ It is common to give boolean functions names that sound like yes/no
 questions; \verb"is_divisible" returns either {\tt True} or {\tt False}
 to indicate whether {\tt x} is divisible by {\tt y}.
 
-通常给布尔函数一个听起来像是/否问题的函数名，
-\verb"is_divisible"返回{\tt True}或{\tt False}来指示是否{\tt x}能被{\tt y}整除。
+通常给布尔函数起一个听起来像是/否问题的函数名——
+\verb"is_divisible"返回{\tt True}或{\tt False}来表示{\tt x}是否能被{\tt y}整除。
 
 Here is an example:
 
@@ -6458,7 +6577,7 @@ The result of the {\tt ==} operator is a boolean, so we can write the
 function more concisely by returning it directly:
 
 {\tt ==}运算符的结果是布尔值，
-因此我们可以通过直接返回它更简洁的写出该函数：
+因此我们可以直接返回它，以求函数更简洁：
 
 \begin{verbatim}
 def is_divisible(x, y):
@@ -6478,7 +6597,7 @@ if is_divisible(x, y):
 %
 It might be tempting to write something like:
 
-写一些类似的东西可能很诱人：
+你可能想要写一些这样的东西：
 
 \begin{verbatim}
 if is_divisible(x, y) == True:
@@ -6493,6 +6612,8 @@ But the extra comparison is unnecessary.
 
 Write a function \verb"is_between(x, y, z)" that
 returns {\tt True} if $x \le y \le z$ or {\tt False} otherwise.
+
+写一个\verb"is_between(x, y, z)"函数，如果$x \le y \le z$则返回{\tt True}，否则返回{\tt False}。
 
 \end{exercise}
 
@@ -6513,10 +6634,10 @@ could be rewritten using only the language features you have learned
 so far (actually, you would need a few commands to control devices
 like the keyboard, mouse, disks, etc., but that's all).
 
-我们已经覆盖了Python的一个小的子集，
-但是当你知道该子集是全部的编程语言时你可能很感兴趣，
+我们仅仅讲到了Python的一个小的子集，
+但是当你知道该子集已经是完备的编程语言时，你可能会觉得很有意思，
 这意味着任何能被计算的东西都能用该语言表达。
-过去写的任何程序都能用你已经学过的语言特点表示
+现存的任何程序都能仅仅用你学到的这些来重写。
 （事实上，你可能需要一些命令来控制如键盘、鼠标、磁盘等设备，但仅此而已）。
 
 Proving that claim is a nontrivial exercise first accomplished by Alan
@@ -6527,9 +6648,10 @@ For a more complete (and accurate) discussion of the Turing Thesis,
 I recommend Michael Sipser's book {\em Introduction to the
 Theory of Computation}.
 
-证明这种说法是一个非凡的工作，首先由阿兰图灵完成，他是首批计算机科学家之一
-（有些人认为他是一个数学家，但是很多早期的计算机科学家都开始是数学家）。
-相应地，这被称作图灵理论。关于图灵理论更完整（和准确）的讨论，
+首批计算机科学家之一阿兰·图灵第一个证明了这种说法的正确性，
+这可是一项非凡的工作。
+（有些人认为他是一个数学家，但是很多早期的计算机科学家一开始都是数学家）
+相应地，这被称作图灵论题。关于图灵论题更完整（和准确）的讨论，
 我推荐Michael Sipser的书《Introduction to the Theory of Computation》。
 
 To give you an idea of what you can do with the tools you have learned
@@ -6539,9 +6661,9 @@ definition, in the sense that the definition contains a reference to
 the thing being defined.  A truly circular definition is not very
 useful:
 
-为了说明用目前学过的工具能做什么，我们将计算一些递归定义的数学函数。
-递归定义类似循环定义，在这个意义上定义包含一个指向已经被定义的事物的引用。
-一个真的循环定义不是非常有用：
+为了说明用目前学到的工具能做什么，我们将计算一些递归定义的数学函数。
+递归定义包含一个指向正被定义的事物的引用，从这个意义上说，递归定义类似循环定义。
+一个真正的循环定义是没有价值的：
 
 \begin{description}
 
@@ -6550,7 +6672,7 @@ useful:
 \index{circular definition}
 \index{definition!circular}
 
-\item[漩涡：] 用一个形容词来描述漩涡状的东西。
+\item[漩涡：] 一个用来描述漩涡状东西的形容词。
 
 \end{description}
 
@@ -6559,9 +6681,9 @@ the other hand, if you looked up the definition of the factorial
 function, denoted with the symbol $!$, you might get something like
 this:
 
-如果你看到词典中的定义，你可能很恼火。
-另一方面：如果你查找用$!$符号表示的阶乘函数的定义，
-你可能获得如下的东西：
+如果你在词典中看到这样的定义，你大概会生气的。
+不过，如果你查找$!$符号代表的阶乘函数的定义，
+你可能找到这样的东西：
 %
 \begin{eqnarray*}
 &&  0! = 1 \\
@@ -6571,7 +6693,7 @@ this:
 This definition says that the factorial of 0 is 1, and the factorial
 of any other value, $n$, is $n$ multiplied by the factorial of $n-1$.
 
-此定义说0的阶乘是1，任何其它值$n$的阶乘是$n$乘以$n-1$的阶乘。
+此定义说0的阶乘为1，任何其它值$n$的阶乘为，$n$乘以$n-1$的阶乘。
 
 So $3!$ is 3 times $2!$, which is 2 times $1!$, which is 1 times
 $0!$. Putting it all together, $3!$ equals 3 times 2 times 1 times 1,
@@ -6581,15 +6703,15 @@ which is 6.
 \index{recursive definition}
 
 所以$3!$是3乘以$2!$，它又是2乘以$1!$，它又是1乘以$0!$。
-将它放在一起，$3!$是3乘以2乘以1乘以1，是6。
+全部合起来，$3!$是3乘以2乘以1乘以1，是6。
 
 If you can write a recursive definition of something, you can usually
 write a Python program to evaluate it. The first step is to decide
 what the parameters should be.  In this case it should be clear
 that {\tt factorial} takes an integer:
 
-如果你能写一些东西的递归定义，你通常可以写一个Python程序来计算它。
-第一步是决定形参应该是什么。在此例中应该很清楚的是{\tt factorial}接受一个整数：
+如果你能写出一些东西的递归定义，你通常就可以写一个Python程序来计算它。
+第一步是确定形参应该是什么。在此例中应该是很清楚的，{\tt factorial}接受一个整数：
 
 \begin{verbatim}
 def factorial(n):
@@ -6597,7 +6719,7 @@ def factorial(n):
 %
 If the argument happens to be 0, all we have to do is return 1:
 
-如果实参恰好是0，所有我们需要做的是返回1：
+如果实参恰好是0，我们需要做的就只是返回1：
 
 \begin{verbatim}
 def factorial(n):
@@ -6609,7 +6731,7 @@ Otherwise, and this is the interesting part, we have to make a
 recursive call to find the factorial of $n-1$ and then multiply it by
 $n$:
 
-否则，这是一个很有趣的部分，我们必须进行递归调用来计算$n-1$的阶乘然后乘以$n$：
+如果不是，这才是有意思的部分，我们必须进行递归调用来计算$n-1$的阶乘然后乘以$n$：
 
 \begin{verbatim}
 def factorial(n):
@@ -6626,44 +6748,44 @@ countdown} in Section~\ref{recursion}.  If we call {\tt factorial}
 with the value 3:
 
 此程序的执行流程和\ref{recursion}节中的{\tt countdown}类似。
-如果我们用值3调用{\tt factorial}：
+如果我们以3为实参调用{\tt factorial}：
 
 Since 3 is not 0, we take the second branch and calculate the factorial
 of {\tt n-1}...
 
-既然3不是0，我们执行第二个分支并计算{\tt n-1}的阶乘…
+既然3不是0，我们执行第二个分支来计算{\tt n-1}的阶乘…
 
 \begin{quote}
 Since 2 is not 0, we take the second branch and calculate the factorial of
 {\tt n-1}...
 
-既然2不是0，我们执行第二个分支并计算{\tt n-1}的阶乘…
+既然2不是0，我们执行第二个分支来计算{\tt n-1}的阶乘…
 
   \begin{quote}
   Since 1 is not 0, we take the second branch and calculate the factorial
   of {\tt n-1}...
 
-既然1不是0，我们执行第二个分支并计算{\tt n-1}的阶乘…
+既然1不是0，我们执行第二个分支来计算{\tt n-1}的阶乘…
 
     \begin{quote}
     Since 0 {\em is} 0, we take the first branch and return 1
     without making any more recursive calls.
     
-    既然0是0，我们执行第一个分支并返回1，不进行任何递归调用。
+    既然0是0，我们执行第一个分支，返回1，不再进行任何递归调用。
     \end{quote}
 
 
   The return value (1) is multiplied by $n$, which is 1, and the
   result is returned.
   
-  返回值(1)被与$n$（其为1）相乘，并返回结果。
+  返回值(1)与$n$（其为1）相乘，并返回结果。
   \end{quote}
 
 
 The return value (1) is multiplied by $n$, which is 2, and the
 result is returned.
 
-返回值(1)被与$n$（其为2）相乘，并返回结果。
+返回值(1)与$n$（其为2）相乘，并返回结果。
 \end{quote}
 
 
@@ -6671,13 +6793,13 @@ The return value (2) is multiplied by $n$, which is 3, and the result, 6,
 becomes the return value of the function call that started the whole
 process.
 
-返回值(2)被与$n$（其为3）相乘，并返回结果6，成为整个过程开始调用的函数的返回值。
+返回值(2)与$n$（其为3）相乘，并返回结果6，这才是整个过程开始处调用的函数的返回值。
 \index{stack diagram}
 
 Figure~\ref{fig.stack3} shows what the stack diagram looks like for
 this sequence of function calls.
 
-图\ref{fig.stack3}显示了该函数调用序列的栈图看上去是什么样。
+图\ref{fig.stack3}显示了该函数调用序列的栈图的样子。
 
 \begin{figure}
 \centerline
@@ -6692,7 +6814,7 @@ product of {\tt n} and {\tt recurse}.
 \index{function frame}
 \index{frame}
 
-返回值被显示为传回到栈顶。在每个框架中，返回值是{\tt result}的值，
+图中显示返回值被传回到栈顶。在每个框架中，返回值是{\tt result}的值，
 其是{\tt n}和{\tt recurse}的乘积。
 
 In the last frame, the local
@@ -6703,7 +6825,7 @@ the branch that creates them does not execute.
 因为生成它们的分支并没有被执行。
 
 
-\section{Leap of faith 信心的飞跃}
+\section{Leap of faith 信仰之跃}
 \index{recursion}
 \index{leap of faith}
 
@@ -6714,10 +6836,11 @@ function call, instead of following the flow of execution, you {\em
 assume} that the function works correctly and returns the right
 result.
 
-顺着执行流程读程序是一种方法，但是它可能很快变得错综复杂。
-另一种是我称作``信心的飞跃''的方法。
-当你遇到一个函数调用的时候，不是顺着执行流程，
-而是假设该函数正确的工作并返回正确的结果。
+顺着执行流程读程序是一种方法，但是它可能很快就变得错综复杂。
+另一种可取方式我称作``信仰之跃''\footnote{译者注：``信仰之跃''是英文语境中的一个成语，
+很难准确翻译，意为``不加考察地信任它是对的，从而向前大步飞跃''}。
+当你遇到一个函数调用的时候，不要跟随执行流程，
+而是假设该函数正确工作并返回正确的结果。
 
 In fact, you are already practicing this leap of faith when you use
 built-in functions.  When you call {\tt math.cos} or {\tt math.exp},
@@ -6725,9 +6848,9 @@ you don't examine the bodies of those functions.  You just
 assume that they work because the people who wrote the built-in
 functions were good programmers.
 
-事实上，当你使用内建函数的时候，你已经实践过这种方法了。
+事实上，当你使用内建函数的时候，你已经实践过信仰之跃了。
 当你调用{\tt math.cos}或{\tt math.exp}时，你并没有检查那些函数的函数体。
-你只是假设它们工作，因为写这些内建函数的人们都是好的程序员。
+你只是假设它们正确工作，因为写这些内建函数的人们都是优秀程序员。
 
 The same is true when you call one of your own functions.  For
 example, in Section~\ref{boolean}, we wrote a function called 
@@ -6738,10 +6861,10 @@ without looking at the body again.
 \index{testing!leap of faith}
 
 当你调用一个你自己的函数时也是这样。
-例如，在\ref{boolean}节中，我们写了一个称作\verb"is_divisible"的函数，
-它决定是否一个数能被另一个整除。
-一旦我们相信该函数是正确的---通过检查代码和测试---
-我们就能能使用该函数，而不用再看函数体了。
+例如，在第\ref{boolean}节中，我们写了一个名为\verb"is_divisible"的函数，
+它能确定一个数能否被另一个整除。
+一旦我们确信该函数是正确的——通过检查代码和测试——
+我们就能直接使用该函数，而不用再看函数体了。
 
 The same is true of recursive programs.  When you get to the recursive
 call, instead of following the flow of execution, you should assume
@@ -6751,19 +6874,19 @@ compute the factorial of $n$?''  In this case, it is clear that you
 can, by multiplying by $n$.
 
 递归程序也是这样。当你遇到递归调用时，
-不用顺着执行流程，你应该假设次递归调用工作（产生正确的结果）
-然后问你自己，``假设我能够获得$n-1$的阶乘，我能计算$n$的阶乘么？''
-在此例中，很明显你能，通过乘以$n$。
+不要跟随执行流程，你应该假设此递归调用正确工作（产生正确的结果）
+然后问你自己，``假设我能够获得$n-1$的阶乘，我能计算出$n$的阶乘么？''
+在此例中，很明显你能，只要乘以$n$。
 
 Of course, it's a bit strange to assume that the function works
 correctly when you haven't finished writing it, but that's why
 it's called a leap of faith!
 
-当然，当你没写完它的时候，假设函数正确工作有一点儿奇怪，
-但这也是为什么这被称作信心的飞跃了！
+当然，当你还没写完它的时候就假设函数正确工作有一点儿奇怪，
+但这也是它被称作信仰之跃的原因！
 
 
-\section{One more example 一个更多的例子}
+\section{One more example 再来一个例子}
 \label{one.more.example}
 
 \index{fibonacci function}
@@ -6773,7 +6896,7 @@ defined mathematical function is {\tt fibonacci}, which has the
 following definition (see
   \url{http://en.wikipedia.org/wiki/Fibonacci_number}):
   
-{\tt factorial}之后，最通常的一个被递归定义的数学函数是{\tt fibonacci}，
+在由递归定义的数学函数中，仅次于{\tt factorial}的最普遍的例子是{\tt fibonacci}，
 其定义如下（见：\url{http://en.wikipedia.org/wiki/Fibonacci_number}）：
 %
 \begin{eqnarray*}
@@ -6784,7 +6907,7 @@ following definition (see
 %
 Translated into Python, it looks like this:
 
-翻译成Python看起来是这样：
+翻译成Python差不多是这样：
 
 \begin{verbatim}
 def fibonacci (n):
@@ -6804,8 +6927,8 @@ the right result by adding them together.
 \index{flow of execution}
 
 这里，如果你试图跟随执行流程，即使对于相当小的$n$，
-你的头也会爆炸。但是根据信心的飞跃，如果你假设这两个递归调用正确的工作，
-那么很明显通过把它们加到一起，你获得了正确的结果。
+你也会想破脑袋。但是根据信仰之跃，如果你假设这两个递归调用正确的工作，
+那么很明显，你把它们加到一起就能获得正确的结果。
 
 
 \section{Checking types 检查类型}
@@ -6830,15 +6953,15 @@ we can {\em miss} the base case and recurse forever.
 \index{infinite recursion}
 \index{recursion!infinite}
 
-看上去像是一个无限循环。但那是如何发生的的？
-有一个基本条件---当{\tt n == 0}时。
-但是如果{\tt n}不是一个整数，我们会错过此基本条件并永远递归下去。
+看上去像是发生了无限循环。但怎么会这样呢？
+已经有了基础情形——当{\tt n == 0}时。
+但是如果{\tt n}不是整数，我们会错过此基础情形并永远递归下去。
 
 In the first recursive call, the value of {\tt n} is 0.5.
 In the next, it is -0.5.  From there, it gets smaller
 (more negative), but it will never be 0.
 
-在第一个递归调用中，{\tt n}是0.5。下一次，它是-0.5。
+在第一个递归调用中，{\tt n}的值是0.5。下一次，它是-0.5。
 从此，它变得越来越小（越来越负），但不会是0。
 
 We have two choices.  We can try to generalize the {\tt factorial}
@@ -6849,7 +6972,7 @@ little beyond the scope of this book.  So we'll go for the second.
 \index{gamma function}
 
 我们有两个选择。我们可以试着泛化{\tt factorial}函数使其能处理浮点数，
-或者我们可以让{\tt factorial}检查它的实参的类型。
+或者我们可以让{\tt factorial}检查它的实参类型。
 第一个选项被称作gamma函数，它有点儿超过本书的范围了。
 所以我们将用第二种方法。
 
@@ -6860,7 +6983,7 @@ argument is positive:
 \index{function!isinstance}
 
 我们可以使用内建函数{\tt isinstance}来验证实参的类型。
-此时，我们也可以确保该实参是正数：
+同时，我们也可以确保该实参是正数：
 
 \begin{verbatim}
 def factorial (n):
@@ -6881,8 +7004,8 @@ second catches negative integers.  In both cases, the program prints
 an error message and returns {\tt None} to indicate that something
 went wrong:
 
-第一个基本条件处理非整数，第二个抓住负整数。
-在这两个条件中，程序打印一个错误信息并返回{\tt None}以指明一些东西是错误的：
+第一个基础情形处理非整数，第二个处理负整数。
+在这两个情况下，程序会打印错误信息并返回{\tt None}以表示有东西出错了：
 
 \begin{verbatim}
 >>> factorial('fred')
@@ -6899,7 +7022,7 @@ zero, so we can prove that the recursion terminates.
 \index{pattern!guardian}
 
 如果我们通过了这两个检查，那么我们知道$n$是一个正数或0，
-因此我们可以保证递归终止。
+因此我们可以保证递归会终止。
 
 This program demonstrates a pattern sometimes called a {\bf guardian}.
 The first two conditionals act as guardians, protecting the code that
@@ -6907,14 +7030,16 @@ follows from values that might cause an error.  The guardians make it
 possible to prove the correctness of the code.
 
 此程序演示了一个模式，有时称作{\bf 监护人（guardian）}。
-前两个条件扮演监护人的角色，避免下面的代码使用引起错误的值。
+前两个条件扮演监护人的角色，避免下面的代码使用会引起错误的值。
 该监护人使得验证代码的正确性成为可能。
+% 我不同意监护人这个翻译，“守卫”或者“看门人”都更接近原意，然而我需要过一段时间再决定
 
 In Section~\ref{raise} we will see a more flexible alternative to printing
 an error message: raising an exception.
 
 在\ref{raise}节中，我们将看到更灵活的方法来打印错误信息：
 抛出一个异常。
+% 这个“抛出”也不是理想的翻译
 
 \section{Debugging 调试}
 \label{factdebug}
@@ -6924,20 +7049,20 @@ checkpoints for debugging.  \index{debugging}
 If a function is not working, there are
 three possibilities to consider:
 
-将一个大程序分解为较小的函数自然地为调试生成了检查点。
-如果一个函数不工作，有三个可能需要考虑：
+将一个大程序分解为较小的函数自然地为调试创造了检查点。
+如果一个函数不工作，有三个可能性可供考虑：
 
 \begin{itemize}
 
 \item There is something wrong with the arguments the function
 is getting; a precondition is violated.
 
-该函数获得的实参有些错误，违反先决条件。
+该函数获得的实参有错误，违反先决条件。
 
 \item There is something wrong with the function; a postcondition
 is violated.
 
-该函数有些错误，违反后置条件。
+该函数内有错误，违反后置条件。
 
 \item There is something wrong with the return value or the
 way it is being used.
@@ -6953,9 +7078,9 @@ that checks the preconditions explicitly.
 \index{precondition}
 \index{postcondition}
 
-为了排除第一种可能，你可以在函数的开始增加一条{\tt print}语句
-来显示形参的值（也可能是它们的类型）。
-或者你可以写代码来显示地检查先决条件。
+为了排除第一种可能，你可以在函数的开头增加一条{\tt print}语句
+来显示形参的值（或者也包括它们的类型）。
+或者你可以写些代码来显示地检查先决条件。
 
 If the parameters look good, add a {\tt print} statement before each
 {\tt return} statement that displays the return value.  If
@@ -6963,24 +7088,25 @@ possible, check the result by hand.  Consider calling the
 function with values that make it easy to check the result
 (as in Section~\ref{incremental.development}).
 
-如果形参看起来很好，在每个{\tt return}语句之前增加一条{\tt print}语句，
+如果形参看起来都对，在每个{\tt return}语句之前增加一条{\tt print}语句，
 来显示返回值。如果可能，手工检查结果。
-考虑用一些容易检查的值来调用该函数（类似在\ref{incremental.development}节中）。
+考虑用一些容易检查的值来调用该函数（类似\ref{incremental.development}节中的做法）。
 
 If the function seems to be working, look at the function call
 to make sure the return value is being used correctly (or used
 at all!).
 \index{flow of execution}
 
-如果该函数看起来工作，则看函数调用确保返回值被正确的使用（或者被用了！）
+如果该函数看起来没问题，则看看调用函数的地方，确保返回值被正确的使用了
+（或者是不是真的被使用了！）
 
 Adding print statements at the beginning and end of a function
 can help make the flow of execution more visible.
 For example, here is a version of {\tt factorial} with
 print statements:
 
-在一个函数的开始和结束增加打印语句可以帮助执行流程更明显。
-例如，这是{\tt factorial}的具有打印语句的版本：
+在一个函数的开头和结尾增加打印语句可以使得执行流程更明显。
+例如，这是{\tt factorial}的一个具有打印语句的版本：
 
 \begin{verbatim}
 def factorial(n):
@@ -7021,8 +7147,8 @@ If you are confused about the flow of execution, this kind of
 output can be helpful.  It takes some time to develop effective
 scaffolding, but a little bit of scaffolding can save a lot of debugging.
 
-如果你对执行流程感到困惑，这种输出可能有用。
-开发有效的脚手架会花些时间，但是一点点的脚手架能够节省调试的时间。
+如果你对执行流程感到困惑，这种输出可能会帮到你。
+开发有效的脚手架会花些时间，但是有这么一些脚手架能够节省大量调试的时间。
 
 \section{Glossary 术语表}
 
@@ -7054,6 +7180,7 @@ not part of the final version.
 \item[guardian（监护人）:]  A programming pattern that uses a conditional
 statement to check for and handle circumstances that
 might cause an error.
+% 对监护人这个翻译我需要再考虑
 \index{guardian pattern}
 \index{pattern!guardian}
 
@@ -7067,6 +7194,9 @@ might cause an error.
 Draw a stack diagram for the following program.  What does the program print?
 Solution: \url{http://thinkpython.com/code/stack_diagram.py}.
 \index{stack diagram}
+
+为如下程序画一个栈图。此程序打印出什么？
+解答在：\url{http://thinkpython.com/code/stack_diagram.py}。
 
 \begin{verbatim}
 def b(z):
@@ -7096,6 +7226,8 @@ print c(x, y+3, x+y)
 
 The Ackermann function, $A(m, n)$, is defined:
 
+Ackermann函数，$A(m, n)$，的定义是：
+
 \begin{eqnarray*}
 A(m, n) = \begin{cases} 
               n+1 & \mbox{if } m = 0 \\ 
@@ -7112,6 +7244,11 @@ Solution: \url{http://thinkpython.com/code/ackermann.py}.
 \index{Ackermann function}
 \index{function!ack}
 
+参见\url{http://en.wikipedia.org/wiki/Ackermann_function}。
+编写一个名为{\tt ack}的函数，来计算Ackermann函数的值。使用你写的函数
+计算{\tt ack(3, 4)}，结果应该是125。对更大的{\tt m}和{\tt n}会发生什么？
+解答在：\url{http://thinkpython.com/code/ackermann.py}。
+
 \end{exercise}
 
 
@@ -7124,8 +7261,15 @@ is a palindrome if the first and last letters are the same
 and the middle is a palindrome.
 \index{palindrome}
 
+一个正着和倒着念拼写都一样的词叫做回文词，例如``noon''和``redivider''。
+按递归的说法，如果一个词是回文词的话，只需头尾字母
+一样，而且中间部分是回文词。
+
 The following are functions that take a string argument and
 return the first, last, and middle letters:
+
+下列函数可以接受一个字符串实参，分别返回第一个字母，最后一个字母，
+和中间的字母：
 
 \begin{verbatim}
 def first(word):
@@ -7140,6 +7284,8 @@ def middle(word):
 %
 We'll see how they work in Chapter~\ref{strings}.
 
+我们将会在第\ref{strings}章了解它们的工作方式。
+
 \begin{enumerate}
 
 \item Type these functions into a file named {\tt palindrome.py}
@@ -7147,14 +7293,24 @@ and test them out.  What happens if you call {\tt middle} with
 a string with two letters?  One letter?  What about the empty
 string, which is written \verb"''" and contains no letters?
 
+将这些函数写进一个名为{\tt palindrome.py}的文件里，然后测试它们。
+如果你用两个字母的字符串调用{\tt middle}会发生什么？一个字母呢？
+那空字符串呢？（空字符串不包含任何字母，写做\verb"''"。）
+
 \item Write a function called \verb"is_palindrome" that takes
 a string argument and returns {\tt True} if it is a palindrome
 and {\tt False} otherwise.  Remember that you can use the
 built-in function {\tt len} to check the length of a string.
 
+写一个名为\verb"is_palindrome"的函数，接受一个字符串实参，如果是回文词
+就返回{\tt True}，不是则返回{\tt False}。要记得你可以使用内建函数{\tt len}
+来检查字符串的长度。
+
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/palindrome_soln.py}.
+
+解答在：\url{http://thinkpython.com/code/palindrome_soln.py}。
 
 \end{exercise}
 
@@ -7166,6 +7322,11 @@ and $a/b$ is a power of $b$.  Write a function called
 and returns {\tt True} if {\tt a} is a power of {\tt b}.
 Note: you will have to think about the base case.
 
+若$a$能被$b$整除且$a/b$是$b$的幂，则称$a$是$b$的幂。写一个名为
+\verb"is_power"的函数，接受参数{\tt a}和{\tt b}，
+并在{\tt a}是{\tt b}的幂时返回{\tt True}。
+注意：你需要考虑基础情形。
+
 \end{exercise}
 
 
@@ -7176,10 +7337,16 @@ Note: you will have to think about the base case.
 The greatest common divisor (GCD) of $a$ and $b$ is the largest number
 that divides both of them with no remainder.  
 
+$a$和$b$的最大公约数是能够同时整除两者的最大的数。
+
 One way to find the GCD of two numbers is Euclid's algorithm,
 which is based on the observation that if $r$ is the remainder
 when $a$ is divided by $b$, then $gcd(a, b) = gcd(b, r)$.
 As a base case, we can use $gcd(a, 0) = a$.
+
+一种找到两数的最大公约数的方法是欧几里得算法\footnote{译者注：即辗转相除法}，
+其基于一个观察结果，如果$r$是$a$除以$b$的余数，则$gcd(a, b) = gcd(b, r)$。
+我们可以使用$gcd(a, 0) = a$作为基础情形。
 \index{Euclid's algorithm}
 \index{algorithm!Euclid}
 
@@ -7188,12 +7355,20 @@ Write a function called
 and returns their greatest common divisor.  If you need
 help, see \url{http://en.wikipedia.org/wiki/Euclidean_algorithm}.
 
+写一个名为\verb"gcd"的函数，接受参数$a$和$b$，返回他们的最大公约数。
+如果你需要帮助，可以参考\url{http://en.wikipedia.org/wiki/Euclidean_algorithm}。
+
 Credit: This exercise is based on an example from Abelson and
 Sussman's {\em Structure and Interpretation of Computer Programs}.
+
+感谢：这一习题基于Abelson和Sussman所著
+{\em Structure and Interpretation of Computer Programs}中的一个例子。
+%\footnote{译者注：即大名鼎鼎的SICP，函数式编程经典}
 
 \end{exercise}
 
 
+%Last time
 \chapter{Iteration 迭代}
 
 \section{Multiple assignment 多次赋值}
@@ -21544,9 +21719,9 @@ message at all!
 \index{multiline string}
 \index{string!multiline}
 
-如果你有三引号地多行字符串，确保你合适的结束了字符串。一个没有结束的字符串会在
+如果你有三重引号地多行字符串，确保你合适的结束了字符串。一个没有结束的字符串会在
 程序的末尾产生{\tt invalid token}错误，或者它会吧剩下的程序部分的代码看作字符串
-的一部分，直到遇到下一个三引号字符串。第二种情况可能直接不会产生错误！
+的一部分，直到遇到下一个三重引号字符串。第二种情况可能直接不会产生错误！
 \footnote{有语法着色功能的编辑器则能够方便的看出}
 
 \item An unclosed opening operator---\verb+(+, \verb+{+, or
@@ -21792,7 +21967,7 @@ function or method to return without making a recursive invocation.
 If not, then you need to rethink the algorithm and identify a base
 case.
 
-如果你怀疑一个函数或者方法造成了无限递归，确保函数体有一个初始条件。也就是有一
+如果你怀疑一个函数或者方法造成了无限递归，确保函数体有一个基础情形。也就是有一
 些条件能够直接返回值而不会再递归调用下去。如果没有，你需要重新思考算法找到一个
 初始条件。
 
@@ -21803,9 +21978,9 @@ a few lines of output every time the function or method is invoked,
 and you will see the parameters.  If the parameters are not moving
 toward the base case, you will get some ideas about why not.
 
-如果有了初始条件了但是程序还是没有到达它，在函数或方法的开始加入一个{\tt print}
+如果有了基础情形了但是程序还是没有到达它，在函数或方法的开始加入一个{\tt print}
 语句来打印参数。现在当你运行程序，每次递归调用你都能看到几行输出，你可以看到参
-数。如果参数没有趋于初始条件，你需要想想为什么。
+数。如果参数没有趋于基础情形，你需要想想为什么。
 
 \subsubsection{Flow of Execution 执行流}
 \index{flow of execution}
