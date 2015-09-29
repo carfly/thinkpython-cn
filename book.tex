@@ -1485,7 +1485,7 @@ For the rest of this book, I'll use the print statement.  If you
 are using Python 3, you will have to translate.  But other than
 that, there are very few differences we have to worry about.
 
-对于本书剩余的部分，我将使用打印语句（译者注：而非函数）。
+对于本书剩余的部分，我将使用打印语句\footnote{译者注：而非函数}。
 如果你正在使用Python 3，你将必须进行翻译。
 但是除此之外，几乎没有什么我们需要担心的不同。
 
@@ -2079,7 +2079,7 @@ them at \url{http://wiki.python.org/moin/BitwiseOperators}.
 \index{operator!bitwise}
 
 在一些其它语言中，\verb"^"表示指数运算，
-但是在Python中，它表示XOR（译者注：异或）位运算。
+但是在Python中，它表示XOR\footnote{译者注：异或}位运算。
 本书不包括位运算符，
 但是你可以在\url{http://wiki.python.org/moin/BitwiseOperators}上阅读关于它们的内容。
 
@@ -2830,7 +2830,8 @@ known as a period).  This format is called {\bf dot notation}.
 
 该模块对象包括定义在模块内的函数和变量。
 为了访问其中一个函数，你必须指出该模块的名字以及函数名，
-并以点（即（译者注：英文中的）句号）分割。
+并以点（即句号\footnote{译者注：这里指英文中的句号，在中文语境中这句话
+原本不必要译出，但作者写了，删掉似又不尊重。}）分割。
 这种格式被称作{\bf 点标记法（dot notation）}。
 
 \begin{verbatim}
@@ -4447,8 +4448,8 @@ This syntax makes the program more readable.  It is also a reminder
 about how arguments and parameters work: when you call a function, the
 arguments are assigned to the parameters.
 
-这一语法使得程序更可读。（译者注：而实际上它的好处更在于可以在调用函数时
-改变参数的顺序，此处不提。）
+这一语法使得程序更可读。\footnote{译者注：而实际上它的好处更在于可以在调用函数时
+改变参数的顺序，此处不提，后文会有例子。}
 它也是关于实参和形参工作方式的一个提醒：
 当你调用函数时，实参被赋给形参。
 
@@ -6453,7 +6454,7 @@ expressions, but only if it does not make the program difficult to
 read.
 
 一旦程序正常运行，你可能想删掉一些脚手架或者将多条语句组成复合表达式，
-不过仅当这不会使程序难读懂时（译者注：才应该这么做）。
+不过仅当这不会使程序难读懂时\footnote{译者注：才应该这么做}。
 % 这句的翻译很难受
 
 \end{enumerate}
@@ -6836,8 +6837,8 @@ assume} that the function works correctly and returns the right
 result.
 
 顺着执行流程读程序是一种方法，但是它可能很快就变得错综复杂。
-另一种可取方式我称作``信仰之跃''（译者注：``信仰之跃''是英文语境中的一个成语，
-很难准确翻译，意为``不加考察地信任它是对的，从而向前大步飞跃''）。
+另一种可取方式我称作``信仰之跃''\footnote{译者注：``信仰之跃''是英文语境中的一个成语，
+很难准确翻译，意为``不加考察地信任它是对的，从而向前大步飞跃''}。
 当你遇到一个函数调用的时候，不要跟随执行流程，
 而是假设该函数正确工作并返回正确的结果。
 
@@ -6885,7 +6886,6 @@ it's called a leap of faith!
 但这也是它被称作信仰之跃的原因！
 
 
-%last time
 \section{One more example 再来一个例子}
 \label{one.more.example}
 
@@ -6896,7 +6896,7 @@ defined mathematical function is {\tt fibonacci}, which has the
 following definition (see
   \url{http://en.wikipedia.org/wiki/Fibonacci_number}):
   
-{\tt factorial}之后，最通常的一个被递归定义的数学函数是{\tt fibonacci}，
+在由递归定义的数学函数中，仅次于{\tt factorial}的最普遍的例子是{\tt fibonacci}，
 其定义如下（见：\url{http://en.wikipedia.org/wiki/Fibonacci_number}）：
 %
 \begin{eqnarray*}
@@ -6907,7 +6907,7 @@ following definition (see
 %
 Translated into Python, it looks like this:
 
-翻译成Python看起来是这样：
+翻译成Python差不多是这样：
 
 \begin{verbatim}
 def fibonacci (n):
@@ -6927,8 +6927,8 @@ the right result by adding them together.
 \index{flow of execution}
 
 这里，如果你试图跟随执行流程，即使对于相当小的$n$，
-你的头也会爆炸。但是根据信心的飞跃，如果你假设这两个递归调用正确的工作，
-那么很明显通过把它们加到一起，你获得了正确的结果。
+你也会想破脑袋。但是根据信仰之跃，如果你假设这两个递归调用正确的工作，
+那么很明显，你把它们加到一起就能获得正确的结果。
 
 
 \section{Checking types 检查类型}
@@ -6953,15 +6953,15 @@ we can {\em miss} the base case and recurse forever.
 \index{infinite recursion}
 \index{recursion!infinite}
 
-看上去像是一个无限循环。但那是如何发生的的？
-有一个基础情形---当{\tt n == 0}时。
-但是如果{\tt n}不是一个整数，我们会错过此基础情形并永远递归下去。
+看上去像是发生了无限循环。但怎么会这样呢？
+已经有了基础情形——当{\tt n == 0}时。
+但是如果{\tt n}不是整数，我们会错过此基础情形并永远递归下去。
 
 In the first recursive call, the value of {\tt n} is 0.5.
 In the next, it is -0.5.  From there, it gets smaller
 (more negative), but it will never be 0.
 
-在第一个递归调用中，{\tt n}是0.5。下一次，它是-0.5。
+在第一个递归调用中，{\tt n}的值是0.5。下一次，它是-0.5。
 从此，它变得越来越小（越来越负），但不会是0。
 
 We have two choices.  We can try to generalize the {\tt factorial}
@@ -6972,7 +6972,7 @@ little beyond the scope of this book.  So we'll go for the second.
 \index{gamma function}
 
 我们有两个选择。我们可以试着泛化{\tt factorial}函数使其能处理浮点数，
-或者我们可以让{\tt factorial}检查它的实参的类型。
+或者我们可以让{\tt factorial}检查它的实参类型。
 第一个选项被称作gamma函数，它有点儿超过本书的范围了。
 所以我们将用第二种方法。
 
@@ -6983,7 +6983,7 @@ argument is positive:
 \index{function!isinstance}
 
 我们可以使用内建函数{\tt isinstance}来验证实参的类型。
-此时，我们也可以确保该实参是正数：
+同时，我们也可以确保该实参是正数：
 
 \begin{verbatim}
 def factorial (n):
@@ -7004,8 +7004,8 @@ second catches negative integers.  In both cases, the program prints
 an error message and returns {\tt None} to indicate that something
 went wrong:
 
-第一个基础情形处理非整数，第二个抓住负整数。
-在这两个条件中，程序打印一个错误信息并返回{\tt None}以指明一些东西是错误的：
+第一个基础情形处理非整数，第二个处理负整数。
+在这两个情况下，程序会打印错误信息并返回{\tt None}以表示有东西出错了：
 
 \begin{verbatim}
 >>> factorial('fred')
@@ -7022,7 +7022,7 @@ zero, so we can prove that the recursion terminates.
 \index{pattern!guardian}
 
 如果我们通过了这两个检查，那么我们知道$n$是一个正数或0，
-因此我们可以保证递归终止。
+因此我们可以保证递归会终止。
 
 This program demonstrates a pattern sometimes called a {\bf guardian}.
 The first two conditionals act as guardians, protecting the code that
@@ -7030,14 +7030,16 @@ follows from values that might cause an error.  The guardians make it
 possible to prove the correctness of the code.
 
 此程序演示了一个模式，有时称作{\bf 监护人（guardian）}。
-前两个条件扮演监护人的角色，避免下面的代码使用引起错误的值。
+前两个条件扮演监护人的角色，避免下面的代码使用会引起错误的值。
 该监护人使得验证代码的正确性成为可能。
+% 我不同意监护人这个翻译，“守卫”或者“看门人”都更接近原意，然而我需要过一段时间再决定
 
 In Section~\ref{raise} we will see a more flexible alternative to printing
 an error message: raising an exception.
 
 在\ref{raise}节中，我们将看到更灵活的方法来打印错误信息：
 抛出一个异常。
+% 这个“抛出”也不是理想的翻译
 
 \section{Debugging 调试}
 \label{factdebug}
@@ -7047,20 +7049,20 @@ checkpoints for debugging.  \index{debugging}
 If a function is not working, there are
 three possibilities to consider:
 
-将一个大程序分解为较小的函数自然地为调试生成了检查点。
-如果一个函数不工作，有三个可能需要考虑：
+将一个大程序分解为较小的函数自然地为调试创造了检查点。
+如果一个函数不工作，有三个可能性可供考虑：
 
 \begin{itemize}
 
 \item There is something wrong with the arguments the function
 is getting; a precondition is violated.
 
-该函数获得的实参有些错误，违反先决条件。
+该函数获得的实参有错误，违反先决条件。
 
 \item There is something wrong with the function; a postcondition
 is violated.
 
-该函数有些错误，违反后置条件。
+该函数内有错误，违反后置条件。
 
 \item There is something wrong with the return value or the
 way it is being used.
@@ -7076,9 +7078,9 @@ that checks the preconditions explicitly.
 \index{precondition}
 \index{postcondition}
 
-为了排除第一种可能，你可以在函数的开始增加一条{\tt print}语句
-来显示形参的值（也可能是它们的类型）。
-或者你可以写代码来显示地检查先决条件。
+为了排除第一种可能，你可以在函数的开头增加一条{\tt print}语句
+来显示形参的值（或者也包括它们的类型）。
+或者你可以写些代码来显示地检查先决条件。
 
 If the parameters look good, add a {\tt print} statement before each
 {\tt return} statement that displays the return value.  If
@@ -7086,24 +7088,25 @@ possible, check the result by hand.  Consider calling the
 function with values that make it easy to check the result
 (as in Section~\ref{incremental.development}).
 
-如果形参看起来很好，在每个{\tt return}语句之前增加一条{\tt print}语句，
+如果形参看起来都对，在每个{\tt return}语句之前增加一条{\tt print}语句，
 来显示返回值。如果可能，手工检查结果。
-考虑用一些容易检查的值来调用该函数（类似在\ref{incremental.development}节中）。
+考虑用一些容易检查的值来调用该函数（类似\ref{incremental.development}节中的做法）。
 
 If the function seems to be working, look at the function call
 to make sure the return value is being used correctly (or used
 at all!).
 \index{flow of execution}
 
-如果该函数看起来工作，则看函数调用确保返回值被正确的使用（或者被用了！）
+如果该函数看起来没问题，则看看调用函数的地方，确保返回值被正确的使用了
+（或者是不是真的被使用了！）
 
 Adding print statements at the beginning and end of a function
 can help make the flow of execution more visible.
 For example, here is a version of {\tt factorial} with
 print statements:
 
-在一个函数的开始和结束增加打印语句可以帮助执行流程更明显。
-例如，这是{\tt factorial}的具有打印语句的版本：
+在一个函数的开头和结尾增加打印语句可以使得执行流程更明显。
+例如，这是{\tt factorial}的一个具有打印语句的版本：
 
 \begin{verbatim}
 def factorial(n):
@@ -7144,8 +7147,8 @@ If you are confused about the flow of execution, this kind of
 output can be helpful.  It takes some time to develop effective
 scaffolding, but a little bit of scaffolding can save a lot of debugging.
 
-如果你对执行流程感到困惑，这种输出可能有用。
-开发有效的脚手架会花些时间，但是一点点的脚手架能够节省调试的时间。
+如果你对执行流程感到困惑，这种输出可能会帮到你。
+开发有效的脚手架会花些时间，但是有这么一些脚手架能够节省大量调试的时间。
 
 \section{Glossary 术语表}
 
@@ -7177,6 +7180,7 @@ not part of the final version.
 \item[guardian（监护人）:]  A programming pattern that uses a conditional
 statement to check for and handle circumstances that
 might cause an error.
+% 对监护人这个翻译我需要再考虑
 \index{guardian pattern}
 \index{pattern!guardian}
 
@@ -7190,6 +7194,9 @@ might cause an error.
 Draw a stack diagram for the following program.  What does the program print?
 Solution: \url{http://thinkpython.com/code/stack_diagram.py}.
 \index{stack diagram}
+
+为如下程序画一个栈图。此程序打印出什么？
+解答在：\url{http://thinkpython.com/code/stack_diagram.py}。
 
 \begin{verbatim}
 def b(z):
@@ -7219,6 +7226,8 @@ print c(x, y+3, x+y)
 
 The Ackermann function, $A(m, n)$, is defined:
 
+Ackermann函数，$A(m, n)$，的定义是：
+
 \begin{eqnarray*}
 A(m, n) = \begin{cases} 
               n+1 & \mbox{if } m = 0 \\ 
@@ -7235,6 +7244,11 @@ Solution: \url{http://thinkpython.com/code/ackermann.py}.
 \index{Ackermann function}
 \index{function!ack}
 
+参见\url{http://en.wikipedia.org/wiki/Ackermann_function}。
+编写一个名为{\tt ack}的函数，来计算Ackermann函数的值。使用你写的函数
+计算{\tt ack(3, 4)}，结果应该是125。对更大的{\tt m}和{\tt n}会发生什么？
+解答在：\url{http://thinkpython.com/code/ackermann.py}。
+
 \end{exercise}
 
 
@@ -7247,8 +7261,15 @@ is a palindrome if the first and last letters are the same
 and the middle is a palindrome.
 \index{palindrome}
 
+一个正着和倒着念拼写都一样的词叫做回文词，例如``noon''和``redivider''。
+按递归的说法，如果一个词是回文词的话，只需头尾字母
+一样，而且中间部分是回文词。
+
 The following are functions that take a string argument and
 return the first, last, and middle letters:
+
+下列函数可以接受一个字符串实参，分别返回第一个字母，最后一个字母，
+和中间的字母：
 
 \begin{verbatim}
 def first(word):
@@ -7263,6 +7284,8 @@ def middle(word):
 %
 We'll see how they work in Chapter~\ref{strings}.
 
+我们将会在第\ref{strings}章了解它们的工作方式。
+
 \begin{enumerate}
 
 \item Type these functions into a file named {\tt palindrome.py}
@@ -7270,14 +7293,24 @@ and test them out.  What happens if you call {\tt middle} with
 a string with two letters?  One letter?  What about the empty
 string, which is written \verb"''" and contains no letters?
 
+将这些函数写进一个名为{\tt palindrome.py}的文件里，然后测试它们。
+如果你用两个字母的字符串调用{\tt middle}会发生什么？一个字母呢？
+那空字符串呢？（空字符串不包含任何字母，写做\verb"''"。）
+
 \item Write a function called \verb"is_palindrome" that takes
 a string argument and returns {\tt True} if it is a palindrome
 and {\tt False} otherwise.  Remember that you can use the
 built-in function {\tt len} to check the length of a string.
 
+写一个名为\verb"is_palindrome"的函数，接受一个字符串实参，如果是回文词
+就返回{\tt True}，不是则返回{\tt False}。要记得你可以使用内建函数{\tt len}
+来检查字符串的长度。
+
 \end{enumerate}
 
 Solution: \url{http://thinkpython.com/code/palindrome_soln.py}.
+
+解答在：\url{http://thinkpython.com/code/palindrome_soln.py}。
 
 \end{exercise}
 
@@ -7289,6 +7322,11 @@ and $a/b$ is a power of $b$.  Write a function called
 and returns {\tt True} if {\tt a} is a power of {\tt b}.
 Note: you will have to think about the base case.
 
+若$a$能被$b$整除且$a/b$是$b$的幂，则称$a$是$b$的幂。写一个名为
+\verb"is_power"的函数，接受参数{\tt a}和{\tt b}，
+并在{\tt a}是{\tt b}的幂时返回{\tt True}。
+注意：你需要考虑基础情形。
+
 \end{exercise}
 
 
@@ -7299,10 +7337,16 @@ Note: you will have to think about the base case.
 The greatest common divisor (GCD) of $a$ and $b$ is the largest number
 that divides both of them with no remainder.  
 
+$a$和$b$的最大公约数是能够同时整除两者的最大的数。
+
 One way to find the GCD of two numbers is Euclid's algorithm,
 which is based on the observation that if $r$ is the remainder
 when $a$ is divided by $b$, then $gcd(a, b) = gcd(b, r)$.
 As a base case, we can use $gcd(a, 0) = a$.
+
+一种找到两数的最大公约数的方法是欧几里得算法\footnote{译者注：即辗转相除法}，
+其基于一个观察结果，如果$r$是$a$除以$b$的余数，则$gcd(a, b) = gcd(b, r)$。
+我们可以使用$gcd(a, 0) = a$作为基础情形。
 \index{Euclid's algorithm}
 \index{algorithm!Euclid}
 
@@ -7311,12 +7355,20 @@ Write a function called
 and returns their greatest common divisor.  If you need
 help, see \url{http://en.wikipedia.org/wiki/Euclidean_algorithm}.
 
+写一个名为\verb"gcd"的函数，接受参数$a$和$b$，返回他们的最大公约数。
+如果你需要帮助，可以参考\url{http://en.wikipedia.org/wiki/Euclidean_algorithm}。
+
 Credit: This exercise is based on an example from Abelson and
 Sussman's {\em Structure and Interpretation of Computer Programs}.
+
+感谢：这一习题基于Abelson和Sussman所著
+{\em Structure and Interpretation of Computer Programs}中的一个例子。
+%\footnote{译者注：即大名鼎鼎的SICP，函数式编程经典}
 
 \end{exercise}
 
 
+%Last time
 \chapter{Iteration 迭代}
 
 \section{Multiple assignment 多次赋值}
